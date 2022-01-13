@@ -1,0 +1,182 @@
+
+\section{General relativity}
+
+General relativity describes how the metric, $g_{\mu \nu}$, behaves in the presence of matter and energy.
+The matter and energy contents are encoded in the stress-energy tensor $T_{\mu \nu}$, 
+while the Lagrangian should then be a scalar function dependent on $g^{\mu \nu}$.
+The most obvious and correct, choice is to use the Ricci scalar, which results in the Einstein-Hilbert action,
+%
+\begin{equation}
+    S_{\text{EH}} = \int_{\Em} \dd^n x \, \sqrt{|g|}\, k R,
+\end{equation}
+%
+where $k$ is a constant, related to Newton's constant of gravitation by
+%
+\begin{equation}
+    k = \frac{1}{16 \pi G}.
+\end{equation}
+%
+The total action will include contributions from matter field, so that
+%
+\begin{equation}
+    S = S_\text{EH} + S_\text{m}
+\end{equation}
+%
+The equations of motion of the dynamical field, which is this case is the metric, is given by Hamiltons principle.
+Using functional derivatives, as defined in (REF:APPENDIX), this is stated as
+\todo{Ha appendix på functional derivatives}
+%
+\begin{equation}
+    \diff.delta.{S}{g^{\mu\nu}} = 0,
+\end{equation}
+%
+where we have used functional derivatives,
+We define
+%
+\begin{equation}
+    T_{\mu\nu} = - \frac{2}{\sqrt{|g|}} \diff.delta.{S_\text{m}}{g^{\mu \nu}}.
+\end{equation}
+This results in the equations of motion for the metric, the Einstein field equations
+\todo{Utlede?}
+%
+\begin{equation}
+    R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu} = \kappa T_{\mu \nu},
+\end{equation}
+%
+where $\kappa = 8 \pi G$.
+The left hand side of the Einstein field equations is called the Einstein tensor,
+%
+\begin{equation}
+    G_{\mu \nu} = R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu}.
+\end{equation}
+%
+This tensor obeys the identity
+\begin{equation}
+    \label{Einstein tensor bianchi identity}
+    \nabla^\mu G_{\mu \nu} = 0,
+\end{equation}
+as a consequence of the more general Bianchi identity.
+
+\subsection*{Spherically symmetric spacetime}
+
+As we are going to model a star, we will assume that our metric is spherically symmetric and time independent.
+In this case, the most general metric can be written, at least locally, as
+%
+\begin{equation}
+    \dd s^2 
+    = e^{2\alpha(r)} \dd t^2 - e^{2 \beta(r)} \dd r^2 - 
+    r^2 (\dd \theta^2 + \sin^2 \theta \dd \varphi^2),
+\end{equation}
+%
+where $\alpha$ and $\beta$ are general functions of the radial coordinate $r$, and $\Omega$ is the solid angle.
+In matrix form, this corresponds to 
+%
+\begin{equation}
+    \label{spherically symmetric metric}
+    g_{\mu \nu} =
+    \left(
+        \begin{matrix}
+            e^{2 \alpha{\left(r \right)}} & 0 & 0 & 0\\
+            0 & - e^{2 \beta{\left(r \right)}} & 0 & 0
+            \\0 & 0 & - r^{2} & 0
+            \\0 & 0 & 0 & - r^{2} \sin^{2}{\left(\theta \right)}
+        \end{matrix}
+     \right).
+\end{equation}
+%
+Using \autoref{christoffel symbols from metric}, we can now compute the Christoffel symbols in terms of the unknown funcitons.
+These computations have been done using computer code, which is shown is (REF: KODE).
+The results are
+%
+\begin{align}
+    \Gamma^t_{\mu \nu}
+    & =
+    \left(
+        \begin{matrix}
+            0 & \frac{d}{d r} \alpha{\left(r \right)} & 0 & 0\\\frac{d}{d r} \alpha{\left(r \right)} & 0 & 0 & 0\\0 & 0 & 0 & 0\\0 & 0 & 0 & 0
+        \end{matrix}
+    \right), \\
+    \Gamma^r_{\mu \nu}
+    &=
+    \left(
+        \begin{matrix}
+            e^{2 \alpha{\left(r \right)}} e^{- 2 \beta{\left(r \right)}} \frac{d}{d r} \alpha{\left(r \right)} & 0 & 0 & 0\\0 & \frac{d}{d r} \beta{\left(r \right)} & 0 & 0\\0 & 0 & - r e^{- 2 \beta{\left(r \right)}} & 0\\0 & 0 & 0 & - r e^{- 2 \beta{\left(r \right)}} \sin^{2}{\left(\theta \right)}
+        \end{matrix}
+     \right), \\
+     \Gamma^\theta_{\mu \nu} 
+     & =
+     \left(
+         \begin{matrix}
+            0 & 0 & 0 & 0\\0 & 0 & \frac{1}{r} & 0\\0 & \frac{1}{r} & 0 & 0\\0 & 0 & 0 & - \sin{\left(\theta \right)} \cos{\left(\theta \right)}
+        \end{matrix}
+    \right), \\
+    \Gamma^\phi_{\mu \nu} 
+    &=
+    \left(
+        \begin{matrix}
+            0 & 0 & 0 & 0\\0 & 0 & 0 & \frac{1}{r}\\0 & 0 & 0 & \frac{\cos{\left(\theta \right)}}{\sin{\left(\theta \right)}}\\0 & \frac{1}{r} & \frac{\cos{\left(\theta \right)}}{\sin{\left(\theta \right)}} & 0
+        \end{matrix}
+    \right).
+\end{align}
+%
+With these, we can compute the Riemann tensor, using \autoref{riemann tensor in terms of christoffel symbols}, and then take the trace, as given in \autoref{Ricci tensor}, resulting in  
+%
+\begin{align}
+    R_{tt}
+    & =
+    \left(r \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} - r \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)} + r \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} + 2 \frac{d}{d r} \alpha{\left(r \right)}
+        \right)
+    \frac{
+         e^{2 \alpha{\left(r \right)}} e^{- 2 \beta{\left(r \right)}}}{r}, \\
+    R_{rr}
+    & =
+    - \frac{1}{r}
+    \left(
+        r \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} - r \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)} + r \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} - 2 \frac{d}{d r} \beta{\left(r \right)} 
+    \right),\\
+    R_{\theta \theta}
+    &=
+    - \left(r \frac{d}{d r} \alpha{\left(r \right)} - r \frac{d}{d r} \beta{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1\right) e^{- 2 \beta{\left(r \right)}}, \\
+    R_{\varphi \varphi} & = R_{\theta \theta} \sin^2( \theta).
+\end{align}
+%
+All other component are zero.
+Fianly, the trace of the Ricci tensor gives the Ricci scalar, 
+%
+\begin{align}
+    \nonumber
+    &R = \\
+    &\, \frac{2 e^{- 2 \beta{\left(r \right)}}}{r^{2}}
+    \left[
+        % \left(
+             r^{2} \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} - r^{2} \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)} + r^{2} \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} + 2 r \frac{d}{d r} \alpha{\left(r \right)} - 2 r \frac{d}{d r} \beta{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1
+        % \right)
+    \right]
+\end{align}
+%
+The Einstein tensor is then
+%
+\begin{align}
+    G_{tt}
+    & =
+    \left(2 r \frac{d}{d r} \beta{\left(r \right)} + e^{2 \beta{\left(r \right)}} - 1\right) 
+    \frac{
+        e^{2 \alpha{\left(r \right)}} e^{- 2 \beta{\left(r \right)}}
+        }{r^{2}}, \\
+    G_{rr}
+    & =
+    \frac{2 r \frac{d}{d r} \alpha{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1}{r^{2}}, \\
+    G_{\theta \theta}
+    &=
+\left[
+    r \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} - r \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)} + r \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} + \frac{d}{d r} \alpha{\left(r \right)} - \frac{d}{d r} \beta{\left(r \right)}
+\right]
+re^{- 2 \beta{\left(r \right)}}, \\
+G_{\varphi \varphi}
+& =
+G_{\theta\theta} \sin^2(\theta).
+\end{align}
+%
+The rest of the components vanish.
+The unknown functions, $\alpha$ and $\beta$, are now determined by the matter and energy content of the universe, which is encoded in $T_{\mu \nu}$, as well as the boundary conidtions.
+

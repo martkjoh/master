@@ -1,0 +1,42 @@
+\documentclass{book}
+
+\input{import.tex}
+\input{newcommands.tex}
+
+\title{\huge{Master}}
+\author{
+    \large{Martin Kjøllesdal Johnsrud }\\
+    \normalsize{Supervisor: Jens Oluf Andersen}
+    }
+
+
+\bibliography{master}
+% Supress note field in bibliography
+\AtEveryBibitem{\clearfield{note}}
+
+
+\begin{document}
+    \maketitle
+    \listoftodos
+    \tableofcontents
+
+    \chapter{Introduction}
+    \todo{Wirte introduction} 
+    
+    Pion stars have recently been proposed~\autocite{andersenBoseEinsteinCondensationPion2018,brandtNewClassCompact2018}.
+
+    \chapter{General Relativity and the TOV-equation}
+    \input{GR/diff_geom.tex}
+    \input{GR/GR.tex}
+    \input{GR/TOV.tex}
+
+    \appendix
+    
+    \chapter{Code}
+
+    % SLOW!
+    \input{appendix/code.tex}
+
+    \printbibliography
+
+\end{document}

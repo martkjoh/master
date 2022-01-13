@@ -1,0 +1,117 @@
+\section{The TOV equation}
+
+We will model a star as being made up of a \emph{perfect fulid}, with energy density $\rho$ and pressure $p$.
+The stress-energy tensor of a perfect fluid is\todo{Forklar}
+%
+\begin{equation}
+    T_{\mu \nu} = (\rho + p) u_\mu u_\nu - p g_{\mu \nu},
+\end{equation} 
+where $u_\mu$ is the 4-velocity of the fluid.
+In the rest frame of the fluid, we may write 
+\begin{equation}
+    u_\mu = \left(u_0, 0, 0, 0\right).
+\end{equation}
+This, together with the normalization condition of 4-velocities, $u_\mu u^\mu = 1$, allows us to calcualte that
+%
+\begin{equation}
+    u_\mu u^\mu = g^{\mu \nu} u_\mu u_\nu = g^{00} u_0^2 = 1.
+\end{equation}
+%
+Using \autoref{spherically symmetric metric}, we see that
+\begin{equation}
+    u_0 = e^{\alpha(r)}.
+\end{equation}
+%
+This gives us the stress-energy tensor of the perfect fluid,
+%
+\begin{equation}
+    T_{\mu \nu} 
+    =
+    \left(
+        \begin{matrix}
+            \rho{\left(r \right)} e^{2 \alpha{\left(r \right)}} & 0 & 0 & 0\\0 & 
+            p{\left(r \right)} e^{2 \beta{\left(r \right)}} & 0 & 0\\
+            0 & 0 & p{\left(r \right)} r^{2} & 0\\
+            0 & 0 & 0 & p{\left(r \right)} r^{2} \sin^{2}{\left(\theta \right)}
+        \end{matrix}
+    \right).
+\end{equation}.
+%
+We will use the $tt$ and $rr$ components of the Einstein field equations, which are
+%
+\begin{align}
+    \label{tt equation}
+    8 \pi G r^{2} \rho{\left(r \right)} e^{2 \beta{\left(r \right)}} 
+    & =   2 r \frac{d}{d r} \beta{\left(r \right)} + e^{2 \beta{\left(r \right)}} - 1 \\
+    \label{rr equation}
+    8 \pi G r^{2} p{\left(r \right)} e^{2 \beta{\left(r \right)}} 
+    & = 2 r \frac{d}{d r} \alpha{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1.
+\end{align}
+%
+In analogy with the form of the Schwartzhild metmric, we define the function $m(r)$ by
+\begin{equation}
+    e^{2 \beta(r)} = \left(1 - \frac{2 G m(r)}{r} \right)^{-1}. 
+\end{equation}
+Substituting this into \autoref{tt equation} yields 
+\begin{equation}
+    \diff{m(r)}{r} = 4 \pi r^2 \, \rho(r).
+\end{equation}
+The solution is simply
+\begin{equation}
+    m(r) = 4 \pi \int_0^r \dd r' \, {r'}^2 \rho(r').
+\end{equation}
+We see that $m(r)$ is the matter content contained within a radius $r$.
+If $\rho = 0$ for $r > R$ and $m(r>R) = M$, then the metric on a constant-time surface, i.e. $\dd t = 0$, is
+%
+\begin{equation}
+    \dd s^2 
+    = 
+    \left( 1 - \frac{2 G M}{r^2} \right)^{-1} \dd r^2 
+    + r^2 (\dd \theta^2 + \sin^2 \theta \dd\varphi^2),
+\end{equation} 
+%
+which is the same as the Schwartzhild solution.
+
+Using the Bianchi identity, \autoref{Einstein tensor bianchi identity}, together with EInstein's equation, we find that
+%
+\begin{equation}
+    \nabla^\mu G_{\mu \nu} = \nabla^\mu T_{\mu \nu} = 0.
+\end{equation}
+%
+The $r$-component of this equation is
+%
+\begin{equation}
+    \nabla_\mu T^{\mu r} 
+    =
+    \partial_r T^{rr} 
+    + \Gamma^\mu_{\mu \nu} T^{\nu r} 
+    + \Gamma^r_{\mu \nu} T^{\mu \nu},
+\end{equation}
+%
+where we have used the particulare form of $T_{\mu \nu}$ and the Christoffel symbols to eliminate vanishing terms.
+We calculate
+%
+\begin{align*}
+    \nabla_\mu T^{\mu r} 
+    & = 
+    \partial_r \left(p e^{-2\beta}\right)
+    + (2 \Gamma^r_{rr} + \Gamma^t_{tr}) T^{rr} 
+    + \Gamma^r_{tt}T^{tt} \\ 
+    &=   e^{-2\beta} \left( \partial_r p + p \partial_r \alpha + \rho \partial_r \alpha \right) = 0.
+\end{align*} 
+%
+This allows us to relate $\alpha$ to $p$ and $\rho$, via
+\begin{equation}
+    \partial_r \alpha = - \frac{\partial_r p}{p + \rho}
+\end{equation}
+When we substitute this, together with the definition of $m(r)$, into \autoref{rr equation}, we obtain
+\begin{equation}
+    \diff{p}{r}
+    =
+    -
+    \frac{
+        G \left(4 \pi r^{3} p + m \right) \left(\rho + p \right)
+        }
+        {r \left(r- 2 G m\right)},
+\end{equation}
+the Tolman-Oppenheimer-Volkoff (TOV) equation.
