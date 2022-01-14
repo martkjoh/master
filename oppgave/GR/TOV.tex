@@ -1,6 +1,14 @@
 \section{The TOV equation}
 
 We will model a star as being made up of a \emph{perfect fulid}, with energy density $\rho$ and pressure $p$.
+The relationship between the pressure and energy density of a substance is called the \emph{equation of state}, or EOS, and has the form
+\begin{equation}
+    \label{EOS}
+    f(p, \rho, \{\xi_i\}) = 0,
+\end{equation}
+where $\{\xi_i\}$ are possible other thermodynamic variables.
+We will be working at zero temperature, in which case there are no other free thermodynamic variables.
+This allows us to, at least locally, express the pressure as a function of the energy density, $p = p(\rho)$.
 The stress-energy tensor of a perfect fluid is\todo{Forklar}
 %
 \begin{equation}
@@ -11,10 +19,10 @@ In the rest frame of the fluid, we may write
 \begin{equation}
     u_\mu = \left(u_0, 0, 0, 0\right).
 \end{equation}
-This, together with the normalization condition of 4-velocities, $u_\mu u^\mu = 1$, allows us to calcualte that
+This, together with the normalization condition of 4-velocities, $u_\mu u^\mu = 1$, allows us to calculate that
 %
 \begin{equation}
-    u_\mu u^\mu = g^{\mu \nu} u_\mu u_\nu = g^{00} u_0^2 = 1.
+    u_\mu u^\mu = g^{\mu \nu} u_\mu u_\nu = g^{00} (u_0)^2 = 1.
 \end{equation}
 %
 Using \autoref{spherically symmetric metric}, we see that
@@ -22,7 +30,7 @@ Using \autoref{spherically symmetric metric}, we see that
     u_0 = e^{\alpha(r)}.
 \end{equation}
 %
-This gives us the stress-energy tensor of the perfect fluid,
+This gives us the stress-energy tensor of the perfect fluid in its rest frame,
 %
 \begin{equation}
     T_{\mu \nu} 
@@ -35,7 +43,7 @@ This gives us the stress-energy tensor of the perfect fluid,
             0 & 0 & 0 & p{\left(r \right)} r^{2} \sin^{2}{\left(\theta \right)}
         \end{matrix}
     \right).
-\end{equation}.
+\end{equation}
 %
 We will use the $tt$ and $rr$ components of the Einstein field equations, which are
 %
@@ -48,7 +56,7 @@ We will use the $tt$ and $rr$ components of the Einstein field equations, which 
     & = 2 r \frac{d}{d r} \alpha{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1.
 \end{align}
 %
-In analogy with the form of the Schwartzhild metmric, we define the function $m(r)$ by
+In analogy with the Schwartzhild metmric, we define the function $m(r)$ by
 \begin{equation}
     e^{2 \beta(r)} = \left(1 - \frac{2 G m(r)}{r} \right)^{-1}. 
 \end{equation}
@@ -58,19 +66,20 @@ Substituting this into \autoref{tt equation} yields
 \end{equation}
 The solution is simply
 \begin{equation}
+    \label{mass relation}
     m(r) = 4 \pi \int_0^r \dd r' \, {r'}^2 \rho(r').
 \end{equation}
 We see that $m(r)$ is the matter content contained within a radius $r$.
 If $\rho = 0$ for $r > R$ and $m(r>R) = M$, then the metric on a constant-time surface, i.e. $\dd t = 0$, is
 %
 \begin{equation}
-    \dd s^2 
+    \dd s^2
     = 
     \left( 1 - \frac{2 G M}{r^2} \right)^{-1} \dd r^2 
-    + r^2 (\dd \theta^2 + \sin^2 \theta \dd\varphi^2),
+    + r^2 (\dd \theta^2 + \sin^2 \theta \, \dd\varphi^2),
 \end{equation} 
 %
-which is the same as the Schwartzhild solution.
+which is the same as the for the Schwartzhild solution.
 
 Using the Bianchi identity, \autoref{Einstein tensor bianchi identity}, together with EInstein's equation, we find that
 %
@@ -88,7 +97,7 @@ The $r$-component of this equation is
     + \Gamma^r_{\mu \nu} T^{\mu \nu},
 \end{equation}
 %
-where we have used the particulare form of $T_{\mu \nu}$ and the Christoffel symbols to eliminate vanishing terms.
+where we have used the particular form of $T_{\mu \nu}$ and the Christoffel symbols to eliminate vanishing terms.
 We calculate
 %
 \begin{align*}
@@ -106,6 +115,7 @@ This allows us to relate $\alpha$ to $p$ and $\rho$, via
 \end{equation}
 When we substitute this, together with the definition of $m(r)$, into \autoref{rr equation}, we obtain
 \begin{equation}
+    \label{TOV}
     \diff{p}{r}
     =
     -
@@ -115,3 +125,14 @@ When we substitute this, together with the definition of $m(r)$, into \autoref{r
         {r \left(r- 2 G m\right)},
 \end{equation}
 the Tolman-Oppenheimer-Volkoff (TOV) equation.
+
+To summarize, we have three functions describeing the star, $\rho$, $p$, and $m$, as well as thre equations, \autoref{EOS}, \autoref{mass relation} and \autoref{TOV}.
+Together with inital conditions, such as $p(0) = p_0$, this is enough to determin the unknown funcions.
+For completness, the equations are
+\begin{gather*} 
+    f(p, \rho) = 0, \\
+    m(r) = 4 \pi \int_0^r \dd r \, {r'}^2 \rho(r'),\\
+    \diff{p}{r} =
+    -
+    \frac{G \left(4 \pi r^{3} p + m \right) \left(\rho + p \right)}{r \left(r- 2 G m\right)}.
+\end{gather*}

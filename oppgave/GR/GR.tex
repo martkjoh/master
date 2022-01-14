@@ -1,36 +1,35 @@
-
 \section{General relativity}
 
-General relativity describes how the metric, $g_{\mu \nu}$, behaves in the presence of matter and energy.
-The matter and energy contents are encoded in the stress-energy tensor $T_{\mu \nu}$, 
-while the Lagrangian should then be a scalar function dependent on $g^{\mu \nu}$.
-The most obvious and correct, choice is to use the Ricci scalar, which results in the Einstein-Hilbert action,
+General relativity describes spacetime as a smooth manifold $\Em$, with a (sudo-Rimanian) metric, $g_{\mu \nu}$.
+This metric is treated as a dynamical field, which is affected by the presence of matter and energy.
+The matter and energy contents of spacetime are encoded in the stress-energy tensor $T_{\mu \nu}$, while the behavior of $g^{\mu \nu}$ is encoded in a scalar Lagrangian density.  
+The most obvious---and correct---choice is to use the Ricci scalar, which results in the Einstein-Hilbert action,
 %
 \begin{equation}
-    S_{\text{EH}} = \int_{\Em} \dd^n x \, \sqrt{|g|}\, k R,
+    S_{\text{EH}} = k \int_{\Em} \dd^n x \, \sqrt{|g|}\, R,
 \end{equation}
 %
-where $k$ is a constant, related to Newton's constant of gravitation by
+where $k$ is a constant.
+This constant can then be related to Newton's constant of gravitation by
 %
 \begin{equation}
     k = \frac{1}{16 \pi G}.
 \end{equation}
 %
-The total action will include contributions from matter field, so that
+The total action will include contributions from other fields with an action $S_\text{m}$, so that the total action is
 %
 \begin{equation}
-    S = S_\text{EH} + S_\text{m}
+    S = S_\text{EH} + S_\text{m}.
 \end{equation}
 %
-The equations of motion of the dynamical field, which is this case is the metric, is given by Hamiltons principle.
+The equations of motion of the dynamical field, which in this case is the metric, are given by Hamilton's principle of stationary action.
 Using functional derivatives, as defined in (REF:APPENDIX), this is stated as
 \todo{Ha appendix på functional derivatives}
 %
 \begin{equation}
-    \diff.delta.{S}{g^{\mu\nu}} = 0,
+    \frac{1}{\sqrt{|g|}}\diff.delta.{S}{g^{\mu\nu}} = 0,
 \end{equation}
 %
-where we have used functional derivatives,
 We define
 %
 \begin{equation}
@@ -40,11 +39,12 @@ This results in the equations of motion for the metric, the Einstein field equat
 \todo{Utlede?}
 %
 \begin{equation}
+    \label{Einstein field equations}
     R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu} = \kappa T_{\mu \nu},
 \end{equation}
 %
 where $\kappa = 8 \pi G$.
-The left hand side of the Einstein field equations is called the Einstein tensor,
+The left-hand side of the Einstein field equations is called the Einstein tensor,
 %
 \begin{equation}
     G_{\mu \nu} = R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu}.
@@ -59,16 +59,16 @@ as a consequence of the more general Bianchi identity.
 
 \subsection*{Spherically symmetric spacetime}
 
-As we are going to model a star, we will assume that our metric is spherically symmetric and time independent.
-In this case, the most general metric can be written, at least locally, as
+To model stars, we will assume that the metric is spherically symmetric and time-independent.
+In this case, the most general metric can be written, at least locally, as~\autocite{carrollSpacetimeGeometryIntroduction2019}
 %
 \begin{equation}
     \dd s^2 
     = e^{2\alpha(r)} \dd t^2 - e^{2 \beta(r)} \dd r^2 - 
-    r^2 (\dd \theta^2 + \sin^2 \theta \dd \varphi^2),
+    r^2 (\dd \theta^2 + \sin^2 \theta \, \dd \varphi^2),
 \end{equation}
 %
-where $\alpha$ and $\beta$ are general functions of the radial coordinate $r$, and $\Omega$ is the solid angle.
+where $\alpha$ and $\beta$ are general functions of the radial coordinate $r$.
 In matrix form, this corresponds to 
 %
 \begin{equation}
@@ -85,7 +85,7 @@ In matrix form, this corresponds to
 \end{equation}
 %
 Using \autoref{christoffel symbols from metric}, we can now compute the Christoffel symbols in terms of the unknown funcitons.
-These computations have been done using computer code, which is shown is (REF: KODE).
+These computations in this subsection are done using computer code, which is shown in \autoref{appendix: code}.
 The results are
 %
 \begin{align}
@@ -119,7 +119,9 @@ The results are
     \right).
 \end{align}
 %
-With these, we can compute the Riemann tensor, using \autoref{riemann tensor in terms of christoffel symbols}, and then take the trace, as given in \autoref{Ricci tensor}, resulting in  
+With these result into  \autoref{riemann tensor in terms of christoffel symbols} gives the Riemann tensor curvature tensor.
+We can then obtain the Ricci tensor by taking the trace, as shown in \autoref{Ricci tensor}.
+The results are
 %
 \begin{align}
     R_{tt}
@@ -140,8 +142,8 @@ With these, we can compute the Riemann tensor, using \autoref{riemann tensor in 
     R_{\varphi \varphi} & = R_{\theta \theta} \sin^2( \theta).
 \end{align}
 %
-All other component are zero.
-Fianly, the trace of the Ricci tensor gives the Ricci scalar, 
+All other components are zero.
+Finally, the trace of the Ricci tensor gives the Ricci scalar,
 %
 \begin{align}
     \nonumber
@@ -151,32 +153,8 @@ Fianly, the trace of the Ricci tensor gives the Ricci scalar,
         % \left(
              r^{2} \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} - r^{2} \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)} + r^{2} \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} + 2 r \frac{d}{d r} \alpha{\left(r \right)} - 2 r \frac{d}{d r} \beta{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1
         % \right)
-    \right]
+    \right].
 \end{align}
 %
-The Einstein tensor is then
-%
-\begin{align}
-    G_{tt}
-    & =
-    \left(2 r \frac{d}{d r} \beta{\left(r \right)} + e^{2 \beta{\left(r \right)}} - 1\right) 
-    \frac{
-        e^{2 \alpha{\left(r \right)}} e^{- 2 \beta{\left(r \right)}}
-        }{r^{2}}, \\
-    G_{rr}
-    & =
-    \frac{2 r \frac{d}{d r} \alpha{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1}{r^{2}}, \\
-    G_{\theta \theta}
-    &=
-\left[
-    r \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} - r \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)} + r \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} + \frac{d}{d r} \alpha{\left(r \right)} - \frac{d}{d r} \beta{\left(r \right)}
-\right]
-re^{- 2 \beta{\left(r \right)}}, \\
-G_{\varphi \varphi}
-& =
-G_{\theta\theta} \sin^2(\theta).
-\end{align}
-%
-The rest of the components vanish.
-The unknown functions, $\alpha$ and $\beta$, are now determined by the matter and energy content of the universe, which is encoded in $T_{\mu \nu}$, as well as the boundary conidtions.
-
+ The unknown functions $\alpha$ and $\beta$ are now determined by the matter and energy content of the universe, which is encoded in $T_{\mu \nu}$, through Einstein's field equation, \autoref{Einstein field equations}.
+ 
