@@ -129,10 +129,217 @@ the Tolman-Oppenheimer-Volkoff (TOV) equation.
 To summarize, we have three functions describeing the star, $\rho$, $p$, and $m$, as well as thre equations, \autoref{EOS}, \autoref{mass relation} and \autoref{TOV}.
 Together with inital conditions, such as $p(0) = p_0$, this is enough to determin the unknown funcions.
 For completness, the equations are
-\begin{gather*} 
-    f(p, \rho) = 0, \\
-    m(r) = 4 \pi \int_0^r \dd r \, {r'}^2 \rho(r'),\\
-    \diff{p}{r} =
+\todo{Bytt notasjon - $\rho \rightarrow u$.}
+\begin{align*} 
+    0 & = f(P, u) , \\
+    \diff{m}{r} & = 4 \pi r^2 u(r), \\
+    \diff{p}{r} & =
     -
-    \frac{G \left(4 \pi r^{3} p + m \right) \left(\rho + p \right)}{r \left(r- 2 G m\right)}.
-\end{gather*}
+    \frac{G \left(4 \pi r^{3} p + m \right) \left(u + p \right)}{r \left(r- 2 G m\right)}.
+\end{align*}
+
+
+\subsection*{Incompressible fluid}
+
+The simples model for a fluid is an incompressible fluid, where the energy density is independent of the pressure.
+In this case, the energy density of the star will be constant for a radius $r < R$, before it drops to zero,
+%
+\begin{equation}
+    \rho(r) = \rho_0 \, \theta (R - r),
+\end{equation}
+%
+where $\rho_0$ is a constant and $\theta(x)$ the Heaviside step funciton.
+The mass of the star, for $r < R$, is
+%
+\begin{equation}
+    m(r) = \frac{4 \pi }{3} r^3 \rho_0.
+\end{equation}
+%
+Inserting this into \autoref{TOV}, this yields
+%
+\begin{equation} 
+    \diff{p'}{r'} = - \frac{M r (1 + p')(1 + 3 p')}{(1 - 2 M r')}.
+\end{equation}
+%
+Here, we have made the definitions
+%
+\begin{equation}
+    p' \rho_0 = p, \quad R r' = r, \quad
+    M = G \frac{4 \pi}{3} R^3 \rho_0.
+\end{equation}
+%
+This is a separable ODE, which means that each varaibel may integrated separly:
+%
+\begin{align}
+    \int \frac{\dd p'}{(1 + p')(1 + 3p')} 
+    = \frac{1}{2} \ln \frac{p' + \frac{1}{3}}{p' + 1} + \const , \\
+    \int \frac{\dd r' \, M r'}{(2 M r'^2 - 1)} = \frac{1}{4}\ln\left(2 r'^2 - 1 \right) + \const
+\end{align}
+%
+Combining these, together with the boundary condition $p'(r' = 1) = 0$, we get
+%
+\begin{equation}
+    p'(r') = - \frac{\sqrt{1 - 2M} - \sqrt{1 -2Mr'^2}}{3 \sqrt{1 - 2M} - \sqrt{1 - 2M r'^2} }.
+\end{equation}
+%
+We see that, if the mass exceeds the critical value
+%
+\begin{equation}
+    M_0 = \frac{4}{9},
+\end{equation}
+then the pressure will diverge towards the centrum.
+General relativity does not allow for static solution with energy densities greater than this~\autocite{carrollSpacetimeGeometryIntroduction2019}.
+The pressure as a function of radius of the incompressible fluid is illustrated in \autoref{fig: pressure incompressible fluid}.
+Here, each line corresponds to a value for $M$ within the indicated range, close to the critical value $M_0$.
+Notice how this will scale the $y$-axis as this corresponds to different values for $\rho_0$.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figurer/scripts/incompressible.pdf}
+    \caption{The pressure of a star made up of a incompressible fluid, as a funciton of its radius. The different lines corresponds to different total masses, and thus also different energy densities $\rho_0$. Notice how this will change the $y$-axis for each line.}
+    \label{fig: pressure incompressible fluid}
+\end{figure}
+
+\subsection*{Free fermi gas}
+
+A non-interacting free Fermi gas is goverened by the Lagrangian
+\todo{Skrive om thermal field theory}
+%
+\begin{equation}
+    \Ell = \bar \psi (i \slashed \partial - m) \psi.
+\end{equation}
+%
+This gas has the free energy density, after droping a infinite constant, 
+%
+\begin{equation}
+    \Eff = \frac{2}{\beta}\int \frac{\dd^3 p}{(2 \pi)^3} \left[
+        \ln(1 + e^{-\beta(\omega - \mu)})
+        + 
+        \ln(1 + e^{-\beta(\omega + \mu)})
+    \right],
+\end{equation}
+%
+where $\omega = \sqrt{p^2 + m^2}$.
+%
+\begin{equation}
+    \int_0^\infty \ln\left[1 + e^{-\beta(\omega \pm m)}\right]
+    = 
+    \frac{1}{3} p^3\ln\left[1 + e^{-\beta(\omega \pm m)}\right] \bigg |_0^\infty
+    + \frac{1}{3} \int_0^\infty \dd p \, \frac{ \beta p^4}{\omega}n_f(\omega \pm \mu),
+\end{equation}
+%
+where
+%
+\begin{equation}
+    n_f(\omega) = \frac{1}{e^{\beta \omega}+1}.
+\end{equation}
+%
+Thermodynamcs:
+%
+\begin{equation}
+    P = - \Eff, \quad n = - \diffp{\Eff}{\mu}, \quad u = \Eff + \mu n.
+\end{equation}
+%
+
+Thus,
+%
+\begin{equation}
+    P = \frac{2}{3}\int \frac{\dd^3 p}{(2 \pi)^3} 
+    \frac{p^4}{\omega}
+    [n_f(\omega - \mu) + n_f(\omega + \mu)]
+\end{equation}
+%
+
+%
+\begin{equation}
+    n = 2 \int \frac{\dd^3 p}{(2 \pi)^3}
+    \left[
+        n_f(\omega + \mu)
+        -
+        n_f(\omega - \mu)
+    \right]
+\end{equation}
+%
+
+%
+\begin{equation}
+    u
+    =
+    -\frac{1}{\pi^2}
+    \int \dd p \,
+    p^2
+    \left[
+        \left(
+            \frac{1}{3}
+            \frac{p^2}{\omega}
+            -
+            \mu
+        \right)
+        n_f(\omega - \mu)
+        +
+        \left(
+            \frac{1}{3}
+            \frac{p^2}{\omega}
+            +
+            \mu
+        \right)
+        n_f(\omega + \mu)
+    \right]
+\end{equation}
+%
+
+Define $\mu = \sqrt{p_f^2 - m^2}$.
+with $\beta \rightarrow \infty$, and $\mu = \sqrt{p_f^2 + m^2}$, we have
+%
+\begin{align}
+    &\int_0^\infty \dd p \, p^2  \sqrt{p^2 + m^2} n(\omega - \mu)
+    =
+    \int_0^{p_f} \dd p \, p^2 \sqrt{p^2 + m^2}\\
+    & = \frac{1}{3} p^3 \sqrt{p^2 + m^2 }\bigg|_0^{p_f} 
+    - \frac{1}{3}\int_0^{p_f} \dd p \, \frac{p^4}{\sqrt{p^2 + m^2}}.
+    =
+    -
+    \int_0^{p_f}
+    \dd p \, p^2
+    \left(
+        \frac{1}{3}
+        \frac{p^2}{\omega}
+        - \mu
+    \right).
+\end{align}
+%
+Thus,
+%
+\begin{align}
+    u &= \frac{1}{\pi^2} \int_0^{p_f} \dd p \,
+    p^2 \sqrt{p^2 + m^2}
+    = \frac{m^4}{\pi^2} \int_0^{x_f} \dd x \, x^2 \sqrt{x^2 + 1}, \\
+    P & = \frac{1}{3 \pi^2} \dd p \, \int_0^{p_f}\frac{p^4}{\sqrt{p^2 + m^2}} 
+    = \frac{m^4}{3 \pi^2} \int_0^{x_f} \frac{\dd x \, x^4}{\sqrt{x^2 + 1}}.
+\end{align}
+%
+Using 
+%
+\begin{align}
+    \int_0^a \dd x \, x^2 \sqrt{x^2 + 1} 
+    & = \frac{1}{8} 
+    \left[a \sqrt{a^2 + 1}(2 a^2 + 1) - \ln\left(\sqrt{a^2 + 1} + a\right)\right], \\
+    \int_0^a \dd x \, \frac{x^4}{\sqrt{x^2 + 1} }
+    & = \frac{1}{8} 
+    \left[a \sqrt{a^2 + 1}(2 a^2 - 3) + 3\ln\left(\sqrt{a^2 + 1} + a\right)\right].
+\end{align}
+%
+We get 
+%
+\begin{align}
+    u &= \frac{m^4}{8 \pi^2} 
+    \left[\mu x_f (2x_f^2 + 1) - \ln\left(\mu + x_f\right)\right], \\
+    P &= \frac{m^4}{24 \pi^2} 
+    \left[\mu x_f (2x_f^2 -3) + 3\ln\left(\mu + x_f\right)\right].
+\end{align}
+%
+Dimensionless TOV is
+%
+\begin{equation}
+    \diff{p}{r} = - \frac{(4 \pi r^3 p + m)(u + p)}{r(r - 2 m)}
+\end{equation}
