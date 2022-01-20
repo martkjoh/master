@@ -1,64 +1,73 @@
 import numpy as np
-import scipy as sp
+import sympy as sp
 import matplotlib.pyplot as plt
 
-from scipy.integrate import quad
-from numpy import pi, sqrt,  exp, log as ln
+from scipy.integrate import quad, solve_ivp
+from scipy.optimize import root
+from numpy import pi, sqrt, exp, log as ln
 
 
-# Particle mass
-m = 1
-# Chemical potential
-mu = lambda x : sqrt(x**2 + 1)
+x = sp.Symbol("x")
+y = sp.sqrt(x**2 + 1)
+p_s = y * x * (2 * x + 1) - sp.log(y + x)
+u_s = y * x * (2 * x - 3 ) + 3 * sp.log(y + x) 
 
-def u(x):
-    return m**4 / (8 * pi**2) * (
-        mu(x) * x * (2*x**2 + 1) - ln(mu(x) + x)
-    )
+u_para = sp.lambdify(x, u_s, "numpy")
+p_para = sp.lambdify(x, p_s, "numpy")
 
-def p(x):
-    return m**4 / (3 * 8 * pi**2) * (
-        mu(x) * x * (2*x**2 - 3) + 3*ln(mu(x) + x)
-    )
+dpdmu_s = p_s.diff(x).simplify()
+dpdmu = sp.lambdify(x, dpdmu_s)
 
+def u(p0, x0= 0.1):
+    f = lambda x: p_para(x) - p0
+    x = root(f, x0, jac=dpdmu).x[0]
+    return u_para(x)
 
- 
-def f(p, u):
-    return u - 1/3 * p
+def dmdr(args):
+    r, p, m = args
+    return u(p) * r**2
 
-def dmdr(u, r):
-    return  4 * pi * r**2 * u
+def dpdr(args):
+    r, p, m = args
+    u0 = u(p)
+    if r<0.001:
+        m = 1/3 * u(0)
+        return -r * (p + m ) * (u0 + p) * (1 - 2 *m*r**2 )**(-1)
+    else: 
+        return - 1 / r**2 * (m + p * r**3) * (u0 + p) * (1 - 2 * m / r)**(-1)
 
-def dpdr(p, u, m, r):
-    return - (4 * pi * r**3 * p - m) * (p + m) / r / (r - 2 * m)
+def f(r, y):
+    args = (r, *y)
+    Dp, Dm = dpdr(args), dmdr(args)
+    return Dp, Dm
 
-
-def f(p0, m0, r0, dr=0.001):
-    # solve f(p0, u0) for u0
-    u0 = 1 / 3*p0
-    dmdr0 = dmdr(u0, r0)
-    dpdr0 = dpdr(p0, u0, m0, r0)
-    r1 = r0 + dr
-    m1 = m0 + dmdr0 * dr
-    p1 = p0 + dpdr0 * dr
-    return p1, m1, r1
+def stop(r, y):
+    p, m = y
+    return p
+stop.terminal = True
 
 N = 10
-p0 = 10**np.linspace(-0.5, 3.5, N)
+p0s = np.linspace(0.1 , 1, N)
+
 M = np.zeros(N)
 R = np.zeros(N)
 
-# print(dpdr(1, 3, 0, 0.01))
+fig, ax = plt.subplots()
 
-for i, p in enumerate(p0):
-    m, r = 0, 0.000001,
-    while p>=0:
-        p, m, r = f(p, m, r)
-    M[i] = m
-    R[i] = r
-    print(i)
+xs = np.linspace(0.5, 2)
+p0s = p_para(xs)
 
+
+for i, p0 in enumerate(p0s):
+    s = solve_ivp(f, (0, 1e10), (p0, 0), events=stop)
+    r = s.t
+    p, m = s.y
+    print(s)
+    M[i] = m[-1]
+    R[i] = r[-1]
+
+print(R)
 print(M)
-print(p0)
 plt.plot(R, M, "--.")
 plt.show()
+
