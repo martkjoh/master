@@ -1,33 +1,33 @@
 \section{The TOV equation}
 
-We will model a star as being made up of a \emph{perfect fulid}, with energy density $\rho$ and pressure $p$.
+We will model a star as being made up of a \emph{perfect fulid}, with energy density $u$ and pressure $p$.
 The relationship between the pressure and energy density of a substance is called the \emph{equation of state}, or EOS, and has the form
 \begin{equation}
     \label{EOS}
-    f(p, \rho, \{\xi_i\}) = 0,
+    f(p, u, \{\xi_i\}) = 0,
 \end{equation}
 where $\{\xi_i\}$ are possible other thermodynamic variables.
 We will be working at zero temperature, in which case there are no other free thermodynamic variables.
-This allows us to, at least locally, express the pressure as a function of the energy density, $p = p(\rho)$.
+This allows us to, at least locally, express the energy density as a function ofthe pressure, $u = u(p)$.
 The stress-energy tensor of a perfect fluid is\todo{Forklar}
 %
 \begin{equation}
-    T_{\mu \nu} = (\rho + p) u_\mu u_\nu - p g_{\mu \nu},
+    T_{\mu \nu} = (u + p) u_\mu u_\nu - p g_{\mu \nu},
 \end{equation} 
 where $u_\mu$ is the 4-velocity of the fluid.
 In the rest frame of the fluid, we may write 
 \begin{equation}
-    u_\mu = \left(u_0, 0, 0, 0\right).
+    v_\mu = \left(v_0, 0, 0, 0\right).
 \end{equation}
-This, together with the normalization condition of 4-velocities, $u_\mu u^\mu = 1$, allows us to calculate that
+This, together with the normalization condition of 4-velocities, $v_\mu v^\mu = 1$, allows us to calculate that
 %
 \begin{equation}
-    u_\mu u^\mu = g^{\mu \nu} u_\mu u_\nu = g^{00} (u_0)^2 = 1.
+    v_\mu v^\mu = g^{\mu \nu} v_\mu v_\nu = g^{00} (v_0)^2 = 1.
 \end{equation}
 %
 Using \autoref{spherically symmetric metric}, we see that
 \begin{equation}
-    u_0 = e^{\alpha(r)}.
+    v_0 = e^{\alpha(r)}.
 \end{equation}
 %
 This gives us the stress-energy tensor of the perfect fluid in its rest frame,
@@ -37,7 +37,7 @@ This gives us the stress-energy tensor of the perfect fluid in its rest frame,
     =
     \left(
         \begin{matrix}
-            \rho{\left(r \right)} e^{2 \alpha{\left(r \right)}} & 0 & 0 & 0\\0 & 
+            u{\left(r \right)} e^{2 \alpha{\left(r \right)}} & 0 & 0 & 0\\0 & 
             p{\left(r \right)} e^{2 \beta{\left(r \right)}} & 0 & 0\\
             0 & 0 & p{\left(r \right)} r^{2} & 0\\
             0 & 0 & 0 & p{\left(r \right)} r^{2} \sin^{2}{\left(\theta \right)}
@@ -49,7 +49,7 @@ We will use the $tt$ and $rr$ components of the Einstein field equations, which 
 %
 \begin{align}
     \label{tt equation}
-    8 \pi G r^{2} \rho{\left(r \right)} e^{2 \beta{\left(r \right)}} 
+    8 \pi G r^{2} u{\left(r \right)} e^{2 \beta{\left(r \right)}} 
     & =   2 r \frac{d}{d r} \beta{\left(r \right)} + e^{2 \beta{\left(r \right)}} - 1 \\
     \label{rr equation}
     8 \pi G r^{2} p{\left(r \right)} e^{2 \beta{\left(r \right)}} 
@@ -62,24 +62,25 @@ In analogy with the Schwartzhild metmric, we define the function $m(r)$ by
 \end{equation}
 Substituting this into \autoref{tt equation} yields 
 \begin{equation}
-    \diff{m(r)}{r} = 4 \pi r^2 \, \rho(r).
+    \label{diff eq mass}
+    \diff{m(r)}{r} = 4 \pi r^2 \, u(r).
 \end{equation}
 The solution is simply
 \begin{equation}
     \label{mass relation}
-    m(r) = 4 \pi \int_0^r \dd r' \, {r'}^2 \rho(r').
+    m(r) = 4 \pi \int_0^r \dd r' \, {r'}^2 u(r').
 \end{equation}
 We see that $m(r)$ is the matter content contained within a radius $r$.
-If $\rho = 0$ for $r > R$ and $m(r>R) = M$, then the metric on a constant-time surface, i.e. $\dd t = 0$, is
+If $u = 0$ for $r > R$ and $m(r>R) = M$, then the metric on a constant-time surface, i.e. $\dd t = 0$, is
 %
 \begin{equation}
     \dd s^2
     = 
     \left( 1 - \frac{2 G M}{r^2} \right)^{-1} \dd r^2 
-    + r^2 (\dd \theta^2 + \sin^2 \theta \, \dd\varphi^2),
+    + r^2 (\dd \theta^2 + \sin^2 \theta \, \dd\varphi^2).
 \end{equation} 
 %
-which is the same as the for the Schwartzhild solution.
+This is the same as for the Schwarzschild solution.
 
 Using the Bianchi identity, \autoref{Einstein tensor bianchi identity}, together with EInstein's equation, we find that
 %
@@ -106,12 +107,12 @@ We calculate
     \partial_r \left(p e^{-2\beta}\right)
     + (2 \Gamma^r_{rr} + \Gamma^t_{tr}) T^{rr} 
     + \Gamma^r_{tt}T^{tt} \\ 
-    &=   e^{-2\beta} \left( \partial_r p + p \partial_r \alpha + \rho \partial_r \alpha \right) = 0.
+    &=   e^{-2\beta} \left( \partial_r p + p \partial_r \alpha + u \partial_r \alpha \right) = 0.
 \end{align*} 
 %
-This allows us to relate $\alpha$ to $p$ and $\rho$, via
+This allows us to relate $\alpha$ to $p$ and $u$, via
 \begin{equation}
-    \partial_r \alpha = - \frac{\partial_r p}{p + \rho}
+    \partial_r \alpha = - \frac{\partial_r p}{p + u}
 \end{equation}
 When we substitute this, together with the definition of $m(r)$, into \autoref{rr equation}, we obtain
 \begin{equation}
@@ -119,24 +120,58 @@ When we substitute this, together with the definition of $m(r)$, into \autoref{r
     \diff{p}{r}
     =
     -
-    \frac{
-        G \left(4 \pi r^{3} p + m \right) \left(\rho + p \right)
-        }
-        {r \left(r- 2 G m\right)},
+    \frac{G}{r^2} 
+    \left(4 \pi r^{3} p + m \right) 
+    \left(u + p \right)
+    \left(1 - \frac{2 G m}{r}\right)^{-1}
 \end{equation}
 the Tolman-Oppenheimer-Volkoff (TOV) equation.
 
-To summarize, we have three functions describeing the star, $\rho$, $p$, and $m$, as well as thre equations, \autoref{EOS}, \autoref{mass relation} and \autoref{TOV}.
+To summarize, we have three functions describeing the star, $u$, $p$, and $m$, as well as thre equations, \autoref{EOS}, \autoref{mass relation} and \autoref{TOV}.
 Together with inital conditions, such as $p(0) = p_0$, this is enough to determin the unknown funcions.
 For completness, the equations are
-\todo{Bytt notasjon - $\rho \rightarrow u$.}
+\todo{Bytt notasjon - $u \rightarrow u$.}
 \begin{align*} 
-    0 & = f(P, u) , \\
+    u & = u(p) , \\
     \diff{m}{r} & = 4 \pi r^2 u(r), \\
     \diff{p}{r} & =
     -
-    \frac{G \left(4 \pi r^{3} p + m \right) \left(u + p \right)}{r \left(r- 2 G m\right)}.
+    \frac{G}{r^2} 
+    \left(4 \pi r^{3} p + m \right) 
+    \left(u + p \right) 
+    \left(1 - \frac{2 G m}{r }\right)^{-1}
 \end{align*}
+
+\subsection*{Characteristic dimensions}
+
+We also want to rescale the governing equations to convenient units, which we do by the change of variables
+%
+\begin{equation}
+    u \rightarrow u_0 u, \, p \rightarrow u_0 p, \, m \rightarrow m_0 m, r \rightarrow r_0 r.
+\end{equation}
+%
+Inserting this into \autoref{diff eq mass} and \autoref{TOV} yields
+%
+\begin{align}
+    \diff{m}{r} & = 3 k_2 r^2 u \\
+    \diff{p}{r} & 
+    = - \frac{k_1}{r^2} \left(p + u\right) \left(3 k_2 r^3 p + m\right) 
+    \left(1 - \frac{2 k_1  m}{r}\right)^{-1},
+\end{align}
+%
+when
+%
+\begin{equation}
+    k_1 = \frac{G m_0}{r_0}, \quad k_2 =  \frac{4 \pi}{3} \frac{r_0^3 u_0}{m_0}.
+\end{equation}
+%
+In the case 
+This defines the natural units of this, the typcal mass and length
+\begin{equation}
+    \label{typical length}
+    r_0 = G m_0, \quad m_0 = \frac{4 \pi}{3} r_0^3 u_0.
+\end{equation}
+%
 
 
 \subsection*{Incompressible fluid}
@@ -145,71 +180,74 @@ The simples model for a fluid is an incompressible fluid, where the energy densi
 In this case, the energy density of the star will be constant for a radius $r < R$, before it drops to zero,
 %
 \begin{equation}
-    \rho(r) = \rho_0 \, \theta (R - r),
+    u(r) = u_0 \, \theta (R - r),
 \end{equation}
 %
-where $\rho_0$ is a constant and $\theta(x)$ the Heaviside step funciton.
+where $u_0$ is a constant and $\theta(x)$ the Heaviside step funciton.
 The mass of the star, for $r < R$, is
 %
 \begin{equation}
-    m(r) = \frac{4 \pi }{3} r^3 \rho_0.
+    m(r) = \frac{4 \pi }{3} u_0 r^3 = m_0 r^3 .
 \end{equation}
 %
 Inserting this into \autoref{TOV}, this yields
 %
 \begin{equation} 
-    \diff{p'}{r'} = - \frac{M r (1 + p')(1 + 3 p')}{(1 - 2 M r')}.
+    \diff{p}{r} = - \frac{r (1 + p)(1 + 3 p)}{(1 - 2 r^2)}.
 \end{equation}
 %
-Here, we have made the definitions
-%
-\begin{equation}
-    p' \rho_0 = p, \quad R r' = r, \quad
-    M = G \frac{4 \pi}{3} R^3 \rho_0.
-\end{equation}
-%
-This is a separable ODE, which means that each varaibel may integrated separly:
+This is a separable ODE, which means that each variable may be integrated separately:
 %
 \begin{align}
-    \int \frac{\dd p'}{(1 + p')(1 + 3p')} 
-    = \frac{1}{2} \ln \frac{p' + \frac{1}{3}}{p' + 1} + \const , \\
-    \int \frac{\dd r' \, M r'}{(2 M r'^2 - 1)} = \frac{1}{4}\ln\left(2 r'^2 - 1 \right) + \const
+    \int \frac{\dd p}{(1 + p)(1 + 3p)} 
+    & = \frac{1}{2} \ln \frac{3p + 1}{p + 1} + \const , \\
+    \int \frac{\dd r \, r}{(1 - 2 r^2)} 
+    & = \frac{1}{4}\ln\left(1 - 2 r^2 \right) 
+    + \const
 \end{align}
 %
-Combining these, together with the boundary condition $p'(r' = 1) = 0$, we get
+Combining these, together with the boundary condition $p(r = R) = 0$, we get
 %
 \begin{equation}
-    p'(r') = - \frac{\sqrt{1 - 2M} - \sqrt{1 -2Mr'^2}}{3 \sqrt{1 - 2M} - \sqrt{1 - 2M r'^2} }.
+    p(r) 
+    = 
+    - \frac{\sqrt{1 - 2 R^2} - \sqrt{1 -2 r^2}}{3 \sqrt{1 - 2 R^2} - \sqrt{1 - 2 r^2} }.
 \end{equation}
 %
-We see that, if the mass exceeds the critical value
+We see that the pressure diverges for $r\rightarrow 0$ when
 %
 \begin{equation}
-    M_0 = \frac{4}{9},
+    R^2 \geq \frac{4}{9}.
 \end{equation}
-then the pressure will diverge towards the centrum.
+This corresponds to a mass of
+\begin{equation}
+    M = 4 \pi r_0^3  u_0 \int_0^R \dd r \, r^2
+    = m_0 R^3 = \frac{1}{G} \frac{4}{9} r_0 R .
+\end{equation}
+We have used \autoref{typical length}.
+If the mass is increased beyon this, the pressure at the center of the star will diverge.
 General relativity does not allow for static solution with energy densities greater than this~\autocite{carrollSpacetimeGeometryIntroduction2019}.
-The pressure as a function of radius of the incompressible fluid is illustrated in \autoref{fig: pressure incompressible fluid}.
+The pressure as a function of the radius of the incompressible fluid is illustrated in \autoref{fig: pressure incompressible fluid}.
 Here, each line corresponds to a value for $M$ within the indicated range, close to the critical value $M_0$.
-Notice how this will scale the $y$-axis as this corresponds to different values for $\rho_0$.
+Notice how this will scale the $y$-axis as this corresponds to different values for $u_0$.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figurer/scripts/incompressible.pdf}
-    \caption{The pressure of a star made up of a incompressible fluid, as a funciton of its radius. The different lines corresponds to different total masses, and thus also different energy densities $\rho_0$. Notice how this will change the $y$-axis for each line.}
+    \caption{The pressure of a star made up of a incompressible fluid, as a funciton of its radius. The different lines corresponds to different total masses, and thus also different energy densities $u_0$. Notice how this will change the $y$-axis for each line.}
     \label{fig: pressure incompressible fluid}
 \end{figure}
 
 \subsection*{Free fermi gas}
 
-A non-interacting free Fermi gas is goverened by the Lagrangian
+A non-interacting free Fermi gas is governed by the Lagrangian
 \todo{Skrive om thermal field theory}
 %
 \begin{equation}
     \Ell = \bar \psi (i \slashed \partial - m) \psi.
 \end{equation}
 %
-This gas has the free energy density, after droping a infinite constant, 
+This gas has the free energy density, after dropping an infinite constant, 
 %
 \begin{equation}
     \Eff = \frac{2}{\beta}\int \frac{\dd^3 p}{(2 \pi)^3} \left[
@@ -289,7 +327,7 @@ Thus,
 %
 
 Define $\mu = \sqrt{p_f^2 - m^2}$.
-with $\beta \rightarrow \infty$, and $\mu = \sqrt{p_f^2 + m^2}$, we have
+with $\beta \rightarrow \infty$, we have
 %
 \begin{align}
     &\int_0^\infty \dd p \, p^2  \sqrt{p^2 + m^2} n(\omega - \mu)
@@ -317,7 +355,8 @@ Thus,
     P & = \frac{1}{3 \pi^2} \dd p \, \int_0^{p_f}\frac{p^4}{\sqrt{p^2 + m^2}} 
     = \frac{m^4}{3 \pi^2} \int_0^{x_f} \frac{\dd x \, x^4}{\sqrt{x^2 + 1}}.
 \end{align}
-%
+% 
+We have define $x = p / m$ and $x_f = p_f/m$.
 Using 
 %
 \begin{align}
@@ -332,15 +371,54 @@ Using
 We get 
 %
 \begin{align}
-    u &= \frac{m^4}{8 \pi^2} 
-    \left[\mu x_f (2x_f^2 + 1) - \ln\left(\mu + x_f\right)\right], \\
-    P &= \frac{m^4}{24 \pi^2} 
-    \left[\mu x_f (2x_f^2 -3) + 3\ln\left(\mu + x_f\right)\right].
+    u &= u_0
+    \left[y_f x_f (2x_f^2 + 1) - \ln\left(y_f + x_f\right)\right], \\
+    P &= \frac{u_0}{3}
+    \left[y_f x_f (2x_f^2 -3) + 3\ln\left(y_f + x_f\right)\right],
 \end{align}
 %
-eqs
+where $y_f = \mu / m$.
+We have also introduced
+%
+\begin{equation}
+    u_0 = \frac{m^4}{8 \pi^2},
+\end{equation}
+%
+which is one of the dimensionfull quantities that define the system.
+We also want ot rescale the governing equations to convinient units, which we do by the change of variables
+%
+\begin{equation}
+    u \rightarrow u_0 u, \, p \rightarrow u_0 p, \, m \rightarrow m_0 m, r \rightarrow r_0 r.
+\end{equation}
+%
+Inserting this into \autoref{diff eq mass} and \autoref{TOV} yields
 %
 \begin{align}
-    \diff{p}{r} = - \frac{(4 \pi r^3 P + m)(u + P)}{r(r - 2 m)} \\
-    \diffp{m}{r} = 4 \pi r^2 u
+    \diff{m}{r} & = r^2 u \\
+    \diff{p}{r} & 
+    = - \frac{k_1}{r^2} \left(p + u\right) \left(3 k_2 pr^3 + m\right) 
+    \left(1 - \frac{2 k_1 m}{r}\right)^{-1},
 \end{align}
+%
+when we demand
+%
+\begin{equation}
+    \frac{G m_0}{r_0} = 4 \pi \frac{r_0^3 u_0}{m_0} = 1.
+\end{equation}
+%
+This defines the natural units of this, the typcal mass and length
+\begin{equation}
+    r_0 = G m_0, \quad m_0 = 4 \pi r_0^3 u_0
+\end{equation}
+%
+Inserting $\hbar$ and $c$, this gives
+%
+\begin{align}
+    u_0 &= \frac{1}{8 \pi^2}\frac{m^4 c^5}{\hbar^3} 
+    = 2.032\cdot10^{35}  \, \text{J}\,\text{m}^{-3}, \\
+    m_0 &= \frac{c^4}{\sqrt{4 \pi u_0 G^3} } 
+    = 9.281 \cdot 10^{30} \, \text{kg}
+    = 4.666 \, M_\odot \\
+    r_0 &= \frac{G m_0}{c^2} = 6887 \, \text{km}.
+\end{align}
+

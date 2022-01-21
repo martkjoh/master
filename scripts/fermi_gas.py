@@ -23,51 +23,48 @@ def u(p0, x0= 0.1):
     x = root(f, x0, jac=dpdmu).x[0]
     return u_para(x)
 
-def dmdr(args):
-    r, p, m = args
+def dmdr(r, y, args):
+    p, m = y
     return u(p) * r**2
 
-def dpdr(args):
-    r, p, m = args
-    u0 = u(p)
+def dpdr(r, y, args):
+    p, m = y
+    p0 = args
+    u0 = u(p0)
     if r<0.001:
         m = 1/3 * u(0)
-        return -r * (p + m ) * (u0 + p) * (1 - 2 *m*r**2 )**(-1)
+        return - r * (p + u(p)) * (p + u0) * (1 - 2 * u0 * r )**(-1)
     else: 
-        return - 1 / r**2 * (m + p * r**3) * (u0 + p) * (1 - 2 * m / r)**(-1)
+        return - 1 / r**2 * (p + u(p)) * (p * r**3 + m) * (1 - 2 * m / r)**(-1)
 
-def f(r, y):
-    args = (r, *y)
-    Dp, Dm = dpdr(args), dmdr(args)
+def f(r, y, args):
+    Dp, Dm = dpdr(r, y, args), dmdr(r, y, args)
     return Dp, Dm
 
-def stop(r, y):
+def stop(r, y, args):
     p, m = y
     return p
 stop.terminal = True
 
-N = 10
-p0s = np.linspace(0.1 , 1, N)
+def sim_many():
+    N = 2
+    p0s = np.linspace(0.5 , 2, N)
 
-M = np.zeros(N)
-R = np.zeros(N)
+    M = np.zeros(N)
+    R = np.zeros(N)
 
-fig, ax = plt.subplots()
+    fig, ax = plt.subplots()
 
-xs = np.linspace(0.5, 2)
-p0s = p_para(xs)
+    for i, p0 in enumerate(p0s):
+        s = solve_ivp(f, (0, 1e10), (p0, 0), args=(p0,), events=stop)
+        rs = s.t
+        ps, ms = s.y
+        M[i] = ms[-1]
+        R[i] = rs[-1]
+
+    n = 15
+    plt.plot(rs[:n], ps[:n], "--.")
+    plt.show()
 
 
-for i, p0 in enumerate(p0s):
-    s = solve_ivp(f, (0, 1e10), (p0, 0), events=stop)
-    r = s.t
-    p, m = s.y
-    print(s)
-    M[i] = m[-1]
-    R[i] = r[-1]
-
-print(R)
-print(M)
-plt.plot(R, M, "--.")
-plt.show()
-
+sim()
