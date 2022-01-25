@@ -114,7 +114,9 @@ This allows us to relate $\alpha$ to $p$ and $u$, via
 \begin{equation}
     \partial_r \alpha = - \frac{\partial_r p}{p + u}
 \end{equation}
+%
 When we substitute this, together with the definition of $m(r)$, into \autoref{rr equation}, we obtain
+%
 \begin{equation}
     \label{TOV}
     \diff{p}{r}
@@ -123,120 +125,110 @@ When we substitute this, together with the definition of $m(r)$, into \autoref{r
     \frac{G}{r^2} 
     \left(4 \pi r^{3} p + m \right) 
     \left(u + p \right)
-    \left(1 - \frac{2 G m}{r}\right)^{-1}
+    \left(1 - \frac{2 G m}{r}\right)^{-1},
 \end{equation}
+%
+
+
 the Tolman-Oppenheimer-Volkoff (TOV) equation.
+\todo{Ref originale publikasjon}
+To summarize, we have three unknown functions, $u(r)$, $p(r)$, and $m(r)$.
+The equation of state, \autoref{EOS}, determine $u = u(p)$, eliminating one unknown.
+The two differential equations \autoref{mass relation} and \autoref{TOV}, together with inital conditions such as $p(0) = p_0$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integratied.
 
-To summarize, we have three functions describeing the star, $u$, $p$, and $m$, as well as thre equations, \autoref{EOS}, \autoref{mass relation} and \autoref{TOV}.
-Together with inital conditions, such as $p(0) = p_0$, this is enough to determin the unknown funcions.
-For completness, the equations are
-\todo{Bytt notasjon - $u \rightarrow u$.}
-\begin{align*} 
-    u & = u(p) , \\
-    \diff{m}{r} & = 4 \pi r^2 u(r), \\
-    \diff{p}{r} & =
-    -
-    \frac{G}{r^2} 
-    \left(4 \pi r^{3} p + m \right) 
-    \left(u + p \right) 
-    \left(1 - \frac{2 G m}{r }\right)^{-1}
-\end{align*}
-
-\subsection*{Characteristic dimensions}
-
-We also want to rescale the governing equations to convenient units, which we do by the change of variables
+We define dimensionless varaibles and characteristic dimensions,
 %
 \begin{equation}
-    u \rightarrow u_0 u, \, p \rightarrow u_0 p, \, m \rightarrow m_0 m, r \rightarrow r_0 r.
+    u = u_0 \tilde u, \, p = u_0 \tilde p, \, m =  m_0 \tilde m, r = r_0 \tilde r.
 \end{equation}
 %
+Here, quantities with subscript $0$ are dimensionfull constants, the characteristic dimensions, while the tilde indicates a dimensionless variable.
 Inserting this into \autoref{diff eq mass} and \autoref{TOV} yields
 %
 \begin{align}
-    \diff{m}{r} & = 3 k_2 r^2 u \\
-    \diff{p}{r} & 
-    = - \frac{k_1}{r^2} \left(p + u\right) \left(3 k_2 r^3 p + m\right) 
-    \left(1 - \frac{2 k_1  m}{r}\right)^{-1},
+    \label{mass relation dimensionless}
+    \diff{ \tilde m}{\tilde r} & = 3 k_2 \tilde r^2 \tilde u \\
+    \label{TOV dimensionless}
+    \diff{\tilde p}{\tilde r} & 
+    = - \frac{k_1}{\tilde r^2} \left(\tilde p + \tilde u\right) \left(3 k_2 \tilde r^3 \tilde p + \tilde m\right) 
+    \left(1 - \frac{2 k_1  \tilde m}{\tilde r}\right)^{-1},
 \end{align}
 %
-when
+where we have defined the dimensionless groups
 %
 \begin{equation}
-    k_1 = \frac{G m_0}{r_0}, \quad k_2 =  \frac{4 \pi}{3} \frac{r_0^3 u_0}{m_0}.
-\end{equation}
-%
-In the case 
-This defines the natural units of this, the typcal mass and length
-\begin{equation}
-    \label{typical length}
-    r_0 = G m_0, \quad m_0 = \frac{4 \pi}{3} r_0^3 u_0.
+    \label{dimensionless groups}
+    k_1 = G \frac{m_0}{r_0}, \quad k_2 =  \frac{4 \pi}{3} \frac{r_0^3 u_0}{m_0}.
 \end{equation}
 %
 
 
 \subsection*{Incompressible fluid}
 
-The simples model for a fluid is an incompressible fluid, where the energy density is independent of the pressure.
-In this case, the energy density of the star will be constant for a radius $r < R$, before it drops to zero,
+The simplest model for a fluid is an incompressible fluid, where the energy density is independent of the pressure.
+In this case, the energy density of the star will be constant for a radius $r < r_0$, before it drops to zero,
 %
 \begin{equation}
-    u(r) = u_0 \, \theta (R - r),
+    u(r) = u_0 \, \theta (r_0 - r),
 \end{equation}
 %
 where $u_0$ is a constant and $\theta(x)$ the Heaviside step funciton.
-The mass of the star, for $r < R$, is
+We have chosen the radius to be the characteristic dimension $r_0$.
+Inserting this into the differential equation of the mass function, \autoref{mass relation dimensionless}, yields
 %
 \begin{equation}
-    m(r) = \frac{4 \pi }{3} u_0 r^3 = m_0 r^3 .
+    \tilde m(\tilde r) = k_2 \tilde r^3,
 \end{equation}
 %
-Inserting this into \autoref{TOV}, this yields
+when $r < r_0$.
+For $r \geq r_0$, or $\tilde r \geq 1$, this relationship is simply constant $\tilde m(\tilde r) = \tilde m(1) = k_2$.
+We choose $m_0$ to be the gravitational mass of the star, i.e. $m_0 = \frac{4 \pi }{3} r_0^3 u_0$, which is equivalent to setting $k_2 = 1$.
+With this the TOV equation, \autoref{TOV dimensionless}, becomes
 %
 \begin{equation} 
-    \diff{p}{r} = - \frac{r (1 + p)(1 + 3 p)}{(1 - 2 r^2)}.
+    \diff{\tilde p}{\tilde r} = - k_1 r \frac{(1 + p)(1 + 3 p)}{(1 - 2 k_1 r^2)}.
 \end{equation}
 %
-This is a separable ODE, which means that each variable may be integrated separately:
+This is a separable ODE, and each variable may be integrated separately.
+Using
 %
 \begin{align}
     \int \frac{\dd p}{(1 + p)(1 + 3p)} 
     & = \frac{1}{2} \ln \frac{3p + 1}{p + 1} + \const , \\
     \int \frac{\dd r \, r}{(1 - 2 r^2)} 
-    & = \frac{1}{4}\ln\left(1 - 2 r^2 \right) 
-    + \const
+    & = \frac{1}{4}\ln\left(1 - 2 r^2 \right)
+    + \const,
 \end{align}
 %
-Combining these, together with the boundary condition $p(r = R) = 0$, we get
+
+together with the boundary condition $p(r = r_0) = 0$, we get 
 %
 \begin{equation}
-    p(r) 
+    \label{pressure afo r incompressible}
+    \tilde p(\tilde r) 
     = 
-    - \frac{\sqrt{1 - 2 R^2} - \sqrt{1 -2 r^2}}{3 \sqrt{1 - 2 R^2} - \sqrt{1 - 2 r^2} }.
+    - \frac{\sqrt{1 - 2 k_1} - \sqrt{1 - 2 k_1 \tilde r^2}}{3 \sqrt{1 - 2 k_1 } - \sqrt{1 - 2 k_1 \tilde r^2}}.
 \end{equation}
 %
-We see that the pressure diverges for $r\rightarrow 0$ when
+We see that the star is wholly characterized by $k_1$.
+In \autoref{fig: pressure incompressible fluid}, we have plotted the pressure as a function of radius for some values of $k_1$.
+As $k_1$ approaches $0.\bar 4 = 4/9$, the pressure at the center of the star start to increas rapidly.
+From the denominator of \autoref{pressure afo r incompressible} at $r\rightarrow 0$, we can set the limit
 %
 \begin{equation}
-    R^2 \geq \frac{4}{9}.
+    k_1 = G \frac{m_0}{r_0} \leq \frac{4}{9}.
 \end{equation}
-This corresponds to a mass of
-\begin{equation}
-    M = 4 \pi r_0^3  u_0 \int_0^R \dd r \, r^2
-    = m_0 R^3 = \frac{1}{G} \frac{4}{9} r_0 R .
-\end{equation}
-We have used \autoref{typical length}.
-If the mass is increased beyon this, the pressure at the center of the star will diverge.
-General relativity does not allow for static solution with energy densities greater than this~\autocite{carrollSpacetimeGeometryIntroduction2019}.
-The pressure as a function of the radius of the incompressible fluid is illustrated in \autoref{fig: pressure incompressible fluid}.
-Here, each line corresponds to a value for $M$ within the indicated range, close to the critical value $M_0$.
-Notice how this will scale the $y$-axis as this corresponds to different values for $u_0$.
+%
+This is an absolute limit of the mass of an object given its radius or vice versa.
+General relativity does not allow for a static solution with energy densities greater than this; any such configuration would collapse in on itself~\autocite{carrollSpacetimeGeometryIntroduction2019}.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figurer/scripts/incompressible.pdf}
-    \caption{The pressure of a star made up of a incompressible fluid, as a funciton of its radius. The different lines corresponds to different total masses, and thus also different energy densities $u_0$. Notice how this will change the $y$-axis for each line.}
+    \caption{The pressure of a star made up of a incompressible fluid, as a funciton of its radius. The different lines corresponds to different total masses.}
     \label{fig: pressure incompressible fluid}
 \end{figure}
+
 
 \subsection*{Free fermi gas}
 
@@ -258,36 +250,30 @@ This gas has the free energy density, after dropping an infinite constant,
 \end{equation}
 %
 where $\omega = \sqrt{p^2 + m^2}$.
+The free energy density is related to the thermodynamic variables at interest by
 %
 \begin{equation}
-    \int_0^\infty \ln\left[1 + e^{-\beta(\omega \pm m)}\right]
-    = 
-    \frac{1}{3} p^3\ln\left[1 + e^{-\beta(\omega \pm m)}\right] \bigg |_0^\infty
-    + \frac{1}{3} \int_0^\infty \dd p \, \frac{ \beta p^4}{\omega}n_f(\omega \pm \mu),
+    p = - \Eff, \quad n = - \diffp{\Eff}{\mu}, \quad u = \Eff + \mu n.
 \end{equation}
 %
-where
-%
-\begin{equation}
-    n_f(\omega) = \frac{1}{e^{\beta \omega}+1}.
-\end{equation}
-%
-Thermodynamcs:
-%
-\begin{equation}
-    P = - \Eff, \quad n = - \diffp{\Eff}{\mu}, \quad u = \Eff + \mu n.
-\end{equation}
-%
-
-Thus,
+We may write the free energy density, and thus the pressure, in terms of the Fermi distribution $n_f$, by integrating by parts, leaving
 %
 \begin{equation}
     P = \frac{2}{3}\int \frac{\dd^3 p}{(2 \pi)^3} 
     \frac{p^4}{\omega}
-    [n_f(\omega - \mu) + n_f(\omega + \mu)]
+    [n_f(\omega - \mu) + n_f(\omega + \mu)],
 \end{equation}
 %
-
+where we have used 
+%
+\begin{equation}
+    \int_0^\infty \dd p \, p^2 \ln\left[1 + e^{-\beta(\omega \pm m)}\right]
+    = 
+    \frac{1}{3} p^3\ln\left[1 + e^{-\beta(\omega \pm m)}\right] \bigg |_0^\infty
+    + \frac{1}{3} \int_0^\infty \dd p \, \frac{ \beta p^4}{\omega}n_f(\omega \pm \mu).
+\end{equation}
+%
+The particle density $n$ is
 %
 \begin{equation}
     n = 2 \int \frac{\dd^3 p}{(2 \pi)^3}
@@ -295,10 +281,10 @@ Thus,
         n_f(\omega + \mu)
         -
         n_f(\omega - \mu)
-    \right]
+    \right].
 \end{equation}
 %
-
+This gives us a energy density
 %
 \begin{equation}
     u
@@ -325,16 +311,24 @@ Thus,
     \right]
 \end{equation}
 %
-
-Define $\mu = \sqrt{p_f^2 - m^2}$.
-with $\beta \rightarrow \infty$, we have
+We are interested in the $T = 0$ limit.
+In this case, the fermi distribution becomes a step function, $n_f(\omega - \mu) = \theta(\mu - \omega)$.
+We assume, without loss of generality, that $\mu >0$, i.e. we are dealing with an aboundance of matter compared with anti-matter.
+\todo{Forklar hvorfor antimatter-biten faller bort}
+We can then rewrite any integral over the fermi distribution as
+%
+\begin{equation}
+    \int_0^\infty \dd p \, f(p) n_f(\omega - \mu) = \int_0^{p_f} \dd p \, f(p),
+\end{equation}
+%
+where Fermi momentum $p_f$ is defined by the chemical potential as $\mu = \sqrt{p_f^2 - m^2}$.
+Using
 %
 \begin{align}
-    &\int_0^\infty \dd p \, p^2  \sqrt{p^2 + m^2} n(\omega - \mu)
-    =
-    \int_0^{p_f} \dd p \, p^2 \sqrt{p^2 + m^2}\\
-    & = \frac{1}{3} p^3 \sqrt{p^2 + m^2 }\bigg|_0^{p_f} 
-    - \frac{1}{3}\int_0^{p_f} \dd p \, \frac{p^4}{\sqrt{p^2 + m^2}}.
+    &
+    \int_0^{p_f} \dd p \, p^2 \sqrt{p^2 + m^2}
+     = \frac{1}{3} p^3 \sqrt{p^2 + m^2 }\bigg|_0^{p_f} 
+    - \frac{1}{3}\int_0^{p_f} \dd p \, \frac{p^4}{\sqrt{p^2 + m^2}}
     =
     -
     \int_0^{p_f}
@@ -343,16 +337,16 @@ with $\beta \rightarrow \infty$, we have
         \frac{1}{3}
         \frac{p^2}{\omega}
         - \mu
-    \right).
+    \right),
 \end{align}
 %
-Thus,
+we can write the pressure and energy density as
 %
 \begin{align}
     u &= \frac{1}{\pi^2} \int_0^{p_f} \dd p \,
     p^2 \sqrt{p^2 + m^2}
     = \frac{m^4}{\pi^2} \int_0^{x_f} \dd x \, x^2 \sqrt{x^2 + 1}, \\
-    P & = \frac{1}{3 \pi^2} \dd p \, \int_0^{p_f}\frac{p^4}{\sqrt{p^2 + m^2}} 
+    p & = \frac{1}{3 \pi^2} \dd p \, \int_0^{p_f}\frac{p^4}{\sqrt{p^2 + m^2}} 
     = \frac{m^4}{3 \pi^2} \int_0^{x_f} \frac{\dd x \, x^4}{\sqrt{x^2 + 1}}.
 \end{align}
 % 
@@ -381,37 +375,17 @@ where $y_f = \mu / m$.
 We have also introduced
 %
 \begin{equation}
-    u_0 = \frac{m^4}{8 \pi^2},
+    u_0 = \frac{m^4}{8 \pi^2}
 \end{equation}
 %
-which is one of the dimensionfull quantities that define the system.
-We also want ot rescale the governing equations to convinient units, which we do by the change of variables
+If we demand
 %
 \begin{equation}
-    u \rightarrow u_0 u, \, p \rightarrow u_0 p, \, m \rightarrow m_0 m, r \rightarrow r_0 r.
+    \frac{G m_0}{r_0} = 4 \pi \frac{r_0^3 u_0}{m_0} = 1,
 \end{equation}
 %
-Inserting this into \autoref{diff eq mass} and \autoref{TOV} yields
-%
-\begin{align}
-    \diff{m}{r} & = r^2 u \\
-    \diff{p}{r} & 
-    = - \frac{k_1}{r^2} \left(p + u\right) \left(3 k_2 pr^3 + m\right) 
-    \left(1 - \frac{2 k_1 m}{r}\right)^{-1},
-\end{align}
-%
-when we demand
-%
-\begin{equation}
-    \frac{G m_0}{r_0} = 4 \pi \frac{r_0^3 u_0}{m_0} = 1.
-\end{equation}
-%
-This defines the natural units of this, the typcal mass and length
-\begin{equation}
-    r_0 = G m_0, \quad m_0 = 4 \pi r_0^3 u_0
-\end{equation}
-%
-Inserting $\hbar$ and $c$, this gives
+this defines a complete set of units.
+Inserting $\hbar$ and $c$ gives
 %
 \begin{align}
     u_0 &= \frac{1}{8 \pi^2}\frac{m^4 c^5}{\hbar^3} 
