@@ -1,6 +1,6 @@
 \section{General relativity}
 
-General relativity describes spacetime as a smooth manifold $\Em$, with a (sudo-Rimanian) metric, $g_{\mu \nu}$.
+General relativity describes spacetime as a smooth manifold $\Em$, with a (pseudo-Riemannian) metric, $g_{\mu \nu}$.
 This metric is treated as a dynamical field, which is affected by the presence of matter and energy.
 The matter and energy contents of spacetime are encoded in the stress-energy tensor $T_{\mu \nu}$, while the behavior of $g^{\mu \nu}$ is encoded in a scalar Lagrangian density.  
 The most obvious---and correct---choice is to use the Ricci scalar, which results in the Einstein-Hilbert action,
@@ -56,6 +56,9 @@ This tensor obeys the identity
     \nabla^\mu G_{\mu \nu} = 0,
 \end{equation}
 as a consequence of the more general Bianchi identity.
+\todo{Si hva bianchi identity er}
+
+
 
 \subsection*{Spherically symmetric spacetime}
 
@@ -84,7 +87,7 @@ In matrix form, this corresponds to
      \right).
 \end{equation}
 %
-Using \autoref{christoffel symbols from metric}, we can now compute the Christoffel symbols in terms of the unknown funcitons.
+Using \autoref{christoffel symbols from metric}, we can now compute the Christoffel symbols in terms of the unknown functions.
 These computations in this subsection are done using computer code, which is shown in \autoref{appendix: code}.
 The results are
 %
@@ -119,7 +122,7 @@ The results are
     \right).
 \end{align}
 %
-With these result into  \autoref{riemann tensor in terms of christoffel symbols} gives the Riemann tensor curvature tensor.
+Substituting these results into \autoref{riemann tensor in terms of christoffel symbols} gives the Riemann tensor curvature tensor.
 We can then obtain the Ricci tensor by taking the trace, as shown in \autoref{Ricci tensor}.
 The results are
 %
@@ -147,13 +150,17 @@ Finally, the trace of the Ricci tensor gives the Ricci scalar,
 %
 \begin{align}
     \nonumber
-    &R = \\
-    &\, \frac{2 e^{- 2 \beta{\left(r \right)}}}{r^{2}}
-    \left[
-        % \left(
-             r^{2} \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} - r^{2} \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)} + r^{2} \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} + 2 r \frac{d}{d r} \alpha{\left(r \right)} - 2 r \frac{d}{d r} \beta{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1
-        % \right)
-    \right].
+    R =
+    \, \frac{2 e^{- 2 \beta{\left(r \right)}}}{r^{2}}
+    \bigg[
+        &
+        r^{2} \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} 
+        - r^{2} \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)}
+        \\ &
+        + r^{2} \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} 
+        + 2 r \frac{d}{d r} \alpha{\left(r \right)} 
+        - 2 r \frac{d}{d r} \beta{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1
+    \bigg].
 \end{align}
 %
  The unknown functions $\alpha$ and $\beta$ are now determined by the matter and energy content of the universe, which is encoded in $T_{\mu \nu}$, through Einstein's field equation, \autoref{Einstein field equations}.

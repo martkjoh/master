@@ -34,3 +34,4 @@ for i in range(N):
 
 plt.savefig("figurer/incompressible.pdf")
 plt.show()
+ 

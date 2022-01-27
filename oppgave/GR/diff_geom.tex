@@ -1,9 +1,9 @@
-General relativity describes how the presence of matter and energy bends the fabric of space and time.
-It was first written down by Einstein more than a century ago and is to this day the most accurate model of gravitational effects.
+
+General relativity describes how matter and energy curve the fabric of space and time.
+Einstein first wrote down the theory more than a century ago, and it is still our most accurate theory of gravitational effects.
 It makes accurate and counterintuitive predictions, which experiments have borne out.
-In this chapter, we will survey the basics of general relativity as well as some mathematical prerequisites.
-We will then use this to derive the Tolman-Oppenheimer-Volkoff (TOV) equation.
-This differential equation models massive stellar objects, such as stars. 
+This chapter surveys the basics of general relativity and some mathematical prerequisites.
+We will then use this to derive the Tolman-Oppenheimer-Volkoff (TOV) equation, a differential equation used to model stars.
 This chapter is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,leeSmoothManifolds2012}.
 
 \section{Differential geometry}
@@ -12,13 +12,13 @@ This chapter is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,leeS
     \centering
     \includegraphics[width=0.6\textwidth]{figurer/coordinate_function.pdf}
     \label{coordinate function}
-    \caption{(Kladd) The coordinate funciton $x$ maps a neighborhood $U$ in the manifold $\Em$ to a negiborhood $V$ in $\R^n$.}
+    \caption{(Kladd) The coordinate function $x$ maps a neighborhood $U$ in the manifold $\Em$ to a negiborhood $V$ in $\R^n$.}
 \end{figure}
 
 
 General relativity is formulated in the language of \emph{differential geometry}, which generalizes multivariable calculus to more general spaces than $\R^n$.
 These spaces are \emph{smooth manifolds}.
-A manifold is a set of points, $\Em$, that are locally homeomorphic to $\R^n$.
+A $n$-dimensional manifold, $\Em$, is a set of points, locally homeomorphic to $\R^n$.
 That is, for all points $p \in \Em$, there exists a neighborhood $U$ around $p$, together with a corresponding set of continuous, bijective functions,
 %
 \begin{align}
@@ -29,8 +29,8 @@ That is, for all points $p \in \Em$, there exists a neighborhood $U$ around $p$,
 We call $x(p) = (x^0(p), \dots, x^{n- 1}(p)) = x^\mu(p)$ a coordinate function of $\Em$.
 The inverse of $x$, $x^{-1}$, obeys $x^{-1}(x(p)) = p$, for all $p \in U$.
 A smooth manifold is one in which the coordinate functions are infinitely differentiable.
-Differentiability is defined by considering two different coordinate functions, $x$ and $x'$.
-The corresponding domains, $U$ and $U'$, may or may not be overlapping.
+Differentiability is defined by considering two different coordinate functions, $x$, and $x'$.
+The corresponding domains $U$ and $U'$ may or may not overlap.
 We then define the transition function, a function between subsets of $\R^n$ by mapping via $\Em$, as
 %
 \begin{align}
@@ -40,19 +40,23 @@ We then define the transition function, a function between subsets of $\R^n$ by 
 The map is illustrated in \autoref{fig: transition map}.
 \footnote{To be rigorous, one has to restrict the domains and image of the coordinate function when combining them.}
 A set of coordinate functions $\mathcal A = \{x_i\}$ whose domain cover $\Em$ is called an \emph{atlas} of $\Em$.
-If the transition function between all pairings of coordinate functions in the atlas is smooth, that is infinitely differentiable, we call the atlas smooth.
+If the transition function between all pairings of coordinate functions in the atlas is smooth---that is, infinitely differentiable---we call the atlas smooth.
 We then define a smooth manifold as the topological manifold $\Em$ together with a \emph{maximal} smooth atlas $\mathcal A$.
-A smooth atlas is maximal if no coordinate function can be added while the atlas remains smooth.\footnote{The maximal condition is to ensure that two equivalent atlases correspond to the same differentiable manifold. A single manifold can be combined with different maximal atlases, also called differentiable structures. }
+A smooth atlas is maximal if no coordinate function can be added while the atlas remains smooth.\footnote{%
+    The maximal condition is to ensure that two equivalent atlases correspond to the same differentiable manifold. A single manifold can be combined with different maximal atlases, also called differentiable structures. 
+    }
 %
 \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth]{figurer/transition_map_kladsvg.pdf}
-    \caption{(Kladd) The transition map $f_{x'\rightarrow x}$ between two coordinate functions, $x$ and $x'$, maps between the images of these function, ``through'' the manifold $\Em$. The domain and image of this funciton as to be restricted to a (possibly empty) subset of the images of $x$ and $x'$, as illustrated by the shaded regions in $V$ and $V'$. }
+    \caption{
+        (Kladd) The transition map $f_{x'\rightarrow x}$ between two coordinate functions, $x$ and $x'$, maps between the images of these function, via the manifold $\Em$. The function's domain and image are restricted to a (possibly empty) subset of the images of $x$ and $x'$. This is illustrated by the shaded regions in $V$ and $V'$. 
+        }
     \label{fig: transition map}
 \end{figure}
 
-Consider two $m$ and $n$ dimensional smooth manifolds $\Em$ and $\mathcal N$.
-Let $x$ denote the coordinates on $\Em$, while $y$ denotes the coordinates on $\mathcal N$.
+Consider two $m$- and $n$-dimensional smooth manifolds $\Em$ and $\mathcal N$.
+Let $x$ denoted the coordinates on $\Em$, while $y$ denotes the coordinates on $\mathcal N$.
 We can define smooth functions between these manifolds similarly to how we define smooth coordinates.
 Consider the function
 %
@@ -87,10 +91,10 @@ A curve $\gamma$ through $\Em$ is a function from $\R$ to $\Em$,
     \lambda & \longmapsto \gamma(\lambda).
 \end{align}
 %
-Such curves are often denote only by their coordinates and the parameter $\lambda$, $x^\mu(\lambda) = (x^\mu \circ \gamma)(\lambda)$.
-With this curve we, can take the directional derivative of a real-valued function on the manifold, $f: \Em \mapsto \R$.
+Such curves are often denoted only by their coordinates and the parameter $\lambda$, $x^\mu(\lambda) = (x^\mu \circ \gamma)(\lambda)$.
+With this curve, we can take the directional derivative of a real-valued function on the manifold, $f: \Em \mapsto \R$.
 Assume $\gamma(\lambda = 0) = p$.
-As we are always taking the derivative of functions between $\R^n$, for different $n$, we can use the chaine rule.
+As we are always taking the derivative of functions between $\R^n$, for different $n$, we can use the chain rule.
 The directional derivative of $f$ at $p$, given by this curve $\gamma$, is then
 %
 \begin{equation}
@@ -98,21 +102,25 @@ The directional derivative of $f$ at $p$, given by this curve $\gamma$, is then
 \end{equation}
 %
 The set of all such directional derivatives, $\diff{}/{\lambda}$ at $p$, form a vector space, $T_p \Em$, called the \emph{tangent space}.
+The tangent space is illustrated in \autoref{fig: tangent space}.
 The coordinates $x^\mu$ induce a basis of this vector space,
+\todo{Find the best notation here}
 %
 \begin{equation}
-    e_\mu = \diffp{}{x^\mu} = \partial_\mu,
+    e_\mu = \diffp{}{x^\mu} \Big|_p = \partial_\mu|_p, \quad \mu \in \{0, ... n-1\},
 \end{equation}
 %
 so any element $v \in T_p \Em$ can be written
 %
 \begin{equation}
-    v = v^\mu \partial_\mu = \diff{x^\mu}{\lambda}\bigg |_{\lambda = 0} \diffp{}{x^\mu}\bigg |_p.
+    v = v^\mu \partial_\mu |_p = \diff{x^\mu}{\lambda}\Big |_{\lambda = 0} \diffp{}{x^\mu}\Big |_p.
 \end{equation}
 %
-Here, $\lambda$ is the parameter of the curve corresponding to the directional derivative $v$.\footnote{There is not only one curve corresponding to any directional derivative, but rather an equivalence class. }
+Here, $\lambda$ is the parameter of the curve corresponding to the directional derivative $v$.\footnote{%
+There is not only one curve corresponding to any directional derivative but rather an equivalence class.
+}
 We assume $\lambda = 0$ corresponds to $p$.
-The evaluation at $\lambda = 0$ and $p$ will often be implicit, for ease of notation.
+The evaluation at $\lambda = 0$ and $p$ will often be implicit for ease of notation.
 This directional derivative acts on funcitons $f : \Em \mapsto \R$ as
 %
 \begin{equation}
@@ -122,10 +130,14 @@ This directional derivative acts on funcitons $f : \Em \mapsto \R$ as
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.5\textwidth]{figurer/tangent space.pdf}
+    \includegraphics[width=0.5\textwidth]{figurer/tangent space.pdf} 
+    \caption{
+        (Kladd) The tangent space $T_p \Em$, the shaded rectangle, is the sett of all directional derivatives at $p\in \Em$. A directional derivative is defined in terms of a curve that passes through $p$.
+        } 
     \label{fig: tangent space}
-    \caption{(Kladd) The tangent space $T_p \Em$, shaded, is the sett of all directional derivatives at $p$. A directional derivative is defined in terms of a curve which passes through $p$.} 
 \end{figure}
+
+
 
 A map $F$ between two manifolds $\Em$ and $\mathcal N$ also induces a map between the tangent spaces of these manifolds.
 This is the \emph{differential} of $F$ at $p$, 
@@ -135,7 +147,7 @@ This is the \emph{differential} of $F$ at $p$,
     v & \longmapsto \dd F_p (v). 
 \end{align}
 %
-As $\dd F_p(v)$ is an element of $T_p \mathcal N$, it is a directional derivative on $\mathcal N$, defined as
+As $\dd F_p(v)$ is an element of $T_p \mathcal N$,   directional derivative on $\mathcal N$, defined as
 %
 \begin{equation}
     \dd F_p(v) (g) = v(g \circ F),
@@ -143,37 +155,40 @@ As $\dd F_p(v)$ is an element of $T_p \mathcal N$, it is a directional derivativ
 %
 for functions $g : \mathcal N \mapsto \R$.
 It thus acts on functions on $\mathcal N$ by ``extending'' the derivative $v$.
-This is a linear map between vector spaces and may be written on component form by considering the differentials of the coordinate functions.
+This is a linear map between vector spaces and may be written in component form by considering the differentials of the coordinate functions.
 Denote the coordinates of $\mathcal N$ by $y^\mu$, and $y^\mu \circ F = F^\mu$.
 Then,
 %
 \begin{equation}
     \dd F_p (\partial_\mu) (g) = \partial_\mu (g \circ F) |_p 
-    = \diffp{F^\nu}{x^\mu}\bigg |_p \diffp{g}{y^\nu} \bigg  |_{F(p)},
+    = \diffp{F^\nu}{x^\mu}\Big |_p \diffp{g}{y^\nu} \Big  |_{F(p)},
 \end{equation}
 %
-or more suggestivley
+or more suggestively
 %
 \begin{equation}
     \dd F \left( \diffp{}{x^\mu} \right) = \diffp{F^\nu}{x^\mu} \diffp{}{y_\nu}.
 \end{equation}
+%
 The differential is thus a generalization of the Jacobian of a function.
 In the case of a real valued funciton, $f: \Em \mapsto \R$, and $g : \R \mapsto \R$, we get
 %
 \begin{equation}
     \dd f (v) (g) 
     = v(g \circ f) 
-    = (v^\mu \partial_\mu f) \, \diff{g}{y},
+    = (v^\mu \partial_\mu f) \, \diff{g}{y}.
 \end{equation}
 %
-gives us a natural map from vectors $v$ to real numbers,
+$\dd f$ is thus a map from $T_p \Em$ to $\_{f(p)}\R$, which is isomorphic to $\R$, i.e.,
+it is a map from vectors $v$ to real numbers,
 %
 \begin{equation}
     \dd f(v) = \dd f(v)(y) = v^\mu \partial_\mu f.
 \end{equation}
 %
-The set of all such maps form the \emph{dual space} of $T_p \Em$, denoted $T_p^* \Em$.
-This is a vector space with the same dimensionality as $T_p \Em$.
+The set of all linear maps from a vector space $V$ to the real numbers is called the \emph{dual space} of $V$, and is denoted $V^*$.
+This is a new vector space with the same dimensionality of $V$.
+We denote the dual of $T_p \Em$ as $T_p^* \Em$.
 We can regard each of the coordinate functions as real-valued functions, with a corresponding differential.
 This differential obeys
 %
@@ -190,8 +205,8 @@ Or, in other words, we recover a rigorous justification for the classical expres
 \end{equation}
 however we now interpret it as a covector-field instead of an ``infinitesimal displacement''.
 
-Linear map from vectors to real numbers is  generalized by \emph{tensors}.
-Given a vector space $V$, general $(n, m)$ tensor $T$ is a multilinear map, which associates $n$ elements from $V$ and $m$ from its dual $V^*$ to the real numbers, i.e.,
+Linear map from vectors to real numbers is generalized by \emph{tensors}.
+Given a vector space $V$, a general $(n, m)$ tensor $T$ is a multilinear map, which associates $n$ elements from $V$ and $m$ from its dual $V^*$ to the real numbers, i.e.,
 %
 \begin{align}
     T: V \times V \times \dots\times V^* \times \dots &\longmapsto \R, \\
@@ -227,8 +242,8 @@ As it is invertible, we can define $g^{\mu \nu} = (g^{-1})_{\mu \nu}$, which is 
 We use this to raise and lower indices, as is done with the Minkowski metric $\eta_{\mu \nu}$ in special relativity.
 
 Up until now, we have only considered the tangent space $T_p \Em$ at a point $p$.
-We are, however, more interested in fields of vectors, covectors, and tensors.
-A tensor field $T$ takes the a value $T(p)$ in the tensor product space corresponding to the tangent space at $T_p \Em$.
+We are, however, more interested in fields of vectors, covectors, or tensors.
+For each point $p \in \Em$, a tensor field $T$ ``picks out'' a tensor $T(p)$ from each tensor product space corresponding to the tangent space at $p$, $T_p \Em$.
 We will use a vector field to illustrate.
 This vector field can be written as
 %
@@ -252,7 +267,7 @@ This gives us the transformation rules for the components of vectors,
     v'^\mu = \diffp{x'^\mu}{x^\nu} v^\nu.
 \end{equation}
 %
-Tangent vectors are also called \emph{contravariant} vectors, as their components transform contra to to basis vectors.
+Tangent vectors are also called \emph{contravariant} vectors, as their components transform contra to basis vectors.
 For covectors, it is
 %
 \begin{equation}
@@ -270,7 +285,7 @@ Of the covariant derivative, we assume
     \item Linearity: $\nabla (T + S) = \nabla T + \nabla S$.
     \item The product rule: $\nabla (T \otimes S) = (\nabla T)\otimes S + T \otimes (\nabla S)$.
     \item Reduces to partial derivative for scalars: $\nabla_\mu f = \partial_\mu f$.
-    \item Krönecker delta gives zero: $\nabla_\mu \delta^\rho_\nu = 0$.
+    \item Kronecker delta gives zero: $\nabla_\mu \delta^\rho_\nu = 0$.
 \end{itemize}
 %
 With this, we can, in general, write the covariant derivative as~\autocite{carrollSpacetimeGeometryIntroduction2019}
@@ -289,12 +304,12 @@ The generalization for higher-order tensors is straightforward,
     =
     \partial_\mu T^{\nu\dots}{}_{\rho\dots}
     + \Gamma^\mu_{\nu \lambda} T^{\lambda\dots}{}_{\rho\dots} +\dots
-    - \Gamma^\lambda_{\mu \rho} T^{\mu\dots}{}_{\lambda\dots} -\dots
+    - \Gamma^\lambda_{\mu \rho} T^{\mu\dots}{}_{\lambda\dots} -\dots.
 \end{equation}
 %
 This is still not enough to uniquely determine the covariant derivative.
-We will furhtermore assume $\Gamma^{\lambda}_{\mu \nu} = \Gamma^{\lambda}_{\nu \mu}$ and $\nabla_\mu g_{\nu \rho} = 0$.
-With these, we can find an explicit formula of the Christoffel symbols in terms of the metric, 
+We will furthermore assume $\Gamma^{\lambda}_{\mu \nu} = \Gamma^{\lambda}_{\nu \mu}$ and $\nabla_\mu g_{\nu \rho} = 0$.
+With these, we can find an explicit formula of the Christoffel symbols in terms of the metric,
 %
 \begin{equation}
     \label{christoffel symbols from metric}
@@ -302,7 +317,7 @@ With these, we can find an explicit formula of the Christoffel symbols in terms 
 \end{equation}
 %
 
-The curvature of the manifold $\Em$, with the metic $g_{\mu \nu}$, is encoded in the Riemann tensor.
+The curvature of a manifold $\Em$, with the metic $g_{\mu \nu}$, is encoded in the Riemann tensor.
 It is defined by
 %
 \begin{equation}
@@ -317,10 +332,10 @@ which in our case gives the explicit formula
     = \partial_{\mu} \Gamma^{\rho}_{\nu \sigma}
     - \partial_{\nu} \Gamma^{\rho}_{\mu \sigma}
     + \Gamma^{\rho}_{\mu \lambda} \Gamma^{\lambda}_{\nu \sigma}  
-    - \Gamma^{\rho}_{\nu \lambda} \Gamma^{\lambda}_{\mu \sigma} 
+    - \Gamma^{\rho}_{\nu \lambda} \Gamma^{\lambda}_{\mu \sigma}.
 \end{equation}
 %
-Although the Christoffel symbols are not tensors, this quantity is a well-defined tensor due to its definition using covariant derivatives.
+Although the Christoffel symbols are not tensors, the Riemann tensor is due to its definition using covariant derivatives.
 We can therefore contract some of its indices to get other tensor quantities.
 We  define the Ricci tensor and Ricci scalar as
 %
@@ -370,6 +385,7 @@ Here, $\wedge$ is the wedge product, defined as
 \end{equation}
 %
 and $\dd x^\mu$ is the one-form corresponding to the $x^\mu$-coordinate function.
+\todo{Mer om wedge product}
 Given a different set of coordinates, $x'^\mu$, these are related by
 %
 \begin{equation}
@@ -377,6 +393,7 @@ Given a different set of coordinates, $x'^\mu$, these are related by
 \end{equation}
 %
 by the properties of the wedge product.
+\todo{Forklar}
 We define $|g| = |\det(g_{\mu \nu })|$, which, by the transformation properties of tensors, transforms as
 %
 \begin{equation}
@@ -389,7 +406,7 @@ This means that we can use this to compensate for the transformation of $\dd^n x
     \dd V = \sqrt{|g|} \, \dd^n x = \sqrt{|g'|} \, \dd^n x'.
 \end{equation}
 %
-With this, we can integrate scalars in a well-defined way, by mapping them to a corresponding $n$-form, $f \rightarrow f \dd V$.
+With this, we can integrate scalars in a well-defined way by mapping them to a corresponding $n$-form, $f \rightarrow f \dd V$.
 We define the integral of a scalar function $f$ on a manifold $\Em$ with a metric $g$ as
 %
 \begin{equation}
@@ -397,21 +414,25 @@ We define the integral of a scalar function $f$ on a manifold $\Em$ with a metri
 \end{equation}
 
 
-Stoke's thorem generalizes the fundamental theorem of calculus, as well as the divergence theorem, to manifolds.
-The most general statement of the theoem uses the exterior derivative, a maps from $n$-forms to $n+1$-forms, defined by
+Stoke's theorem generalizes the fundamental theorem of calculus and the divergence theorem to manifolds.
+The most general statement of the theorem uses the exterior derivative, a map from $n$-forms to $n+1$-forms, defined by
+%
 \begin{equation}
     (\dd T)_{\mu_1 \dots \mu_{n+1}} = (n+1) \partial_{[\mu_1} T_{\mu_2\dots\mu_{n+1}]}.
 \end{equation}
-Let $\Em$ be a differential manifold of dimension $n$, with the boundary $\partial \Em$.
-Stoeks theorem is then that, for a $n-1$-form $\omega$, 
+%
+Let $\Em$ be a differential manifold of dimension $n$, with boundary $\partial \Em$.
+Stoke's theorem is then that, for a $n-1$-form $\omega$, 
+%
 \begin{equation}
     \int_\Em \dd \omega = \int_{\partial \Em}  \omega. 
 \end{equation}
 
 Stoke's theorem then implies a generalized divergence theorem.
 The boundary of $\Em$ is then $n-1$ dimensional, and a metric $g$ on $\Em$ will induce a new metric $\gamma$ on $\partial \Em$.
+This metric corresponds to the restriction of $g$ to $\partial \Em$.
 Furthermore, there will be a vector field $n^\mu$ of normalized vectors orthogonal to all elements of $T \partial \Em$.
-This theorem states that, for a vector field $V^\mu$ on $\Em$,
+This theorem states that for a vector field $V^\mu$ on $\Em$,
 %
 \begin{equation}
     \int_\Em \dd^n x \, \sqrt{|g|} \,  \nabla_\mu V^\mu 
