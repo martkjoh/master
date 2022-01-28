@@ -130,21 +130,21 @@ When we substitute this, together with the definition of $m(r)$, into \autoref{r
 \end{equation}
 %
 the Tolman-Oppenheimer-Volkoff (TOV) equation.
-This equation was first obtained by Oppenheimer and Volkoff in 1939~\autocite{oppenheimerMassiveNeutronCores1939}, and was based on earlier work by Tolman~\autocite{tolmanRelativityThermodynamicsCosmology1934}.
-In their paper, Opppenheimer and Volkoff studied the properties of a star made up of cold, degenerate fermions.
+This equation was first obtained by Oppenheimer and Volkoff in 1939~\autocite{oppenheimerMassiveNeutronCores1939} and was based on earlier work by Tolman~\autocite{tolmanRelativityThermodynamicsCosmology1934}.
+In their paper, Oppenheimer and Volkoff studied the properties of a star made up of cold, degenerate fermions.
 
 To summarize, we have three unknown functions, $u(r)$, $p(r)$, and $m(r)$.
 The equation of state, \autoref{EOS}, determines $u = u(p)$, eliminating one unknown.
 The two differential equations \autoref{mass relation} and \autoref{TOV}, together with inital conditions such as $p(0) = p_0$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integratied.
-Given this, we can solve for the unknow functions, either analytically or numerically.
-However, we can simplify the problem somewhat, by describing all quantities in units of the characteristic quanteties of the problem.
+Given this, we can solve the unknown functions, either analytically or numerically.
+However, we can simplify the problem somewhat by describing all quantities in units of the characteristic quantities of the problem.
 We define
 %
 \begin{equation}
     u = u_0 \tilde u, \, p = u_0 \tilde p, \, m =  m_0 \tilde m, r = r_0 \tilde r.
 \end{equation}
 %
-Here, quantities with subscript $0$ are dimensionful constants, the characteristic dimensions, while the tilde indicates a dimensionless variable.
+Here, quantities with subscript $0$ are dimensionful constants, the characteristic quantities, while the tilde indicates a dimensionless variable.
 Inserting this into \autoref{diff eq mass} and \autoref{TOV} yields
 %
 \begin{align}
@@ -169,7 +169,7 @@ These are the defining constants for a star, given some equation of state.
 
 \subsection*{Incompressible fluid}
 
-The simplest model for a fluid is an incompressible fluid, where the energy density is independent of the pressure.
+The simplest model for a star is one made up of an incompressible fluid, where the energy density is independent of the pressure.
 In this case, the energy density of the star will be constant for a radius $r < r_0$, before it drops to zero,
 %
 \begin{equation}
@@ -217,191 +217,20 @@ together with the boundary condition $p(r = r_0) = 0$, we get
 We see that the star is wholly characterized by $k_1$.
 In \autoref{fig: pressure incompressible fluid}, we have plotted the pressure as a function of radius for some values of $k_1$.
 As $k_1$ approaches $0.\bar 4 = 4/9$, the pressure at the center of the star increases rapidly.
-From the denominator of \autoref{pressure afo r incompressible} at $r\rightarrow 0$, we can set the limit
+From the denominator of \autoref{pressure afo r incompressible} at $r\rightarrow 0$, we find the limit
 %
 \begin{equation}
-    k_1 = G \frac{m_0}{r_0} \leq \frac{4}{9}.
+    k_1 = G \frac{m_0}{r_0} < \frac{4}{9}
 \end{equation}
 %
+for the pressure to remain finite.
 This is an absolute limit of the mass of an object given its radius or vice versa.
 General relativity does not allow for a static solution with energy densities greater than this; any such configuration would collapse in on itself~\autocite{carrollSpacetimeGeometryIntroduction2019}.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figurer/scripts/incompressible.pdf}
-    \caption{The pressure of a star made up of a incompressible fluid, as a funciton of its radius. The different lines corresponds to different total masses.}
+    \caption{The pressure of a star made up of a incompressible fluid, as a funciton of its radius. The different lines corresponds to different mass-radius relations $k_1$.}
     \label{fig: pressure incompressible fluid}
 \end{figure}
 
-
-
-\subsection*{Free fermi gas}
-
-\todo{Flytte til appendix med termisk felt teori?}
-A non-interacting Fermi gas is governed by the Dirac Lagrangian
-\todo{Skrive om thermal field theory}
-%
-\begin{equation}
-    \Ell = \bar \psi (i \slashed \partial - m) \psi,
-\end{equation}
-%
-as described in (REF termisk felt-teori).
-This results in a free energy density
-%
-\begin{equation}
-    \Eff = \frac{2}{\beta}\int \frac{\dd^3 p}{(2 \pi)^3} \left[
-        \ln(1 + e^{-\beta(\omega - \mu)})
-        + 
-        \ln(1 + e^{-\beta(\omega + \mu)})
-    \right],
-\end{equation}
-%
-where $\omega = \sqrt{p^2 + m^2}$, and $\mu$ is the chemical potential.
-We can relate the free energy density to the Fermi distribution $n_f(\omega)$, by using partial integration.
-We have
-%
-\begin{equation*}
-    \int_0^\infty \dd p \, p^2 \ln\left[1 + e^{-\beta(\omega \pm m)}\right]
-    = 
-    % \frac{1}{3} p^3\ln\left[1 + e^{-\beta(\omega \pm m)}\right] \bigg |_0^\infty
-    % + 
-    \frac{1}{3} \int_0^\infty \dd p \, \frac{ \beta p^4}{\omega}n_f(\omega \pm \mu),
-    \quad
-    n_f(\omega) = \frac{1}{e^{\beta \omega} + 1}.
-\end{equation*}
-%
-The free energy can thus be written as 
-%
-\begin{equation}
-    \label{free energy integrated by parts}
-    \Eff = \frac{2}{3} \int_0^\infty \dd p \, \frac{p^4}{\omega} [n_f(\omega - \mu) + n_f(\omega + \mu)]
-\end{equation}
-%
-The free energy, as a function of the chemical potential, allows us to obtain the thermodynamic variables of interest, as
-%
-\begin{equation}
-    p = - \Eff, \quad n = - \diffp{\Eff}{\mu}, \quad u = \Eff + \mu n.
-\end{equation}
-%
-The particle density $n$ is
-%
-\begin{equation}
-    n = 2 \int \frac{\dd^3 p}{(2 \pi)^3}
-    \left[
-        n_f(\omega + \mu)
-        -
-        n_f(\omega - \mu)
-    \right],
-\end{equation}
-%
-which together with \autoref{free energy integrated by parts} gives the energy density of the free Fermi gas,
-%
-\begin{equation}
-    u
-    =
-    \frac{1}{\pi^2}
-    \int \dd p \,
-    p^2
-    \left[
-        \left(
-            \frac{1}{3}
-            \frac{p^2}{\omega}
-            -
-            \mu
-        \right)
-        n_f(\omega - \mu)
-        +
-        \left(
-            \frac{1}{3}
-            \frac{p^2}{\omega}
-            +
-            \mu
-        \right)
-        n_f(\omega + \mu)
-    \right]
-\end{equation}
-%
-We are interested in the $T = 0$ limit.
-In this case, the fermi distribution becomes a step function, $n_f(\omega - \mu) = \theta(\mu - \omega)$.
-Without loss of generality, we assume that $\mu >0$, i.e., we are dealing with an abundance of matter compared with anti-matter.
-The dispersion relation $\omega = \sqrt{p^2 + m^2}$ is always positivive.
-This means that the contribution to thermodynamic quantities from anti-particles, which is the integral over $n_f(\omega + \mu) = \theta(-\omega - \mu)$ vanish, as the argument $-\omega - \mu$ is strictly negative.
-At zero temperature, the only dynamics are due to the degeneracy pressure of the fermions, that is, due to the Pauli exclusion principle.
-There are no themral fluctuations which can create a particle-antiparticle pair.
-Thus, if the system has a positive chemical potential, it will contain no antiparticles.
-In the zero tempeature limit, we can then rewrite any integral over the fermi distribution as
-%
-\begin{equation}
-    \int_0^\infty \dd p \, f(p) n_f(\omega - \mu) = \int_0^{p_f} \dd p \, f(p),
-\end{equation}
-%
-where Fermi momentum $p_f$ is defined by the chemical potential as $\mu = \sqrt{p_f^2 - m^2}$.
-Using
-%
-\begin{align}
-    &
-    \int_0^{p_f} \dd p \, p^2 \sqrt{p^2 + m^2}
-     = \frac{1}{3} p^3 \sqrt{p^2 + m^2 }\bigg|_0^{p_f} 
-    - \frac{1}{3}\int_0^{p_f} \dd p \, \frac{p^4}{\sqrt{p^2 + m^2}}
-    =
-    -
-    \int_0^{p_f}
-    \dd p \, p^2
-    \left(
-        \frac{1}{3}
-        \frac{p^2}{\omega}
-        - \mu
-    \right),
-\end{align}
-%
-we can write the pressure and energy density as
-%
-\begin{align}
-    u &= \frac{1}{\pi^2} \int_0^{p_f} \dd p \,
-    p^2 \sqrt{p^2 + m^2}
-    = \frac{m^4}{\pi^2} \int_0^{x_f} \dd x \, x^2 \sqrt{x^2 + 1}, \\
-    p & = \frac{1}{3 \pi^2} \dd p \, \int_0^{p_f}\frac{p^4}{\sqrt{p^2 + m^2}} 
-    = \frac{m^4}{3 \pi^2} \int_0^{x_f} \frac{\dd x \, x^4}{\sqrt{x^2 + 1}}.
-\end{align}
-% 
-We have define $x = p / m$ and $x_f = p_f/m$.
-Using 
-%
-\begin{align}
-    \int_0^a \dd x \, x^2 \sqrt{x^2 + 1} 
-    & = \frac{1}{8} 
-    \left[\sqrt{a^4 + 1}(2 a^3 + a) - \arcsinh\left(a\right)\right], \\
-    \int_0^a \dd x \, \frac{x^4}{\sqrt{x^2 + 1} }
-    & = \frac{1}{8} 
-    \left[\sqrt{a^2 + 1}(2 a^3 - 3a) + 3\arcsinh\left(a\right)\right].
-\end{align}
-%
-We get 
-%
-\begin{align}
-    u &= u_0
-    \left[(2x_f^3 + x_f) \sqrt{1 + x_f^2} - \arcsinh\left(x_f\right)\right], \\
-    p &= \frac{u_0}{3}
-    \left[(2x_f^3 - 3x_f) \sqrt{1 + x_f^2} + 3\arcsinh\left(x_f\right)\right],
-\end{align}
-%
-We have introduced $u_0 = \frac{m^4}{8 \pi^2}$.
-If we demand
-%
-\begin{equation}
-    \frac{G m_0}{r_0} = \frac{4 \pi }{3}\frac{r_0^3 u_0}{m_0} = 1,
-\end{equation}
-%
-then we have defined a complete set of units.
-Inserting $\hbar$ and $c$ gives
-%
-\begin{align}
-    u_0 &= \frac{m^4}{8 \pi^2}\frac{c^5}{\hbar^3} 
-    = 2.032\cdot10^{35}  \, \text{J}\,\text{m}^{-3}, \\
-    m_0 &= \frac{c^4}{\sqrt{\frac{4 \pi}{3} u_0 G^3} }
-    = 9.281 \cdot 10^{30} \, \text{kg}
-    = 4.666 \, M_\odot \\ % sjekk
-    r_0 &= \frac{G m_0}{c^2} = 6.887 \, \text{km}. % sjekk
-\end{align}
-%
-From this, we can expect our star to have a mass of the order of a solar mass, $M_\odot$, and a radius of the order of kilometers, without solving the TOV equation.

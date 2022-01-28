@@ -1,0 +1,238 @@
+\section{A star of cold, non-interacting fermions}
+Ekstra kilder: \autocite{andersenIntroductionStatisticalMechanics2012,glendenningCompactStarsNuclear2012}
+\todo{Ha kilder på riktig sted}
+
+\todo{Skrive om white dwarfs/neutron stars?}
+A non-interacting Fermi gas is governed by the Dirac Lagrangian
+%
+\begin{equation}
+    \Ell = \bar \psi (i \slashed \partial - m) \psi,
+\end{equation}
+%
+as described in (APPENDIX thermal field theory).
+\todo{add appendix}
+In the grand canoncial ensamble, the density of a conserved charge is regulated by a chemical potential $\mu$.
+The conserved current corresponding to the $\text U(1)$ phase symmetry of the Dirac Lagrangian, i.e., the transformation $\psi \rightarrow e^{i \alpha} \psi \approx 1 + \alpha \delta \psi$, is
+\begin{equation}
+    j^\mu = \diffp{\Ell}{(\partial_\mu \psi)} \delta \psi = \bar \psi \gamma^\mu \psi.
+\end{equation}
+%
+The conserved charge is
+%
+\begin{equation}
+    Q = \int \dd^3 \, j^0 = \int \dd^3 x\, \bar \psi \gamma^0 \psi,
+\end{equation}
+%
+the number of particles minus antiparticles.
+The energy density $u$ is related to the grand canonical free energy $F$ by a Legendre transformation,
+%
+\begin{equation}
+    F(T, V, \mu) = U - T S - \mu Q, \quad \dd F = - S \dd T - p \dd V - Q \dd \mu.
+\end{equation}
+%
+Here, $p$ is pressure, $T = {1}/{\beta}$ is temprature, and $S$ entropy.
+These thermodynamic variables are related to the free energy by
+%
+\begin{equation}
+    S = - \diffp{F}{T} = \beta^2 \diffp{F}{\beta}, \quad
+    Q = - \diff{F}{\mu}, \quad
+    p = - \diffp{F}{V}.
+\end{equation}
+%
+When the free energy can be written as $F = V \Eff$, where the free energy density $\Eff$ is independent of the volume $V$, then $\Eff = - p$ and
+%
+\begin{equation}
+    \dd (V \Eff) = V \dd \Eff - p \dd V,
+\end{equation}
+%
+allowing us to write
+%
+\begin{equation}
+    \Eff(T, \mu) = u - Ts - \mu n, \quad
+    \dd \Eff = -s \dd T - n \dd \mu,
+\end{equation}
+% 
+where $s$ and $n$ are entropy and charge density, defined by
+%
+\begin{equation}
+    s = - \diffp{\Eff}{T} = \beta^2 \diffp{\Eff}{\beta}, \quad
+    n = - \diffp{\Eff}{\mu}, \quad
+\end{equation}
+%
+With this, we can write the energy density as
+%
+\begin{equation}
+    u = \diffp{}{\beta} \left(\beta \Eff\right) + \mu n.
+\end{equation}
+
+
+
+The free energy density of the Fermion gas is (REF: appendix felt teori)
+%
+\begin{equation}
+    \Eff = - 
+    \frac{2}{\beta}\int \frac{\dd^3 p}{(2 \pi)^3} 
+    \left[
+        \beta \omega
+        +
+        \ln(1 + e^{-\beta(\omega - \mu)})
+        + 
+        \ln(1 + e^{-\beta(\omega + \mu)})
+    \right],
+\end{equation}
+%
+where $\omega = \sqrt{p^2 + m^2}$.
+The first term in the integral is the divergent vacuum energy, which must be renormalized.
+We can drop this term; it does not have any observable effects on our results, as we are interested in relative pressure and energy density.
+With this, we find the charge density
+%
+\begin{equation}
+    n = \frac{1}{\pi^8} \int \frac{\dd^3 p}{(2 \pi)^3} [n_f(\omega - \mu) - n_f(\omega + \mu)],
+\end{equation}
+%
+where
+%
+\begin{equation}
+    n_f(\omega) = \frac{1}{e^{\beta \omega} + 1}.
+\end{equation}
+%
+is the Fermi distribution.
+The energy density is 
+%
+\begin{equation}
+    \label{energy density}
+    u = \frac{1}{\pi^2} \int_0^\infty \dd p\, p^2 \, \omega [n_f(\omega - \mu) + n_f(\omega + \mu)].
+\end{equation}
+%
+As expected, this is the energy per mode times the density of states, integrated over all modes.
+To write the pressure, $p = - \Eff$ in terms of an integral over the Fermi distribution, we integrate by parts.
+We have
+%
+\begin{equation}
+    \int_0^\infty \dd p \, p^2 \ln\left[1 + e^{-\beta(\omega \pm m)}\right]
+    = 
+    \frac{1}{3} p^3\ln\left[1 + e^{-\beta(\omega \pm m)}\right] \bigg |_0^\infty
+    + 
+    \frac{1}{3} \int_0^\infty \dd p \, \frac{ \beta p^4}{\omega}n_f(\omega \pm \mu),
+\end{equation}
+%
+where the boundary term vanish.
+This allows us to write the pressure as 
+%
+\begin{equation}
+    \label{pressure}
+    p = \frac{2}{3} \int_0^\infty \dd p \, \frac{p^4}{\omega} [n_f(\omega - \mu) + n_f(\omega + \mu)]
+\end{equation}
+
+
+
+We are interested in the $T = 0$ limit.
+In this case, the Fermi distribution becomes a step function, $n_f(\omega) = \theta(-\omega)$.
+Without loss of generality, we assume that $\mu > 0$, i.e., we are dealing with an abundance of matter compared to anti-matter.
+The dispersion relation $\omega = \sqrt{p^2 + m^2}$ is always positivive.
+This means that the contribution to thermodynamic quantities from anti-particles vanish, as the integral is multiplied with $n_f(\omega + \mu) = \theta(-\omega - \mu)$, where the argument $-\omega - \mu$ is strictly negative on the domain of integration.
+At zero temperature, the only dynamics are due to the degeneracy pressure of the fermions, that is, due to the Pauli exclusion principle.
+There are no thermal fluctuations that can create a particle-antiparticle pair.
+Thus, if the system has a positive chemical potential, it will contain no antiparticles.
+In the zero-temperature limit, we can then rewrite any integral over the Fermi distribution as
+%
+\begin{equation}
+    \int_0^\infty \dd p \, [f(p) n_f(\omega - \mu) + g(p) n_f(\omega - \mu)]= \int_0^{p_f} \dd p \, f(p),
+\end{equation}
+%
+where Fermi momentum $p_f$ is defined by the chemical potential as $\mu = \sqrt{p_f^2 + m^2}$.
+We thus assume the chemical potential is equal or greater than the mass $m$.
+This allows us to evaluate the charge density exactly,
+%
+\begin{equation}
+    n = \frac{1}{\pi^2} \int_0^{p_f} \dd p\, p^2 = \frac{p_f^3}{3 \pi^2}.
+\end{equation}
+%
+At $T = 0$, this is the particle number density, as there are no antiparticles.
+This density is given by the chemical potential and vanishes when $\mu \leq m$, i.e. when the free energy cost of creating a particle is positive.
+We can write the energy density and pressure integrals, \autoref{energy density} and \autoref{pressure}, as
+%
+\begin{align}
+    u &= \frac{1}{\pi^2} \int_0^{p_f} \dd p \,
+    p^2 \sqrt{p^2 + m^2}
+    = \frac{m^4}{\pi^2} \int_0^{x_f} \dd x \, x^2 \sqrt{x^2 + 1}, \\
+    p & = \frac{1}{3 \pi^2} \int_0^{p_f} \dd p \,  \frac{p^4}{\sqrt{p^2 + m^2}} 
+    = \frac{m^4}{3 \pi^2} \int_0^{x_f} \frac{\dd x \, x^4}{\sqrt{x^2 + 1}}.
+\end{align}
+% 
+We have defined $x = p / m$ and $x_f = p_f/m$.
+These integrals can be evaluated exactly as
+%
+\begin{align}
+    \int_0^a \dd x \, x^2 \sqrt{x^2 + 1} 
+    & = \frac{1}{8} 
+    \left[\sqrt{a^4 + 1}(2 a^3 + a) - \arcsinh\left(a\right)\right], \\
+    \int_0^a \dd x \, \frac{x^4}{\sqrt{x^2 + 1} }
+    & = \frac{1}{8} 
+    \left[\sqrt{a^2 + 1}(2 a^3 - 3a) + 3\arcsinh\left(a\right)\right].
+\end{align}
+%
+We introduce the characteristic energy and number density, 
+\begin{equation}
+    u_0 = \frac{m^4}{8 \pi^2}, \quad n_0 = \frac{u_0}{m},
+\end{equation}
+which allows us to write the thermodynamic variables as
+%
+\begin{align}
+    n &= n_0 \frac{8}{3} x_f^3 \\
+    u &= u_0
+    \left[(2x_f^3 + x_f) \sqrt{1 + x_f^2} - \arcsinh\left(x_f\right)\right], \\
+    p &= \frac{u_0}{3}
+    \left[(2x_f^3 - 3x_f) \sqrt{1 + x_f^2} + 3\arcsinh\left(x_f\right)\right],
+\end{align}
+%
+
+If we demand
+%
+\begin{equation}
+    \frac{G m_0}{r_0} = \frac{4 \pi }{3}\frac{r_0^3 u_0}{m_0} = 1,
+\end{equation}
+%
+we have defined a complete set of units.
+Inserting $\hbar$ and $c$ gives
+%
+\begin{align}
+    u_0 &= \frac{m^4}{8 \pi^2}\frac{c^5}{\hbar^3} 
+    = 2.032\cdot10^{35}  \, \text{J}\,\text{m}^{-3}, \\
+    m_0 &= \frac{c^4}{\sqrt{\frac{4 \pi}{3} u_0 G^3} }
+    = 1.608 \cdot 10^{31} \, \text{kg}
+    = 8.082 \, M_\odot \\
+    r_0 &= \frac{G m_0}{c^2} = 11.93 \, \text{km}. % sjekk
+\end{align}
+%
+From this, we can expect our star to have a mass of the order of a solar mass, $M_\odot = 1.988 41\cdot 10^{30}\, \text{kg}$~\autocite{particledatagroupReviewParticlePhysics2020}, and a radius of the order of kilometers, without solving the TOV equation.
+
+
+\subsection*{Limits}
+
+In the non-relativistic limit, as the chemical potential approaches $m$ and thus $p_f \ll m$, the lowest order contributions to the energy density and pressure are given by the Taylor series around $x_f = 0$,
+%
+\begin{align}
+    \tilde u(x_f) &= \frac{8}{3}x_f^3 + \frac{4}{5} x_f^5 + \Oh(x_f^7),  \\
+    \tilde p(x_f) &= \frac{8}{5}x_f^5 + \Oh(x_f^7).
+\end{align}
+%
+By neglecting terms of order $x_f^7$ and higher, we can write this as
+%
+\begin{equation}
+    \tilde u = \tilde n + \frac{4}{5} \left( \frac{8}{3} \tilde n \right)^{5/3},
+    \quad
+    \tilde p =  \frac{8}{5} \left( \frac{8}{3} \tilde n \right)^{5/3}.
+\end{equation}
+%
+The leading order contribution to the energy density is the rest mass of the particles.
+This term does not contribute to the pressure.
+By including only the leading order term, we can eliminate the Fermi momentum and write the equation of state as $u = k p^{3/5}$ for some constant $i$.
+Equations of state where $u \propto p^{\gamma}$ are called polytropes.
+In the ultrarelativistic limit, where $p_f \gg m$, the leading order contributions to the pressure and energy density are
+%
+\begin{equation}
+    \tilde u = 2 x_f^4, \quad \tilde p = \frac{2}{3} x_f^4, 
+\end{equation}
+%
+and we get the particularly simple equation of state $u = 3 p$, which we recognize as the formula for radiation pressure.
