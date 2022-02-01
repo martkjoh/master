@@ -125,7 +125,7 @@ When we substitute this, together with the definition of $m(r)$, into \autoref{r
     -
     \frac{G}{r^2} 
     \left(4 \pi r^{3} p + m \right) 
-    \left(u + p \right)
+    \left(p + u\right)
     \left(1 - \frac{2 G m}{r}\right)^{-1},
 \end{equation}
 %
@@ -135,35 +135,88 @@ In their paper, Oppenheimer and Volkoff studied the properties of a star made up
 
 To summarize, we have three unknown functions, $u(r)$, $p(r)$, and $m(r)$.
 The equation of state, \autoref{EOS}, determines $u = u(p)$, eliminating one unknown.
-The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_0$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when iintegrated.
-Given this, we can solve the unknown functions, either analytically or numerically.
-However, we can simplify the problem somewhat by describing all quantities in units of the characteristic quantities of the problem.
+The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_0$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integrated.
+Given this, we can solve for all the unknown functions, either analytically or numerically.
+However, we can gain some insight into the system without solving these equations, by expressing the problem in terms of dimensionless variables, and corresponding characteristic quantities.
 We define
 %
 \begin{equation}
-    u = u_0 \tilde u, \, p = u_0 \tilde p, \, m =  m_0 \tilde m, r = r_0 \tilde r.
+    u = u_0 \tilde u, \quad 
+    p = p_0 \tilde p, \quad 
+    m = m_0 \tilde m, \quad 
+    r = r_0 \tilde r.
 \end{equation}
 %
 Here, quantities with subscript $0$ are dimensionful constants, the characteristic quantities, while the tilde indicates a dimensionless variable.
-Inserting this into \autoref{diff eq mass} and \autoref{TOV} yields
+By substituting this into \autoref{diff eq mass} and \autoref{TOV}, we can collect the dimensionful constants into a smaller number of dimensionless constants, $k_i$.
+These constants will decide the nature of the solution.
+Any change in the dimensionful constants that leave the $k_i$'s invariant is a scaling of the problem --- it corresponds to the same solution with different units.
+The new differential equations are
 %
 \begin{align}
     \label{mass relation dimensionless}
-    \diff{ \tilde m}{\tilde r} & = 3 k_2 \tilde r^2 \tilde u \\
+    \diff{ \tilde m}{\tilde r} & = 3 k_2 \tilde \, r^2 \tilde u \\
     \label{TOV dimensionless}
     \diff{\tilde p}{\tilde r} & 
-    = - \frac{k_1}{\tilde r^2} \left(\tilde p + \tilde u\right) \left(3 k_2 \tilde r^3 \tilde p + \tilde m\right) 
+    = - \frac{k_1}{k_3} \frac{1}{\tilde r^2} \left(k_3\tilde p + \tilde u\right) \left(3 k_2 k_3  \tilde r^3 \tilde p + \tilde m\right) 
     \left(1 - \frac{2 k_1  \tilde m}{\tilde r}\right)^{-1},
 \end{align}
 %
-where we have defined the dimensionless groups
+where the dimensionless constants are defined as
 %
 \begin{equation}
     \label{dimensionless groups}
-    k_1 = G \frac{m_0}{r_0}, \quad k_2 =  \frac{4 \pi}{3} \frac{r_0^3 u_0}{m_0}.
+    k_1 = G \frac{m_0}{r_0}, \quad 
+    k_2 =  \frac{4 \pi}{3} \frac{r_0^3 u_0}{m_0}, \quad
+    k_3 = \frac{p_0}{u_0}.
 \end{equation}
 %
-These are the defining constants for a star, given some equation of state.  
+Given non-complete set of characteristic quantities, these constants gives us an expectation for the order of magnitude of the remaining dimensionful constants.
+By setting $k_i = 1$, we define the remaining, free constants to take a value, which we expect to be the natural units for this system.
+
+
+\subsection*{Newtonian limit}
+
+In the Newtonian limit, the rest energy, i.e., mass, is the dominant contribution to the gravitational field.
+This means that the characteristic pressure, $p_0$, is far smaller than the characteristic energy density $u_0$, and we can use the approximation $k_3 \ll 1$.
+Furthermore, the radius of the star should be much larger than the Schwarzschild radius, $R_s = 2 G M$, and thus $ k_1 \ll 1$.
+In this limit, the lowest-order contribution to the TOV equation is
+%
+\begin{equation}
+    \label{Newtonian limit TOV}
+    \diff{\tilde p}{\tilde r} = - k \frac{\tilde u \tilde m}{\tilde r^2}, \quad
+    k = G \frac{u_0 m_0}{p_0 r_0}.
+\end{equation}
+%
+Using the mass equation \autoref{mass relation dimensionless}, we can write this as
+%
+\begin{equation}
+    \tilde r^2 \diff{\tilde p}{\tilde m}
+    = - k' \frac{\tilde m}{\tilde r^2}, 
+    \quad k' = \frac{G}{4 \pi } \frac{m_0^2}{r_0^4 p_0}.
+\end{equation}
+%
+This equation has a simple interpretation; the force due to the pressure gradient over a thin, spherical shell, $F_p = 4 \pi r^2 \dd p$, must be counteracted by the gravitational force on the same shell, $F_g = - G m \dd m / r^2$.
+This is illustrated in \autoref{fig: hudrostatic equillibrium}.
+Both the Newtonian limit and the TOV equation is an equation of \emph{hydrostatic equilibrium}, where the forces on a small volume of the fluid cancel out.
+The TOV equation is an equation of hydrostatic equilibrium because we assumed tacitly that the stress-energy tensor $T_{\mu \nu}$ has a common rest frame everywhere.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.32\textwidth]{figurer/hydrostatic_equillibrium.pdf}
+    \caption{Kladd: The forces acting on a thin shell $\dd m$.}
+    \label{fig: hudrostatic equillibrium}
+\end{figure}
+
+We can eliminate the equation for mass by differentiating \autoref{Newtonian limit TOV} with respect to $\tilde r$, which leaves
+\todo{Make sure constant is right}
+%
+\begin{equation}
+    \diff{}{\tilde r} 
+    \left( \frac{\tilde r^2}{\tilde u} \diff{\tilde p}{\tilde r}\right) 
+    = -  k \tilde r^2  \tilde u, \quad
+    k = 4 \pi G \frac{u_0^2 r^2_0}{p_0}.
+\end{equation}
 
 
 
@@ -177,7 +230,6 @@ In this case, the energy density of the star will be constant for a radius $r < 
 \end{equation}
 %
 where $u_0$ is a constant and $\theta(x)$ the Heaviside step function.
-We have chosen the radius to be the characteristic dimension $r_0$.
 Inserting this into the differential equation of the mass function, \autoref{mass relation dimensionless}, together with the boundary condition $m(0) = 0$, yields
 %
 \begin{equation}
@@ -190,31 +242,34 @@ We choose $m_0$ to be the gravitational mass of the star, i.e. $m_0 = \frac{4 \p
 With this the TOV equation, \autoref{TOV dimensionless}, becomes
 %
 \begin{equation} 
-    \diff{\tilde p}{\tilde r} = - k_1 r \frac{(1 + p)(1 + 3 p)}{(1 - 2 k_1 r^2)}.
+    k_3 \diff{\tilde p}{\tilde r} 
+    = - k_1 \tilde r 
+    \frac{(1 + k_3 \tilde p)(1 + 3 k_3 \tilde p)}{(1 - 2 k_1 \tilde r^2)}.
 \end{equation}
 %
+We see that in this case, $k_3$ corresponds to a scaling of the pressure, and we can therefore set $k_3 = 1$.
 This is a separable ODE, and each variable may be integrated separately.
 Using
 %
 \begin{align}
-    \int \frac{\dd p}{(1 + p)(1 + 3p)} 
-    & = \frac{1}{2} \ln \frac{3p + 1}{p + 1} + \const , \\
-    \int \frac{\dd r \, r}{(1 - 2 r^2)} 
-    & = \frac{1}{4}\ln\left(1 - 2 r^2 \right)
+    \int \frac{\dd x}{(1 + x)(1 + 3x)}
+    = \frac{1}{2} \ln \frac{3x + 1}{x + 1} + \const , \quad
+    \int \dd x \frac{x}{1 - 2 x^2} 
+    = \frac{1}{4}\ln\left(1 - 2 x^2 \right)
     + \const,
 \end{align}
 %
-
 together with the boundary condition $p(r = r_0) = 0$, we get 
 %
 \begin{equation}
     \label{pressure afo r incompressible}
     \tilde p(\tilde r) 
     = 
-    - \frac{\sqrt{1 - 2 k_1} - \sqrt{1 - 2 k_1 \tilde r^2}}{3 \sqrt{1 - 2 k_1 } - \sqrt{1 - 2 k_1 \tilde r^2}}.
+    - \frac{\sqrt{1 - 2 k_1} - \sqrt{1 - 2 k_1 \tilde r^2}}
+    {3 \sqrt{1 - 2 k_1 } - \sqrt{1 - 2 k_1 \tilde r^2}}.
 \end{equation}
 %
-We see that the star is wholly characterized by $k_1$.
+We see that the star is completely characterized by $k_1$, while $k_3$ corresponds to scaling the pressure.
 In \autoref{fig: pressure incompressible fluid}, we have plotted the pressure as a function of radius for some values of $k_1$.
 As $k_1$ approaches $0.\bar 4 = 4/9$, the pressure at the center of the star increases rapidly.
 From the denominator of \autoref{pressure afo r incompressible} at $r\rightarrow 0$, we find the limit
@@ -225,12 +280,34 @@ From the denominator of \autoref{pressure afo r incompressible} at $r\rightarrow
 %
 for the pressure to remain finite.
 This is an absolute limit of the mass of an object given its radius or vice versa.
-General relativity does not allow for a static solution with energy densities greater than this; any such configuration would collapse in on itself~\autocite{carrollSpacetimeGeometryIntroduction2019}.
+General relativity does not allow for a static solution with energy densities greater than this; any such configuration would collapse~\autocite{carrollSpacetimeGeometryIntroduction2019}.
 
-\begin{figure}
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{../scripts/figurer/incompressible.pdf}
-    \caption{The pressure of a star made up of a incompressible fluid, as a function of its radius. The different lines corresponds to different mass-radius relations $k_1$.}
+    \caption{The pressure in units of $p_0$, as a function of the radius, in units of $r_0$. The graphs with lighter color and higher pressure at $r = 0$ corresponds to higher values of $k_1$. The values of $k_1$ are linearly spaced.}
     \label{fig: pressure incompressible fluid}
+\end{figure}
+
+ 
+If we expand the solution \autoref{pressure afo r incompressible} in powers of $k_1$, then the leading order contribution is
+%
+\begin{equation}
+    \tilde p(r) = \frac{1}{2} k_1 (1 - \tilde r^2).
+\end{equation}
+%
+As a cross-check, we see that this function obeys the Newtonian limit we derived earlier, \autoref{Newtonian limit TOV}, as $\tilde u = 1$, and the boundary condition $p(\tilde r = 1) = 0$.
+This is the general solution for an incompressible fluid in Newtonian gravity.
+This solution does not have any upper limit for $k_1$, showing that this phenomenon is a purely relativistic phenomenon.
+The Newtonian approximation is compared to the full, relativistic solution.
+We see that the Newtonian approximation gives highly accurate  for $k_1$ less than around $0.01$.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../scripts/figurer/incompressible_newt.pdf}
+    \caption{The pressure in units of $p_0$, as a function of the radius, in units of $r_0$. The wide, colored lines correspond to the full relativistic solution, while the dashed lines is the Newtonian approximation, for the same value of $k_1$. The values of $k_1$ are linearly spaced.  }
+    \label{fig: pressure incompressible fluid newtonian}
 \end{figure}
 
