@@ -3,11 +3,11 @@ from numpy import sqrt
 import matplotlib.pyplot as plt
 from matplotlib import cm
 
-plt.rcParams['mathtext.fontset'] = 'cm'
-font = {'family' : 'serif', 
-        'size': 20}
-plt.rc('font', **font)
-plt.rc('lines', lw=2)
+plt.rc("font", family="serif", size=20)
+plt.rc("mathtext", fontset="cm")
+plt.rc("lines", lw=2)
+plt.rc("axes", grid=True)
+plt.rc("grid", linestyle="--", alpha=1)
 
 
 def p(r, k):
@@ -35,11 +35,11 @@ def rel():
 
     for i in range(N):
         r = np.linspace(0, 1, 100)
-        ax.plot(r, p(r, k[i]), color = cm.viridis(i / N), lw=3)
+        ax.plot(r, p(r, k[i]), color = cm.viridis(i / N), lw=2)
 
-    plt.savefig("figurer/incompressible.pdf")
-    # plt.show()
- 
+    plt.savefig("figurer/incompressible.pdf", bbox_inches="tight")
+
+
 def newt():
 
     k0 = 0.005
@@ -62,8 +62,7 @@ def newt():
         ax.plot(r, 1/2 * k[i] * (1 - r**2), "--k", lw=2)
     ax.plot(0, 0, "--k", lw=2, label=r"$\frac{1}{2}k_1 (1 - r^2)$")
     plt.legend()
-    plt.savefig("figurer/incompressible_newt.pdf")
-    # plt.show()
+    plt.savefig("figurer/incompressible_newt.pdf", bbox_inches="tight")
     
 
 rel()

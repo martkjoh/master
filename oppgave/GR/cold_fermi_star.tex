@@ -20,7 +20,7 @@ The conserved current corresponding to the $\text U(1)$ phase symmetry of the Di
 The conserved charge is
 %
 \begin{equation}
-    Q = \int \dd^3 \, j^0 = \int \dd^3 x\, \bar \psi \gamma^0 \psi,
+    Q = \int \dd^3 x \, j^0 = \int \dd^3 x\, \bar \psi \gamma^0 \psi,
 \end{equation}
 %
 the number of particles minus antiparticles.
@@ -196,14 +196,17 @@ This is natural in the case of a relativistic fluid.
 
 \subsection*{Units}
 
+The equation of state has given us the a characteristic energy density and pressure, $u_0$ and $p_0$. 
 If we demand
 %
 \begin{equation}
     G \frac{m_0}{r_0} = \frac{4 \pi }{3}\frac{r_0^3 u_0}{m_0} = 1,
 \end{equation}
 %
-we have defined a complete set of units.
-Reinstating $\hbar$ and $c$ gives
+then we have two equations and two unknowns, $m_0$ and $r_0$.
+This thus defines a complete set of units.
+We are using the cold Fermi-gas as a model for a neutron star, and therefore $m = m_N = 1.67 \cdot 10^{-27} \, \text{kg}$.
+After reinstating $\hbar$ and $c$ in metric units, we get
 \todo{include $p_0$}
 %
 \begin{align}
@@ -262,44 +265,59 @@ The Taylor-expansion of the mass function around $\tilde r = 0$ is
 %
 \begin{equation}
     \tilde m(r) = \tilde m(0) + \tilde m'(0) \, \tilde r + \frac{1}{2!} \tilde m''(0) \tilde r^2
-    + \frac{1}{3!} \tilde m'''(0) \tilde r^3.
+    + \frac{1}{3!} \tilde m'''(0) \tilde r^3 + \Oh\left(\tilde r^4\right).
 \end{equation}
 %
-One of the boundary conditions are $\tilde m(0) = 0$.
+One of the boundary conditions is $\tilde m(0) = 0$.
 We then use the differntial equation for $\tilde m$, \autoref{diff eq mass}, to find
 %
 \begin{equation}
     \tilde m'(0) = 0, \quad
     \tilde m''(0) = 0, \quad
-    \tilde m'''(0) = 6 k_2 \tilde u(0).
+    \tilde m'''(0) = 6 k_2 \tilde u_0,
 \end{equation}
 %
-For $\tilde r \ll 1$, we therefore approximate the TOV-equation as
-\todo{Move to section on TOV/on code}
+where $\tilde u_0 = \tilde u(r = 0)$.
+We get an approximation of th TOV equation for $\tilde r \ll 1$ by substituting the $\tilde m$ for its Taylor expansion and including only the leading-order term, which gives
 %
 \begin{equation}
-    \diff{\tilde p}{\tilde r} 
-    = - k_1 k_2 \tilde r \, \left[\tilde p + \tilde u(\tilde p)\right]
-    \left[ 3 \tilde p(\tilde r) + \tilde u(\tilde r = 0)  \right]
-    \left[1 - 2 k_1 \tilde u(\tilde r = 0) r^2\right]^{-1}.
+    \diff{\tilde p}{\tilde r}
+    = - k_1 k_2 \tilde r \, \left(\tilde p + \tilde u\right)
+    \left( 3 \tilde p + \tilde u_0  \right)
+    \left(1 - 2 k_1 \tilde u_0 \tilde r^2\right)^{-1}.
 \end{equation}
 %
 
+With this, we can find the pressure as a function of radius $r$ for any given central pressure, $p(0) = p_0$.
+The stellar radius, $R$, is defined as the point where the pressure drops to zero, i.e., $p(R) = 0$.
+The top graph in \autoref{fig: pressure and mass as a fucntion of radius} shows the pressure, normalized to the central pressure $p_0$, as a function of radius, normalized to the corresponding stellar radius $R$.
+The boundary conditions are logarithmically spaced.
+The lower graph in \autoref{fig: pressure and mass as a fucntion of radius} shows the mass, normalized to the toal mass $M = m(R)$, as a funciton of the radius, again normalized to the stellar radius.
+As in the case of the incompressible fluid, the pressure follows a half-bell shaped curve, with a peak that becomes sharper as the central pressure increases.
+The black, dashed line corresponds to the solution with the maximum mass.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{../scripts/figurer/pressure.pdf}
+    \includegraphics[width=\textwidth]{../scripts/figurer/pressure_mass.pdf}
+    \caption{The pressure noramlized to central value (top) and the mass normalized to total mass (bottom), as a function of radius, nomralized to total radius. This is plotted for several different values of central pressure, which is indicated by the color shceme.}
+    \label{fig: pressure and mass as a fucntion of radius}
 \end{figure}
 
-\begin{figure}
-    \centering
-    \vspace{-2cm}
-    \includegraphics[width=\textwidth]{../scripts/figurer/mass.pdf}
-\end{figure}
+
+In \autoref{fig: mass radius relationship fermi gas}, we see the relationship between the mass and radius of a star made of cold Fermi gas.
+This line is parameterized by the base-10 logarithm of the central pressure, $p(0)$, normalized by $p_0 = u_0$.
+The cross marks the maximum mass, $M_\mathrm{max} = 0.716 \, M_\odot$, which corresponds to a radius of $R = 9.20 \, \mathrm{km}$.
+This is very close to the results obtained by Oppenheimer and Volkoff in their 1939 paper~\cite{oppenheimerMassiveNeutronCores1939}, which was $M_\mathrm{max} = 0.71$.
+The blue circles corresponds are all results obtained in their paper.
+\todo{Hvorfor er to punkter så langt unna?}
+The black, dashed line is the absolut mass-radius constraint, \autoref{mass radius constraint}, and any stable configuration must be on the right side of this line.
+
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius.pdf}
+    \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_neutron.pdf}
+    \caption{The mass-radius relationship of a star made of a cold gas of neutrons. The line is parametrized by the boundary condition $p(0)$. The corss indicate the maximum mass solution. The blue circles are results form the 1939 paper of Oppenheimer and Volkof~\autocite{oppenheimerMassiveNeutronCores1939}.}
+    \label{fig: mass radius relationship fermi gas}
 \end{figure}
 
 

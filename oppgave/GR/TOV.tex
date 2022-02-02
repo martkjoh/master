@@ -198,8 +198,8 @@ Using the mass equation \autoref{mass relation dimensionless}, we can write this
 %
 This equation has a simple interpretation; the force due to the pressure gradient over a thin, spherical shell, $F_p = 4 \pi r^2 \dd p$, must be counteracted by the gravitational force on the same shell, $F_g = - G m \dd m / r^2$.
 This is illustrated in \autoref{fig: hudrostatic equillibrium}.
-Both the Newtonian limit and the TOV equation is an equation of \emph{hydrostatic equilibrium}, where the forces on a small volume of the fluid cancel out.
-The TOV equation is an equation of hydrostatic equilibrium because we assumed tacitly that the stress-energy tensor $T_{\mu \nu}$ has a common rest frame everywhere.
+Both the Newtonian limit and the TOV equation are equations of \emph{hydrostatic equilibrium}, where the forces on a small volume of the fluid cancel out.
+In the case of the TOV equation, the assumption of hydrostatic equilibrium was made tacitly when we assumed four-velocity $v_\mu$ of the fluid had a global inertial frame of reference.
 
 \begin{figure}[h]
     \centering
@@ -223,22 +223,23 @@ We can eliminate the equation for mass by differentiating \autoref{Newtonian lim
 \subsection*{Incompressible fluid}
 
 The simplest model for a star is one made up of an incompressible fluid, where the energy density is independent of the pressure.
-In this case, the energy density of the star will be constant for a radius $r < r_0$, before it drops to zero,
+In this case, the energy density of the star will be constant for a radius $r < R$, before it drops to zero,
 %
 \begin{equation}
-    u(r) = u_0 \, \theta (r_0 - r),
+    u(r) = u_0 \, \theta (R- r),
 \end{equation}
 %
 where $u_0$ is a constant and $\theta(x)$ the Heaviside step function.
+We choose $r_0 = R$.
 Inserting this into the differential equation of the mass function, \autoref{mass relation dimensionless}, together with the boundary condition $m(0) = 0$, yields
 %
 \begin{equation}
     \tilde m(\tilde r) = k_2 \tilde r^3,
 \end{equation}
 %
-when $r < r_0$.
-For $r \geq r_0$, or $\tilde r \geq 1$, this relationship is simply constant $\tilde m(\tilde r) = \tilde m(1) = k_2$.
-We choose $m_0$ to be the gravitational mass of the star, i.e. $m_0 = \frac{4 \pi }{3} r_0^3 u_0$, which is equivalent to setting $k_2 = 1$.
+when $r < R$.
+For $r \geq R$, or $\tilde r \geq 1$, this relationship is simply constant $\tilde m(\tilde r) = \tilde m(1) = k_2$.
+We choose $m_0$ to be the gravitational mass of the star, $M = \frac{4 \pi }{3} R^3 u_0$, which is equivalent to setting $k_2 = 1$.
 With this the TOV equation, \autoref{TOV dimensionless}, becomes
 %
 \begin{equation} 
@@ -259,7 +260,7 @@ Using
     + \const,
 \end{align}
 %
-together with the boundary condition $p(r = r_0) = 0$, we get 
+together with the boundary condition $p(r = R) = 0$, we get 
 %
 \begin{equation}
     \label{pressure afo r incompressible}
@@ -275,7 +276,8 @@ As $k_1$ approaches $0.\bar 4 = 4/9$, the pressure at the center of the star inc
 From the denominator of \autoref{pressure afo r incompressible} at $r\rightarrow 0$, we find the limit
 %
 \begin{equation}
-    k_1 = G \frac{m_0}{r_0} < \frac{4}{9}
+    \label{mass radius constraint}
+    k_1 = G \frac{M}{R} < \frac{4}{9}
 \end{equation}
 %
 for the pressure to remain finite.
@@ -301,7 +303,7 @@ As a cross-check, we see that this function obeys the Newtonian limit we derived
 This is the general solution for an incompressible fluid in Newtonian gravity.
 This solution does not have any upper limit for $k_1$, showing that this phenomenon is a purely relativistic phenomenon.
 The Newtonian approximation is compared to the full, relativistic solution.
-We see that the Newtonian approximation gives highly accurate  for $k_1$ less than around $0.01$.
+We see that the Newtonian approximation is highly accurate for $k_1$ less than around $0.01$.
 
 
 \begin{figure}[h]
