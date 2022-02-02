@@ -11,33 +11,42 @@
 
 
 \bibliography{master}
-% Supress note field in bibliography
-\AtEveryBibitem{\clearfield{note}}
-
+\AtEveryBibitem{\clearfield{note}} % Supress note field in bibliography 
 
 \begin{document}
     \maketitle
     \listoftodos
+    \clearpage
     \tableofcontents
 
-    % \chapter{Introduction}
-    % \todo{Wirte introduction}    
-    % Pion stars have recently been proposed~\autocite{andersenBoseEinsteinCondensationPion2018,brandtNewClassCompact2018}.
+    \setlength{\parindent}{0em}
+    \setlength{\parskip}{0.8em}
 
-    \chapter{General relativity and the TOV-equation}
+
+    \chapter{Mathematics}
+    \label{chapter: math }
+    \input{math/diff_geom.tex}
+    \input{math/lie_groups.tex}
+
+
+    \chapter{Quantum field theory and the equation of state}
+    \input{QFT/path_integral.tex}
+
+    \chapter{General relativity and the TOV equation}
     \label{chapter: GR}
-
-    \input{GR/diff_geom.tex}
     \input{GR/GR.tex}
     \input{GR/TOV.tex}
     \input{GR/cold_fermi_star.tex}
 
     \appendix
+
+    \chapter[Appendix A]{}
+    \input{appendix/functional_derivatives.tex}
+
     
     \chapter{Code}
-
-    % SLOW!
     \input{appendix/code.tex}
+
 
     \printbibliography
 

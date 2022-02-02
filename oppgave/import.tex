@@ -17,7 +17,6 @@
 % nice 3-vectors
 \usepackage{esvect}
 
-
 % appendix
 \usepackage[title]{appendix}
 \usepackage{pdfpages}
@@ -26,13 +25,6 @@
 
 % in-document references
 \usepackage{hyperref}
-\usepackage[capitalize]{cleveref}
-
-% create plots
-\usepackage{tikz}
-\usepackage[compat=1.1.0]{tikz-feynman}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.16}
 
 % Nice table of contents
 \usepackage{tocloft}
@@ -45,18 +37,28 @@
 \usepackage{subcaption}
 \captionsetup{width=.9\textwidth}
 
-\usepackage{titlepic}
-\usepackage[textsize=footnotesize]{todonotes}
+% \usepackage{titlepic}
+\usepackage[prependcaption,textsize=tiny]{todonotes}
+\usepackage{xpatch}
 
-\usepackage[style=numeric-comp,sorting=none,sortcites=true,doi=true,url=false,giveninits=true,hyperref]{biblatex}
+\usepackage{setspace}
+
+
+\usepackage[%
+    style=numeric-comp,
+    sorting=none,
+    sortcites=true,
+    doi=true,
+    url=false,
+    giveninits=true,
+    hyperref
+    ]{biblatex}
 
 \setlength{\marginparwidth}{2.2cm}
+% \setlength\cftparskip{1pt}
+% \setlength\cftbeforechapskip{0pt}
 
-\setlength\cftparskip{1pt}
-\setlength\cftbeforechapskip{0pt}
+% space instead of indentation for paragraphs
 
-\setlength{\parindent}{0em}
-\setlength{\parskip}{0.8em}
-
-\def\equationautorefname~#1\null{Eq.~(#1)\null}
+% \def\equationautorefname~#1\null{Eq.~(#1)\null}
 

@@ -20,7 +20,7 @@
     \floatplacement{figure}{H} % forces figures to be placed at the correct location
     \usepackage{xcolor} % Allow colors to be defined
     \usepackage{enumerate} % Needed for markdown enumerations to work
-    \usepackage[left=0cm, right=0cm, top=0cm, bottom=0cm]{geometry} % Used to adjust the document margins
+    \usepackage{geometry} % Used to adjust the document margins
     \usepackage{amsmath} % Equations
     \usepackage{amssymb} % Equations
     \usepackage{textcomp} % defines textquotesingle
@@ -382,186 +382,187 @@
     
 
 \begin{document}
+    \pagestyle{empty}
     
-    % \maketitle
-    \pagenumbering{gobble}
+%     \maketitle
+    
     
 
     
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{17}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k+kn}{import} \PY{n}{MatrixSymbol}\PY{p}{,} \PY{n}{Matrix}\PY{p}{,} \PY{n}{Array}\PY{p}{,} \PY{n}{pprint}
-\PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k+kn}{import} \PY{n}{symbols}\PY{p}{,} \PY{n}{diff}\PY{p}{,} \PY{n}{exp}\PY{p}{,} \PY{n}{log}\PY{p}{,} \PY{n}{cos}\PY{p}{,} \PY{n}{sin}\PY{p}{,} \PY{n}{simplify}\PY{p}{,} \PY{n}{Rational}
-\PY{k+kn}{from} \PY{n+nn}{sympy}\PY{n+nn}{.}\PY{n+nn}{core}\PY{n+nn}{.}\PY{n+nn}{symbol} \PY{k+kn}{import} \PY{n}{Symbol}
-\PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k+kn}{import} \PY{n}{pi}
+%     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+% \prompt{In}{incolor}{2}{\boxspacing}
+% \begin{Verbatim}[commandchars=\\\{\}]
+% \PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k+kn}{import} \PY{n}{MatrixSymbol}\PY{p}{,} \PY{n}{Matrix}\PY{p}{,} \PY{n}{Array}\PY{p}{,} \PY{n}{pprint}
+% \PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k+kn}{import} \PY{n}{symbols}\PY{p}{,} \PY{n}{diff}\PY{p}{,} \PY{n}{exp}\PY{p}{,} \PY{n}{log}\PY{p}{,} \PY{n}{cos}\PY{p}{,} \PY{n}{sin}\PY{p}{,} \PY{n}{simplify}\PY{p}{,} \PY{n}{Rational}
+% \PY{k+kn}{from} \PY{n+nn}{sympy}\PY{n+nn}{.}\PY{n+nn}{core}\PY{n+nn}{.}\PY{n+nn}{symbol} \PY{k+kn}{import} \PY{n}{Symbol}
+% \PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k+kn}{import} \PY{n}{pi}
 
-\PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
-\PY{k+kn}{import} \PY{n+nn}{sympy} \PY{k}{as} \PY{n+nn}{sp}
-\PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k+kn}{import} \PY{n}{display}\PY{p}{,} \PY{n}{Latex}
-\end{Verbatim}
-\end{tcolorbox}
+% \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+% \PY{k+kn}{import} \PY{n+nn}{sympy} \PY{k}{as} \PY{n+nn}{sp}
+% \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k+kn}{import} \PY{n}{display}\PY{p}{,} \PY{n}{Latex}
+% \end{Verbatim}
+% \end{tcolorbox}
 
-    Tensor operations
+%     Tensor operations
 
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{18}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{INDX}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{place}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}\PY{p}{:}
-    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
-\PY{l+s+sd}{    Acceses an index at \PYZsq{}place\PYZsq{} for \PYZsq{}num\PYZus{}indx\PYZsq{} order tensor}
-\PY{l+s+sd}{    T\PYZus{}(a0 ... âp ... an\PYZhy{}1) = T[INDX(i, place=p, num\PYZus{}indx=n)] = T[:,...\PYZlt{}\PYZhy{}p\PYZhy{}\PYZgt{} , i, :,...\PYZlt{}\PYZhy{}(n\PYZhy{}p\PYZhy{}1)\PYZhy{}\PYZgt{}]}
-\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
-    \PY{n}{indx} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-    \PY{k}{assert} \PY{n}{place}\PY{o}{\PYZlt{}}\PY{n}{num\PYZus{}indx}
-    \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{num\PYZus{}indx}\PY{p}{)}\PY{p}{:}
-        \PY{k}{if} \PY{n}{place}\PY{o}{==}\PY{n}{j}\PY{p}{:} \PY{n}{indx}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{i}\PY{p}{)}
-        \PY{k}{else}\PY{p}{:} \PY{n}{indx}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{slice}\PY{p}{(}\PY{k+kc}{None}\PY{p}{)}\PY{p}{)}
-    \PY{k}{return} \PY{n+nb}{tuple}\PY{p}{(}\PY{n}{indx}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
+%     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+% \prompt{In}{incolor}{3}{\boxspacing}
+% \begin{Verbatim}[commandchars=\\\{\}]
+% \PY{k}{def} \PY{n+nf}{INDX}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{place}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}\PY{p}{:}
+%     \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+% \PY{l+s+sd}{    Acceses an index at \PYZsq{}place\PYZsq{} for \PYZsq{}num\PYZus{}indx\PYZsq{} order tensor}
+% \PY{l+s+sd}{    T\PYZus{}(a0 ... âp ... an\PYZhy{}1) = T[INDX(i, place=p, num\PYZus{}indx=n)] = T[:,...\PYZlt{}\PYZhy{}p\PYZhy{}\PYZgt{} , i, :,...\PYZlt{}\PYZhy{}(n\PYZhy{}p\PYZhy{}1)\PYZhy{}\PYZgt{}]}
+% \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+%     \PY{n}{indx} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+%     \PY{k}{assert} \PY{n}{place}\PY{o}{\PYZlt{}}\PY{n}{num\PYZus{}indx}
+%     \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{num\PYZus{}indx}\PY{p}{)}\PY{p}{:}
+%         \PY{k}{if} \PY{n}{place}\PY{o}{==}\PY{n}{j}\PY{p}{:} \PY{n}{indx}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{i}\PY{p}{)}
+%         \PY{k}{else}\PY{p}{:} \PY{n}{indx}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{slice}\PY{p}{(}\PY{k+kc}{None}\PY{p}{)}\PY{p}{)}
+%     \PY{k}{return} \PY{n+nb}{tuple}\PY{p}{(}\PY{n}{indx}\PY{p}{)}
+% \end{Verbatim}
+% \end{tcolorbox}
 
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{19}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{contract}\PY{p}{(}\PY{n}{T}\PY{p}{,} \PY{n}{g}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{g\PYZus{}inv}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{upper}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{indx}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
-\PY{l+s+sd}{    contracts indecies indx=(a\PYZus{}p, a\PYZus{}q) on tensor T with \PYZsq{}num\PYZus{}indx\PYZsq{}, }
-\PY{l+s+sd}{    \PYZsq{}upper\PYZsq{} of whom are upper. If upper=0, all indecies are assumed lower.}
-\PY{l+s+sd}{    With indx=(a\PYZus{}k, a\PYZus{}l), upper=n, num\PYZus{}indx=n+m, this gives}
-\PY{l+s+sd}{    T\PYZca{}(a\PYZus{}0...a\PYZus{}n\PYZhy{}1)\PYZus{}(a\PYZus{}n...a\PYZus{}n+m\PYZhy{}1) \PYZhy{}\PYZgt{} T\PYZca{}(a\PYZus{}0...a\PYZus{}k=a...a\PYZus{}n\PYZhy{}1)\PYZus{}(a\PYZus{}n...a\PYZus{}k...a\PYZus{}n+m\PYZhy{}1),}
-\PY{l+s+sd}{    with the necesarry metric. If wrong metric is given, this wil throw error.}
-\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
-    \PY{k}{assert} \PY{n}{indx}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{n}{indx}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}  \PY{c+c1}{\PYZsh{} we have to know if the index to the left dissapears}
-    \PY{n}{dim} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{shape}\PY{p}{(}\PY{n}{T}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
-    \PY{n}{a} \PY{o}{=} \PY{p}{(}\PY{n}{indx}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{n}{upper}\PY{p}{)} \PY{o}{+} \PY{p}{(}\PY{n}{indx}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{n}{upper}\PY{p}{)} \PY{c+c1}{\PYZsh{} number of upper indecies to be contracted}
-    \PY{k}{if} \PY{n}{a}\PY{o}{==}\PY{l+m+mi}{2}\PY{p}{:} \PY{n}{g0} \PY{o}{=} \PY{n}{g} \PY{c+c1}{\PYZsh{} two upper}
-    \PY{k}{elif} \PY{n}{a}\PY{o}{==}\PY{l+m+mi}{0}\PY{p}{:} \PY{n}{g0} \PY{o}{=} \PY{n}{g\PYZus{}inv} \PY{c+c1}{\PYZsh{} two lower}
-    \PY{k}{else}\PY{p}{:} \PY{n}{g0} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{identity}\PY{p}{(}\PY{n}{dim}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{Rational}\PY{p}{)}
+%     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+% \prompt{In}{incolor}{4}{\boxspacing}
+% \begin{Verbatim}[commandchars=\\\{\}]
+% \PY{k}{def} \PY{n+nf}{contract}\PY{p}{(}\PY{n}{T}\PY{p}{,} \PY{n}{g}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{g\PYZus{}inv}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{upper}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{indx}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+%     \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+% \PY{l+s+sd}{    contracts indecies indx=(a\PYZus{}p, a\PYZus{}q) on tensor T with \PYZsq{}num\PYZus{}indx\PYZsq{}, }
+% \PY{l+s+sd}{    \PYZsq{}upper\PYZsq{} of whom are upper. If upper=0, all indecies are assumed lower.}
+% \PY{l+s+sd}{    With indx=(a\PYZus{}k, a\PYZus{}l), upper=n, num\PYZus{}indx=n+m, this gives}
+% \PY{l+s+sd}{    T\PYZca{}(a\PYZus{}0...a\PYZus{}n\PYZhy{}1)\PYZus{}(a\PYZus{}n...a\PYZus{}n+m\PYZhy{}1) \PYZhy{}\PYZgt{} T\PYZca{}(a\PYZus{}0...a\PYZus{}k=a...a\PYZus{}n\PYZhy{}1)\PYZus{}(a\PYZus{}n...a\PYZus{}k...a\PYZus{}n+m\PYZhy{}1),}
+% \PY{l+s+sd}{    with the necesarry metric. If wrong metric is given, this wil throw error.}
+% \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+%     \PY{k}{assert} \PY{n}{indx}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{n}{indx}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}  \PY{c+c1}{\PYZsh{} we have to know if the index to the left dissapears}
+%     \PY{n}{dim} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{shape}\PY{p}{(}\PY{n}{T}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+%     \PY{n}{a} \PY{o}{=} \PY{p}{(}\PY{n}{indx}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{n}{upper}\PY{p}{)} \PY{o}{+} \PY{p}{(}\PY{n}{indx}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{n}{upper}\PY{p}{)} \PY{c+c1}{\PYZsh{} number of upper indecies to be contracted}
+%     \PY{k}{if} \PY{n}{a}\PY{o}{==}\PY{l+m+mi}{2}\PY{p}{:} \PY{n}{g0} \PY{o}{=} \PY{n}{g} \PY{c+c1}{\PYZsh{} two upper}
+%     \PY{k}{elif} \PY{n}{a}\PY{o}{==}\PY{l+m+mi}{0}\PY{p}{:} \PY{n}{g0} \PY{o}{=} \PY{n}{g\PYZus{}inv} \PY{c+c1}{\PYZsh{} two lower}
+%     \PY{k}{else}\PY{p}{:} \PY{n}{g0} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{identity}\PY{p}{(}\PY{n}{dim}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{Rational}\PY{p}{)}
 
-    \PY{n}{Tc} \PY{o}{=} \PY{n}{Rational}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{p}{(}\PY{n}{T}\PY{o}{.}\PY{n}{shape}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{Rational}\PY{p}{)}
-    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
-        \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
-            \PY{n}{Tc} \PY{o}{+}\PY{o}{=} \PY{n}{g0}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{]} \PY{o}{*} \PY{p}{(}\PY{n}{T}\PY{p}{[}\PY{n}{INDX}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{indx}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{n}{INDX}\PY{p}{(}\PY{n}{j}\PY{p}{,} \PY{n}{indx}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{num\PYZus{}indx} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]}
+%     \PY{n}{Tc} \PY{o}{=} \PY{n}{Rational}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{)} \PY{o}{*} \PY{n}{np}\PY{o}{.}\PY{n}{ones}\PY{p}{(}\PY{p}{(}\PY{n}{T}\PY{o}{.}\PY{n}{shape}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{Rational}\PY{p}{)}
+%     \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
+%         \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
+%             \PY{n}{Tc} \PY{o}{+}\PY{o}{=} \PY{n}{g0}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{]} \PY{o}{*} \PY{p}{(}\PY{n}{T}\PY{p}{[}\PY{n}{INDX}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{indx}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{n}{INDX}\PY{p}{(}\PY{n}{j}\PY{p}{,} \PY{n}{indx}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{num\PYZus{}indx} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]}
 
-    \PY{k}{return} \PY{n}{Tc}
+%     \PY{k}{return} \PY{n}{Tc}
 
-\PY{k}{def} \PY{n+nf}{raise\PYZus{}indx}\PY{p}{(}\PY{n}{T}\PY{p}{,} \PY{n}{g\PYZus{}inv}\PY{p}{,} \PY{n}{indx}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}\PY{p}{:}
-    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
-\PY{l+s+sd}{    Raise index \PYZsq{}indx\PYZsq{} of a tensor T with \PYZsq{}num\PYZus{}indx\PYZsq{} indices.}
-\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
-    \PY{n}{dim} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{shape}\PY{p}{(}\PY{n}{T}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
-    \PY{n}{Tu} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{T}\PY{p}{)}
-    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
-        \PY{n}{I} \PY{o}{=} \PY{n}{INDX}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{indx}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}
-        \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
-            \PY{n}{J} \PY{o}{=} \PY{n}{INDX}\PY{p}{(}\PY{n}{j}\PY{p}{,} \PY{n}{indx}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}
-            \PY{n}{Tu}\PY{p}{[}\PY{n}{I}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{n}{g\PYZus{}inv}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{]} \PY{o}{*} \PY{n}{T}\PY{p}{[}\PY{n}{J}\PY{p}{]}
-    \PY{k}{return} \PY{n}{Tu}
+% \PY{k}{def} \PY{n+nf}{raise\PYZus{}indx}\PY{p}{(}\PY{n}{T}\PY{p}{,} \PY{n}{g\PYZus{}inv}\PY{p}{,} \PY{n}{indx}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}\PY{p}{:}
+%     \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+% \PY{l+s+sd}{    Raise index \PYZsq{}indx\PYZsq{} of a tensor T with \PYZsq{}num\PYZus{}indx\PYZsq{} indices.}
+% \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+%     \PY{n}{dim} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{shape}\PY{p}{(}\PY{n}{T}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+%     \PY{n}{Tu} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{T}\PY{p}{)}
+%     \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
+%         \PY{n}{I} \PY{o}{=} \PY{n}{INDX}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{indx}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}
+%         \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
+%             \PY{n}{J} \PY{o}{=} \PY{n}{INDX}\PY{p}{(}\PY{n}{j}\PY{p}{,} \PY{n}{indx}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}
+%             \PY{n}{Tu}\PY{p}{[}\PY{n}{I}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{n}{g\PYZus{}inv}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{]} \PY{o}{*} \PY{n}{T}\PY{p}{[}\PY{n}{J}\PY{p}{]}
+%     \PY{k}{return} \PY{n}{Tu}
 
-\PY{k}{def} \PY{n+nf}{lower\PYZus{}indx}\PY{p}{(}\PY{n}{T}\PY{p}{,} \PY{n}{g}\PY{p}{,} \PY{n}{indx}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}\PY{p}{:}
-    \PY{k}{return} \PY{n}{raise\PYZus{}indx}\PY{p}{(}\PY{n}{T}\PY{p}{,} \PY{n}{g}\PY{p}{,} \PY{n}{indx}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}
+% \PY{k}{def} \PY{n+nf}{lower\PYZus{}indx}\PY{p}{(}\PY{n}{T}\PY{p}{,} \PY{n}{g}\PY{p}{,} \PY{n}{indx}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}\PY{p}{:}
+%     \PY{k}{return} \PY{n}{raise\PYZus{}indx}\PY{p}{(}\PY{n}{T}\PY{p}{,} \PY{n}{g}\PY{p}{,} \PY{n}{indx}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{p}{)}
 
-\PY{k}{def} \PY{n+nf}{get\PYZus{}g\PYZus{}inv}\PY{p}{(}\PY{n}{g}\PY{p}{)}\PY{p}{:}
-    \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{Matrix}\PY{p}{(}\PY{n}{g}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
+% \PY{k}{def} \PY{n+nf}{get\PYZus{}g\PYZus{}inv}\PY{p}{(}\PY{n}{g}\PY{p}{)}\PY{p}{:}
+%     \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{Matrix}\PY{p}{(}\PY{n}{g}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+% \end{Verbatim}
+% \end{tcolorbox}
 
-    Calculate Christoffel symbols and Riemann curvature tensor
+%     Calculate Christoffel symbols and Riemann curvature tensor
 
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{20}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{Christoffel}\PY{p}{(}\PY{n}{g}\PY{p}{,} \PY{n}{g\PYZus{}inv}\PY{p}{,} \PY{n}{var}\PY{p}{)}\PY{p}{:}
-    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} }
-\PY{l+s+sd}{    Work out the christoffel symbols, given a metric an its variables }
-\PY{l+s+sd}{    Γ\PYZca{}i\PYZus{}jk = C[i, j, k]}
-\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
-    \PY{n}{dim} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{var}\PY{p}{)}
-    \PY{n}{C} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{n}{dim}\PY{p}{,} \PY{n}{dim}\PY{p}{,} \PY{n}{dim}\PY{p}{)}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{Symbol}\PY{p}{)}
-    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
-        \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
-            \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
-                \PY{k}{for} \PY{n}{m} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
-                    \PY{n}{C}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{,} \PY{n}{k}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{n}{Rational}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{n}{g\PYZus{}inv}\PY{p}{)}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{m}\PY{p}{]} \PY{o}{*} \PY{p}{(}
-                        \PY{n}{diff}\PY{p}{(}\PY{n}{g}\PY{p}{[}\PY{n}{m}\PY{p}{,} \PY{n}{k}\PY{p}{]}\PY{p}{,} \PY{n}{var}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)}
-                        \PY{o}{+} \PY{n}{diff}\PY{p}{(}\PY{n}{g}\PY{p}{[}\PY{n}{m}\PY{p}{,} \PY{n}{j}\PY{p}{]}\PY{p}{,} \PY{n}{var}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{)}
-                        \PY{o}{\PYZhy{}} \PY{n}{diff}\PY{p}{(}\PY{n}{g}\PY{p}{[}\PY{n}{k}\PY{p}{,} \PY{n}{j}\PY{p}{]}\PY{p}{,} \PY{n}{var}\PY{p}{[}\PY{n}{m}\PY{p}{]}\PY{p}{)}
-                    \PY{p}{)}
+%     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+% \prompt{In}{incolor}{5}{\boxspacing}
+% \begin{Verbatim}[commandchars=\\\{\}]
+% \PY{k}{def} \PY{n+nf}{Christoffel}\PY{p}{(}\PY{n}{g}\PY{p}{,} \PY{n}{g\PYZus{}inv}\PY{p}{,} \PY{n}{var}\PY{p}{)}\PY{p}{:}
+%     \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} }
+% \PY{l+s+sd}{    Work out the christoffel symbols, given a metric an its variables }
+% \PY{l+s+sd}{    Γ\PYZca{}i\PYZus{}jk = C[i, j, k]}
+% \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+%     \PY{n}{dim} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{var}\PY{p}{)}
+%     \PY{n}{C} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{n}{dim}\PY{p}{,} \PY{n}{dim}\PY{p}{,} \PY{n}{dim}\PY{p}{)}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{Symbol}\PY{p}{)}
+%     \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
+%         \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
+%             \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
+%                 \PY{k}{for} \PY{n}{m} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
+%                     \PY{n}{C}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{,} \PY{n}{k}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{n}{Rational}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)} \PY{o}{*} \PY{p}{(}\PY{n}{g\PYZus{}inv}\PY{p}{)}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{m}\PY{p}{]} \PY{o}{*} \PY{p}{(}
+%                         \PY{n}{diff}\PY{p}{(}\PY{n}{g}\PY{p}{[}\PY{n}{m}\PY{p}{,} \PY{n}{k}\PY{p}{]}\PY{p}{,} \PY{n}{var}\PY{p}{[}\PY{n}{j}\PY{p}{]}\PY{p}{)}
+%                         \PY{o}{+} \PY{n}{diff}\PY{p}{(}\PY{n}{g}\PY{p}{[}\PY{n}{m}\PY{p}{,} \PY{n}{j}\PY{p}{]}\PY{p}{,} \PY{n}{var}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{p}{)}
+%                         \PY{o}{\PYZhy{}} \PY{n}{diff}\PY{p}{(}\PY{n}{g}\PY{p}{[}\PY{n}{k}\PY{p}{,} \PY{n}{j}\PY{p}{]}\PY{p}{,} \PY{n}{var}\PY{p}{[}\PY{n}{m}\PY{p}{]}\PY{p}{)}
+%                     \PY{p}{)}
 
-    \PY{k}{return} \PY{n}{C}
-\end{Verbatim}
-\end{tcolorbox}
+%     \PY{k}{return} \PY{n}{C}
+% \end{Verbatim}
+% \end{tcolorbox}
 
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{21}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{k}{def} \PY{n+nf}{Riemann\PYZus{}tensor}\PY{p}{(}\PY{n}{C}\PY{p}{,} \PY{n}{var}\PY{p}{)}\PY{p}{:}
-    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} }
-\PY{l+s+sd}{    Riemann\PYZus{}tensor(Christoffel\PYZus{}symbols, (x\PYZus{}1, ...)) = R[i, j, k, l] = R\PYZca{}i\PYZus{}jkl}
-\PY{l+s+sd}{    Compute the Riemann tensor from the Christoffel symbols }
-\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
-    \PY{n}{dim} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{var}\PY{p}{)}
-    \PY{n}{R} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{[}\PY{n}{dim}\PY{p}{]} \PY{o}{*} \PY{l+m+mi}{4}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{Symbol}\PY{p}{)}
-    \PY{n}{indx} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{l}\PY{p}{)}
-        \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}
-        \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}
-        \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}
-        \PY{k}{for} \PY{n}{l} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}
-    \PY{p}{]}
+%     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+% \prompt{In}{incolor}{6}{\boxspacing}
+% \begin{Verbatim}[commandchars=\\\{\}]
+% \PY{k}{def} \PY{n+nf}{Riemann\PYZus{}tensor}\PY{p}{(}\PY{n}{C}\PY{p}{,} \PY{n}{var}\PY{p}{)}\PY{p}{:}
+%     \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} }
+% \PY{l+s+sd}{    Riemann\PYZus{}tensor(Christoffel\PYZus{}symbols, (x\PYZus{}1, ...)) = R[i, j, k, l] = R\PYZca{}i\PYZus{}jkl}
+% \PY{l+s+sd}{    Compute the Riemann tensor from the Christoffel symbols }
+% \PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+%     \PY{n}{dim} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{var}\PY{p}{)}
+%     \PY{n}{R} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{[}\PY{n}{dim}\PY{p}{]} \PY{o}{*} \PY{l+m+mi}{4}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{Symbol}\PY{p}{)}
+%     \PY{n}{indx} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{j}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{l}\PY{p}{)}
+%         \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}
+%         \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}
+%         \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}
+%         \PY{k}{for} \PY{n}{l} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}
+%     \PY{p}{]}
 
-    \PY{k}{for} \PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{r}\PY{p}{,} \PY{n}{s}\PY{p}{)} \PY{o+ow}{in} \PY{n}{indx}\PY{p}{:}
-        \PY{n}{R}\PY{p}{[}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{r}\PY{p}{,} \PY{n}{s}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{n}{diff}\PY{p}{(}\PY{n}{C}\PY{p}{[}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{s}\PY{p}{]}\PY{p}{,} \PY{n}{var}\PY{p}{[}\PY{n}{r}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{diff}\PY{p}{(}\PY{n}{C}\PY{p}{[}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{r}\PY{p}{]}\PY{p}{,} \PY{n}{var}\PY{p}{[}\PY{n}{s}\PY{p}{]}\PY{p}{)}
-        \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
-            \PY{n}{R}\PY{p}{[}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{r}\PY{p}{,} \PY{n}{s}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{n}{C}\PY{p}{[}\PY{n}{a}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{r}\PY{p}{]} \PY{o}{*} \PY{n}{C}\PY{p}{[}\PY{n}{k}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{s}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{C}\PY{p}{[}\PY{n}{a}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{s}\PY{p}{]} \PY{o}{*} \PY{n}{C}\PY{p}{[}\PY{n}{k}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{r}\PY{p}{]}
-    \PY{k}{return} \PY{n}{R}
-\end{Verbatim}
-\end{tcolorbox}
+%     \PY{k}{for} \PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{r}\PY{p}{,} \PY{n}{s}\PY{p}{)} \PY{o+ow}{in} \PY{n}{indx}\PY{p}{:}
+%         \PY{n}{R}\PY{p}{[}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{r}\PY{p}{,} \PY{n}{s}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{n}{diff}\PY{p}{(}\PY{n}{C}\PY{p}{[}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{s}\PY{p}{]}\PY{p}{,} \PY{n}{var}\PY{p}{[}\PY{n}{r}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{diff}\PY{p}{(}\PY{n}{C}\PY{p}{[}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{r}\PY{p}{]}\PY{p}{,} \PY{n}{var}\PY{p}{[}\PY{n}{s}\PY{p}{]}\PY{p}{)}
+%         \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{dim}\PY{p}{)}\PY{p}{:}
+%             \PY{n}{R}\PY{p}{[}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{r}\PY{p}{,} \PY{n}{s}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{n}{C}\PY{p}{[}\PY{n}{a}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{r}\PY{p}{]} \PY{o}{*} \PY{n}{C}\PY{p}{[}\PY{n}{k}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{s}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{C}\PY{p}{[}\PY{n}{a}\PY{p}{,} \PY{n}{k}\PY{p}{,} \PY{n}{s}\PY{p}{]} \PY{o}{*} \PY{n}{C}\PY{p}{[}\PY{n}{k}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{r}\PY{p}{]}
+%     \PY{k}{return} \PY{n}{R}
+% \end{Verbatim}
+% \end{tcolorbox}
 
-    Printing functions
+%     Printing functions
 
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{22}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{print\PYZus{}latex} \PY{o}{=} \PY{k+kc}{False}
+%     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+% \prompt{In}{incolor}{7}{\boxspacing}
+% \begin{Verbatim}[commandchars=\\\{\}]
+% \PY{n}{print\PYZus{}latex} \PY{o}{=} \PY{k+kc}{False}
 
-\PY{k}{def} \PY{n+nf}{print\PYZus{}christoffel}\PY{p}{(}\PY{n}{C}\PY{p}{,} \PY{n}{var}\PY{p}{)}\PY{p}{:}
-    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} A function for dsiplaying christoffels symbols \PYZdq{}\PYZdq{}\PYZdq{}}
-    \PY{n}{output} \PY{o}{=} \PY{p}{[}\PY{p}{]}
-    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{var}\PY{p}{)}\PY{p}{)}\PY{p}{:}
-        \PY{n}{txt} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}
-        \PY{n}{txt} \PY{o}{+}\PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s2}{Gamma\PYZca{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{sp}\PY{o}{.}\PY{n}{latex}\PY{p}{(}\PY{n}{var}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZus{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s2}{mu }\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s2}{nu\PYZcb{} =}\PY{l+s+s2}{\PYZdq{}}
-        \PY{n}{txt} \PY{o}{+}\PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{latex}\PY{p}{(}\PY{n}{Matrix}\PY{p}{(}\PY{n}{C}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}
-        \PY{n}{txt} \PY{o}{+}\PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}
-        \PY{n+nb}{print}\PY{p}{(}\PY{n}{txt}\PY{p}{)} \PY{k}{if} \PY{n}{print\PYZus{}latex} \PY{k}{else} \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
-        \PY{n}{output}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{display}\PY{p}{(}\PY{n}{Latex}\PY{p}{(}\PY{n}{txt}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+% \PY{k}{def} \PY{n+nf}{print\PYZus{}christoffel}\PY{p}{(}\PY{n}{C}\PY{p}{,} \PY{n}{var}\PY{p}{)}\PY{p}{:}
+%     \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} A function for dsiplaying christoffels symbols \PYZdq{}\PYZdq{}\PYZdq{}}
+%     \PY{n}{output} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+%     \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{var}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+%         \PY{n}{txt} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}
+%         \PY{n}{txt} \PY{o}{+}\PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s2}{Gamma\PYZca{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{sp}\PY{o}{.}\PY{n}{latex}\PY{p}{(}\PY{n}{var}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZus{}}\PY{l+s+s2}{\PYZob{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s2}{mu }\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s2}{nu\PYZcb{} =}\PY{l+s+s2}{\PYZdq{}}
+%         \PY{n}{txt} \PY{o}{+}\PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{latex}\PY{p}{(}\PY{n}{Matrix}\PY{p}{(}\PY{n}{C}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+%         \PY{n}{txt} \PY{o}{+}\PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}
+%         \PY{n+nb}{print}\PY{p}{(}\PY{n}{txt}\PY{p}{)} \PY{k}{if} \PY{n}{print\PYZus{}latex} \PY{k}{else} \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
+%         \PY{n}{output}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{display}\PY{p}{(}\PY{n}{Latex}\PY{p}{(}\PY{n}{txt}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 
-    \PY{k}{return} \PY{n}{output}
+%     \PY{k}{return} \PY{n}{output}
 
-\PY{k}{def} \PY{n+nf}{print\PYZus{}matrix}\PY{p}{(}\PY{n}{T}\PY{p}{)}\PY{p}{:}
-    \PY{n}{txt} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{sp}\PY{o}{.}\PY{n}{latex}\PY{p}{(}\PY{n}{Matrix}\PY{p}{(}\PY{n}{T}\PY{p}{)}\PY{p}{)} \PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}
-    \PY{n+nb}{print}\PY{p}{(}\PY{n}{txt}\PY{p}{)} \PY{k}{if} \PY{n}{print\PYZus{}latex} \PY{k}{else} \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
-    \PY{k}{return} \PY{n}{display}\PY{p}{(}\PY{n}{Latex}\PY{p}{(}\PY{n}{txt}\PY{p}{)}\PY{p}{)}
+% \PY{k}{def} \PY{n+nf}{print\PYZus{}matrix}\PY{p}{(}\PY{n}{T}\PY{p}{)}\PY{p}{:}
+%     \PY{n}{txt} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{sp}\PY{o}{.}\PY{n}{latex}\PY{p}{(}\PY{n}{Matrix}\PY{p}{(}\PY{n}{T}\PY{p}{)}\PY{p}{)} \PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}
+%     \PY{n+nb}{print}\PY{p}{(}\PY{n}{txt}\PY{p}{)} \PY{k}{if} \PY{n}{print\PYZus{}latex} \PY{k}{else} \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
+%     \PY{k}{return} \PY{n}{display}\PY{p}{(}\PY{n}{Latex}\PY{p}{(}\PY{n}{txt}\PY{p}{)}\PY{p}{)}
 
-\PY{k}{def} \PY{n+nf}{print\PYZus{}scalar}\PY{p}{(}\PY{n}{T}\PY{p}{)}\PY{p}{:}
-    \PY{n}{txt} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{sp}\PY{o}{.}\PY{n}{latex}\PY{p}{(}\PY{n}{T}\PY{p}{)} \PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}
-    \PY{n+nb}{print}\PY{p}{(}\PY{n}{txt}\PY{p}{)} \PY{k}{if} \PY{n}{print\PYZus{}latex} \PY{k}{else} \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
-    \PY{k}{return} \PY{n}{display}\PY{p}{(}\PY{n}{Latex}\PY{p}{(}\PY{n}{txt}\PY{p}{)}\PY{p}{)}
+% \PY{k}{def} \PY{n+nf}{print\PYZus{}scalar}\PY{p}{(}\PY{n}{T}\PY{p}{)}\PY{p}{:}
+%     \PY{n}{txt} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{sp}\PY{o}{.}\PY{n}{latex}\PY{p}{(}\PY{n}{T}\PY{p}{)} \PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}
+%     \PY{n+nb}{print}\PY{p}{(}\PY{n}{txt}\PY{p}{)} \PY{k}{if} \PY{n}{print\PYZus{}latex} \PY{k}{else} \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
+%     \PY{k}{return} \PY{n}{display}\PY{p}{(}\PY{n}{Latex}\PY{p}{(}\PY{n}{txt}\PY{p}{)}\PY{p}{)}
 
-\PY{k}{def} \PY{n+nf}{print\PYZus{}eq}\PY{p}{(}\PY{n}{eq}\PY{p}{)}\PY{p}{:}
-    \PY{n}{txt} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{sp}\PY{o}{.}\PY{n}{latex}\PY{p}{(}\PY{n}{eq}\PY{p}{)} \PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{=0}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}
-    \PY{n+nb}{print}\PY{p}{(}\PY{n}{txt}\PY{p}{)} \PY{k}{if} \PY{n}{print\PYZus{}latex} \PY{k}{else} \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
-    \PY{k}{return} \PY{n}{display}\PY{p}{(}\PY{n}{Latex}\PY{p}{(}\PY{n}{txt}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
+% \PY{k}{def} \PY{n+nf}{print\PYZus{}eq}\PY{p}{(}\PY{n}{eq}\PY{p}{)}\PY{p}{:}
+%     \PY{n}{txt} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{sp}\PY{o}{.}\PY{n}{latex}\PY{p}{(}\PY{n}{eq}\PY{p}{)} \PY{o}{+}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{=0}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdl{}\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}
+%     \PY{n+nb}{print}\PY{p}{(}\PY{n}{txt}\PY{p}{)} \PY{k}{if} \PY{n}{print\PYZus{}latex} \PY{k}{else} \PY{n+nb}{print}\PY{p}{(}\PY{p}{)}
+%     \PY{k}{return} \PY{n}{display}\PY{p}{(}\PY{n}{Latex}\PY{p}{(}\PY{n}{txt}\PY{p}{)}\PY{p}{)}
+% \end{Verbatim}
+% \end{tcolorbox}
 
     \hypertarget{metric-g_mu-nu-for-spherically-symmetric-spacetime}{%
-\paragraph{\texorpdfstring{Metric \(g_{\mu \nu}\) for spherically
+\section{\texorpdfstring{Metric \(g_{\mu \nu}\) for spherically
 symmetric
 spacetime}{Metric g\_\{\textbackslash{}mu \textbackslash{}nu\} for spherically symmetric spacetime}}\label{metric-g_mu-nu-for-spherically-symmetric-spacetime}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{23}{\boxspacing}
+\prompt{In}{incolor}{8}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{t}\PY{p}{,} \PY{n}{r}\PY{p}{,} \PY{n}{th}\PY{p}{,} \PY{n}{ph} \PY{o}{=} \PY{n}{symbols}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{t, r, }\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s2}{theta, }\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s2}{phi}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \PY{n}{x1} \PY{o}{=} \PY{n}{r} \PY{o}{*} \PY{n}{cos}\PY{p}{(}\PY{n}{ph}\PY{p}{)} \PY{o}{*} \PY{n}{sin}\PY{p}{(}\PY{n}{th}\PY{p}{)}
@@ -600,7 +601,7 @@ spacetime}{Metric g\_\{\textbackslash{}mu \textbackslash{}nu\} for spherically s
 
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{24}{\boxspacing}
+\prompt{In}{incolor}{9}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{C} \PY{o}{=} \PY{n}{Christoffel}\PY{p}{(}\PY{n}{g}\PY{p}{,} \PY{n}{g\PYZus{}inv}\PY{p}{,} \PY{n}{var}\PY{p}{)}
 \PY{n}{c} \PY{o}{=} \PY{n}{print\PYZus{}christoffel}\PY{p}{(}\PY{n}{C}\PY{p}{,} \PY{n}{var}\PY{p}{)}
@@ -636,7 +637,7 @@ spacetime}{Metric g\_\{\textbackslash{}mu \textbackslash{}nu\} for spherically s
 
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{25}{\boxspacing}
+\prompt{In}{incolor}{10}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{Rie} \PY{o}{=} \PY{n}{Riemann\PYZus{}tensor}\PY{p}{(}\PY{n}{C}\PY{p}{,} \PY{n}{var}\PY{p}{)}
 \PY{n}{Ricci} \PY{o}{=} \PY{n}{contract}\PY{p}{(}\PY{n}{Rie}\PY{p}{,} \PY{n}{num\PYZus{}indx}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{,} \PY{n}{upper}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{indx}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)} 
@@ -675,7 +676,7 @@ spacetime}{Metric g\_\{\textbackslash{}mu \textbackslash{}nu\} for spherically s
 
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{26}{\boxspacing}
+\prompt{In}{incolor}{11}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{R} \PY{o}{=} \PY{n}{contract}\PY{p}{(}\PY{n}{Ricci}\PY{p}{,} \PY{n}{g\PYZus{}inv}\PY{o}{=}\PY{n}{g\PYZus{}inv}\PY{p}{,} \PY{n}{upper}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{)}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)} 
 \PY{n}{print\PYZus{}scalar}\PY{p}{(}\PY{n}{R}\PY{p}{)} 
@@ -690,7 +691,7 @@ spacetime}{Metric g\_\{\textbackslash{}mu \textbackslash{}nu\} for spherically s
 
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{27}{\boxspacing}
+\prompt{In}{incolor}{12}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{G} \PY{o}{=} \PY{n}{Ricci} \PY{o}{\PYZhy{}} \PY{n}{Rational}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)} \PY{o}{*} \PY{n}{R} \PY{o}{*} \PY{n}{g}
 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
@@ -733,15 +734,15 @@ perfect
 fluid}{Stress-energy tensor T\_\{\textbackslash{}mu \textbackslash{}nu\} for perfect fluid}}\label{stress-energy-tensor-t_mu-nu-for-perfect-fluid}}
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{28}{\boxspacing}
+\prompt{In}{incolor}{13}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{p} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{Function}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{p}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{(}\PY{n}{r}\PY{p}{)}
-\PY{n}{rho} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{Function}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s+s2}{rho}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{(}\PY{n}{r}\PY{p}{)}
+\PY{n}{u} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{Function}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{u}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{(}\PY{n}{r}\PY{p}{)}
 
 \PY{n}{UU} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{sp}\PY{o}{.}\PY{n}{Rational}\PY{p}{)}
 \PY{n}{UU}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{exp}\PY{p}{(}\PY{l+m+mi}{2} \PY{o}{*} \PY{n}{a}\PY{p}{)}
 
-\PY{n}{T} \PY{o}{=} \PY{p}{(}\PY{n}{p} \PY{o}{+} \PY{n}{rho}\PY{p}{)} \PY{o}{*} \PY{n}{UU} \PY{o}{\PYZhy{}} \PY{n}{p} \PY{o}{*} \PY{n}{g}
+\PY{n}{T} \PY{o}{=} \PY{p}{(}\PY{n}{p} \PY{o}{+} \PY{n}{u}\PY{p}{)} \PY{o}{*} \PY{n}{UU} \PY{o}{\PYZhy{}} \PY{n}{p} \PY{o}{*} \PY{n}{g}
 \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}\PY{p}{:}
     \PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{T}\PY{p}{[}\PY{n}{i}\PY{p}{,} \PY{n}{i}\PY{p}{]}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}
 \PY{n}{print\PYZus{}matrix}\PY{p}{(}\PY{n}{T}\PY{p}{)}
@@ -752,16 +753,16 @@ fluid}{Stress-energy tensor T\_\{\textbackslash{}mu \textbackslash{}nu\} for per
 
     \end{Verbatim}
 
-    $$\left[\begin{matrix}\rho{\left(r \right)} e^{2 \alpha{\left(r \right)}} & 0 & 0 & 0\\0 & p{\left(r \right)} e^{2 \beta{\left(r \right)}} & 0 & 0\\0 & 0 & r^{2} p{\left(r \right)} & 0\\0 & 0 & 0 & r^{2} p{\left(r \right)} \sin^{2}{\left(\theta \right)}\end{matrix}\right]$$
+    $$\left[\begin{matrix}u{\left(r \right)} e^{2 \alpha{\left(r \right)}} & 0 & 0 & 0\\0 & p{\left(r \right)} e^{2 \beta{\left(r \right)}} & 0 & 0\\0 & 0 & r^{2} p{\left(r \right)} & 0\\0 & 0 & 0 & r^{2} p{\left(r \right)} \sin^{2}{\left(\theta \right)}\end{matrix}\right]$$
 
     
-    \hypertarget{einstin-equation}{%
-\subsubsection{Einstin equation}\label{einstin-equation}}
+    \hypertarget{einstins-field-equations}{%
+\section{Einstin's field equations}\label{einstins-field-equations}}
 
 \(R_{\mu \nu}- \frac{1}{2} R g_{\mu \nu} = 8 \pi G T_{\mu \nu}\)
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{29}{\boxspacing}
+\prompt{In}{incolor}{14}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{G\PYZus{}newton} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{Symbol}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{G}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 
@@ -784,7 +785,7 @@ fluid}{Stress-energy tensor T\_\{\textbackslash{}mu \textbackslash{}nu\} for per
 
     \end{Verbatim}
 
-    $$8 \pi G r^{2} \rho{\left(r \right)} e^{2 \beta{\left(r \right)}} - 2 r \frac{d}{d r} \beta{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1=0$$
+    $$8 \pi G r^{2} u{\left(r \right)} e^{2 \beta{\left(r \right)}} - 2 r \frac{d}{d r} \beta{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1=0$$
 
     
     \begin{Verbatim}[commandchars=\\\{\}]
@@ -811,7 +812,7 @@ fluid}{Stress-energy tensor T\_\{\textbackslash{}mu \textbackslash{}nu\} for per
     Define \(e^{2 \beta} = [1 - 2 G m(r) / r ]^{-1}\)
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{30}{\boxspacing}
+\prompt{In}{incolor}{15}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{m} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{Function}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{m}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{Real}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}\PY{p}{(}\PY{n}{r}\PY{p}{)}
 \PY{n}{f} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{l+m+mi}{2} \PY{o}{*} \PY{n}{G\PYZus{}newton} \PY{o}{*} \PY{n}{m} \PY{o}{/} \PY{n}{r}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}
@@ -825,12 +826,12 @@ fluid}{Stress-energy tensor T\_\{\textbackslash{}mu \textbackslash{}nu\} for per
 \(\nabla_\mu T^{\mu r} = 0 \implies (p + \rho) \partial_r \alpha = - \partial_r p\).
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{31}{\boxspacing}
+\prompt{In}{incolor}{16}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{eq2} \PY{o}{=} \PY{p}{(}\PY{n}{eq}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{*} \PY{n}{r}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{exp}\PY{p}{(}\PY{l+m+mi}{2} \PY{o}{*} \PY{n}{b}\PY{p}{)}\PY{p}{,} \PY{n}{f}\PY{p}{)}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}
 \PY{n}{s} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{solve}\PY{p}{(}\PY{n}{eq2}\PY{p}{,} \PY{n}{a}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{r}\PY{p}{)}\PY{p}{)}
 \PY{n}{eq2} \PY{o}{=} \PY{n}{a}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{r}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
-\PY{n}{eq2} \PY{o}{=} \PY{p}{(}\PY{p}{(}\PY{n}{a}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{r}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{a}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{r}\PY{p}{)}\PY{p}{,} \PY{o}{\PYZhy{}} \PY{n}{p}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{r}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n}{p} \PY{o}{+} \PY{n}{rho}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{p} \PY{o}{+} \PY{n}{rho}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}
+\PY{n}{eq2} \PY{o}{=} \PY{p}{(}\PY{p}{(}\PY{n}{a}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{r}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{subs}\PY{p}{(}\PY{n}{a}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{r}\PY{p}{)}\PY{p}{,} \PY{o}{\PYZhy{}} \PY{n}{p}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{r}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n}{p} \PY{o}{+} \PY{n}{u}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{p}{(}\PY{n}{p} \PY{o}{+} \PY{n}{u}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{simplify}\PY{p}{(}\PY{p}{)}
 \PY{n}{s} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{solve}\PY{p}{(}\PY{n}{eq2}\PY{p}{,} \PY{n}{p}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{p}{)}\PY{p}{)}
 \PY{n}{eq2} \PY{o}{=} \PY{n}{p}\PY{o}{.}\PY{n}{diff}\PY{p}{(}\PY{n}{r}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{s}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{factor}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
@@ -840,7 +841,7 @@ fluid}{Stress-energy tensor T\_\{\textbackslash{}mu \textbackslash{}nu\} for per
 to 0.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{32}{\boxspacing}
+\prompt{In}{incolor}{17}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{print\PYZus{}eq}\PY{p}{(}\PY{n}{eq1}\PY{p}{)}
 \PY{n}{print\PYZus{}eq}\PY{p}{(}\PY{n}{eq2}\PY{p}{)}
@@ -851,14 +852,14 @@ to 0.
 
     \end{Verbatim}
 
-    $$- 4 \pi r^{2} \rho{\left(r \right)} + \frac{d}{d r} m{\left(r \right)}=0$$
+    $$- 4 \pi r^{2} u{\left(r \right)} + \frac{d}{d r} m{\left(r \right)}=0$$
 
     
     \begin{Verbatim}[commandchars=\\\{\}]
 
     \end{Verbatim}
 
-    $$\frac{G \left(4 \pi r^{3} p{\left(r \right)} + m{\left(r \right)}\right) \left(\rho{\left(r \right)} + p{\left(r \right)}\right)}{r \left(- 2 G m{\left(r \right)} + r\right)} + \frac{d}{d r} p{\left(r \right)}=0$$
+    $$\frac{G \left(4 \pi r^{3} p{\left(r \right)} + m{\left(r \right)}\right) \left(p{\left(r \right)} + u{\left(r \right)}\right)}{r \left(- 2 G m{\left(r \right)} + r\right)} + \frac{d}{d r} p{\left(r \right)}=0$$
 
     
 
