@@ -7,13 +7,16 @@ from scipy.interpolate import splprep, splev
 from numpy import pi, sqrt, exp, arcsinh, log as ln
 
 # Constants
-def get_const(m = 1.67e-27):
-    # Constants
+def get_const():
+    """Constants"""
     c = 2.998e8
-    G = 6.67e-11
+    G = 6.674e-11
     hbar = 1.055e-34
 
-    M0 = 1.98841 * 10**30
+    MeV = 1.60218e-19*1e6
+    m = 939.57*MeV/c**2
+
+    M0 = 1.988 * 10**30
 
     u0 = m**4 / (8 * pi**2) * (c**5 / hbar**3) 
     m0 = c**4 / sqrt(4*pi/3 * u0 * G**3) / M0

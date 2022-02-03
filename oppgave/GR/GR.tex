@@ -1,17 +1,20 @@
 \section{General relativity}
 
 (Newtonian gravity??)
-\todo{Short about newtonian gravitaty/motivation}
+\todo{Short about newtonian gravity/motivation}
 
 
 \subsection{Einstein's field equations}
 
 General relativity describes spacetime as a smooth manifold $\Em$, with a (pseudo-Riemannian) metric, $g_{\mu \nu}$.
 This metric is treated as a dynamical field, which is affected by the presence of matter and energy.
-The matter and energy contents of spacetime are encoded in the stress-energy tensor $T_{\mu \nu}$, while the behavior of $g^{\mu \nu}$ is encoded in a scalar Lagrangian density.  
-The most obvious---and correct---choice is to use the Ricci scalar, which results in the Einstein-Hilbert action,
+The matter and energy contents of spacetime are encoded in the stress-energy tensor $T_{\mu \nu}$, while the behavior of $g^{\mu \nu}$ is encoded in a scalar Lagrangian density.
+Some of the mathematics used in this section, such as functional derivatives, are covered in \autoref{appendix: Functional derivatives}.
+
+The most obvious---and correct---choice as the Lagrangian for $g^{\mu \nu}$ is the Ricci scalar, which results in the Einstein-Hilbert action,
 %
 \begin{equation}
+    \label{Einstein-Hilbert action}
     S_{\text{EH}} = k \int_{\Em} \dd^n x \, \sqrt{|g|}\, R,
 \end{equation}
 %
@@ -29,20 +32,20 @@ The total action will include contributions from other fields with an action $S_
 \end{equation}
 %
 The equations of motion of the dynamical field, which in this case is the metric, are given by Hamilton's principle of stationary action.
-Using functional derivatives, as defined in (REF:APPENDIX), this is stated as
-\todo{Ha appendix på functional derivatives}
+Using functional derivatives, as defined in \autoref{subsection: functional calculus on a curved manifold}, this is stated as
 %
 \begin{equation}
-    \frac{1}{\sqrt{|g|}}\diff.delta.{S}{g^{\mu\nu}} = 0,
+    \diff.delta.{S}{g^{\mu\nu}} = 0,
 \end{equation}
 %
-We define
+We define the stress-energy tensor as
 %
 \begin{equation}
+    \label{definition stress energy densor}
     T_{\mu\nu} = - \frac{2}{\sqrt{|g|}} \diff.delta.{S_\text{m}}{g^{\mu \nu}}.
 \end{equation}
-This results in the equations of motion for the metric, the Einstein field equations
-\todo{Utled}
+%
+The functional derivative of the Einstein-Hilbert action is evaluated in \autoref{subsection: functional derivative of the einstein-hilbert action}, and with the result, \autoref{functional derivatie einstein-hilber action}, we get the Einstein field equations
 %
 \begin{equation}
     \label{Einstein field equations}
@@ -63,8 +66,6 @@ This tensor obeys the identity
 \end{equation}
 as a consequence of the more general Bianchi identity.
 \todo{Si hva bianchi identity er}
-\todo{Schwarzchild løsning}
-
 
 
 \subsection{Spherically symmetric spacetime}
@@ -170,5 +171,5 @@ Finally, the trace of the Ricci tensor gives the Ricci scalar,
     \bigg].
 \end{align}
 %
- The unknown functions $\alpha$ and $\beta$ are now determined by the matter and energy content of the universe, which is encoded in $T_{\mu \nu}$, through Einstein's field equation, \autoref{Einstein field equations}.
- 
+ The unknown functions $\alpha$ and $\beta$ are now determined by the matter and energy content of the universe, which is encoded in $T_{\mu \nu}$, through Einstein's field equation, \autoref{Einstein field equations}. 
+ \todo{Skriv om Schwarzchild-løsningen}

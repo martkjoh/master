@@ -181,10 +181,12 @@ In the case of a real valued function, $f: \Em \mapsto \R$, and $g : \R \mapsto 
 \end{equation}
 %
 $\dd f$ is thus a map from $T_p \Em$ to $T_{f(p)}\R$, which is isomorphic to $\R$.
-The differential is a thus map from vectors $v$ to real numbers,
+The $g$ be the identity function, so that $\diff{g}/{y} = 1$.
+Then, the differential of a scalar function, also called a 1-form, is a map from vectors $v$ to real numbers,
 %
 \begin{equation}
-    \dd f(v) = \dd f(v)(y) = v^\mu \partial_\mu f.
+    \label{covectors i.e. one forms}
+    \dd f(v) := v^\mu \partial_\mu f.
 \end{equation}
 %
 The set of all linear maps from a vector space $V$ to the real numbers is called the \emph{dual space} of $V$, denoted $V^*$.
@@ -353,6 +355,7 @@ We  define the Ricci tensor and Ricci scalar as
 These are the quantities we need to start working with general relativity.
 
 \subsection{Integration on manifolds}
+\label{subsection: integration on manifolds}
 
 The integral of a scalar function on a manifold is not a coordinate-independent notion, and we must introduce the notion of $n$-forms.
 A $n$-form is a antisymmetric $(0, n)$ tensor.
@@ -440,6 +443,7 @@ Furthermore, there will be a vector field $n^\mu$ of normalized vectors orthogon
 This theorem states that for a vector field $V^\mu$ on $\Em$,
 %
 \begin{equation}
+    \label{generalized divergence theorem}
     \int_\Em \dd^n x \, \sqrt{|g|} \,  \nabla_\mu V^\mu 
     = \int_{\partial \Em} \dd^{n-1}y \, \sqrt{|\gamma|} \, n_\mu V^\mu.
 \end{equation}
