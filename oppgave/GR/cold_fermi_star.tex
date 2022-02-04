@@ -204,6 +204,48 @@ This is natural in the case of a relativistic fluid.
 
 
 
+\subsection{Limits}
+
+In the non-relativistic limit, as the chemical potential approaches $m$ and thus $p_f \ll m$, the lowest order contributions to the energy density and pressure are given by the Taylor series around $x_f = 0$,
+%
+\begin{align}
+    \tilde u(x_f) &= \frac{8}{3}x_f^3 + \frac{4}{5} x_f^5 + \Oh(x_f^7),  \\
+    \tilde p(x_f) &= \frac{8}{15}x_f^5 + \Oh(x_f^7).
+\end{align}
+%
+By neglecting terms of order $x_f^7$ and higher, we can write this as
+%
+\begin{equation}
+    \tilde u = \tilde n + \frac{4}{5} \left( \frac{8}{3} \tilde n \right)^{5/3},
+    \quad
+    \tilde p =  \frac{8}{15} \left( \frac{8}{3} \tilde n \right)^{5/3}.
+\end{equation}
+%
+The leading order contribution to the energy density is the rest mass of the particles.
+This term does not contribute to the pressure.
+As discussed earlier, the non-relativistic limit corresponds to $k_3 \ll 1$, if we chose units so that $\tilde u \approx \tilde p$, or $\tilde u \gg \tilde p$ if we demand that $k_3 = 1$.
+We see that $x_f \rightarrow 0$ corresponds to the latter case.
+By including only the leading order term, we can eliminate the Fermi momentum and write the equation of state in the non-relativistic limit as $u_{\mathrm{rn}} = k p^{3/5}$ where $k = 8/3 \cdot (15/8)^{3/5}$.
+Equations of state where $u \propto p^{\gamma}$ are called polytropes.
+In the ultrarelativistic limit, where $p_f \gg m$, the leading order contributions to the pressure and energy density are
+%
+\begin{equation}
+    \tilde u = 2 x_f^4, \quad \tilde p = \frac{2}{3} x_f^4, 
+\end{equation}
+%
+and we get the particularly simple equation of state for the ultrarelativistic limit, $ u_{\mathrm{ur}} = 3 p $, which we recognize as the formula for radiation pressure.
+The equation of state $\tilde u(\tilde p)$ in two different regimes is shown in \autoref{fig: equation of state fermi fluid}.
+The full equation of state is compared to the non-relativistic and ultrarelativistic approximations.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/fermi_eos.pdf}
+    \caption{The equation of state of a cold Fermi gas. Both pressure and energy density is normalized to their characteristic quantities, $p_0$ and $u_0$. The equation of state is compared to the non-relativistic approximation, $\tilde u_{\mathrm{nr}}$ as well as the ultrarelativistic approximation, $\tilde u_{\mathrm{ur}}$, in two different regimes.}
+    \label{fig: equation of state fermi fluid}
+\end{figure}
+
+
+
 \subsection{Units}
 
 The equation of state has given us the characteristic energy density and pressure, $u_0$ and $p_0$. 
@@ -230,44 +272,23 @@ After reinstating $\hbar$ and $c$ in metric units, we get
 From this, we expect our star to have a mass of the order of a solar mass, $M_\odot = 1.988 41\cdot 10^{30}\, \text{kg}$~\autocite{particledatagroupReviewParticlePhysics2020}, and a radius of the order of kilometers, without solving the TOV equation.
 
 
-\subsection{Limits}
-
-In the non-relativistic limit, as the chemical potential approaches $m$ and thus $p_f \ll m$, the lowest order contributions to the energy density and pressure are given by the Taylor series around $x_f = 0$,
-%
-\begin{align}
-    \tilde u(x_f) &= \frac{8}{3}x_f^3 + \frac{4}{5} x_f^5 + \Oh(x_f^7),  \\
-    \tilde p(x_f) &= \frac{8}{5}x_f^5 + \Oh(x_f^7).
-\end{align}
-%
-By neglecting terms of order $x_f^7$ and higher, we can write this as
-%
-\begin{equation}
-    \tilde u = \tilde n + \frac{4}{5} \left( \frac{8}{3} \tilde n \right)^{5/3},
-    \quad
-    \tilde p =  \frac{8}{5} \left( \frac{8}{3} \tilde n \right)^{5/3}.
-\end{equation}
-%
-The leading order contribution to the energy density is the rest mass of the particles.
-This term does not contribute to the pressure.
-As discussed earlier, the non-relativistic limit corresponds to $k_3 \ll 1$, if we chose units so that $\tilde u \approx \tilde p$, or $\tilde u \gg \tilde p$ if we demand that $k_3 = 1$.
-We see that $x_f \rightarrow 0$ corresponds to the latter case.
-By including only the leading order term, we can eliminate the Fermi momentum and write the equation of state as $u = k p^{3/5}$ where $k = 8/3 \cdot (5/8)^{3/5}$.
-Equations of state where $u \propto p^{\gamma}$ are called polytropes.
-In the ultrarelativistic limit, where $p_f \gg m$, the leading order contributions to the pressure and energy density are
-%
-\begin{equation}
-    \tilde u = 2 x_f^4, \quad \tilde p = \frac{2}{3} x_f^4, 
-\end{equation}
-%
-and we get the particularly simple equation of state $ u = 3 p $, which we recognize as the formula for radiation pressure.
-
 
 \subsection{Numerical results}
 
 With the energy density, \autoref{Fermi gas energy density}, and pressure, \autoref{Fermi gas pressure}, we can numerically solve the TOV equation given a central pressure $p_c$. 
 This is done using an adaptive Runge-Kutta method, with the stop criterion $p(r) = 0$.
 Description of the code and where to find it is given in \autoref{appendix: code}.
-
+With our choice of units, the form of the TOV equation is
+%
+\begin{align}
+    \diff{\tilde m}{\tilde r} 
+    = 3 \tilde r^2 \tilde u, \quad
+    \diff{\tilde p}{\tilde r} 
+     = - \frac{1}{\tilde r^2} \left(\tilde p + \tilde u\right) 
+    \left(3  \tilde r^3 \tilde p + \tilde m\right) 
+    \left(1 - \frac{2 \tilde m}{\tilde r}\right)^{-1}.
+\end{align}
+%
 As $r \rightarrow 0$, parts of the TOV equation \autoref{TOV dimensionless} diverge, and we must take use an approximation for numeric evaluation.
 The Taylor-expansion of the mass function around $\tilde r = 0$ is
 %
@@ -290,22 +311,28 @@ We get an approximation of the TOV equation for $\tilde r \ll 1$ by substituting
 %
 \begin{equation}
     \diff{\tilde p}{\tilde r}
-    = - k_1 k_2 \tilde r \, \left(\tilde p + \tilde u\right)
+    \sim - \tilde r \, \left(\tilde p + \tilde u\right)
     \left( 3 \tilde p + \tilde u_0  \right)
-    \left(1 - 2 k_1 \tilde u_0 \tilde r^2\right)^{-1}.
+    \left(1 - 2 \tilde u_0 \tilde r^2\right)^{-1}, \quad r\rightarrow 0
 \end{equation}
 %
+For the Newtonian approximation to the TOV equation, we get
+%
+\begin{equation}
+    \diff{\tilde p}{\tilde r} = -\frac{\tilde u \tilde m}{\tilde r^2}
+    \sim - \tilde u \tilde u_0 \tilde r,  \quad r\rightarrow 0.
+\end{equation}
 
-With this, we can find the pressure as a function of radius $r$ for any given central pressure, $p(0) = p_0$.
-The stellar radius, $R$, is defined as the point where the pressure drops to zero, i.e., $p(R) = 0$.
+
 The top graph in \autoref{fig: pressure and mass as a function of radius} shows the pressure, normalized to the central pressure $p_c$, as a function of radius, normalized to the corresponding stellar radius $R$.
+The stellar radius, $R$, is defined as the point where the pressure drops to zero, i.e., $p(R) = 0$.
 The boundary conditions are logarithmically spaced.
 The lower graph in \autoref{fig: pressure and mass as a function of radius} shows the mass, normalized to the total mass $M = m(R)$, as a function of the radius, again normalized to the stellar radius.
-As in the case of the incompressible fluid, the pressure follows a half bell-shaped curve, with a peak that becomes sharper as the central pressure increases.
+As in the case of the incompressible fluid, the pressure follows a half bell-shaped curve, with a peak that becomes narrower as the central pressure increases.
 The black dashed line corresponds to the solution with the maximum mass.
-We see that the shape changes most drastically for central pressures higher than that which corresponds to the most massive star.
+We see that the shape of the pressure and mass plots changes most drastically for central pressures higher than that which corresponds to the most massive star.
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{../scripts/figurer/pressure_mass.pdf}
     \caption{The pressure noramlized to central value (top) and the mass normalized to total mass (bottom), as a function of radius, nomralized to total radius. This is plotted for several different values of central pressure, which is indicated by the color shceme.}
@@ -317,19 +344,34 @@ In \autoref{fig: mass radius relationship fermi gas}, we see the relationship be
 This line is parameterized by the base-10 logarithm of the central pressure, $p(0)$, normalized by $p_0 = u_0$.
 The cross marks the maximum mass, $M_\mathrm{max} = 0.711 \, M_\odot$, which corresponds to a radius of $R = 9.20 \, \mathrm{km}$.
 This matches the results obtained by Oppenheimer and Volkoff~\cite{oppenheimerMassiveNeutronCores1939}, $M_\mathrm{max} = 0.71$.
-In their 1939 paper, Oppenheimer and Volkoff computed five data-points  in the mass-radius space.
+In their 1939 paper, Oppenheimer and Volkoff computed five data points in the mass-radius space.
 The results are marked by blue circles in \autoref{fig: mass radius relationship fermi gas}.
-We find good agreement between the three results closest to the maximum value and our result for the mass-radius relationship.
-However, the two results further away differr significantly from our results.
+We find good agreement between the three points closest to the maximum value and our results.
+However, the two results of Oppenheimer and Volkoff furthest away differ significantly from our results.
 \todo{Hvorfor er to punkter så langt unna?}
 The black dashed line is the absolute mass-radius constraint, \autoref{mass radius constraint}, and any stable configuration must be on the right side of this line.
 
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_neutron.pdf}
     \caption{The mass-radius relationship of a star made of a cold gas of neutrons. The line is parametrized by the central pressure $p(0)$. The corss indicate the maximum mass solution. The blue circles are results form the 1939 paper of Oppenheimer and Volkof~\autocite{oppenheimerMassiveNeutronCores1939}.}
     \label{fig: mass radius relationship fermi gas}
+\end{figure}
+
+
+In \autoref{fig: mass radius relationship comparison}, we compare the mass-radius relationship obtained from the full theory with results from approximations.
+The lowest line is obtained by using both the full TOV equation and the equation of state.
+The middle line is obtained using the non-relativistic equation of state together with the full TOV equation.
+The upper line is from the Newtonian approximation to the TOV equation and the non-relativistic equation of state.
+This last approximation does not seem to have an upper limit for the mass, as expected.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_comparison.pdf}
+    \caption{The mass-radius relationship of a cold gas of neutrons. The lowest line is obtained from the TOV equation and full equation of state. The middle line is from the TOV equation and the non-relativistic equation of state. The upper line is obtained from the Newtonian approximation of the TOV equation and the non-relativistic equation of state.}
+    \label{fig: mass radius relationship comparison}
 \end{figure}
 
 

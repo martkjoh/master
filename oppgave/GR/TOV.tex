@@ -135,7 +135,7 @@ In their paper, Oppenheimer and Volkoff studied the properties of a star made up
 
 To summarize, we have three unknown functions, $u(r)$, $p(r)$, and $m(r)$.
 The equation of state, \autoref{EOS}, determines $u = u(p)$, eliminating one unknown.
-The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_c$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integrated.
+The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_0$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integrated.
 Given this, we can solve for all the unknown functions, either analytically or numerically.
 However, we can gain some insight into the system without solving these equations by expressing the problem in terms of dimensionless variables.
 We define
@@ -158,12 +158,12 @@ The new differential equations are
     \diff{ \tilde m}{\tilde r} & = 3 k_2\, \tilde r^2 \tilde u \\
     \label{TOV dimensionless}
     \diff{\tilde p}{\tilde r} & 
-    = - \frac{k_1}{k_3} \frac{1}{\tilde r^2} \left(k_3\tilde p + \tilde u\right) \left(3 k_2 k_3  \tilde r^3 \tilde p + \tilde m\right) 
+    = - \frac{k_1}{k_3} \frac{1}{\tilde r^2} \left(k_3\tilde p + \tilde u\right) 
+    \left(3 k_2 k_3  \tilde r^3 \tilde p + \tilde m\right) 
     \left(1 - \frac{2 k_1  \tilde m}{\tilde r}\right)^{-1},
 \end{align}
 %
 where the dimensionless constants are defined as
-\todo{Hvor er det best å plassere faktor 3?}
 %
 \begin{equation}
     \label{dimensionless groups}
@@ -183,7 +183,7 @@ In other words, the dimensionful constants defined by $k_i = 1$ are new, charact
 
 In the Newtonian limit, the rest energy, i.e., mass, is the dominant contribution to the gravitational field.
 This means that the characteristic pressure, $p_0$, is far smaller than the characteristic energy density $u_0$, and we can use the approximation $k_3 \ll 1$.
-Furthermore, the radius of the star should be much larger than the Schwarzschild radius, $R_s = 2 G M$.
+Furthermore, the star's radius should be much larger than the Schwarzschild radius, $R_s = 2 G M$.
 If we choose $r_0 = R$, then $ k_1 \ll 1$.
 In this limit, the lowest-order contribution to the TOV equation is
 %
@@ -288,7 +288,7 @@ From the denominator of \autoref{pressure afo r incompressible} at $r\rightarrow
 for the pressure to remain finite.
 This is an absolute limit of the mass of an object given its radius or vice versa.
 Although this limit is derived for a particular, unrealistic case, the more general statement can be shown to hold.
-General relativity does not allow for a static solution with energy densities greater than this; any such configuration would collapse~\autocite{carrollSpacetimeGeometryIntroduction2019}.
+General relativity does not allow for a static solution with energy densities greater than this limit; any such configuration would collapse~\autocite{carrollSpacetimeGeometryIntroduction2019}.
 
 
 \begin{figure}[h]

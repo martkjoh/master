@@ -35,7 +35,7 @@ px = sp.lambdify(x, p_symb, "numpy")
 fprime = sp.lambdify(x, p_symb.diff(x).simplify())
 
 
-def u(p0, x0=1) -> float:
+def u_fermi(p0, x0=1) -> float:
     """
     Energy density as a funciton of pressure, u = u(p)
     """
@@ -47,15 +47,19 @@ def u(p0, x0=1) -> float:
     return u0
 
 
+k = 8/3*(15/8)**(3/5)
+def u_fermi_nonrel(p):
+    return k*p**(3/5)
+
 # Differential equations to be integrated
 
-def dmdr(r, y, args):
+def dmdr_general(u, r, y, args):
     """Mass equation in dimensionless units"""
     p, m = y
     return 3 * u(p) * r**2
 
-def dpdr(r, y, args):
-    """TOV equation in dimensionless units"""
+def dpdr_general(u, r, y, args):
+    """TOV equation in dimensionless units, for general equation of state"""
     p, m = y
     if r<1e-10:
         p0 = args
@@ -65,11 +69,6 @@ def dpdr(r, y, args):
         Dp = - 1 / r**2 * (p + u(p)) * (3 * p * r**3 + m) /  (1 - 2 * m/r)
         return Dp
 
-
-def f(r, y, args):
-    """y'(r) = f(y, r)"""
-    return dpdr(r, y, args), dmdr(r, y, args)
-
 def stop(r, y, args):
     """Termiation cirerion"""
     p, m = y
@@ -77,21 +76,74 @@ def stop(r, y, args):
 stop.terminal = True # attribute for solve_ivp
 
 
-def sim_many():
-    N = 30
-    log_pmin = -4
-    log_pmax = 2
+N = 150
+log_pmin = -6
+log_pmax = 6
+
+def sim():
     p0s = 10**np.linspace(log_pmin, log_pmax, N)
     sols = []
+
+    # Specialize to tehe fermi equation of state
+    dpdr = lambda r, y, args: dpdr_general(u_fermi, r, y, args)
+    dmdr = lambda r, y, args: dmdr_general(u_fermi, r, y, args)
+    # Standard ODE form, y'(t) = f(y, t)
+    f = lambda r, y, args: (dpdr(r, y, args), dmdr(r, y, args))
+
+    for i, p0 in enumerate(tqdm(p0s)):
+        s = solve_ivp(f, (0, 1e3), (p0, 0), args=(p0,), events=stop, max_step=0.001, dense_output=True)
+        sols.append(s)
+    sols =  np.array(sols)
+
+    np.save("fermi_gas_star/data/sols_neutron", sols)
+
+
+def sim_nonrel():
+    p0s = 10**np.linspace(log_pmin, log_pmax, N)
+    sols = []
+
+    # Specialize to tehe fermi equation of state
+    dpdr = lambda r, y, args: dpdr_general(u_fermi_nonrel, r, y, args)
+    dmdr = lambda r, y, args: dmdr_general(u_fermi_nonrel, r, y, args)
+    # Standard ODE form, y'(t) = f(y, t)
+    f = lambda r, y, args: (dpdr(r, y, args), dmdr(r, y, args))
+
+    for i, p0 in enumerate(tqdm(p0s)):
+        s = solve_ivp(f, (0, 1e3), (p0, 0), args=(p0,), events=stop, max_step=0.001, dense_output=True)
+        sols.append(s)
+    sols =  np.array(sols)
+
+    np.save("fermi_gas_star/data/sols_neutron_non_rel", sols)
+
+
+def dpdr_newt(u, r, y, args):
+    p, m = y
+    p0 = args
+    if r < 1e-10:
+        return - u(p) * u(p0) * r
+    else:
+        return - u(p) * m / r**2
+
+def sim_newt():
+    p0s = 10**np.linspace(log_pmin, log_pmax, N)
+    sols = []
+
+    # Specialize to tehe fermi equation of state
+    dpdr = lambda r, y, args: dpdr_newt(u_fermi_nonrel, r, y, args)
+    dmdr = lambda r, y, args: dmdr_general(u_fermi_nonrel, r, y, args)
+    # Standard ODE form, y'(t) = f(y, t)
+    f = lambda r, y, args: (dpdr(r, y, args), dmdr(r, y, args))
 
     for i, p0 in enumerate(tqdm(p0s)):
         s = solve_ivp(f, (0, 1e3), (p0, 0), args=(p0,), events=stop, max_step=0.01, dense_output=True)
         sols.append(s)
     sols =  np.array(sols)
 
-    np.save("fermi_gas_star/data/sols_electron", sols)
+    np.save("fermi_gas_star/data/sols_neutron_newt", sols)
+
 
 
 if __name__ == "__main__":
-    sim_many()
-
+    sim()
+    sim_nonrel()
+    sim_newt()
