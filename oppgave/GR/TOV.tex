@@ -1,7 +1,7 @@
 \section{The TOV equation}
 
 
-We will model a star as being made up of a \emph{perfect fulid}, with energy density $u$ and pressure $p$.
+We will model a star as being made up of a \emph{perfect fulid}, which is entirely described by its energy density $u$ and pressure $p$.
 The relationship between the pressure and energy density of a substance is called the \emph{equation of state}, or EOS, and has the form
 \begin{equation}
     \label{EOS}
@@ -135,9 +135,9 @@ In their paper, Oppenheimer and Volkoff studied the properties of a star made up
 
 To summarize, we have three unknown functions, $u(r)$, $p(r)$, and $m(r)$.
 The equation of state, \autoref{EOS}, determines $u = u(p)$, eliminating one unknown.
-The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_0$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integrated.
+The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_c$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integrated.
 Given this, we can solve for all the unknown functions, either analytically or numerically.
-However, we can gain some insight into the system without solving these equations, by expressing the problem in terms of dimensionless variables, and corresponding characteristic quantities.
+However, we can gain some insight into the system without solving these equations by expressing the problem in terms of dimensionless variables.
 We define
 %
 \begin{equation}
@@ -147,7 +147,7 @@ We define
     r = r_0 \tilde r.
 \end{equation}
 %
-Here, quantities with subscript $0$ are dimensionful constants, the characteristic quantities, while the tilde indicates a dimensionless variable.
+Here, quantities with subscript $0$ are dimensionful constants, which may be chosen as the characteristic quantities of the problem, while the tilde indicates a dimensionless variable.
 By substituting this into \autoref{diff eq mass} and \autoref{TOV}, we can collect the dimensionful constants into a smaller number of dimensionless constants, $k_i$.
 These constants will decide the nature of the solution.
 Any change in the dimensionful constants that leave the $k_i$'s invariant is a scaling of the problem --- it corresponds to the same solution with different units.
@@ -155,7 +155,7 @@ The new differential equations are
 %
 \begin{align}
     \label{mass relation dimensionless}
-    \diff{ \tilde m}{\tilde r} & = 3 k_2 \tilde \, r^2 \tilde u \\
+    \diff{ \tilde m}{\tilde r} & = 3 k_2\, \tilde r^2 \tilde u \\
     \label{TOV dimensionless}
     \diff{\tilde p}{\tilde r} & 
     = - \frac{k_1}{k_3} \frac{1}{\tilde r^2} \left(k_3\tilde p + \tilde u\right) \left(3 k_2 k_3  \tilde r^3 \tilde p + \tilde m\right) 
@@ -163,6 +163,7 @@ The new differential equations are
 \end{align}
 %
 where the dimensionless constants are defined as
+\todo{Hvor er det best å plassere faktor 3?}
 %
 \begin{equation}
     \label{dimensionless groups}
@@ -171,51 +172,55 @@ where the dimensionless constants are defined as
     k_3 = \frac{p_0}{u_0}.
 \end{equation}
 %
-Given non-complete set of characteristic quantities, these constants gives us an expectation for the order of magnitude of the remaining dimensionful constants.
-By setting $k_i = 1$, we define the remaining, free constants to take a value, which we expect to be the natural units for this system.
+The energy density and pressure are of comparable magnitude in the relativistic regime.
+We will therefore often choose $k_3 = 1$, defining $p_0 = u_0$.
+If we have a non-complete set of characteristic quantities, the dimensionless constants $k_i$ tell us something about the magnitude we should expect the solution to have.
+After defining the remaining dimensionful constants by setting $k_i = 1$, we expect that the dimensionless sizes of a typical solution will be of order 1.
+In other words, the dimensionful constants defined by $k_i = 1$ are new, characteristic quantities given to us by the form of the governing equation only.
 
 
 \subsection{Newtonian limit}
 
 In the Newtonian limit, the rest energy, i.e., mass, is the dominant contribution to the gravitational field.
 This means that the characteristic pressure, $p_0$, is far smaller than the characteristic energy density $u_0$, and we can use the approximation $k_3 \ll 1$.
-Furthermore, the radius of the star should be much larger than the Schwarzschild radius, $R_s = 2 G M$, and thus $ k_1 \ll 1$.
+Furthermore, the radius of the star should be much larger than the Schwarzschild radius, $R_s = 2 G M$.
+If we choose $r_0 = R$, then $ k_1 \ll 1$.
 In this limit, the lowest-order contribution to the TOV equation is
 %
 \begin{equation}
     \label{Newtonian limit TOV}
-    \diff{\tilde p}{\tilde r} = - k \frac{\tilde u \tilde m}{\tilde r^2}, \quad
-    k = G \frac{u_0 m_0}{p_0 r_0}.
+    \diff{\tilde p}{\tilde r} = - \frac{k}{\tilde r^2}\tilde u \tilde m, \quad
+    k = \frac{k_1}{k_3} =  G \frac{u_0 m_0}{p_0 r_0}.
 \end{equation}
 %
 Using the mass equation \autoref{mass relation dimensionless}, we can write this as
 %
 \begin{equation}
-    \tilde r^2 \diff{\tilde p}{\tilde m}
+    4 \pi \tilde r^2 \diff{\tilde p}{\tilde m}
     = - k' \frac{\tilde m}{\tilde r^2}, 
-    \quad k' = \frac{G}{4 \pi } \frac{m_0^2}{r_0^4 p_0}.
+    \quad k' = \frac{4 \pi}{3} \frac{k_1}{k_2 k_3} = G \frac{m_0^2}{r_0^4 p_0}.
 \end{equation}
 %
 This equation has a simple interpretation; the force due to the pressure gradient over a thin, spherical shell, $F_p = 4 \pi r^2 \dd p$, must be counteracted by the gravitational force on the same shell, $F_g = - G m \dd m / r^2$.
-This is illustrated in \autoref{fig: hudrostatic equillibrium}.
+This is illustrated in \autoref{fig: hydrostatic equillibrium}.
 Both the Newtonian limit and the TOV equation are equations of \emph{hydrostatic equilibrium}, where the forces on a small volume of the fluid cancel out.
-In the case of the TOV equation, the assumption of hydrostatic equilibrium was made tacitly when we assumed four-velocity $v_\mu$ of the fluid had a global inertial frame of reference.
+In the case of the TOV equation, we tacitly assumed hydrostatic equilibrium when we gave the fluid a rest frame where we could write $v_\mu = (v_0, 0, 0, 0)$ globaly.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.32\textwidth]{figurer/hydrostatic_equillibrium.pdf}
     \caption{Kladd: The forces acting on a thin shell $\dd m$.}
-    \label{fig: hudrostatic equillibrium}
+    \label{fig: hydrostatic equillibrium}
 \end{figure}
 
-We can eliminate the equation for mass by differentiating \autoref{Newtonian limit TOV} with respect to $\tilde r$, which leaves
-\todo{Make sure constant is right}
+We can eliminate the equation for mass by differentiating \autoref{Newtonian limit TOV} with respect to $\tilde r$.
+This gives us a single equation for hydrostatic equilibrium in the Newtonian limit,
 %
 \begin{equation}
     \diff{}{\tilde r} 
     \left( \frac{\tilde r^2}{\tilde u} \diff{\tilde p}{\tilde r}\right) 
-    = -  k \tilde r^2  \tilde u, \quad
-    k = 4 \pi G \frac{u_0^2 r^2_0}{p_0}.
+    = -  k'' \tilde r^2  \tilde u, \quad
+    k'' = 3 \frac{k_2 k_1}{k_3} = 4 \pi G \frac{u_0^2 r^2_0}{p_0}.
 \end{equation}
 
 
@@ -240,15 +245,15 @@ Inserting this into the differential equation of the mass function, \autoref{mas
 when $r < R$.
 For $r \geq R$, or $\tilde r \geq 1$, this relationship is simply constant $\tilde m(\tilde r) = \tilde m(1) = k_2$.
 We choose $m_0$ to be the gravitational mass of the star, $M = \frac{4 \pi }{3} R^3 u_0$, which is equivalent to setting $k_2 = 1$.
+Lastly, we choose $u_0 = p_0$, so that $k_3 = 1$.
 With this the TOV equation, \autoref{TOV dimensionless}, becomes
 %
 \begin{equation} 
-    k_3 \diff{\tilde p}{\tilde r} 
+    \diff{\tilde p}{\tilde r} 
     = - k_1 \tilde r 
-    \frac{(1 + k_3 \tilde p)(1 + 3 k_3 \tilde p)}{(1 - 2 k_1 \tilde r^2)}.
+    \frac{(1 + \tilde p)(1 + 3 \tilde p)}{(1 - 2 k_1 \tilde r^2)}.
 \end{equation}
 %
-We see that in this case, $k_3$ corresponds to a scaling of the pressure, and we can therefore set $k_3 = 1$.
 This is a separable ODE, and each variable may be integrated separately.
 Using
 %
@@ -270,7 +275,7 @@ together with the boundary condition $p(r = R) = 0$, we get
     {3 \sqrt{1 - 2 k_1 } - \sqrt{1 - 2 k_1 \tilde r^2}}.
 \end{equation}
 %
-We see that the star is completely characterized by $k_1$, while $k_3$ corresponds to scaling the pressure.
+We see that the star is entirely characterized by $k_1$.
 In \autoref{fig: pressure incompressible fluid}, we have plotted the pressure as a function of radius for some values of $k_1$.
 As $k_1$ approaches $0.\bar 4 = 4/9$, the pressure at the center of the star increases rapidly.
 From the denominator of \autoref{pressure afo r incompressible} at $r\rightarrow 0$, we find the limit
@@ -282,6 +287,7 @@ From the denominator of \autoref{pressure afo r incompressible} at $r\rightarrow
 %
 for the pressure to remain finite.
 This is an absolute limit of the mass of an object given its radius or vice versa.
+Although this limit is derived for a particular, unrealistic case, the more general statement can be shown to hold.
 General relativity does not allow for a static solution with energy densities greater than this; any such configuration would collapse~\autocite{carrollSpacetimeGeometryIntroduction2019}.
 
 
@@ -299,10 +305,11 @@ If we expand the solution \autoref{pressure afo r incompressible} in powers of $
     \tilde p(r) = \frac{1}{2} k_1 (1 - \tilde r^2).
 \end{equation}
 %
-As a cross-check, we see that this function obeys the Newtonian limit we derived earlier, \autoref{Newtonian limit TOV}, as $\tilde u = 1$, and the boundary condition $p(\tilde r = 1) = 0$.
+This is the Newtonian limit.
+As a cross-check, we see that this solution obeys the equation of hydrostatic equillibrium in this limit, \autoref{Newtonian limit TOV}, as $\tilde u = 1$ and $k_2 = k_1 = 1$.
 This is the general solution for an incompressible fluid in Newtonian gravity.
-This solution does not have any upper limit for $k_1$, showing that this phenomenon is a purely relativistic phenomenon.
-The Newtonian approximation is compared to the full, relativistic solution.
+This solution does not have any upper limit for $k_1$; the limit $M/R < 4 / 9$ is purely relativistic phenomenon.
+In \autoref{fig: pressure incompressible fluid newtonian}, the Newtonian approximation is compared to the full, relativistic solution.
 We see that the Newtonian approximation is highly accurate for $k_1$ less than around $0.01$.
 
 

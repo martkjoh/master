@@ -15,17 +15,13 @@ The most obvious---and correct---choice as the Lagrangian for $g^{\mu \nu}$ is t
 %
 \begin{equation}
     \label{Einstein-Hilbert action}
-    S_{\text{EH}} = k \int_{\Em} \dd^n x \, \sqrt{|g|}\, R,
+    S_{\text{EH}} = \frac{1}{2\kappa}\int_{\Em} \dd^n x \, \sqrt{|g|}\, R.
 \end{equation}
 %
-where $k$ is a constant.
-This constant can then be related to Newton's constant of gravitation by
-%
-\begin{equation}
-    k = \frac{1}{16 \pi G}.
-\end{equation}
-%
-The total action will include contributions from other fields with an action $S_\text{m}$, so that the total action is
+The $\sqrt{|g|}$-factor is included for the integral to be coordinate-independent, as discussed in  \autoref{subsection: integration on manifolds}.\footnote{The gravitational action can also include a cosmological constant, modifying the Lagrangian to $R + 2 \Lambda$. This constant does not affect the subject of this thesis and is therefore not included here.}
+The $\kappa$ is a constant and decides how strong the coupling of gravity to matter and energy is.
+This constant can then be related to Newton's constant of gravitation $G$ by $\kappa = 8 \pi G$.
+When including the contributions from other fields with an action $S_\text{m}$, the total action becomes 
 %
 \begin{equation}
     S = S_\text{EH} + S_\text{m}.
@@ -52,14 +48,7 @@ The functional derivative of the Einstein-Hilbert action is evaluated in \autore
     R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu} = \kappa T_{\mu \nu},
 \end{equation}
 %
-where $\kappa = 8 \pi G$.
-The left-hand side of the Einstein field equations is called the Einstein tensor,
-%
-\begin{equation}
-    G_{\mu \nu} = R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu}.
-\end{equation}
-%
-This tensor obeys the identity
+The left-hand side of the Einstein field equations is called the Einstein tensor, $G_{\mu \nu} = R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu}$. This tensor obeys the identity
 \begin{equation}
     \label{Einstein tensor bianchi identity}
     \nabla^\mu G_{\mu \nu} = 0,
@@ -130,6 +119,7 @@ The results are
     \right).
 \end{align}
 %
+The symbols not included are zero.
 Substituting these results into \autoref{riemann tensor in terms of christoffel symbols} gives the Riemann tensor curvature tensor.
 We can then obtain the Ricci tensor by taking the trace, as shown in \autoref{Ricci tensor}.
 The results are
