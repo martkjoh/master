@@ -1,0 +1,18 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{spy}
+
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=1.16}
+% \usetikzlibrary{arrows}
+
+\begin{document}
+\centering
+\begin{tikzpicture}
+    [spy using outlines={circle,lens={scale=3}, size=2cm, connect spies}]
+    \draw (0,0) -- (3,3);
+    \spy [blue] on (0.4,0.4)
+             in node [left] at (6.5,1);
+\end{tikzpicture}
+\end{document}

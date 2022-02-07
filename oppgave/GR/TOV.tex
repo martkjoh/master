@@ -67,7 +67,7 @@ Substituting this into \autoref{tt equation} yields
 %
 \begin{equation}
     \label{diff eq mass}
-    \diff{m(r)}{r} = 4 \pi r^2 \, u(r).
+    \odv{m(r)}{r} = 4 \pi r^2 \, u(r).
 \end{equation}
 %
 The solution is simply
@@ -120,7 +120,7 @@ When we substitute this, together with the definition of $m(r)$, into \autoref{r
 %
 \begin{equation}
     \label{TOV}
-    \diff{p}{r}
+    \odv{p}{r}
     =
     -
     \frac{G}{r^2} 
@@ -135,7 +135,7 @@ In their paper, Oppenheimer and Volkoff studied the properties of a star made up
 
 To summarize, we have three unknown functions, $u(r)$, $p(r)$, and $m(r)$.
 The equation of state, \autoref{EOS}, determines $u = u(p)$, eliminating one unknown.
-The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_0$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integrated.
+The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_c$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integrated.
 Given this, we can solve for all the unknown functions, either analytically or numerically.
 However, we can gain some insight into the system without solving these equations by expressing the problem in terms of dimensionless variables.
 We define
@@ -155,9 +155,9 @@ The new differential equations are
 %
 \begin{align}
     \label{mass relation dimensionless}
-    \diff{ \tilde m}{\tilde r} & = 3 k_2\, \tilde r^2 \tilde u \\
+    \odv{ \tilde m}{\tilde r} & = 3 k_2\, \tilde r^2 \tilde u \\
     \label{TOV dimensionless}
-    \diff{\tilde p}{\tilde r} & 
+    \odv{\tilde p}{\tilde r} & 
     = - \frac{k_1}{k_3} \frac{1}{\tilde r^2} \left(k_3\tilde p + \tilde u\right) 
     \left(3 k_2 k_3  \tilde r^3 \tilde p + \tilde m\right) 
     \left(1 - \frac{2 k_1  \tilde m}{\tilde r}\right)^{-1},
@@ -181,30 +181,29 @@ In other words, the dimensionful constants defined by $k_i = 1$ are new, charact
 
 \subsection{Newtonian limit}
 
-In the Newtonian limit, the rest energy, i.e., mass, is the dominant contribution to the gravitational field.
-This means that the characteristic pressure, $p_0$, is far smaller than the characteristic energy density $u_0$, and we can use the approximation $k_3 \ll 1$.
+In the Newtonian limit, the rest energy, i.e., mass, gives the dominant contribution to the gravitational field, while the contribution from pressure is negligible. 
+In other words, the characteristic pressure, $p_0$, is far smaller than the characteristic energy density $u_0$, and we can use the approximation $k_3 \ll 1$.
 Furthermore, the star's radius should be much larger than the Schwarzschild radius, $R_s = 2 G M$.
 If we choose $r_0 = R$, then $ k_1 \ll 1$.
 In this limit, the lowest-order contribution to the TOV equation is
 %
 \begin{equation}
     \label{Newtonian limit TOV}
-    \diff{\tilde p}{\tilde r} = - \frac{k}{\tilde r^2}\tilde u \tilde m, \quad
+    \odv{\tilde p}{\tilde r} = - \frac{k}{\tilde r^2}\tilde u \tilde m, \quad
     k = \frac{k_1}{k_3} =  G \frac{u_0 m_0}{p_0 r_0}.
 \end{equation}
 %
 Using the mass equation \autoref{mass relation dimensionless}, we can write this as
 %
 \begin{equation}
-    4 \pi \tilde r^2 \diff{\tilde p}{\tilde m}
+    4 \pi \tilde r^2 \odv{\tilde p}{\tilde m}
     = - k' \frac{\tilde m}{\tilde r^2}, 
     \quad k' = \frac{4 \pi}{3} \frac{k_1}{k_2 k_3} = G \frac{m_0^2}{r_0^4 p_0}.
 \end{equation}
 %
-This equation has a simple interpretation; the force due to the pressure gradient over a thin, spherical shell, $F_p = 4 \pi r^2 \dd p$, must be counteracted by the gravitational force on the same shell, $F_g = - G m \dd m / r^2$.
-This is illustrated in \autoref{fig: hydrostatic equillibrium}.
-Both the Newtonian limit and the TOV equation are equations of \emph{hydrostatic equilibrium}, where the forces on a small volume of the fluid cancel out.
-In the case of the TOV equation, we tacitly assumed hydrostatic equilibrium when we gave the fluid a rest frame where we could write $v_\mu = (v_0, 0, 0, 0)$ globaly.
+We may derive this equation directly from Newtonian gravity.
+Assume we have a static, gravitationally bound ball of matter, as illustrated in \autoref{fig: hydrostatic equillibrium}.
+The force due to the pressure gradient over a thin, spherical shell, $F_p = 4 \pi r^2 \dd p$, must be counteracted by the gravitational force on the same shell, $F_g = - G m \dd m / r^2$.
 
 \begin{figure}[h]
     \centering
@@ -213,12 +212,14 @@ In the case of the TOV equation, we tacitly assumed hydrostatic equilibrium when
     \label{fig: hydrostatic equillibrium}
 \end{figure}
 
+Both the Newtonian limit and the TOV equation are equations of \emph{hydrostatic equilibrium}, where the forces on a small volume of the fluid cancel out.
+In the case of the TOV equation, we tacitly assumed hydrostatic equilibrium when we gave the fluid a rest frame where we could write $v_\mu = (v_0, 0, 0, 0)$ globally.
 We can eliminate the equation for mass by differentiating \autoref{Newtonian limit TOV} with respect to $\tilde r$.
 This gives us a single equation for hydrostatic equilibrium in the Newtonian limit,
 %
 \begin{equation}
-    \diff{}{\tilde r} 
-    \left( \frac{\tilde r^2}{\tilde u} \diff{\tilde p}{\tilde r}\right) 
+    \odv{}{\tilde r} 
+    \left( \frac{\tilde r^2}{\tilde u} \odv{\tilde p}{\tilde r}\right) 
     = -  k'' \tilde r^2  \tilde u, \quad
     k'' = 3 \frac{k_2 k_1}{k_3} = 4 \pi G \frac{u_0^2 r^2_0}{p_0}.
 \end{equation}
@@ -249,7 +250,7 @@ Lastly, we choose $u_0 = p_0$, so that $k_3 = 1$.
 With this the TOV equation, \autoref{TOV dimensionless}, becomes
 %
 \begin{equation} 
-    \diff{\tilde p}{\tilde r} 
+    \odv{\tilde p}{\tilde r} 
     = - k_1 \tilde r 
     \frac{(1 + \tilde p)(1 + 3 \tilde p)}{(1 - 2 k_1 \tilde r^2)}.
 \end{equation}

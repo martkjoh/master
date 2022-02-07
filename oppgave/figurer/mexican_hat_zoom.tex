@@ -1,0 +1,59 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, spy}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+% \usetikzlibrary{arrows}
+
+\begin{document}
+\centering
+\begin{tikzpicture}[spy using outlines={circle,lens={scale=6}, size=3cm, connect spies}]
+    \begin{axis}[
+        % Gives axis instead of surronding box
+        axis lines=center,
+        view={110}{20},
+        axis equal,
+        samples=50,
+        domain=0:360,       % Angle
+        y domain=0:1.25,    % Radius
+        ymax = 1.5, zmin=0, zmax=0.8,
+        % Setting labels
+        xlabel=$\varphi_1$,
+        x label style={at={(0.296,0.1)}},
+        ylabel=$\varphi_2$,
+        y label style={at={(0.95,0.27)}},
+        zlabel=$\mathcal{V}$,
+        ticks=none,
+        colormap/cool
+    ]
+    \addplot3 [
+        surf,
+        z buffer=sort,
+        ] ({sin(x)*y}, {cos(x)*y}, {(y^2-1)^2});
+
+    \addplot3 [
+        samples=20,
+        domain=320:320,
+        y domain=0.89:1.1
+        ] 
+        ({sin(x)*y}, {cos(x)*y}, {(y^2-1)^2 + 0.02});
+
+    \addplot3 [
+        {<[scale=0.5]}-{>[scale=0.5]},
+        samples=10,
+        samples y=1,
+        domain=310:330,
+        ] 
+        ({sin(x)}, {cos(x)}, {0.02});
+    \coordinate (A) at ({0.89*sin(320)}, {0.89*cos(320)}, {(0.89^2-1)^2+0.02});
+    \coordinate (B) at ({0.87*sin(320)}, {0.87*cos(320)}, {(0.87^2-1)^2+0.02});
+    \coordinate (C) at ({1.1*sin(320)}, {1.1*cos(320)},{(1.1^2-1)^2+0.02});
+    \coordinate (D) at ({1.12*sin(320)}, {1.12*cos(320)},{(1.12^2-1)^2+0.02});
+    \draw [black, thin, -{>[scale=0.5]}] (A) -- (B);
+    \draw [black, thin, -{>[scale=0.5]}] (C) -- (D);
+  \end{axis}
+  \spy[black] on (5.02,2.48) in node [left] at (8,4.5);
+\end{tikzpicture}
+\end{document}

@@ -1,2 +1,129 @@
-\section{Lie groups}
-\todo{Skriv om Lie grupper}
+\section[Lie groups${}^*$]{Lie groups}
+This section is adapted from (PROSJEKTOPPGAVE).
+\todo{Make this section fit better into this thesis}
+
+Lie groups are a natural structure to capture the symmetries of a theory.
+A Lie group is a smooth manifold, i.e., a space that is locally diffeomorphic to $\R^N$.
+This means that we can locally parametrize the space by $N$ real numbers $\eta_\alpha$, using smooth invertible functions.
+A Lie group is also equipped with group structure.
+A group is a set, $G$, together with a map
+%
+\begin{align}
+    (\cdot, \cdot):  G \times G &\longmapsto G ,\\
+    (g_1, g_2) &\longmapsto g_3,
+\end{align}
+% 
+called group multiplication. This map obeys the group axioms, which are the existence of an identity element $\one$, associativity and the existence of an inverse element $g^{-1}$ for all $g\in G$.
+These can be written as
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{l l}
+        $\forall g \in G, $&$ (g, \one) = g, $\\
+        $\forall g_1, g_2, g_3 \in G, $ & $ (g_1, (g_2, g_3)) = ((g_1, g_2), g_3), $\\
+        $\forall g \in G,\, \exists g^{-1} \in G,\, \text{s.t.}, $ & $ (g, g^{-1}) = \one.$
+    \end{tabular}
+\end{table}
+
+In addition, we require that both the multiplication map and the inverse map, $g \mapsto g^{-1}$, are smooth.
+We describe the set of continuous symmetry transformations,
+%
+\begin{equation}
+    G = \setbuilder{g}{g \varphi = \varphi', \, S[\varphi'] = S[\varphi], \D \varphi' = \D \varphi },
+\end{equation}
+%
+as a Lie group.
+The group $G$ might act on $\varphi$ linearly, so $(g\varphi)_i = g_{ij}\varphi_j$, or in a more complicated matter.
+In this case, the group multiplication is composition, i.e., performing transformations in succession.
+This map is closed, as the composite of two symmetry transformations is another symmetry transformation.
+The identity map is a symmetry transformation, and composition is associative.
+This means that invertible symmetry transformations form a group.
+
+We will focus on connected Lie groups, in which all elements $g \in G$ are in the same connected piece as the identity map $\one \varphi = \varphi$.
+This means that for each $g\in G$, one can find a continuous path $\gamma(t)$ in the manifold, such that $\gamma(0) = \one$ and $\gamma(1) = g$.
+Given such a path, we can study transformations close to the identity element.
+As the Lie group is a smooth manifold, we can write\footnote{
+    The factor $i$ is a physics convention and differs from how mathematicians define generators of a Lie group.
+    }
+\begin{equation}
+    \gamma(\epsilon) = \one + i \epsilon V + \Oh{\epsilon}.
+\end{equation}
+%
+$V$ is a generator, and is defined as
+\begin{equation}
+    iV = \odv{\gamma}{t}\Big|_{t=0}.
+\end{equation}
+%
+We can define a path $\gamma$ in $G$ by its path through parameter space $\R^n$, $\gamma(t) = g(\eta(t))$.
+Here, $\eta_\alpha(t)$ is a path through $\R^N$, the coordinates of $G$, such that $\eta_\alpha(0) = 0$ and $g(0) = \one$.
+We can thus write the generator as
+%
+\begin{equation}
+    V = \odv{\gamma}{t}\Big|_{t=0} = \odv{\eta_\alpha}{t}\Big|_{t=0} \pdv{g}{\eta_\alpha}\Big|_{\eta=0}
+    = v_\alpha T_\alpha, \quad 
+    T_\alpha = \odv{\eta_\alpha}{t}\Big|_{t=0}, \quad
+    \pdv{g}{\eta_\alpha}\Big|_{\eta=0}.
+\end{equation}
+%
+One can show that the generators form a vector space, with the basis $T_\alpha$, induced by the coordinates $\eta_\alpha$~\cite{leeSmoothManifolds2012}.
+This vector space is called the tangent space of the identity element, $T_\one G$.
+Infinitesimal transformations can therefore be written as
+\begin{equation}
+    \gamma(\epsilon) = \one + i \epsilon v_\alpha T_\alpha + \Oh{\epsilon}.
+\end{equation}
+%
+The tangent space, together with the additional operation
+\begin{align}
+    [T_\alpha, T_\beta] = iC_{\alpha\beta}^\gamma T_\gamma,
+\end{align}
+%
+called the Lie bracket, form a Lie algebra denoted $\mathfrak{g}$.
+$C_{\alpha \beta}^\gamma$ are called structure constants.
+They obey the Jacobi identity,
+\begin{equation}
+    \label{jacobi identity}
+    C_{\alpha \beta}^\gamma + C_{\beta\gamma}^\alpha +  C_{\gamma\alpha}^\beta = 0,
+\end{equation}
+%
+which mean that they are totally antisymmetric.
+For matrix groups, which we deal with in this text, the Lie bracket is the commutator.
+A subset of the original Lie group, $H \subset G$, closed under the group action, is called a subgroup.
+$H$ then has its own Lie algebra $\mathfrak{h}$, with a set of $m = \dim H$ generators, $t_a$, which is a subset of the original generators $T_\alpha$.
+We denote the remaining set of generators $x_i$, such that $t_a$ and $x_i$ together span $\mathfrak{g}$.
+The commutators of $t_a$ must be closed, which means that we can write
+%
+\begin{align}
+    [t_a, t_b] &= i C_{ab}^{c} t_c,\\
+    [t_a, x_i] &= i C_{ai}^k x_k, \\
+    [x_i, x_j] &= i C_{ij}^k x_k + i C_{ij}^c t_c,
+\end{align}
+%
+where $abc$ runs over the generators of $\mathfrak h$, and $ijk$ runs over the rest.
+The second formula can be derived using the Jacobi identity REF:{jacobi identity}, which implies that $C_{ab}^k = 0 = -C_{ak}^b$.
+This is called a Cartan decomposition.
+
+One parameter subgroups are one special case of Lie subgroups.
+If a curve $\gamma(t)$ through $G$ obey
+%
+\begin{equation}
+    \gamma(t)\gamma(s) = \gamma(t + s), \quad \gamma(0) = \one,
+\end{equation}
+%
+then all the points on this curve from a one parameter subgroup of $G$.
+This path is associated with a generator, 
+
+\begin{equation}
+    \odv{\gamma}{t} \Big|_{t=0} = i \eta_\alpha T_\alpha.
+\end{equation}
+%
+This association is one-to-one, and allows us to define the exponential map,
+\begin{equation}
+    \exp{i \eta_\alpha T_\alpha} := \gamma(1).
+\end{equation}
+%
+For connected and compact Lie groups, all elements of the Lie group $g \in G$ can be written as an exponential of elements in the corresponding Lie algebra $\eta_\alpha T_\alpha \in \mathfrak g$.
+For matrix groups, the exponential equals the familiar series expansion~\cite{leeSmoothManifolds2012}
+%
+\begin{equation}
+    \exp{X} = \sum_n \frac{1}{n!} X^n.
+\end{equation}
+%

@@ -14,21 +14,23 @@ We will be often be dealing with functionals of the form
 Here, $\Ell[\varphi](x)$, the Lagrangian density, is a functional which takes in a function $\varphi$, and returns a real number $\Ell[\varphi](x)$ \emph{for each point} $x \in \Em$.
 Thus, $\Ell$ does, in fact, return a real-valued function, not just a number.
 $\Em$ is the manifold, in our case space-time, of which both $\varphi(x)$ and $\Ell[\varphi](x)$ are functions.
-The function $\varphi$ can, in general, might take on the value of a scalar, complex number, spinor, vector, etc\dots, while $\Ell[\varphi](x)$ must be a scalar-valued function.
-This lays a strong constraint on the form of any Lagrangian and is an essential tool in constructing quantum field theories.
-Although this section is written with a single scalar-valued function $\varphi$, this can easily be generalized by adding an index, $\varphi \rightarrow \varphi_\alpha$, enumerating all the degrees of freedom, then restating the arguments.
+The function $\varphi$ can, in general, take on the value of a scalar, complex number, spinor, vector, etc\dots, while $\Ell[\varphi](x)$ must be a scalar-valued function.
+This strongly constraints the form of any Lagrangian and is an essential tool in constructing quantum field theories.
+Although this section is written with a single scalar-valued function $\varphi$, this can easily be generalized by adding an index, $\varphi \rightarrow \varphi_\alpha$, enumerating all the degrees of freedom, then restating the arguments~\autocite{carrollSpacetimeGeometryIntroduction2019,schwartzQuantumFieldTheory2013}.
 
 
 \subsection{Functional derivative}
 
 The functional derivative is base on an arbitrary \emph{variation} $\eta$ of the function $\varphi$.
-The variation $\eta$, often written $\delta \varphi$ is an arbitrary function only constrained to vanish \emph{quickly enough} at the boundary $\partial \Em$.\footnote{The condition of ``q1uickly enough'' is to ensure that we can integrate by parts and ignore the boundary condition, which we will do without remorse.}
+The variation $\eta$, often written $\delta \varphi$ is an arbitrary function only constrained to vanish \emph{quickly enough} at the boundary $\partial \Em$.\footnote{%
+The condition of ``quickly enough'' is to ensure that we can integrate by parts and ignore the boundary condition, which we will do without remorse.
+}
 The variation of the functional $S$ is defined as
 %
 \begin{equation}
     \delta_\eta S[\varphi] = \lim_{\epsilon \rightarrow 0} \frac{1}{\epsilon}
     \left( S[\varphi + \epsilon \eta] - S[\varphi] \right) 
-    = \diff{}{\epsilon} S[\varphi + \epsilon \eta] |_{\epsilon = 0}.
+    = \odv{}{\epsilon} S[\varphi + \epsilon \eta] |_{\epsilon = 0}.
 \end{equation}
 %
 We can regard the variation of a functional as the generalization of the differential of a function, \autoref{covectors i.e. one forms}, as the best linear approximation around a point.
@@ -43,7 +45,7 @@ In functional calculus, the functional $S$ is analogous to $f$, $\varphi$ to $x$
 We can more clearly see the resemblance by writing
 %
 \begin{equation}
-    \diff{}{\epsilon} f(x + \epsilon v) = \dd f(v) = \diffp{f}{x^\mu} v^\mu.
+    \odv{}{\epsilon} f(x + \epsilon v) = \dd f(v) = \pdv{f}{x^\mu} v^\mu.
 \end{equation}
 %
 In the last line we expanded the differential using the basis-representation, $v = v^\mu\partial_\mu$.
@@ -51,37 +53,36 @@ To generalize this to functional, we define the \emph{functional derivative}, by
 %
 \begin{equation}
     \label{definition functional derivative}
-    \delta_\eta S[\varphi] = \int_\Em \dd^n x \, \diff.delta.{S[\varphi]}{\eta(x)} \eta(x).
+    \delta_\eta S[\varphi] = \int_\Em \dd^n x \, \fdv{S[\varphi]}{\eta(x)} \eta(x).
 \end{equation}
 %
 If we let $S[\varphi] = \varphi(x)$, for some fixed $x$, the variation becomes
 %
 \begin{equation}
-    \delta_\eta[\varphi] = \eta(x) = \int \dd^n y \, \delta(x - y) \eta(y),
+    \delta_\eta S [\varphi] = \eta(x) = \int \dd^n y \, \delta(x - y) \eta(y),
 \end{equation}
 %
 which leads to the identity
 %
 \begin{equation}
-    \diff.delta.{\varphi(x)}{\varphi(y)} = \delta(x - y).
+    \fdv{\varphi(x)}{\varphi(y)} = \delta(x - y).
 \end{equation}
 %
 There is also a generalized chain rule for functional derivatives.
-Let $\psi$ be some function, which may be written in terms of $\varphi$.
-Then chain rule is
+If $\psi$ is some new functional variable, then
 %
 \begin{equation}
-    \diff.delta.{S[\varphi]}{\varphi(x)}
+    \fdv{S[\varphi]}{\varphi(x)}
     = \int_\Em \dd^n y \, 
-    \diff.delta.{S[\varphi]}{\psi(y)}
-    \diff.delta.{\psi(y)}{\varphi(x)}.
+    \fdv{S[\varphi]}{\psi(y)}
+    \fdv{\psi(y)}{\varphi(x)}.
 \end{equation}
 %
 Higher functional derivatives are defined in terms of higher-order variations,
 %
 \begin{equation}
     \delta^m_\eta S[\varphi]
-    = \diff{}{\epsilon} \delta^{m-1}_\eta S[\varphi + \epsilon \eta]|_{\epsilon=0}
+    = \odv{}{\epsilon} \delta^{m-1}_\eta S[\varphi + \epsilon \eta]|_{\epsilon=0}
     = \int_\Em 
     \left(\prod_{i=1}^m \dd^n x_i \eta(x_i)\right) 
     \frac{\delta^m S[\varphi]}{\delta \varphi(x_1)...\delta\varphi(x_m)}.
@@ -92,12 +93,12 @@ With this, we can write the functional Taylor expansion,
 \begin{equation}
     S[\varphi_0 + \varphi]
     = S[\varphi_0]
-    + \int_\Em \dd^n x \, \varphi(x) \diff.delta.{S[\varphi_0]}{\varphi(x)}
-    + \frac{1}{2} \int_\Em \dd^n x \dd^n y \, \varphi(x) \varphi(y) \diff.delta.{S[\varphi_0]}{\varphi(x), \varphi(y)}
+    + \int_\Em \dd^n x \, \varphi(x) \fdv{S[\varphi_0]}{\varphi(x)}
+    + \frac{1}{2} \int_\Em \dd^n x \dd^n y \, \varphi(x) \varphi(y) \fdv{S[\varphi_0]}{\varphi(x), \varphi(y)}
     +\dots
 \end{equation}
 %
-Here, the notation $\diff.delta.{S[\varphi_0]}/{\varphi}$ indicate that $S[\varphi]$ is first differentiated with respect to $\varphi$, then evaluated at $\varphi = \varphi_0$.
+Here, the notation $\fdv{S[\varphi_0]}/{\varphi}$ indicate that $S[\varphi]$ is first differentiated with respect to $\varphi$, then evaluated at $\varphi = \varphi_0$~\autocite{peskinIntroductionQuantumField1995}.
 
 
 \subsection{The Euler-Lagrange equation}
@@ -113,7 +114,7 @@ We use this to evaluate the variation of a functional in the of \autoref{general
 %
 \begin{equation}
     \label{variation of action}
-    \delta_\eta S[\varphi] = \diff{}{\epsilon}
+    \delta_\eta S[\varphi] = \odv{}{\epsilon}
     \int_\Em \dd^n x \, \Ell[\varphi + \epsilon \eta](x),
 \end{equation}
 %
@@ -122,70 +123,73 @@ by Taylor expanding the Lagrangian density as a function of $\varphi$ and its de
 \begin{equation}
     \Ell[\varphi + \epsilon \eta]
     = \Ell
-    \left[
-        \varphi + \epsilon \eta, \partial_\mu\{\varphi + \epsilon \eta\}
-    \right]
-     = \epsilon
     \left(
-        \diffp{\Ell}{\varphi} \eta 
-        + \diffp{\Ell}{(\partial_\mu \varphi)}\partial_\mu\eta 
+        \varphi + \epsilon \eta, \partial_\mu\{\varphi + \epsilon \eta\}
+    \right)
+     = 
+    \Ell[\varphi]
+    +
+    \epsilon
+    \left(
+        \pdv{\Ell}{\varphi} \eta 
+        + \pdv{\Ell}{(\partial_\mu \varphi)}\partial_\mu\eta 
     \right) + \Oh(\epsilon^2).
 \end{equation}
 %
 Inserting this into \autoref{variation of action} and partially integrating the last term allows us to write the variation in the form \autoref{definition functional derivative}, and the functional derivative is
 %
 \begin{equation}
-    \diff.delta.{S}{\varphi} = \diffp{\Ell}{\varphi} - \partial_\mu \diffp{\Ell}{(\partial_\mu \varphi)}.
+    \fdv{S}{\varphi} = \pdv{\Ell}{\varphi} - \partial_\mu \pdv{\Ell}{(\partial_\mu \varphi)}.
 \end{equation}
 %
-The principle of stationary action says that the equation of motion of a field obey $\delta_\eta S = 0$.
-As $\eta$ is arbitrary, this is equivalent to setting the functional derivative of $S$ equal zero.
-The result is the Euler-Lagrange equations of motion,
+The principle of stationary action says that the equation of motion of a field obeys $\delta_\eta S = 0$.
+As $\eta$ is arbitrary, this is equivalent to setting the functional derivative of $S$ equal to zero.
+The result is the Euler-Lagrange equations of motion~\autocite{schwartzQuantumFieldTheory2013},
 %
 \begin{equation}
-    \partial_\mu \diffp{\Ell}{(\partial_\mu \varphi)} - \diffp{\Ell}{\varphi}
+    \pdv{\Ell}{\varphi} 
+    -
+    \partial_\mu \pdv{\Ell}{(\partial_\mu \varphi)}
     = 0.
 \end{equation}
 
 
 \subsection{Functional calculus on a curved manifold}
 \label{subsection: functional calculus on a curved manifold}
-(NEEDS SOME CLEANUP)
 
 As discussed in \autoref{subsection: integration on manifolds}, when integrating a scalar on a curved manifold, we must include the $\sqrt{|g|}$-factor to get a coordinate-independent result.
-The action in curved space-time is therefore
+The action in curved spacetime is therefore~\autocite{carrollSpacetimeGeometryIntroduction2019}
 %
 \begin{equation}
     S[g, \varphi] = \int_\Em \dd^n x \, \sqrt{|g|} \Ell[g, \varphi],
 \end{equation}
 %
 where the action and the Lagrangian now is a functional of both the matter-field $\varphi$ and the metric $g_{\mu \nu}$.
-A general Lagrangian will now take the form
+Our example Lagrangian from last section now takes the form
 \begin{equation}
     \label{Lagrangian curved spacetime}
-    \Ell(g_{\mu \nu}, \varphi, \nabla_\mu \varphi) = \frac{1}{2} g^{\mu \nu} \nabla_\mu \varphi \nabla_\nu \varphi - \frac{1}{2}m^2 \varphi^2 + \dots
+    \Ell(g_{\mu \nu}, \varphi, \nabla_\mu \varphi) = \frac{1}{2} g^{\mu \nu} \nabla_\mu \varphi \nabla_\nu \varphi - \frac{1}{2}m^2 \varphi^2 - \frac{1}{4!}\lambda \varphi^4 \dots,
 \end{equation}
 %
+where partial derivatives are substituted with covariant derivatives.
 We define the functional derivative as
 %
 \begin{equation}
-    \delta_\eta S = \int_\Em \dd^n x \sqrt{|g|} \diff.delta.{S}{\eta(x)} \eta(x).
+    \delta_\eta S = \int_\Em \dd^n x \sqrt{|g|} \fdv{S}{\eta(x)} \eta(x).
 \end{equation}
 %
 If this is a variation in $\varphi$ only, this gives the same result as before.
-However, if we consider the variation $g_{\mu \nu} \rightarrow g_{\mu \nu} + \delta g_{\mu \nu}$, assuming $\Ell$ only depends on $g$ and not its derivatives, we get
+However, in general relativity, the metric itself is a dynamic field, and we may thereofre vary it.
+Consider $g_{\mu \nu} \rightarrow g_{\mu \nu} + \delta g_{\mu \nu}$.
+The variation of the action is then
+assuming $\Ell$ only depends on $g$ and not its derivatives, we get
 %
 \begin{equation}
     \label{result derivation of einstein field equation}
-    \delta_{\delta g} S = \int_\Em \dd^n x \, 
+    \delta_{g} S = \int_\Em \dd^n x \, 
     \left[
         \left(\delta \sqrt{|g|}\right) \Ell[g] + \sqrt{|g|} \delta \Ell[g]
     \right]
-    = \int_\Em \dd^n x \, \sqrt{|g|}
-    \left(
-       \diffp{\Ell}{g^{\mu\nu}}
-    - \frac{1}{2}g_{\mu \nu} \Ell 
-    \right) \delta g^{\mu \nu}.
 \end{equation}
 %
 We have used
@@ -195,27 +199,69 @@ We have used
     \delta \sqrt{|g|} = -\frac{1}{2} \sqrt{|g|}g_{\mu\nu} \delta g^{\mu \nu}
 \end{equation}
 %
-We find this using, for arbitrary $\eta_{\mu \nu}$,
-\todo{clean up}
-\begin{align*}
-    \delta \sqrt{g} &
-    = \lim_{\epsilon \rightarrow 0 } \sqrt{\det(g^{\mu \nu} + \epsilon \eta^{\mu \nu})} - \sqrt{g} 
-    = \frac{1}{2}\sqrt{g} \delta \ln(g) \\
-    \delta \ln(g) &
-    = \lim_{\epsilon \rightarrow 0 } \ln(\det(g_{\mu \rho} [g^\rho{}_\nu - \varepsilon g^{\rho\sigma} \eta_{\sigma \nu}])) - \ln(g)
-    = \lim_{\epsilon \rightarrow 0 } \ln(\det(g^\rho{}_\nu - \varepsilon g^{\rho\sigma} \eta_{\sigma \nu})) \\
-    \det(g + \varepsilon M) &
-    = \frac{1}{n!}\epsilon^{\mu_1...}\epsilon_{\nu_1...}(g + \varepsilon M)^{\nu_1}{}_{\mu_1} ... 
-    = \frac{1}{n!}\varepsilon^{\mu_1...}\varepsilon_{\nu_1...} (g^{\nu_1}{}_{\mu_1} ... + \epsilon M^{\nu_1}{}_{\mu_1}  g^{\nu_2}{}_{\mu_2}...  + ...)\\
-   & = 1 + \frac{1}{n!} \epsilon \varepsilon^{\mu \mu_2...} \varepsilon_{\nu \mu_2...} M^\nu{}_\mu  + \mathcal{O}(\epsilon^2)
-   = 1 + \epsilon M^{\mu}{}_{\mu}  + \mathcal{O}(\epsilon^2)
-\end{align*}
-   Using $\ln(1 + \epsilon x) \sim x$, and $\delta( g^{\mu\nu} g_{\mu\nu}) = 0$, we obtain the desired result. Wit the Lagrangian in \autoref{Lagrangian curved spacetime}, we get
+The variation of the $\sqrt{|g|}$-factor can be evaluated using
+Using the Levi-Civita symbol $\varepsilon_{\mu_1 \dots \mu_n}$, a determinant of a $n \times n$-matrix may be written as
+%
+\begin{equation}
+    \det(A) = \frac{1}{n!} \varepsilon_{\mu_1\dots\mu_n}\varepsilon^{\nu_1\dots\nu_n}
+    A^{\mu_1}{}_{\nu_1} \dots A^{\mu_n}{}_{\nu_n}.
+\end{equation}
+%
+Using this, we can write for a matrix $M$
+%
+\begin{align}
+    \det(\one + \varepsilon M) &
+    = 
+    \frac{1}{n!}
+    \varepsilon_{\mu_1\dots}\varepsilon^{\nu_1\dots}
+    (\one + \epsilon M)^{\mu_1}{}_{\nu_1}  (\one + \epsilon M)^{\mu_2}{}_{\nu_2} \dots\\
+    & =
+    \frac{1}{n!}\varepsilon_{\mu_1\dots} \varepsilon^{\nu_1\dots} 
+    [
+        \delta^{\mu_1}_{\nu_1} \dots 
+        + 
+        \epsilon(
+            M^{\mu_1}{}_{\nu_1} \delta^{\mu_2}_{\nu_1}\dots 
+            + M^{\mu_2}{}_{\nu_2}\delta^{\mu_1}_{\nu_1}\dots 
+            +\dots)
+    + \dots]\\
+   & 
+   = 1 + M^{\mu}{}_{\mu}  + \mathcal{O}(\epsilon^2)
+\end{align}
+%
+Thus,
+%
+\begin{equation}
+    \delta \sqrt{|g|} 
+    = \sqrt{| \det[g_{\mu\nu}(\delta^\nu_\rho + g^{\nu \sigma}\delta g_{\sigma \rho})]|}
+    -\sqrt{|g|}
+    = \sqrt{|g|} 
+    \left(
+        \sqrt{|1 + g^{\mu \nu} \delta g_{\mu \nu}|} - 1
+    \right)
+    = -\frac{1}{2}\sqrt{|g|} g^{\mu \nu} \delta g_{\mu \nu}.
+\end{equation}
+%
+The minus sign is included as the determinant of a Lorentzian metric is negative. 
+Assuming the Lagrangian only depneds on the metric directly, and not its derivatives, the variation of the action is
+%
+\begin{equation}
+    \delta_g S
+    = 
+    \int_\Em \dd^n x \, \sqrt{|g|}
+    \left(
+       \pdv{\Ell}{g^{\mu\nu}}
+    - \frac{1}{2}g_{\mu \nu} \Ell 
+    \right) \delta g^{\mu \nu}.
+\end{equation}
+%
+   With the Lagrangian in \autoref{Lagrangian curved spacetime}, we get
+%
 \begin{equation}
     \label{functional derivative with respect to metric}
-    \diff.delta.{S}{g^{\mu \nu}}
+    \fdv{S}{g^{\mu \nu}}
     =
-    \diffp{\Ell}{g^{\mu\nu}}
+    \pdv{\Ell}{g^{\mu\nu}}
     - \frac{1}{2}g_{\mu \nu} \Ell 
     =
     - \frac{1}{2}
@@ -283,7 +329,7 @@ and by the definition of the functional derivative,
 %
 \begin{equation}
     \label{functional derivatie einstein-hilber action}
-    \diff.delta.{S_{\text{EH}}}{g^{\mu \nu}} 
+    \fdv{S_{\text{EH}}}{g^{\mu \nu}} 
     =
     k(R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu}).
 \end{equation}

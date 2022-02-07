@@ -79,7 +79,7 @@ This map may be illustrated by a diagram,
 %
 %
 We will not be careful with the distinction between $F$, the function between the abstract manifolds, and $\tilde F$, the function of their coordinates, but rather denote both by $F(x)$.
-We may take the partial derivative of such a function with respect to the coordinates $x$, $\diffp{F}/{x^\mu}$.
+We may take the partial derivative of such a function with respect to the coordinates $x$, $\pdv{F}/{x^\mu}$.
 However, this is dependent on our choice of coordinates, as a set of local coordinates can always be scaled arbitrarily.
 Any physical theory must be independent of our choice of coordinates, so our next task is to define the properties of a smooth manifold in a coordinate independent way.
 
@@ -100,21 +100,21 @@ As we are always taking the derivative of functions between $\R^n$, for differen
 The directional derivative of $f$ at $p$, given by this curve $\gamma$, is then
 %
 \begin{equation}
-    \diff{}{\lambda} f(x(\lambda)) \bigg |_p = \diff{x^\mu}{\lambda} \bigg |_{\lambda = 0}  \diffp{}{x^\mu} f(x) \bigg |_p.
+    \odv{}{\lambda} f(x(\lambda)) \bigg |_p = \odv{x^\mu}{\lambda} \bigg |_{\lambda = 0}  \pdv{}{x^\mu} f(x) \bigg |_p.
 \end{equation}
 %
-The set of all such directional derivatives, $\diff{}/{\lambda}$ at $p$, form a vector space, $T_p \Em$, called the \emph{tangent space}.
+The set of all such directional derivatives, $\odv{}/{\lambda}$ at $p$, form a vector space, $T_p \Em$, called the \emph{tangent space}.
 The tangent space is illustrated in \autoref{fig: tangent space}.
 The coordinates $x^\mu$ induce a basis of this vector space, namely partial derivatives with respect to the coordinate functions at $p$
 %
 \begin{equation}
-    e_\mu = \diffp{}{x^\mu} \bigg|_p = \partial_\mu|_p, \quad \mu \in \{0, ... n-1\}.
+    e_\mu = \pdv{}{x^\mu} \bigg|_p = \partial_\mu|_p, \quad \mu \in \{0, ... n-1\}.
 \end{equation}
 %
 Any element $v \in T_p \Em$ can therefore be written
 %
 \begin{equation}
-    v = v^\mu \partial_\mu |_p = \diff{x^\mu}{\lambda}\Big |_{\lambda = 0} \diffp{}{x^\mu}\Big |_p.
+    v = v^\mu \partial_\mu |_p = \odv{x^\mu}{\lambda}\Big |_{\lambda = 0} \pdv{}{x^\mu}\Big |_p.
 \end{equation}
 %
 Here, $\lambda$ is the parameter of the curve corresponding to the directional derivative $v$.\footnote{%
@@ -161,13 +161,13 @@ Then,
 %
 \begin{equation}
     \dd F_p (\partial_\mu) (g) = \partial_\mu (g \circ F) |_p 
-    = \diffp{F^\nu}{x^\mu}\Big |_p \diffp{g}{y^\nu} \Big  |_{F(p)},
+    = \pdv{F^\nu}{x^\mu}\Big |_p \pdv{g}{y^\nu} \Big  |_{F(p)},
 \end{equation}
 %
 or more suggestively
 %
 \begin{equation}
-    \dd F \left( \diffp{}{x^\mu} \right) = \diffp{F^\nu}{x^\mu} \diffp{}{y_\nu}.
+    \dd F \left( \pdv{}{x^\mu} \right) = \pdv{F^\nu}{x^\mu} \pdv{}{y_\nu}.
 \end{equation}
 %
 This is a linear map of vectors between two vectors by the matrix $A_\mu{}^\nu = \partial_\mu F^\nu$.
@@ -177,11 +177,11 @@ In the case of a real valued function, $f: \Em \mapsto \R$, and $g : \R \mapsto 
 \begin{equation}
     \dd f (v) (g) 
     = v(g \circ f) 
-    = (v^\mu \partial_\mu f) \, \diff{g}{y}.
+    = (v^\mu \partial_\mu f) \, \odv{g}{y}.
 \end{equation}
 %
 $\dd f$ is thus a map from $T_p \Em$ to $T_{f(p)}\R$, which is isomorphic to $\R$.
-The $g$ be the identity function, so that $\diff{g}/{y} = 1$.
+The $g$ be the identity function, so that $\odv{g}/{y} = 1$.
 Then, the differential of a scalar function, also called a 1-form, is a map from vectors $v$ to real numbers,
 %
 \begin{equation}
@@ -196,7 +196,7 @@ We can regard each coordinate function as a real-valued function with a correspo
 This differential obeys
 %
 \begin{equation}
-    \dd x^\mu (\partial_\nu) = \diffp{x^\mu}{x_\nu} = \delta^\mu_\nu.
+    \dd x^\mu (\partial_\nu) = \pdv{x^\mu}{x_\nu} = \delta^\mu_\nu.
 \end{equation}
 %
 The differentials of the coordinate functions thus form a basis for $T^*_p \Em$, called the dual basis.
@@ -205,7 +205,7 @@ We finde the components by applying the differential to the coordinate basis, $\
 In other words, we recover the classical expression 
 %
 \begin{equation}
-    \dd f = \diffp{f}{x^\mu} \dd x^\mu,
+    \dd f = \pdv{f}{x^\mu} \dd x^\mu,
 \end{equation}
 however we now interpret it as a covector-field instead of an ``infinitesimal displacement''.
 
@@ -261,21 +261,21 @@ The vector field $v(x)$ is unchanged by a coordinate-transformation $x^\mu \righ
 However, with a new set of coordinates, we get a new set of basis vectors, $\partial'_\mu$:
 %
 \begin{equation}
-    v = v^\mu \partial_\mu = v^\mu \diffp{x'^\nu}{x^\mu} \partial'_\nu
+    v = v^\mu \partial_\mu = v^\mu \pdv{x'^\nu}{x^\mu} \partial'_\nu
     = v'^\mu \partial_\mu',
 \end{equation}
 %
 This gives us the transformation rules for the components of vectors,
 %
 \begin{equation}
-    v'^\mu = \diffp{x'^\mu}{x^\nu} v^\nu.
+    v'^\mu = \pdv{x'^\mu}{x^\nu} v^\nu.
 \end{equation}
 %
 Tangent vectors are also called \emph{contravariant} vectors, as their components transform contra to basis vectors.
 For covectors, it is
 %
 \begin{equation}
-    \omega'_\mu = \diffp{x^\nu}{x'^\mu} \omega_\nu,
+    \omega'_\mu = \pdv{x^\nu}{x'^\mu} \omega_\nu,
 \end{equation}
 %
 which is why covectors also are called \emph{covariant} vectors.
@@ -396,7 +396,7 @@ and $\dd x^\mu$ is the one-form corresponding to the $x^\mu$-coordinate function
 Given a different set of coordinates, $x'^\mu$, these are related by
 %
 \begin{equation}
-    \dd^n x = \det\left( \diffp{x}{x'} \right) \, \dd^n x',
+    \dd^n x = \det\left( \pdv{x}{x'} \right) \, \dd^n x',
 \end{equation}
 %
 by the properties of the wedge product.
@@ -404,7 +404,7 @@ by the properties of the wedge product.
 We define $|g| = |\det(g_{\mu \nu })|$, which, by the transformation properties of tensors, transforms as
 %
 \begin{equation}
-    \sqrt{|g'|} = \left| \det\left(\diffp{x'}{x} \right) \right| \sqrt{|g'|},
+    \sqrt{|g'|} = \left| \det\left(\pdv{x'}{x} \right) \right| \sqrt{|g'|},
 \end{equation}
 %
 This means that we can use this to compensate for the transformation of $\dd^n x$, and get a volume form with a coordinate independent expression,

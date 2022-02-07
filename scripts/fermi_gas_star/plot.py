@@ -21,7 +21,7 @@ def load_sols(name="neutron"):
  
 def plot_norm_pressure_mass():
     all_sols = load_sols()
-    sols = all_sols[29:92:2]
+    sols = all_sols[40:120:5]
     N = len(sols)
      
     
@@ -52,7 +52,7 @@ def plot_norm_pressure_mass():
     ax[1].plot(r, m, "--k", lw=2, label="$M_\\mathrm{max}$")
 
 
-    ax[0].set_ylabel("$p/p(0)$")
+    ax[0].set_ylabel("$p/p_c$")
     ax[1].set_ylabel("$m/M$")
     ax[1].set_xlabel("$r / R$")
 
@@ -63,7 +63,7 @@ def plot_norm_pressure_mass():
     cmap.set_array([])
 
     cb = fig.colorbar(cmap, ax=ax, location="right")
-    cb.set_label( label="$\log_{10} [p(0) / p_0] $", labelpad=25, rotation=270)
+    cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
 
     fig.legend(bbox_to_anchor=(0.73, 0.87))
     fig.savefig("figurer/pressure_mass.pdf", bbox_inches="tight")
@@ -125,7 +125,7 @@ def plot_mass_radius(name="neutron"):
     lc.set_array(z)
     line = ax.add_collection(lc)
     cb = fig.colorbar(line, ax=ax)
-    cb.set_label( label="$\log_{10} [p(0) / p_0] $", labelpad=25, rotation=270)
+    cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
 
 
     i = np.argmax(M)
@@ -134,7 +134,7 @@ def plot_mass_radius(name="neutron"):
 
     R_oppenheimer = [21.1, 13.3, 9.5, 6.8, 3.1]
     M_oppenheimer = [0.4, 0.6, 0.71, 0.64, 0.34]
-    ax.plot(R_oppenheimer, M_oppenheimer, "o", ms=10, fillstyle="none", label="Oppenheimer Volkoff")
+    ax.plot(R_oppenheimer, M_oppenheimer, "o", ms=10, fillstyle="none", label="Oppenheimer-Volkoff")
 
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
@@ -148,8 +148,9 @@ def plot_mass_radius(name="neutron"):
 def plot_mass_radius_nonrel():
     sols1 = load_sols("neutron")
     sols2 = load_sols("neutron_non_rel")
-    sols3 = load_sols("neutron_newt")
-    sols = [sols1, sols2, sols3]
+    sols3 = load_sols("neutron_newt_rel")
+    sols4 = load_sols("neutron_newt")
+    sols = [sols1, sols2, sols3, sols4]
 
     N = len(sols1)
     assert N == len(sols2); assert N ==len(sols3)
@@ -163,28 +164,42 @@ def plot_mass_radius_nonrel():
 
     fig, ax = plt.subplots(figsize=(16, 8))
 
-    for data in datas:
+    linestyles = ["-", "-.", "--", ":"]
+    labels = [
+        "Relativistic EOS + TOV",
+        "Newtonian EOS + TOV",
+        "Relativistic EOS + Newtonian gravity",
+        "Newtonian EOS + Newtonian gravity"
+        ]
+
+    for i, data in enumerate(datas):
         R, M, p0 = [np.array(d) for d in data]
 
         # plot line (x, y) with z giving values to colormap
         x, y = R*r0, M*m0
         z = log(p0)
-    
-        # I do not understand this...
+
+        # hack to get multi-colored line
+        # https://nbviewer.org/github/dpsanders/matplotlib-examples/blob/master/colorline.ipynb
         norm = colors.Normalize(z.min(), z.max())
-        points = np.array([x, y]).T.reshape(-1,1,2)
-        segments = np.concatenate([points[:-2], points[1:-1], points[2:]], axis=1)
-        lc = collections.LineCollection(segments, cmap='viridis', norm=norm)
-        lc.set_array(z)
+        m = 10
+        n = len(x) // m
+        assert m*n + 1 == len(x) # Are all points included?
+        segments = [[[x[j], y[j]] for j in range(i*m, (i+1)*m+1)] for i in range(n)]
+        lc = collections.LineCollection(segments, cmap='viridis', norm=norm, ls=linestyles[i], label=labels[i])
+        lc.set_array(z[::m])
         line = ax.add_collection(lc)
+        
+
     cb = fig.colorbar(line)
-    cb.set_label( label="$\log_{10} [p(0) / p_0] $", labelpad=25, rotation=270)
+    cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
 
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
-    ax.set_ylim(0, 1.6)
+    ax.set_ylim(0, 1.8)
     ax.set_xlim(0, 45)
-    # plt.show()
+
+    plt.legend(prop={'size': 14})
     fig.savefig("figurer/mass_radius_comparison.pdf", bbox_inches="tight")
     
 
@@ -206,8 +221,6 @@ def plot_eos():
     fig.savefig("figurer/fermi_eos.pdf", bbox_inches="tight")
     
 
-
-# sim_many()
 
 
 # plot_norm_pressure_mass()

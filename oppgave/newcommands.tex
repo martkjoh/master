@@ -1,4 +1,6 @@
- % Lagrangian L
+% Chiral pertubation theory
+\newcommand{\chpt}[0]{\ensuremath{\chi \text{PT}}} 
+% Lagrangian L
 \newcommand{\Ell}{\mathcal{L}}
 % Hamiltonian H
 \newcommand{\He}{\mathcal{H}}
@@ -13,22 +15,32 @@
 \newcommand{\Oh}{\mathcal O}
 % Real numbers
 \newcommand{\R}{\mathbb{R}}
+% Funcitonal integral D
+\newcommand{\D}{\mathcal D}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\const}{\mathrm{const.}}
-\newcommand{\dd}{\text{d}}
 % Identity matice/operation
 \newcommand{\one}{\text{\usefont{U}{bbold}{m}{n}1}}
 \MakeRobust{\one}
+%! Fix these
+\newcommand{\Olie}{\text O}
+\newcommand{\SO}{\text{SO}}
 
-\DeclareMathOperator{\arcsinh}{arcsinh}
-
+% operator in braket
+\newcommand{\inner}[3]{\left\langle #1 {\left| #2 \right|} #3 \right\rangle}
+% expectationvalue
+\newcommand{\ex}[1]{\left\langle #1 \right\rangle}
 
 % Set builder notation
 \newcommand{\setbuilder}[2]{\left\{\, #1 \mid #2 \,\right\}}
+% Time ordering operator
 \newcommand{\T}[1]{\textrm{T} \left\{ #1 \right\}}
 
 % Using diffcoeff instead
-% \newcommand{\fdiff}{\diff.delta.}
+% \newcommand{\}{\fdv}
+ 
 
 % Floor function
-% \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+

@@ -76,7 +76,7 @@ def stop(r, y, args):
 stop.terminal = True # attribute for solve_ivp
 
 
-N = 150
+N = 151
 log_pmin = -6
 log_pmax = 6
 
@@ -141,9 +141,28 @@ def sim_newt():
 
     np.save("fermi_gas_star/data/sols_neutron_newt", sols)
 
+def sim_newt_rel():
+    p0s = 10**np.linspace(log_pmin, log_pmax, N)
+    sols = []
+
+    # Specialize to tehe fermi equation of state
+    dpdr = lambda r, y, args: dpdr_newt(u_fermi, r, y, args)
+    dmdr = lambda r, y, args: dmdr_general(u_fermi, r, y, args)
+    # Standard ODE form, y'(t) = f(y, t)
+    f = lambda r, y, args: (dpdr(r, y, args), dmdr(r, y, args)) 
+
+    for i, p0 in enumerate(tqdm(p0s)):
+        s = solve_ivp(f, (0, 1e3), (p0, 0), args=(p0,), events=stop, max_step=0.001, dense_output=True)
+        sols.append(s)
+    sols =  np.array(sols)
+
+    np.save("fermi_gas_star/data/sols_neutron_newt_rel", sols)
+
+
 
 
 if __name__ == "__main__":
-    sim()
-    sim_nonrel()
-    sim_newt()
+    # sim()
+    # sim_nonrel()
+    # sim_newt()
+    sim_newt_rel()

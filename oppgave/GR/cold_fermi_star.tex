@@ -1,10 +1,7 @@
 \section{A star of cold, non-interacting fermions}
 \label{section: cold fermi star}
 
-
-Ekstra kilder: \autocite{andersenIntroductionStatisticalMechanics2012,glendenningCompactStarsNuclear2012}
-\todo{Ha kilder på riktig sted}
-
+This section is based on~\autocite{glendenningCompactStarsNuclear2012,andersenIntroductionStatisticalMechanics2012,kapustaFiniteTemperatureFieldTheory2006}.
 
 \subsection{Thermodynamics and free energy}
 
@@ -16,11 +13,11 @@ A non-interacting Fermi gas is governed by the Dirac Lagrangian
 %
 as described in (APPENDIX thermal field theory).
 \todo{add appendix}
-In the grand canoncial ensamble, the density of a conserved charge is regulated by a chemical potential $\mu$.
+In the grand canonical ensemble, the density of a conserved charge is regulated by a chemical potential $\mu$.
 The conserved current corresponding to the $\text U(1)$ phase symmetry of the Dirac Lagrangian, i.e., the transformation $\psi \rightarrow e^{i \alpha} \psi \approx 1 + \alpha \delta \psi$, is
 %
 \begin{equation}
-    j^\mu = \diffp{\Ell}{(\partial_\mu \psi)} \delta \psi = \bar \psi \gamma^\mu \psi.
+    j^\mu = \pdv{\Ell}{(\partial_\mu \psi)} \delta \psi = \bar \psi \gamma^\mu \psi.
 \end{equation}
 %
 The conserved charge is
@@ -40,9 +37,9 @@ Here, $p$ is pressure, $T = {1}/{\beta}$ is temperature, and $S$ entropy.
 These thermodynamic variables are related to the free energy by
 %
 \begin{equation}
-    S = - \diffp{F}{T} = \beta^2 \diffp{F}{\beta}, \quad
-    Q = - \diffp{F}{\mu}, \quad
-    p = - \diffp{F}{V}.
+    S = - \pdv{F}{T} = \beta^2 \pdv{F}{\beta}, \quad
+    Q = - \pdv{F}{\mu}, \quad
+    p = - \pdv{F}{V}.
 \end{equation}
 %
 When the free energy can be written as $F = V \Eff$, where the free energy density $\Eff$ is independent of the volume $V$, then $\Eff = - p$ and
@@ -61,19 +58,19 @@ allowing us to write
 where $s$ and $n$ are entropy and charge density, defined by
 %
 \begin{equation}
-    s = - \diffp{\Eff}{T} = \beta^2 \diffp{\Eff}{\beta}, \quad
-    n = - \diffp{\Eff}{\mu}.
+    s = - \pdv{\Eff}{T} = \beta^2 \pdv{\Eff}{\beta}, \quad
+    n = - \pdv{\Eff}{\mu}.
 \end{equation}
 %
-With this, we can write the energy density as
+With this, we can write the energy density as~\autocite{andersenIntroductionStatisticalMechanics2012}
 %
 \begin{equation}
-    u = \diffp{}{\beta} \left(\beta \Eff\right) + \mu n.
+    u = \pdv{}{\beta} \left(\beta \Eff\right) + \mu n.
 \end{equation}
 
 
 \subsection{Equation of state}
-The free energy density of the Fermion gas is (REF: appendix felt teori)\todo{inkluder appendix om termisk felt-teori}
+The free energy density of the Fermion gas is (REF: appendix termisk)
 %
 \begin{equation}
     \Eff = - 
@@ -281,15 +278,15 @@ Description of the code and where to find it is given in \autoref{appendix: code
 With our choice of units, the form of the TOV equation is
 %
 \begin{align}
-    \diff{\tilde m}{\tilde r} 
+    \odv{\tilde m}{\tilde r} 
     = 3 \tilde r^2 \tilde u, \quad
-    \diff{\tilde p}{\tilde r} 
+    \odv{\tilde p}{\tilde r} 
      = - \frac{1}{\tilde r^2} \left(\tilde p + \tilde u\right) 
     \left(3  \tilde r^3 \tilde p + \tilde m\right) 
     \left(1 - \frac{2 \tilde m}{\tilde r}\right)^{-1}.
 \end{align}
 %
-As $r \rightarrow 0$, parts of the TOV equation \autoref{TOV dimensionless} diverge, and we must take use an approximation for numeric evaluation.
+As $r \rightarrow 0$, parts of the TOV equation \autoref{TOV dimensionless} approaches a $0/0$-limit, and we must take use of an approximation for numeric evaluation.
 The Taylor-expansion of the mass function around $\tilde r = 0$ is
 %
 \begin{equation}
@@ -310,7 +307,7 @@ where $\tilde u_0 = \tilde u(r = 0)$.
 We get an approximation of the TOV equation for $\tilde r \ll 1$ by substituting the $\tilde m$ for its Taylor expansion and including only the leading-order term, which gives
 %
 \begin{equation}
-    \diff{\tilde p}{\tilde r}
+    \odv{\tilde p}{\tilde r}
     \sim - \tilde r \, \left(\tilde p + \tilde u\right)
     \left( 3 \tilde p + \tilde u_0  \right)
     \left(1 - 2 \tilde u_0 \tilde r^2\right)^{-1}, \quad r\rightarrow 0
@@ -319,7 +316,7 @@ We get an approximation of the TOV equation for $\tilde r \ll 1$ by substituting
 For the Newtonian approximation to the TOV equation, we get
 %
 \begin{equation}
-    \diff{\tilde p}{\tilde r} = -\frac{\tilde u \tilde m}{\tilde r^2}
+    \odv{\tilde p}{\tilde r} = -\frac{\tilde u \tilde m}{\tilde r^2}
     \sim - \tilde u \tilde u_0 \tilde r,  \quad r\rightarrow 0.
 \end{equation}
 
@@ -328,14 +325,18 @@ The top graph in \autoref{fig: pressure and mass as a function of radius} shows 
 The stellar radius, $R$, is defined as the point where the pressure drops to zero, i.e., $p(R) = 0$.
 The boundary conditions are logarithmically spaced.
 The lower graph in \autoref{fig: pressure and mass as a function of radius} shows the mass, normalized to the total mass $M = m(R)$, as a function of the radius, again normalized to the stellar radius.
-As in the case of the incompressible fluid, the pressure follows a half bell-shaped curve, with a peak that becomes narrower as the central pressure increases.
+As in the case of an incompressible fluid, the pressure follows a half bell-shaped curve, with a peak that becomes narrower as the central pressure increases.
 The black dashed line corresponds to the solution with the maximum mass.
-We see that the shape of the pressure and mass plots changes most drastically for central pressures higher than that which corresponds to the most massive star.
+We see that the pressure and mass curves change most drastically for central pressures higher than that which corresponds to the most massive star.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{../scripts/figurer/pressure_mass.pdf}
-    \caption{The pressure noramlized to central value (top) and the mass normalized to total mass (bottom), as a function of radius, nomralized to total radius. This is plotted for several different values of central pressure, which is indicated by the color shceme.}
+    \caption{
+        Top: The pressure normalized to central value, as a function of radius, normalized to the stellar radius.
+        Bottom: The mass normalized to the total mass, as a function of radius, normalized to the stellar radius. 
+        This is plotted for several different values of central pressure, which is indicated by the color shceme.
+        }
     \label{fig: pressure and mass as a function of radius}
 \end{figure}
 
@@ -344,7 +345,7 @@ In \autoref{fig: mass radius relationship fermi gas}, we see the relationship be
 This line is parameterized by the base-10 logarithm of the central pressure, $p(0)$, normalized by $p_0 = u_0$.
 The cross marks the maximum mass, $M_\mathrm{max} = 0.711 \, M_\odot$, which corresponds to a radius of $R = 9.20 \, \mathrm{km}$.
 This matches the results obtained by Oppenheimer and Volkoff~\cite{oppenheimerMassiveNeutronCores1939}, $M_\mathrm{max} = 0.71$.
-In their 1939 paper, Oppenheimer and Volkoff computed five data points in the mass-radius space.
+In their 1939 paper, Oppenheimer and Volkoff computed five data points in the mass-radius plane.
 The results are marked by blue circles in \autoref{fig: mass radius relationship fermi gas}.
 We find good agreement between the three points closest to the maximum value and our results.
 However, the two results of Oppenheimer and Volkoff furthest away differ significantly from our results.
@@ -355,7 +356,7 @@ The black dashed line is the absolute mass-radius constraint, \autoref{mass radi
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_neutron.pdf}
-    \caption{The mass-radius relationship of a star made of a cold gas of neutrons. The line is parametrized by the central pressure $p(0)$. The corss indicate the maximum mass solution. The blue circles are results form the 1939 paper of Oppenheimer and Volkof~\autocite{oppenheimerMassiveNeutronCores1939}.}
+    \caption{The mass-radius relationship of a star made of a cold gas of neutrons. The line is parametrized by the central pressure $p_c$. The corss indicate the maximum mass solution. The blue circles are results form the 1939 paper of Oppenheimer and Volkof~\autocite{oppenheimerMassiveNeutronCores1939}.}
     \label{fig: mass radius relationship fermi gas}
 \end{figure}
 
@@ -374,4 +375,9 @@ This last approximation does not seem to have an upper limit for the mass, as ex
     \label{fig: mass radius relationship comparison}
 \end{figure}
 
-
+\todo[inline]{
+    Comment on instabillity
+}
+\todo[inline]{
+    Comment why radius decrease with mass. Can this be shown in the Newtonian limit?
+}
