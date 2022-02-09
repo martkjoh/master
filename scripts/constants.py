@@ -11,8 +11,11 @@ MeV = 1.60218e-19*1e6
 # Nuclear mass
 m_N = 939.57*MeV/c**2
 # pion decay constant
-f_pi = 130.2/sqrt(2)*MeV
-m_pi = 134.98*MeV/c**2
+# f_pi = 130.2/sqrt(2)*MeV
+f_pi = 90.5*MeV
+# m_pi = 134.98*MeV/c**2
+m_pi = 131*MeV/c**2
+
 
 def get_const_fermi_gas():
     """Constants fermi gas"""

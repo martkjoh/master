@@ -1,10 +1,13 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 
 from numpy import pi, sqrt, log10 as log
 from matplotlib import cm, colors, collections
 
+sys.path.append(sys.path[0] + "/..")
+from integrate_tov import get_u
+from constants import get_const_pion
 
 plt.rc("font", family="serif", size=20)
 plt.rc("mathtext", fontset="cm")
@@ -12,14 +15,68 @@ plt.rc("lines", lw=2)
 plt.rc("axes", grid=True)
 plt.rc("grid", linestyle="--", alpha=1)
 
+u0, m0, r0 = get_const_pion()
 
 
-def load_sols(name="neutron"):
-    return np.load("pion_star/data/sols_"+name+".npy", allow_pickle=True)
+def load_sols():
+    return np.load("pion_star/data/sols.npy", allow_pickle=True)
+
+
+def plot_pressure_mass():
+    all_sols = load_sols()
+    sols = all_sols[::8]
+    N = len(sols)
+     
+    
+    fig, ax = plt.subplots(2, figsize=(14, 10), sharex=True)
+    [a.grid(linestyle="--", alpha=1, lw=0.4) for a in ax]
+    p0s = []
+    for i, s in enumerate(sols):
+        p, m = s.y
+        r = s.t
+        R = r[-1]
+        M = m[-1]
+        p0 = p[0]
+        p0s.append(p0)
+
+        c = cm.viridis(i/N)
+
+        ax[0].plot(r/R, p/p0, color=c, alpha=0.6)
+        ax[1].plot(r/R, m/M, lw=2,  color=c, alpha=0.6)
+
+    M = [s.y[1][-1] for s in all_sols]
+    i = np.argmax(M)
+    m = all_sols[i].y[1] / M[i]
+    p = all_sols[i].y[0]
+    p = p / p[0]
+    r = all_sols[i].t
+    r = r/r[-1]
+    ax[0].plot(r, p, "--k", lw=2)
+    ax[1].plot(r, m, "--k", lw=2, label="$M_\\mathrm{max}$") 
+
+
+    ax[0].set_ylabel("$p/p_c$")
+    ax[1].set_ylabel("$m/M$")
+    ax[1].set_xlabel("$r / R$")
+
+    c = np.arange(1, 5 + 1)
+
+    norm = colors.Normalize(vmin=log(p0s[0]), vmax=log(p0s[-1]))
+    cmap = cm.ScalarMappable(norm=norm, cmap=cm.viridis)
+    cmap.set_array([])
+
+    cb = fig.colorbar(cmap, ax=ax, location="right")
+    cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
+
+    fig.legend(bbox_to_anchor=(0.73, 0.87))
+
+
+    fig.savefig("figurer/pressure_mass_pion_star.pdf", bbox_inches="tight")
+
 
 
 def plot_mass_radius(name="tree"):
-    sols = load_sols(name)
+    sols = load_sols()
     N = len(sols)    
 
     data = [[], [], []]
@@ -27,40 +84,53 @@ def plot_mass_radius(name="tree"):
         data[0].append(s.t[-1])
         data[1].append(s.y[1][-1])
         data[2].append(s.y[0][0])
-    R, M, p0 = [np.array(d) for d in data]
-    print(R)
-    print(M)
+
+
+    R, M, pc = [np.array(d) for d in data]
+    x, y, z = R*r0, M*m0, log(pc)
 
     fig, ax = plt.subplots(figsize=(16, 8))
 
-    ax.plot(R, M, "--xk")
+    norm = colors.Normalize(z.min(), z.max()) 
+    points = np.array([x, y]).T.reshape(-1,1,2)
+    segments = np.concatenate([points[:-2], points[1:-1], points[2:]], axis=1)
+    lc = collections.LineCollection(segments, cmap='viridis', norm=norm)
+    lc.set_array(z)
+    line = ax.add_collection(lc)
+    cb = fig.colorbar(line, ax=ax)
+    cb.set_label(label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
+
+
+    Rs = np.linspace(0, 50, 100)
+    ax.plot(Rs, 4 / 9 * Rs, "k--", label="$M = \\frac{4}{9} R$")
+
+    ax.set_xlim(8, 100)
+    ax.set_ylim(0, 15)
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
 
     fig.savefig("figurer/mass_radius_pion_star_" + name + ".pdf", bbox_inches="tight")
     
  
 
 def plot_eos():
-    pnr = np.linspace(0, .1, 1000)
-    pur = np.linspace(0, 50, 1000)
-    ps = [pnr, pur]
-    fig, ax = plt.subplots(1, 2,figsize=(18, 6))
-    for i, p in enumerate(ps):
-        u = [u_fermi(p0) for p0 in p]
-        ax[i].plot(p, u, label="$ \\tilde u(\\tilde p)$")
-        ax[i].plot(p, u_fermi_nonrel(p), "k--", label="$ \\tilde u_{\mathrm{nr}} (\\tilde p)$")
-        ax[i].plot(p, 3*p, "r-.", label="$ \\tilde u_{\mathrm{ur}} (\\tilde p)$")
-        ax[i].set_xlabel("$p / p_0$")
-        ax[i].set_ylabel("$u / u_0$")
+    p = np.linspace(0, 1., 1000)
+    fig, ax = plt.subplots(figsize=(12, 6))
+    u = get_u("pion_star/data/eos.npy")
+    us = [u(p0) for p0 in p]
+    ax.plot(p, us, label="$ \\tilde u(\\tilde p)$")
+    ax.set_xlabel("$p / p_0$")
+    ax.set_ylabel("$u / u_0$")
 
-    ax[0].legend(loc="upper left")
+    ax.legend(loc="upper left")
 
-    fig.savefig("figurer/fermi_eos.pdf", bbox_inches="tight")
+    fig.savefig("figurer/pion_tree_eos.pdf", bbox_inches="tight")
     
 
 
 
-# plot_norm_pressure_mass()
-plot_mass_radius()
+plot_pressure_mass()
+# plot_mass_radius()
 
-# plot_eos()
+plot_eos()
 

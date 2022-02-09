@@ -28,8 +28,7 @@ def load_sols(name="neutron"):
  
 def plot_norm_pressure_mass():
     all_sols = load_sols()
-    # sols = all_sols[40:120:5]
-    sols = all_sols
+    sols = all_sols[40:160:8]
     N = len(sols)
      
     
@@ -218,7 +217,8 @@ def plot_eos():
     for i, p in enumerate(ps):
         u = [up(p0) for p0 in p]
         ax[i].plot(p, u, label="$ \\tilde u(\\tilde p)$")
-        ax[i].plot(p, u_fermi_nonrel(p), "k--", label="$ \\tilde u_{\mathrm{nr}} (\\tilde p)$")
+        u = [u_fermi_nonrel(p0) for p0 in p]
+        ax[i].plot(p, u, "k--", label="$ \\tilde u_{\mathrm{nr}} (\\tilde p)$")
         ax[i].plot(p, 3*p, "r-.", label="$ \\tilde u_{\mathrm{ur}} (\\tilde p)$")
         ax[i].set_xlabel("$p / p_0$")
         ax[i].set_ylabel("$u / u_0$")
@@ -231,8 +231,8 @@ def plot_eos():
 
 
 plot_norm_pressure_mass()
-plot_mass_radius()
-plot_mass_radius_compare()
-plot_eos()
+# plot_mass_radius()
+# plot_mass_radius_compare()
+# plot_eos()
 
 # plot_mass_surface()

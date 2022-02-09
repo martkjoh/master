@@ -41,7 +41,8 @@ def get_u(name):
 
     def u(p):
         if p < plst[0]: return 0
-        if p > plst[-1]: return 3*p # High energy limit -- massless particles
+        # High energy limit -- massless particles
+        if p > plst[-1]: print("outside samples"); return 3*p
         else: return splev(p, tck)
 
     return u

@@ -1,4 +1,4 @@
-\section{Tree-level, to flavor pion stars}
+\section{Tree-level, two flavor pion stars}
 
 \todo[inline]{Skriv kapittel om chiral perturbasjonsteori}
 
@@ -23,45 +23,52 @@ We are only interested in the phase where $\mu_I \geq \bar m$, where this formul
     \cos \alpha = \frac{\bar m^2}{\mu_I^2}.
 \end{align}
 %
-The pressure is
+We introduce the new dimensionless variable $1 + x^2 = \mu_I^2 / \bar m^2$.
+This is reminicent of the dimensionless Fermi momentum $x_f = p_f / m$ in \autoref{section: cold fermi star}, however (???). \todo{Tolkning av dette}
+By an argument with right angled triangles, we can vertify that $\cos a = b$ means that $\sin a = \sqrt{1 - b^2}$.
+We can therefore write the free energy density as
 %
 \begin{equation}
-    p = -(\Eff - \Eff_0) 
-    = f^2 \left[m^2(\cos \alpha - 1) + \frac{1}{}\mu_I^2 \sin^2 \alpha\right],
+    \Eff = - \frac{u_0}{2}\left(1 + x^2 +\frac{1}{1 + x^2}\right).
 \end{equation}
 %
-where $\Eff_0$, the free energy at $\mu_I = 0$, is subtracted to normalize the pressure.
+We have introduced the characteristic energy density $u_0 = \bar m^2 f^2$.
+As we found in \autoref{section: cold fermi star}, pressure is given by negative the free energy density, normalized to $\mu_I = \bar m$, or $x = 0$.
+We choose $p_0 = u_0$, so the dimensionless pressure can be written
+%
+\begin{equation}
+    \tilde p = -\frac{1}{u_0}(\Eff - \Eff_{x = 0}) 
+    = \frac{1}{2} \frac{x^4}{1 + x^2}.
+\end{equation}
+%
+
 The particle density is
 %
 \begin{equation}
-    n_I = -\pdv{\Eff}{\mu_I} = f^2 \mu_I \sin^2 \alpha,
+    n_I = -\pdv{\Eff}{\mu_I} = f^2 \mu_I \sin^2 \alpha
+    = \frac{u_0}{\mu_I} \frac{2x^2 + x^4}{1 + x^2}
+    ,
 \end{equation}
 %
 which gives the energy density as
 %
 \begin{equation}
-    u = -p + n_I \mu_I 
-    = f^2\left[\bar m^2(1 - \cos \alpha )+ \frac{3}{2} \mu_I^2 \sin^2 \alpha\right].
+    \tilde u = -\tilde p + \frac{1}{u_0} n_I \mu_I
+    = \frac{1}{2} \frac{4x^2 + x^4}{1 + x^4}
 \end{equation}
 %
-We might write both the energy density and pressure in terms of the chemical potential explicitly by substituting \autoref{alpha as function of mu lowest order}, which gives
-%
-\begin{align}
-    u &= u_0
-    \left[ 
-        \frac{1}{y^2} - 1 + \frac{3}{2} \left(y^2 - \frac{1}{y^2}\right)
-        \right] \\
-    p &= p_0\left[ 1 - \frac{1}{y^2} + \frac{1}{2} \left(y^2 - \frac{1}{y^2}\right)\right]
-\end{align}
-%
-where we have used the trigonometric identity $\sin \arccos x = \sqrt{1 - x^2}$, defined the characteristic quantities $u_0 = p_0 = f^2 \bar m^2$, and the dimensionless chemical potential $y^2 = \mu_I^2 / \bar m^2$.
-At tree-level, the bare constants $f$ and $\bar m$ are related to physical constants by $f = f_\pi$ and $m = m_\pi$, the pion decay constant and the pion mass.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../scripts/figurer/pion_tree_eos.pdf}
+\end{figure}
 
 
 \subsection{units}
 
 The characteristic mass and length, as discussed in \autoref{section: TOV equation}, are found by setting $k_1 = k_2 = k_3 = 1$.
 These are the dimensionless constants of the TOV equation, \autoref{dimensionless constants TOV}.
+At tree-level, the bare constants $f$ and $\bar m$ are related to physical constants by $f = f_\pi$ and $m = m_\pi$, the pion decay constant and the pion mass.
 Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} and reinstating $c$ and $\hbar$, the values are
 %
 \begin{align}
@@ -71,3 +78,18 @@ Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} an
     r_0 & = \frac{G}{c^2} m_0 = 94.79 \, \text{km}.
 \end{align}
 %
+
+
+\subsection{Results}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../scripts/figurer/pressure_mass_pion_star.pdf}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../scripts/figurer/mass_radius_pion_star_tree.pdf}
+\end{figure}
+
