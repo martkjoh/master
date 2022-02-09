@@ -97,12 +97,13 @@ def plot_mass_surface():
     plt.show()
 
 
-def plot_mass_radius(name="neutron"):
-    sols = load_sols(name)
-    sols = sols[::]
+def plot_mass_radius(name="neutron2"):
+    sols = load_sols("neutron2")
     N = len(sols)
+    print(sols[0])
     data = [[], [], []]
     for i, s in enumerate(sols):
+        print(s)
         data[0].append(s.t[-1])
         data[1].append(s.y[1][-1])
         data[2].append(s.y[0][0])
@@ -224,8 +225,8 @@ def plot_eos():
 
 
 # plot_norm_pressure_mass()
-# plot_mass_radius()
-plot_mass_radius_nonrel()
+plot_mass_radius()
+# plot_mass_radius_nonrel()
 
 # plot_eos()
 

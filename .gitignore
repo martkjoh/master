@@ -2,3 +2,5 @@
 prosjektoppgave/
 oppgave/.vscode/
 **/__pycache__
+*.np
+*.npy
