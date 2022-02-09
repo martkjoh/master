@@ -3,7 +3,7 @@ import numpy as np
 from numpy import pi, sqrt, exp, arcsinh, log as ln
 from scipy.integrate import solve_ivp
 from scipy.interpolate import splev, splrep
-
+from tqdm import tqdm
 
 
 def dmdr_general(u, r, y, args):
@@ -40,7 +40,7 @@ def get_u(name):
     tck = splrep(plst, ulst, s=0, k=3)
 
     def u(p):
-        if p < 0: return 0
+        if p < plst[0]: return 0
         if p > plst[-1]: return 3*p # High energy limit -- massless particles
         else: return splev(p, tck)
 
@@ -51,7 +51,7 @@ def integrate(u, pcs, dense_output=True, max_step=0.001, r_max=1e3, newtonian_li
     """ Integrate TOV for a list of central pressures pcs"""
 
     dmdr = lambda r, y, args: dmdr_general(u, r, y, args) 
-    if newtonian_limit: dpdr = lambda r, y, args: dpdr_general(u, r, y, args)
+    if newtonian_limit: dpdr = lambda r, y, args: dpdr_newt(u, r, y, args)
     else: dpdr = lambda r, y, args: dpdr_general(u, r, y, args)
     
     # y'(r) = f(r, y)
@@ -60,11 +60,11 @@ def integrate(u, pcs, dense_output=True, max_step=0.001, r_max=1e3, newtonian_li
     def stop(r, y, args):
         """Termiation cirerion, p(r) = 0"""
         p, m = y
-    return p
+        return p
     stop.terminal = True # attribute for solve_ivp
 
     sols = [None for _ in pcs] # empty list to keep solutions
-    for i, pc in enuemrate(pcs):
-        sols[i] = solve_ivp(f, (0, r_max), (p0, 0), args=(p0,), events=stop, max_step=max_step, dense_output=dense_output)
+    for i, pc in enumerate(tqdm(pcs)):
+        sols[i] = solve_ivp(f, (0, r_max), (pc, 0), args=(pc,), events=stop, max_step=max_step, dense_output=dense_output)
     return np.array(sols)
 

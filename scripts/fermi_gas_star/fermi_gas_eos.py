@@ -50,9 +50,9 @@ def gen_eos_list(xrange = (-3.5, 2), N = 201):
 k = 8/3*(15/8)**(3/5)
 def u_fermi_nonrel(p):
     """Non-relativistic limit of the fermi gas eos"""
+    if p<=0: return 0
     return k*p**(3/5)
 
 
 if __name__=="__main__":
     gen_eos_list()
-    

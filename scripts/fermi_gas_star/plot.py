@@ -1,10 +1,17 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 
 from numpy import pi, sqrt, log10 as log
 from matplotlib import cm, colors, collections
 
-from fermi_gas import r0, m0, u_fermi, u_fermi_nonrel
+from fermi_gas_eos import u_fermi_nonrel
+sys.path.append(sys.path[0] + "/..")
+from constants import get_const_fermi_gas 
+from integrate_tov import get_u
+
+
+u0, m0, r0 = get_const_fermi_gas()
 
 
 plt.rc("font", family="serif", size=20)
@@ -21,7 +28,8 @@ def load_sols(name="neutron"):
  
 def plot_norm_pressure_mass():
     all_sols = load_sols()
-    sols = all_sols[40:120:5]
+    # sols = all_sols[40:120:5]
+    sols = all_sols
     N = len(sols)
      
     
@@ -97,13 +105,11 @@ def plot_mass_surface():
     plt.show()
 
 
-def plot_mass_radius(name="neutron2"):
-    sols = load_sols("neutron2")
+def plot_mass_radius(name="neutron"):
+    sols = load_sols()
     N = len(sols)
-    print(sols[0])
     data = [[], [], []]
     for i, s in enumerate(sols):
-        print(s)
         data[0].append(s.t[-1])
         data[1].append(s.y[1][-1])
         data[2].append(s.y[0][0])
@@ -146,11 +152,11 @@ def plot_mass_radius(name="neutron2"):
     fig.savefig("figurer/mass_radius_" + name + ".pdf", bbox_inches="tight")
     
     
-def plot_mass_radius_nonrel():
+def plot_mass_radius_compare():
     sols1 = load_sols("neutron")
     sols2 = load_sols("neutron_non_rel")
-    sols3 = load_sols("neutron_newt_rel")
-    sols4 = load_sols("neutron_newt")
+    sols3 = load_sols("neutron_newt")
+    sols4 = load_sols("neutron_newt_non_rel")
     sols = [sols1, sols2, sols3, sols4]
 
     N = len(sols1)
@@ -162,15 +168,14 @@ def plot_mass_radius_nonrel():
             datas[j][1].append(s.y[1][-1])
             datas[j][2].append(s.y[0][0])
         
-
     fig, ax = plt.subplots(figsize=(16, 8))
 
     linestyles = ["-", "-.", "--", ":"]
     labels = [
         "Relativistic EOS + TOV",
-        "Newtonian EOS + TOV",
+        "Non-relativistic EOS + TOV",
         "Relativistic EOS + Newtonian gravity",
-        "Newtonian EOS + Newtonian gravity"
+        "Non-relativistic EOS + Newtonian gravity"
         ]
 
     for i, data in enumerate(datas):
@@ -209,8 +214,9 @@ def plot_eos():
     pur = np.linspace(0, 50, 1000)
     ps = [pnr, pur]
     fig, ax = plt.subplots(1, 2,figsize=(18, 6))
+    up = get_u("fermi_gas_star/data/eos.npy")
     for i, p in enumerate(ps):
-        u = [u_fermi(p0) for p0 in p]
+        u = [up(p0) for p0 in p]
         ax[i].plot(p, u, label="$ \\tilde u(\\tilde p)$")
         ax[i].plot(p, u_fermi_nonrel(p), "k--", label="$ \\tilde u_{\mathrm{nr}} (\\tilde p)$")
         ax[i].plot(p, 3*p, "r-.", label="$ \\tilde u_{\mathrm{ur}} (\\tilde p)$")
@@ -224,10 +230,9 @@ def plot_eos():
 
 
 
-# plot_norm_pressure_mass()
+plot_norm_pressure_mass()
 plot_mass_radius()
-# plot_mass_radius_nonrel()
-
-# plot_eos()
+plot_mass_radius_compare()
+plot_eos()
 
 # plot_mass_surface()
