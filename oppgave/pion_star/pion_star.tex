@@ -1,0 +1,73 @@
+\section{Tree-level, to flavor pion stars}
+
+\todo[inline]{Skriv kapittel om chiral perturbasjonsteori}
+
+\subsection{Equation of state}
+The free energy density of two-flavor chiral perturbation theory, to leading-order and at $T = 0$, is
+%
+\begin{equation}
+    \Eff = - f^2 \left(\bar m^2 \cos \alpha + \frac{1}{2} \mu_I^2 \sin^2 \alpha\right).
+\end{equation}
+%
+The $\alpha$ parameter is determined by minimizing $\Eff$ for a given value of $\mu_I$,
+%
+\begin{equation}
+    \pdv{\Eff}{\alpha} = f^2 \left(\bar m^2 - \mu_I^2 \cos \alpha\right) \sin(\alpha) = 0.
+\end{equation}
+%
+This gives an explicit formula for $\alpha$ in terms of $\mu_I$.
+We are only interested in the phase where $\mu_I \geq \bar m$, where this formula is
+%
+\begin{align}
+    \label{alpha as function of mu lowest order}
+    \cos \alpha = \frac{\bar m^2}{\mu_I^2}.
+\end{align}
+%
+The pressure is
+%
+\begin{equation}
+    p = -(\Eff - \Eff_0) 
+    = f^2 \left[m^2(\cos \alpha - 1) + \frac{1}{}\mu_I^2 \sin^2 \alpha\right],
+\end{equation}
+%
+where $\Eff_0$, the free energy at $\mu_I = 0$, is subtracted to normalize the pressure.
+The particle density is
+%
+\begin{equation}
+    n_I = -\pdv{\Eff}{\mu_I} = f^2 \mu_I \sin^2 \alpha,
+\end{equation}
+%
+which gives the energy density as
+%
+\begin{equation}
+    u = -p + n_I \mu_I 
+    = f^2\left[\bar m^2(1 - \cos \alpha )+ \frac{3}{2} \mu_I^2 \sin^2 \alpha\right].
+\end{equation}
+%
+We might write both the energy density and pressure in terms of the chemical potential explicitly by substituting \autoref{alpha as function of mu lowest order}, which gives
+%
+\begin{align}
+    u &= u_0
+    \left[ 
+        \frac{1}{y^2} - 1 + \frac{3}{2} \left(y^2 - \frac{1}{y^2}\right)
+        \right] \\
+    p &= p_0\left[ 1 - \frac{1}{y^2} + \frac{1}{2} \left(y^2 - \frac{1}{y^2}\right)\right]
+\end{align}
+%
+where we have used the trigonometric identity $\sin \arccos x = \sqrt{1 - x^2}$, defined the characteristic quantities $u_0 = p_0 = f^2 \bar m^2$, and the dimensionless chemical potential $y^2 = \mu_I^2 / \bar m^2$.
+At tree-level, the bare constants $f$ and $\bar m$ are related to physical constants by $f = f_\pi$ and $m = m_\pi$, the pion decay constant and the pion mass.
+
+
+\subsection{units}
+
+The characteristic mass and length, as discussed in \autoref{section: TOV equation}, are found by setting $k_1 = k_2 = k_3 = 1$.
+These are the dimensionless constants of the TOV equation, \autoref{dimensionless constants TOV}.
+Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} and reinstating $c$ and $\hbar$, the values are
+%
+\begin{align}
+    u_0 & =m_\pi^2 f_\pi^2 \frac{c}{\hbar^3}
+    = 3.216\cdot 10^{33} \, \text{J}\,\text{m}^{-3}, \\
+    m_0 & = \frac{c^4}{\sqrt{\frac{4 \pi}{ 3} u_0 G}} = 64.21\, M_\odot, \\
+    r_0 & = \frac{G}{c^2} m_0 = 94.79 \, \text{km}.
+\end{align}
+%
