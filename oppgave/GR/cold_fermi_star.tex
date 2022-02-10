@@ -241,40 +241,6 @@ The full equation of state is compared to the non-relativistic and ultrarelativi
     \label{fig: equation of state fermi fluid}
 \end{figure}
 
-
-
-\subsection{Units}
-
-The equation of state has given us the characteristic energy density and pressure, $u_0$ and $p_0$. 
-If we demand
-%
-\begin{equation}
-    G \frac{m_0}{r_0} = \frac{4 \pi }{3}\frac{r_0^3 u_0}{m_0} = 1,
-\end{equation}
-%
-we have two equations and two unknowns, $m_0$ and $r_0$.
-This thus defines a complete set of units.
-We are using the cold Fermi-gas as a model for a neutron star, an the mass of the fermion $m$ is therefore the neutron mass, \autoref{mass of neutron}, $m_N = 1.674 \cdot 10^{-27} \, \text{kg}$.
-After reinstating $\hbar$ and $c$ in metric units, we get
-%
-\begin{align}
-    u_0 &= p_0 = \frac{m^4}{8 \pi^2}\frac{c^5}{\hbar^3} 
-    = 2.032\cdot10^{35}  \, \text{J}\,\text{m}^{-3}, \\
-    m_0 &= \frac{c^4}{\sqrt{\frac{4 \pi}{3} u_0 G^3} }
-    = 1.608 \cdot 10^{31} \, \text{kg}
-    = 8.082 \, M_\odot \\
-    r_0 &= \frac{G m_0}{c^2} = 11.93 \, \text{km}. % sjekk
-\end{align}
-%
-From this, we expect our star to have a mass of the order of a solar mass, $M_\odot = 1.988 41\cdot 10^{30}\, \text{kg}$~\autocite{particledatagroupReviewParticlePhysics2020}, and a radius of the order of kilometers, without solving the TOV equation.
-
-
-
-\subsection{Numerical results}
-
-With the energy density, \autoref{Fermi gas energy density}, and pressure, \autoref{Fermi gas pressure}, we can numerically solve the TOV equation given a central pressure $p_c$. 
-This is done using an adaptive Runge-Kutta method, with the stop criterion $p(r) = 0$.
-Description of the code and where to find it is given in \autoref{appendix: code}.
 With our choice of units, the form of the TOV equation is
 %
 \begin{align}
@@ -321,6 +287,65 @@ For the Newtonian approximation to the TOV equation, we get
 \end{equation}
 
 
+
+\subsection{Units}
+
+The equation of state has given us the characteristic energy density and pressure, $u_0$ and $p_0$. 
+If we demand
+%
+\begin{equation}
+    G \frac{m_0}{r_0} = \frac{4 \pi }{3}\frac{r_0^3 u_0}{m_0} = 1,
+\end{equation}
+%
+we have two equations and two unknowns, $m_0$ and $r_0$.
+This thus defines a complete set of units.
+We are using the cold Fermi-gas as a model for a neutron star, an the mass of the fermion $m$ is therefore the neutron mass, \autoref{mass of neutron}, $m_N = 1.674 \cdot 10^{-27} \, \text{kg}$.
+After reinstating $\hbar$ and $c$ in metric units, we get
+%
+\begin{align}
+    u_0 &= p_0 = \frac{m^4}{8 \pi^2}\frac{c^5}{\hbar^3} 
+    = 2.032\cdot10^{35}  \, \text{J}\,\text{m}^{-3}, \\
+    m_0 &= \frac{c^4}{\sqrt{\frac{4 \pi}{3} u_0 G^3} }
+    = 1.608 \cdot 10^{31} \, \text{kg}
+    = 8.082 \, M_\odot \\
+    r_0 &= \frac{G m_0}{c^2} = 11.93 \, \text{km}. % sjekk
+\end{align}
+%
+From this, we expect our star to have a mass of the order of a solar mass, $M_\odot = 1.988 41\cdot 10^{30}\, \text{kg}$~\autocite{particledatagroupReviewParticlePhysics2020}, and a radius of the order of kilometers, without solving the TOV equation.
+
+
+
+\subsection{Numerical results}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../scripts/figurer/pressure_mass.pdf}
+    \caption{
+        Top: The pressure normalized to central value, as a function of radius, normalized to the stellar radius.
+        Bottom: The mass normalized to the total mass, as a function of radius, normalized to the stellar radius. 
+        This is plotted for several different values of central pressure, which is indicated by the color shceme.
+        }
+    \label{fig: pressure and mass as a function of radius}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_neutron.pdf}
+    \caption{The mass-radius relationship of a star made of a cold gas of neutrons. The line is parametrized by the central pressure $p_c$. The corss indicate the maximum mass solution. The blue circles are results form the 1939 paper of Oppenheimer and Volkof~\autocite{oppenheimerMassiveNeutronCores1939}.}
+    \label{fig: mass radius relationship fermi gas}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_comparison.pdf}
+    \caption{The mass-radius relationship of a cold gas of neutrons. The lowest line is obtained from the TOV equation and full equation of state. The middle line is from the TOV equation and the non-relativistic equation of state. The upper line is obtained from the Newtonian approximation of the TOV equation and the non-relativistic equation of state.}
+    \label{fig: mass radius relationship comparison}
+\end{figure}
+
+With the energy density, \autoref{Fermi gas energy density}, and pressure, \autoref{Fermi gas pressure}, we can numerically solve the TOV equation given a central pressure $p_c$. 
+This is done using an adaptive Runge-Kutta method, with the stop criterion $p(r) = 0$.
+Description of the code and where to find it is given in \autoref{appendix: code}.
 The top graph in \autoref{fig: pressure and mass as a function of radius} shows the pressure, normalized to the central pressure $p_c$, as a function of radius, normalized to the corresponding stellar radius $R$.
 The stellar radius, $R$, is defined as the point where the pressure drops to zero, i.e., $p(R) = 0$.
 The boundary conditions are logarithmically spaced.
@@ -329,16 +354,6 @@ As in the case of an incompressible fluid, the pressure follows a half bell-shap
 The black dashed line corresponds to the solution with the maximum mass.
 We see that the pressure and mass curves change most drastically for central pressures higher than that which corresponds to the most massive star.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{../scripts/figurer/pressure_mass.pdf}
-    \caption{
-        Top: The pressure normalized to central value, as a function of radius, normalized to the stellar radius.
-        Bottom: The mass normalized to the total mass, as a function of radius, normalized to the stellar radius. 
-        This is plotted for several different values of central pressure, which is indicated by the color shceme.
-        }
-    \label{fig: pressure and mass as a function of radius}
-\end{figure}
 
 
 In \autoref{fig: mass radius relationship fermi gas}, we see the relationship between the mass and radius.
@@ -353,14 +368,6 @@ However, the two results of Oppenheimer and Volkoff furthest away differ signifi
 The black dashed line is the absolute mass-radius constraint, \autoref{mass radius constraint}, and any stable configuration must be on the right side of this line.
 
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_neutron.pdf}
-    \caption{The mass-radius relationship of a star made of a cold gas of neutrons. The line is parametrized by the central pressure $p_c$. The corss indicate the maximum mass solution. The blue circles are results form the 1939 paper of Oppenheimer and Volkof~\autocite{oppenheimerMassiveNeutronCores1939}.}
-    \label{fig: mass radius relationship fermi gas}
-\end{figure}
-
-
 In \autoref{fig: mass radius relationship comparison}, we compare the mass-radius relationship obtained from the full theory with results from approximations.
 The lowest line is obtained by using both the full TOV equation and the equation of state.
 The middle line is obtained using the non-relativistic equation of state together with the full TOV equation.
@@ -368,16 +375,47 @@ The upper line is from the Newtonian approximation to the TOV equation and the n
 This last approximation does not seem to have an upper limit for the mass, as expected.
 
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_comparison.pdf}
-    \caption{The mass-radius relationship of a cold gas of neutrons. The lowest line is obtained from the TOV equation and full equation of state. The middle line is from the TOV equation and the non-relativistic equation of state. The upper line is obtained from the Newtonian approximation of the TOV equation and the non-relativistic equation of state.}
-    \label{fig: mass radius relationship comparison}
-\end{figure}
 
-\todo[inline]{
-    Comment on instabillity
-}
+
+\subsection{Upper bound and stability}
 \todo[inline]{
     Comment why radius decrease with mass. Can this be shown in the Newtonian limit?
 }
+
+For any equation of state, the TOV equation will give a one-parameter family of stars, which we have parametrized by the central pressure $p_c$.
+This leads to the possibility of an \emph{absolute maximum} mass for a given equation of state.
+In the case of non-interacting neutron, we found the limit to be $0.71 \, M_\odot$, in agreement with Oppenheimer and Volkoff.
+To obtain a more general upper limit for the mass of neutron stars, or compact stars in general, one has to account for more general equations of state.
+To constrain the equation of state, we assume firstly that $\odv{p}/{u} \geq 0$.
+To justify this, take the non-relativisitc case, $u = n$, in which case the assumption is equivalent to $\odv{p}/{n} \geq 0$.
+This says that an increase in particle density, for example, due to compression, will result in a increase in pressure.
+This is thus an instance of Le Chatelier's principle; nature will counteract any change forced upon it.
+The speed of sound in the fluid, $v_s$, is given by~\autocite{weinbergGravitationCosmologyPrinciples1972}\todo{Vis dette?}
+%
+\begin{equation}
+    v_s^2 = \odv{p}{u}.
+\end{equation}
+%
+A realistic fluid should not have a speed of sound greater than the speed of light, which gives us the other constraining, $\odv{p}{u} < 1$.
+Using these general assumption, Rhoades and Ruffini found a upper limit for neutron stars of $3.2 \, M_\odot$~\cite{rhoadesMaximumMassNeutron1974}.
+
+An equation of state with a \emph{high} speed of sound, i.e., with a flat curve in the $p-u$-plane, is called \emph{stiff}.
+From \autoref{fig: equation of state fermi fluid}, we see that the Newtonian equation of state is stiffer in the high-energy regime
+The most extreme case is the incompressible model we saw earlier, whcih break causality.
+In general, a more stiff equation of state leads to a larger maximum mass.
+This is intuitive; if the pressre raises faster as the density increases, then it can sustain a larger total load before collapse.
+
+
+Solutions to the TOV equation are systems in hydrostatic equilibrium.
+However, as a pen perfectly balancing on its edge, this does not imply stability.
+The measure of stability is whether or not a system counteracts perturbation; will a disturbed system tend back towards where it started as a marble in a bowl, or will the perturbation start to grow.
+We can find a necessary condition for stability by considering what happens when a star in equillibrium i perturbed slightly.
+
+
+
+include
+\begin{itemize}
+    \item Oscillations
+    \item 
+\end{itemize}
+

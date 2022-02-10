@@ -60,6 +60,7 @@ We will use the $tt$ and $rr$ components of the Einstein field equations, which 
 In analogy with the Schwarzschild metric, we define the function $m(r)$ by
 %
 \begin{equation}
+    \label{Definition of m(r)}
     e^{2 \beta(r)} = \left(1 - \frac{2 G m(r)}{r} \right)^{-1}. 
 \end{equation}
 %
@@ -78,7 +79,7 @@ The solution is simply
 \end{equation}
 %
 We see that $m(r)$ is the matter content contained within a radius $r$.
-\todo{Forlar forskjell på gravitasjons masse/ incl. bindingsenergi}
+\todo{Forlar forskjell på gravitasjons masse/ incl. bindingsenergi, flytt tolkning til etter løsningen}
 If $u = 0$ for $r > R$ and $m(r>R) = M$, then the metric on a constant-time surface, i.e. $\dd t = 0$, is
 %
 \begin{equation}
@@ -113,7 +114,8 @@ The $r$-component of this equation is
 %
 This allows us to relate $\alpha$ to $p$ and $u$, via
 \begin{equation}
-    \partial_r \alpha = - \frac{\partial_r p}{p + u}
+    \label{alpha in terms of p and u}
+    \odv{\alpha}{r}= - \frac{1}{p + u} \odv{p}{r}
 \end{equation}
 %
 When we substitute this, together with the definition of $m(r)$, into \autoref{rr equation}, we obtain
@@ -136,8 +138,30 @@ In their paper, Oppenheimer and Volkoff studied the properties of a star made up
 To summarize, we have three unknown functions, $u(r)$, $p(r)$, and $m(r)$.
 The equation of state, \autoref{EOS}, determines $u = u(p)$, eliminating one unknown.
 The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_c$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integrated.
+As long as both the pressure and energy density is positive, and we are outside allways are outside the Schwarzschild radius, i.e. $r<2 G m(r)$, then $\odv{p}/{r} \leq 0$ and the pressure is strictly decreasing.
+We define the point where the pressure vanishes as the stellar radius $R$, i.e., $p(R) = 0$.
 Given this, we can solve for all the unknown functions, either analytically or numerically.
-However, we can gain some insight into the system without solving these equations by expressing the problem in terms of dimensionless variables.
+
+With $p(r)$, $u(r)$, and $m(r)$, we can construc the metric.
+We already have the $rr$-component of the metric from \autoref{Definition of m(r)}, as well as an equation linking $\alpha$ directly to $p$, \autoref{alpha in terms of p and u}, which has the solution
+%
+\begin{equation}
+    \label{solution to alpha}
+    \alpha(r) = - \int_0^r \frac{\dd r'}{p(r') + u(r') } \odv{p}{r'} + \const
+\end{equation}
+%
+The metric is thus
+%
+\begin{equation}
+    \dd s^2
+    =
+    \exp(-2 \int^{p(r)} \frac{\dd p}{p + u }) \, \dd t^2
+    + \left(1 - \frac{2 G m(r)}{r}\right)^{-1} \dd r^2
+    + r^2 \left(\dd \theta^2 + \sin^2\dd\varphi^2\right).
+\end{equation}
+
+
+We can gain some insight into the system without solving these equations by expressing the problem in terms of dimensionless variables.
 We define
 %
 \begin{equation}
@@ -177,6 +201,9 @@ We will therefore often choose $k_3 = 1$, defining $p_0 = u_0$.
 If we have a non-complete set of characteristic quantities, the dimensionless constants $k_i$ tell us something about the magnitude we should expect the solution to have.
 After defining the remaining dimensionful constants by setting $k_i = 1$, we expect that the dimensionless sizes of a typical solution will be of order 1.
 In other words, the dimensionful constants defined by $k_i = 1$ are new, characteristic quantities given to us by the form of the governing equation only.
+
+
+
 
 
 \subsection{Newtonian limit}

@@ -7,7 +7,7 @@ from matplotlib import cm, colors, collections
 
 sys.path.append(sys.path[0] + "/..")
 from integrate_tov import get_u
-from constants import get_const_pion
+from constants import get_const_pion, c, m_pi, f_pi
 
 plt.rc("font", family="serif", size=20)
 plt.rc("mathtext", fontset="cm")
@@ -115,7 +115,7 @@ def plot_mass_radius(name="tree"):
 
 def plot_eos():
     p = np.linspace(0, 1., 1000)
-    fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(10, 5))
     u = get_u("pion_star/data/eos.npy")
     us = [u(p0) for p0 in p]
     ax.plot(p, us, label="$ \\tilde u(\\tilde p)$")
@@ -130,7 +130,5 @@ def plot_eos():
 
 
 plot_pressure_mass()
-# plot_mass_radius()
-
+plot_mass_radius()
 plot_eos()
-

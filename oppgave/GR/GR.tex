@@ -1,8 +1,9 @@
-\section{General relativity}
-
 (Newtonian gravity??)
 \todo{Short about newtonian gravity/motivation}
 
+\section{General relativity}
+This section is based on~\cite{carrollSpacetimeGeometryIntroduction2019}.
+The derivation of the spherically symmetric metric is done using computer code, as descirbed in \autoref{appendix: code}.
 
 \subsection{Einstein's field equations}
 
@@ -125,18 +126,21 @@ We can then obtain the Ricci tensor by taking the trace, as shown in \autoref{Ri
 The results are
 %
 \begin{align}
+    \label{tt component ricci tensor}
     R_{tt}
     & =
     \left(r \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} - r \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)} + r \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} + 2 \frac{d}{d r} \alpha{\left(r \right)}
         \right)
     \frac{
          e^{2 \alpha{\left(r \right)}} e^{- 2 \beta{\left(r \right)}}}{r}, \\
+    \label{rr component ricci tensor}
     R_{rr}
     & =
     - \frac{1}{r}
     \left(
         r \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} - r \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)} + r \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} - 2 \frac{d}{d r} \beta{\left(r \right)} 
     \right),\\
+    \label{thetatheta component ricci tensor}
     R_{\theta \theta}
     &=
     - \left(r \frac{d}{d r} \alpha{\left(r \right)} - r \frac{d}{d r} \beta{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1\right) e^{- 2 \beta{\left(r \right)}}, \\
@@ -162,4 +166,58 @@ Finally, the trace of the Ricci tensor gives the Ricci scalar,
 \end{align}
 %
  The unknown functions $\alpha$ and $\beta$ are now determined by the matter and energy content of the universe, which is encoded in $T_{\mu \nu}$, through Einstein's field equation, \autoref{Einstein field equations}. 
- \todo{Skriv om Schwarzchild-løsningen}
+
+
+
+\subsection{The Schwarzschild metric}
+
+
+The simples case for a matter distribution in spacetime is $T_{\mu \nu} = 0$.
+Although this might only seem to be useful to model a empty universe, it can be combined with a central piont particle and empty space elswhere.
+In this case, the Einstein equations are simply $R_{\mu \nu} - \frac{1}{2}R g_{\mu \nu} = 0$.
+We can show that the trace of the Ricci tensor is zeor by taking the trace of this equation, simpllifying it to $R_{\mu \nu} = 0$.
+By combining \autoref{tt component ricci tensor} and \autoref{rr component ricci tensor}, find
+%
+\begin{equation}
+    R_{tt} + e^{2(\alpha - \beta)}R_{rr} = 2 \dv{}{r} \left(\alpha + \beta\right) = 0,
+\end{equation}
+%
+which implies $\alpha = -\beta + \const$.
+The constantant corresponds to a rescaling of the coordinates, so we may set it to zero.
+From \autoref{thetatheta component ricci tensor}, we get
+%
+\begin{equation}
+    e^{2 \beta} R_{\theta \theta} = - 2 r\odv{}{r} \alpha - e^{-2\alpha} + 1 = 0,
+\end{equation}
+%
+which may be restaed as
+%
+\begin{equation}
+    \odv{}{r} \left(r e^{2 \alpha}\right) = 1,
+\end{equation}
+%
+This equation has the solution
+%
+\begin{equation}
+    e^{2\alpha(r)} = e^{-2 \beta(r)} = \left( 1- \frac{R_s}{r} \right),
+\end{equation}
+%
+where $R_s$, the Schwarzschild radius, is a constant.
+Using the weak field limit, we can match the soltion to Newtonian gravity, and show that $R_s = 2 G M$, where $G$ is Newtons constant of gravitation and $M$ is the mass of the point particle.
+\todo{Gjøre weak filed limit?}
+The metric is then
+%
+\begin{equation}
+    \label{Schwarzchild metric}
+    \dd s^2 
+    = 
+    \left( 1 - \frac{2 G M}{r} \right) \dd t^2
+    -\left( 1 - \frac{2 G M}{r} \right)^{-1} \dd r^2
+    - r^2 \left(\dd \theta^2 + \sin^2 \theta \dd \varphi^2\right).
+\end{equation}
+%
+
+
+
+
+

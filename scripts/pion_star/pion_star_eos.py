@@ -1,14 +1,9 @@
 import numpy as np
-import sympy as sp
-from tqdm import tqdm
-from scipy.integrate import quad, solve_ivp, odeint
-from scipy.optimize import root_scalar, newton, toms748
-from scipy.interpolate import splprep, splev
-from numpy import pi, sqrt, exp, arcsinh, log as ln
+from numpy import pi, sqrt
 
 
-p = lambda x : 1/2 * x**4/(1 + x**2)
-u = lambda x : 1/2 * (4*x**2 + x**4) / (1 + x**2)
+p = lambda x : 1/2 * x**4/(1 + x**2) / (135/90)**2
+u = lambda x : 1/2 * (4*x**2 + x**4) / (1 + x**2) / (135/90)**2
 
 
 def gen_eos_list(xrange = (-3, 4), N = 200):

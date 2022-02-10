@@ -1,0 +1,239 @@
+\subsection{Low-temperature limit}
+
+Using the result from \autoref{section: thermal sum} on the result for the free energy density of the free scalar field, \autoref{free scalar result 2}, we get
+\begin{equation}
+    \label{free scalar free enrgy}
+    \Eff = \frac{\ln(Z)}{\beta V}
+    = \frac{1}{2} \int_{\tilde V} \frac{\dd^3 k}{(2 \pi)^3}
+    \left[
+        \omega_k + \frac{2}{\beta }\ln(1 - e^{-\beta\omega_k})
+    \right].
+\end{equation}
+The free energy density thus has two contributions from parts; the first part is dependent on temperature, the other is a temperature-independent vacuum contribution.
+Noticing that the integral is spherically symmetric, we may write the two contributions as
+\begin{equation}
+    \Eff_0 = \frac{1}{2} \frac{1}{2 \pi^2}\int_{\R} \dd k \, k^2 \sqrt{k^2 + m^2}, \quad
+    \Eff_T = \frac{T^4}{2 \pi^2}\int_\R \dd x \, x^2  \ln(1 - e^{-\sqrt{x^2 + (m/T)^2}}), 
+\end{equation}
+The temperature-independent part, $\Eff_0$, is divergent, and we must impose a regulator and then add counter-terms.
+$\Eff_T$, however, is convergent. 
+To see this, we use the series expansion $\ln(1 + \epsilon) \sim \epsilon + \Oh{\epsilon}$ to find the leading part of the integrand for large $k$'s, 
+\begin{equation}
+    x^2 \ln(1 - e^{-\sqrt{x^2 + (\beta m)^2}}) \sim - x^2 e^{-x}, 
+\end{equation}
+which is exponentially suppressed, making the integral convergent.
+In the limit of $T \rightarrow 0$, we get
+\begin{align}
+    \nonumber
+    \Eff_T & \sim 
+    \frac{T^4}{2 \pi^2} \int_\R \dd x \, x^2 \ln(1 - e^{-x})
+    = - \frac{T^4}{2 \pi^2} \sum_{n=1} \frac{1}{n} \pdv[2]{}{n} \int \dd x e^{-nx}
+    = - \frac{T^4}{2 \pi^2} \sum_{n=1} \frac{2}{n^4}
+    = - \frac{T^4}{\pi^2} \zeta(4),
+\end{align}
+where $\zeta$ is the Riemann-zeta function.
+Using $\zeta(4) = \frac{\pi^4}{90}$, we get
+\begin{equation}
+    \Eff_T \sim - \frac{\pi^2}{90} T^4, \quad T \rightarrow 0.
+\end{equation}
+
+\subsection{Regularization}
+\label{section: regualting free energy}
+
+Returning to the temperature-independent part, we use dimensional regularization to control its divergent behavior.
+To that end, we define
+\begin{equation}
+    \label{def dimreg integral}
+    \Phi_n(m, d, \alpha) 
+    = \int_{\tilde \Omega} \frac{\dd^d k}{(2 \pi)^d} (k^2 + m^2)^{-\alpha},
+\end{equation}
+so that $\Eff_0 = \Phi_3(m, 3, -1/2) / 2$.
+We will use the formula for integration of spherically symmetric function in $d$-dimensions,
+\begin{equation}
+    \int_{\R^d} \dd^d x \, f(r) 
+    = \frac{2 \pi^{d/2}}{\Gamma(d/2)} \int_\R \dd r \, r^{d-1}f(r),
+\end{equation}
+where $r = \sqrt{x_i x_i}$ is the radial distance, and $\Gamma$ is the Gamma function.
+The factor in the front of the integral is the solid angle.
+By extending this formula from integer-valued $d$ to real numbers, we get
+\begin{equation}
+    \Phi_n
+    = \frac{2 \pi^{d/2} }{\Gamma(d/2)} \int_\R \dd k \, 
+    \frac{k^{d-1}}{(k^2 + m^2)^\alpha}
+    = \frac{m^{n-2\alpha}m^{d-n} }{(4 \pi)^{d / 2}\Gamma(d/2)} 
+    2 \int_\R \dd z \, \frac{z^{d - 1}}{(1 + z)^\alpha}, 
+\end{equation}
+where we have made the change of variables $m z = k$.
+We make one more change of variable to the integral,
+\begin{equation}
+    I = 2 \int_\R \dd z \, \frac{z^{d - 1}}{(1 + z)^\alpha}.
+\end{equation}
+Let
+\begin{equation}
+    z^2 = \frac{1}{s} - 1 \implies 2 z \dd z = - \frac{\dd s}{s^2}
+\end{equation}
+Thus,
+\begin{equation}
+    I = \int_0^a \dd s \, s^{\alpha - d/2 - 1} (1 - z)^{d/2 - 1}.
+\end{equation}
+This is the beta function, which can be written in terms of Gamma functions~
+% \cite{Peskin:IntroQFT}
+\begin{equation}
+    I = B\left(\alpha - \frac{d}{2}, \frac{d}{2}\right) 
+    = \frac{\Gamma\left(\alpha - \frac{d}{2}\right) \Gamma\left(\frac{d}{2}\right)}{\Gamma(\alpha)}.
+\end{equation}
+Combining this gives
+\begin{equation}
+    \label{result dimreg}
+    \Phi_n(m, d, \alpha) 
+    = \mu^{n-d} \frac{m^{n - 2\alpha}}{(4 \pi)^{d / 2}}
+    \frac{
+        \Gamma \left(\alpha - \frac{d}{2} \right) 
+    }
+    {\Gamma(\alpha)}
+    \left(\frac{m^2}{\mu^2}\right)^{\flatfrac{(d-n)}{2}} 
+    .
+\end{equation}
+In the last step, we have introduced a parameter $\mu$ with mass dimension 1, that is, $[\mu] = [m]$.
+This is done to be able to series expand around $d - n$ in a dimensionless variable. 
+This parameter is arbitrary, and all physical quantities should therefore be independent of it.
+We will shortly justify this parameter further.
+
+
+Inserting $n=3$, $d = 3 - 2\epsilon$ and $\alpha = -1/2$, we get
+\begin{equation}
+    \Phi_3(m, 3 - 2\epsilon, -1/2)
+    =
+    \frac{m^4 \mu^{-2\epsilon}}{(4 \pi)^{d/2}\Gamma(-1/2)} \Gamma(-2 + \epsilon) \left(\frac{m^2}{\mu^2}\right)^{-\epsilon}
+    =
+    - \mu^{-2\epsilon} \frac{m^4}{(4 \pi)^{2}}
+    \left(\frac{m^2}{4 \pi \mu^2}\right)^{- \epsilon}
+    \frac{\Gamma(\epsilon)}{(\epsilon - 2)(\epsilon - 1)},
+\end{equation}
+where we have used the defining property $\Gamma(z + 1) = z\Gamma(z)$ and $\Gamma(1/2) = \sqrt \pi$.
+Expanding around $\epsilon = 0$ gives
+\begin{align}
+    \left(\frac{m^2}{4 \pi \mu^2}\right)^{- \epsilon}
+    &\sim 1 + \epsilon \ln\left(4 \pi \frac{\mu^2}{m^2}\right),\\
+    \Gamma(\epsilon) 
+    & \sim \frac{1}{\epsilon} - \gamma, \\
+    \frac{1}{(\epsilon - 2)(\epsilon - 1)}
+    &\sim \frac{1}{2}\left(1 + \frac{3}{2} \epsilon\right).
+\end{align}
+The divergent behavior of the temperature-independent term is therefore
+\begin{align}
+    \Eff_0 \sim
+    - \mu^{-2\epsilon} \frac{1}{4}\frac{m^4}{(4 \pi)^2}
+    \left[
+        \frac{1}{\epsilon} 
+        - \gamma + \frac{3}{2}
+        + \ln\left(4 \pi \frac{\mu^2}{m^2}\right)
+    \right].
+\end{align}
+
+With this regulator, one can then add counter-terms to cancel the $\epsilon^{-1}$-divergence.
+The exact form of the counter-term is convention.
+One may also cancel the finite contribution due to the regulator.
+The minimal subtraction ($\mathrm{MS}$) scheme involves only subtracting the divergent term, as the name suggests.
+We will use the modified minimal subtraction, or $\overline{ \mathrm{MS}}$, scheme.
+In this scheme, one also removes the $-\gamma$ and $\ln(4 \pi)$ term, by defining a new mass scale $\tilde \mu$ by
+\begin{equation}
+    \label{definition mu tilde MS bar}
+    -\gamma + \ln(4\pi \frac{\mu^2}{m^2}) = \ln(4\pi e^{-\gamma} \frac{\mu^2}{m^2}) = \ln(\frac{\tilde\mu^2}{m^2}),
+\end{equation}
+which leads to the expression
+\begin{equation}
+    \label{free field regularized energy}
+    \Eff_0 =
+    - \mu^{-2\epsilon} \frac{1}{4}\frac{m^4}{(4 \pi)^2}
+    \left(
+        \frac{1}{\epsilon} 
+        + \frac{3}{2}
+        + \ln \frac{\tilde\mu^2}{m^2}
+    \right)
+    + \Oh{\epsilon}.
+\end{equation}
+
+\subsection{Renormalization}
+
+Now that we have applied a regulator, we are able to handle the divergence in a well-defined way.
+When $\epsilon \neq 0$, we can subtract terms which are proportional to $\epsilon^{-1}$, and be left with a term that is finite in the limit $\epsilon \rightarrow 0$.
+Consider an arbitrary Lagrangian, 
+\begin{equation}
+    \Ell[\varphi] = \sum_n \lambda_n \mathcal{O}_n[\varphi].
+\end{equation}
+Here, $\mathcal{O}_n[\varphi]$ are operators consisting of $\varphi$ and $\partial_\mu \varphi$, and $\lambda_n$ are coupling constants.
+In $d$ dimensions, the action integral is
+\begin{equation}
+    S[\varphi] = \sum_n \int \dd^d x \, \lambda_n \mathcal{O}_n[\varphi].
+\end{equation}
+%
+The action has mass dimension $0$.
+This means that all terms $\lambda_n \mathcal O_n$ must have mass dimension $d$, as $[\dd^d x] = -d$.
+We are free to choose the coupling constant corresponding to $\mathcal O_0 = \partial_\mu \varphi \partial^\mu \varphi$ to be of mass dimension 0, and therefore set $\lambda_0 = 1/2$ to get canonical normalization.
+This allows us to deduce the dimensionality of $\varphi$.
+As $[\partial_\mu] = 1$, we have that $[\varphi] = (d-2)/2$.
+Assume $\mathcal O_n$ consists of $k_n$ factors of $\varphi$, and $l_n$ factors of $\partial_\mu \varphi$.
+We must then have
+\begin{align}
+    [\lambda_n] + [\mathcal{O}_n] - d &= [\lambda_n] + (k_n + l_n)(d - 2) / 2 + l_n - d = 0, \\
+    \implies D_n := [\lambda_n] &= d - k_n \frac{d - 2}{2} - l_n \frac{d}{2}.
+\end{align}
+%
+From this formula, we recover that $[\lambda_0] = 0$, and if $\mathcal O_1 = \varphi^2$, then $[\lambda_1] = 2$, which we recognize as the mass term squared.
+The mass dimensions of these coupling constants are independent of $d$.
+However, the coupling constant for the interaction term
+\begin{equation}
+    - \frac{1}{4!} \lambda_3 \varphi^4
+\end{equation}
+has mass dimensions $[\lambda_3] = d -4(d-2)/2 = 4 - 2d$.
+Our goal now is to exchange the bare coupling constants $\lambda_n$ with renormalized ones, $\lambda_n^r$, and remove the divergent terms proportional to $(d - 4)^{-m}$.
+We can always define the renormalized coupling constants as dimensionless, i.e., $[\lambda_n^r] = 0$, by measuring them in units of a mass scale.
+We therefore write 
+\begin{align*}
+    \lambda_n = \mu^{4 - D_n}
+    \left[
+        \lambda_n^r + \sum_{m=1} \frac{a_m(\lambda_n^r)}{(d - 4)^{m}}
+    \right],
+\end{align*}
+where we have introduced the dimensionfull parameter $\mu$ to ensure that $\lambda_n$ has the correct mass dimension, so that the action integral stays dimensionless.
+The functions $a_m$ are then determined to each order in perturbation theory by calculating Feynman diagrams.
+As $\mu$ again is arbitrary, $\lambda_4'$ should not depend on this parameter.
+In this case, we chose the same renormalization scale as we did when regulating the one-loop integral.
+This is only for our own convenience.
+This means that if we change $\mu \rightarrow \mu'$, then $\lambda_i^r$ and $a_m$ must adjust to compensate and keep $\lambda_n$ constant~
+% \cite{t_hoft_dim_reg}.
+
+The vacuum energy term absorbs the divergence in the one loop contribution to the free energy density.
+It is
+\begin{equation}
+    \label{scalar field static term}
+    \lambda_4 \mathcal{O}_4 = \lambda_4 = m^4 \lambda_4'.
+\end{equation}
+Using the expansion in terms of the renormalized coupling, we have, 
+\begin{equation}
+    \lambda_4' = \mu^{- 2 \epsilon}\left[ \lambda_4^r + \frac{1}{2 \epsilon} a_1(\lambda_r^4) + ... \right],
+\end{equation}
+where $d = 4 - 2\epsilon$.
+After adding \autoref{scalar field static term} to the Lagrangian of the free scalar, the temperature independent free energy density becomes
+\begin{equation}
+    \Eff_0 \sim - \mu^{-2 \epsilon}  \frac{1}{4} \frac{m^4}{(4 \pi)^2}  
+    \left[
+        \frac{1}{\epsilon} + \frac{3}{2} + \ln{\frac{\tilde \mu^2}{m^2}}
+        + (4 (4 \pi)^2) \left(\lambda_4^r + \frac{1}{2\epsilon} a_1(\lambda_4^r)\right)
+    \right],
+    \quad \epsilon \rightarrow 0.
+\end{equation}
+Thus, if we choose $a_1 = -8 (4\pi)^2 + \mathcal{O}(\lambda_4^r)$, and define $\lambda_4'^r = 4(4\pi)^2\lambda_4^r$, we are able to cancel the divergence, and may take the limit $\epsilon \rightarrow 0$ safely.
+The free energy is now
+\begin{equation}
+    \Eff = -\frac{1}{4} \frac{m^4}{(4 \pi)^2} 
+    \left(
+        \frac{3}{2} + \lambda_4'^r + \ln \frac{\tilde \mu^2}{m^2}
+    \right)
+    +
+    \frac{T^4}{2\pi^2} \int \dd x \, x^2 \ln(1 - \exp{-\sqrt{x^2 + \beta^2 m^2}}).
+\end{equation}
+Notice that all choices we have made up until now, such as defining $\lambda_4 = m^4 \lambda_4'$ and using the same renormalization scale $\mu$, has no impact on this result.
+Different choices would force us to define $\lambda_4^r$ and $a_4$ differently.
+
