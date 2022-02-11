@@ -60,7 +60,7 @@ We will use the $tt$ and $rr$ components of the Einstein field equations, which 
 In analogy with the Schwarzschild metric, we define the function $m(r)$ by
 %
 \begin{equation}
-    \label{Definition of m(r)}
+    \label{definition of m(r)}
     e^{2 \beta(r)} = \left(1 - \frac{2 G m(r)}{r} \right)^{-1}. 
 \end{equation}
 %
@@ -78,18 +78,20 @@ The solution is simply
     m(r) = 4 \pi \int_0^r \dd r' \, {r'}^2 u(r').
 \end{equation}
 %
-We see that $m(r)$ is the matter content contained within a radius $r$.
-\todo{Forlar forskjell på gravitasjons masse/ incl. bindingsenergi, flytt tolkning til etter løsningen}
-If $u = 0$ for $r > R$ and $m(r>R) = M$, then the metric on a constant-time surface, i.e. $\dd t = 0$, is
+In flat spacetime, we would have no qualms simply calling this the mass contained within a radius $r$.
+However, as discussed in \autoref{section: differential geometry}, the volume element of a curved geometry is $\dd V = \dd^n x \sqrt{|g|}$.
+In this case, we are interested in the mass contained in a 3-volume, and the volume form is therefore given by the metric restricted by $\dd t = 0$.
+Using \autoref{spherically symmetric metric}, $\sqrt{|g|} = e^{\beta} r^2 \sin \theta$, the total mass-energy contents of the star is 
 %
 \begin{equation}
-    \dd s^2
-    = 
-    \left( 1 - \frac{2 G M}{r^2} \right)^{-1} \dd r^2 
-    + r^2 (\dd \theta^2 + \sin^2 \theta \, \dd\varphi^2).
-\end{equation} 
+    M' = 4 \pi \int \dd r \, {r'}^2 \left(1 - \frac{2 G m(r')}{r'}\right)^{-1/2}\, u(r').
+\end{equation}
 %
-This is the same as for the Schwarzschild solution.
+However, this does not take into account the gravitational potential energy.
+Gravitation is self-interacting, and we must therefore include the gravitational potential energy when calculating gravitational effects.
+It can be shown that the definition of \emph{gravitational mass}, \autoref{mass relation}, does exactly this.
+Furthermore, as we will see later, it matches up with what we call mass in the Newtonian limit.
+
 
 Using the Bianchi identity, \autoref{Einstein tensor bianchi identity}, together with Einstein's equation, we find
 %
@@ -138,27 +140,50 @@ In their paper, Oppenheimer and Volkoff studied the properties of a star made up
 To summarize, we have three unknown functions, $u(r)$, $p(r)$, and $m(r)$.
 The equation of state, \autoref{EOS}, determines $u = u(p)$, eliminating one unknown.
 The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_c$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integrated.
-As long as both the pressure and energy density is positive, and we are outside allways are outside the Schwarzschild radius, i.e. $r<2 G m(r)$, then $\odv{p}/{r} \leq 0$ and the pressure is strictly decreasing.
+As long as both the pressure and energy density is positive, and we are outside always are outside the Schwarzschild radius, i.e., $r<2 G m(r)$, then $\odv{p}/{r} \leq 0$ and the pressure is strictly decreasing.
 We define the point where the pressure vanishes as the stellar radius $R$, i.e., $p(R) = 0$.
 Given this, we can solve for all the unknown functions, either analytically or numerically.
 
 With $p(r)$, $u(r)$, and $m(r)$, we can construc the metric.
-We already have the $rr$-component of the metric from \autoref{Definition of m(r)}, as well as an equation linking $\alpha$ directly to $p$, \autoref{alpha in terms of p and u}, which has the solution
+We already have the $rr$-component of the metric from \autoref{definition of m(r)}.
+If we combinde \autoref{alpha in terms of p and u}, with \autoref{TOV}, we get a the solution
 %
 \begin{equation}
     \label{solution to alpha}
-    \alpha(r) = - \int_0^r \frac{\dd r'}{p(r') + u(r') } \odv{p}{r'} + \const
+    \alpha(r) = G \int^r \dd r \, \frac{1}{r^2} (4 \pi r^3 p + m)
+    \left(1 - \frac{2 G m}{r^2} \right)^{-1}.
 \end{equation}
 %
-The metric is thus
+Outside the star, we have $p(r) = 0$, and $m(r) = M$.
+This then reduces to
+%
+\begin{equation}
+    \alpha(r) = G M \int^r \dd r \, \frac{1}{r^2} \left(1 - \frac{2 G M}{r}\right)^{-1}.
+\end{equation}
+%
+We can evaluate this integral by making the substitution $x = (1 - 2GM/r), \, \dd x = - 2GM/r^2 \dd r$,
+%
+\begin{equation}
+    \alpha(r) = \frac{1}{2} \int^{1-\frac{2GM}{r}} \frac{\dd x}{x}
+    = \frac{1}{2} \ln \left(1 - \frac{2GM}{r}\right) + \const
+\end{equation}
+%
+We then impose the boundary condition $\alpha(\infty) = 0$, so that spacetime far away from the star looks flat.
+This means setting the constant to zero.
+Inserting this into \autoref{spherically symmetric metric} gives the metric for $r<R$,
 %
 \begin{equation}
     \dd s^2
     =
-    \exp(-2 \int^{p(r)} \frac{\dd p}{p + u }) \, \dd t^2
-    + \left(1 - \frac{2 G m(r)}{r}\right)^{-1} \dd r^2
+    \left(1 - \frac{2GM}{r}\right) \dd t^2
+    + \left(1 - \frac{2 G M}{r}\right)^{-1} \dd r^2
     + r^2 \left(\dd \theta^2 + \sin^2\dd\varphi^2\right).
 \end{equation}
+%
+We recognize this as the Schwarzchild metric, \autoref{Schwarzchild metric}.
+This justifies our choice of $m(r)$ as gravitational mass.
+As discussed earlier, the quantity $M$ in the Schwarzschild solution maps onto what we know as mass in the weak-field limit.
+
 
 
 We can gain some insight into the system without solving these equations by expressing the problem in terms of dimensionless variables.

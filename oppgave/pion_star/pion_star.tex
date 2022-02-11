@@ -23,9 +23,9 @@ We are only interested in the phase where $\mu_I \geq \bar m$, where this formul
 \end{align}
 %
 We introduce the new dimensionless variable $1 + x^2 = \mu_I^2 / \bar m^2$.
-This is reminicent of the dimensionless Fermi momentum $x_f = p_f / m$ in \autoref{section: cold fermi star}, however (???). \todo{Tolkning av dette}
-By an argument with right angled triangles, we can vertify that $\cos a = b$ means that $\sin a = \sqrt{1 - b^2}$.
-We can therefore write the free energy density as
+This is reminicent of the dimensionless Fermi momentum $x_f = p_f / m$ in \autoref{section: cold fermi star}. \todo{Tolkning av dette}
+By an argument using a right triangle, we can vertify that $\cos a = b$ implies $\sin a = \sqrt{1 - b^2}$.
+Substituting this dimensionless variable into the free energy density, we get
 %
 \begin{equation}
     \Eff = - \frac{u_0}{2}\left(1 + x^2 +\frac{1}{1 + x^2}\right).
@@ -41,25 +41,31 @@ We choose $p_0 = u_0$, so the dimensionless pressure can be written
 \end{equation}
 %
 
-The particle density is
+The charge density corresponding to a chemical potential is given by minus the derivative of the free energy with respect to that chemical potential.
+We must, however, not assume any dependence of $\alpha$ on $\mu_I$.
+The isospin density therefore is
 %
 \begin{equation}
     n_I = -\pdv{\Eff}{\mu_I} = f^2 \mu_I \sin^2 \alpha
-    = \frac{u_0}{\mu_I} \frac{2x^2 + x^4}{1 + x^2}
+    = \frac{u_0}{\mu_I} \frac{2x^2 + x^4}{1 + x^2}.
     ,
 \end{equation}
 %
-which gives the energy density as
+With this, the dimensionless energy density
 %
 \begin{equation}
     \tilde u = -\tilde p + \frac{1}{u_0} n_I \mu_I
     = \frac{1}{2} \frac{4x^2 + x^4}{1 + x^4}
 \end{equation}
 %
+This is illustrated in \autoref{fig:}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{../scripts/figurer/pion_tree_eos.pdf}
+    \caption{
+        The tree-level equation of state of two-flavor chiral perturbation theory. The $x$-axis shows the pressure normalized to $p_0$, while the $y$-axis shows the energy density normalized to $u_0$.
+        }
 \end{figure}
 
 
@@ -68,7 +74,7 @@ which gives the energy density as
 The characteristic mass and length, as discussed in \autoref{section: TOV equation}, are found by setting $k_1 = k_2 = k_3 = 1$.
 These are the dimensionless constants of the TOV equation, \autoref{dimensionless constants TOV}.
 At tree-level, the bare constants $f$ and $\bar m$ are related to physical constants by $f = f_\pi$ and $m = m_\pi$, the pion decay constant and the pion mass.
-Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} and reinstating $c$ and $\hbar$, the values are
+Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} and reinstating $c$ and $\hbar$, these quantities are give in SI-units by
 %
 \begin{align}
     u_0 & =m_\pi^2 f_\pi^2 \frac{c}{\hbar^3}
@@ -78,17 +84,32 @@ Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} an
 \end{align}
 %
 
+We, therefore, expect both the radius and mass of the pion star to be around one order of magnitude larger than the star made up of fermions.
+
 
 \subsection{Results}
+
+In 
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{../scripts/figurer/pressure_mass_pion_star.pdf}
+    \caption{
+        Top: The pressure normalized to the central pressure, as a function of radius, normalized to the stellar radius.
+    Bottom: The mass, normalized to stellar mass, within a radius $r$, normalized to the stellar radius.
+    Both plots show a range of stars with different central pressures, indicated by the color range.
+    The black dotted line corresponds to the star with the largest mass.}
+    \label{fig: pressure and mass for tree pion stars}
 \end{figure}
 
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.95\textwidth]{../scripts/figurer/mass_radius_pion_star_tree.pdf}
+    \caption{
+        The relationship between the mass and radius of a pion star. Mass is given in units of solar masses, while the radius is measured in kilometers.
+        This line is parameterized by the central pressure $p_c$ of the star, as indicated by the color gradient.
+        The dashed black line indicates the theoretical maximum mass for a given radius, and the configuration above it will collapse to a black hole.
+        }
 \end{figure}
 

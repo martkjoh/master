@@ -318,7 +318,7 @@ From this, we expect our star to have a mass of the order of a solar mass, $M_\o
 \subsection{Numerical results}
 
 
-\begin{figure}[h]
+\begin{figure}[!h]
     \centering
     \includegraphics[width=0.9\textwidth]{../scripts/figurer/pressure_mass.pdf}
     \caption{
@@ -329,14 +329,14 @@ From this, we expect our star to have a mass of the order of a solar mass, $M_\o
     \label{fig: pressure and mass as a function of radius}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_neutron.pdf}
-    \caption{The mass-radius relationship of a star made of a cold gas of neutrons. The line is parametrized by the central pressure $p_c$. The corss indicate the maximum mass solution. The blue circles are results form the 1939 paper of Oppenheimer and Volkof~\autocite{oppenheimerMassiveNeutronCores1939}.}
+    \caption{The mass-radius relationship of a star made of a cold gas of neutrons. The line is parametrized by the central pressure $p_c$. The corss indicate the maximum mass solution. The blue circles are results form the 1939 paper of Oppenheimer and Volkoff~\autocite{oppenheimerMassiveNeutronCores1939}.}
     \label{fig: mass radius relationship fermi gas}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!h]
     \centering
     \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_comparison.pdf}
     \caption{The mass-radius relationship of a cold gas of neutrons. The lowest line is obtained from the TOV equation and full equation of state. The middle line is from the TOV equation and the non-relativistic equation of state. The upper line is obtained from the Newtonian approximation of the TOV equation and the non-relativistic equation of state.}
@@ -375,12 +375,12 @@ The upper line is from the Newtonian approximation to the TOV equation and the n
 This last approximation does not seem to have an upper limit for the mass, as expected.
 
 
-
-
-\subsection{Upper bound and stability}
 \todo[inline]{
     Comment why radius decrease with mass. Can this be shown in the Newtonian limit?
 }
+
+\subsection{Upper bound and stability}
+
 
 For any equation of state, the TOV equation will give a one-parameter family of stars, which we have parametrized by the central pressure $p_c$.
 This leads to the possibility of an \emph{absolute maximum} mass for a given equation of state.
@@ -388,7 +388,7 @@ In the case of non-interacting neutron, we found the limit to be $0.71 \, M_\odo
 To obtain a more general upper limit for the mass of neutron stars, or compact stars in general, one has to account for more general equations of state.
 To constrain the equation of state, we assume firstly that $\odv{p}/{u} \geq 0$.
 To justify this, take the non-relativisitc case, $u = n$, in which case the assumption is equivalent to $\odv{p}/{n} \geq 0$.
-This says that an increase in particle density, for example, due to compression, will result in a increase in pressure.
+This says that an increase in particle density, for example, due to compression, will result in a rise in pressure.
 This is thus an instance of Le Chatelier's principle; nature will counteract any change forced upon it.
 The speed of sound in the fluid, $v_s$, is given by~\autocite{weinbergGravitationCosmologyPrinciples1972}\todo{Vis dette?}
 %
@@ -396,26 +396,76 @@ The speed of sound in the fluid, $v_s$, is given by~\autocite{weinbergGravitatio
     v_s^2 = \odv{p}{u}.
 \end{equation}
 %
-A realistic fluid should not have a speed of sound greater than the speed of light, which gives us the other constraining, $\odv{p}{u} < 1$.
-Using these general assumption, Rhoades and Ruffini found a upper limit for neutron stars of $3.2 \, M_\odot$~\cite{rhoadesMaximumMassNeutron1974}.
+A realistic fluid should not have a speed of sound greater than the speed of light, which gives us the other constraining, $\odv{p}/{u} < 1$.
+Using these general assumptions, Rhoades and Ruffini found an upper limit for neutron stars of $3.2 \, M_\odot$~\cite{rhoadesMaximumMassNeutron1974}.
 
 An equation of state with a \emph{high} speed of sound, i.e., with a flat curve in the $p-u$-plane, is called \emph{stiff}.
 From \autoref{fig: equation of state fermi fluid}, we see that the Newtonian equation of state is stiffer in the high-energy regime
-The most extreme case is the incompressible model we saw earlier, whcih break causality.
+The most extreme case is the incompressible model we saw earlier, which breaks causality.
 In general, a more stiff equation of state leads to a larger maximum mass.
-This is intuitive; if the pressre raises faster as the density increases, then it can sustain a larger total load before collapse.
+This is intuitive; if the pressure raises faster as the density increases, then it can sustain a larger total load before it collapses~\autocite{glendenningCompactStarsNuclear2012}.
 
 
 Solutions to the TOV equation are systems in hydrostatic equilibrium.
-However, as a pen perfectly balancing on its edge, this does not imply stability.
-The measure of stability is whether or not a system counteracts perturbation; will a disturbed system tend back towards where it started as a marble in a bowl, or will the perturbation start to grow.
-We can find a necessary condition for stability by considering what happens when a star in equillibrium i perturbed slightly.
+However, as a pen perfectly balances on its edge, this does not imply stability.
+When perturbed, a stable system returns back towards its equilibrium position as a marble in the bottom of a bowl.
+On the other hand, an unstable system will amplify perturbations, leading to a collapse or an explosion.
+We can make an intuitive argument for which configurations for a given family of stars are stable.
+We will again assume that the equation of state, on a microscopic level, obeys Le Chatelier's principle in the form $\odv{p}/{n} > 0$.\todo{Er det en god antagelse?}
+We can see that this holds for all the cases we are considering.
+A star in equilibrium will find itself on the line parametrized by its central pressure, such as \autoref{fig: mass radius relationship fermi gas}.
+In this case, a perturbation reducing the radius of the star will increase the central pressure as the particle density increases. \todo{Kan vi være helt sikre på dette?}
+This is illustrated in \autoref{fig: fermi stability}.
+A star in equilibrium at point A can be compressed to an out-of-equilibrium configuration, point B.
+This point has a central pressure corresponding to the equilibrium state at point C.
+As the equilibrium configuration at point C has a \emph{lower} mass than the configuration at B, it has a weaker gravitational effect.
+Therefore, we would expect it to shrink further, as the central pressure of B is not enough to support its gravitational mass.
+This compression will lead to an even higher central pressure.
+We thus have a positive feedback loop, and the initial perturbation will continue to grow.
+We can make a similar argument in the case where the mass increases with an increase in the central pressure.
+Here, a compression will lead to a state in which central pressure corresponds to an equilibrium state with a \emph{higher} mass.
+This state will thus tend to expand after a compression, counteracting the perturbation.
+This gives us the following criterion for stability,
+%
+\begin{equation}
+    \odv{M}{p_c} > 0.
+\end{equation}
 
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../scripts/figurer/fermi_stability.pdf}
+    \caption{
+        The plot shows the mass, in units of solar masses, of a star of a cold gas of neutrons, as a function of the central pressure, normalized to the characteristic pressure.
+    Point A denotes a position of equilibrium, which can be compressed to an out-of-equilibrium point, B, which has a central pressure corresponding to an equilibrium configuration, point C.
+    }
+    \label{fig: fermi stability}
+\end{figure}
 
-
-include
-\begin{itemize}
-    \item Oscillations
-    \item 
-\end{itemize}
-
+As it turns out, this is only a necessary requirement for stability.
+To conduct a more rigorous study of stability, one must derive the equation of hydrostatic equilibrium with the addition of perturbations as time-dependent, radial oscillations.
+This is done by discplacing a fluid elemet at a radius $r$ and time $t$ by $\delta r(r, t) = \sum_n A_n \xi_n(r) e^{i \omega_n t}$.
+Here, $\xi_n$ are normal modes with frequencies $\omega_n$, $n \in \{0, 1, ...\}$
+The equation for the eigenmodes was first obtained by Chandrasekhar~\autocite{chandrasekharDynamicalInstabilityGaseous1964}, and can be written in the form of a Sturm-Liouville theory equation,
+%
+\begin{equation}
+    \left[     \odv{}{r} \left( \Pi \odv{}{r}  \right) + Q + \omega_n W \right] \xi_n
+    = 0,
+\end{equation}
+%
+where $\Pi$, $Q$, and $W$ are functions of the pressure, energy density, particle density, $\alpha$, and $\beta$.
+These quantities are thus given by a solution to the equilibrium problem~\cite{glendenningCompactStarsNuclear2012}.
+This analysis is outside the scope of this thesis, but we summarize some important conclusions.
+Stability is encoded in the sign of the square of the frequencies.
+For $\omega_n^2>0$, the mode will remain oscillatory, while if $\omega_n^2<0$, it will grow exponentially.
+Thus, if the system has \emph{any} modes such that $\omega_n^2<0$, it is unstable.
+One mode $\omega_n$ will change stability at a critical point on the $M-R$ curve, where
+%
+\begin{equation}
+    \odv{M}{u_c} = 0,
+\end{equation}
+%
+and this will \emph{only} happen at critical points~\autocite{thorneGENERALRELATIVISTICTHEORYSTELLAR1968a}. Here, $u_c$ is the central energy density corresponding to $p_c$.
+This is equivaent to the criterion $\odv{M}/{p_c} = 0$ as long as $\odv{p}/{u}$ is finite.
+Whether or not the change is from a stable mode to an unstable one is dependent on whether or not the curve turns clockwise (a mode becomes stable) counterclockwise (a node becomes unstable)~\autocite{thorneGENERALRELATIVISTICTHEORYSTELLAR1968a}.
+We know that very low-pressure, cold fermions are stable, which means that configuration with a radius larger than the maximum mas $0.71 \, M_\odot$ will be stable.
+As illustrated in \autoref{fig: mass radius relationship fermi gas}, the curve then turn counterclockwise, and a new node is made unstable each half turn.

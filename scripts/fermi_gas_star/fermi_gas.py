@@ -38,7 +38,11 @@ def sim_newt_non_rel():
 if __name__ == "__main__":
     # Run to generate all data
 
-    sim()
-    sim_non_rel()
-    sim_newt() 
-    sim_newt_non_rel()
+    # sim()
+    # sim_non_rel()
+    # sim_newt() 
+    # sim_newt_non_rel()
+
+    # smol
+    sols = np.load("fermi_gas_star/data/sols_neutron.npy", allow_pickle=True)
+    np.save("fermi_gas_star/data/sols_neutron_small", sols[::5])

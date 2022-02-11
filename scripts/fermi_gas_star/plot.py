@@ -226,13 +226,51 @@ def plot_eos():
     ax[0].legend(loc="upper left")
 
     fig.savefig("figurer/fermi_eos.pdf", bbox_inches="tight")
+
+def plot_mass_of_pc():
+    sols = load_sols()
+    N = len(sols)    
+
+    data = [[None, None] for _ in range(N)]
+
+    for i, s in enumerate(sols):
+        data[i][0] = s.y[1][-1]
+        data[i][1] = s.y[0][0]
+    data = np.array(data)
+    M, pc = data.T
+    y, x = M*m0, pc
     
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.plot(x, y)
+    ax.set_xscale("log")
+
+    n1 = 20 * 5
+    x1, y1 = x[n1], y[n1]
+    x2, y2 = x1*1e1, y1
+    x3, y3 = x1*1e1, y1 - 0.1805
+ 
+    ax.plot(x1, y1, "k.", ms=12)
+    ax.plot(x2, y2, "k.", ms=12)
+    ax.plot(x3, y3, "k.", ms=12)
+
+    ax.arrow(x1*1.35, y1, (x2-x1)*0.6, (y2-y1), color="k",  width=0.001, head_width=0.01, head_length=3, length_includes_head=True)
+
+    ax.text(x1, y1+0.015, "A")
+    ax.text(x2, y2+0.015, "B")
+    ax.text(x3, y3+0.015, "C")
+
+    ax.set_ylabel("$M/M_\\odot$")
+    ax.set_xlabel("$p_c/p_0$")
+
+
+    fig.savefig("figurer/fermi_stability.pdf", bbox_inches="tight")    
 
 
 
-plot_norm_pressure_mass()
+# plot_norm_pressure_mass()
 # plot_mass_radius()
 # plot_mass_radius_compare()
 # plot_eos()
+plot_mass_of_pc()
 
 # plot_mass_surface()

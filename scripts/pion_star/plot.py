@@ -125,7 +125,6 @@ def plot_eos():
     ax.legend(loc="upper left")
 
     fig.savefig("figurer/pion_tree_eos.pdf", bbox_inches="tight")
-    
 
 
 
