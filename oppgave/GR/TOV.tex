@@ -1,6 +1,7 @@
 \section{The TOV equation}
 \label{section: TOV equation}
 
+This section is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,glendenningCompactStarsNuclear2012}.
 We will model a star as being made up of a \emph{perfect fulid}, which is entirely described by its energy density $u$ and pressure $p$.
 The relationship between the pressure and energy density of a substance is called the \emph{equation of state}, or EOS, and has the form
 \begin{equation}
@@ -51,10 +52,10 @@ We will use the $tt$ and $rr$ components of the Einstein field equations, which 
 \begin{align}
     \label{tt equation}
     8 \pi G r^{2} u{\left(r \right)} e^{2 \beta{\left(r \right)}} 
-    & =   2 r \frac{d}{d r} \beta{\left(r \right)} + e^{2 \beta{\left(r \right)}} - 1 \\
+    & =   2 r \odv{}{r} \beta{\left(r \right)} + e^{2 \beta{\left(r \right)}} - 1, \\
     \label{rr equation}
     8 \pi G r^{2} p{\left(r \right)} e^{2 \beta{\left(r \right)}} 
-    & = 2 r \frac{d}{d r} \alpha{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1.
+    & = 2 r \odv{}{r}\alpha{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1.
 \end{align}
 %
 In analogy with the Schwarzschild metric, we define the function $m(r)$ by
@@ -84,13 +85,13 @@ In this case, we are interested in the mass contained in a 3-volume, and the vol
 Using \autoref{spherically symmetric metric}, $\sqrt{|g|} = e^{\beta} r^2 \sin \theta$, the total mass-energy contents of the star is 
 %
 \begin{equation}
-    M' = 4 \pi \int \dd r \, {r'}^2 \left(1 - \frac{2 G m(r')}{r'}\right)^{-1/2}\, u(r').
+    M' = 4 \pi \int \dd r' \, {r'}^2 \left(1 - \frac{2 G m(r')}{r'}\right)^{-1/2}\, u(r').
 \end{equation}
 %
 However, this does not take into account the gravitational potential energy.
 Gravitation is self-interacting, and we must therefore include the gravitational potential energy when calculating gravitational effects.
 It can be shown that the definition of \emph{gravitational mass}, \autoref{mass relation}, does exactly this.
-Furthermore, as we will see later, it matches up with what we call mass in the Newtonian limit.
+Furthermore, as we will see later, it matches up with what we call mass in the Newtonian limit~\autocite{misnerGravitation2009}.
 
 
 Using the Bianchi identity, \autoref{Einstein tensor bianchi identity}, together with Einstein's equation, we find
@@ -115,6 +116,7 @@ The $r$-component of this equation is
 \end{align*} 
 %
 This allows us to relate $\alpha$ to $p$ and $u$, via
+%
 \begin{equation}
     \label{alpha in terms of p and u}
     \odv{\alpha}{r}= - \frac{1}{p + u} \odv{p}{r}
@@ -140,7 +142,7 @@ In their paper, Oppenheimer and Volkoff studied the properties of a star made up
 To summarize, we have three unknown functions, $u(r)$, $p(r)$, and $m(r)$.
 The equation of state, \autoref{EOS}, determines $u = u(p)$, eliminating one unknown.
 The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_c$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integrated.
-As long as both the pressure and energy density is positive, and we are outside always are outside the Schwarzschild radius, i.e., $r<2 G m(r)$, then $\odv{p}/{r} \leq 0$ and the pressure is strictly decreasing.
+As long as both the pressure and the energy density are positive, and we always are outside the Schwarzschild radius, i.e., $r<2 G m(r)$, then $\odv{p}/{r} \leq 0$ and the pressure is strictly decreasing.
 We define the point where the pressure vanishes as the stellar radius $R$, i.e., $p(R) = 0$.
 Given this, we can solve for all the unknown functions, either analytically or numerically.
 
@@ -168,7 +170,7 @@ We can evaluate this integral by making the substitution $x = (1 - 2GM/r), \, \d
     = \frac{1}{2} \ln \left(1 - \frac{2GM}{r}\right) + \const
 \end{equation}
 %
-We then impose the boundary condition $\alpha(\infty) = 0$, so that spacetime far away from the star looks flat.
+We then impose the boundary condition $\alpha(\infty) = 0$.
 This means setting the constant to zero.
 Inserting this into \autoref{spherically symmetric metric} gives the metric for $r<R$,
 %

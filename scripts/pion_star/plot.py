@@ -104,11 +104,21 @@ def plot_mass_radius(name="tree"):
     Rs = np.linspace(0, 50, 100)
     ax.plot(Rs, 4 / 9 * Rs, "k--", label="$M = \\frac{4}{9} R$")
 
+    i = np.argmax(M)
+    label ="$M_\\mathrm{max} = " + "{:3f}".format(M[i]*m0) + "\, M_\odot$"
+    ax.plot(R[i]*r0, M[i]*m0, "kx", ms=10, label=label) 
+
+    i = np.argmax(R)
+    label ="$R_\\mathrm{max} = " + "{:3f}".format(R[i]*r0) + "\, [\mathrm{km}]$"
+    ax.plot(R[i]*r0, M[i]*m0, "ko", ms=10, label=label) 
+
+
     ax.set_xlim(8, 100)
     ax.set_ylim(0, 15)
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
-
+    plt.legend()
+    
     fig.savefig("figurer/mass_radius_pion_star_" + name + ".pdf", bbox_inches="tight")
     
  
@@ -128,6 +138,6 @@ def plot_eos():
 
 
 
-plot_pressure_mass()
+# plot_pressure_mass()
 plot_mass_radius()
-plot_eos()
+# plot_eos()

@@ -226,6 +226,7 @@ def plot_eos():
     ax[0].legend(loc="upper left")
 
     fig.savefig("figurer/fermi_eos.pdf", bbox_inches="tight")
+    
 
 def plot_mass_of_pc():
     sols = load_sols()

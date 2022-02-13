@@ -11,8 +11,7 @@ A non-interacting Fermi gas is governed by the Dirac Lagrangian
     \Ell = \bar \psi (i \slashed \partial - m) \psi,
 \end{equation}
 %
-as described in (APPENDIX thermal field theory).
-\todo{add appendix}
+as described in \autoref{section: fermions}.
 In the grand canonical ensemble, the density of a conserved charge is regulated by a chemical potential $\mu$.
 The conserved current corresponding to the $\text U(1)$ phase symmetry of the Dirac Lagrangian, i.e., the transformation $\psi \rightarrow e^{i \alpha} \psi \approx 1 + \alpha \delta \psi$, is
 %
@@ -70,7 +69,8 @@ With this, we can write the energy density as~\autocite{andersenIntroductionStat
 
 
 \subsection{Equation of state}
-The free energy density of the Fermion gas is (REF: appendix termisk)
+
+We calculate the free energy density of non-interacting free fermions in \autoref{section: fermions}, with the result
 %
 \begin{equation}
     \Eff = - 
@@ -100,7 +100,7 @@ where
 \end{equation}
 %
 is the Fermi-Dirac distribution.
-The energy density is 
+Using this, we find that the energy density is
 %
 \begin{equation}
     \label{energy density}
@@ -147,7 +147,7 @@ In the zero-temperature limit, we can then rewrite any integral over the Fermi d
     \int_0^\infty \dd p \, [f(p) n_f(\omega - \mu) + g(p) n_f(\omega - \mu)]= \int_0^{p_f} \dd p \, f(p).
 \end{equation}
 %
-The charge density is thus,
+The charge density is thus
 %
 \begin{equation}
     n = \frac{1}{\pi^2} \int_0^{p_f} \dd p\, p^2 = \frac{p_f^3}{3 \pi^2}.
@@ -252,7 +252,7 @@ With our choice of units, the form of the TOV equation is
     \left(1 - \frac{2 \tilde m}{\tilde r}\right)^{-1}.
 \end{align}
 %
-As $r \rightarrow 0$, parts of the TOV equation \autoref{TOV dimensionless} approaches a $0/0$-limit, and we must take use of an approximation for numeric evaluation.
+As $r \rightarrow 0$, parts of the TOV equation \autoref{TOV dimensionless} approaches a $0/0$-limit, and we must make use of an approximation for numeric evaluation.
 The Taylor-expansion of the mass function around $\tilde r = 0$ is
 %
 \begin{equation}
@@ -382,28 +382,28 @@ This last approximation does not seem to have an upper limit for the mass, as ex
 \subsection{Upper bound and stability}
 
 
-For any equation of state, the TOV equation will give a one-parameter family of stars, which we have parametrized by the central pressure $p_c$.
+For any equation of state, the TOV equation will give a one-parameter family of stars, parametrized by the central pressure $p_c$.
 This leads to the possibility of an \emph{absolute maximum} mass for a given equation of state.
-In the case of non-interacting neutron, we found the limit to be $0.71 \, M_\odot$, in agreement with Oppenheimer and Volkoff.
+In the case of a non-interacting neutron, we found the limit to be $0.71 \, M_\odot$, in agreement with Oppenheimer and Volkoff.
 To obtain a more general upper limit for the mass of neutron stars, or compact stars in general, one has to account for more general equations of state.
 To constrain the equation of state, we assume firstly that $\odv{p}/{u} \geq 0$.
 To justify this, take the non-relativisitc case, $u = n$, in which case the assumption is equivalent to $\odv{p}/{n} \geq 0$.
 This says that an increase in particle density, for example, due to compression, will result in a rise in pressure.
-This is thus an instance of Le Chatelier's principle; nature will counteract any change forced upon it.
+This is an instance of Le Chatelier's principle; nature will counteract any change forced upon it.
 The speed of sound in the fluid, $v_s$, is given by~\autocite{weinbergGravitationCosmologyPrinciples1972}\todo{Vis dette?}
 %
 \begin{equation}
     v_s^2 = \odv{p}{u}.
 \end{equation}
 %
-A realistic fluid should not have a speed of sound greater than the speed of light, which gives us the other constraining, $\odv{p}/{u} < 1$.
+A realistic fluid should not have a speed of sound greater than the speed of light, leading to the constraint $\odv{p}/{u} < 1$.
 Using these general assumptions, Rhoades and Ruffini found an upper limit for neutron stars of $3.2 \, M_\odot$~\cite{rhoadesMaximumMassNeutron1974}.
 
 An equation of state with a \emph{high} speed of sound, i.e., with a flat curve in the $p-u$-plane, is called \emph{stiff}.
 From \autoref{fig: equation of state fermi fluid}, we see that the Newtonian equation of state is stiffer in the high-energy regime
 The most extreme case is the incompressible model we saw earlier, which breaks causality.
 In general, a more stiff equation of state leads to a larger maximum mass.
-This is intuitive; if the pressure raises faster as the density increases, then it can sustain a larger total load before it collapses~\autocite{glendenningCompactStarsNuclear2012}.
+This is intuitive; the TOV equation describes the balancing of forces from pressure and gravity, and if the pressure raises fast as the density increases, then it can sustain a large total mass before it collapses~\autocite{glendenningCompactStarsNuclear2012}.
 
 
 Solutions to the TOV equation are systems in hydrostatic equilibrium.
@@ -464,8 +464,8 @@ One mode $\omega_n$ will change stability at a critical point on the $M-R$ curve
     \odv{M}{u_c} = 0,
 \end{equation}
 %
-and this will \emph{only} happen at critical points~\autocite{thorneGENERALRELATIVISTICTHEORYSTELLAR1968a}. Here, $u_c$ is the central energy density corresponding to $p_c$.
+and this will \emph{only} happen at critical points~\autocite{thorneGeneralRelativisticTheoryStellar1968}. Here, $u_c$ is the central energy density corresponding to $p_c$.
 This is equivaent to the criterion $\odv{M}/{p_c} = 0$ as long as $\odv{p}/{u}$ is finite.
-Whether or not the change is from a stable mode to an unstable one is dependent on whether or not the curve turns clockwise (a mode becomes stable) counterclockwise (a node becomes unstable)~\autocite{thorneGENERALRELATIVISTICTHEORYSTELLAR1968a}.
+Whether or not the change is from a stable mode to an unstable one is dependent on whether or not the curve turns clockwise (a mode becomes stable) counterclockwise (a node becomes unstable)~\autocite{thorneGeneralRelativisticTheoryStellar1968}.
 We know that very low-pressure, cold fermions are stable, which means that configuration with a radius larger than the maximum mas $0.71 \, M_\odot$ will be stable.
-As illustrated in \autoref{fig: mass radius relationship fermi gas}, the curve then turn counterclockwise, and a new node is made unstable each half turn.
+As illustrated in \autoref{fig: mass radius relationship fermi gas}, the curve then turns counterclockwise, and a new mode is made unstable each half turn.

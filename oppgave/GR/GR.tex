@@ -39,7 +39,7 @@ We define the stress-energy tensor as
 %
 \begin{equation}
     \label{definition stress energy densor}
-    T_{\mu\nu} = - \frac{2}{\sqrt{|g|}} \fdv{S_\text{m}}{g^{\mu \nu}}.
+    T_{\mu\nu} = - 2 \fdv{S_\text{m}}{g^{\mu \nu}}.
 \end{equation}
 %
 The functional derivative of the Einstein-Hilbert action is evaluated in \autoref{subsection: functional derivative of the einstein-hilbert action}, and with the result, \autoref{functional derivatie einstein-hilber action}, we get the Einstein field equations
@@ -94,14 +94,14 @@ The results are
     & =
     \left(
         \begin{matrix}
-            0 & \frac{d}{d r} \alpha{\left(r \right)} & 0 & 0\\\frac{d}{d r} \alpha{\left(r \right)} & 0 & 0 & 0\\0 & 0 & 0 & 0\\0 & 0 & 0 & 0
+            0 & \odv{}{r} \alpha{\left(r \right)} & 0 & 0\\\odv{}{r} \alpha{\left(r \right)} & 0 & 0 & 0\\0 & 0 & 0 & 0\\0 & 0 & 0 & 0
         \end{matrix}
     \right), \\
     \Gamma^r_{\mu \nu}
     &=
     \left(
         \begin{matrix}
-            e^{2 \alpha{\left(r \right)}} e^{- 2 \beta{\left(r \right)}} \frac{d}{d r} \alpha{\left(r \right)} & 0 & 0 & 0\\0 & \frac{d}{d r} \beta{\left(r \right)} & 0 & 0\\0 & 0 & - r e^{- 2 \beta{\left(r \right)}} & 0\\0 & 0 & 0 & - r e^{- 2 \beta{\left(r \right)}} \sin^{2}{\left(\theta \right)}
+            e^{2 \alpha{\left(r \right)}} e^{- 2 \beta{\left(r \right)}} \odv{}{r} \alpha{\left(r \right)} & 0 & 0 & 0\\0 & \odv{}{r} \beta{\left(r \right)} & 0 & 0\\0 & 0 & - r e^{- 2 \beta{\left(r \right)}} & 0\\0 & 0 & 0 & - r e^{- 2 \beta{\left(r \right)}} \sin^{2}{\left(\theta \right)}
         \end{matrix}
      \right), \\
      \Gamma^\theta_{\mu \nu} 
@@ -129,21 +129,31 @@ The results are
     \label{tt component ricci tensor}
     R_{tt}
     & =
-    \left(r \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} - r \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)} + r \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} + 2 \frac{d}{d r} \alpha{\left(r \right)}
-        \right)
+    \left[
+        r \left(\odv{}{r} \alpha{\left(r \right)}\right)^{2} 
+        - r \odv{}{r} \alpha{\left(r \right)} \odv{}{r} \beta{\left(r \right)} 
+        + r \odv[2]{}{r} \alpha{\left(r \right)} 
+        + 2 \odv{}{r} \alpha{\left(r \right)}
+    \right]
     \frac{
          e^{2 \alpha{\left(r \right)}} e^{- 2 \beta{\left(r \right)}}}{r}, \\
     \label{rr component ricci tensor}
     R_{rr}
     & =
     - \frac{1}{r}
-    \left(
-        r \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} - r \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)} + r \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} - 2 \frac{d}{d r} \beta{\left(r \right)} 
-    \right),\\
+    \left[
+        r \left(\odv{}{r} \alpha{\left(r \right)}\right)^{2} 
+        - r \odv{}{r} \alpha{\left(r \right)} \odv{}{r} \beta{\left(r \right)} 
+        + r \odv[2]{}{r} \alpha{\left(r \right)} - 2 \odv{}{r} \beta{\left(r \right)} 
+    \right],\\
     \label{thetatheta component ricci tensor}
     R_{\theta \theta}
     &=
-    - \left(r \frac{d}{d r} \alpha{\left(r \right)} - r \frac{d}{d r} \beta{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1\right) e^{- 2 \beta{\left(r \right)}}, \\
+    -  
+    \left[
+        r \odv{}{r} \alpha{\left(r \right)} - r \odv{}{r} \beta{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1
+    \right]
+        e^{- 2 \beta{\left(r \right)}}, \\
     R_{\varphi \varphi} & = R_{\theta \theta} \sin^2( \theta).
 \end{align}
 %
@@ -156,12 +166,12 @@ Finally, the trace of the Ricci tensor gives the Ricci scalar,
     \, \frac{2 e^{- 2 \beta{\left(r \right)}}}{r^{2}}
     \bigg[
         &
-        r^{2} \left(\frac{d}{d r} \alpha{\left(r \right)}\right)^{2} 
-        - r^{2} \frac{d}{d r} \alpha{\left(r \right)} \frac{d}{d r} \beta{\left(r \right)}
+        r^{2} \left(\odv{}{r} \alpha{\left(r \right)}\right)^{2} 
+        - r^{2} \odv{}{r} \alpha{\left(r \right)} \odv{}{r} \beta{\left(r \right)}
         \\ &
         + r^{2} \frac{d^{2}}{d r^{2}} \alpha{\left(r \right)} 
-        + 2 r \frac{d}{d r} \alpha{\left(r \right)} 
-        - 2 r \frac{d}{d r} \beta{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1
+        + 2 r \odv{}{r} \alpha{\left(r \right)} 
+        - 2 r \odv{}{r} \beta{\left(r \right)} - e^{2 \beta{\left(r \right)}} + 1
     \bigg].
 \end{align}
 %
@@ -173,24 +183,24 @@ Finally, the trace of the Ricci tensor gives the Ricci scalar,
 
 
 The simples case for a matter distribution in spacetime is $T_{\mu \nu} = 0$.
-Although this might only seem to be useful to model a empty universe, it can be combined with a central piont particle and empty space elswhere.
+Although this might only seem to be useful to model a non-empty universe, it can be combined with a central point particle and empty space elsewhere.
 In this case, the Einstein equations are simply $R_{\mu \nu} - \frac{1}{2}R g_{\mu \nu} = 0$.
-We can show that the trace of the Ricci tensor is zeor by taking the trace of this equation, simpllifying it to $R_{\mu \nu} = 0$.
-By combining \autoref{tt component ricci tensor} and \autoref{rr component ricci tensor}, find
+We can show that the trace of the Ricci tensor is zero by taking the trace of this equation, simplifying it to $R_{\mu \nu} = 0$.
+By combining \autoref{tt component ricci tensor} and \autoref{rr component ricci tensor}, we find
 %
 \begin{equation}
     R_{tt} + e^{2(\alpha - \beta)}R_{rr} = 2 \dv{}{r} \left(\alpha + \beta\right) = 0,
 \end{equation}
 %
-which implies $\alpha = -\beta + \const$.
-The constantant corresponds to a rescaling of the coordinates, so we may set it to zero.
+which implies $\alpha = -\beta + \const$
+The constant corresponds to rescaling the coordinates, which allows us to set it to zero.
 From \autoref{thetatheta component ricci tensor}, we get
 %
 \begin{equation}
     e^{2 \beta} R_{\theta \theta} = - 2 r\odv{}{r} \alpha - e^{-2\alpha} + 1 = 0,
 \end{equation}
 %
-which may be restaed as
+which may be restated as
 %
 \begin{equation}
     \odv{}{r} \left(r e^{2 \alpha}\right) = 1,
