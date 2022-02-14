@@ -1,11 +1,8 @@
-\section[Lie groups*]{Lie groups}
-This section is adapted from (PROSJEKTOPPGAVE).
-\todo{Make this section fit better into this thesis}
+\section[Lie groups*]{Lie groups*}
 
-Lie groups are a natural structure to capture the symmetries of a theory.
-A Lie group is a smooth manifold, i.e., a space that is locally diffeomorphic to $\R^N$.
-This means that we can locally parametrize the space by $N$ real numbers $\eta_\alpha$, using smooth invertible functions.
-A Lie group is also equipped with group structure.
+This section is based on~\autocite{leeIntroductionSmoothManifolds2003,peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
+Lie groups are a natural structure to capture the symmetries of a physical theory.
+A Lie group is a smooth manifold, with the additional structure of a \emph{group}.
 A group is a set, $G$, together with a map
 %
 \begin{align}
@@ -13,7 +10,7 @@ A group is a set, $G$, together with a map
     (g_1, g_2) &\longmapsto g_3,
 \end{align}
 % 
-called group multiplication. This map obeys the group axioms, which are the existence of an identity element $\one$, associativity and the existence of an inverse element $g^{-1}$ for all $g\in G$.
+called group multiplication. This map obeys the group axioms, which are the existence of an identity element $\one$, associativity and the existence of an inverse element $g^{-1}$ for all $\in G$.
 These can be written as
 \begin{table}[!h]
     \centering
@@ -25,10 +22,14 @@ These can be written as
 \end{table}
 
 In addition, we require that both the multiplication map and the inverse map, $g \mapsto g^{-1}$, are smooth.
-We describe the set of continuous symmetry transformations,
+As we will discuss later, a symmetry transformation is a map between physical states which leave the equations governing that system unchanged.
+Assume the field, or set of fields, $\varphi$ is governed by the equation $f(\varphi) = 0$.
+A symmetry transformation $\varphi \mapsto g \varphi$ will then obey $f(g\varphi) = 0$.
+This is what makes groups the natural structures to describe symmetries.
+Assume $G$ is the set of all, or a subset closed under compositions, symmetries of a system,
 %
 \begin{equation}
-    G = \setbuilder{g}{g \varphi = \varphi', \, S[\varphi'] = S[\varphi], \D \varphi' = \D \varphi },
+    G = \setbuilder{g}{f(g\varphi) = 0},
 \end{equation}
 %
 as a Lie group.
@@ -45,7 +46,7 @@ As the Lie group is a smooth manifold, we can write\footnote{
     The factor $i$ is a physics convention and differs from how mathematicians define generators of a Lie group.
     }
 \begin{equation}
-    \gamma(\epsilon) = \one + i \epsilon V + \Oh{\epsilon}.
+    \gamma(\epsilon) = \one + i \epsilon V + \Oh(\epsilon).
 \end{equation}
 %
 $V$ is a generator, and is defined as
@@ -53,9 +54,11 @@ $V$ is a generator, and is defined as
     iV = \odv{\gamma}{t}\Big|_{t=0}.
 \end{equation}
 %
-We can define a path $\gamma$ in $G$ by its path through parameter space $\R^n$, $\gamma(t) = g(\eta(t))$.
-Here, $\eta_\alpha(t)$ is a path through $\R^N$, the coordinates of $G$, such that $\eta_\alpha(0) = 0$ and $g(0) = \one$.
-We can thus write the generator as
+The generator is thus a member of the tangent space of the identity element, $T_\one G$.
+We denote the coordinates of $G$ by $\eta_\alpha \in \R^n$.
+As before, we can denote a path $\gamma$ in a manifold $G$ by its path through $ \R^n$, $\gamma(t) = g(\eta(t))$.
+We will assume, without loss of generality, that $\eta_\alpha(0) = 0$ and $g(0) = \one$.
+We can then write the generator as
 %
 \begin{equation}
     V = \odv{\gamma}{t}\Big|_{t=0} = \odv{\eta_\alpha}{t}\Big|_{t=0} \pdv{g}{\eta_\alpha}\Big|_{\eta=0}
@@ -64,14 +67,13 @@ We can thus write the generator as
     \pdv{g}{\eta_\alpha}\Big|_{\eta=0}.
 \end{equation}
 %
-One can show that the generators form a vector space, with the basis $T_\alpha$, induced by the coordinates $\eta_\alpha$~\cite{leeSmoothManifolds2012}.
-This vector space is called the tangent space of the identity element, $T_\one G$.
 Infinitesimal transformations can therefore be written as
 \begin{equation}
     \gamma(\epsilon) = \one + i \epsilon v_\alpha T_\alpha + \Oh{\epsilon}.
 \end{equation}
-%
-The tangent space, together with the additional operation
+
+\subsection{Lie algebra}
+The tangent space $T_\one G$, together with the additional operation
 \begin{align}
     [T_\alpha, T_\beta] = iC_{\alpha\beta}^\gamma T_\gamma,
 \end{align}
@@ -98,7 +100,7 @@ The commutators of $t_a$ must be closed, which means that we can write
 \end{align}
 %
 where $abc$ runs over the generators of $\mathfrak h$, and $ijk$ runs over the rest.
-The second formula can be derived using the Jacobi identity REF:{jacobi identity}, which implies that $C_{ab}^k = 0 = -C_{ak}^b$.
+The second formula can be derived using the Jacobi identity \autoref{jacobi identity}, which implies that $C_{ab}^k = 0 = -C_{ak}^b$.
 This is called a Cartan decomposition.
 
 One parameter subgroups are one special case of Lie subgroups.
@@ -121,7 +123,7 @@ This association is one-to-one, and allows us to define the exponential map,
 \end{equation}
 %
 For connected and compact Lie groups, all elements of the Lie group $g \in G$ can be written as an exponential of elements in the corresponding Lie algebra $\eta_\alpha T_\alpha \in \mathfrak g$.
-For matrix groups, the exponential equals the familiar series expansion~\cite{leeSmoothManifolds2012}
+For matrix groups, the exponential equals the familiar series expansion
 %
 \begin{equation}
     \exp{X} = \sum_n \frac{1}{n!} X^n.

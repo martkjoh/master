@@ -3,9 +3,75 @@ In this chapter, we will take the general knowledge from the general theory in \
 \section{QCD}
 
 Quantum chromodynamics (QCD) is the theory of how quarks interact via the strong force.
-\todo[inline]{Fyll ut om QCD}
 %
 \begin{equation}
-    \Ell = \bar \psi (i \slashed D - m) \psi.
+    \Ell_{\text{QCD}} 
+    = \sum_{f=1}^{N_f} \sum_{c=1}^{N_c} 
+    \bar q_{fc} \left(i \gamma^\mu D_{\mu fc} - m_f\right) q_{fc}
+    = \bar q (i \slashed D - m)q.
+\end{equation}
+%
+The covariant derivative is defined as
+%
+\begin{equation}
+    [D_\mu q]_{fc} 
+    = 
+    \partial_\mu q_{fc} 
+    - i g A^\alpha_{\mu} \lambda^\alpha_{cc'} \tau_{a} q_{fc'} 
+\end{equation}
+%
+Here, $A^\alpha_\mu$ are the eight gluon fields.
+
+\subsection{Yang-Mills theory and Gauge symmetry}
+
+
+\subsection{Chiral symmetry}
+
+The massless QCD-Lagrangian is the basis for chiral perturbation theory, and is
+%
+\begin{equation}
+    \Ell_0 = i \bar q \slashed \partial q.
+\end{equation}
+The Lagrangian containing external currents are
+%
+\begin{equation}
+    \Ell_{\text{ext}}
+    = - \bar q \left(s + i \gamma^5 p \right) q
+    + \bar q \left(v_\mu + \gamma^5 a_\mu\right)\gamma^\mu q.
+\end{equation}
+%
+The external sources are defined as
+%
+\begin{equation}
+    s = s_0\one + s_a \tau_a, \quad
+    p = p_0\one + p_a \tau_a, \quad
+    v^\mu = v_0^\mu \one + v_a^\mu \tau_a, \quad
+    a^\mu = a_0^\mu \one + a^\mu_a \tau_a.
+\end{equation}
+%
+which are the scalar, pseudo-scalar, vector and pseudo-vector currents, respectivly.
+We denote these currents collectively as $j = (s, p, v^\mu_a, a_a^\mu)$.
+The electromagnetic interactions of quarks are captured by 
+%
+\begin{equation}
+    i\bar q \slashed \partial q 
+    \rightarrow i \sum_f \bar q_f \gamma^\mu \left( \delta_{ff'}\partial_\mu - Q_{ff'} \mathcal A_\mu\right) q_{f'},
+\end{equation}
+where $\mathcal A_\mu$ is the photon field, while charge matrix $Q$ is
+%
+\begin{equation}
+    Q = \frac{q_e}{3}
+    \begin{pmatrix}
+        2 & 0 \\
+        0 & -1
+    \end{pmatrix}
+    = 
+    q_e \left(\frac{1}{6} \one + \frac{1}{2} \tau_3\right).
+\end{equation}
+%
+In \chpt we account for this with the a external vector current
+%
+\begin{equation}
+    v_\text{EM}^{\mu} = -i q_e \left(\frac{1}{6} \one + \frac{1}{2}\tau_3\right) \mathcal{A}^\mu.
 \end{equation}
 %
