@@ -32,7 +32,7 @@ This function obeys
 We can expand it around the Bose Matsubara frequencies on the imaginary line:
 \begin{equation}
     i n_B[i (\omega_n + \epsilon)] = \frac{i}{e^{i\beta \epsilon + 2 \pi i n} - 1}
-    = i [i\beta \epsilon + \Oh{\epsilon} ]^{-1} \sim  \frac{1}{\epsilon \beta}.
+    = i [i\beta \epsilon + \Oh{(\epsilon)} ]^{-1} \sim  \frac{1}{\epsilon \beta}.
 \end{equation}
 This means that $in_B(i\omega)$ has a pole on all Matsubara-frequencies, with residue $1/\beta$.
 Using this, we can rewrite the sum over Matsubara frequencies as a contour integral
@@ -56,7 +56,7 @@ The integral over $\gamma$ is equivalent to two integrals along $\R \pm i \epsil
     \nonumber
     & = \int_{-\infty - i \epsilon}^{\infty - i \epsilon}\frac{\dd z}{2 \pi}
     \left\{
-        f(-z) + \left[f(z) + f(-z)\right] n_B(iz)
+        -f(-z) + \left[f(z) - f(-z)\right] n_B(iz)
     \right\} 
     \\
     \label{bosonic sum to integral}
@@ -64,7 +64,7 @@ The integral over $\gamma$ is equivalent to two integrals along $\R \pm i \epsil
     +
     \int_{-\infty - i \epsilon}^{\infty - i \epsilon}\frac{\dd z}{2 \pi}
     \left[
-        f(z) - f(-z)
+        f(z) + f(-z)
     \right]
     n_B(iz).
 \end{align}
@@ -96,7 +96,8 @@ This allows us to shift the first integral back to the real line.
 As $n_B(iz)$ is analytic outside the real line, the result of the second integral is the sum of residues of $f(z) + f(-z)$ in the lower half-plane.
 The function
 \begin{equation}
-    f(z) = \frac{1}{(z + i \mu)^2 + \omega^2} 
+    f(z) 
+    = \frac{1}{(z + i \mu)^2 + \omega^2} 
     = \frac{i}{2 \omega } 
     \left(
         \frac{1}{z + i(\mu + \omega)} - \frac{1}{z + i(\mu - \omega)}
@@ -137,35 +138,40 @@ The Fermi distribution is
 \end{equation}
 It obeys
 \begin{align}
-    &\odv{}{\omega} \ln(1 - e^{-\beta \omega}) = - \beta n_F(\omega), \\
+    &\odv{}{\omega} \ln(1 + e^{-\beta \omega}) = - \beta n_F(\omega), \\
     & n_F(- i\omega) = 1 - n_F(i\omega).
 \end{align}
-The two distributions are related by
-\begin{equation}
-    2 n_B(i \omega; 2\beta) - n_B(i \omega; \beta)
-    = - n_F(i \omega; \beta ).
-\end{equation}
+% The two distributions are related by
+% \begin{equation}
+%     2 n_B(i \omega; 2\beta) - n_B(i \omega; \beta)
+%     = - n_F(i \omega; \beta ).
+% \end{equation}
 With this, the sum over fermionic Matsubara frequencies gives
-\begin{equation}
-    \frac{1}{\beta} \sum_{\tilde \omega_n} f(\tilde \omega_n) 
-    = 
-    -\int_{-\infty}^{\infty} \frac{\dd z}{2 \pi} f(z)
-    +
+\begin{align}
+    \frac{1}{\beta} \sum_{\tilde \omega_n} f(\tilde \omega_n)
+    & = \left(
+        \int_{\infty + i \epsilon}^{-\infty + i \epsilon} \frac{\dd z}{2 \pi} 
+        + \int_{-\infty - i \epsilon}^{\infty - i \epsilon}\frac{\dd z}{2 \pi}
+    \right) 
+    f(z) n_B(i z) \\
+    & =
+    \int_{-\infty}^{\infty} \frac{\dd z}{2 \pi} f(z)
+    -
     \int_{-\infty - i \epsilon}^{\infty - i \epsilon}\frac{\dd z}{2 \pi}
     \left[
         f(z) - f(-z)
     \right]
     n_F(iz),
-\end{equation}
+\end{align}
 and 
 \begin{equation}
-    i(\omega, \mu) = \frac{1}{2 \omega} [-1 + n_F(\omega - \mu) + n_F(\omega + \mu)].
+    i(\omega, \mu) = \frac{1}{2 \omega} [1 - n_F(\omega - \mu) - n_F(\omega + \mu)].
 \end{equation}
 Using the antiderivative of the Fermi-distribution, we get
 \begin{equation}
     j(\omega, \mu) 
-    = - \frac{1}{2} \omega 
-    - \frac{1}{2 \beta }
+    = \frac{1}{2} \omega 
+    + \frac{1}{2 \beta }
     \left[
         \ln\left(1 + e^{-\beta(\omega - \mu)}\right)
         + \ln\left(1 + e^{-\beta(\omega + \mu)}\right)

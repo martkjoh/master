@@ -3,36 +3,22 @@
 
 This section is based on~\autocite{glendenningCompactStarsNuclear2012,andersenIntroductionStatisticalMechanics2012,kapustaFiniteTemperatureFieldTheory2006}.
 
-\subsection{Thermodynamics and free energy}
+In this section, we will study a simple model of a star made up of non-interacting, cold neutrons.
+This is one of the earliest models used to study neutron stars, the remenants of massive stars~\autocite{glendenningCompactStarsNuclear2012}.
+For this model, we use results derived in \autoref{section: femrions}.
 
-A non-interacting Fermi gas is governed by the Dirac Lagrangian
-%
-\begin{equation}
-    \Ell = \bar \psi (i \slashed \partial - m) \psi,
-\end{equation}
-%
-as described in \autoref{section: fermions}.
-In the grand canonical ensemble, the density of a conserved charge is regulated by a chemical potential $\mu$.
-The conserved current corresponding to the $\text U(1)$ phase symmetry of the Dirac Lagrangian, i.e., the transformation $\psi \rightarrow e^{i \alpha} \psi \approx 1 + \alpha \delta \psi$, is
-%
-\begin{equation}
-    j^\mu = \pdv{\Ell}{(\partial_\mu \psi)} \delta \psi = \bar \psi \gamma^\mu \psi.
-\end{equation}
-%
-The conserved charge is
-%
-\begin{equation}
-    Q = \int \dd^3 x \, j^0 = \int \dd^3 x\, \bar \psi \gamma^0 \psi,
-\end{equation}
-%
-the number of particles minus antiparticles.
+
+
+\subsection{Thermodynamics and the equation of state}
+
 The total energy $U$ is related to the grand canonical free energy $F$ by a Legendre transformation,
 %
 \begin{equation}
     F(T, V, \mu) = U - T S - \mu Q, \quad \dd F = - S \dd T - p \dd V - Q \dd \mu.
 \end{equation}
 %
-Here, $p$ is pressure, $T = {1}/{\beta}$ is temperature, and $S$ entropy.
+Here $T = {1}/{\beta}$ is temperature, and $S$ entropy,  $p$ pressure, and $V$ volume.
+$Q$ is some conserved charge, in our case the number of particles minus antiparticles, and $\mu$ is the corresponding chemical potential.
 These thermodynamic variables are related to the free energy by
 %
 \begin{equation}
@@ -66,11 +52,9 @@ With this, we can write the energy density as~\autocite{andersenIntroductionStat
 \begin{equation}
     u = \pdv{}{\beta} \left(\beta \Eff\right) + \mu n.
 \end{equation}
+%
 
-
-\subsection{Equation of state}
-
-We calculate the free energy density of non-interacting free fermions in \autoref{section: fermions}, with the result
+We calculate the free energy density of non-interacting fermions in \autoref{section: fermions}, with the result \autoref{free energy fermions},
 %
 \begin{equation}
     \Eff = - 

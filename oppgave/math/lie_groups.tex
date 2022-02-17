@@ -1,6 +1,9 @@
-\section[Lie groups*]{Lie groups*}
+\section{Lie groups*}
 
-This section is based on~\autocite{leeIntroductionSmoothManifolds2003,peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
+This section is based on~\autocite{leeIntroductionSmoothManifolds2003d,peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
+
+
+\subsection{Groups}
 Lie groups are a natural structure to capture the symmetries of a physical theory.
 A Lie group is a smooth manifold, with the additional structure of a \emph{group}.
 A group is a set, $G$, together with a map
@@ -72,9 +75,11 @@ Infinitesimal transformations can therefore be written as
     \gamma(\epsilon) = \one + i \epsilon v_\alpha T_\alpha + \Oh{\epsilon}.
 \end{equation}
 
+
 \subsection{Lie algebra}
 The tangent space $T_\one G$, together with the additional operation
 \begin{align}
+    \label{structure constants}
     [T_\alpha, T_\beta] = iC_{\alpha\beta}^\gamma T_\gamma,
 \end{align}
 %

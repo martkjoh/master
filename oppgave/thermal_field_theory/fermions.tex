@@ -99,20 +99,23 @@ By using the Grassman-version of the Gaussian integral formula, the partition fu
         \tilde \psi
     } \\
     & = C \prod_{a b}\int \D \tilde \psi_a\D \tilde {\bar \psi}_b 
-    e^{- \langle \tilde {\bar \psi}, D_0^{-1} \tilde \psi\rangle} 
-    = \det(D_0^{-1}).
+    e^{- \langle \tilde {\bar \psi}, D^{-1} \tilde \psi\rangle} 
+    = \det(D^{-1}).
 \end{align*}
 In the second line, we have inserted the Fourier expansion of the field, as defined in \autoref{section: imaginary-time formalism}, and changed variable of integration, as we did for the scalar field.
 The linear operator in this case is 
 \begin{equation}
-    D_0^{-1} = i \gamma^0 (-i\partial_\tau + i\mu) - (- i \gamma^i) \partial_i + m
+    D^{-1} = i \gamma^0 (-i\partial_\tau + i\mu) - (- i \gamma^i) \partial_i + m
     = 
     \beta [i \tilde \gamma_a p_a + m ].
 \end{equation}
 This equality must be understood as an equality between linear operators, which are represented in different bases.
 We introduced the notation $p_a = (\omega_n + i \mu, p_i)$ and use the Euclidean gamma matrices, as defined in 
 % \autoref{section: algebra bases}.
-We use the fact that 
+\todo{include gamma + pauli matrices}
+We use the fact that
+\todo{Hva skjer med beta?}
+%
 \begin{equation*}
     \det(i\tilde\gamma_a p_a + m)
     = \det(\gamma^5 \gamma^5)
@@ -120,33 +123,41 @@ We use the fact that
     = \det[\gamma^5 (i\tilde\gamma_a p_a + m) \gamma^5]
     = \det(-i\tilde\gamma_a p_a + m),
 \end{equation*}
-Let $\tilde D = -i\tilde\gamma_a p_a + m$, which means we can write
+%
+Let $\tilde D^{-1} = \beta[-i\tilde\gamma_a p_a + m]$, which means we can write
+%
 \begin{equation}
-    Z = \sqrt{\det(D)\det(\tilde D)} = \sqrt{\det(D\tilde D)} = \det[\one(p_a p_a + m^2)]^{1/2},
+    Z = \sqrt{\det(D^{-1})\det(\tilde D^{-1})} = \sqrt{\det(D^{-1}\tilde D^{-1})} 
+    = \det[\one \beta^2(p_a p_a + m^2)]^{1/2},
 \end{equation}
+%
 where we have used the anti-commutation rule for the Euclidean gamma-matrices, $\{\gamma_a, \gamma_b\} = 2 \delta_{ab}$.
 It is important to keep in mind that the determinant here refers to linear operators on the space of spinor functions.
-Thus
+Thus \todo{Vær konsekvent på bruk av k og p}
+%
 \begin{align}
     \nonumber
-    \ln(Z) & = \ln\left\{\det[\one(p_a p_a + m^2)]^{1/2}\right\}
-    = \frac{1}{2} \Tr{\ln[\one(p_a p_a + m^2)]} \\
-    & = \frac{1}{2} \int_{\tilde \Omega} \dd K \ln[\one \beta^2 (p_a p_a + m^2)]_{ii}
+    \ln(Z) 
+    & = \ln\left\{\det[\one\beta^2(p_a p_a + m^2)]^{1/2}\right\}
+    = \frac{1}{2} \Tr{\ln[\one\beta^2(p_a p_a + m^2)]} \\
+    & =  2 \int_{\tilde \Omega} \dd K \,  \ln\{ \beta^2[(\omega_n + i\mu)^2 + \omega_k^2]\}.
 \end{align}
-As the matrix within the logarithm is diagonal, the matrix-part of the trace is trivial, and the free energy may be written
-\begin{equation}
-    \beta \Eff
-    = - 2 \int_{\tilde \Omega} \dd X \,  \ln\{ \beta^2[(\omega_n + i\mu)^2 + \omega_k^2]\} .
-\end{equation}
+%
+In the last step, we used the fact that the matrix within the logarithm is diagonal.
+The matrix-part of the trace is trivial therefore trivial.
 Using the fermionic version of the thermal sum from \autoref{section: thermal sum} gives the answer
+%
 \begin{equation}
-    \Eff = 2 \int\frac{\dd^3 p}{(2\pi)^3} \, 
+    \label{free energy fermions}
+    \Eff 
+    = -\frac{2}{\beta} \int\frac{\dd^3 p}{(2\pi)^3} \, 
     \left[
         \beta \omega_k
-        + \frac{1}{\beta} \ln\left(1 + e^{-\beta(\omega_k-\mu)}\right)
-        + \frac{1}{\beta} \ln\left(1 + e^{-\beta(\omega_k+\mu)}\right)
+        + \ln\left(1 + e^{-\beta(\omega_k-\mu)}\right)
+        + \ln\left(1 + e^{-\beta(\omega_k+\mu)}\right)
     \right].
 \end{equation}
+%
 We see again that the temperature-independent part of the integral diverges, and must be regulated.
 There are two temperature-dependent terms, one from the particle and one from the anti-particle.
 

@@ -1,52 +1,70 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {todo}{citation}{7}{section*.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Mer om wedge product}{14}{section*.6}%
+\contentsline {todo}{Mention parallel transport}{12}{section*.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Forklar}{14}{section*.7}%
+\contentsline {todo}{Show Riemann tensor as resutl of parallel transport in loop}{12}{section*.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Skriv mer om hva dette er}{14}{section*.8}%
+\contentsline {todo}{Mer om wedge product}{14}{section*.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Ha imag-time appendix}{17}{section*.10}%
+\contentsline {todo}{Forklar}{14}{section*.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Write better}{17}{section*.11}%
+\contentsline {todo}{Skriv mer om hva dette er}{14}{section*.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{fix referanse}{18}{section*.12}%
+\contentsline {todo}{Write better}{17}{section*.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{fix ref}{18}{section*.13}%
+\contentsline {todo}{Draw new diagrams}{18}{section*.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Draw new diagrams}{18}{section*.14}%
+\contentsline {todo}{fix feynman diagrams}{18}{section*.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{fix feynman diagrams}{18}{section*.15}%
+\contentsline {todo}{Fix feynmandiagrams}{19}{section*.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Fix feynmandiagrams}{19}{section*.16}%
+\contentsline {todo}{skriv om integrating out dof}{20}{section*.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{skriv om integrating out dof}{20}{section*.17}%
+\contentsline {todo}{Legg til dette}{30}{section*.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Legg til dette}{30}{section*.22}%
+\contentsline {todo}{Short about newtonian gravity/motivation}{31}{section*.22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Short about newtonian gravity/motivation}{31}{section*.23}%
+\contentsline {todo}{Si hva bianchi identity er}{32}{section*.23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Si hva bianchi identity er}{32}{section*.24}%
+\contentsline {todo}{Gjøre weak filed limit?}{33}{section*.24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Gjøre weak filed limit?}{33}{section*.25}%
+\contentsline {todo}{Forklar}{34}{section*.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Forklar}{34}{section*.26}%
+\contentsline {todo}{Hvorfor er to punkter så langt unna?}{42}{section*.33}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hvorfor er to punkter så langt unna?}{43}{section*.34}%
+\contentsline {todo}{ Comment why radius decrease with mass. Can this be shown in the Newtonian limit? }{43}{section*.34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{ Comment why radius decrease with mass. Can this be shown in the Newtonian limit? }{43}{section*.35}%
+\contentsline {todo}{Vis dette?}{43}{section*.35}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Vis dette?}{45}{section*.36}%
+\contentsline {todo}{Er det en god antagelse?}{45}{section*.36}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Er det en god antagelse?}{45}{section*.37}%
+\contentsline {todo}{Kan vi være helt sikre på dette?}{45}{section*.37}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Kan vi være helt sikre på dette?}{45}{section*.38}%
+\contentsline {todo}{Hvorfor?}{47}{section*.39}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Tolkning av dette}{49}{section*.40}%
+\contentsline {todo}{Hvorfor skrives disse med motsatt fortegn?}{48}{section*.40}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hvorofor? Fordi eos er så lite stiv?}{50}{section*.42}%
+\contentsline {todo}{Hva er grunnen til valgene av fortegn?}{48}{section*.41}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{clean up}{56}{section*.45}%
+\contentsline {todo}{Er dette riktig?}{49}{section*.42}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Describe the numerical code for the TOV equations}{71}{section*.47}%
+\contentsline {todo}{finn talll}{49}{section*.43}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Er dette riktig fortegn}{49}{section*.44}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Check Q}{50}{section*.45}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Tolkning av dette}{51}{section*.46}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Hvorofor? Fordi eos er så lite stiv?}{52}{section*.48}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{clean up}{58}{section*.51}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{include gamma + pauli matrices}{72}{section*.53}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Hva skjer med beta?}{72}{section*.54}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Vær konsekvent på bruk av k og p}{72}{section*.55}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Describe the numerical code for the TOV equations}{73}{section*.56}%

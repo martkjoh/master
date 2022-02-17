@@ -1,8 +1,8 @@
 In this section, we survey some general properties of quantum field theory that are necessary for chiral perturbation theory.
 First, we introduce the path integral and the 1-particle irreducible effective action and the effective potential.
-We will derive Goldstone's theorem and present the CCWZ construction, which are the basis for \chpt.
+We will derive Goldstone's theorem and present the CCWZ construction, which is the basis for \chpt.
 
-\section[QFT via path integrals*]{QFT via path integrals}
+\section{QFT via path integrals*}
 \label{section: path integral}
 
 This section is based on \autocite{peskinIntroductionQuantumField1995,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996,schwartzQuantumFieldTheory2013}
@@ -11,9 +11,7 @@ This section is based on \autocite{peskinIntroductionQuantumField1995,weinbergQu
 In the path integral formalism, one evaluates quantum observable by integrating over the contributions of all possible configurations.
 If the system has specified initial and final states, this amounts to all possible paths the system might evolve between these, hence the name.
 We assume the reader has some familiarity with this formalism. 
-However, if a refresher is needed (Ref: imaginary time formalism)
-\todo{Ha imag-time appendix}
-contains a derivation of the closely related imaginary-time formalism and compares it with the path integral approach.
+However, if a refresher is needed, \autoref{section: imaginary-time formalism} contains a derivation of the closely related imaginary-time formalism and compares it with the path integral approach.
 
 In the path integral formalism, the vacuum-to-vacuum transition amplitude, i.e., the probability that that vacuum at $t = -\infty$ evolves to the vacuum at time $t = \infty$, is given by
 
@@ -69,11 +67,7 @@ In a free theory, we are able to write
     iW_0[J] = -\frac{1}{2} \int \dd^4 x \dd^4 y \, J(x) D_0(x - y) J(y),
 \end{equation}
 where $D_0$ is the propagator of the free theory.
-Using this form of the generating functional, 
-% \autoref{correlator from generating functional} 
-()
-\todo{fix referanse}
-becomes
+Using this form of the generating functional, \autoref{correlator from generating functional} becomes
 \begin{align*}
     & \frac{1}{Z[0]}  (-i)^n\fdv{}{J(x_1)} ... \fdv{}{J(x_n)} Z_0[J]  \Big|_{J = 0}
     = (-i)^n \fdv{}{J(x_1)} ... \fdv{}{J(x_n)} e^{i W_0[J]} \Big|_{J = 0}\\
@@ -115,7 +109,7 @@ We can expand the exponential in power series, which means the expectation value
 \end{equation}
 The terms in this series are represented by Feynman diagrams, constructed using the Feynman rules, and can be read from the action.
 We will not further detail how the Feynman rules are derived.
-The Feynman rules for a free scalar field in thermal field theory are derived in (\todo{fix ref}{section:interacting scalar}), and the general procedure is found in any of the main sources for this section~\autocite{peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}
+The Feynman rules for a free scalar field in thermal field theory are derived in \autoref{section: interacting scalar}, and the general procedure is found in any of the main sources for this section~\autocite{peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}
 The source terms gives rise to an additional vertex
 \todo{Draw new diagrams}
 % \begin{equation}
@@ -142,7 +136,7 @@ If sub-diagram $i$ as a stand-alone diagram equals $\Em_i$, each copy of that su
 However, due to the symmetry of permuting identical subdiagrams, one must divide by the extra symmetry factor $s = n_i !$, the total number of permutations of all the copies of diagram $i$.
 The full diagram therefore equals
 \begin{align}
-    % \label{Feynman diagrams}
+    \label{Feynman diagrams}
     \Em
     = \prod_{i= 1}^N \frac{1}{n_i!} \Em_i^{n_i}.
 \end{align}

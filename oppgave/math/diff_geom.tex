@@ -4,10 +4,11 @@ Einstein first wrote down the theory more than a century ago, and it is still ou
 It makes accurate and counterintuitive predictions, which experiments have borne out.
 This chapter surveys the basics of general relativity and some mathematical prerequisites.
 We will then use this to derive the Tolman-Oppenheimer-Volkoff (TOV) equation, a differential equation used to model stars.
-This chapter is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,leeSmoothManifolds2012}.
 
 \section{Differential geometry}
 \label{section: differential geometry}
+
+This section is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,leeIntroductionSmoothManifolds2003d}.
 
 \subsection{Manifolds and coordinates}
 
@@ -236,6 +237,8 @@ where
 
 \subsection{Geometries and the metric}
 
+\todo{Mention parallel transport}
+\todo{Show Riemann tensor as resutl of parallel transport in loop}
 The metric is a symmetric, non-degenerate $(0, 2)$ tensor
 %
 \begin{equation}
@@ -328,6 +331,7 @@ The curvature of a manifold $\Em$, with the metic $g_{\mu \nu}$, is encoded in t
 It is defined by
 %
 \begin{equation}
+    \label{Riemann tensor}
     [\nabla_\mu, \nabla_\nu] v^\rho = R^{\rho}{}_{\sigma \mu \nu} v^\sigma,
 \end{equation}
 %

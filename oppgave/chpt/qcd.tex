@@ -3,6 +3,67 @@ In this chapter, we will take the general knowledge from the general theory in \
 \section{QCD}
 
 Quantum chromodynamics (QCD) is the theory of how quarks interact via the strong force.
+
+
+\subsection{Yang-Mills theory and Gauge symmetry}
+
+
+In our discussion on global symmetries, we considered the global transformation of fields by some group $G$.
+In gauge theories, we will consider local transformations.
+That is, the transformations are themselves functions of spacetime, $U = U(x)$, and take on some value in $G$ for all points in space.
+With this, however, we encounter a problem with comparing the value of a field at different points.
+As the symmetry is local, a gauge transformation will in general affect the field  at two points differently.
+We must find a gauge-independent way to compare fields at different points.
+This is a problem we have encountered before.
+In differntial geometry, we needed a connection $\Gamma^\rho_{\mu \nu}$ so that we could compare vectors in different tangent spaces in a coordinate independent way.
+In gauge theories, we generalize this by defining a connection, $A_\mu$, to compare a fieldvalues at different points in a gauge independent way.
+
+Consider a set of $N_c$ fields $\psi_c$, which the symmetry group $\Lie{SU}{N_c}_c$ acts linearly on as $\psi_c \rightarrow U_{cc'} \psi_{c'}$.
+We can write $U = \exp(i \eta_\alpha T_\alpha)$, where $T_\alpha$ are the generators of $\lie{su}{N_c}_c$.
+The transformation is then made local by letting the coordinates of $\Lie{SU}{N_c}$ be functions of spacetime, $\eta_\alpha = \eta_\alpha(x)$.
+As we did autoref \autoref{section: differential geometry}, we define the covariant derivative $D_\mu$ to transform as the thing it acts on.
+Wit this, we get
+%
+\begin{equation}
+    D_\mu^{cc'} q_{c'} = (\delta_{cc'}\partial_\mu - i g A_\mu^{cc'} )q_{c'},
+\end{equation}
+%
+where $A_\mu^{cc'}$ is a new, dynamic field, the gauge field, which takes values in $\lie{su}{N_c}$.\todo{Hvorfor?}
+We will supress the $c$-indices for cleaner notation.
+This field also transform under the gauge group, by
+%
+\begin{equation}
+    \label{Gauge transformation gauge field}
+    A_\mu\rightarrow U \left(A_\mu + \frac{i}{g} \partial_\mu\right) U^\dagger
+\end{equation}
+%
+
+In \autoref{section: differential geometry} we introduced the Riemann tensor as the commutator of covaraint derivatives, \autoref{Riemann tensor}.
+This ensures that it transforms as a tensor, and gives us the interpretation as a quantity that measures the amount vectors curved when parallel transported in a small loop.
+In analogy, we define the \emph{field strength tensor},
+%
+\begin{equation}
+    G_{\mu \nu} := \frac{i}{g} [D_\mu, D_\nu]
+    = \partial_\mu A_\nu - \partial_\nu A_\mu - i g[A_\mu, A_\nu].
+\end{equation}
+%
+$A_\mu$ is an element of a Lie algebra, so the commutator is given by the structure constants of that algebra, \autoref{structure constants}.
+The field strength tensor transforms as $G_\mu \rightarrow U G_{\mu \nu}U^\dagger$.
+This allows us to create gague-invariant terms of only this tensor, which, as with the Ricci scalar in general relativity, are the building blocks of the Lagrangian of only the gauge field.
+These are
+%
+\begin{equation}
+    \Tr_c\{G^{\mu \nu} G_{\mu \nu}\}, \quad
+    \epsilon^{\mu \nu \rho \sigma} \Tr_c\{G_{\mu \nu} G_{\rho \sigma}\}.
+\end{equation}
+%
+Here, $\Tr_c$ is the trace over the color indices.
+
+\subsection{Quarks}
+
+There is $N_f$ quarks $q$, indexed by $f$, with $N_c$ colors, indexe by $c$.
+They interact via the strong force, which are mediated by gluons, the particles in the gauge field corresponding to the gauge group of $\Lie{SU}{N_c}_c$, $A_\mu = A_\mu^\alpha \lambda_\alpha$.
+Here, $\lambda^\alpha$ are the generators of $\lie{su}{ N_c}_c$. 
 %
 \begin{equation}
     \Ell_{\text{QCD}} 
@@ -11,67 +72,286 @@ Quantum chromodynamics (QCD) is the theory of how quarks interact via the strong
     = \bar q (i \slashed D - m)q.
 \end{equation}
 %
-The covariant derivative is defined as
-%
-\begin{equation}
-    [D_\mu q]_{fc} 
-    = 
-    \partial_\mu q_{fc} 
-    - i g A^\alpha_{\mu} \lambda^\alpha_{cc'} \tau_{a} q_{fc'} 
-\end{equation}
-%
-Here, $A^\alpha_\mu$ are the eight gluon fields.
-
-\subsection{Yang-Mills theory and Gauge symmetry}
-
+Here, $D_\mu = \one \partial_\mu - i g A_\mu $ is the covariant derivative corresponding to the $\Lie{SU}{N_c}$ gague group.
 
 \subsection{Chiral symmetry}
 
-The massless QCD-Lagrangian is the basis for chiral perturbation theory, and is
-%
 \begin{equation}
-    \Ell_0 = i \bar q \slashed \partial q.
+    P_R = \frac{1}{2}\left(1 + \gamma^5\right), \quad
+    P_L = \frac{1}{2}\left(1 - \gamma^5\right).
 \end{equation}
-The Lagrangian containing external currents are
+\begin{equation}
+    P_I q = q_I, \quad P_I \bar q = q_{\bar I},\quad
+    I = R, L, \, \bar I = L, R. 
+\end{equation}
+
+The global symmetry of massless, classical QCD is $\Lie{U}{N_f}_R \times \Lie{U}{N_f}_L = \Lie{U}{N_f}_V \times \Lie{U}{N_f}_A$.
+
+
+Currents:\todo{Hvorfor skrives disse med motsatt fortegn?}
+%
+\begin{align}
+    &e^{i\theta}, \, 
+    &J_V^\mu 
+    = \bar q \gamma^\mu q, \\
+    &e^{i\theta\gamma^5}, \, 
+    &J_A^\mu = \bar q \gamma^\mu \gamma^5 q, \\
+    &e^{i\eta_a \tau_a/2}, \, 
+    &V^\mu = \frac{1}{2} \bar q \tau_a \gamma^\mu q, \\
+    &e^{i\gamma^5 \eta_a \tau_a/2}, \, 
+    & A^\mu = \frac{1}{2} \bar q \tau_a \gamma^\mu \gamma^5 q.
+\end{align}
+%
+Other bilinears
 %
 \begin{equation}
+    \bar q q,\, \bar q\gamma^5 q,\, \bar q \tau_a q, \, \bar q \tau_a \gamma^5 q. 
+\end{equation}
+
+\subsection{External sources}
+
+The massless QCD-Lagrangian is the basis for chiral perturbation theory and is
+%
+\begin{equation}
+    \Ell_0 = i \bar q \slashed D q - \frac{1}{4} \Tr_c\{G^{\mu \nu} G_{\mu \nu}\}
+\end{equation}
+%
+The Lagrangian containing external currents are\todo{Hva er grunnen til valgene av fortegn?}
+%
+\begin{align}
     \Ell_{\text{ext}}
-    = - \bar q \left(s + i \gamma^5 p \right) q
-    + \bar q \left(v_\mu + \gamma^5 a_\mu\right)\gamma^\mu q.
-\end{equation}
+    = - \bar q \left(s - i \gamma^5 p \right) q
+    + \bar q \gamma^\mu  \left(v_\mu + \gamma^5 a_\mu\right)q.
+\end{align}
 %
 The external sources are defined as
 %
 \begin{equation}
     s = s_0\one + s_a \tau_a, \quad
     p = p_0\one + p_a \tau_a, \quad
-    v^\mu = v_0^\mu \one + v_a^\mu \tau_a, \quad
-    a^\mu = a_0^\mu \one + a^\mu_a \tau_a.
+    v^\mu = v_0^\mu \one + \frac{1}{2}v_a^\mu \tau_a, \quad
+    a^\mu = a_0^\mu \one + \frac{1}{2}a^\mu_a \tau_a.
 \end{equation}
 %
-which are the scalar, pseudo-scalar, vector and pseudo-vector currents, respectivly.
+which are respectively the scalar, pseudo-scalar, vector, and pseudo-vector currents.
 We denote these currents collectively as $j = (s, p, v^\mu_a, a_a^\mu)$.
-The electromagnetic interactions of quarks are captured by 
+The masses of the quarks are accounted for by setting the scalar current $s_0$ equal the mass matrix of the quarks,
 %
 \begin{equation}
-    i\bar q \slashed \partial q 
-    \rightarrow i \sum_f \bar q_f \gamma^\mu \left( \delta_{ff'}\partial_\mu - Q_{ff'} \mathcal A_\mu\right) q_{f'},
+    \label{mass matrix quarks}
+    m_q =
+    \begin{pmatrix}
+        m_u & 0  \\
+        0 & m_d
+    \end{pmatrix}
 \end{equation}
-where $\mathcal A_\mu$ is the photon field, while charge matrix $Q$ is
+%
+These field can be static background fields, as is the case for the mass contribution to $s_0$, or a dynamical field such as the photon field.
+Let $j_s$ denote static fields, while $j_s$ denote dynamical fields, so that $j = j_s + j_d$.
+The dynamical fields migh have their own Lagrangian with terms independent of quarks, $\Ell_d[j_d]$.
+In the case where the photon field is included as a dynamical field, this will have a $-\frac{1}{4}F_{\mu \nu}F^{\mu \nu}$ term.
+\todo{Er dette riktig?}
+The full Lagrangian is then
 %
 \begin{equation}
-    Q = \frac{q_e}{3}
+    \Ell_\text{QCD}[q, \bar q, A, j] = \Ell_\text{QCD}^0[q, \bar q, A] + \Ell_\text{ext}[j] + \Ell_d[j_d].
+\end{equation}
+
+
+In the grand canonical ensemble, as discussed in (ref termisk feltteori), we introduce a chemical potential $\mu$ and couple it to a conserved charge.
+We are interested in the case where the chemical potential of the third component of isospin is, denoted $\mu_I$, is nonzero.
+This corresponds to a modification of the Lagrangian by
+%
+\begin{equation}
+    \Ell \rightarrow \Ell + \mu_I \frac{1}{2} \bar q \gamma_0\tau_3 q,
+\end{equation}
+%
+which corresponds to an external vector current
+%
+\begin{equation}
+    v^\mu_I = \frac{1}{2} \mu_I  \delta^\mu_0 \tau_3.
+\end{equation}
+%
+
+The electromagnetic interactions is a gauge theory as well, and the electromagnetic covariant derivative acing on quarks is
+%
+\begin{equation}
+    i\bar q \slashed D' q 
+    = 
+    i \bar q \gamma^\mu \left( \one \partial_\mu - i e Q \mathcal A_\mu\right) q
+    =
+    i \bar q \slashed \partial q - e \mathcal A_\mu J^\mu,
+\end{equation}
+where $\mathcal A_\mu$ is the photon field corresponding to the $\Lie{U}{1}_\text{EM}$ gauge group, $e = |e| = xxxx \text{C}$\todo{finn talll} is the elementary charge, $J^\mu = - \bar q Q \gamma^\mu q$ is the electromagnetic charge current, and $Q$ is the charge matrix for the different quarks,
+%
+\begin{equation}
+    \label{quark charge matrix}
+    Q = \frac{1}{3}
     \begin{pmatrix}
         2 & 0 \\
         0 & -1
     \end{pmatrix}
     = 
-    q_e \left(\frac{1}{6} \one + \frac{1}{2} \tau_3\right).
+    \frac{1}{6} \one + \frac{1}{2}\tau_3.
 \end{equation}
 %
-In \chpt we account for this with the a external vector current
+As with the chemical potential, this is accounted for by an external current vector current, \todo{Er dette riktig fortegn}
 %
 \begin{equation}
-    v_\text{EM}^{\mu} = -i q_e \left(\frac{1}{6} \one + \frac{1}{2}\tau_3\right) \mathcal{A}^\mu.
+    v_\text{EM}^{\mu} = e Q \mathcal{A}^\mu.
 \end{equation}
 %
+We define the right handed and left handed currents as
+\begin{equation}
+    r_\mu = v_\mu + a_\mu, \quad l_\mu = v_\mu - a_\mu
+\end{equation}
+%
+We now define the effective Lagrangian of $\chpt$ as
+%
+\begin{equation}
+    \label{definition effective lagrangian chpt}
+    Z[j_s]
+    = 
+    \int \D q \D \bar q \D A \D j_d
+    \exp{i\int \dd^4 x \Ell_\text{QCD}[q, \bar q, A, j] }
+    = 
+    \int \D \pi \D j_d
+    \exp{i\int \dd^4 x \Ell_\text{eff}[\pi, \mathcal{A}, j] }.
+\end{equation}
+
+\section{Building blocks}
+
+\begin{align}
+    \Sigma = A_\alpha [U(x) \Sigma_0 U(x)] A_\alpha, \quad
+    \Sigma_0 = \one,\,
+    U = \exp{i\frac{\pi_a \tau_a}{2 f}},\,
+    A_\alpha = \exp(i \alpha \tau_1).
+\end{align}
+%
+Covariant derivative ($a_\mu = 0$)
+%
+\begin{equation}
+    \nabla_\mu\Sigma = \partial_\mu \Sigma - ir_\mu \Sigma + i \Sigma l_\mu.
+\end{equation}
+%
+Scalar:
+%
+\begin{equation}
+    \chi = 2 B_0 (s + ip), \quad s = m_q, \, p = 0.
+\end{equation}
+%
+Define $bar m^2 = B_0 (m_u + m_d)$ and $\Delta m^2 = B_0(m_u - m_d)$, so that
+%
+\begin{equation}
+    \label{chi definition}
+    \chi = \bar m^2 \one + \Delta m^2 \tau_3,
+\end{equation}
+%
+Field strength tensor
+%
+\begin{equation}
+    f_{\mu \nu}^{(r)} = \partial_\mu r_\nu - \partial_\nu r_\mu - i[r_\mu, r_\nu], 
+    \quad r\rightarrow l.
+\end{equation}
+%
+EM + chemical potential:
+%
+\begin{equation}
+    r_\mu = l_\mu = v_\mu 
+    = 
+    \frac{1}{2} \mu_I \delta^0_\mu \tau_3
+    + e Q \mathcal{A}_\mu.
+    \frac{1}{6} e \mathcal A^\mu 
+    + \frac{1}{2}(e \mathcal A^\mu + \mu_I\delta^\mu_I) \tau_3.
+\end{equation}
+%
+$G = \Lie{SU}{N_f}_R \times \Lie{SU}{N_f}_L \times \Lie{U}{1}_V$
+Transformations:
+\begin{align}
+    g\in G&, \quad  g = g_R \times g_L \times g_V, \\
+    g_I(q) &= (P_I U_I + P_{\bar{I}}) q = U_I q_I \quad
+    g_I(\bar q) = \bar q (P_{\bar{I}} U_I^\dagger + P_I), \\
+    g_V(q) & = U_V q, \, g_V(\bar q) = \bar q U_V^\dagger \\
+    U_I &= P_I \exp{-i \eta_\alpha \frac{\tau_\alpha}{2} }, \quad I = R, L, \\
+    U_V &= \exp(- i \theta)
+\end{align}
+Promoting $G$ to gauge group, to get gauge invariance we must have \todo{Check Q}
+%
+\begin{align}
+    \Sigma &\rightarrow U_R \Sigma U_L^\dagger, \\
+    r_\mu &\rightarrow U_V U_R (r_\mu + i\partial_\mu) U_R^\dagger U_V^\dagger
+    = U_R^\dagger (r_\mu + i \partial_\mu) U_R^\dagger - \partial_\mu \theta, \quad 
+    r, R \rightarrow l, L. \\
+    \chi &\rightarrow U_R \chi U_L^\dagger \\
+    Q_I &\rightarrow U_I Q_I U_I^\dagger, \, I = R, L.
+\end{align}
+%
+We count $\chi$ as ortder 2, $e$ as order 2 and $\nabla_\mu$ as order 1.
+Notice that $e$ and $Q$ must always appear as $e Q$, as the orignal Lagrangian \autoref{definition effective lagrangian chpt} is invariant under the transformation $e \rightarrow e/\lambda$ and $Q \rightarrow \lambda Q$~\autocite{pencoIntroductionEffectiveField2020}.
+
+
+
+\section{Electromagnetic effects}
+
+In this section, we will explore the effects of electromagnetism on chiral perturbation theory.
+The leading order Lagrangian is then~\autocite{eckerRoleResonancesChiral1989,urechVirtualPhotonsChiral1995}
+%
+\begin{equation}
+    \label{leading order lagrangian EM only}
+    \Ell_2^{\text{EM}}
+    = 
+    \frac{1}{4}f^2 
+    \Tr{
+        \nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger
+    }
+    +
+    \frac{1}{4}f^2 
+    \Tr{
+        \chi \Sigma^\dagger + \Sigma\chi^\dagger
+    }
+    +
+    e^2 C
+    \Tr{Q \Sigma Q \Sigma^\dagger}
+\end{equation}
+%
+We assume $\mu_I = 0$, then $Q$ is the quark charge matrix, \autoref{quark charge matrix} and $\chi = 2B_0 m$, where $m$ is the charge matrix.
+We use the parametrization $\Sigma = \exp{i \pi_a \tau_a / f}$, and the covariant derivative is in this case
+%
+\begin{equation}
+    \nabla_\mu \Sigma = \partial_\mu \Sigma - i e \mathcal A_\mu [Q, \Sigma].
+\end{equation}
+%
+We expand to second order in $\pi_a/f$, which gives
+%
+\begin{align}
+    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
+    & = 4 \bar m^2\left(1 - \frac{1}{2} \frac{\pi_a \pi_a}{f^2}\right), \\
+    \Tr{Q \Sigma Q \Sigma^\dagger}
+    & = \frac{5}{9} - \frac{\pi_1^2 + \pi_2^2}{f^2}, \\
+    f^2 \Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma}
+    &=
+    2\partial_\mu \pi_a\partial^\mu \pi_a
+    + 4 e \mathcal A^\mu (\pi_1 \partial_\mu \pi_2 -\pi_2 \partial_\mu \pi_1)
+    + 4 e^2 \mathcal A^2 (\pi_1^2 + \pi_2^2).
+\end{align}
+%
+Inserting this into \autoref{leading order lagrangian EM only}, we get
+%
+\begin{equation}
+    \Ell_2^\text{EM}
+    = \bar m^2 f^2 + \frac{5}{9}e^2 C
+    + \frac{1}{2}\partial_\mu \pi_a \partial^\mu \pi_a
+    - \frac{1}{2} \bar m_\pm^2 (\pi_1^2 + \pi_2^2) 
+    - \frac{1}{2}\bar m^2 \pi_3^2
+    + e \mathcal A^\mu (\pi_1 \partial_\mu \pi_2 -\pi_2 \partial_\mu \pi_1)
+    + e^2 \mathcal A^2 (\pi_1^2 + \pi_2^2).
+\end{equation}
+%
+where
+\begin{equation}
+    \bar m_\pm^2 = \bar m^2 - \frac{e^2 C}{f^2}.
+\end{equation}
+%
+This is the electromagnetic contribution to the mass at leading order.
+It only affects the $a = 1, 2$ pions, which are a linear combination of $\pi_\pm$, the charged pions.
+

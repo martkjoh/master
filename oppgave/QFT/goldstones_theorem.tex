@@ -1,7 +1,7 @@
-\section[Symmetry and Goldstone's theorem*]{Symmetry and Goldstone's theorem}
+\section{Symmetry and Goldstone's theorem*}
 \label{section:symmetry}
 
-This section is based on~\autocite{leeSmoothManifolds2012,peskinIntroductionQuantumField1995,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
+This section is based on~\autocite{leeIntroductionSmoothManifolds2003d,peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
 
 Symmetry plays a prominent role in modern physics.
 If we can transform a physical state in such a way that the governing equations of this system are unchanged, we call that transformation a \emph{symmetry transformation}.
@@ -100,9 +100,6 @@ For $N = 2$, and $\mu^2, \lambda > 0$ we get the ubiquitous Mexican hat potentia
     \label{fig:Mexican hat}
 \end{figure}
 
-
-% Lie groups
-
 \subsection{Nöther's theorem}
 
 One of the most profound consequences of symmetry in physics is the appearance of conserved quantities.
@@ -173,7 +170,7 @@ We can then use the divergence theorem.
 Assume $\partial V$ is the boundary of $V$, which has the space-like normal vector $k_i$, and that the current falls of quickly towards infinity.
 Then
 \begin{equation}
-    \pdv{t} Q = - \int_V \dd^3 x \, \partial_i j^i = - \int_{\partial V} \dd^2 x\, k_i j^i = 0,
+    \odv{Q}{t} = - \int_V \dd^3 x \, \partial_i j^i = - \int_{\partial V} \dd^2 x\, k_i j^i = 0,
 \end{equation}
 %
 proving that the charge is conserved.
