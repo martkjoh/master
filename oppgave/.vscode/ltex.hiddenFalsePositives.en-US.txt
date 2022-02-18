@@ -1,1 +1,0 @@
-{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\QWe see that the star is completly characterized by \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, while \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q corresponds to scaling the pressure.\\E$"}
