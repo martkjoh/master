@@ -1,0 +1,108 @@
+\documentclass{book}
+
+\input{../import.tex}
+\input{../newcommands.tex}
+ 
+\title{\huge{Utledninger}}
+\author{
+    \large{Martin Kjøllesdal Johnsrud }
+    }
+
+
+\bibliography{master}
+
+
+\begin{document}
+
+\maketitle
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.8em}
+
+\chapter{CHPT}
+\section{Leading order Lagrangian}
+
+\subsection{EM contribution only}
+Subs $\pi_a / f \rightarrow \pi_a$,
+\begin{align}
+    \Sigma = \exp{i \pi_a \tau_a}
+    & = 1 + i\pi_a\tau_a - \frac{1}{2}\pi_a \pi_a \\
+    Q 
+    & = \frac{1}{6} + \frac{1}{2} \tau_3
+\end{align}
+
+\begin{align}
+    Q\Sigma 
+    & = 
+    \frac{1}{2}
+    \left[
+        \frac{1}{3} 
+        \left(
+            1 + i\pi_a\tau_a - \frac{1}{2}\pi_a \pi_a
+        \right)
+        +
+        \tau_3
+        \left(
+            1 + i\pi_a\tau_a - \frac{1}{2}\pi_a \pi_a
+        \right)
+    \right] \\
+    & = 
+    \frac{1}{2}
+    \left[
+        \frac{1}{3} 
+        - \frac{1}{6}\pi_a \pi_a
+        + i \pi_a \tau_3 \tau_a
+        + \frac{i}{3}  \pi_a \tau_a
+        + \tau_3
+        - \frac{1}{2}\pi_a \pi_a \tau_3 
+    \right] \\
+    %
+    %
+    %
+    Q \Sigma^\dagger
+    & = 
+    \frac{1}{2}
+    \left[
+        \frac{1}{3} 
+        - \frac{1}{6}\pi_a \pi_a
+        - i \pi_a \tau_3 \tau_a
+        - \frac{i}{3}  \pi_a \tau_a
+        +\tau_3
+        - \frac{1}{2}\pi_a \pi_a \tau_3 
+    \right] 
+\end{align}
+
+
+Using $
+\Tr{\tau_a \tau_b \tau_c \tau_d} = 2 (\delta_{ab}\delta_{cd}
+ - \delta_{ac}\delta_{bd}
+ \delta_{ad}\delta_{cb})
+$, and defining $\delta_{ab}^i = \delta_{ai}\delta_{bi}$,
+
+\begin{align}
+    \Tr{Q \Sigma Q \Sigma^\dagger}
+    & =
+    \frac{1}{2^2}
+    \Tr{
+        \frac{1}{9}
+        - 2 \frac{1}{2\cdot 3^2} \pi_a \pi_a
+        + \pi_a \pi_a \tau_3 \tau_a\tau_3 \tau_a
+        + \frac{1}{8} \pi_a \pi_a
+        + 1
+        - \pi_a\pi_a
+    } \\
+    & = 
+    \frac{1}{2}
+    \left(
+        \frac{1}{9}
+        + 1
+        - \frac{1}{3^2} \pi_a \pi_a
+        - \pi_a \pi_a
+        + \frac{1}{9} \pi_a \pi_a
+        + \pi_a \pi_a(2 \delta_{ab}^3 - \delta_{ab})
+    \right) \\
+    &
+    = \frac{5}{9} - \pi_1^2 - \pi_2^2.
+\end{align}
+
+
+\end{document}

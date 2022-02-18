@@ -1,0 +1,65 @@
+\documentclass{book}
+
+\input{../import.tex}
+\input{../newcommands.tex}
+
+\title{\huge{Gravgård}}
+\author{
+    \large{Martin Kjøllesdal Johnsrud }
+    }
+
+
+\bibliography{master}
+
+
+\begin{document}
+
+\maketitle
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.8em}
+
+
+Alt som ikke kom med...
+
+\section{Tree level pion star}
+
+
+We introduce the new dimensionless variable $1 + x^2 = \mu_I^2 / \bar m^2$.
+This is reminicent of the dimensionless Fermi momentum $x_f = p_f / m$ in \{section: cold fermi star\}.
+By an argument using a right triangle, we can vertify that $\cos a = b$ implies $\sin a = \sqrt{1 - b^2}$.
+Substituting the dimensionless variable into the free energy density, we get
+%
+\begin{equation}
+    \Eff = - \frac{u_0}{2}\left(1 + x^2 +\frac{1}{1 + x^2}\right).
+\end{equation}
+%
+We have introduced the characteristic energy density $u_0 = \bar m^2 f^2$.
+As we found in \{section: cold fermi star\}, pressure is given by negative the free energy density, normalized to $\mu_I = \bar m$, or $x = 0$.
+We choose $p_0 = u_0$, so the dimensionless pressure can be written
+%
+\begin{equation}
+    \tilde p = -\frac{1}{u_0}(\Eff - \Eff_{x = 0}) 
+    = \frac{1}{2} \frac{x^4}{1 + x^2}.
+\end{equation}
+%
+
+The charge density corresponding to a chemical potential is given by minus the derivative of the free energy with respect to that chemical potential.
+We must, however, not assume any dependence of $\alpha$ on $\mu_I$.
+The isospin density therefore is
+%
+\begin{equation}
+    n_I = -\pdv{\Eff}{\mu_I} = f^2 \mu_I \sin^2 \alpha
+    = \frac{u_0}{\mu_I} \frac{2x^2 + x^4}{1 + x^2}.
+    ,
+\end{equation}
+%
+With this, the dimensionless energy density
+%
+\begin{equation}
+    \tilde u = -\tilde p + \frac{1}{u_0} n_I \mu_I
+    = \frac{1}{2} \frac{4x^2 + x^4}{1 + x^4}
+\end{equation}
+% 
+
+
+\end{document}

@@ -22,51 +22,16 @@ We are only interested in the phase where $\mu_I \geq \bar m$, where this formul
     \cos \alpha = \frac{\bar m^2}{\mu_I^2}.
 \end{align}
 %
-We introduce the new dimensionless variable $1 + x^2 = \mu_I^2 / \bar m^2$.
-This is reminicent of the dimensionless Fermi momentum $x_f = p_f / m$ in \autoref{section: cold fermi star}. \todo{Tolkning av dette}
-By an argument using a right triangle, we can vertify that $\cos a = b$ implies $\sin a = \sqrt{1 - b^2}$.
-Substituting the dimensionless variable into the free energy density, we get
-%
-\begin{equation}
-    \Eff = - \frac{u_0}{2}\left(1 + x^2 +\frac{1}{1 + x^2}\right).
-\end{equation}
-%
-We have introduced the characteristic energy density $u_0 = \bar m^2 f^2$.
-As we found in \autoref{section: cold fermi star}, pressure is given by negative the free energy density, normalized to $\mu_I = \bar m$, or $x = 0$.
-We choose $p_0 = u_0$, so the dimensionless pressure can be written
-%
-\begin{equation}
-    \tilde p = -\frac{1}{u_0}(\Eff - \Eff_{x = 0}) 
-    = \frac{1}{2} \frac{x^4}{1 + x^2}.
-\end{equation}
-%
 
-The charge density corresponding to a chemical potential is given by minus the derivative of the free energy with respect to that chemical potential.
-We must, however, not assume any dependence of $\alpha$ on $\mu_I$.
-The isospin density therefore is
-%
-\begin{equation}
-    n_I = -\pdv{\Eff}{\mu_I} = f^2 \mu_I \sin^2 \alpha
-    = \frac{u_0}{\mu_I} \frac{2x^2 + x^4}{1 + x^2}.
-    ,
-\end{equation}
-%
-With this, the dimensionless energy density
-%
-\begin{equation}
-    \tilde u = -\tilde p + \frac{1}{u_0} n_I \mu_I
-    = \frac{1}{2} \frac{4x^2 + x^4}{1 + x^4}
-\end{equation}
-%
-This is illustrated in \autoref{fig: equation of state pions tree level}
+This is illustrated in~\autoref{fig: equation of state pions tree level}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{../scripts/figurer/pion_tree_eos.pdf}
+    \label{fig: equation of state pions tree level}
     \caption{
         This plot shows the tree-level equation of state of two-flavor chiral perturbation theory. The $x$-axis shows the pressure normalized to $p_0$, while the $y$-axis shows the energy density normalized to $u_0$.
-        }
-        \label{fig: quation of state pions tree level}
+    }
 \end{figure}
 
 
@@ -101,9 +66,7 @@ As in the case of the neutron star, it has a maximum mass, in this case of $M_\t
 What distinguishes this from the case of the neutron star, however, is the fact that in the limit of low central pressure, the distribution apparently approaches a maximum radius of $R = 85.95 \, \text{km}$.
 \todo{Hvorofor? Fordi eos er så lite stiv?}
 
-
-
-\begin{figure}[h]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=0.8\textwidth]{../scripts/figurer/pressure_mass_pion_star.pdf}
     \caption{
@@ -115,7 +78,7 @@ What distinguishes this from the case of the neutron star, however, is the fact 
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=0.95\textwidth]{../scripts/figurer/mass_radius_pion_star_tree.pdf}
     \caption{
@@ -125,4 +88,19 @@ What distinguishes this from the case of the neutron star, however, is the fact 
         }
         \label{fig: mass radius relation tree-level pion star}
 \end{figure}
+
+
+\subsection{Including electromagnetic contributions}
+
+From \autoref{static lagrangian with EM}, the free energy density including electromagnetic interactions is
+%
+\begin{equation}
+    \Eff =
+    - f^2 \left[
+        \frac{1}{2}\mu_I^2 \sin^2 \alpha + \bar m^2 \cos \alpha 
+        + \Delta m_{\pi_\pm}^2 \left(\cos^2 \alpha - \frac{4}{9}\right)
+    \right].
+\end{equation}
+%
+Free energy minimization now gives
 

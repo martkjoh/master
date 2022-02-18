@@ -55,16 +55,18 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {todo}{Check Q}{50}{section*.45}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Tolkning av dette}{51}{section*.46}%
+\contentsline {todo}{Finn C}{51}{section*.46}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hvorofor? Fordi eos er så lite stiv?}{52}{section*.48}%
+\contentsline {todo}{Kan vi være sikre på at denne parametriseringen fremdeles er riktig?}{51}{section*.47}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{clean up}{58}{section*.51}%
+\contentsline {todo}{Hvorofor? Fordi eos er så lite stiv?}{54}{section*.49}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{include gamma + pauli matrices}{72}{section*.53}%
+\contentsline {todo}{clean up}{60}{section*.52}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hva skjer med beta?}{72}{section*.54}%
+\contentsline {todo}{include gamma + pauli matrices}{74}{section*.54}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Vær konsekvent på bruk av k og p}{72}{section*.55}%
+\contentsline {todo}{Hva skjer med beta?}{74}{section*.55}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Describe the numerical code for the TOV equations}{73}{section*.56}%
+\contentsline {todo}{Vær konsekvent på bruk av k og p}{74}{section*.56}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Describe the numerical code for the TOV equations}{75}{section*.57}%

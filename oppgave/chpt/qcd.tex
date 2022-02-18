@@ -159,7 +159,7 @@ The full Lagrangian is then
 
 
 In the grand canonical ensemble, as discussed in (ref termisk feltteori), we introduce a chemical potential $\mu$ and couple it to a conserved charge.
-We are interested in the case where the chemical potential of the third component of isospin is, denoted $\mu_I$, is nonzero.
+We are interested in the case where the chemical potential of the third component of isospin is, denoted $\mu_I$, is non-zero.
 This corresponds to a modification of the Lagrangian by
 %
 \begin{equation}
@@ -297,7 +297,7 @@ In this section, we will explore the effects of electromagnetism on chiral pertu
 The leading order Lagrangian is then~\autocite{eckerRoleResonancesChiral1989,urechVirtualPhotonsChiral1995}
 %
 \begin{equation}
-    \label{leading order lagrangian EM only}
+    \label{leading order lagrangian EM}
     \Ell_2^{\text{EM}}
     = 
     \frac{1}{4}f^2 
@@ -314,7 +314,14 @@ The leading order Lagrangian is then~\autocite{eckerRoleResonancesChiral1989,ure
     \Tr{Q \Sigma Q \Sigma^\dagger}
 \end{equation}
 %
-We assume $\mu_I = 0$, then $Q$ is the quark charge matrix, \autoref{quark charge matrix} and $\chi = 2B_0 m$, where $m$ is the charge matrix.
+$Q$ is the quark charge matrix, \autoref{quark charge matrix} and $\chi = 2B_0 m$, where $m$ is the charge matrix.
+
+
+
+\subsection{Contribution to mass}
+
+
+To find the electromagnetic effect on the pion mass, we assume $\mu_I = 0$.
 We use the parametrization $\Sigma = \exp{i \pi_a \tau_a / f}$, and the covariant derivative is in this case
 %
 \begin{equation}
@@ -324,18 +331,18 @@ We use the parametrization $\Sigma = \exp{i \pi_a \tau_a / f}$, and the covarian
 We expand to second order in $\pi_a/f$, which gives
 %
 \begin{align}
-    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
-    & = 4 \bar m^2\left(1 - \frac{1}{2} \frac{\pi_a \pi_a}{f^2}\right), \\
-    \Tr{Q \Sigma Q \Sigma^\dagger}
-    & = \frac{5}{9} - \frac{\pi_1^2 + \pi_2^2}{f^2}, \\
     f^2 \Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma}
     &=
     2\partial_\mu \pi_a\partial^\mu \pi_a
     + 4 e \mathcal A^\mu (\pi_1 \partial_\mu \pi_2 -\pi_2 \partial_\mu \pi_1)
-    + 4 e^2 \mathcal A^2 (\pi_1^2 + \pi_2^2).
+    + 4 e^2 \mathcal A^2 (\pi_1^2 + \pi_2^2), \\
+    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
+    & = 4 \bar m^2\left(1 - \frac{1}{2} \frac{\pi_a \pi_a}{f^2}\right), \\
+    \Tr{Q \Sigma Q \Sigma^\dagger}
+    & = \frac{5}{9} - \frac{\pi_1^2 + \pi_2^2}{f^2}.
 \end{align}
 %
-Inserting this into \autoref{leading order lagrangian EM only}, we get
+Inserting this into \autoref{leading order lagrangian EM}, we get
 %
 \begin{equation}
     \Ell_2^\text{EM}
@@ -354,4 +361,46 @@ where
 %
 This is the electromagnetic contribution to the mass at leading order.
 It only affects the $a = 1, 2$ pions, which are a linear combination of $\pi_\pm$, the charged pions.
+\todo{Finn C}
+To leading order, $\bar m = m_\pi$, the neutral pion mass, and $\bar m_{\pm} = m_{\pi_{\pm}}$
+From (pdg), we find
+%
+\begin{equation}
+    \Delta m_{\pm}^2 := \frac{e^2}{f^2}C = m_{\pi}^2 - m_{\pi_\pm}^2 = xxxx \text{MeV}.
+\end{equation}
+%
+
+
+\subsection{Tree level free energy at non-zero isospin density} 
+
+\todo{Kan vi være sikre på at denne parametriseringen fremdeles er riktig?}
+The zeroth-order expansion in $\pi/f$ is
+%
+\begin{equation}
+    \Sigma = e^{i \alpha \tau_1} = \sin \alpha + i \tau_1 \cos \alpha.
+\end{equation}
+%
+This gives the contributions
+%
+\begin{align}
+    \Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger}
+    & = 2 \sin^2\alpha\left(\mu_I^2 + 2 e \mu \mathcal A_0 + e^2\mathcal A^2 \right), \\
+    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
+    & =4 \bar m^2 \cos \alpha,\\
+    \Tr{Q \Sigma Q \Sigma^\dagger}
+    & =  \cos^2 \alpha - \frac{4}{9}.
+\end{align}
+%
+The leading order contribution to the free energy is due to the stationary Lagrangian, that is $\pi_a = \mathcal A_\mu = 0$.
+Inserting this into \autoref{leading order lagrangian EM}, we get
+%
+\begin{equation}
+    \label{static lagrangian with EM}
+    \Ell 
+    = f^2 \left[
+        \frac{1}{2}\mu_I^2 \sin^2 \alpha + \bar m^2 \cos \alpha 
+        + \Delta m_{\pi_\pm} \left(\cos^2 \alpha - \frac{4}{9}\right)
+    \right].
+\end{equation}
+%
 
