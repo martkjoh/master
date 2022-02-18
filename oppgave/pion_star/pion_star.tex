@@ -15,23 +15,67 @@ The $\alpha$ parameter is determined by minimizing $\Eff$ for a given value of $
 \end{equation}
 %
 This gives an explicit formula for $\alpha$ in terms of $\mu_I$.
-We are only interested in the phase where $\mu_I \geq \bar m$, where this formula is
+We are only interested in the phase where $\mu_I \geq \bar m$, where this solution is
 %
 \begin{align}
     \label{alpha as function of mu lowest order}
     \cos \alpha = \frac{\bar m^2}{\mu_I^2}.
 \end{align}
 %
-
+We introduce a dimensionless variable $x^2 = \cos(\alpha) = \bar m^2 / \mu_I^2$.
+This variable has the domain $[0, 1]$.
+By an argument using a right triangle, we can vertify that $\cos a = b$ implies that $\sin^2 a = 1 - x^4$.
+Substituting the dimen sionless varaible into the free energy density, we get 
+%
+\begin{equation}
+    \Eff = - \frac{u_0}{2} \left( x^2 + \frac{1}{x^2} \right).
+\end{equation}
+%
+We have introduced the characteristic energy density $u_0 = \bar m^2 f^2$.
+As we found in \autoref{section: cold fermi star}, the pressure is given by negative the free energy density, normalized to $\mu_I = \bar m$, or $x = 1$.
+We choose $p_0 = u_0$, so the dimensionless pressure can be written
+%
+\begin{equation}
+    \tilde p = -\frac{1}{p_0} \left(\Eff - \Eff_{x=1}\right) 
+    = \frac{1}{2} \left( x^2 + \frac{1}{x^2} - 2 \right).
+\end{equation}
+%
+The charge density corresponding to a chemical potential is given by minus the derivative of the free energy with respect to that chemical potential. 
+We must, however, no assume any dependence of $\alpha$ on $\mu_I$ when taking this derivative.
+The isospin density therefore is
+%
+\begin{equation}
+    n_I = -\pdv{\Eff}{\mu_I} = ^2 \mu_I^2 \sin^2 \alpha 
+    = 
+    \frac{u_0}{\mu_I} \left(\frac{1}{x^2} - x^2\right).
+\end{equation}
+%
+With this, the dimensionless energy density at $T = 0$ is
+%
+\begin{equation}
+    \tilde u = - \tilde p + \frac{\mu_I n_I}{u_0}
+    = \frac{1}{2} \left( 2 + \frac{1}{x^2} - 3 x^2\right).
+\end{equation}
+%
 This is illustrated in~\autoref{fig: equation of state pions tree level}.
+The ratio of pressure to energy density is
+%
+\begin{equation}
+    \frac{p}{u} = \frac{x^2 - 2 + \frac{1}{x^2}}{-3x^2 + 2 + \frac{1}{x^2}}.
+\end{equation}
+%
+In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$ and thus $x \rightarrow 0$, we get $p / u \rightarrow 1$, or $p = u$.
+\todo[inline]{Er denne grensen gyldig? Er chpt fremdelse gyldig her?}
+
+
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{../scripts/figurer/pion_tree_eos.pdf}
-    \label{fig: equation of state pions tree level}
     \caption{
         This plot shows the tree-level equation of state of two-flavor chiral perturbation theory. The $x$-axis shows the pressure normalized to $p_0$, while the $y$-axis shows the energy density normalized to $u_0$.
     }
+    \label{fig: equation of state pions tree level}
 \end{figure}
 
 
@@ -97,10 +141,27 @@ From \autoref{static lagrangian with EM}, the free energy density including elec
 \begin{equation}
     \Eff =
     - f^2 \left[
-        \frac{1}{2}\mu_I^2 \sin^2 \alpha + \bar m^2 \cos \alpha 
-        + \Delta m_{\pi_\pm}^2 \left(\cos^2 \alpha - \frac{4}{9}\right)
-    \right].
+        \bar m^2 \cos \alpha 
+        + \frac{1}{2} \mu_I^2 \sin^2 \alpha
+        + \Delta m_\pm^2 \left(\cos^2 \alpha - \frac{4}{9}\right)
+    \right],
 \end{equation}
 %
 Free energy minimization now gives
+%
+\begin{equation}
+    \frac{1}{u_0}\pdv{\Eff}{\alpha}
+    = 
+    \left[ \left( \frac{1}{x^2} - 2 \Delta \right) \cos \alpha - 1\right] \sin \alpha = 0.
+\end{equation}
+%
+Here, $x$ is defined as before, and we introduced the new quatnity $\Delta = \Delta m_{\pm}^2 / \bar m^2= 0.06916 $.
+This gives the new solution
+%
+\begin{equation}
+    \cos \alpha = \frac{x^2}{1 - 2 \Delta x^2}.
+\end{equation}
+%
+This reduces to our old solution for $\Delta = 0$, as it should.
+
 

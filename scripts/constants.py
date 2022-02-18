@@ -5,6 +5,8 @@ from numpy import sqrt, pi
 c = 2.998e8
 G = 6.674e-11
 hbar = 1.055e-34
+alpha = 7.297e-3
+
 M0 = 1.988 * 10**30
 MeV = 1.60218e-19*1e6
 
@@ -16,6 +18,15 @@ f_pi = f_pi_MeV*MeV
 # pion mass
 m_pi_MeV = 134.98
 m_pi = m_pi_MeV*MeV/c**2
+m_pipm_MeV = 139.57
+m_pipm = m_pipm_MeV*MeV/c**2
+
+e = sqrt(4*pi*alpha)
+
+Δm_MeV = sqrt(m_pipm_MeV**2 - m_pi_MeV**2)
+C = 1/2 * f_pi_MeV**2 / e**2 * Δm_MeV**2
+
+Δ = Δm_MeV**2 / m_pi_MeV**2
 
 
 def get_const_fermi_gas():
@@ -33,5 +44,7 @@ def get_const_pion():
      
 if __name__=="__main__":
 
-    for const in get_const_fermi_gas(): print(const)
-    for const in get_const_pion(): print(const)
+    # for const in get_const_fermi_gas(): print(const)
+    # for const in get_const_pion(): print(const)
+    print(C / (m_pi_MeV**2 * f_pi_MeV**2))
+    print(Δ)

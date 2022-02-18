@@ -182,7 +182,7 @@ The electromagnetic interactions is a gauge theory as well, and the electromagne
     =
     i \bar q \slashed \partial q - e \mathcal A_\mu J^\mu,
 \end{equation}
-where $\mathcal A_\mu$ is the photon field corresponding to the $\Lie{U}{1}_\text{EM}$ gauge group, $e = |e| = xxxx \text{C}$\todo{finn talll} is the elementary charge, $J^\mu = - \bar q Q \gamma^\mu q$ is the electromagnetic charge current, and $Q$ is the charge matrix for the different quarks,
+where $\mathcal A_\mu$ is the photon field corresponding to the $\Lie{U}{1}_\text{EM}$ gauge group, $e = |e|$ is the elementary charge as given in \autoref{Elementary charge}, $J^\mu = - \bar q Q \gamma^\mu q$ is the electromagnetic charge current, and $Q$ is the quark charge matrix,
 %
 \begin{equation}
     \label{quark charge matrix}
@@ -314,7 +314,7 @@ The leading order Lagrangian is then~\autocite{eckerRoleResonancesChiral1989,ure
     \Tr{Q \Sigma Q \Sigma^\dagger}
 \end{equation}
 %
-$Q$ is the quark charge matrix, \autoref{quark charge matrix} and $\chi = 2B_0 m$, where $m$ is the charge matrix.
+$Q$ is the quark charge matrix, \autoref{quark charge matrix}, $C$ and dimensionfull constant, and $\chi = 2B_0 m$, where $m$ is the quark mass matrix \autoref{mass matrix quarks}.
 
 
 
@@ -356,19 +356,20 @@ Inserting this into \autoref{leading order lagrangian EM}, we get
 %
 where
 \begin{equation}
-    \bar m_\pm^2 = \bar m^2 - \frac{e^2 C}{f^2}.
+    \bar m_\pm^2 = \bar m^2 + 2\frac{e^2}{f^2}C.
 \end{equation}
 %
 This is the electromagnetic contribution to the mass at leading order.
-It only affects the $a = 1, 2$ pions, which are a linear combination of $\pi_\pm$, the charged pions.
-\todo{Finn C}
+It only affects the $\pi_1, \pi_2$ pions, which are a linear combination of $\pi_\pm$, the charged pions.
 To leading order, $\bar m = m_\pi$, the neutral pion mass, and $\bar m_{\pm} = m_{\pi_{\pm}}$
-From (pdg), we find
+From the values listed in \autoref{section: units}, we find
 %
 \begin{equation}
-    \Delta m_{\pm}^2 := \frac{e^2}{f^2}C = m_{\pi}^2 - m_{\pi_\pm}^2 = xxxx \text{MeV}.
+    \label{EM mass contribtuion leading order}
+    \Delta m_{\pm} := 2\frac{e}{f}\sqrt{C} = \sqrt{m_{\pi_\pm}^2 - m_{\pi}^2} = 35.50 \, \text{MeV}.
 \end{equation}
 %
+This corresponds to $C = 0.3771 \, u_0 = 1.1649\cdot 10^8 \, \text{MeV}^4$.
 
 
 \subsection{Tree level free energy at non-zero isospin density} 

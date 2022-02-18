@@ -138,6 +138,6 @@ def plot_eos():
 
 
 
-# plot_pressure_mass()
+plot_pressure_mass()
 plot_mass_radius()
-# plot_eos()
+plot_eos()

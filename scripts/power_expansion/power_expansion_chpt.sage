@@ -73,7 +73,7 @@ EXP = lambda A, n : sum([POW(A, i)/factorial(i) for i in range(n+1)])
 
 A_a = one*cos(a/2) + I * s1 * sin(a/2)
 U = lambda n: EXP(I * pi_s/2, n)
-SIGMA = lambda n: mat_prep(A_a * U(n) * U(n) * A_a, n=n)
+SIGMA = lambda n: mat_prep(A_a * U(n) * U(n) * A_a, n)
 
 
 acom = lambda A1, A2 : A1 * A2 + A2 * A1
@@ -104,7 +104,7 @@ def mat_simp(mat):
             mat[i, j] = mat[i, j].full_simplify()
             mat[i, j] = mat[i, j].trig_reduce()
 
-def mat_prep(mat, n=n):
+def mat_prep(mat, n):
     mat_series(mat, e, n)
     mat_simp(mat)
     return mat
@@ -142,9 +142,9 @@ def nabla_S_sq_terms(S, v, n):
     dSct = diff(S.C.T, x) #d_mu Sigma* 
     COM = v*S - S*v # [v_mu, Sigma]
     
-    term1 = mat_prep(dS*(dSct))
-    term2 = -I*mat_prep(dS*(-COM.C.T) + COM*dSct, n=n)
-    term3 = mat_prep(COM*COM.C.T, n=n)
+    term1 = mat_prep(dS*(dSct), n)
+    term2 = -I*mat_prep(dS*(-COM.C.T) + COM*dSct, n)
+    term3 = mat_prep(COM*COM.C.T, n)
     
     return term1, term2, term3
 
