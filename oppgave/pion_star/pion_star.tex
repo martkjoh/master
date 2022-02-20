@@ -36,12 +36,13 @@ As we found in \autoref{section: cold fermi star}, the pressure is given by nega
 We choose $p_0 = u_0$, so the dimensionless pressure can be written
 %
 \begin{equation}
+    \label{pressure leading order chpt}
     \tilde p = -\frac{1}{p_0} \left(\Eff - \Eff_{x=1}\right) 
     = \frac{1}{2} \left( x^2 + \frac{1}{x^2} - 2 \right).
 \end{equation}
 %
 The charge density corresponding to a chemical potential is given by minus the derivative of the free energy with respect to that chemical potential. 
-We must, however, no assume any dependence of $\alpha$ on $\mu_I$ when taking this derivative.
+We must, however, not assume any dependence of $\alpha$ on $\mu_I$ when taking this derivative.
 The isospin density therefore is
 %
 \begin{equation}
@@ -53,6 +54,7 @@ The isospin density therefore is
 With this, the dimensionless energy density at $T = 0$ is
 %
 \begin{equation}
+    \label{energy density leading order chpt}
     \tilde u = - \tilde p + \frac{\mu_I n_I}{u_0}
     = \frac{1}{2} \left( 2 + \frac{1}{x^2} - 3 x^2\right).
 \end{equation}
@@ -60,8 +62,9 @@ With this, the dimensionless energy density at $T = 0$ is
 This is illustrated in~\autoref{fig: equation of state pions tree level}.
 The ratio of pressure to energy density is
 %
-\begin{equation}
-    \frac{p}{u} = \frac{x^2 - 2 + \frac{1}{x^2}}{-3x^2 + 2 + \frac{1}{x^2}}.
+\begin{equation} 
+    \label{pressure energy ratio leading order chpt}
+    \frac{p}{u} = \frac{1- 2x^2 + x^4  }{1 + 2x^2 -3x^4 }.
 \end{equation}
 %
 In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$ and thus $x \rightarrow 0$, we get $p / u \rightarrow 1$, or $p = u$.
@@ -71,7 +74,7 @@ In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$ and thus $x \ri
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{../scripts/figurer/pion_tree_eos.pdf}
+    \includegraphics[width=0.6\textwidth]{../scripts/figurer/pion_star/pion_tree_eos.pdf}
     \caption{
         This plot shows the tree-level equation of state of two-flavor chiral perturbation theory. The $x$-axis shows the pressure normalized to $p_0$, while the $y$-axis shows the energy density normalized to $u_0$.
     }
@@ -105,14 +108,9 @@ The quantities are normalized to the stellar radius, stellar mass, and central p
 The black dashed line corresponds to the configuration with the maximum mass.
 We see that both the pressure and mass distribution are very similar for stars with a mass less than the maximum.
 
-\autoref{fig: mass radius relation tree-level pion star} shows the mass-radius relationship for the pion star using the tree-level free energy density of two-flavor chiral perturbation theory.
-As in the case of the neutron star, it has a maximum mass, in this case of $M_\text{max} 10.47\, M_\odot$.
-What distinguishes this from the case of the neutron star, however, is the fact that in the limit of low central pressure, the distribution apparently approaches a maximum radius of $R = 85.95 \, \text{km}$.
-\todo{Hvorofor? Fordi eos er så lite stiv?}
-
-\begin{figure}[!htb]
+\begin{figure}[!h]
     \centering
-    \includegraphics[width=0.8\textwidth]{../scripts/figurer/pressure_mass_pion_star.pdf}
+    \includegraphics[width=0.8\textwidth]{../scripts/figurer/pion_star/pressure_mass_pion_star.pdf}
     \caption{
         Top: The pressure normalized to the central pressure, as a function of radius, normalized to the stellar radius.
     Bottom: The mass, normalized to stellar mass, within a radius $r$, normalized to the stellar radius.
@@ -121,10 +119,9 @@ What distinguishes this from the case of the neutron star, however, is the fact 
     \label{fig: pressure and mass for tree-level pion star}
 \end{figure}
 
-
-\begin{figure}[!htb]
+\begin{figure}[!h]
     \centering
-    \includegraphics[width=0.95\textwidth]{../scripts/figurer/mass_radius_pion_star_tree.pdf}
+    \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star.pdf}
     \caption{
         The plot shows the relationship between the mass and radius of a pion star. Mass is given in units of solar masses, while the radius is measured in kilometers.
         This line is parameterized by the central pressure $p_c$ of the star, as indicated by the color gradient.
@@ -134,6 +131,15 @@ What distinguishes this from the case of the neutron star, however, is the fact 
 \end{figure}
 
 
+\autoref{fig: mass radius relation tree-level pion star} shows the mass-radius relationship for the pion star using the tree-level free energy density of two-flavor chiral perturbation theory.
+As in the case of the neutron star, it has a maximum mass, in this case of $M_\text{max} 10.47\, M_\odot$.
+What distinguishes this from the case of the neutron star, however, is the fact that in the limit of low central pressure, the distribution apparently approaches a maximum radius of $R = 85.95 \, \text{km}$.
+\todo{Hvorofor? Fordi eos er så lite stiv?}
+
+
+
+
+\FloatBarrier
 \subsection{Including electromagnetic contributions}
 
 From \autoref{static lagrangian with EM}, the free energy density including electromagnetic interactions is
@@ -155,13 +161,80 @@ Free energy minimization now gives
     \left[ \left( \frac{1}{x^2} - 2 \Delta \right) \cos \alpha - 1\right] \sin \alpha = 0.
 \end{equation}
 %
-Here, $x$ is defined as before, and we introduced the new quatnity $\Delta = \Delta m_{\pm}^2 / \bar m^2= 0.06916 $.
+Here, $x$ is defined as before, and we introduced the new quantity $\Delta = \Delta m_{\pm}^2 / \bar m^2= 0.06916 $.
+We see that $\alpha = 0$ is the only solution for $x^{-2} = \mu_I^2 / \bar m^2 < 1 + 2 \Delta$.
+The phase transition is raised to $\mu_I = \bar m \sqrt{1 + 2 \Delta}$.
 This gives the new solution
 %
 \begin{equation}
-    \cos \alpha = \frac{x^2}{1 - 2 \Delta x^2}.
+    \cos \alpha = \frac{x^2}{1 - 2 \Delta x^2}
+    \left(= \frac{1}{y^2 - 2 \Delta}\right).
 \end{equation}
 %
 This reduces to our old solution for $\Delta = 0$, as it should.
+With the same procedure as in the last section, we get the pressure and energy density
+%
+\begin{align}
+    \tilde p_\text{EM} \
+    & = \frac{1}{2} 
+    \left[
+        \frac{1}{x^2} 
+        + \frac{x^2}{1 - 2x^2 \Delta} 
+        - 2(1 + \Delta)
+    \right], \\
+    \tilde u_\text{EM}
+    &= \frac{1}{2} 
+    \left[
+        \frac{1}{x^2} 
+        - x^2 \frac{3 - 2 \Delta x^2}{(1 - 2 \Delta x^2)^2}
+        + 2(1 + \Delta)
+    \right].
+\end{align}
+%
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../scripts/figurer/pion_star/pion_tree_up.pdf}
+    \caption{text
+        }
+        \label{fig: pressure and energy with EM interaction}
+\end{figure}
 
 
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.65\textwidth]{../scripts/figurer/pion_star/pion_tree_eos_EM.pdf}
+    \caption{c}
+    \label{fig: eos chpt em interaction}
+\end{figure}
+
+In the limit $\Delta = 0$, these reduce to \autoref{pressure leading order chpt} and \autoref{energy density leading order chpt}.
+The ultra-relativisitc limit, that is for  $x \ll 1$, the behavior is the same as before, and we therefore again approach $p = u$.
+\autoref{fig: pressure and energy with EM interaction} shows the pressure and energy density, normalized to their characteristic quantities, as function of chemical potential above the critical value, normalized to $\bar m$.
+The critical value of the chemical potential, $\mu_I^c$, is the point where we get a new solution $\alpha\neq 0$.
+Normalized to $\bar m$, this is $1$ when electromagnetic interactions are ignored, and $\sqrt{1 + 2 \Delta}$ when they are accounted for.
+
+
+
+\autoref{fig: mass radius relation leading order pion star with em interaction} shows the mass-radius reaction of the pion star when the electromagnetic interaction is taken into account.
+We see that the shape of the curve has not changed much from our earlier result. 
+Both the maximum mas and radius are slightly smaller.
+The result with and without electromagnetic interaction is compared in \autoref{fig: mass radius relation comparison}.
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star_EM.pdf}
+    \caption{a }
+    \label{fig: mass radius relation leading order pion star with em interaction}
+\end{figure}
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star_compare.pdf}
+    \caption{b
+        }
+        \label{fig: mass radius relation comparison}
+\end{figure}

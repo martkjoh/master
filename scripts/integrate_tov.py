@@ -41,9 +41,8 @@ def get_u(name):
 
     def u(p):
         if p < plst[0]: return 0
-        # High energy limit -- massless particles
-        if p > plst[-1]: print("outside samples"); return 3*p
-        else: return splev(p, tck)
+        if p > plst[-1]: raise Exception("p-value outside interpolation area")
+        else: return splev(p, tck)[None][0]
 
     return u
 
@@ -64,8 +63,12 @@ def integrate(u, pcs, dense_output=True, max_step=0.001, r_max=1e3, newtonian_li
         return p
     stop.terminal = True # attribute for solve_ivp
 
+    if len(max_step)==0:
+        max_step = np.ones_like(pcs)*max_step
+
     sols = [None for _ in pcs] # empty list to keep solutions
     for i, pc in enumerate(tqdm(pcs)):
-        sols[i] = solve_ivp(f, (0, r_max), (pc, 0), args=(pc,), events=stop, max_step=max_step, dense_output=dense_output)
+        s = max_step[i]
+        sols[i] = solve_ivp(f, (0, r_max), (pc, 0), args=(pc,), events=stop, max_step=s, dense_output=dense_output)
     return np.array(sols)
 

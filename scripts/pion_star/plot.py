@@ -7,7 +7,7 @@ from matplotlib import cm, colors, collections
 
 sys.path.append(sys.path[0] + "/..")
 from integrate_tov import get_u
-from constants import get_const_pion, c, m_pi, f_pi
+from constants import get_const_pion, c, m_pi, f_pi, m_pi_MeV, f_pi_MeV
 
 plt.rc("font", family="serif", size=20)
 plt.rc("mathtext", fontset="cm")
@@ -18,13 +18,13 @@ plt.rc("grid", linestyle="--", alpha=1)
 u0, m0, r0 = get_const_pion()
 
 
-def load_sols():
-    return np.load("pion_star/data/sols.npy", allow_pickle=True)
+def load_sols(name=""):
+    return np.load("pion_star/data/sols"+name+".npy", allow_pickle=True)
 
 
-def plot_pressure_mass():
-    all_sols = load_sols()
-    sols = all_sols[::8]
+def plot_pressure_mass(name=""):
+    all_sols = load_sols(name)
+    sols = all_sols[30:180:8]
     N = len(sols)
      
     
@@ -71,12 +71,12 @@ def plot_pressure_mass():
     fig.legend(bbox_to_anchor=(0.73, 0.87))
 
 
-    fig.savefig("figurer/pressure_mass_pion_star.pdf", bbox_inches="tight")
+    fig.savefig("figurer/pion_star/pressure_mass_pion_star"+name+".pdf", bbox_inches="tight")
 
 
 
-def plot_mass_radius(name="tree"):
-    sols = load_sols()
+def plot_mass_radius(name=""):
+    sols = load_sols(name)
     N = len(sols)    
 
     data = [[], [], []]
@@ -119,25 +119,115 @@ def plot_mass_radius(name="tree"):
     ax.set_ylabel("$M / M_\odot$")
     plt.legend()
     
-    fig.savefig("figurer/mass_radius_pion_star_" + name + ".pdf", bbox_inches="tight")
+    fig.savefig("figurer/pion_star/mass_radius_pion_star" + name + ".pdf", bbox_inches="tight")
     
  
 
 def plot_eos():
-    p = np.linspace(0, 1., 1000)
-    fig, ax = plt.subplots(figsize=(10, 5))
-    u = get_u("pion_star/data/eos.npy")
-    us = [u(p0) for p0 in p]
+    # a = m_pi_MeV**2/f_pi_MeV**2
+    a = 1
+    p = np.linspace(0, 0.6, 1000)
+    fig, ax = plt.subplots(figsize=(10, 6))
+    u = get_u("pion_star/data/eos"+name+".npy")
+    us = [u(p0*a)/a for p0 in p]
     ax.plot(p, us, label="$ \\tilde u(\\tilde p)$")
     ax.set_xlabel("$p / p_0$")
     ax.set_ylabel("$u / u_0$")
 
     ax.legend(loc="upper left")
 
-    fig.savefig("figurer/pion_tree_eos.pdf", bbox_inches="tight")
+    fig.savefig("figurer/pion_star/pion_tree_eos.pdf", bbox_inches="tight")
+
+
+def plot_eos_EM():
+    p = np.linspace(0, 0.6, 1000)
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+
+    u = get_u("pion_star/data/eos.npy")
+    us = [u(p0) for p0 in p]
+    ax.plot(p, us, label="$ \\tilde u(\\tilde p)$", lw=1, alpha=0.8)
+
+
+    u = get_u("pion_star/data/eos_EM.npy")
+    us = [u(p0) for p0 in p]
+    ax.plot(p, us, "k--", label="$ \\tilde u_{\\mathrm{EM}}(\\tilde p)$")
+
+    ax.set_xlabel("$p / p_0$")
+    ax.set_ylabel("$u / u_0$")
+    ax.legend(loc="upper left")
+
+    fig.savefig("figurer/pion_star/pion_tree_eos_EM.pdf", bbox_inches="tight")
 
 
 
-plot_pressure_mass()
-plot_mass_radius()
-plot_eos()
+def plot_u_p():
+    from pion_star_eos import u, p, uEM, pEM, D
+    fig, ax = plt.subplots(1, 2, figsize=(15, 5))
+
+    N = 200
+    y0 = np.linspace(0, 1.2, N)
+
+    yc = 1
+    x = 1/(y0 + yc)
+
+    ax[0].plot(y0, p(x), label="$p(\\mu_I)$")
+    ax[1].plot(y0, u(x), label="$u(\\mu_I)$")
+    
+    yc = sqrt(1 + 2*D)
+    x = 1/(yc + y0)
+
+    ax[0].plot(y0, pEM(x, D), "k--", label="$p_{\\mathrm{EM}}(\\mu_I)$")
+    ax[1].plot(y0, uEM(x, D), "k--", label="$u_{\\mathrm{EM}}(\\mu_I)$")
+ 
+    [a.legend() for a in ax]
+
+    [a.set_xlabel("$(\\mu_I - \\mu_I^c)/\\bar m$") for a in ax]
+    ax[0].set_ylabel("$p/p_0$")
+    ax[1].set_ylabel("$u/u_0$")
+
+    fig.savefig("figurer/pion_star/pion_tree_up.pdf", bbox_inches="tight")
+
+
+
+def plot_mass_radius_compare():
+    sols1 = load_sols()
+    sols2 = load_sols(name="_EM")
+    N = len(sols1)
+    sols = [sols1, sols2]
+    datas = [[[], [], []] for _ in sols]
+    for j, sol in enumerate(sols):
+        for i, s in enumerate(sol):
+            datas[j][0].append(s.t[-1])
+            datas[j][1].append(s.y[1][-1])
+            datas[j][2].append(s.y[0][0])
+
+    fig, ax = plt.subplots(figsize=(16, 8))
+
+    labels = ["Only strong interactions", "EM interactions"]
+    colors = ["k", "b"]
+    style = ["--", "-"]
+    for i, data in enumerate(datas):
+        R, M, pc = [np.array(d) for d in data]
+        x, y, z = R*r0, M*m0, log(pc)
+
+        ax.plot(R, M, label=labels[i], color=colors[i], ls=style[i])
+
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
+    plt.legend()
+    
+    fig.savefig("figurer/pion_star/mass_radius_pion_star_compare.pdf", bbox_inches="tight")
+    
+
+
+
+# plot_pressure_mass()
+# plot_pressure_mass(name="_EM")
+plot_mass_radius_compare()
+
+# plot_mass_radius()
+# plot_mass_radius(name="_EM")
+# plot_eos()
+# plot_eos_EM()
+# plot_u_p()
