@@ -1,19 +1,52 @@
 import numpy as np
 import sys
+import matplotlib.pyplot as plt
+from time import time
+
+from scipy.integrate import solve_ivp
 
 sys.path.append(sys.path[0] + "/..")
-from integrate_tov import get_u, integrate
+from integrate_tov import get_u, integrate, dmdr_general, dpdr_general
+
+dmdr = lambda r, y, args: dmdr_general(u, r, y, args) 
+dpdr = lambda r, y, args: dpdr_general(u, r, y, args)
+f = lambda r, y, args: (dpdr(r, y, args), dmdr(r, y, args))
+
+def stop(r, y, args):
+    """Termiation cirerion, p(r) = 0"""
+    p, m = y
+    return p
+stop.terminal = True # attribute for solve_ivp
+
+def stop_time(r, y, args):
+    p, m = y
+    print("p = ", p )
+    return 1
 
 u = get_u("pion_star/data/eos.npy")
-p = 10**np.linspace(-6, 6, 10)
 
-# print([u(p0) for p0 in p])
 
-uEM = get_u("pion_star/data/eos_EM.npy")
-p = 10**np.linspace(-6, 6, 10)
+max_step=1e-3
+pc = 1e-6
+r_max = 1e2
 
-# print([u(p0) for p0 in p])
+t = time()
+sol = solve_ivp(
+    f, 
+    (0, r_max), 
+    (pc, 0), 
+    args=((pc,),), 
+    events=(stop, stop_time),
+    max_step=max_step,
+)
 
-p = 1e-5
-print(u(p))
-print(uEM(p))
+
+p, m = sol.y
+r = sol.t
+
+# print(sol)
+print(time()-t)
+
+plt.plot(r, p)
+
+plt.show()

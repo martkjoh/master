@@ -3,7 +3,7 @@ from numpy import pi, sqrt
 
 
 xrange = (0, 5) 
-N = 1_000
+N = 1_00
 
 p = lambda x: 1/2 * (x**2 + 1/x**2 - 2)
 u = lambda x: 1/2 * (2 + 1/x**2 - 3*x**2)
@@ -11,7 +11,8 @@ u = lambda x: 1/2 * (2 + 1/x**2 - 3*x**2)
 
 def gen_eos_list():
     xrange = (-3, 10) 
-    y = 10**np.linspace(*xrange, N)
+    y = 10**np.linspace(*xrange, N-1)
+    y = np.concatenate([[0.,], y])
     x = 1 / np.sqrt(1 + y**2)
 
     ulst = u(x)
@@ -20,7 +21,6 @@ def gen_eos_list():
     # Can only interpolate with unique points
     assert len(np.unique(plst)) == len(plst)
     assert len(np.unique(ulst)) == len(ulst)
-    print(plst)
     np.save("pion_star/data/eos", [x, plst, ulst])
 
 
@@ -34,6 +34,7 @@ uEM = lambda x, D: 1/2 * (
 
 def gen_eos_list_EM():
     y = np.logspace(-3, 5, N)
+    y = np.concatenate([[0,], y])
     x = 1 / sqrt(1 + 2*D + y**2)
 
     ulst = uEM(x, D)
@@ -48,5 +49,5 @@ def gen_eos_list_EM():
 
 
 
-# gen_eos_list()
+gen_eos_list()
 gen_eos_list_EM()

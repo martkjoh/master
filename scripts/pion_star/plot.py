@@ -109,7 +109,7 @@ def plot_mass_radius(name=""):
     ax.plot(R[i]*r0, M[i]*m0, "kx", ms=10, label=label) 
 
     i = np.argmax(R)
-    label ="$R_\\mathrm{max} = " + "{:3f}".format(R[i]*r0) + "\, [\mathrm{km}]$"
+    label ="$R_\\mathrm{max} = " + "{:3f}".format(R[i]*r0) + "\, \mathrm{km}$"
     ax.plot(R[i]*r0, M[i]*m0, "ko", ms=10, label=label) 
 
 
@@ -128,7 +128,7 @@ def plot_eos():
     a = 1
     p = np.linspace(0, 0.6, 1000)
     fig, ax = plt.subplots(figsize=(10, 6))
-    u = get_u("pion_star/data/eos"+name+".npy")
+    u = get_u("pion_star/data/eos.npy")
     us = [u(p0*a)/a for p0 in p]
     ax.plot(p, us, label="$ \\tilde u(\\tilde p)$")
     ax.set_xlabel("$p / p_0$")
@@ -136,7 +136,7 @@ def plot_eos():
 
     ax.legend(loc="upper left")
 
-    fig.savefig("figurer/pion_star/pion_tree_eos.pdf", bbox_inches="tight")
+    fig.savefig("figurer/pion_star/pion_eos.pdf", bbox_inches="tight")
 
 
 def plot_eos_EM():
@@ -157,7 +157,7 @@ def plot_eos_EM():
     ax.set_ylabel("$u / u_0$")
     ax.legend(loc="upper left")
 
-    fig.savefig("figurer/pion_star/pion_tree_eos_EM.pdf", bbox_inches="tight")
+    fig.savefig("figurer/pion_star/pion_eos_EM.pdf", bbox_inches="tight")
 
 
 
@@ -186,7 +186,7 @@ def plot_u_p():
     ax[0].set_ylabel("$p/p_0$")
     ax[1].set_ylabel("$u/u_0$")
 
-    fig.savefig("figurer/pion_star/pion_tree_up.pdf", bbox_inches="tight")
+    fig.savefig("figurer/pion_star/pion_up.pdf", bbox_inches="tight")
 
 
 
@@ -222,12 +222,13 @@ def plot_mass_radius_compare():
 
 
 
-# plot_pressure_mass()
-# plot_pressure_mass(name="_EM")
+plot_pressure_mass()
+plot_pressure_mass(name="_EM")
+
+plot_mass_radius()
+plot_mass_radius(name="_EM")
 plot_mass_radius_compare()
 
-# plot_mass_radius()
-# plot_mass_radius(name="_EM")
-# plot_eos()
-# plot_eos_EM()
-# plot_u_p()
+plot_eos()
+plot_eos_EM()
+plot_u_p()
