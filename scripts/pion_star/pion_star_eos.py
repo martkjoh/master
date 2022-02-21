@@ -24,6 +24,17 @@ def gen_eos_list():
     np.save("pion_star/data/eos", [x, plst, ulst])
 
 
+
+def u_nr(p):
+    """Non-relativistic limit of the fermi gas eos"""
+    if p<=0: return 0
+    return 2*sqrt(2)*p**(1/2)
+
+u_ur = lambda p: p
+
+
+# Including EM interactions
+
 D = 0.06916
 
 pEM = lambda x, D: 1/2 * (1/x**2 +  x**2/(1 - 2*D*x**2) - 2*(1+D))
@@ -47,7 +58,6 @@ def gen_eos_list_EM():
     np.save("pion_star/data/eos_EM", [x, plst, ulst])
 
 
-
-
-gen_eos_list()
-gen_eos_list_EM()
+if __name__=="__main__":
+    gen_eos_list()
+    gen_eos_list_EM()

@@ -58,8 +58,7 @@ With this, the dimensionless energy density at $T = 0$ is
     \tilde u = - \tilde p + \frac{\mu_I n_I}{u_0}
     = \frac{1}{2} \left( 2 + \frac{1}{x^2} - 3 x^2\right).
 \end{equation}
-%
-This is illustrated in~\autoref{fig: equation of state pions}.
+% 
 The ratio of pressure to energy density is
 %
 \begin{equation} 
@@ -67,18 +66,20 @@ The ratio of pressure to energy density is
     \frac{p}{u} = \frac{1- 2x^2 + x^4  }{1 + 2x^2 -3x^4 }.
 \end{equation}
 %
-In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$ and thus $x \rightarrow 0$, we get $p / u \rightarrow 1$, or $p = u$.
-\todo[inline]{Er denne grensen gyldig? Er chpt fremdelse gyldig her?}
+In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$ and thus $x \rightarrow 0$, we get $p / u = 1$, or $p = u$.
 In the non-relativisitc limit, that is $x^{-2} = 1 + \epsilon$, $\epsilon \ll 1$, we get $\tilde p = \epsilon^2 / 2 $, and $\tilde u = 2\epsilon$.
 Thus, the equation of state has the NR-limit $\tilde u = 2 \sqrt 2 \sqrt{\tilde p}$.
+\autoref{fig: equation of state pions} shows the equation of state in two different regimes, and compares it with the ultrarelativistic and non-relativistic limit.
+\todo[inline]{Er UR-grensen gyldig, eller feiler chpt?}
+\todo[inline]{Sammenilign med polytrope}
 
 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{../scripts/figurer/pion_star/pion_eos.pdf}
+    \includegraphics[width=0.95\textwidth]{../scripts/figurer/pion_star/pion_eos.pdf}
     \caption{
-        This plot shows the tree-level equation of state of two-flavor chiral perturbation theory. The $x$-axis shows the pressure normalized to $p_0$, while the $y$-axis shows the energy density normalized to $u_0$.
+        This plot shows the leading order equation of state of two-flavor chiral perturbation theory and compares it with the ultrarelativistic and non-relativistic limit, shown as dashed lines. The $x$-axis shows the pressure normalized to $p_0$, while the $y$-axis shows the energy density normalized to $u_0$.
     }
     \label{fig: equation of state pions}
 \end{figure}
@@ -134,19 +135,31 @@ This is similar to what we saw in the case of an incompressible fluid, \autoref{
         \label{fig: mass-radius relation pion star}
 \end{figure}
 
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_comparison.pdf}
+    \caption{
+        The plot compares the mass-radius relationship of the pion star from the full equation of state and the TOV-equation with various limits.
+        }
+        \label{fig: mass-radius relation pion star comparison}
+\end{figure}
 
-\autoref{fig: mass-radius relation pion star} shows the mass-radius relationship for the pion star using the tree-level free energy density of two-flavor chiral perturbation theory.
+
+\autoref{fig: mass-radius relation pion star} shows the mass-radius relationship for the pion star using the leading order free energy density of two-flavor chiral perturbation theory.
 As in the case of the neutron star, it has a maximum mass, in this case of $M_\text{max} 10.47\, M_\odot$.
 What distinguishes this from the case of the neutron star, however, is the fact that in the limit of low central pressure, the distribution apparently approaches a maximum radius of $R = 85.95 \, \text{km}$.
 \todo{Hvorofor? Fordi eos er så lite stiv?}
-
+\autoref{fig: mass-radius relation pion star comparison} compares the mass-radius relation from the full equation of state and TOV equation with various limits.
+We see that  when using the Newtonian limit of the TOV equation, \autoref{Newtonian limit TOV}, the radius is either constant or increasing as the mass increases, in contrast to the result when using the TOV equation, as well as the neutron star.
+\todo[inline]{sammenlign med polytrope}
+\todo[inline]{Vis kjemisk potensial}
 
 
 
 \FloatBarrier
 \subsection{Including electromagnetic contributions}
 
-From \autoref{static lagrangian with EM}, the free energy density including electromagnetic interactions, is
+From \autoref{static lagrangian with EM}, the free energy density, including electromagnetic interactions, is
 %
 \begin{equation}
     \Eff =

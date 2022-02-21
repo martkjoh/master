@@ -5,9 +5,10 @@ import sys
 from numpy import pi, sqrt, log10 as log
 from matplotlib import cm, colors, collections
 
+from pion_star_eos import u_nr, u_ur
 sys.path.append(sys.path[0] + "/..")
 from integrate_tov import get_u
-from constants import get_const_pion, c, m_pi, f_pi, m_pi_MeV, f_pi_MeV
+from constants import get_const_pion
 
 plt.rc("font", family="serif", size=20)
 plt.rc("mathtext", fontset="cm")
@@ -75,6 +76,64 @@ def plot_pressure_mass(name=""):
 
 
 
+def plot_mass_radius_compare():
+    sols1 = load_sols("")
+    sols2 = load_sols("_non_rel")
+    sols3 = load_sols("_newt")
+    sols4 = load_sols("_newt_non_rel")
+    sols = [sols1, sols2, sols3, sols4]
+
+    N = len(sols1)
+    assert N == len(sols2); assert N ==len(sols3)
+    datas = [[[], [], []] for _ in sols]
+    for j, solsi in enumerate(sols):
+        for i, s in enumerate(solsi):
+            datas[j][0].append(s.t[-1])
+            datas[j][1].append(s.y[1][-1])
+            datas[j][2].append(s.y[0][0])
+        
+    fig, ax = plt.subplots(figsize=(16, 8))
+
+    linestyles = ["-", "-.", "--", ":"]
+    labels = [
+        "Relativistic EOS + TOV",
+        "Non-relativistic EOS + TOV",
+        "Relativistic EOS + Newtonian gravity",
+        "Non-relativistic EOS + Newtonian gravity"
+        ]
+
+    for i, data in enumerate(datas):
+        R, M, p0 = [np.array(d) for d in data]
+
+        # plot line (x, y) with z giving values to colormap
+        x, y = R*r0, M*m0
+        z = log(p0)
+
+        # hack to get multi-colored line
+        # https://nbviewer.org/github/dpsanders/matplotlib-examples/blob/master/colorline.ipynb
+        norm = colors.Normalize(z.min(), z.max())
+        m = 10
+        n = len(x) // m
+        assert m*n + 1 == len(x) # Are all points included?
+        segments = [[[x[j], y[j]] for j in range(i*m, (i+1)*m+1)] for i in range(n)]
+        lc = collections.LineCollection(segments, cmap='viridis', norm=norm, ls=linestyles[i], label=labels[i], lw=3)
+        lc.set_array(z[::m])
+        line = ax.add_collection(lc)
+        
+
+    cb = fig.colorbar(line)
+    cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
+
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
+    ax.set_xlim(30, 100)
+    ax.set_ylim(0, 15)
+
+    plt.legend(prop={'size': 14}, loc=2)
+    fig.savefig("figurer/pion_star/mass_radius_comparison.pdf", bbox_inches="tight")
+
+
+
 def plot_mass_radius(name=""):
     sols = load_sols(name)
     N = len(sols)    
@@ -124,17 +183,25 @@ def plot_mass_radius(name=""):
  
 
 def plot_eos():
-    # a = m_pi_MeV**2/f_pi_MeV**2
-    a = 1
-    p = np.linspace(0, 0.6, 1000)
     fig, ax = plt.subplots(figsize=(10, 6))
     u = get_u("pion_star/data/eos.npy")
-    us = [u(p0*a)/a for p0 in p]
-    ax.plot(p, us, label="$ \\tilde u(\\tilde p)$")
-    ax.set_xlabel("$p / p_0$")
-    ax.set_ylabel("$u / u_0$")
 
-    ax.legend(loc="upper left")
+    pnr = np.linspace(0, .1, 1000)
+    pur = np.linspace(0, 50, 1000)
+    ps = [pnr, pur]
+    fig, ax = plt.subplots(1, 2,figsize=(18, 6))
+    for i, p in enumerate(ps):
+        us1 = [u(p0) for p0 in p]
+        us2 = [u_nr(p0) for p0 in p]
+        us3 = u_ur(p)
+        ax[i].plot(p, us1, label="$ \\tilde u(\\tilde p)$")
+        ax[i].plot(p, us2, "k--", label="$ \\tilde u_\\mathrm{NR}(\\tilde p)$")
+        ax[i].plot(p, us3, "r-.", label="$ \\tilde u_\\mathrm{UR}(\\tilde p)$")
+
+        ax[i].set_xlabel("$p / p_0$")
+        ax[i].set_ylabel("$u / u_0$")
+
+    ax[0].legend(loc="upper left")
 
     fig.savefig("figurer/pion_star/pion_eos.pdf", bbox_inches="tight")
 
@@ -190,7 +257,7 @@ def plot_u_p():
 
 
 
-def plot_mass_radius_compare():
+def plot_mass_radius_compare_EM():
     sols1 = load_sols()
     sols2 = load_sols(name="_EM")
     N = len(sols1)
@@ -222,13 +289,14 @@ def plot_mass_radius_compare():
 
 
 
-plot_pressure_mass()
-plot_pressure_mass(name="_EM")
-
-plot_mass_radius()
-plot_mass_radius(name="_EM")
+# plot_pressure_mass()
+# plot_pressure_mass(name="_EM")
 plot_mass_radius_compare()
 
-plot_eos()
-plot_eos_EM()
-plot_u_p()
+# plot_mass_radius()
+# plot_mass_radius(name="_EM")
+# plot_mass_radius_compare_EM()
+
+# plot_eos()
+# plot_eos_EM()
+# plot_u_p()

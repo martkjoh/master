@@ -31,40 +31,48 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {todo}{Forklar}{34}{section*.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hvorfor er to punkter så langt unna?}{42}{section*.33}%
+\contentsline {todo}{Mer analyse av polytropes. Kriterie for om R øker eller minsker med M}{37}{section*.27}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{ Comment why radius decrease with mass. Can this be shown in the Newtonian limit? }{43}{section*.34}%
+\contentsline {todo}{Hvorfor er to punkter så langt unna?}{42}{section*.34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Vis dette?}{43}{section*.35}%
+\contentsline {todo}{ Inkluder polytrope analyse, forklarer om R øker med M eller ikke }{43}{section*.35}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Er det en god antagelse?}{45}{section*.36}%
+\contentsline {todo}{Vis dette?}{43}{section*.36}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Kan vi være helt sikre på dette?}{45}{section*.37}%
+\contentsline {todo}{Er det en god antagelse?}{45}{section*.37}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hvorfor?}{47}{section*.39}%
+\contentsline {todo}{Kan vi være helt sikre på dette?}{45}{section*.38}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hvorfor skrives disse med motsatt fortegn?}{48}{section*.40}%
+\contentsline {todo}{Hvorfor?}{47}{section*.40}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hva er grunnen til valgene av fortegn?}{48}{section*.41}%
+\contentsline {todo}{Hvorfor skrives disse med motsatt fortegn?}{48}{section*.41}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Er dette riktig?}{49}{section*.42}%
+\contentsline {todo}{Hva er grunnen til valgene av fortegn?}{48}{section*.42}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Er dette riktig fortegn}{49}{section*.43}%
+\contentsline {todo}{Er dette riktig?}{49}{section*.43}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Check Q}{50}{section*.44}%
+\contentsline {todo}{Er dette riktig fortegn}{49}{section*.44}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Kan vi være sikre på at denne parametriseringen fremdeles er riktig?}{51}{section*.45}%
+\contentsline {todo}{Check Q}{50}{section*.45}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Er denne grensen gyldig? Er chpt fremdelse gyldig her?}{54}{section*.46}%
+\contentsline {todo}{Kan vi være sikre på at denne parametriseringen fremdeles er riktig?}{51}{section*.46}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hvorofor? Fordi eos er så lite stiv?}{55}{section*.50}%
+\contentsline {todo}{Er UR-grensen gyldig, eller feiler chpt?}{54}{section*.47}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{clean up}{62}{section*.55}%
+\contentsline {todo}{Sammenilign med polytrope}{54}{section*.48}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{include gamma + pauli matrices}{76}{section*.57}%
+\contentsline {todo}{Hvorofor? Fordi eos er så lite stiv?}{55}{section*.53}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hva skjer med beta?}{76}{section*.58}%
+\contentsline {todo}{sammenlign med polytrope}{55}{section*.54}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Vær konsekvent på bruk av k og p}{76}{section*.59}%
+\contentsline {todo}{Vis kjemisk potensial}{55}{section*.55}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Describe the numerical code for the TOV equations}{77}{section*.60}%
+\contentsline {todo}{clean up}{62}{section*.60}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{include gamma + pauli matrices}{76}{section*.62}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Hva skjer med beta?}{76}{section*.63}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Vær konsekvent på bruk av k og p}{76}{section*.64}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Describe the numerical code for the TOV equations}{77}{section*.65}%
