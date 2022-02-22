@@ -43,36 +43,44 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {todo}{Kan vi være helt sikre på dette?}{45}{section*.38}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hvorfor?}{47}{section*.40}%
+\contentsline {todo}{skriv appendix med dirac matriser}{48}{section*.40}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hvorfor skrives disse med motsatt fortegn?}{48}{section*.41}%
+\contentsline {todo}{appendix}{48}{section*.41}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hva er grunnen til valgene av fortegn?}{48}{section*.42}%
+\contentsline {todo}{Skriv om brudd på symmetrien}{48}{section*.42}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Er dette riktig?}{49}{section*.43}%
+\contentsline {todo}{Hva er grunnen til valgene av fortegn?}{49}{section*.43}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Er dette riktig fortegn}{49}{section*.44}%
+\contentsline {todo}{Generaliser til SU(N)}{49}{section*.44}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Check Q}{50}{section*.45}%
+\contentsline {todo}{fiks resten av seksjon}{49}{section*.45}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Kan vi være sikre på at denne parametriseringen fremdeles er riktig?}{51}{section*.46}%
+\contentsline {todo}{Er dette riktig?}{49}{section*.46}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Er UR-grensen gyldig, eller feiler chpt?}{54}{section*.47}%
+\contentsline {todo}{Er dette riktig fortegn}{49}{section*.47}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Sammenilign med polytrope}{54}{section*.48}%
+\contentsline {todo}{Check Q}{50}{section*.48}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hvorofor? Fordi eos er så lite stiv?}{55}{section*.53}%
+\contentsline {todo}{Kan vi være sikre på at denne parametriseringen fremdeles er riktig?}{51}{section*.49}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{sammenlign med polytrope}{55}{section*.54}%
+\contentsline {todo}{FIKS FAKTOR 2!!!}{51}{section*.50}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Vis kjemisk potensial}{55}{section*.55}%
+\contentsline {todo}{Er UR-grensen gyldig, eller feiler chpt?}{54}{section*.51}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{clean up}{62}{section*.60}%
+\contentsline {todo}{Sammenilign med polytrope}{54}{section*.52}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{include gamma + pauli matrices}{76}{section*.62}%
+\contentsline {todo}{Hvorofor? Fordi eos er så lite stiv?}{55}{section*.57}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hva skjer med beta?}{76}{section*.63}%
+\contentsline {todo}{sammenlign med polytrope}{55}{section*.58}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Vær konsekvent på bruk av k og p}{76}{section*.64}%
+\contentsline {todo}{Vis kjemisk potensial}{55}{section*.59}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Describe the numerical code for the TOV equations}{77}{section*.65}%
+\contentsline {todo}{clean up}{62}{section*.64}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{include gamma + pauli matrices}{76}{section*.66}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Hva skjer med beta?}{76}{section*.67}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Vær konsekvent på bruk av k og p}{76}{section*.68}%
+\defcounter {refsection}{0}\relax 
+\contentsline {todo}{Describe the numerical code for the TOV equations}{77}{section*.69}%
