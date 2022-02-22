@@ -272,12 +272,71 @@ We can eliminate the equation for mass by differentiating \autoref{Newtonian lim
 This gives us a single equation for hydrostatic equilibrium in the Newtonian limit,
 %
 \begin{equation}
+    \label{Newtonian limit TOV single equation}
     \odv{}{\tilde r} 
     \left( \frac{\tilde r^2}{\tilde u} \odv{\tilde p}{\tilde r}\right) 
     = -  k'' \tilde r^2  \tilde u, \quad
     k'' = 3 \frac{k_2 k_1}{k_3} = 4 \pi G \frac{u_0^2 r^2_0}{p_0}.
 \end{equation}
-\todo[inline]{Mer analyse av polytropes. Kriterie for om R øker eller minsker med M}
+This is a second order differential equation, so we need an new boundary condition in addition to $p(0) = p_c$.
+Close to the center we can see from \autoref{Newtonian limit TOV} that for a finite energy density, we must have $p'(0) = 0$, our second boundary condition.
+
+One important model for stars is the \emph{polytrope}, which has an equation of state of the form $u = K p^\gamma$ for some constant $K$.
+As we will see, this fits well as the Newtonian limit of many equations of state and can be used to make predictions such as the Chandrasekhar limit, which sets the upper limit of the mass of white dwarf stars to $M \approx 1.5 \, M_\odot$~\autocite{chandrasekharHighlyCollapsedConfigurations1935,glendenningCompactStarsNuclear2012}.
+To get write \autoref{Newtonian limit TOV single equation} on the standard form, we introduce
+%
+\begin{equation}
+    \tilde u = a \theta^{n}, \quad 
+    n = \frac{1}{\gamma - 1}, \quad 
+    a = \frac{u(p_c)}{u_0}, 
+    \quad a^{\frac{\gamma - 2}{2}}C \xi = r, \quad 
+    C =\sqrt{ \frac{K}{k''} \frac{\gamma}{\gamma - 1}}.
+\end{equation}
+%
+$n$ is called the \emph{polytropic index} of the star.
+Inserting these new variables into the equation of hydrostatic equillibrium gives
+%
+\begin{equation}
+    \label{Lane Emden equation}
+    \frac{1}{\xi^2} \odv{}{\xi} \left(\xi^2 \odv{\theta}{\xi} \right) + \theta^n = 0.
+\end{equation}
+%
+This is called the Lane-Emden equation, and was first used to model stars as early as 1870~\autocite{laneTheoreticalTemperatureSun1870}.
+The boundary conditions $p(0) = p_c$ and $p'(0) = 0$ now read $\theta(0) = 1$ and $\theta'(0) = 0$.
+The stellar radius is defined by the first zero of the Lane-Emden funciton above $\xi = 0$, $\theta(\xi_1) = 0$, so that
+%
+\begin{equation}
+    R = a^{\frac{\gamma-2}{2}} C \xi_1. 
+\end{equation}
+%
+The total mass of the star can be integrated using \autoref{mass relation dimensionless} and \autoref{Lane Emden equation},
+%
+\begin{equation}
+    \frac{M}{m_0} = 3 k_2 a^{\frac{3\gamma-4}{2}} C^3 \int^{\xi_1}_0 \dd \xi \, \xi^2 \theta^n = [-3 k_2 \xi_1^2 \theta'(\xi_1)] a^{\frac{3\gamma-4}{2}}.
+\end{equation}
+%
+Thus, given a specific equation of state, and thus $\gamma$, the mass-radius relationship is given by
+%
+\begin{equation}
+    \label{Polytrope mass radius relationship}
+    R \propto M^\beta, \quad \beta = {\frac{\gamma - 2}{3 \gamma - 4}}.
+\end{equation}
+%
+\autoref{fig: mass radius relation polytropes} illustrates this relationship, in arbitrary units, for a series of different values of $\gamma$, as well as the dependent of $\beta$ on $\gamma$.
+For most values of $\gamma$, the stellar radius will increase as the mass increases.
+The only range within which the radius decrease as the mass increase is $\gamma \in \left(\frac{4}{3}, 2 \right)$.
+At $\gamma = \frac{4}{3}$ and $\gamma = 2$, respectively the mass and radius become independent of the central density.
+If included in our figure, these poly tropes would correspond to a horizontal and a vertical line.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.85\textwidth]{../scripts/figurer/mass_radius_relation_polytropes.pdf}
+    \caption{
+        Top: The mass radius relation, in arbitrary units, for different values of $\gamma$. Bottom: The dependence of $\beta$ on $\gamma$, together with the points correponding to the lines in the top plot.
+        }
+    \label{fig: mass radius relation polytropes} 
+\end{figure}
+
 
 
 \subsection{Incompressible fluid}
