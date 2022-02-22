@@ -111,15 +111,16 @@ With this, we can write the quark-sector of massles QCD as
 This operator is invariant under the transformations
 %
 \begin{equation}
-    q \rightarrow U_R q = (P_L + P_R U_R') q, \quad
-    q \rightarrow U_L q = (P_R + P_L U_L') q,
+    q \rightarrow g_R(q) = (P_L + P_R U_R) q, \quad
+    q \rightarrow g_L(q) = (P_R + P_L U_L) q,
 \end{equation}
 %
-where $U_L'$ and $U_R'$ are Hermitian matrices that act on the flavor indices.
+where $U_L$ and $U_R$ are Hermitian matrices that act on the flavor indices.
 These transformations form the Lie group $\Lie{U}{N_f}_R \times \Lie{U}{N_f}_L = \Lie{U}{1}_R \times \Lie{SU}{N_f}_R \times \Lie{U}{1}_L \times \Lie{SU}{N_f}_L $.
-This transformation can also be described in terms of the diagonal subgroup, made up of transformations of the form $U_V = U_R U_L$, where $U_R' = U_L'$ and the remaining transformations of the for $U_A = U_L U_R$, where $U_R' = U_L'^\dagger$.
+This transformation can also be described in terms of the diagonal subgroup.
+This subgroup is made up of transformations where $U_R = U_L$, and the remaining subgroup of transformations where $U_L =  U_R^\dagger$.
 These are called the vector and axial group, and together form $\Lie{U}{N_f}_A \times \Lie{U}{N_f}_V= \Lie{U}{1}_V \times \Lie{SU}{N_f}_V \times \Lie{U}{1}_A \times \Lie{SU}{N_f}_A $
-The currents corresponding to conserved currents are
+The currents corresponding to these transformations are
 %
 \begin{equation}
     J_V^\mu = \bar q_R \gamma^\mu q_R, \quad

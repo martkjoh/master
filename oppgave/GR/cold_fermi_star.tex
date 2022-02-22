@@ -206,9 +206,10 @@ The leading order contribution to the energy density is the rest mass of the par
 This term does not contribute to the pressure.
 As discussed earlier, the non-relativistic limit corresponds to $k_3 \ll 1$, if we chose units so that $\tilde u \approx \tilde p$, or $\tilde u \gg \tilde p$ if we demand that $k_3 = 1$.
 We see that $x_f \rightarrow 0$ corresponds to the latter case.
-By including only the leading order term, we can eliminate the Fermi momentum and write the equation of state in the non-relativistic limit as $u_{\mathrm{rn}} = k p^{3/5}$ where $k = 8/3 \cdot (15/8)^{3/5}$.
-Equations of state where $u \propto p^{\gamma}$ are called polytropes.
-\todo{Connect to discussion on polytropes}
+By including only the leading order term, we can eliminate the Fermi momentum and write the equation of state in the non-relativistic limit as $u_{\mathrm{nr}} = k p^\frac{3}{5}$ where $k = 8/3 \cdot (15/8)^{3/5}$.
+The non-relativistic approximation of the cold fermions is thus a polytrope with $\gamma = \frac{5}{3}$.
+As we see from \autoref{fig: mass radius relation polytropes}, this is within the range where the mass decreases with the size of the star.
+
 In the ultrarelativistic limit, where $p_f \gg m$, the leading order contributions to the pressure and energy density are
 %
 \begin{equation}
@@ -216,7 +217,7 @@ In the ultrarelativistic limit, where $p_f \gg m$, the leading order contributio
 \end{equation}
 %
 and we get the particularly simple equation of state for the ultrarelativistic limit, $ u_{\mathrm{ur}} = 3 p $, which we recognize as the formula for radiation pressure.
-The equation of state $\tilde u(\tilde p)$ in two different regimes is shown in \autoref{fig: equation of state fermi fluid}.
+The equation of state $\tilde u(\tilde p)$ in two different regimes are shown in \autoref{fig: equation of state fermi fluid}.
 The full equation of state is compared to the non-relativistic and ultrarelativistic approximations.
 
 \begin{figure}[h]
@@ -246,7 +247,7 @@ The Taylor-expansion of the mass function around $\tilde r = 0$ is
 \end{equation}
 %
 One of the boundary conditions is $\tilde m(0) = 0$.
-We then use the differntial equation for $\tilde m$, \autoref{diff eq mass}, to find
+We then use the differnetial equation for $\tilde m$, \autoref{diff eq mass}, to find
 %
 \begin{equation}
     \tilde m'(0) = 0, \quad
@@ -332,42 +333,39 @@ With the energy density, \autoref{Fermi gas energy density}, and pressure, \auto
 This is done using an adaptive Runge-Kutta method, with the stop criterion $p(r) = 0$.
 Description of the code and where to find it is given in \autoref{appendix: code}.
 The top graph in \autoref{fig: pressure and mass as a function of radius} shows the pressure, normalized to the central pressure $p_c$, as a function of radius, normalized to the corresponding stellar radius $R$.
-The stellar radius, $R$, is defined as the point where the pressure drops to zero, i.e., $p(R) = 0$.
 The boundary conditions are logarithmically spaced.
 The lower graph in \autoref{fig: pressure and mass as a function of radius} shows the mass, normalized to the total mass $M = m(R)$, as a function of the radius, again normalized to the stellar radius.
 As in the case of an incompressible fluid, the pressure follows a half bell-shaped curve, with a peak that becomes narrower as the central pressure increases.
-The black dashed line corresponds to the solution with the maximum mass.
-We see that the pressure and mass curves change most drastically for central pressures higher than that which corresponds to the most massive star.
+The black dashed line corresponds to the solution with the maximum mass, which will discuss shortly.
+We see that the pressure and mass curves changes most drastically when the central pressure is higher than that corresponding to the most massive star.
 
 
-
-In \autoref{fig: mass radius relationship fermi gas}, we see the relationship between the mass and radius.
-This line is parameterized by the base-10 logarithm of the central pressure, $p(0)$, normalized by $p_0 = u_0$.
+In \autoref{fig: mass radius relationship fermi gas}, we see the relationship between the mass and radius of the star.
+This line is parametrized by the base-10 logarithm of the central pressure, $p(0)$, normalized by $p_0 = u_0$.
 The cross marks the maximum mass, $M_\mathrm{max} = 0.711 \, M_\odot$, which corresponds to a radius of $R = 9.20 \, \mathrm{km}$.
 This matches the results obtained by Oppenheimer and Volkoff~\cite{oppenheimerMassiveNeutronCores1939}, $M_\mathrm{max} = 0.71$.
 In their 1939 paper, Oppenheimer and Volkoff computed five data points in the mass-radius plane.
 The results are marked by blue circles in \autoref{fig: mass radius relationship fermi gas}.
 We find good agreement between the three points closest to the maximum value and our results.
 However, the two results of Oppenheimer and Volkoff furthest away differ significantly from our results.
-\todo{Hvorfor er to punkter så langt unna?}
 The black dashed line is the absolute mass-radius constraint, \autoref{mass radius constraint}, and any stable configuration must be on the right side of this line.
+As we predicted from looking at the non-relativistic equation of state, the mass is decreasing with the size of the star, at least for stars with a low central pressure.
 
 
 In \autoref{fig: mass radius relationship comparison}, we compare the mass-radius relationship obtained from the full theory with results from approximations.
-The lowest line is obtained by using both the full TOV equation and the equation of state.
-The middle line is obtained using the non-relativistic equation of state together with the full TOV equation.
-The upper line is from the Newtonian approximation to the TOV equation and the non-relativistic equation of state.
-This last approximation does not seem to have an upper limit for the mass, as expected.
+The lowest line is obtained by using both the full TOV equation and the exact equation of state.
+The next line above is obtained using the non-relativistic equation of state together with the full TOV equation.
+The second uppermost line is obtained from the exact equation of state and the Newtonian approximation for the TOV equation.
+The uppermost line uses both the Newtonian approximation to the TOV equation and the non-relativistic approximation for the equation of state.
+This last line corresponds to a polytrope in Newtonian gravity, as we studied in \autoref{subsection: Newtonian limit and polytropes}.
+Unlike the other systems, it does not seem to have an upper limit for the mass, as expected.
 
 
-\todo[inline]{
-    Inkluder polytrope analyse, forklarer om R øker med M eller ikke
-}
 
 \subsection{Upper bound and stability}
+\todo[inline]{Utvid om stability}
 
-
-For any equation of state, the TOV equation will give a one-parameter family of stars, parametrized by the central pressure $p_c$.
+For any equation of state, the TOV equation will give a one-parameter\todo{Can there be multiple branches?} family of stars, parametrized by the central pressure $p_c$.
 This leads to the possibility of an \emph{absolute maximum} mass for a given equation of state.
 In the case of a non-interacting neutron, we found the limit to be $0.71 \, M_\odot$, in agreement with Oppenheimer and Volkoff.
 To obtain a more general upper limit for the mass of neutron stars, or compact stars in general, one has to account for more general equations of state.
@@ -387,7 +385,7 @@ Using these general assumptions, Rhoades and Ruffini found an upper limit for ne
 An equation of state with a \emph{high} speed of sound, i.e., with a flat curve in the $p-u$-plane, is called \emph{stiff}.
 From \autoref{fig: equation of state fermi fluid}, we see that the Newtonian equation of state is stiffer in the high-energy regime
 The most extreme case is the incompressible model we saw earlier, which breaks causality.
-In general, a more stiff equation of state leads to a larger maximum mass.
+In general, a stiffer equation of state leads to a larger maximum mass.
 This is intuitive; the TOV equation describes the balancing of forces from pressure and gravity, and if the pressure raises fast as the density increases, then it can sustain a large total mass before it collapses~\autocite{glendenningCompactStarsNuclear2012}.
 
 
@@ -429,7 +427,7 @@ This gives us the following criterion for stability,
 As it turns out, this is only a necessary requirement for stability.
 To conduct a more rigorous study of stability, one must derive the equation of hydrostatic equilibrium with the addition of perturbations as time-dependent, radial oscillations.
 This is done by discplacing a fluid elemet at a radius $r$ and time $t$ by $\delta r(r, t) = \sum_n A_n \xi_n(r) e^{i \omega_n t}$.
-Here, $\xi_n$ are normal modes with frequencies $\omega_n$, $n \in \{0, 1, ...\}$
+Here, $\xi_n$ are normal modes with frequencies $\omega_n$, $n \in \{0, 1, ...\}$.
 The equation for the eigenmodes was first obtained by Chandrasekhar~\autocite{chandrasekharDynamicalInstabilityGaseous1964}, and can be written in the form of a Sturm-Liouville theory equation,
 %
 \begin{equation}

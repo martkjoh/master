@@ -1,7 +1,7 @@
 \section{Chiral perturbation theory}
 
 Chiral perturbation theory, or \chpt, is an effective field theory which exploits the chiral symmetries of QCD to describe its low energy dynamics.
-The basis of \chpt\ for chiral perturbation theory and is the massless QCD Lagrangian,
+The basis of \chpt\ for chiral perturbation theory is the massless QCD Lagrangian,
 %
 \begin{equation}
     \Ell^0_\text{QCD} = i \bar q \slashed D q - \frac{1}{4} G^\alpha_{\mu \nu} G_\alpha^{\mu \nu}
@@ -115,32 +115,23 @@ We now define the effective Lagrangian of $\chpt$ as
 \end{equation}
 
 
+\subsection{Winberg's power counting scheme}
+\todo[inline]{Skriv/kopier tekst om Weinberg's power counting scheme}
+
+
+
 \subsection{Building blocks}
 
-\begin{align}
-    \Sigma = A_\alpha [U(x) \Sigma_0 U(x)] A_\alpha, \quad
-    \Sigma_0 = \one,\,
-    U = \exp{i\frac{\pi_a \tau_a}{2 f}},\,
-    A_\alpha = \exp(i \alpha \tau_1).
-\end{align}
-%
-Covariant derivative ($a_\mu = 0$)
+Covariant derivative
 %
 \begin{equation}
     \nabla_\mu\Sigma = \partial_\mu \Sigma - ir_\mu \Sigma + i \Sigma l_\mu.
 \end{equation}
 %
-Scalar:
+Scalar
 %
 \begin{equation}
-    \chi = 2 B_0 (s + ip), \quad s = m_q, \, p = 0.
-\end{equation}
-%
-Define $\bar m^2 = B_0 (m_u + m_d)$ and $\Delta m^2 = B_0(m_u - m_d)$, so that
-%
-\begin{equation}
-    \label{chi definition}
-    \chi = \bar m^2 \one + \Delta m^2 \tau_3,
+    \chi = 2 B_0 (s + ip), \quad s = m, \, p = 0.
 \end{equation}
 %
 Field strength tensor
@@ -157,12 +148,9 @@ EM + chemical potential:
     = 
     \frac{1}{2} \mu_I \delta^0_\mu \tau_3
     + e Q \mathcal{A}_\mu.
-    \frac{1}{6} e \mathcal A^\mu 
-    + \frac{1}{2}(e \mathcal A^\mu + \mu_I\delta^\mu_I) \tau_3.
 \end{equation}
 %
-$G = \Lie{SU}{N_f}_R \times \Lie{SU}{N_f}_L \times \Lie{U}{1}_V$
-Transformations:
+Transformations under $g \in G = \Lie{SU}{N_f}_R \times \Lie{SU}{N_f}_L \times \Lie{U}{1}_V$
 \begin{align}
     g\in G&, \quad  g = g_R \times g_L \times g_V, \\
     g_I(q) &= (P_I U_I + P_{\bar{I}}) q = U_I q_I \quad
@@ -171,7 +159,7 @@ Transformations:
     U_I &= P_I \exp{-i \eta_\alpha \frac{\tau_\alpha}{2} }, \quad I = R, L, \\
     U_V &= \exp(- i \theta)
 \end{align}
-Promoting $G$ to gauge group, to get gauge invariance we must have \todo{Check Q}
+Promoting $G$ to gauge group, to get gauge invariance we must have
 %
 \begin{align}
     \Sigma &\rightarrow U_R \Sigma U_L^\dagger, \\
@@ -182,122 +170,5 @@ Promoting $G$ to gauge group, to get gauge invariance we must have \todo{Check Q
     Q_I &\rightarrow U_I Q_I U_I^\dagger, \, I = R, L.
 \end{align}
 %
-We count $\chi$ as ortder 2, $e$ as order 2 and $\nabla_\mu$ as order 1.
+We count $\chi$ as order 2, $e$ as order 2 and $\nabla_\mu\Sigma$ as order 1.
 Notice that $e$ and $Q$ must always appear as $e Q$, as the orignal Lagrangian \autoref{definition effective lagrangian chpt} is invariant under the transformation $e \rightarrow e/\lambda$ and $Q \rightarrow \lambda Q$~\autocite{pencoIntroductionEffectiveField2020}.
-
-
-
-\section{Electromagnetic effects}
-
-In this section, we will explore the effects of electromagnetism on chiral perturbation theory.
-The leading order Lagrangian is then~\autocite{eckerRoleResonancesChiral1989,urechVirtualPhotonsChiral1995}
-%
-\begin{equation}
-    \label{leading order lagrangian EM}
-    \Ell_2^{\text{EM}}
-    = 
-    \frac{1}{4}f^2 
-    \Tr{
-        \nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger
-    }
-    +
-    \frac{1}{4}f^2 
-    \Tr{
-        \chi \Sigma^\dagger + \Sigma\chi^\dagger
-    }
-    +
-    e^2 C
-    \Tr{Q \Sigma Q \Sigma^\dagger}
-\end{equation}
-%
-$Q$ is the quark charge matrix, \autoref{quark charge matrix}, $C$ and dimensionfull constant, and $\chi = 2B_0 m$, where $m$ is the quark mass matrix \autoref{mass matrix quarks}.
-
-
-
-\subsection{Contribution to mass}
-
-
-To find the electromagnetic effect on the pion mass, we assume $\mu_I = 0$.
-We use the parametrization $\Sigma = \exp{i \pi_a \tau_a / f}$, and the covariant derivative is in this case
-%
-\begin{equation}
-    \nabla_\mu \Sigma = \partial_\mu \Sigma - i e \mathcal A_\mu [Q, \Sigma].
-\end{equation}
-%
-We expand to second order in $\pi_a/f$, which gives
-%
-\begin{align}
-    f^2 \Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma}
-    &=
-    2\partial_\mu \pi_a\partial^\mu \pi_a
-    + 4 e \mathcal A^\mu (\pi_1 \partial_\mu \pi_2 -\pi_2 \partial_\mu \pi_1)
-    + 4 e^2 \mathcal A^2 (\pi_1^2 + \pi_2^2), \\
-    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
-    & = 4 \bar m^2\left(1 - \frac{1}{2} \frac{\pi_a \pi_a}{f^2}\right), \\
-    \Tr{Q \Sigma Q \Sigma^\dagger}
-    & = \frac{5}{9} - \frac{\pi_1^2 + \pi_2^2}{f^2}.
-\end{align}
-%
-Inserting this into \autoref{leading order lagrangian EM}, we get
-%
-\begin{equation}
-    \Ell_2^\text{EM}
-    = \bar m^2 f^2 + \frac{5}{9}e^2 C
-    + \frac{1}{2}\partial_\mu \pi_a \partial^\mu \pi_a
-    - \frac{1}{2} \bar m_\pm^2 (\pi_1^2 + \pi_2^2) 
-    - \frac{1}{2}\bar m^2 \pi_3^2
-    + e \mathcal A^\mu (\pi_1 \partial_\mu \pi_2 -\pi_2 \partial_\mu \pi_1)
-    + e^2 \mathcal A^2 (\pi_1^2 + \pi_2^2).
-\end{equation}
-%
-where
-\begin{equation}
-    \bar m_\pm^2 = \bar m^2 + 2\frac{e^2}{f^2}C.
-\end{equation}
-%
-This is the electromagnetic contribution to the mass at leading order.
-It only affects the $\pi_1, \pi_2$ pions, which are a linear combination of $\pi_\pm$, the charged pions.
-To leading order, $\bar m = m_\pi$, the neutral pion mass, and $\bar m_{\pm} = m_{\pi_{\pm}}$
-From the values listed in \autoref{section: units}, we find
-%
-\begin{equation}
-    \label{EM mass contribtuion leading order}
-    \Delta m_{\pm} := 2\frac{e}{f}\sqrt{C} = \sqrt{m_{\pi_\pm}^2 - m_{\pi}^2} = 35.50 \, \text{MeV}.
-\end{equation}
-%
-This corresponds to $C = 0.3771 \, u_0 = 1.1649\cdot 10^8 \, \text{MeV}^4$.
-
-
-\subsection{Tree level free energy at non-zero isospin density} 
-
-\todo{Kan vi være sikre på at denne parametriseringen fremdeles er riktig?}
-The zeroth-order expansion in $\pi/f$ is
-%
-\begin{equation}
-    \Sigma = e^{i \alpha \tau_1} = \sin \alpha + i \tau_1 \cos \alpha.
-\end{equation}
-%
-This gives the contributions
-%
-\begin{align}
-    \Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger}
-    & = 2 \sin^2\alpha\left(\mu_I^2 + 2 e \mu \mathcal A_0 + e^2\mathcal A^2 \right), \\
-    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
-    & =4 \bar m^2 \cos \alpha,\\
-    \Tr{Q \Sigma Q \Sigma^\dagger}
-    & =  \cos^2 \alpha - \frac{4}{9}.
-\end{align}
-%
-The leading order contribution to the free energy is due to the stationary Lagrangian, that is $\pi_a = \mathcal A_\mu = 0$.
-Inserting this into \autoref{leading order lagrangian EM}, we get \todo[color=red]{FIKS FAKTOR 2!!!}
-%
-\begin{equation}
-    \label{static lagrangian with EM}
-    \Ell 
-    = f^2 \left[
-        \frac{1}{2}\mu_I^2 \sin^2 \alpha + \bar m^2 \cos \alpha 
-        + \Delta m^2_{\pi_\pm} \left(\cos^2 \alpha - \frac{4}{9}\right)
-    \right].
-\end{equation}
-%
-

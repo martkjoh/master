@@ -148,7 +148,7 @@ Given this, we can solve for all the unknown functions, either analytically or n
 
 With $p(r)$, $u(r)$, and $m(r)$, we can construc the metric.
 We already have the $rr$-component of the metric from \autoref{definition of m(r)}.
-If we combinde \autoref{alpha in terms of p and u}, with \autoref{TOV}, we get a the solution
+If we combine \autoref{alpha in terms of p and u}, with \autoref{TOV}, we get a the solution
 %
 \begin{equation}
     \label{solution to alpha}
@@ -233,7 +233,8 @@ In other words, the dimensionful constants defined by $k_i = 1$ are new, charact
 
 
 
-\subsection{Newtonian limit}
+\subsection{Newtonian limit and polytropes}
+\label{subsection: Newtonian limit and polytropes}
 
 In the Newtonian limit, the rest energy, i.e., mass, gives the dominant contribution to the gravitational field, while the contribution from pressure is negligible. 
 In other words, the characteristic pressure, $p_0$, is far smaller than the characteristic energy density $u_0$, and we can use the approximation $k_3 \ll 1$.
@@ -279,7 +280,7 @@ This gives us a single equation for hydrostatic equilibrium in the Newtonian lim
     k'' = 3 \frac{k_2 k_1}{k_3} = 4 \pi G \frac{u_0^2 r^2_0}{p_0}.
 \end{equation}
 This is a second order differential equation, so we need an new boundary condition in addition to $p(0) = p_c$.
-Close to the center we can see from \autoref{Newtonian limit TOV} that for a finite energy density, we must have $p'(0) = 0$, our second boundary condition.
+Close to the center, we can see from \autoref{Newtonian limit TOV} that for a finite energy density, we must have $p'(0) = 0$, our second boundary condition.
 
 One important model for stars is the \emph{polytrope}, which has an equation of state of the form $u = K p^\gamma$ for some constant $K$.
 As we will see, this fits well as the Newtonian limit of many equations of state and can be used to make predictions such as the Chandrasekhar limit, which sets the upper limit of the mass of white dwarf stars to $M \approx 1.5 \, M_\odot$~\autocite{chandrasekharHighlyCollapsedConfigurations1935,glendenningCompactStarsNuclear2012}.
@@ -294,16 +295,16 @@ To get write \autoref{Newtonian limit TOV single equation} on the standard form,
 \end{equation}
 %
 $n$ is called the \emph{polytropic index} of the star.
-Inserting these new variables into the equation of hydrostatic equillibrium gives
+Inserting these new variables into the equation of hydrostatic equilibrium gives
 %
 \begin{equation}
     \label{Lane Emden equation}
     \frac{1}{\xi^2} \odv{}{\xi} \left(\xi^2 \odv{\theta}{\xi} \right) + \theta^n = 0.
 \end{equation}
 %
-This is called the Lane-Emden equation, and was first used to model stars as early as 1870~\autocite{laneTheoreticalTemperatureSun1870}.
+This is called the Lane-Emden equation and was first used to model stars as early as 1870~\autocite{laneTheoreticalTemperatureSun1870}.
 The boundary conditions $p(0) = p_c$ and $p'(0) = 0$ now read $\theta(0) = 1$ and $\theta'(0) = 0$.
-The stellar radius is defined by the first zero of the Lane-Emden funciton above $\xi = 0$, $\theta(\xi_1) = 0$, so that
+The stellar radius is defined by the first zero of the Lane-Emden function above $\xi = 0$, $\theta(\xi_1) = 0$, so that
 %
 \begin{equation}
     R = a^{\frac{\gamma-2}{2}} C \xi_1. 
@@ -322,7 +323,7 @@ Thus, given a specific equation of state, and thus $\gamma$, the mass-radius rel
     R \propto M^\beta, \quad \beta = {\frac{\gamma - 2}{3 \gamma - 4}}.
 \end{equation}
 %
-\autoref{fig: mass radius relation polytropes} illustrates this relationship, in arbitrary units, for a series of different values of $\gamma$, as well as the dependent of $\beta$ on $\gamma$.
+\autoref{fig: mass radius relation polytropes} illustrates this relationship, in arbitrary units, for a series of different values of $\gamma$, as well as the dependence of $\beta$ on $\gamma$.
 For most values of $\gamma$, the stellar radius will increase as the mass increases.
 The only range within which the radius decrease as the mass increase is $\gamma \in \left(\frac{4}{3}, 2 \right)$.
 At $\gamma = \frac{4}{3}$ and $\gamma = 2$, respectively the mass and radius become independent of the central density.
@@ -332,7 +333,7 @@ If included in our figure, these poly tropes would correspond to a horizontal an
     \centering
     \includegraphics[width=0.85\textwidth]{../scripts/figurer/mass_radius_relation_polytropes.pdf}
     \caption{
-        Top: The mass radius relation, in arbitrary units, for different values of $\gamma$. Bottom: The dependence of $\beta$ on $\gamma$, together with the points correponding to the lines in the top plot.
+        Top: The mass-radius relation, in arbitrary units, for polytropes with different values of $\gamma$. Bottom: The dependence of $\beta$ on $\gamma$, together with the points corresponding to the lines in the top plot.
         }
     \label{fig: mass radius relation polytropes} 
 \end{figure}
@@ -343,6 +344,7 @@ If included in our figure, these poly tropes would correspond to a horizontal an
 \label{subsection: incompressible fluid}
 
 The simplest model for a star is one made up of an incompressible fluid, where the energy density is independent of the pressure.
+This corresponds to a polytrope with $\gamma = \infty$.
 In this case, the energy density of the star will be constant for a radius $r < R$, before it drops to zero,
 %
 \begin{equation}
