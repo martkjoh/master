@@ -61,22 +61,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {todo}{Kan vi være sikre på at denne parametriseringen fremdeles er riktig?}{58}{section*.50}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hvorofor? Fordi eos er så lite stiv?}{61}{section*.55}%
+\contentsline {todo}{Vis kjemisk potensial}{61}{section*.55}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{sammenlign med polytrope}{61}{section*.56}%
+\contentsline {todo}{write down the Gell-Mann matrices and their properties}{67}{section*.60}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Vis kjemisk potensial}{61}{section*.57}%
+\contentsline {todo}{clean up}{71}{section*.61}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Fiks faktor to forran delta, kjør kode på nytt}{63}{section*.58}%
+\contentsline {todo}{include gamma + pauli matrices}{86}{section*.63}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{write down the Gell-Mann matrices and their properties}{67}{section*.63}%
+\contentsline {todo}{Hva skjer med beta?}{86}{section*.64}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{clean up}{71}{section*.64}%
+\contentsline {todo}{Vær konsekvent på bruk av k og p}{86}{section*.65}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{include gamma + pauli matrices}{86}{section*.66}%
-\defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hva skjer med beta?}{86}{section*.67}%
-\defcounter {refsection}{0}\relax 
-\contentsline {todo}{Vær konsekvent på bruk av k og p}{86}{section*.68}%
-\defcounter {refsection}{0}\relax 
-\contentsline {todo}{Describe the numerical code for the TOV equations}{87}{section*.69}%
+\contentsline {todo}{Describe the numerical code for the TOV equations}{87}{section*.66}%

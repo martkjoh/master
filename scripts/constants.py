@@ -26,7 +26,7 @@ e = sqrt(4*pi*alpha)
 Δm_MeV = sqrt(m_pipm_MeV**2 - m_pi_MeV**2)
 C = 1/2 * f_pi_MeV**2 / e**2 * Δm_MeV**2
 
-Δ = Δm_MeV**2 / m_pi_MeV**2
+D = Δm_MeV**2 / m_pi_MeV**2
 
 
 def get_const_fermi_gas():
@@ -47,13 +47,15 @@ def max_radius_pion_star():
     _, _, r0 = get_const_pion()
     R = pi/sqrt(12) * r0
     print(R)
+    print(R / (1 + D))
 
 if __name__=="__main__":
+    pass
 
     # for const in get_const_fermi_gas(): print(const)
     # for const in get_const_pion(): print(const)
     # print(C / (m_pi_MeV**2 * f_pi_MeV**2))
     # print(Δ)
 
-    max_radius_pion_star()
+    # max_radius_pion_star()
     # print(sqrt(3/4)*pi)

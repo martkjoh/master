@@ -10,6 +10,8 @@ sys.path.append(sys.path[0] + "/..")
 from integrate_tov import get_u
 from constants import get_const_pion
 
+from scipy.stats import linregress
+
 plt.rc("font", family="serif", size=20)
 plt.rc("mathtext", fontset="cm")
 plt.rc("lines", lw=2)
@@ -70,7 +72,7 @@ def plot_pressure_mass(name=""):
     cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
 
     fig.legend(bbox_to_anchor=(0.73, 0.87))
-
+    
 
     fig.savefig("figurer/pion_star/pressure_mass_pion_star"+name+".pdf", bbox_inches="tight")
 
@@ -102,7 +104,7 @@ def plot_mass_radius_compare():
         "Non-relativistic EOS + Newtonian gravity"
         ]
 
-    print(sols4[50].t)
+
 
     for i, data in enumerate(datas):
         R, M, p0 = [np.array(d) for d in data]
@@ -274,13 +276,14 @@ def plot_mass_radius_compare_EM():
     fig, ax = plt.subplots(figsize=(16, 8))
 
     labels = ["Only strong interactions", "EM interactions"]
-    colors = ["k", "b"]
-    style = ["--", "-"]
+    colors = ["tab:blue", "k"]
+    alpha = [1, 0.8]
+    style = ["-","--"]
     for i, data in enumerate(datas):
         R, M, pc = [np.array(d) for d in data]
         x, y, z = R*r0, M*m0, log(pc)
 
-        ax.plot(x, y, label=labels[i], color=colors[i], ls=style[i])
+        ax.plot(x, y, label=labels[i], color=colors[i], ls=style[i], alpha=alpha[i])
 
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
@@ -290,12 +293,40 @@ def plot_mass_radius_compare_EM():
     
 
 
+def test():
+    sols = load_sols()
+    data = [[], [], []]
+    for i, s in enumerate(sols):
+        data[0].append(s.t[-1])
+        data[1].append(s.y[1][-1])
+        data[2].append(s.y[0][0])
+
+
+    R, M, pc = [np.array(d) for d in data]
+
+    n = 50
+    plt.plot(R[:n], M[:n], "x")
+    
+    s = linregress(R[:n], M[:n])
+    a, b = s.slope, s.intercept
+    x = np.linspace(R[n], R[0])
+    plt.plot(x, a*x + b)
+    plt.plot(-b/a, 0, "kx", label="$R = %.3f\, \mathrm{km} $"%((-b/a)*r0))
+
+    R0 = pi/sqrt(12)
+    plt.plot(R0, 0, "x")
+    plt.legend()
+    plt.show()
+
+# test()
+
+
 
 # plot_pressure_mass()
 # plot_pressure_mass(name="_EM")
-plot_mass_radius_compare()
 
 # plot_mass_radius()
+# plot_mass_radius_compare()
 # plot_mass_radius(name="_EM")
 plot_mass_radius_compare_EM()
 

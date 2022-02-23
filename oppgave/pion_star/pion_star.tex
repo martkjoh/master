@@ -15,7 +15,9 @@ The $\alpha$ parameter is determined by minimizing $\Eff$ for a given value of $
 \end{equation}
 %
 This gives an explicit formula for $\alpha$ in terms of $\mu_I$.
-We are only interested in the phase where $\mu_I \geq \bar m$, where this solution is
+As long as the chemical potential is lower than the critical value $\mu_I^c = \bar m$, the only solution to this equation is $\alpha = 0$.
+As the chemical potential reaches this critical value, the system undergoes a phase transition from the vacuum phase to the \emph{pion condensate} phase.
+In this new phase, the solution is
 %
 \begin{align}
     \label{alpha as function of mu lowest order}
@@ -130,6 +132,7 @@ and the first root is therefore $\xi_1 = \pi$.
 With this, we get a closed form expression for the stellar radius of this non-relativistic and Newtonian limit---which we expect the full theory to approach as the central pressure decreases---namely
 %
 \begin{equation}
+    \label{radius pion star nr limit}
     R = \frac{\pi}{\sqrt{12}} r_0 = 85.97 \, \text{km}.
 \end{equation}
 
@@ -179,12 +182,12 @@ This is similar to what we saw in the case of an incompressible fluid, \autoref{
 
 
 \autoref{fig: mass-radius relation pion star} shows the mass-radius relationship for the pion star using the leading order free energy density of two-flavor chiral perturbation theory.
-As in the case of the neutron star, it has a maximum mass, in this case of $M_\text{max} 10.47\, M_\odot$.
-What distinguishes this from the case of the neutron star, however, is the fact that in the limit of low central pressure, the distribution apparently approaches a maximum radius of $R = 85.95 \, \text{km}$.
-\todo{Hvorofor? Fordi eos er så lite stiv?}
+As in the case of the neutron star, it has a maximum mass, in this case of $M_\text{max} = 10.47\, M_\odot$.
+However, in contrast to the case of the neutron star, the stellar radius approaches a maximum radius, as the non-relativistic, Newtonian limit suggests.
+We see that the largest radius in our results, corresponding to  $p_c = 10^{-6} \, p_0$, is $R = 85.82 \, \text{km}$, which is in good agreement with our earlier analysis, \autoref{radius pion star nr limit}.
 \autoref{fig: mass-radius relation pion star comparison} compares the mass-radius relation from the full equation of state and TOV equation with various limits.
 We see that when using the Newtonian limit of the TOV equation, \autoref{Newtonian limit TOV}, the radius is either constant or increasing as the mass increases, in contrast to the result when using the TOV equation, as well as the neutron star.
-\todo[inline]{sammenlign med polytrope}
+
 \todo[inline]{Vis kjemisk potensial}
 
 
@@ -211,16 +214,15 @@ Free energy minimization now gives
     \left[ \left( \frac{1}{x^2} - \Delta \right) \cos \alpha - 1\right] \sin \alpha = 0.
 \end{equation}
 %
-Here, $x$ is defined as before, and we introduced the new quantity $\Delta = \Delta m_{\pm}^2 / \bar m^2= 0.06916 $.
-We see that $\alpha = 0$ is the only solution for $x^{-2} = \mu_I^2 / \bar m^2 < 1 + \Delta$.
-The phase transition is raised to $\mu_I = \bar m \sqrt{1 + \Delta}$, the charged pion mass.
-This gives the new solution
+Here, $x$ is defined as before, and we introduced the new quantity $\Delta = \Delta m_{\pm}^2 / \bar m^2= 0.06916$.
+We see that the phase transition is raised, the critical chemical potential is now $\mu_I^c = \bar m \sqrt{1 + \Delta}$, the mass of the charged pions.
+Below this value, $\alpha = 0$ remains the only solution.
+In the pion condensate phase, the solution is
 %
 \begin{equation}
     \cos \alpha = \frac{x^2}{1 - \Delta x^2}.
 \end{equation}
 %
-\todo[inline, color=red]{Fiks faktor to forran delta, kjør kode på nytt}
 This reduces to our old solution for $\Delta = 0$, as it should.
 With the same procedure as in the last section, we get the pressure and energy density
 %
@@ -229,15 +231,15 @@ With the same procedure as in the last section, we get the pressure and energy d
     & = \frac{1}{2} 
     \left[
         \frac{1}{x^2} 
-        + \frac{x^2}{1 - 2x^2 \Delta} 
-        - 2(1 + \Delta)
+        + \frac{x^2}{1 - x^2 \Delta} 
+        - 2 - \Delta
     \right], \\
     \tilde u_\text{EM}
     &= \frac{1}{2} 
     \left[
         \frac{1}{x^2} 
-        - x^2 \frac{3 - 2 \Delta x^2}{(1 - 2 \Delta x^2)^2}
-        + 2(1 + \Delta)
+        - x^2 \frac{3 - \Delta x^2}{(1 - \Delta x^2)^2}
+        + 2 + \Delta)
     \right].
 \end{align}
 %
@@ -245,7 +247,10 @@ With the same procedure as in the last section, we get the pressure and energy d
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.95\textwidth]{../scripts/figurer/pion_star/pion_up.pdf}
-    \caption{text
+    \caption{
+        Left: The pressure, normalized to $p_0$, as a function of the chemical potential above the critical value, normalized to $\bar m$.
+        Right: The energy density, normalized to $u_0$, also as a function of the chemical potential.
+        Results with electromagnetic interaction are shown as dashed lines.
         }
         \label{fig: pressure and energy with EM interaction}
 \end{figure}
@@ -255,17 +260,29 @@ With the same procedure as in the last section, we get the pressure and energy d
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.65\textwidth]{../scripts/figurer/pion_star/pion_eos_EM.pdf}
-    \caption{c}
+    \caption{
+        The equation of state in the pion condensate phase. 
+        Results with electromagnetic interactions are shown as dashed lines.
+        }
     \label{fig: eos chpt em interaction}
 \end{figure}
 
 In the limit $\Delta = 0$, these reduce to \autoref{pressure leading order chpt} and \autoref{energy density leading order chpt}.
-The ultra-relativisitc limit, that is for  $x \ll 1$, the behavior is the same as before, and we therefore again approach $p = u$.
+In the ultra-relativistic limit, that is for  $x \ll 1$, the behavior is the same as before, and we therefore again approach $p = u$.
+We find the non-relativistic limit by substituting $x^{-2} = 1 + \Delta + \epsilon$.
+To first order in $\epsilon$ we get $\tilde p = \epsilon / 2$, which is the same as before.
+The limit of the energy density, however, is slightly perturbed by the inclusion of electromagnetism, $\tilde u = 2(1 + \Delta) \tilde \epsilon$.
+The non-relativistic equation of state is thus still a polytrope,  $p = K u^2$, however the constant is now $K^{-1} = 8 (1+\Delta)^2$.
+With this, the radius of the polytrope and the limiting radius of the full system changes, and is now
+%
+\begin{equation}
+    R = \frac{\pi}{\sqrt{12}(1 + \Delta)} r_0 = 80.40 \, \text{km}.
+\end{equation}
+
+
 \autoref{fig: pressure and energy with EM interaction} shows the pressure and energy density, normalized to their characteristic quantities, as a function of chemical potential above the critical value, normalized to $\bar m$.
-The critical value of the chemical potential, $\mu_I^c$, is the point where we get a new solution $\alpha\neq 0$.
-Normalized to $\bar m$, this is $1$ when electromagnetic interactions are ignored, and $\sqrt{1 + 2 \Delta}$ when they are accounted for.
-
-
+\autoref{fig: eos chpt em interaction} shows the equation of state.
+The results with and without electromagnetic results are compared.
 
 \autoref{fig: mass-radius relation leading order pion star with em interaction} shows the mass-radius reaction of the pion star when the electromagnetic interaction is taken into account.
 We see that the shape of the curve has not changed much from our earlier result. 
@@ -276,7 +293,7 @@ The result with and without electromagnetic interaction is compared in \autoref{
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star_EM.pdf}
-    \caption{a }
+    \caption{The mass-radius relation of a pion star with dynamiccal photons. The relation is parameterized by the logarithm of the internal pressure. The dashed line shows the absolut limiting mass for a given radius. The cross indicates the maximum mass configuration, and the dot the maximum radius configuration.}
     \label{fig: mass-radius relation leading order pion star with em interaction}
 \end{figure}
 
@@ -284,7 +301,9 @@ The result with and without electromagnetic interaction is compared in \autoref{
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star_compare.pdf}
-    \caption{b
+    \caption{
+        This plot compares the mass-radius relation of pion stars with and without the inclusion of electromagnetism.
         }
         \label{fig: mass-radius relation comparison}
 \end{figure}
+

@@ -37,9 +37,9 @@ def sim_newt_non_rel():
 
 
 # sim()
-sim_non_rel()
-sim_newt()
-sim_newt_non_rel()
+# sim_non_rel()
+# sim_newt()
+# sim_newt_non_rel()
 
 pcs = 10**np.linspace(-6, 6, n)
 
@@ -50,4 +50,4 @@ def sim_EM():
     np.save("pion_star/data/sols_EM", sols)
 
 
-# sim_EM()
+sim_EM()

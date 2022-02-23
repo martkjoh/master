@@ -1,6 +1,9 @@
 import numpy as np
 from numpy import pi, sqrt
+import sys
 
+sys.path.append(sys.path[0] + "/..")
+from constants import D
 
 xrange = (0, 5) 
 N = 1_00
@@ -35,18 +38,16 @@ u_ur = lambda p: p
 
 # Including EM interactions
 
-D = 0.06916
-
-pEM = lambda x, D: 1/2 * (1/x**2 +  x**2/(1 - 2*D*x**2) - 2*(1+D))
+pEM = lambda x, D: 1/2 * (1/x**2 +  x**2/(1 - D*x**2) - 2 - D)
 uEM = lambda x, D: 1/2 * (
-    1/x**2 - x**2*(3 - 2*D*x**2)/(1 - 2*D*x**2)**2 + 2*(1+D)
+    1/x**2 - x**2*(3 - D*x**2)/(1 - D*x**2)**2 + 2+D
     )
 
 
 def gen_eos_list_EM():
     y = np.logspace(-3, 5, N)
     y = np.concatenate([[0,], y])
-    x = 1 / sqrt(1 + 2*D + y**2)
+    x = 1 / sqrt(1 + D + y**2)
 
     ulst = uEM(x, D)
     plst = pEM(x, D)
@@ -59,5 +60,5 @@ def gen_eos_list_EM():
 
 
 if __name__=="__main__":
-    gen_eos_list()
+    # gen_eos_list()
     gen_eos_list_EM()
