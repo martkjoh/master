@@ -276,7 +276,7 @@ def plot_mass_radius_compare_EM():
     fig, ax = plt.subplots(figsize=(16, 8))
 
     labels = ["Only strong interactions", "EM interactions"]
-    colors = ["tab:blue", "k"]
+    colors = ["tab:blue     ", "k"]
     alpha = [1, 0.8]
     style = ["-","--"]
     for i, data in enumerate(datas):
