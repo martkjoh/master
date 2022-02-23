@@ -66,14 +66,9 @@ The ratio of pressure to energy density is
     \frac{p}{u} = \frac{1- 2x^2 + x^4  }{1 + 2x^2 -3x^4 }.
 \end{equation}
 %
-In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$ and thus $x \rightarrow 0$, we get $p / u = 1$, or $p = u$.
-In the non-relativisitc limit, that is $x^{-2} = 1 + \epsilon$, $\epsilon \ll 1$, we get $\tilde p = \epsilon^2 / 2 $, and $\tilde u = 2\epsilon$.
-Thus, the equation of state has the NR-limit $\tilde u = 2 \sqrt 2 \sqrt{\tilde p}$.
-\autoref{fig: equation of state pions} shows the equation of state in two different regimes, and compares it with the ultrarelativistic and non-relativistic limit.
-\todo[inline]{Er UR-grensen gyldig, eller feiler chpt?}
-\todo[inline]{Sammenilign med polytrope}
-
-
+In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$ and thus $x \rightarrow 0$, we get $p / u = 1$, or $u_\text{ur} = p$.
+In the non-relativisitc limit, that is $x^{-2} = 1 + \epsilon$, $\epsilon \ll 1$, we get $\tilde p = \epsilon^2 / 2 $, and $\tilde u = 2\epsilon$, so the equation of state is $\tilde u_\text{nr} = 2 \sqrt 2 \sqrt{\tilde p}$.
+\autoref{fig: equation of state pions} shows the equation of state in two different regimes and compares it with the ultrarelativistic and non-relativistic limit.
 
 \begin{figure}[h]
     \centering
@@ -95,11 +90,49 @@ Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} an
 \begin{align}
     u_0 & =m_\pi^2 f_\pi^2 \frac{c}{\hbar^3}
     = 3.216\cdot 10^{33} \, \text{J}\,\text{m}^{-3}, \\
-    m_0 & = \frac{c^4}{\sqrt{\frac{4 \pi}{ 3} u_0 G}} = 64.21\, M_\odot, \\
+    m_0 & = \frac{c^4}{\sqrt{\frac{4 \pi}{ 3} u_0 G^3}} = 64.21\, M_\odot, \\
     r_0 & = \frac{G}{c^2} m_0 = 94.79 \, \text{km}.
 \end{align}
 %
 We, therefore, expect both the radius and mass of the pion star to be around one order of magnitude larger than the star made up of cold neutrons.
+
+\subsection{Limiting radius}
+
+We found that the non-relativisitc limit of the equation of state is $\tilde p = 2^{-3} \tilde u^2$, i.e., it is a polytrope with $\gamma = 2$.
+As discussed in \autoref{subsection: Newtonian limit and polytropes}, this corresponds to a situation where the radius of the star is independent of the central pressure, at least in the Newtonian limit of gravity.
+When simulating the Newtonian, non-relativistic limit of the pion star, we should expect the radius to be constant.
+From \autoref{Radius polytrope}, the radius is $R = r_0 C \xi_1$, where $\xi_1$ is the first zero of the Lane-Emden equation with $n = 1$, and
+%
+\begin{equation}
+    C = \frac{1}{\sqrt{4(4\pi ) G u_0}} = \frac{1}{\sqrt{12}}r_0.
+\end{equation}
+%
+To find $\xi_1$, we must find the root of
+%
+\begin{equation}
+    \theta'' + \frac{2}{\xi} \theta' + \theta = 0.
+\end{equation}
+%
+By substituting $\theta$ for its power series expansion, $\theta = \sum_n a_n \theta^n$, we get
+%
+\begin{equation}
+    \sum_n \left[ (n+2)(n+1) a_{n+2} + 2(n+1) a_{n+1} \xi^{-1} + a_n \right] \xi^n = 0,
+\end{equation}
+%
+and we get the recursion relation $a_{n+2} = - a_n / (n+1)(n+2)$.
+With our boundary condition, the solution is
+%
+\begin{equation}
+    \theta(\xi) = \frac{\sin(\xi)}{\xi},
+\end{equation}
+%
+and the first root is therefore $\xi_1 = \pi$.
+With this, we get a closed form expression for the stellar radius of this non-relativistic and Newtonian limit---which we expect the full theory to approach as the central pressure decreases---namely
+%
+\begin{equation}
+    R = \frac{\pi}{\sqrt{12}} r_0 = 85.97 \, \text{km}.
+\end{equation}
+
 
 \subsection{Results}
 
@@ -150,7 +183,7 @@ As in the case of the neutron star, it has a maximum mass, in this case of $M_\t
 What distinguishes this from the case of the neutron star, however, is the fact that in the limit of low central pressure, the distribution apparently approaches a maximum radius of $R = 85.95 \, \text{km}$.
 \todo{Hvorofor? Fordi eos er så lite stiv?}
 \autoref{fig: mass-radius relation pion star comparison} compares the mass-radius relation from the full equation of state and TOV equation with various limits.
-We see that  when using the Newtonian limit of the TOV equation, \autoref{Newtonian limit TOV}, the radius is either constant or increasing as the mass increases, in contrast to the result when using the TOV equation, as well as the neutron star.
+We see that when using the Newtonian limit of the TOV equation, \autoref{Newtonian limit TOV}, the radius is either constant or increasing as the mass increases, in contrast to the result when using the TOV equation, as well as the neutron star.
 \todo[inline]{sammenlign med polytrope}
 \todo[inline]{Vis kjemisk potensial}
 

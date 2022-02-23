@@ -102,6 +102,8 @@ def plot_mass_radius_compare():
         "Non-relativistic EOS + Newtonian gravity"
         ]
 
+    print(sols4[50].t)
+
     for i, data in enumerate(datas):
         R, M, p0 = [np.array(d) for d in data]
 
@@ -278,7 +280,7 @@ def plot_mass_radius_compare_EM():
         R, M, pc = [np.array(d) for d in data]
         x, y, z = R*r0, M*m0, log(pc)
 
-        ax.plot(R, M, label=labels[i], color=colors[i], ls=style[i])
+        ax.plot(x, y, label=labels[i], color=colors[i], ls=style[i])
 
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
@@ -295,7 +297,7 @@ plot_mass_radius_compare()
 
 # plot_mass_radius()
 # plot_mass_radius(name="_EM")
-# plot_mass_radius_compare_EM()
+plot_mass_radius_compare_EM()
 
 # plot_eos()
 # plot_eos_EM()

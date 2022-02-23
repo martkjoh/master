@@ -284,7 +284,7 @@ Close to the center, we can see from \autoref{Newtonian limit TOV} that for a fi
 
 One important model for stars is the \emph{polytrope}, which has an equation of state of the form $u = K p^\gamma$ for some constant $K$.
 As we will see, this fits well as the Newtonian limit of many equations of state and can be used to make predictions such as the Chandrasekhar limit, which sets the upper limit of the mass of white dwarf stars to $M \approx 1.5 \, M_\odot$~\autocite{chandrasekharHighlyCollapsedConfigurations1935,glendenningCompactStarsNuclear2012}.
-To get write \autoref{Newtonian limit TOV single equation} on the standard form, we introduce
+To write \autoref{Newtonian limit TOV single equation} on the standard form, we introduce
 %
 \begin{equation}
     \tilde u = a \theta^{n}, \quad 
@@ -307,7 +307,8 @@ The boundary conditions $p(0) = p_c$ and $p'(0) = 0$ now read $\theta(0) = 1$ an
 The stellar radius is defined by the first zero of the Lane-Emden function above $\xi = 0$, $\theta(\xi_1) = 0$, so that
 %
 \begin{equation}
-    R = a^{\frac{\gamma-2}{2}} C \xi_1. 
+    \label{Radius polytrope}
+    R = r_0 a^{\frac{\gamma-2}{2}} C \xi_1. 
 \end{equation}
 %
 The total mass of the star can be integrated using \autoref{mass relation dimensionless} and \autoref{Lane Emden equation},
@@ -327,7 +328,8 @@ Thus, given a specific equation of state, and thus $\gamma$, the mass-radius rel
 For most values of $\gamma$, the stellar radius will increase as the mass increases.
 The only range within which the radius decrease as the mass increase is $\gamma \in \left(\frac{4}{3}, 2 \right)$.
 At $\gamma = \frac{4}{3}$ and $\gamma = 2$, respectively the mass and radius become independent of the central density.
-If included in our figure, these poly tropes would correspond to a horizontal and a vertical line.
+If included in our figure, these polytropes would correspond to a horizontal and a vertical line.
+\todo[inline]{what about $\gamma = 1$?}
 
 \begin{figure}
     \centering
