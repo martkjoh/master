@@ -19,58 +19,54 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {todo}{skriv om integrating out dof}{20}{section*.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Legg til dette}{30}{section*.20}%
+\contentsline {todo}{skriv om schwinger-dyson/Ward-takashi i symmetri}{26}{section*.19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Short about newtonian gravity/motivation}{31}{section*.21}%
+\contentsline {todo}{Legg til dette}{30}{section*.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Si hva bianchi identity er}{32}{section*.22}%
+\contentsline {todo}{Short about newtonian gravity/motivation}{31}{section*.22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Gjøre weak filed limit?}{33}{section*.23}%
+\contentsline {todo}{Si hva bianchi identity er}{32}{section*.23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Forklar}{34}{section*.24}%
+\contentsline {todo}{Gjøre weak filed limit?}{33}{section*.24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{what about $\gamma = 1$?}{37}{section*.26}%
+\contentsline {todo}{Forklar}{34}{section*.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Utvid om stability}{45}{section*.34}%
+\contentsline {todo}{what about $\gamma = 1$?}{37}{section*.27}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Can there be multiple branches?}{45}{section*.35}%
+\contentsline {todo}{Utvid om stability}{45}{section*.35}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Vis dette?}{47}{section*.36}%
+\contentsline {todo}{Can there be multiple branches?}{45}{section*.36}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Er det en god antagelse?}{47}{section*.37}%
+\contentsline {todo}{Vis dette?}{47}{section*.37}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Kan vi være helt sikre på dette?}{47}{section*.38}%
+\contentsline {todo}{Er det en god antagelse?}{47}{section*.38}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{skriv appendix med dirac matriser}{50}{section*.40}%
+\contentsline {todo}{Kan vi være helt sikre på dette?}{47}{section*.39}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{appendix}{50}{section*.41}%
+\contentsline {todo}{Hva er grunnen til valgene av fortegn?}{51}{section*.41}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Skriv om brudd på symmetrien}{50}{section*.42}%
+\contentsline {todo}{Generaliser til SU(N)}{51}{section*.42}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hva er grunnen til valgene av fortegn?}{51}{section*.43}%
+\contentsline {todo}{fiks resten av seksjon}{51}{section*.43}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Generaliser til SU(N)}{51}{section*.44}%
+\contentsline {todo}{Er dette riktig?}{51}{section*.44}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{fiks resten av seksjon}{51}{section*.45}%
+\contentsline {todo}{Er dette riktig fortegn}{52}{section*.45}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Er dette riktig?}{51}{section*.46}%
+\contentsline {todo}{Skriv/kopier tekst om Weinberg's power counting scheme}{52}{section*.46}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Er dette riktig fortegn}{51}{section*.47}%
+\contentsline {todo}{Kan vi være sikre på at denne parametriseringen fremdeles er riktig?}{58}{section*.48}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Skriv/kopier tekst om Weinberg's power counting scheme}{52}{section*.48}%
+\contentsline {todo}{Vis kjemisk potensial}{61}{section*.53}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Kan vi være sikre på at denne parametriseringen fremdeles er riktig?}{58}{section*.50}%
+\contentsline {todo}{write down the Gell-Mann matrices and their properties}{67}{section*.58}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Vis kjemisk potensial}{61}{section*.55}%
+\contentsline {todo}{clean up}{71}{section*.59}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{write down the Gell-Mann matrices and their properties}{67}{section*.60}%
+\contentsline {todo}{include gamma + pauli matrices}{86}{section*.61}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{clean up}{71}{section*.61}%
+\contentsline {todo}{Hva skjer med beta?}{86}{section*.62}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{include gamma + pauli matrices}{86}{section*.63}%
+\contentsline {todo}{Vær konsekvent på bruk av k og p}{86}{section*.63}%
 \defcounter {refsection}{0}\relax 
-\contentsline {todo}{Hva skjer med beta?}{86}{section*.64}%
-\defcounter {refsection}{0}\relax 
-\contentsline {todo}{Vær konsekvent på bruk av k og p}{86}{section*.65}%
-\defcounter {refsection}{0}\relax 
-\contentsline {todo}{Describe the numerical code for the TOV equations}{87}{section*.66}%
+\contentsline {todo}{Describe the numerical code for the TOV equations}{87}{section*.64}%

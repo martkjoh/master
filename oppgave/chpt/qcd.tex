@@ -62,8 +62,8 @@ Here, $\alpha$ is the index in $\lie{su}{N}$-space.
 
 Quantum chromodynamics, or QCD, is the specific gauge theory of quarks $q_{fc}$, spin-$\frac{1}{2}$ particles, interacting via the strong force, a $\Lie{SU}{3}_c$ gauge field denoted $A_\mu$.
 There are six quarks $q$, called flavors and indexed by $f$, with an additional quantum number called color indexed by $c$.
-The quarks, labeled u, d, s, c, t and b, have different masses.
-In this thesis, we will only include the 2 or 3 lightest quark, and will therefore denote the number of flavors by $N_f$.
+The quarks, labeled u, d, s, c, t, and b, have different masses.
+In this thesis, we will only include the 2 or 3 lightest quarks and denote the number of flavors by $N_f$.
 The Lagrangian of QCD, including only the strong force, is
 %
 \begin{equation}
@@ -72,7 +72,7 @@ The Lagrangian of QCD, including only the strong force, is
 \end{equation}
 %
 We have suppressed color and flavor indices.
-$\slashed D q = \gamma^\mu (\partial_\mu - i g A_\mu) q$ is the covariant derivative associated with the $\Lie{SU}{3}_c$ gauge group with coupling constant $g$, and $\gamma^\mu$ are the Dirac matrices.\todo{skriv appendix med dirac matriser}
+$\slashed D q = \gamma^\mu (\partial_\mu - i g A_\mu) q$ is the covariant derivative associated with the $\Lie{SU}{3}_c$ gauge group with coupling constant $g$, and $\gamma^\mu$ are the Dirac matrices, as described in \autoref{section: algebra bases}.
 The quark mass matrix, $m$, acts on the flavor indexes as the flavor states are mass eigenstates.
 There are no known symmetries that forbid a $\epsilon^{\mu \nu \rho \sigma} G_{\mu \nu}^\alpha G_{\rho \sigma}^\alpha$-term, and its absence is dubbed the strong CP problem~\autocite{schwartzQuantumFieldTheory2013}.
 
@@ -86,7 +86,7 @@ We can project the quarks down to their \emph{chiral} components by introducing 
     P_L = \frac{1}{2}\left(1 - \gamma^5\right).
 \end{equation}
 %
-Here, $\gamma^5$ is the ``fifth gamma-matrix'', as described in ().\todo{appendix}
+Here, $\gamma^5$ is the ``fifth gamma-matrix'', as described in \autoref{section: algebra bases}.
 As good projection operators, they obey
 %
 \begin{equation}
@@ -100,7 +100,7 @@ By the properties of $\gamma^5$ and $\bar q = q^\dagger\gamma^0$, these operator
     I = R, L, \quad \bar I = L, R. 
 \end{equation}
 %
-With this, we can write the quark-sector of massles QCD as
+With this, we can write the quark-sector of massless QCD as
 %
 \begin{equation}
     i \bar q \slashed D q
@@ -118,23 +118,41 @@ This operator is invariant under the transformations
 where $U_L$ and $U_R$ are Hermitian matrices that act on the flavor indices.
 These transformations form the Lie group $\Lie{U}{N_f}_R \times \Lie{U}{N_f}_L = \Lie{U}{1}_R \times \Lie{SU}{N_f}_R \times \Lie{U}{1}_L \times \Lie{SU}{N_f}_L $.
 This transformation can also be described in terms of the diagonal subgroup.
-This subgroup is made up of transformations where $U_R = U_L$, and the remaining subgroup of transformations where $U_L =  U_R^\dagger$.
-These are called the vector and axial group, and together form $\Lie{U}{N_f}_A \times \Lie{U}{N_f}_V= \Lie{U}{1}_V \times \Lie{SU}{N_f}_V \times \Lie{U}{1}_A \times \Lie{SU}{N_f}_A $
+This subgroup is made up of transformations where $U_R = U_L$, called vector transformations, and the remaining subgroup of transformations where $U_L =  U_R^\dagger$, called axial transformations.
+These together form $\Lie{U}{N_f}_A \times \Lie{U}{N_f}_V= \Lie{U}{1}_V \times \Lie{SU}{N_f}_V \times \Lie{U}{1}_A \times \Lie{SU}{N_f}_A $
 The currents corresponding to these transformations are
 %
 \begin{equation}
+    \label{conserved currents qcd}
     J_V^\mu = \bar q_R \gamma^\mu q_R, \quad
     V^\mu_\alpha =  \bar q T_\alpha \gamma^\mu q, \quad
     J_A^\mu = \bar q_L \gamma^\mu \gamma^5 q_L, \quad
     A^\mu_\alpha = \bar q T_\alpha \gamma^\mu \gamma^5 q.
 \end{equation}
 %
-Here, $T_\alpha$ and $T_\alpha \gamma^5$ are the generators of $\Lie{SU}{N_f}_V$ and $\Lie{SU}{N_f}_A$. 
-Other bilinears
+Here, $T_\alpha$ and $T_\alpha \gamma^5$ are the generators of $\Lie{SU}{N_f}_V$ and $\Lie{SU}{N_f}_A$.
+This symmetry, though, is broken in several ways.
+Firstly, transformations of the form $e^{i \gamma^5} \in \Lie{U}{1}_A$ are subject to the \emph{axial anomaly}.
+As mentioned in \autoref{section: symmetry and goldstone's theorem}, in a quantum theory not only the action has to be invariant but the integration measure as well, and $\D q \D \bar q$ is not.
+This is encoded in the Schwinger-Dyson equation
 %
 \begin{equation}
-    \bar q q,\, \bar q\gamma^5 q,\, \bar q \tau_a q, \, \bar q \tau_a \gamma^5 q. 
+    \partial_\mu \ex{J_A^\mu} = -\frac{e^2}{(4 \pi)^2} \ex{\varepsilon^{\mu \nu \rho \sigma}F_{\mu \nu} F_{\rho \sigma}},
 \end{equation}
+%
+whose right side would vanish if the quantum theory was invariant under $\Lie{U}{1}_A$.
+The remaining symmetry is $G =  \Lie{U}{1}_V \times \Lie{SU}{N_f}_V \times \Lie{SU}{N_f}_A$.
+Next, the mass term explicitly breaks the symmetry.
+In the chiral limit, where $m = m_q \one$, only $\Lie{SU}{N_f}_A$ is broken, however when we include the fact that the masses of the quarks are different, we break the symmetry further.
+Other external currents, chemical potentials or the electromagnetic interaction break the symmetry further.
+We will discuss how to incorporate this in the next chapter.
+Lastly, the $G$-symmetry is broken spontaneously by the ground state quark condensate,
+%
+\begin{equation}
+    \ex{\bar q_f q_f} = -f^2 B_0 \neq 0, \, f \in \{ u, d, s\}.
+\end{equation}
+%
+The scalar quark operator is not invariant under $\Lie{U}{1}_A$, and as discussed in \autoref{section: symmetry and goldstone's theorem}, this leads to the spontanous symmetry breaking $\Lie{SU}{N_f}_L \times \Lie{SU}{N_f}_R / \Lie{SU}{N_f}_A = \Lie{SU}{N_f}_V $.
+We will take this symmetry breaking as an axiom, and use it to describe the low energy physics of QCD.
 
-\todo[inline]{Skriv om brudd på symmetrien}
 
