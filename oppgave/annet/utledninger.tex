@@ -102,7 +102,67 @@ $, and defining $\delta_{ab}^i = \delta_{ai}\delta_{bi}$,
     \right) \\
     &
     = \frac{5}{9} - \pi_1^2 - \pi_2^2.
+\end{align}'
+
+\subsection{Free energy EM contribution}
+
+\begin{equation}
+    \Eff / u_0 = -
+    \left( 
+        \cos \alpha 
+        + \frac{1}{2} \frac{\mu_I^2}{\bar m^2} \sin^2 \alpha 
+        + \frac{1}{2} \Delta  \cos^2 \alpha 
+    \right)
+\end{equation}
+Intrdouce $y^2 = \mu_I^2 / \bar m^2 = x^{-2}$. 
+\begin{equation}
+    -\frac{1}{u_0}\odv{\Eff}{\alpha} = 
+    \left(  
+        1 + [y^2 - \Delta ]\cos \alpha 
+    \right) \sin \alpha = 0.
+\end{equation}
+New phase at $y = 1 + \Delta$, where
+\begin{equation}
+    \cos \alpha = \frac{1}{y^2 - \Delta} 
+    \implies \sin^2 \alpha = 1 - \frac{1}{(y^2 - \Delta)^2}
+\end{equation}
+Pressure
+\begin{align}
+    \tilde p' 
+    &= -\Eff/u_0 = \frac{1}{y^2 - \Delta} 
+    + \frac{1}{2} y^2 \left( 1 - \frac{1}{(y^2 - \Delta)^2} \right)
+    + \frac{1}{2} \Delta \frac{1}{(y^2 - \Delta)^2} \\
+    & = \frac{1}{2} y^2 + \frac{1}{y^2 - \Delta}
+    - \frac{1}{2} \frac{y^2 + \Delta}{(y^2 - \Delta)^2} \\
+    & \frac{1}{2} \left(y^2 + \frac{1}{y^2 - \Delta}\right).
 \end{align}
+Normalize
+\begin{equation}
+    p = p' - p'|_{y^2 = (1 - \Delta)}
+    = \frac{1}{2} \left( y^2 + \frac{1}{y^2 + \Delta} - 2 - \Delta \right).
+\end{equation}
+Isospin density
+\begin{equation}
+    \frac{\mu_I}{u_0} n_I = - \frac{\mu_I}{u_0} \odv{\Eff}{\mu_I}
+    = y^2 \sin^2 \alpha.
+\end{equation}
+Energy density
+\begin{align}
+    \tilde u &= -\tilde p + \frac{1}{u_0} \mu_I n_I
+    = \frac{1}{2} 
+    \left(
+        y^2 + \frac{1}{y^2 - \Delta} - 2 - \Delta + 2y^2 
+        \left[1 -\frac{1}{(y^2 - \Delta)^2}\right]
+    \right) \\
+    & =
+    \frac{1}{2}
+    \left(
+        y^2
+        - \frac{3 y^2  - \Delta}{(y^2 - \Delta)^2}
+        + 2 + \Delta 
+    \right).
+\end{align}
+
 
 
 \end{document}

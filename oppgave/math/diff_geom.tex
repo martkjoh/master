@@ -1,9 +1,6 @@
-
-General relativity describes how matter and energy curve the fabric of space and time.
-Einstein first wrote down the theory more than a century ago, and it is still our most accurate theory of gravitational effects.
-It makes accurate and counterintuitive predictions, which experiments have borne out.
-This chapter surveys the basics of general relativity and some mathematical prerequisites.
-We will then use this to derive the Tolman-Oppenheimer-Volkoff (TOV) equation, a differential equation used to model stars.
+General relativity, and a lot of quantum field theory, is formulated in the language of \emph{differential geometry}.
+Differential geometry generalizes $n$-dimensional calculus to more general spaces than the usual $\R^n$, such as curved spacetime or the more abstract space of symmetries of a quantum field theory.
+This chapter will survey differential geometry and Lie groups and familiarize us with the tools needed for the physics we use in this thesis.
 
 \section{Differential geometry}
 \label{section: differential geometry}
@@ -19,8 +16,7 @@ This section is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,leeI
     \caption{(Kladd) The coordinate function $x$ maps a neighborhood $U$ in the manifold $\Em$ to a negiborhood $V$ in $\R^n$.}
 \end{figure}
 
-General relativity is formulated in the language of \emph{differential geometry}, which generalizes multivariable calculus to more general spaces than $\R^n$.
-These spaces are \emph{smooth manifolds}.
+Differential geometry is the study of \emph{smooth manifolds}.
 An $n$-dimensional manifold, $\Em$, is a set of points, locally homeomorphic to $\R^n$.
 That is, for all points $p \in \Em$, there exists a neighborhood $U$ around $p$, together with a corresponding set of continuous, bijective functions,
 %
@@ -225,20 +221,39 @@ If $\{e_\mu\}$ and $\{e^\mu\}$ are the basis for $V$ and $V^*$, then we can writ
 The tensor can thus be written
 %
 \begin{equation}
-    T = T^{\mu \nu\dots}{}_{\rho\dots} \, e_{\mu}\otimes e_\nu \otimes \dots e^\rho\otimes\dots, 
+    T =
+     T^{\mu \nu\dots}{}_{\rho\dots} \, e_{\mu}\otimes e_\nu \otimes \dots e^\rho\otimes\dots, \quad
+    T^{\mu \nu\dots}{}_{\rho\dots} = T(e^\mu, e^\nu, \dots; e_\rho, \dots).
 \end{equation}
 % 
-where
+We often what to decopose a tensor down into its symmetric and antisymmetric parts.
+To do this, we introduce the symmetrization of a tensor $T$, 
 %
 \begin{equation}
-    T^{\mu \nu\dots}{}_{\rho\dots} = T(e^\mu e^\nu, \dots; e_\rho, \dots).
+    T_{(\mu_1\dots\mu_n)} 
+    = \frac{1}{n!} \sum_{\sigma \in S_n} 
+    T_{\mu_{\sigma(1)} \dots \mu_{\sigma(n)}},
+\end{equation}
+%
+where $S_n$ is the set of all permutations of $n$ objects.
+The antisymmetrization of a tensor is defined as
+%
+\begin{equation}
+    T_{[\mu_1\dots\mu_n]} 
+    = \frac{1}{n!} \sum_{\sigma \in S_n} \text{sgn}(\sigma)  
+    T_{\mu_{\sigma(1)} \dots\mu_{\sigma(n)}}.
+\end{equation}
+%
+The function $\text{\sigma} = \pm 1$, depending on if $\sigma$ is a even or odd permutation.
+We may now write
+%
+\begin{equation}
+    T_{\mu \nu} = T_{(\mu \nu)} + T_{[\mu \nu]}.
 \end{equation}
 
 
 \subsection{Geometries and the metric}
 
-\todo{Mention parallel transport}
-\todo{Show Riemann tensor as resutl of parallel transport in loop}
 The metric is a symmetric, non-degenerate $(0, 2)$ tensor
 %
 \begin{equation}
@@ -301,7 +316,9 @@ We further assume
 With this, we can, in general, write the covariant derivative as~\autocite{carrollSpacetimeGeometryIntroduction2019}
 %
 \begin{align}
+    \label{covariant derivative diff geom}
     \nabla_\mu v^\nu &= \partial_\mu v^\mu + \Gamma^\mu_{\nu \rho} v^\rho, \\
+    \label{covariant derivative diff geom covector}
     \nabla_\mu \omega_\nu &= \partial_\mu \omega_\nu - \Gamma^\rho_{\mu \nu} \omega_\rho,
 \end{align}
 %
@@ -315,7 +332,7 @@ The generalization for higher-order tensors is straightforward,
     \partial_\mu T^{\nu\dots}{}_{\rho\dots}
     + \Gamma^\mu_{\nu \lambda} T^{\lambda\dots}{}_{\rho\dots} +\dots
     - \Gamma^\lambda_{\mu \rho} T^{\mu\dots}{}_{\lambda\dots} -\dots.
-\end{equation}
+\end{equation} 
 %
 This is still not enough to uniquely determine the covariant derivative.
 We will furthermore assume $\Gamma^{\lambda}_{\mu \nu} = \Gamma^{\lambda}_{\nu \mu}$ and $\nabla_\mu g_{\nu \rho} = 0$.
@@ -326,8 +343,28 @@ With these, we can find an explicit formula of the Christoffel symbols in terms 
     \Gamma^\rho_{\mu \nu} = \frac{1}{2} g^{\rho \sigma} (\partial_\mu g_{\nu \sigma} - \partial_\sigma g_{\mu \nu} + \partial_{\nu}g_{\sigma \mu}).
 \end{equation}
 %
+With the notion of a covariant derivative, we may also generalize \emph{parallel transport} to curved spaces.
+The notion of parallel transport of a vector in flat $\R^n$ is intuitive---given a line $x^\mu(\lambda)$, a vector $v^\mu$ at $x^\mu(\lambda_0)$ is parallel transported to $v'^\mu$ at $x^\mu(\lambda_1)$ if they ``point in the same direction''.
+To make this more precise, a vector field $v^\mu$ is parallel transported along $x^\mu(\lambda)$ if $\odv{}{\lambda} v^\mu = \odv{x^\nu}{\lambda} \partial_\nu v^\mu$.
+We generalize this to curved spaces by replacing the partial derivative with a covariant derivative, and so the criterion for parallel transport is
+%
+\begin{equation}
+    \label{parallel transport criterion}
+    \odv{x^\mu}{\lambda} \nabla_\mu v^\nu = 0.
+\end{equation}
+%
+With this, we can imagine creating a special class of paths, called \emph{geodesics}, namely those which parallel transport their tangent vectors $\odv{x^\mu}{\lambda}$.
+We imagine following an arrow we are holding without turning it as we walk.
+Using the definition of parallel transport \autoref{parallel transport criterion}, together with the covariant derivative \autoref{covariant derivative diff geom}, we get the geodesic equation,
+%
+\begin{equation}
+    \odv[2]{x^\mu}{\lambda} 
+    + \Gamma^\mu_{\rho \sigma} \odv{x^\rho}{\lambda} \odv{x^\rho}{\lambda}
+    = 0.
+\end{equation}
+In a flat space, where the Christoffel symbols vanish, this reduces to the familiar criterion for straight lines, $\odv[2]{x^\mu}{\lambda} = 0$.
 
-The curvature of a manifold $\Em$, with the metic $g_{\mu \nu}$, is encoded in the Riemann tensor.
+The curvature of a manifold $\Em$, with the metric $g_{\mu \nu}$, is encoded in the Riemann tensor.
 It is defined by
 %
 \begin{equation}
@@ -357,55 +394,269 @@ We  define the Ricci tensor and Ricci scalar as
     R &= R^{\mu}{}_{\mu} = g^{\mu \nu} R_{\mu \nu}.
 \end{align}
 %
-These are the quantities we need to start working with general relativity.
+This form gives us several useful identities, such as
+%
+\begin{equation}
+    R_{\rho \sigma \mu \nu} 
+    = 
+    R_{[\rho \sigma] \mu \nu}
+    =
+    R_{\rho \sigma [\mu \nu]}
+    =
+    R_{\mu \nu \rho \sigma }.
+\end{equation}
+%
+Using can use the Jacobi identity of the commutator, we have
+%
+\begin{equation}
+    \label{Jacobi identity differential geometry}
+    [\nabla_\mu, [\nabla_\nu, \nabla_\sigma]]
+    + [\nabla_\sigma, [\nabla_\mu, \nabla_\nu]]
+    + [\nabla_\nu, [\nabla_\sigma, \nabla_\mu]] = 0.
+\end{equation}
+%
+If we apply this on $\delta^{\mu}_{\nu}$, we get the differential Bianchi identity, compactly written
+%
+\begin{equation}
+    \label{Binachi identiy}
+    \nabla_{[\mu}R_{\nu \rho]\sigma \eta} = 0.
+\end{equation}
+%
+To interpret the Riemann tensor, we define the parallel propagator $P$.
+A vector that is parallel transported along a curve parametrized by $\lambda$, so that $V^\mu(\lambda)$ obey the criterion of parallel transport \autoref{parallel transport criterion}, obey
+%
+\begin{equation}
+    V^\mu(\lambda) = P^\mu{}_\nu(\lambda) V^\nu.
+\end{equation}
+%
+Inserting this into the equation for parallel transport, \autoref{parallel transport criterion}, this operator must obey
+%
+\begin{equation}
+    \odv{}{\lambda} P^\mu{}_\nu = - \Gamma^\mu_{\rho \sigma}  \odv{x^\rho}{\lambda}P^\sigma{}_\nu.
+\end{equation}
+%
+This has the same form as the definition of the unitary time-evolution operator in quantum mechanics, and we could therefore write down a solution involving an exponential and a path ordering operator, $\mathcal P$, analogous to the time ordering operator from quantum mechanics.
+However, we only need the first approximation for $\lambda = \epsilon \ll 1$.
+In that case, the parallel propagator takes the form
+%
+\begin{equation}
+    P^\mu{}_\nu(\epsilon) 
+    = 
+    \delta^\mu_\nu - \int_0^\epsilon \dd \eta \, 
+    \Gamma^\mu_{\rho \sigma}  \odv{x^\rho}{\lambda} + \Oh(\epsilon^2).
+\end{equation}
+%
+With this, we will investigate how much a vector $V^\mu$ is changed by its motion around in a small loop.
+This is illustrated in \autoref{fig: parallel transport in loop}.
+A vector $V^\mu$, is parallel transported in a loop along the coordinate lines.
+These lines are where either the coordinates $x^{\mu_1}$ or $x^{\mu_2}$ are equal to $0$ or $\epsilon$.
+Here, the indices $\mu_1$ and $\mu_2$ are not free but identify the two coordinate functions which define this loop.
+
+
+\begin{figure}
+    \centering
+    \includegraphics{figurer/parallel_transport.pdf}
+    \caption{fig}
+    \label{fig: parallel transport in loop}
+\end{figure}
+
+
+
+Using the parallel propagator, the vector at point $B$ is, to first order in $\epsilon$
+%
+\begin{equation}
+    V^\mu |_B = 
+    \left(    
+        \delta^\mu_\nu 
+        - \int_0^\epsilon \dd \eta \, 
+        \Gamma^\mu_{\nu \rho}  \odv{x^\rho}{\lambda} 
+    \right) V^\nu|_A.
+\end{equation}
+%
+The line from $A$ to $B$, defined by $x^{\mu_1} = 0$, is parametrized by $x^\mu(\lambda) = \lambda \delta^\mu_{\mu_2}$.
+The Christoffel symbol along this line is
+%
+\begin{equation}
+    \Gamma^{\mu}_{\nu \rho}(\lambda) 
+    = \Gamma^{\mu}_{\nu \rho}|_A
+    + \lambda \partial_{\mu_2} \Gamma^{\mu}_{\nu \rho}|_A + \Oh(\lambda^2)
+\end{equation}
+%
+we can therefore evaluate the integral as
+%
+\begin{equation}
+    \int_0^\epsilon \dd \eta \, \Gamma^\mu_{\nu \mu_2}
+    = \epsilon \Gamma^{\mu}_{\nu \mu_2}|_A
+    + \frac{1}{2} \epsilon^2 \partial_{\mu_2} \Gamma^{\mu}_{\nu \rho}|_A 
+    + \Oh(\epsilon^3).
+\end{equation}
+%
+Next, from $B$ to $C$, the line is $x^\mu(\lambda) = \epsilon \delta^\mu_{\mu_2} + \lambda \delta^{\mu}_{\mu_1}$, and the Christoffel symbols are 
+$ 
+\Gamma^{\mu}_{\nu\rho}
+= 
+\Gamma^{\mu}_{\nu \rho}|_B
++ \lambda \partial_{\mu_1} \Gamma^{\mu}_{\nu \rho}|_B
+$
+to fist order in $\lambda$.
+Here, we have to expand once more to evaluate the symbols at $A$.
+Then, we get
+%
+\begin{equation}
+    \Gamma^{\mu}_{\nu\rho}
+    =
+    \Gamma^{\mu}_{\nu \rho}|_A + \epsilon \partial_{\mu_2} \Gamma^{\mu}_{\nu \rho}|_A
+    + \lambda \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_2}|_A,
+\end{equation}
+%
+where we have expanded to first order in $\epsilon$, and treat $\lambda$ as order $\epsilon$.
+The integral in the parallel propagator from $B$ to $C$ is then
+%
+\begin{equation}
+    \int_0^\epsilon \dd \eta \, \Gamma^\mu_{\nu \mu_1}
+    = 
+    \epsilon \Gamma^{\mu}_{\nu \mu_1}|_A 
+    + \epsilon^2 \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1}|_A
+    + \frac{1}{2} \epsilon^2 \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_1}|_A.
+\end{equation}
+%
+The combined propagator, from $A$ to $C$ is then
+%
+\begin{align}
+    P^\mu{}_{\nu}
+    & = \left[ 
+        \delta^\mu_\sigma 
+        -\epsilon \Gamma^{\mu}_{\sigma \mu_1}
+        - \epsilon^2 \partial_{\mu_2} \Gamma^{\mu}_{\sigma \mu_1}
+        - \frac{1}{2} \epsilon^2 \partial_{\mu_1} \Gamma^{\mu}_{\sigma \mu_1}
+    \right]
+    \cdot 
+    \left[
+        \delta^\sigma_\nu
+        - \epsilon\Gamma^{\sigma}_{\nu \mu_2}
+        - \frac{1}{2} \epsilon^2 \partial_{\mu_2} \Gamma^{\sigma}_{\nu \mu_2}
+    \right] \\
+    &=
+    \delta^\mu_\nu
+    - \epsilon 
+    \left(
+        \Gamma^{\mu}_{\nu \mu_1}
+        +
+        \Gamma^{\mu}_{\nu \mu_2}
+    \right)
+    + \epsilon^2
+    \left(  
+        \Gamma^{\mu}_{\sigma \mu_1} \Gamma^{\sigma}_{\nu \mu_2}
+        - \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1}
+        - \frac{1}{2} \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_1}
+        - \frac{1}{2} \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_2}
+    \right)
+    + \Oh(\epsilon^3)
+\end{align}
+%
+To create the parallel propagator for $CDA$ is the propagator for $ADC$ with its signs flipped, and the $ADC$ propagator is the same as $ABC$ only with the $\mu_1$ and $\mu_2$ indices exchanged in the derivative terms.
+Propagator for the full loop is therefore, to and including second order in $\epsilon$,
+%
+\begin{align}
+    P^\mu{}_\nu
+    & =
+    \left[
+        \delta^\mu_\sigma
+        + \epsilon 
+        \left(
+            \Gamma^{\mu}_{\sigma \mu_2}
+            +\Gamma^{\mu}_{\sigma \mu_1}
+        \right)
+        + \epsilon^2
+        \left( 
+            \Gamma^{\mu}_{\rho \mu_1} \Gamma^{\rho}_{\sigma \mu_2}
+            + \partial_{\mu_1} \Gamma^{\mu}_{\sigma \mu_2}
+            + \frac{1}{2} \partial_{\mu_2} \Gamma^{\mu}_{\sigma \mu_2}
+            + \frac{1}{2} \partial_{\mu_1} \Gamma^{\mu}_{\sigma \mu_1}
+        \right)
+    \right] \\
+    & \quad
+    \left[
+        \delta^\sigma_\nu
+        - \epsilon 
+        \left(
+            \Gamma^{\sigma}_{\nu \mu_1}
+            +\Gamma^{\sigma}_{\nu \mu_2}
+        \right)
+        + \epsilon^2
+        \left(  
+            \Gamma^{\sigma}_{\rho \mu_1} \Gamma^{\rho}_{\nu \mu_2}
+            - \partial_{\mu_2} \Gamma^{\sigma}_{\nu \mu_1}
+            - \frac{1}{2} \partial_{\mu_1} \Gamma^{\sigma}_{\nu \mu_1}
+            - \frac{1}{2} \partial_{\mu_2} \Gamma^{\sigma}_{\nu \mu_2}
+        \right)
+    \right]
+\end{align}
+%
+The terms linear in $\epsilon$ vanish, and the same with the terms with two equal $\mu_i$-indices.
+The change in the vector as it is rotated around the loop is therefore, to second order in $\epsilon$,
+%
+\begin{align}
+    \delta V^\mu 
+    &= P^\mu{}_\nu V^\nu - V^\mu \\ \nonumber
+    & = \epsilon^2  
+    \left(
+        \Gamma^\mu_{\sigma \mu_1} \Gamma^\sigma_{\nu \mu_2}
+        -\Gamma^\mu_{\sigma \mu_2} \Gamma^\sigma_{\nu \mu_1}
+        -\Gamma^\mu_{\sigma \mu_2} \Gamma^\sigma_{\nu \mu_2} 
+        -\Gamma^\mu_{\sigma \mu_1} \Gamma^\sigma_{\nu \mu_1}
+        + \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_2}
+        - \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1} 
+    \right) V^\nu.
+\end{align}
+\todo[inline, color=red]{find why these extra terms appear}
+Comparing with \autoref{riemann tensor in terms of christoffel symbols}, we see that this is the Riemann curvature tensor.
+In other words, this tensor encodes how a vector is transformed by transporting it in small, closed loops.
+
 
 \subsection{Integration on manifolds}
 \label{subsection: integration on manifolds}
 
+
 The integral of a scalar function on a manifold is not a coordinate-independent notion, and we must introduce the notion of $n$-forms.
 A $n$-form is a antisymmetric $(0, n)$ tensor.
-To ease notation, we introduce the symmetrization of a tensor $T$, 
-%
-\begin{equation}
-    T_{(\mu_1\dots\mu_n)} 
-    = \frac{1}{n!} \sum_{\sigma \in S_n} 
-    T_{\mu_{\sigma(1)} \dots \mu_{\sigma(n)}},
-\end{equation}
-%
-where $S_n$ is the set of all permutations of $n$ objects.
-The antisymmetrization of a tensor is defined as
-%
-\begin{equation}
-    T_{[\mu_1\dots\mu_n]} 
-    = \frac{1}{n!} \sum_{\sigma \in S_n} \text{sgn}(\sigma)  
-    T_{\mu_{\sigma(1)} \dots\mu_{\sigma(n)}}.
-\end{equation}
-%
-The function $\text{\sigma} = \pm 1$, depending on if $\sigma$ is a even or odd permutation.
-
-We are interested in a coordinated independent quantity that we can integrate over.
-To that end, we define
-%
-\begin{equation}
-    \dd^n x := \dd x^0 \wedge \dots \wedge \dd x^{n-1}.
-\end{equation}
-%
-Here, $\wedge$ is the wedge product, defined as
+The wedge product, $\wedge$ is a product which maps two $n$- and $m$-forms to a $n+m$-form, and is defined as
 %
 \begin{equation}
     (A\wedge B)_{\mu_1\dots\mu_{n+m}} = \frac{(n + m)!}{n! m!} A_{[\mu_1\dots\mu_n}B_{\mu_{n+1}\dots\mu_{n+m}]},
 \end{equation}
 %
-and $\dd x^\mu$ is the one-form corresponding to the $x^\mu$-coordinate function.
-\todo{Mer om wedge product}
+A $n$-form $\omega$ may now be written as
+%
+\begin{equation}
+    \omega 
+    = \omega_{[\mu_1 \dots \mu_n]} \, \dd x^{\mu_1} \otimes \dots \otimes \dd x^{\mu_n}
+    = \omega_{\mu_1 \dots \mu_n} \, \dd x^{\mu_1} \wedge \dots \wedge \dd x^{\mu_n}.
+\end{equation}
+% 
+Furthermore, we define the exterior derivative, a map from $n$-forms to $n+1$-forms, defined by
+%
+\begin{equation}
+    (\dd T)_{\mu_1 \dots \mu_{n+1}} = (n+1) \partial_{[\mu_1} T_{\mu_2\dots\mu_{n+1}]}.
+\end{equation}
+%
+We are interested in a coordinated independent quantity that we can integrate over.
+To that end, we define
+%
+\begin{equation}
+    \dd^n x := \dd x^0 \wedge \dots \wedge \dd x^{n-1}
+    = \frac{1}{n!} \varepsilon_{\mu_1 \dots \mu_n}  
+    \dd x^{\mu_1} \wedge \dots \wedge \dd x^{\mu_n},
+\end{equation}
+%
+Where $\varepsilon_{\mu_1 \dots \mu_n}$ is the Levi-Civita symbol.
 Given a different set of coordinates, $x'^\mu$, these are related by
 %
 \begin{equation}
     \dd^n x = \det\left( \pdv{x}{x'} \right) \, \dd^n x',
 \end{equation}
 %
-by the properties of the wedge product.
-\todo{Forklar}
+where we have used the relation $\varepsilon_{\mu_1 \dots \mu_n}  \det(A) = \varepsilon_{\nu_1 \dots \nu_n} A^{\nu_1}{}_{\mu_1} \dots A^{\nu_n}{}_{\mu_n}$.  
 We define $|g| = |\det(g_{\mu \nu })|$, which, by the transformation properties of tensors, transforms as
 %
 \begin{equation}
@@ -427,13 +678,6 @@ We define the integral of a scalar function $f$ on a manifold $\Em$ with a metri
 
 
 Stoke's theorem generalizes the fundamental theorem of calculus and the divergence theorem to manifolds.
-The most general statement of the theorem uses the exterior derivative, a map from $n$-forms to $n+1$-forms, defined by
-\todo{Skriv mer om hva dette er}
-%
-\begin{equation}
-    (\dd T)_{\mu_1 \dots \mu_{n+1}} = (n+1) \partial_{[\mu_1} T_{\mu_2\dots\mu_{n+1}]}.
-\end{equation}
-%
 Let $\Em$ be a differential manifold of dimension $n$, with the boundary $\partial \Em$.
 Stoke's theorem says that, for an $n-1$-form $\omega$,
 %
