@@ -234,7 +234,6 @@ In other words, the dimensionful constants defined by $k_i = 1$ are new, charact
 \subsection{Newtonian limit and polytropes}
 \label{subsection: Newtonian limit and polytropes}
 
-
 In the Newtonian limit, the rest energy, i.e., mass, gives the dominant contribution to the gravitational field, while the contribution from pressure is negligible. 
 In other words, the characteristic pressure, $p_0$, is far smaller than the characteristic energy density $u_0$, and we can use the approximation $k_3 \ll 1$.
 Furthermore, the star's radius should be much larger than the Schwarzschild radius, $R_s = 2 G M$.
@@ -278,6 +277,7 @@ This gives us a single equation for hydrostatic equilibrium in the Newtonian lim
     = -  k'' \tilde r^2  \tilde u, \quad
     k'' = 3 \frac{k_2 k_1}{k_3} = 4 \pi G \frac{u_0^2 r^2_0}{p_0}.
 \end{equation}
+%
 This is a second order differential equation, so we need an new boundary condition in addition to $p(0) = p_c$.
 Close to the center, we can see from \autoref{Newtonian limit TOV} that for a finite energy density, we must have $p'(0) = 0$, our second boundary condition.
 
@@ -335,7 +335,7 @@ If included in our figure, these polytropes would correspond to a horizontal and
     \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_relation_polytropes.pdf}
     \caption{
         Left: The dependence of $\beta$ on $\gamma$, together with a selection of points.
-        Top: The mass-radius relation, in arbitrary units, for polytropes corresponding to the selected points on the left side. The color of the lines indicate which point it corresponds to.
+        Right: The mass-radius relation, in arbitrary units, for polytropes corresponding to the selected points on the left side. The color of the lines indicates to which point it corresponds.
         }
     \label{fig: mass radius relation polytropes} 
 \end{figure}
@@ -409,15 +409,6 @@ This is an absolute limit of the mass of an object given its radius or vice vers
 Although this limit is derived for a particular, unrealistic case, the more general statement can be shown to hold.
 General relativity does not allow for a static solution with energy densities greater than this limit; any such configuration would collapse~\autocite{carrollSpacetimeGeometryIntroduction2019}.
 
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../scripts/figurer/incompressible.pdf}
-    \caption{The pressure in units of $p_0$, as a function of the radius, in units of $r_0$. The graphs with lighter color and higher pressure at $r = 0$ corresponds to higher values of $k_1$. The values of $k_1$ are linearly spaced.}
-    \label{fig: pressure incompressible fluid}
-\end{figure}
-
- 
 If we expand the solution \autoref{pressure afo r incompressible} in powers of $k_1$, then the leading order contribution is
 %
 \begin{equation}
@@ -427,10 +418,17 @@ If we expand the solution \autoref{pressure afo r incompressible} in powers of $
 This is the Newtonian limit.
 As a cross-check, we see that this solution obeys the equation of hydrostatic equillibrium in this limit, \autoref{Newtonian limit TOV}, as $\tilde u = 1$ and $k_2 = k_1 = 1$.
 This is the general solution for an incompressible fluid in Newtonian gravity.
-This solution does not have any upper limit for $k_1$; the limit $M/R < 4 / 9$ is purely relativistic phenomenon.
+This solution does not have any upper limit for $k_1$; the limit $M/R < 4 / 9$ is a purely relativistic phenomenon.
 In \autoref{fig: pressure incompressible fluid newtonian}, the Newtonian approximation is compared to the full, relativistic solution.
 We see that the Newtonian approximation is highly accurate for $k_1$ less than around $0.01$.
 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../scripts/figurer/incompressible.pdf}
+    \caption{The pressure in units of $p_0$, as a function of the radius, in units of $r_0$. The graphs with lighter color and higher pressure at $r = 0$ corresponds to higher values of $k_1$. The values of $k_1$ are linearly spaced.}
+    \label{fig: pressure incompressible fluid}
+\end{figure}
 
 \begin{figure}[h]
     \centering
