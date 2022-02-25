@@ -1,0 +1,38 @@
+\section{*Covariant derivative}
+\label{appendix: covariant derivative}
+
+In \chpt\ at finite isospin chemical potential $\mu_I$, the covariant derivative acts on functions $A(x): \Em_4 \rightarrow \Lie{SU}{2}$, where $\Em_4$ is the space-time manifold. It is defined as 
+\begin{equation}
+    \nabla_\mu A(x) = \partial_\mu A(x) - i [v_\mu, A(x)], 
+    \quad v_\mu = \frac{1}{2} \mu_I \delta_\mu^0 \tau_3.
+\end{equation}
+The covariant derivative obeys the product rule, as
+\begin{equation*}
+    \nabla_\mu (A B) 
+    = (\partial_\mu A) B + A (\partial_\mu B) - i [v_\mu, AB]
+    = (\partial_\mu A - i [v_\mu, A])B + A(\partial_\mu B- i [v_\mu, B]) 
+    = (\nabla_\mu A)B + A (\nabla_\mu B).
+\end{equation*}
+%
+Decomposing a 2-by-2 matrix $M$, as described in \autoref{section: algebra bases}, shows that the trace of the commutator of $\tau_b$ and $M$ is zero:
+%
+\begin{equation*}
+    \Tr{[\tau_a, M]} = M_b\Tr{ [\tau_a, \tau_b]} = 0.
+\end{equation*}
+%
+Together with the fact that $\Tr{\partial_\mu A} = \partial_\mu \Tr{A}$, this gives the product rule for invariant traces:
+%
+\begin{equation*}
+    \Tr{A \nabla_\mu B} = \partial_\mu \Tr{AB} - \Tr{(\nabla_\mu A) B}.
+\end{equation*}
+%
+This allows for the use of the divergence theorem when doing partial integration.
+Let $\Tr{K^\mu}$ be a space-time vector, and $\Tr{A}$ scalar. 
+Let $\Omega$ be the domain of integration, with coordinates $x$ and $\partial \Omega$ its boundary, with coordinates $y$. Then, 
+%
+\begin{align*}
+    \int_\Omega \dd x \, \Tr{A \nabla_\mu K^\mu} = \int_{\partial\Omega} \dd y\, n_\mu \Tr{A K^\mu} - \int_\Omega \dd x \, \Tr{(\nabla_\mu A) K^\mu},
+\end{align*}
+%
+where $n_\mu$ is the normal vector of $\partial \Omega$~\autocite{carrollSpacetimeGeometryIntroduction2019}.
+This makes it possible to do partial integration and discard surface terms in the \chpt\ Lagrangian, given the assumption of no variation on the boundary.

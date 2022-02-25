@@ -1,0 +1,323 @@
+\section{*Phase transition}
+\label{section: phase transition}
+
+
+Our leading-order analysis showed that $\alpha$ is zero for $\mu_I \leq \bar m$ and then increases continuously for $\mu_I>\bar m$.
+Furthermore, $\bar m = m_\pi$ to leading-order.
+This behavior is illustrated in \autoref{fig: alpha}.
+This is the hallmark of a phase transition, where $\alpha$ is the order parameter.
+The behavior of systems near points of phase transition is described by Landau theory~\autocite{peskinIntroductionQuantumField1995}.
+Using \autoref{leading order contribution free energy}, we can expand the leading-order free energy in $\alpha$,
+%
+%
+\begin{align}
+    \nonumber
+    \Eff
+    & = -f^2 \bar m^2 + f^2 \frac{1}{2}(\bar m^2 - \mu_I^2)\alpha^2
+    - \frac{1}{24} f^2 (\bar m^2 - 4 \mu_I^2) \alpha^4 + \Oh(\alpha^5)\\
+    & = \Eff(\alpha=0) + a(\mu_I)\alpha^2 + \frac{1}{2} b(\mu_I)\alpha^4 + \Oh(\alpha^5).
+\end{align}
+%
+Notice that near $\mu_I = \bar m$, $b > 0$.
+As earlier, the equation that governs $\alpha$ is
+%
+\begin{equation}
+    \label{landau ginsburg lo}
+    \pdv{\Eff}{\alpha} = 2 [a(\mu_I) + b(\mu_I) \alpha^2] \alpha = 0.
+\end{equation}
+%
+If $a>0$, then $\alpha = 0$ will be the only solution, which gives us the criterion for a phase transition
+%
+\begin{equation}
+    a(\mu_I) = 0.
+\end{equation}
+%
+As expected, this criterion is fulfilled at $\mu_I = \bar m$.
+Near $\mu_I = \bar m$, we can write
+%
+\begin{equation}
+    a = - a_0 (\mu_I - \bar m), \quad b = b_0,
+\end{equation}
+%
+where $a_0$ and $b_0$ are positive constants, so the solution to \autoref{landau ginsburg lo} for $\mu_I>\bar m$ is
+%
+%
+\begin{equation}
+    \alpha(\mu_I) = \sqrt{\frac{a_0}{b_0}} (\mu_I - \bar m)^{1/2}.
+\end{equation}
+%
+The free energy around the phase transition is illustrated in \autoref{fig: phase transition}.
+\todo[]{fiks figur}
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.9\textwidth]{../scripts/numerikk/plots/phase_transition.pdf}
+    \caption{
+        The plot shows normalized free energy density as a function of $\alpha$, in the two different phases. Each line is a constant $\mu_I$ slice of the surface in \autoref{fig: free energy surface}.
+        }
+    \label{fig: phase transition}
+\end{figure}
+
+The order parameter $\alpha$ changes continuously as the system transitions between phases.
+This means we have a \emph{second order} phase transition.
+The power-law behavior, $\alpha \propto (\mu_I - \mu_I^c)^\beta$, is typical of systems near a phase transition.
+The exponent $\beta$, which in this case equals $1/2$, is called a \emph{critical exponent}.
+If we have a system where $b < 0$ near $\mu_I = \bar m$, then we must expand $\Eff$ further to show if the phase transition is continuous or not.
+\autoref{fig: free energy surface 2} shows the free energy surface but modified so that $b_0 < 0$, together with the corresponding value of $\alpha$, which now changes discontinuously at the point of phase transition.
+\todo[]{fiks fig}
+
+\begin{figure}[h]
+    \centering
+    % \includegraphics[width=0.7\textwidth]{../scripts/numerikk/plots/free_energy_surface2.pdf}
+    \caption{The surface is free energy density, only modified so that $b_0<0$. The black line traces out the minimum for each value of $\mu_I$, which jumps discontinuously at the point of phase transition.}
+    \label{fig:free energy surface 2}
+\end{figure}
+
+
+In the vacuum phase, $\alpha = 0$, the ground state is given by 
+%
+\begin{equation}
+    \Sigma(\pi = 0) = \Sigma_0 = \one,
+\end{equation}
+%
+where we have used \autoref{sigma}.
+Under $H = SU(2)_V$, $\Sigma$ transforms as
+%
+\begin{equation}
+    \Sigma(x) \rightarrow \Sigma'(x) = U_V \Sigma(x) U_V^\dagger,
+    \quad
+    V = \exp{i \frac{1}{2} \theta_a \tau_a},
+\end{equation}
+%
+We see that the vacuum phase ground state is invariant under $H$.
+However, for $\alpha \neq 0$, the ground state is shifted to
+%
+\begin{equation}
+    \Sigma(\pi=0) = A_\alpha \Sigma_0 A_\alpha = \exp{i \alpha \tau_1}.
+\end{equation}
+%
+This is not, in general, invariant under transformations in $H$. 
+The generators $\tau_2$ and $\tau_3$ are broken.
+In \autoref{fig: masses}, we saw that the mass of the $m_-$ particle vanishes, so we identify this particle with the corresponding Goldstone mode.
+There is only one Goldstone mode. 
+However, this is not a Lorentz invariant system, in which case we cannot guarantee one massless mode per broken generator.
+In \autoref{section: leading order}, we defined
+%
+\begin{equation}
+    \alpha = \frac{1}{f} \sqrt{\pi_a^0 \pi_a^0},
+\end{equation}
+%
+where $\pi_a^0$ was the ground state expectation value of the pion fields, as defined in the vacuum phase, when $\mu_I \neq 0$.
+The new ground state thus corresponds to a condensate of pions.
+The isospin symmetry $\Lie{SU}{2}_V$ is not a perfect symmetry of the QCD Lagrangian, but is explicitly broken by the mass term
+\begin{equation}
+    \bar q m q = \frac{1}{2} \bar q [(m_u + m_d) \one + (m_u - m_d)\tau_3] q.
+\end{equation}
+%
+This term, however, is invariant under the subgroup $\Lie{U}{1}_{I_3} \subset \Lie{SU}{2}_V$, generated by $\tau_3$.
+If we write out a generic element from this subgroup,
+%
+\begin{equation}
+    U = e^{i \theta \tau_3} = 
+    \begin{pmatrix}
+        e^{i\theta} & 0 \\
+        0 & e^{-i \theta}
+    \end{pmatrix},
+\end{equation}
+%
+we see that this corresponds to rotating the phase of the up and down quark but not rotating them into each other.
+Thus, the pion condensate spontaneously breaks an exact symmetry of the two-flavor QCD Lagrangian, and we expect the corresponding Goldstone mode to remain massless outside the chiral limit.
+
+To find the value of $\mu_I$ to next-to-leading order, we must expand the NLO free energy in powers of $\alpha$
+When we expand the static, second-order Lagrangian to $\alpha^2$, we get
+%
+\begin{align}
+    \nonumber
+    \Eff_4^{(0)}
+    &= - (l_3 + l_4)\bar m^4 + [(l_3 + l_4)\bar m^4 -l_4 \bar m^2\mu_I^2]\alpha^2
+    \\
+    & =
+    \const + 
+    \frac{\mu^{-2\epsilon}}{(4\pi)^2}
+    \left[
+        \left(
+            \bar l_4 - \frac{1}{4}\bar l_3
+        \right)\bar m^4
+        -\bar l_4\bar m^2\mu_I^2
+        -\left(
+            1 + \frac{1}{\epsilon} + \ln\frac{\tilde \mu^2}{M^2}
+        \right)
+        \left(\frac{3}{4}\bar m^2 - \mu_I^2\right)\bar m^2
+    \right]\alpha^2 + \mathcal{O}(\epsilon),
+\end{align}
+%
+where $\const$ is independent of $\alpha$, and thus not of interest.
+From the one-loop correction, we have the contributions
+%
+\begin{equation}
+    \Eff_2^{(1)} = i \frac{1}{2}\int \frac{\dd^4 p}{(2\pi)^2} \ln(-p^2 + m_3^2)
+    +  i \frac{1}{2} \int \frac{\dd^4 p}{(2\pi)^2} \ln[(-p^2 + m_1^2)(-p^2 + m_2^2) - p_0^2 m_{12}^2].
+\end{equation}
+%
+The first integral is the same free energy contribution from the $\pi_0$-particle as we have calculated earlier in \autoref{Free energy pi 0}, and it reads
+%
+\begin{equation}
+    \Eff_{\pi_0}^{(1)}
+    = i \frac{1}{2}\int \frac{\dd^4 p}{(2\pi)^2} \ln(-p^2 + m_3^2)
+    = - \mu^{-2\epsilon}\frac{1}{4} \frac{m_3^4}{(4 \pi)^2}
+    \left(\frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{m_3^2}\right) + \mathcal{O}(\epsilon).
+\end{equation}
+%
+The mass $m_3$ is dependent on $\alpha$, and has the expansion
+%
+\begin{align*}
+    m_3^4
+    &= \bar m^4 + \bar m^2(2\mu_I^2 - \bar m^2)\alpha^2+\Oh(\alpha^4), \\
+    \ln \frac{\mu^2}{m_3^2}
+    &=
+    \ln \frac{\mu^2}{\bar m_3^2} - \frac{1}{2} \frac{(2\mu_I^2 - \bar m^2)}{\bar m^2}+ \Oh(\alpha^4).
+\end{align*}
+%
+In the second integral, we rewrite the argument of the logarithm as
+%
+\begin{equation}
+    (-p^2 + m_1^2)(-p^2 + m_2^2) - p_0^2 m_{12}^2
+    =  \left[-p^2 + \frac{1}{2}(m_1^2 + m_2^2)\right]^2 - p_0^2 m_{12}^2 - \frac{1}{4}(m_1^2 - m_2^2)^2.
+\end{equation}
+%
+When we calculate the $\alpha$ dependence of the last term, we get  $(m_1^2 - m_2^2)^2 = \mu^4 \sin^4\alpha = \Oh(\alpha^4)$, which means that for our purposes, we can ignore this term.
+We further rewrite the remaining expression by factoring it,
+%
+\begin{equation}
+    \left[-p^2 + \frac{1}{2}(m_1^2 + m_2^2)\right]^2 - p_0^2 m_{12}^2
+    = \left[-p^2 + \frac{1}{2}(m_1^2 + m_2^2) - p_0 m_{12} \right]
+    \left[-p^2 + \frac{1}{2}(m_1^2 + m_2^2) + p_0 m_{12} \right].
+\end{equation}
+%
+We then complete the square in each of the factors,
+%
+\begin{equation}
+    - p^2 + \frac{1}{2}(m_1^2 + m_2^2) \pm p_0 m_{12}
+    = - \left(p_0 \mp \frac{1}{2}m_{12}\right)^2 + |\vv p|^2 + m_4^2,
+\end{equation}
+%
+where
+%
+\begin{align}
+    m_4^2 
+    & = \frac{1}{2}
+    \left(
+        m_1^2 +m_2^2 +\frac{1}{2}m_{12}
+     \right)
+    = \bar m^2 \cos\alpha + \frac{1}{2} \mu_I^2 \sin^2 \alpha, \\
+    m_4^4
+    & = \bar m^4 - \bar m^2(m^2 + \mu_I^2) \alpha^2 + \Oh(\alpha^4), \\
+    \ln \frac{\mu^2}{m_4^2} 
+    & = \ln \frac{\mu_I^2}{\bar m^2} 
+    + \frac{1}{2}\frac{\bar m^2 + \mu_I^2}{\bar m^2}\alpha^2
+    + \Oh(\alpha^4).
+\end{align}
+%
+After a shift of variables, the integral has the same form as the logarithmic integrals we have calculated earlier, which gives us the result
+%
+\begin{equation}
+    \Eff_{\pi_\pm}
+    = i \int \frac{\dd^4}{(2\pi)^4}
+    \ln(-p^2 + m_4^2)
+    = 
+    - \mu^{-2\epsilon}\frac{1}{2} \frac{m_4^4}{(4 \pi)^2}
+    \left(\frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{m_4^2}\right)+ \mathcal{O}(\epsilon).
+\end{equation}
+%
+Combining these two contributions to the one-loop correction of the free energy gives
+%
+\begin{align*}
+    \Eff_2^{(1)}
+    &=
+    \mathrm{const.}
+    +
+    \frac{\mu^{-2 \epsilon } }{(4 \pi)^2} 
+    \left(1 + \frac{1}{\epsilon} + \ln \frac{\tilde \mu^2}{m^2}\right)
+    \left(\frac{3}{4}m^2 - \mu_I^2\right)
+    \bar m^2 \alpha^2+ \mathcal{O}(\epsilon).
+\end{align*}
+%
+We see that again, the $\epsilon^{-1}$ will cancel when we combine the NLO-terms.
+Setting $\epsilon = 0$, the NLO correction to the free energy becomes
+%
+\begin{align}
+    \tilde \Eff_1
+    & = 
+    \const+ 
+    \frac{1}{(4\pi)^2}
+    \left[
+        \left(
+            \bar l_4 - \frac{1}{4}\bar l_3
+        \right)\bar m^4
+        -\bar l_4\bar m^2\mu_I^2
+        + \ln\frac{M^2}{\bar m^2}
+        \left(\frac{3}{4}\bar m^2 - \mu_I^2\right)\bar m^2
+    \right]\alpha^2
+    + \Oh(\alpha^4).
+\end{align}
+%
+All coupling constants are measured at $M = m_\pi$.
+Using this in the logarithm gives,
+%
+\begin{equation}
+    \ln \frac{M^2}{\bar m^2}
+    = \ln \frac{m_\pi^2}{\bar m^2}
+    = \ln \left[1 + \Oh[2]{(\bar m/f)} \right]
+    = \Oh[2]{(\bar m/f)}.
+\end{equation}
+%
+The term proportional to the logarithm thus vanishes to next-to-leading order.
+Combining these expressions give total NLO free energy, up to second order in $\alpha$, is
+%
+\begin{equation}
+    \Eff_{\mathrm{NLO}}
+    =
+    \Eff_{\mathrm{NLO}}(\alpha = 0)
+    +
+    \frac{1}{2} f^2 \bar m^2
+    \left(
+        1
+        -
+        \frac{1}{2}
+        \frac{\bar l_3 - 4 \bar l_4}{(4 \pi)^2} \frac{\bar m^2}{f^2}
+    \right)\alpha^2
+    - \frac{1}{2}f^2 \mu_I^2
+    \left(
+        1
+        +
+        \frac{2 \bar l_4}{(4 \pi)^2}
+        \frac{\bar m^2}{f^2}
+    \right) \alpha^2
+    + \Oh[4]{\alpha}.
+\end{equation}
+%
+We now insert the physical constants $f_\pi$ and $m_\pi$, by using the next-to-leading order expressions \autoref{equation bare mass} and \autoref{equation bare decay constant}.
+Notice that
+%
+\begin{equation}
+    f_\pi^2 m_\pi^2
+    = f^2 \bar m^2
+    \left[
+        1 - \frac{1}{2} \frac{\bar l_3 - 4 \bar l_4}{(4 \pi)^2} \frac{\bar m^2}{f^2}
+        +
+        \Oh[]{\frac{\bar m^4}{f^4}}
+    \right],
+\end{equation}
+%
+which means that the NLO free energy has the same structure as the leading order expression,
+%
+\begin{equation}
+    \Eff_{\mathrm{NLO}}
+    =
+    \Eff_{\mathrm{NLO}}(\alpha = 0)
+    + \frac{1}{2}f_\pi^2 (m_\pi^2 - \mu_I^2 )\alpha^2
+    + \Oh(\alpha^4z).
+\end{equation}
+%
+This shows that the critical isospin chemical potential is $\mu_I^c = m_\pi$, also at next-to-leading order.
+We expect this to hold to all orders in perturbation theory.
