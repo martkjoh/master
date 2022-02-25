@@ -148,7 +148,7 @@ Given this, we can solve for all the unknown functions, either analytically or n
 
 With $p(r)$, $u(r)$, and $m(r)$, we can construc the metric.
 We already have the $rr$-component of the metric from \autoref{definition of m(r)}.
-If we combine \autoref{alpha in terms of p and u}, with \autoref{TOV}, we get a the solution
+If we combine \autoref{alpha in terms of p and u}, with \autoref{TOV}, we get the solution
 %
 \begin{equation}
     \label{solution to alpha}
@@ -170,8 +170,7 @@ We can evaluate this integral by making the substitution $x = (1 - 2GM/r), \, \d
     = \frac{1}{2} \ln \left(1 - \frac{2GM}{r}\right) + \const
 \end{equation}
 %
-We then impose the boundary condition $\alpha(\infty) = 0$.
-This means setting the constant to zero.
+We then impose the boundary condition $\alpha(\infty) = 0$, which means setting the constant to zero.
 Inserting this into \autoref{spherically symmetric metric} gives the metric for $r<R$,
 %
 \begin{equation}
@@ -232,9 +231,9 @@ In other words, the dimensionful constants defined by $k_i = 1$ are new, charact
 
 
 
-
 \subsection{Newtonian limit and polytropes}
 \label{subsection: Newtonian limit and polytropes}
+
 
 In the Newtonian limit, the rest energy, i.e., mass, gives the dominant contribution to the gravitational field, while the contribution from pressure is negligible. 
 In other words, the characteristic pressure, $p_0$, is far smaller than the characteristic energy density $u_0$, and we can use the approximation $k_3 \ll 1$.
@@ -284,7 +283,7 @@ Close to the center, we can see from \autoref{Newtonian limit TOV} that for a fi
 
 One important model for stars is the \emph{polytrope}, which has an equation of state of the form $u = K p^\gamma$ for some constant $K$.
 As we will see, this fits well as the Newtonian limit of many equations of state and can be used to make predictions such as the Chandrasekhar limit, which sets the upper limit of the mass of white dwarf stars to $M \approx 1.5 \, M_\odot$~\autocite{chandrasekharHighlyCollapsedConfigurations1935,glendenningCompactStarsNuclear2012}.
-To write \autoref{Newtonian limit TOV single equation} on the standard form, we introduce
+To write \autoref{Newtonian limit TOV single equation} on the standard form, we assume $\gamma \neq 1$ and introduce
 %
 \begin{equation}
     \tilde u = a \theta^{n}, \quad 
@@ -308,7 +307,7 @@ The stellar radius is defined by the first zero of the Lane-Emden function above
 %
 \begin{equation}
     \label{Radius polytrope}
-    R = r_0 a^{\frac{\gamma-2}{2}} C \xi_1. 
+    \frac{R}{r_0}= C \xi_1  a^{\frac{\gamma-2}{2}}. 
 \end{equation}
 %
 The total mass of the star can be integrated using \autoref{mass relation dimensionless} and \autoref{Lane Emden equation},
@@ -331,11 +330,12 @@ At $\gamma = \frac{4}{3}$ and $\gamma = 2$, respectively the mass and radius bec
 If included in our figure, these polytropes would correspond to a horizontal and a vertical line.
 \todo[inline]{what about $\gamma = 1$?}
 
-\begin{figure}
+\begin{figure}[h]
     \centering
-    \includegraphics[width=0.85\textwidth]{../scripts/figurer/mass_radius_relation_polytropes.pdf}
+    \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_relation_polytropes.pdf}
     \caption{
-        Top: The mass-radius relation, in arbitrary units, for polytropes with different values of $\gamma$. Bottom: The dependence of $\beta$ on $\gamma$, together with the points corresponding to the lines in the top plot.
+        Left: The dependence of $\beta$ on $\gamma$, together with a selection of points.
+        Top: The mass-radius relation, in arbitrary units, for polytropes corresponding to the selected points on the left side. The color of the lines indicate which point it corresponds to.
         }
     \label{fig: mass radius relation polytropes} 
 \end{figure}

@@ -105,35 +105,12 @@ where
     n_a = \frac{\pi^0_a}{\sqrt{\pi^0_a \pi^0_a}}.
 \end{equation}
 %
-The covariant derivative is then
-\begin{equation}
-    \nabla_\mu \Sigma_\alpha = - iv^a_\mu [\tau_a, \Sigma_\alpha].
-\end{equation}
-%
-The two terms in the first order Lagrangian then becomes
+With this, the covariant derivative is $\nabla_\mu \Sigma_\alpha = - iv^a_\mu [\tau_a, \Sigma_\alpha]$, and the two terms in the first order Lagrangian are
 \begin{align}
-    \nonumber
     \Tr{\nabla_\mu \Sigma_\alpha  (\nabla^\mu \Sigma_\alpha)^\dagger}
-    & = 
-    \frac{1}{4} n_a n_b \mu_I^2 \Tr{[\tau_3, \tau_a] [\tau_3, \tau_b]} \sin^2 \alpha
-    = 
-    n_a n_b \mu_I^2 \sin^2 \alpha \epsilon_{3ac} \, \epsilon_{3bd} \Tr{\tau_c \tau_d}\\
-    & = 2 \mu_I^2 (n_1^2 + n_2^2) \sin^2 \alpha.
-\end{align}
-%
-and
-\begin{align}
-    \nonumber
+    & = 2 \mu_I^2 (n_1^2 + n_2^2) \sin^2 \alpha, \quad
     \Tr{\chi^\dagger \Sigma_\alpha + \Sigma_\alpha^\dagger \chi}
-    & = 
-    \Tr{
-        \bar m^2 (\Sigma_\alpha + \Sigma_\alpha^\dagger)
-        + 
-        \Delta m^2 (\tau_3 \Sigma_\alpha+ \Sigma_\alpha^\dagger \tau_3)
-    }
-    = 4 \bar m^2 \cos \alpha
-    + i \Delta m^2 \Tr{[\tau_3, \tau_a]} n_a \sin \alpha \\
-    & = 4 \bar m^2 \cos \alpha.
+    = 4 \bar m^2 \cos \alpha.
 \end{align}
 %
 We see that, to first order, all results are independent of $\Delta m$.
@@ -372,7 +349,7 @@ Combining \autoref{Sigma derivative} and \autoref{sigma commutator} gives the fo
     %
 where $k_{ab} =\delta_{a1} \delta_{b1} \cos{2\alpha}  + \delta_{a2}\delta_{b2}\cos^2{\alpha} - \delta_{a3}\delta_{b3} \sin^2{\alpha}$.
 Notice that the mass term is independent of the difference in quark masses, $\Delta m$.
-If we write the Lagrangian as show in \autoref{leading order two flavor chpt lagrangian} as $\Ell_2 = \Ell_2^{(0)} + \Ell_2^{(1)} + \Ell_2^{(2)} +...$, where $\Ell_2^{(n)}$ contains all terms of order $(\pi/f)^n$, then the result of the series expansion is
+If we write the Lagrangian \autoref{leading order two flavor chpt lagrangian} as $\Ell_2 = \Ell_2^{(0)} + \Ell_2^{(1)} + \Ell_2^{(2)} +...$, where $\Ell_2^{(n)}$ contains all terms of order $(\pi/f)^n$, then the result of the series expansion is
 \begin{align}
 %%%%%%%%%%%%%%%%%%
 %% zeroth-order %%
@@ -671,7 +648,6 @@ When including contribution from a dynamical photon field, the leading order Lag
 \end{equation}
 %
 $Q$ is the quark charge matrix, \autoref{quark charge matrix}, $C$ and dimensionfull constant, and $\chi = 2B_0 m$, where $m$ is the quark mass matrix \autoref{mass matrix quarks}.
-
 To find the electromagnetic effect on the pion mass, we assume $\mu_I = 0$.
 We use the parametrization $\Sigma = \exp{i \pi_a \tau_a / f}$, and the covariant derivative is in this case
 %
@@ -710,7 +686,7 @@ where
     \bar m_\pm^2 = \bar m^2 + 2\frac{e^2}{f^2}C.
 \end{equation}
 %
-This is the electromagnetic contribution to the mass at leading order.
+This is the leading order electromagnetic contribution to the mass.
 It only affects the $\pi_1, \pi_2$ pions, which are a linear combination of $\pi_\pm$, the charged pions.
 To leading order, $\bar m = m_\pi$, the neutral pion mass, and $\bar m_{\pm} = m_{\pi_{\pm}}$
 From the values listed in \autoref{section: units}, we find
@@ -720,12 +696,8 @@ From the values listed in \autoref{section: units}, we find
     \Delta m_{\pm} := \frac{e}{f}\sqrt{2C} = \sqrt{m_{\pi_\pm}^2 - m_{\pi}^2} = 35.50 \, \text{MeV}.
 \end{equation}
 %
-This corresponds to $C = 0.3771 \, u_0 = 1.1649\cdot 10^8 \, \text{MeV}^4$.
-
-
-\subsection{Tree level free energy at non-zero isospin density} 
-
-\todo{Kan vi være sikre på at denne parametriseringen fremdeles er riktig?}
+This corresponds to $C = 0.3771 \, u_0 = 5.824 \cdot 10^{-5} \, \text{GeV}^4$.
+We now no longer assume $\mu_I = 0$.
 The zeroth-order expansion in $\pi/f$ is
 %
 \begin{equation}
@@ -743,12 +715,12 @@ This gives the contributions
     & =  \cos^2 \alpha - \frac{4}{9}.
 \end{align}
 %
-The leading order contribution to the free energy is due to the stationary Lagrangian, that is $\pi_a = \mathcal A_\mu = 0$.
-Inserting this into \autoref{leading order lagrangian EM}, we get
+We are interested in the static Lagrangian, that is $\pi_a = \mathcal A_\mu = 0$.
+Inserting these terms into \autoref{leading order lagrangian EM}, we get
 %
 \begin{equation}
     \label{static lagrangian with EM}
-    \Ell 
+    \Ell_0^\text{EM}
     = f^2 \left[
         \frac{1}{2}\mu_I^2 \sin^2 \alpha + \bar m^2 \cos \alpha 
         + \frac{1}{2} \Delta m^2_{\pi_\pm} \left(\cos^2 \alpha - \frac{4}{9}\right)

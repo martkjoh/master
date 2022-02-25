@@ -2,11 +2,12 @@ In this section, we survey some general properties of quantum field theory that 
 First, we introduce the path integral and the 1-particle irreducible effective action and the effective potential.
 We will derive Goldstone's theorem and present the CCWZ construction, which is the basis for \chpt.
 
+
+
 \section{*QFT via path integrals}
 \label{section: path integral}
 
 This section is based on \autocite{peskinIntroductionQuantumField1995,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996,schwartzQuantumFieldTheory2013}
-% Feynman diagrams are drawn using JaxoDraw~\cite{JaxoDraw}.
 
 In the path integral formalism, one evaluates quantum observable by integrating over the contributions of all possible configurations.
 If the system has specified initial and final states, this amounts to all possible paths the system might evolve between these, hence the name.
@@ -14,8 +15,6 @@ We assume the reader has some familiarity with this formalism.
 However, if a refresher is needed, \autoref{section: imaginary-time formalism} contains a derivation of the closely related imaginary-time formalism and compares it with the path integral approach.
 
 In the path integral formalism, the vacuum-to-vacuum transition amplitude, i.e., the probability that that vacuum at $t = -\infty$ evolves to the vacuum at time $t = \infty$, is given by
-
-\todo{Write better}
 \begin{equation}
     Z = \lim_{T\rightarrow \infty} \langle {\Omega, T/2} | {-T/2, \Omega} \rangle
     = \lim_{T\rightarrow \infty} \inner{\Omega}{ e^{-iHT} }{\Omega}

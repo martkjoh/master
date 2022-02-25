@@ -12,22 +12,22 @@ def LE(x, y, n):
     return np.array([dth, ddth])
 
 
-# fig, ax = plt.subplots(figsize=(20, 10))
+fig, ax = plt.subplots(figsize=(20, 10))
 
-# for n in range(0, 5):
-#     s = solve_ivp(LE, (1e-10, 8), (1, 0), args=(n,), max_step=0.1)
-#     ax.plot(s.t, s.y[0])
+for n in range(0, 10):
+    s = solve_ivp(LE, (1e-10, 100), (1, 0), args=(n,), max_step=0.1)
+    ax.plot(s.t, s.y[0], "k")
 
-# ax.set_ylim(-1.1, 1.1)
-# plt.show()
+ax.set_ylim(-1.1, 1.1)
+plt.show()
 
 
-n=1
-s = solve_ivp(LE, (1e-10, 8), (1, 0), args=(n,), max_step=0.1, dense_output=True)
+# n=5
+# s = solve_ivp(LE, (1e-10, 8), (1, 0), args=(n,), max_step=0.1, dense_output=True)
 
-th = lambda x : s.sol(x)[0]
+# th = lambda x : s.sol(x)[0]
 
-th(0) 
-x1 = fsolve(th, 1, band=(1, 5))
-print(x1)
+# th(0) 
+# x1 = fsolve(th, 1, band=(1, 5))
+# print(x1)
 

@@ -443,7 +443,7 @@ In that case, the parallel propagator takes the form
     P^\mu{}_\nu(\epsilon) 
     = 
     \delta^\mu_\nu - \int_0^\epsilon \dd \eta \, 
-    \Gamma^\mu_{\rho \sigma}  \odv{x^\rho}{\lambda} + \Oh(\epsilon^2).
+    \Gamma^\mu_{\nu\rho}  \odv{x^\rho}{\lambda} + \Oh(\epsilon^2).
 \end{equation}
 %
 With this, we will investigate how much a vector $V^\mu$ is changed by its motion around in a small loop.
@@ -555,7 +555,7 @@ The combined propagator, from $A$ to $C$ is then
 \end{align}
 %
 To create the parallel propagator for $CDA$ is the propagator for $ADC$ with its signs flipped, and the $ADC$ propagator is the same as $ABC$ only with the $\mu_1$ and $\mu_2$ indices exchanged in the derivative terms.
-Propagator for the full loop is therefore, to and including second order in $\epsilon$,
+Propagator for the full loop is, therefore, to and including second order in $\epsilon$,
 %
 \begin{align}
     P^\mu{}_\nu
@@ -614,9 +614,9 @@ Comparing with \autoref{riemann tensor in terms of christoffel symbols}, we see 
 In other words, this tensor encodes how a vector is transformed by transporting it in small, closed loops.
 
 
+
 \subsection{Integration on manifolds}
 \label{subsection: integration on manifolds}
-
 
 The integral of a scalar function on a manifold is not a coordinate-independent notion, and we must introduce the notion of $n$-forms.
 A $n$-form is a antisymmetric $(0, n)$ tensor.

@@ -24,7 +24,7 @@ In this new phase, the solution is
     \cos \alpha = \frac{\bar m^2}{\mu_I^2}.
 \end{align}
 %
-We introduce a dimensionless variable $x^2 = \cos(\alpha) = \bar m^2 / \mu_I^2$.
+We introduce a dimensionless variable $x^2 = \cos\alpha = \bar m^2 / \mu_I^2$.
 This variable has the domain $[0, 1]$.
 By an argument using a right triangle, we can verify that $\cos \alpha = x^2$ implies that $\sin^2 \alpha = 1 - x^4$.
 Substituting the dimensionless variable into the free energy density, we get 
@@ -35,7 +35,7 @@ Substituting the dimensionless variable into the free energy density, we get
 %
 We have introduced the characteristic energy density $u_0 = \bar m^2 f^2$.
 As we found in \autoref{section: cold fermi star}, the pressure is given by negative the free energy density, normalized to $\mu_I = \bar m$, or $x = 1$.
-We choose $p_0 = u_0$, so the dimensionless pressure can be written
+We choose $p_0 = u_0$, so the dimensionless pressure is
 %
 \begin{equation}
     \label{pressure leading order chpt}
@@ -87,7 +87,7 @@ In the non-relativisitc limit, that is $x^{-2} = 1 + \epsilon$, $\epsilon \ll 1$
 The characteristic mass and length, as discussed in \autoref{section: TOV equation}, are found by setting $k_1 = k_2 = k_3 = 1$.
 These are the dimensionless constants of the TOV equation, \autoref{dimensionless constants TOV}.
 At tree-level, the bare constants $f$ and $\bar m$ are related to physical constants by $f = f_\pi$ and $m = m_\pi$, the pion decay constant and the pion mass.
-Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} and reinstating $c$ and $\hbar$, these quantities are give in SI-units by
+Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} and reinstating $c$ and $\hbar$, these quantities are give in by
 %
 \begin{align}
     u_0 & =m_\pi^2 f_\pi^2 \frac{c}{\hbar^3}
@@ -129,7 +129,7 @@ With our boundary condition, the solution is
 \end{equation}
 %
 and the first root is therefore $\xi_1 = \pi$.
-With this, we get a closed form expression for the stellar radius of this non-relativistic and Newtonian limit---which we expect the full theory to approach as the central pressure decreases---namely
+With this, we get a closed-form expression for the stellar radius of this non-relativistic and Newtonian limit---which we expect the full theory to approach as the central pressure decreases---namely
 %
 \begin{equation}
     \label{radius pion star nr limit}
@@ -141,7 +141,7 @@ With this, we get a closed form expression for the stellar radius of this non-re
 
 The code used for obtaining numerical results is discussed in \autoref{appendix: code}.
 
-\autoref{fig: pressure and mass for pion star} show the pressure and mass as a function of radius for a range of central pressures.
+\autoref{fig: pressure and mass for pion star} show the pressure and mass as a function of radius for varying values of central pressure.
 The quantities are normalized to the stellar radius, stellar mass, and central pressure, respectively.
 The black dashed line corresponds to the configuration with the maximum mass.
 We see that both the pressure and mass distribution are very similar for stars with a mass less than the maximum.
@@ -166,7 +166,7 @@ This is similar to what we saw in the case of an incompressible fluid, \autoref{
     \caption{
         The plot shows the relationship between the mass and radius of a pion star. Mass is given in units of solar masses, while the radius is measured in kilometers.
         This line is parameterized by the central pressure $p_c$ of the star, as indicated by the color gradient.
-        The dashed black line indicates the theoretical maximum mass for a given radius, and the configuration above it will collapse to a black hole.
+        The dashed black line indicates the theoretical maximum mass for a given radius, and any configuration above it will collapse to a black hole.
         }
         \label{fig: mass-radius relation pion star}
 \end{figure}
@@ -181,12 +181,14 @@ This is similar to what we saw in the case of an incompressible fluid, \autoref{
 \end{figure}
 
 
-\autoref{fig: mass-radius relation pion star} shows the mass-radius relationship for the pion star using the leading order free energy density of two-flavor chiral perturbation theory.
+\autoref{fig: mass-radius relation pion star} shows the mass-radius relation for the pion star.
 As in the case of the neutron star, it has a maximum mass, in this case of $M_\text{max} = 10.47\, M_\odot$.
-However, in contrast to the case of the neutron star, the stellar radius approaches a maximum radius, as the non-relativistic, Newtonian limit suggests.
+However, in contrast to the case of the neutron star, the stellar radius approaches a maximum radius as the central pressure decreases.
+This matches our expectation from the non-relativistic, Newtonian limit.
 We see that the largest radius in our results, corresponding to  $p_c = 10^{-6} \, p_0$, is $R = 85.82 \, \text{km}$, which is in good agreement with our earlier analysis, \autoref{radius pion star nr limit}.
+
 \autoref{fig: mass-radius relation pion star comparison} compares the mass-radius relation from the full equation of state and TOV equation with various limits.
-We see that when using the Newtonian limit of the TOV equation, \autoref{Newtonian limit TOV}, the radius is either constant or increasing as the mass increases, in contrast to the result when using the TOV equation, as well as the neutron star.
+In the non-relativistic, Newtonian limit, the stellar radius is independent of the mass, as we found in our earlier analysis.
 
 \todo[inline]{Vis kjemisk potensial}
 
@@ -203,7 +205,7 @@ From \autoref{static lagrangian with EM}, the free energy density, including ele
         \bar m^2 \cos \alpha 
         + \frac{1}{2} \mu_I^2 \sin^2 \alpha
         + \frac{1}{2} \Delta m_\pm^2 \left(\cos^2 \alpha - \frac{4}{9}\right)
-    \right],
+    \right].
 \end{equation}
 %
 Free energy minimization now gives
@@ -268,12 +270,12 @@ With the same procedure as in the last section, we get the pressure and energy d
 \end{figure}
 
 In the limit $\Delta = 0$, these reduce to \autoref{pressure leading order chpt} and \autoref{energy density leading order chpt}.
-In the ultra-relativistic limit, that is for  $x \ll 1$, the behavior is the same as before, and we therefore again approach $p = u$.
+In the ultra-relativistic limit, that is, for  $x \ll 1$, the behavior is the same as before, and we again approach $p = u$.
 We find the non-relativistic limit by substituting $x^{-2} = 1 + \Delta + \epsilon$.
 To first order in $\epsilon$ we get $\tilde p = \epsilon / 2$, which is the same as before.
-The limit of the energy density, however, is slightly perturbed by the inclusion of electromagnetism, $\tilde u = 2(1 + \Delta) \tilde \epsilon$.
-The non-relativistic equation of state is thus still a polytrope,  $p = K u^2$, however the constant is now $K^{-1} = 8 (1+\Delta)^2$.
-With this, the radius of the polytrope and the limiting radius of the full system changes, and is now
+However, the limit of the energy density is slightly perturbed by the inclusion of electromagnetism and is now $\tilde u = 2(1 + \Delta) \tilde \epsilon$.
+The non-relativistic equation of state is thus still a polytrope of the form $p = K u^2$, however the constant is now $K^{-1} = 8 (1+\Delta)^2$.
+With this, the radius of the polytrope and the limiting radius of the full system changes and is now
 %
 \begin{equation}
     R = \frac{\pi}{\sqrt{12}(1 + \Delta)} r_0 = 80.40 \, \text{km}.
@@ -293,7 +295,12 @@ The result with and without electromagnetic interaction is compared in \autoref{
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star_EM.pdf}
-    \caption{The mass-radius relation of a pion star with dynamiccal photons. The relation is parameterized by the logarithm of the internal pressure. The dashed line shows the absolut limiting mass for a given radius. The cross indicates the maximum mass configuration, and the dot the maximum radius configuration.}
+    \caption{
+        The mass-radius relation of a pion star when the electromagnetic interactions is included. 
+        The relation is parameterized by the logarithm of the central pressure. 
+        The dashed line shows the absolute limiting mass for a given radius.
+        The cross indicates the maximum mass configuration, and the dot the maximum radius configuration.
+        }
     \label{fig: mass-radius relation leading order pion star with em interaction}
 \end{figure}
 
