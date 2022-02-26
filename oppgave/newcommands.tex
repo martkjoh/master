@@ -23,6 +23,8 @@
 \newcommand{\one}{\text{\usefont{U}{bbold}{m}{n}1}}
 \MakeRobust{\one}
 \newcommand{\hc}{\text{h.c.}}
+% Differential d
+\newcommand{\dd}{\text{d}}
 
 %! Fix these
 \newcommand{\Olie}{\text O}
@@ -50,3 +52,7 @@
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 \DeclareMathOperator{\arcsinh}{arcsinh}
 
+\newcommand{\Tr}[1]{ \text{Tr} \left\{ #1 \right\}}
+\let\exp\relax %undefine exp
+\newcommand{\exp}[1]{ \text{exp} \left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}

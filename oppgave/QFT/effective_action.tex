@@ -117,6 +117,8 @@ By assumption, $\ex{\eta}_J = 0$, which means this path integral is described by
 %
 Comparing this to \todo{skriv om integrating out dof}{integrating out degrees of freedom}, we see that the 1PI effective potential corresponds to integrating out \emph{all} degrees of freedom, and let the expectation value appear as a static background field,
 
+
+
 \subsection{Effective potential}
 
 For a constant field configuration $\varphi(x) = \varphi_0$, the effective action, which is a functional, becomes a regular function.
@@ -166,7 +168,7 @@ We define
     \fdv{S[\varphi_0]}{\varphi(x), \varphi(y)}, \\
     S_I[\eta] &:=
     \int \dd^4 x \dd^4 y \dd^4 z \,\eta(x)\eta(y)\eta(z)\, 
-    \fdv{S[\varphi_0]}{\varphi(x), \varphi(y), \varphi(z)} + \dots,
+    \fdv{S[\varphi_0]}{\varphi(x),\varphi(y),\varphi(z)} + \dots,
 \end{align}
 %
 where the dots indicate higher derivatives.
@@ -179,7 +181,7 @@ When we insert this expansion into the generating functional $Z[J]$ we get
         +i \int \dd^4x \, \eta(x) \, 
         \left(  \fdv{S[\varphi_0]}{\varphi(x)} + J(x) \right)
         + i S_0[\eta] + i S_I[\eta]
-        }
+    }.
 \end{align}
 %
 The first term is constant with respect to $\eta$ and may be taken outside the path integral.
@@ -201,7 +203,7 @@ This leaves us with
     -i \ln
     \left(
         \int \D \eta\exp{i S_0[\eta] + i S_I[\eta]}
-    \right)
+    \right).
 \end{equation}
 %
 %
@@ -274,11 +276,11 @@ The first term is quadratic in $\eta$, and can therefore be evaluated as a gener
         \det\left( - g^{-1} \fdv{S[\varphi_0]}{\varphi(x), \varphi(y)} \right)^{-1/2}
     \Bigg\}
     = -\frac{1}{2}
-    \Tr\left\{
+    \Tr{
         \ln(
         - \fdv{S[\varphi_0]}{\varphi(x), \varphi(y)}
         )
-    \right\}
+    }
     + \const
 \end{align*}
 %
@@ -319,12 +321,12 @@ we can write
     \right).
 \end{align}
 %
-We recognize this as the sum of all connected Feynman diagrams, with Feynman ruels from the interaction term $S_I$.
+We recognize this as the sum of all connected Feynman diagrams, with Feynman rules from the interaction term $S_I$.
 We know that $S_I$ is made up of terms that are third power or higher in the fields.
 Each internal line is connected to two vertices, and each vertex is connected to at least three internal lines, i.e., $I \geq 3/2 V$.
 The number of loops is therefore $L = I - V + 1 \geq (3/2 - 1)V + 1$.
 There is at leas one vertex, i.e. $L \geq 3/2$.
-This shows that the first logarith contains \emph{all} one-loop contributions.
+This shows that the first logarithm contains \emph{all} one-loop contributions.
 The effective potential to one-loop order is therefore
 %
 \begin{equation}

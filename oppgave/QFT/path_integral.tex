@@ -16,8 +16,8 @@ However, if a refresher is needed, \autoref{section: imaginary-time formalism} c
 
 In the path integral formalism, the vacuum-to-vacuum transition amplitude, i.e., the probability that that vacuum at $t = -\infty$ evolves to the vacuum at time $t = \infty$, is given by
 \begin{equation}
-    Z = \lim_{T\rightarrow \infty} \langle {\Omega, T/2} | {-T/2, \Omega} \rangle
-    = \lim_{T\rightarrow \infty} \inner{\Omega}{ e^{-iHT} }{\Omega}
+    Z = \lim_{T\rightarrow \infty} \braket{\Omega, T/2|-T/2, \Omega}
+    = \lim_{T\rightarrow \infty} \Braket{\Omega| e^{-iHT} |\Omega}
     = \int \D \pi \D \varphi \, \exp{ i \int \dd^4 x \, \left(\pi \dot \varphi - \He[\pi, \varphi]\right) },
 \end{equation}
 %
@@ -85,7 +85,7 @@ Using this form of the generating functional, \autoref{correlator from generatin
     = \dots \\
     &= 
     (- i )^{\floor{n/2}}\sum_{{(a, b)}} \prod_{i=1}^{\floor{n/2}}
-    \fdv{ W_0[J] }{ J(x_{a(i)}), J(x_{b(i)}) } \Big|_{J = 0}.
+    \fdv{ W_0[J] }{J(x_{a(i)}),J(x_{b(i)})} \Big|_{J = 0}.
 \end{align*}
 %
 In the last line we have introduced the functions $a, \, b$, which define a way to pair up $n$ elements.

@@ -13,13 +13,13 @@ The expectation value of some quantity $A$, with value $A_n$ in state $n$ is
 \end{equation*}
 $Z$ is called the partition function. In quantum mechanics, an ensemble configuration is described by a non-pure density operator,
 \begin{equation*}
-    \hat \rho = \sum_n P_n \ketbra{n}{n},
+    \hat \rho = \sum_n P_n \ket{n}\bra{n},
 \end{equation*}
 where $\ket{n}$ is some basis for the relevant Hilbert space. Assuming $\ket{n}$ are energy eigenvectors, i.e., $\hat H \ket{n} = E_n \ket{n}$, the density operator for the canonical ensemble, where $P_n = Ce^{-\beta E_n}$, is
 \begin{equation*}
     \hat \rho 
-    = \sum_n C e^{-\beta E_n} \ketbra{n}{n} 
-    = C e^{-\beta \hat H} \sum_n \ketbra{n}{n} 
+    = \sum_n C e^{-\beta E_n} \ket{n}\bra{n} 
+    = C e^{-\beta \hat H} \sum_n \ket{n}\bra{n} 
     = C e^{-\beta \hat H}.
 \end{equation*}
 The expectation value in the ensemble state of a quantity corresponding to the operator $\hat A$ is given by
@@ -65,13 +65,13 @@ In analogy with regular quantum mechanics, they obey the relations
 \begin{gather}
     \label{functional completness}
     \one
-    = \int \D \varphi(\vec x) \ketbra{\varphi}{\varphi} 
-    = \int \D\pi(\vec x) \ketbra{\pi}{\pi}, \\
-     \braket{\varphi}{\pi} 
-    = \exp(i \int_V \dd^3 x \, \varphi(\vec x) \pi(\vec x)), \\
-    \braket{\pi_a}{\pi_b}
+    = \int \D \varphi(\vec x) \ket{\varphi}\bra{\varphi} 
+    = \int \D\pi(\vec x) \ket{\pi}\bra{\pi}, \\
+     \braket{\varphi|\pi} 
+    = \exp{i \int_V \dd^3 x \, \varphi(\vec x) \pi(\vec x)}, \\
+    \braket{\pi_a|\pi_b}
     =  \delta(\phi_a - \phi_b), \quad
-    \braket{\varphi_a}{\varphi_b} 
+    \braket{\varphi_a|\varphi_b} 
     = \delta(\varphi_a - \varphi_b).
 \end{gather}
 The functional integral is defined by starting with $M$ degrees of freedom, $\{\varphi_m\}_{m=1}^M$ located at a finite grid $\{\vec x_m\}_{m=1}^M \subset V$.
@@ -120,11 +120,11 @@ By series expanding $e^{-\epsilon \hat H}$ and exploiting this relationship, the
     \left(
         \int \D \varphi_n (\vec x) \int \D \pi_n(\vec x)
     \right)
-    \exp[-\epsilon \sum_{n=1}^N \int_V \dd^3x \,
+    \exp{-\epsilon \sum_{n=1}^N \int_V \dd^3x \,
     \left(
         \He[\varphi_n(\vec x), \pi_n(\vec x)] - i \pi_n(\vec x) \frac{\varphi_n(\vec x) - \varphi_{n+1}(\vec x)}{\epsilon}
     \right)
-    ].
+    }.
 \end{align*}
 We denote $\varphi_n(\vec x) = \varphi(\tau_n, \vec x) $, $\tau \in [0, \beta]$ and likewise with $\pi_n(\vec x)$. 
 In the limit $N \rightarrow \infty$, the expression for the partition function becomes
