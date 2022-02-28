@@ -1,19 +1,97 @@
 \section{Chiral perturbation theory}
 \label{section: chiral perturbation theory}
 
+The systematics of chiral perturbation theory, or \chpt, was laid out by Gasser and Leutwyler~\autocite{gasserChiralPerturbationTheory1984,gasserChiralPerturbationTheory1985} and is based on Weinberg's idea that quantum field theories on their own does not contain more information than the bare minimum~\autocite{weinbergPhenomenologicalLagrangians1979}.
+In addition to these paper, this section is base on~\autocite{eckerChiralPerturbationTheory1995,fearingExtensionChiralPerturbation1996,schererIntroductionChiralPerturbation2002}.
 
-Chiral perturbation theory, or \chpt, is an effective field theory which exploits the chiral symmetries of QCD to describe its low energy dynamics.
-The basis of \chpt\ for chiral perturbation theory is the massless QCD Lagrangian,
+
+\subsection{*From QCD to an effective theory}
+
+To construct the Lagrangian of chiral perturbation theory, or \chpt, we start with the Lagrangian of massless QCD, 
 %
 \begin{equation}
     \Ell^0_\text{QCD} = i \bar q \slashed D q - \frac{1}{4} G^\alpha_{\mu \nu} G_\alpha^{\mu \nu}
 \end{equation}
 %
-This Lagrangian is invariant under the full symmetry group $G = \Lie{U}{1}_V \times \Lie{SU}{N_f}_V \times \Lie{SU}{N_f}_A$.
+As discussed in last section, this Lagrangian is invariant under the full symmetry group $G = \Lie{U}{1}_V \times \Lie{SU}{N_f}_R \times \Lie{SU}{N_f}_L$, but the system undergoes spontaneous symmetry breaking to the smaller group $H = \Lie{SU}{N_f}_V$.
+As we found in \autoref{seciton: ccwz construction}, the low energy dynamics will therefore be described by a $G/H = \Lie{SU}{N_f}_A$-valued field $\Sigma$.
+Let $g \in G$.
+We write $g = (U_L, U_R)$, where $U_R \in \Lie{SU}{N_f}_R$, $U_L \in \Lie{SU}{N_f}_L$.
+Elements $h \in H$ are then of the form $h = (U, U)$.
+A general element $g$ can be written as
+\begin{equation}
+    g = (U_L, U_R) = (1, U_R U_L^\dagger) (U_L, U_L).
+\end{equation}
+%
+Since $(U_L, U_L) \in H$, this means that we can write the coset $g H$ as $(1, U_R U_L^\dagger)H$, which gives a way to choose a representative element for each coset.
+We identify
+\begin{equation}
+    \Sigma = U_R U_L^\dagger. 
+\end{equation}
+%
+This is our standard form for elements in $gH$.
+As we saw in \autoref{seciton: ccwz construction}, it therefore implicitly define transformation properties of the Goldstone bosons, which is given by the function $h(g, \xi)$.
+For $\tilde g \in G$, we have 
+\begin{equation}
+    \tilde g (1, \Sigma)
+    = (\tilde U_L, \tilde U_R) (1, U_R U_L^\dagger)
+    = (1, \tilde U_R (U_R U_L^\dagger) \tilde U_L^\dagger) (\tilde U_L, \tilde U_L)
+    = (1, \tilde U_R \Sigma \tilde U_L) \tilde h.
+\end{equation}
+%
+This gives the transformation rule
+\begin{equation}
+    \Sigma \rightarrow \Sigma' = U_R \Sigma U_L^\dagger.
+\end{equation}
+%
+Under transformations by $h = (U, U^\dagger) \in H$, we have
+\begin{equation}
+    \label{sigma transform under H}
+    \Sigma \rightarrow \Sigma' = U \Sigma U^\dagger.
+\end{equation}
+%
+Due to how $G$ factors into two Lie groups, the constituents of the Mauer-Cartan form are 
+\todo[]{hvorfor?}
+%
+\begin{equation}
+    d_\mu = i \Sigma(x)^\dagger \partial_\mu \Sigma(x),\quad
+    e_\mu = 0.
+\end{equation}
+%
+Using $\partial_\mu [\Sigma(x)^\dagger\Sigma(x)] = 0 $, we can write
+\begin{equation}
+    d_\mu d^\mu = 
+    - \Sigma(x)^\dagger [\partial_\mu \Sigma(x)] \Sigma(x)^\dagger [\partial^\mu \Sigma(x)]
+    =\Sigma(x)^\dagger [\partial_\mu \Sigma(x)] [\partial^\mu \Sigma(x)^\dagger] \Sigma(x).
+\end{equation}
+%
+In \autoref{seciton: ccwz construction}, we found the lowest order terms, \autoref{first order terms CCWZ}.
+As $d_\mu \in \lie{su}{N_F}$, which we represent by the traceless matrices, we have
+%
+\begin{equation}
+    \Tr{d_\mu} = 0.
+\end{equation}
+%
+This leaves us with the single leading order term
+\begin{equation}
+    \Tr{d_\mu d^\mu} = \Tr{\partial_\mu \Sigma (\partial^\mu \Sigma)^\dagger},
+\end{equation}
+%
+where we have used the cyclic property of the trace.
+
+
+However, constructing the effective Lagrangian out of terms invariant under $G$ is too restrictive to get the most general effective action.
+This only allows for an even number of $d_\mu$'s, and observed processes such as the decay of the neutral pion through $\pi^0 \rightarrow \gamma \gamma$ would not be possible~\cite{schererIntroductionChiralPerturbation2002}.
+This is because we have not allowed for terms that change the Lagrangian with a divergence term, as discussed in \autoref{section: symmetry and goldstone's theorem}.
+Terms of this type are called Wess-Zumino-Witten (WZW) terms~\cite{weinbergQuantumTheoryFields1996}.
+We will not consider these here, as they do not affect the thermodynamic quantities in question~\cite{adhikariTwoflavorChiralPerturbation2019}.
+
+\subsection{External currents and }
+
+
 To incorporate other fields or terms that break $G$, such as the quark masses, we add a Lagrangian containing external currents.
-These can include either couple to the conserved currents, \autoref{conserved currents qcd}, or the other bilinears we can create out of quarks, $\bar q q$, $\bar q\gamma^5 q$, $\bar q \tau_a q$, and $\bar q \tau_a \gamma^5 q$. 
+These can include either couple to the conserved currents, \autoref{conserved currents qcd}, or the other bilinears we can create out of quarks, $\bar q q$, $\bar q\gamma^5 q$, $\bar q T_\alpha q$, and $\bar q T_\alpha \gamma^5 q$.
 The Lagrangian is
-\todo{Hva er grunnen til valgene av fortegn?}
 %
 \begin{align}
     \Ell_{\text{ext}}
@@ -21,101 +99,68 @@ The Lagrangian is
     + \bar q \gamma^\mu  \left(v_\mu + \gamma^5 a_\mu\right)q.
 \end{align}
 %
-The external sources are defined as
-%
-\begin{equation}
-    s = s_0\one + s_a \tau_a, \quad
-    p = p_0\one + p_a \tau_a, \quad
-    v^\mu = v_0^\mu \one + \frac{1}{2}v_a^\mu \tau_a, \quad
-    a^\mu = a_0^\mu \one + \frac{1}{2}a^\mu_a \tau_a.
-\end{equation}
-%
-\todo{Generaliser til SU(N)}
-which are respectively the scalar, pseudo-scalar, vector, and pseudo-vector currents.
+\todo{Hva er grunnen til valgene av fortegn?}
+Here, $s$, $p$, $v_\mu$ and $a_\mu$ are all $N_f\times N_f$ matrices acting on the flavor indices.
+They are, respectively, the scalar, pseudo-scalar, vector, and pseudo-vector currents.
 We denote these currents collectively as $j = (s, p, v^\mu_a, a_a^\mu)$.
+The masses of the quarks are accounted for by setting the scalar current $s = m + \tilde s$.
+Here, $m$ is the mass matrix of the quarks, while $\tilde s$ are possible other scalar currents.
+Other examples of external currents are chemical potentials, such as the isospin chemical potential, which regulate conserved charges in the system.
 
-\todo[inline]{fiks resten av seksjon}
-The masses of the quarks are accounted for by setting the scalar current $s_0$ equal the mass matrix of the quarks,
-%
+We define the right handed and left handed currents as
 \begin{equation}
-    \label{mass matrix quarks}
-    m_q =
-    \begin{pmatrix}
-        m_u & 0  \\
-        0 & m_d
-    \end{pmatrix}
-\end{equation}
-%
-These field can be static background fields, as is the case for the mass contribution to $s_0$, or a dynamical field such as the photon field.
-Let $j_s$ denote static fields, while $j_s$ denote dynamical fields, so that $j = j_s + j_d$.
-The dynamical fields migh have their own Lagrangian with terms independent of quarks, $\Ell_d[j_d]$.
-In the case where the photon field is included as a dynamical field, this will have a $-\frac{1}{4}F_{\mu \nu}F^{\mu \nu}$ term.
-\todo{Er dette riktig?}
-The full Lagrangian is then
-%
-\begin{equation}
-    \Ell_\text{QCD}[q, \bar q, A, j] = \Ell_\text{QCD}^0[q, \bar q, A] + \Ell_\text{ext}[j] + \Ell_d[j_d].
-\end{equation}
-
-
-In the grand canonical ensemble, as discussed in (ref termisk feltteori), we introduce a chemical potential $\mu$ and couple it to a conserved charge.
-We are interested in the case where the chemical potential of the third component of isospin is, denoted $\mu_I$, is non-zero.
-This corresponds to a modification of the Lagrangian by
-%
-\begin{equation}
-    \Ell \rightarrow \Ell + \mu_I \frac{1}{2} \bar q \gamma_0\tau_3 q,
-\end{equation}
-%
-which corresponds to an external vector current
-%
-\begin{equation}
-    v^\mu_I = \frac{1}{2} \mu_I  \delta^\mu_0 \tau_3.
+    r_\mu = v_\mu + a_\mu, \quad l_\mu = v_\mu - a_\mu
 \end{equation}
 %
 
-The electromagnetic interactions is a gauge theory as well, and the electromagnetic covariant derivative acing on quarks is
+When we 
+
+
+Including dynamical fields, such as the photon field $\mathcal A_\mu$, is slightly more complicated.
+The electromagnetic interactions is a gauge theory with gauge group  $\Lie{U}{1}_\text{EM}$, a subgroup of $G$.
+The electromagnetic covariant derivative acing on quarks is
 %
 \begin{equation}
+    \label{EM covariant derivative on quarks}
     i\bar q \slashed D' q 
     = 
     i \bar q \gamma^\mu \left( \one \partial_\mu - i e Q \mathcal A_\mu\right) q
     =
     i \bar q \slashed \partial q - e \mathcal A_\mu J^\mu,
 \end{equation}
-where $\mathcal A_\mu$ is the photon field corresponding to the $\Lie{U}{1}_\text{EM}$ gauge group, $e = |e|$ is the elementary charge as given in \autoref{Elementary charge}, $J^\mu = - \bar q Q \gamma^\mu q$ is the electromagnetic charge current, and $Q$ is the quark charge matrix,
+where $\mathcal A_\mu$ is the photon field corresponding to the gauge group, $e = |e|$ is the elementary charge as given in \autoref{Elementary charge}, $J^\mu = - \bar q Q \gamma^\mu q$ is the electromagnetic charge current, and $Q$ is the quark charge matrix.
+This matrix is the generator of $\Lie{U}{1}_\text{EM}$, and thus is a part of Lie algebra corresponding to $G$. 
+In the case of $N_f=3$,  $Q = \text{diag}(\frac{2}{3}, -\frac{1}{3}, -\frac{1}{3})$, while the last term is not included for $N_f=2$.
+From \autoref{EM covariant derivative on quarks}, we see that $eQ\mathcal A_\mu$ is a vector current.
+We therefore include it by setting $ v^{\mu} = e Q \mathcal{A}^\mu + \tilde v^\mu$, where again $\tilde v^\mu$ are possible other vector currents.
+
+\todo[inline]{skriv om infføringen av $Q_I$, $I = R, L$}
+
+Lastly, we must include terms from quantum electrodynamics involving only the photon field, which are
 %
 \begin{equation}
-    \label{quark charge matrix}
-    Q = \frac{1}{3}
-    \begin{pmatrix}
-        2 & 0 \\
-        0 & -1
-    \end{pmatrix}
-    = 
-    \frac{1}{6} \one + \frac{1}{2}\tau_3.
+    \Ell^0_\text{QED}[\mathcal A] 
+    = -\frac{1}{4} F^{\mu \nu}F_{\mu \nu}, \quad
+    F_{\mu \nu} = 2 \partial_{[\mu}\mathcal A_{\nu]}.
 \end{equation}
-%
-As with the chemical potential, this is accounted for by an external current vector current, \todo{Er dette riktig fortegn}
+ 
+
+The full Lagrangian is then
 %
 \begin{equation}
-    v_\text{EM}^{\mu} = e Q \mathcal{A}^\mu.
+    \Ell_\text{QCD}[q, \bar q, A,\mathcal A, j] = \Ell_\text{QCD}^0[q, \bar q, A] + \Ell^0_\text{QED}[\mathcal A] + \Ell_\text{ext}[\mathcal A, j].
 \end{equation}
 %
-We define the right handed and left handed currents as
-\begin{equation}
-    r_\mu = v_\mu + a_\mu, \quad l_\mu = v_\mu - a_\mu
-\end{equation}
-%
-We now define the effective Lagrangian of $\chpt$ as
+We now define the effective Lagrangian of $\chpt$, $\Ell_\text{eff}$ as
 %
 \begin{equation}
     \label{definition effective lagrangian chpt}
-    Z[j_s]
+    Z[j]
     = 
-    \int \D q \D \bar q \D A \D j_d
-    \exp{i\int \dd^4 x \Ell_\text{QCD}[q, \bar q, A, j] }
+    \int \D q \D \bar q \D A \D \mathcal A\,
+    \exp{i\int \dd^4 x \Ell_\text{QCD}[q, \bar q, A, \mathcal A, j] }
     = 
-    \int \D \pi \D j_d
+    \int \D \pi \D \mathcal A\,
     \exp{i\int \dd^4 x \Ell_\text{eff}[\pi, \mathcal{A}, j] }.
 \end{equation}
 
@@ -162,7 +207,7 @@ Transformations under $g \in G = \Lie{SU}{N_f}_R \times \Lie{SU}{N_f}_L \times \
     g_I(\bar q) = \bar q (P_{\bar{I}} U_I^\dagger + P_I), \\
     g_V(q) & = U_V q, \, g_V(\bar q) = \bar q U_V^\dagger \\
     U_I &= P_I \exp{-i \eta_\alpha \frac{\tau_\alpha}{2} }, \quad I = R, L, \\
-    U_V &= \exp(- i \theta)
+    U_V &= \exp{- i \theta}
 \end{align}
 Promoting $G$ to gauge group, to get gauge invariance we must have
 %
