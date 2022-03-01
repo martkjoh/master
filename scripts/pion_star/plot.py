@@ -98,9 +98,9 @@ def plot_mass_radius_compare():
 
     linestyles = ["-", "-.", "--", ":"]
     labels = [
-        "Relativistic EOS + TOV",
+        "Full EOS + TOV",
         "Non-relativistic EOS + TOV",
-        "Relativistic EOS + Newtonian gravity",
+        "Full EOS + Newtonian gravity",
         "Non-relativistic EOS + Newtonian gravity"
         ]
 

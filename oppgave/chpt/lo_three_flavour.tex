@@ -1,0 +1,141 @@
+\section{Three-flavor \chpt\ to leading order}
+\label{section: three-flavor chpt to leading order}
+
+
+For $N_f = 3$, the generators are now $T_\alpha = \frac{1}{2} \lambda_\alpha$, where $\lambda_\alpha$ are the Gell-Mann matrices, as shown in \autoref{section: algebra bases}.
+The mass matrix $m$ is
+%
+\begin{equation}
+    m = 
+    \begin{pmatrix}
+        m_u & 0 & 0 \\
+        0 & m_d & 0 \\
+        0 & 0 & m_s
+    \end{pmatrix}.
+\end{equation}
+%
+%
+\begin{equation}
+    \chi = \frac{2}{3} M_1^2 \one + M_2^2 \lambda_3 + M_3^2 \lambda_8,
+\end{equation}
+%
+%
+\begin{equation}
+    M_1^2 = B_0 (m_u + m_d + m_s), \quad
+    M_2^2 =?? \frac{2}{3}B_0 (m_u - m_d), \quad
+    M_3^2 =?? \frac{\sqrt 3}{4} B_0 \left[ \frac{1}{2} (m_u + m_d) - \frac{1}{2} m_s \right]
+\end{equation}
+%
+The chemical potentials are
+%
+\begin{equation}
+    \mu = 
+    \begin{pmatrix}
+        \mu_u & 0 & 0 \\
+        0 & \mu_d & 0 \\
+        0 & 0 & \mu_s
+    \end{pmatrix}
+    = \mu_B \one + \frac{1}{2} \mu_I \lambda_3 + \frac{1}{2}\mu_8\lambda_8,
+\end{equation}
+%
+where $\mu_B = \frac{1}{3}(\mu_u + \mu_d + \mu_s)$, $\mu_I = \mu_u - \mu_d $ and $\mu_8 = \frac{1}{\sqrt{3}}(\mu_u + \mu_d - 2 \mu_s)$.
+%
+\begin{equation}
+    Q = \frac{1}{3}
+    \begin{pmatrix}
+        2 & 0 & 0\\
+        0 & -1 & 0\\
+        0 & 0 & -1
+    \end{pmatrix}
+    = \frac{1}{2} \left( \lambda_3 + \frac{1}{\sqrt{3}} \lambda_8 \right).
+\end{equation}
+%
+The covariant derivative is
+%
+\begin{equation}
+    \nabla_\mu \Sigma = \partial_\mu \Sigma - i [v_\mu, \Sigma]
+\end{equation}
+%
+We again begin the analysis with $e = 0$, so the vector current due to isospin chemical potential i
+%
+\begin{equation}
+    v_\mu = \frac{1}{2} \delta^0_\mu ( \mu_I  \lambda_3 + \mu_8 \lambda_8),
+\end{equation}
+%
+where $\mu_s$ is the strange quark chemical potential.
+We need to parametrize the ground state, as we did in \autoref{subsection: parametrization}, and define
+Let
+%
+\begin{equation}
+    \Sigma_\alpha 
+    = \exp{i \alpha n_a \lambda_a} = \cos \alpha + i n_a \lambda_a \sin \alpha,
+    \quad \alpha = \frac{1}{f} \sqrt{\pi_a^0 \pi_a^0}, \quad n_a = \frac{\pi_a^0}{\sqrt{\pi_b^0 \pi_b^0}}.
+\end{equation}
+%
+The covariant derivative is now
+%
+\begin{equation}
+    \nabla_\mu \Sigma_\alpha = -i v_\mu^a [\lambda_a, \Sigma].
+\end{equation}
+%
+\begin{align}
+    \frac{1}{4} \Tr{\nabla_\mu \Sigma_\alpha \nabla^\mu \Sigma_\alpha^\dagger}
+    & = -\frac{1}{2} \sin^2 \alpha
+    \left\{
+        \mu_I^2 \left[n_1^2 + n_2^2 + \frac{1}{4}(n_6^2 + n_7^2)\right]
+        + \frac{1}{4} [\mu_I^2 + 3 \mu_8^2][n_4^2 + n_5^2] 
+    \right\} \\
+    \frac{1}{4} \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger} 
+    & = M_1^2 \cos \alpha
+\end{align}
+%
+Static Hamiltonian is
+%
+\begin{align}
+    \He / f^2
+    &= -\frac{1}{8} \sin^2 \alpha 
+    \left[
+        \mu_I^2 \left(4a^2 + b^2 + c^2\right) 
+        + 3 \mu_8^2 (b^2 + c^2)
+        + 2 \sqrt{3} \mu_8 \mu_I (b^2 - c^2)
+    \right]
+    + M_1^2 \cos\alpha\\
+    &= -\frac{1}{8} \sin^2\alpha
+    \left[
+        4 \mu_I^2 a^2  + (\mu_I + \sqrt 3 \mu_8 )^2b^2 + (\mu_I - \sqrt 3 \mu_8)^2c^2  
+    \right]
+    + M_1^2 \cos\alpha
+\end{align}
+%
+Where
+%
+\begin{equation}
+    a^2 = n_1^2 + n_2^2, \quad
+    b^2 = n_4^2 + n_5^2, \quad
+    c^2 = n_6^2 + n_7^2, \quad
+    a^2 + b^2 + c^2 = 1 - n_3^2 - n_8^2.
+\end{equation}
+%
+Minimize static Hamiltonian.
+Assume, without loss of generality, that $\mu_I, \mu_8 \geq 0$.
+Thus, we must have $c = n_3 = n_8 = 0$.
+Define $a^2 = \cos^2\beta$ and $\mu_K = \frac{1}{2}(\mu_I^2 + \sqrt 3 \mu_8)$, which leaves
+%
+\begin{equation}
+    \He / f^2 =
+    \frac{1}{2} 
+    \left[
+        \mu_I^2 \cos^2\beta + \mu_K^2\sin^2\beta
+    \right]
+    \sin^2\alpha
+    +
+    M_1^2 \cos\alpha.
+\end{equation}
+%
+Choose, without loss of generality, $n_1 = n_4 = 0$, which leaves $n_2 = \cos\beta$, $n_5 = \sin\beta$, and thus
+%
+\begin{equation}
+    \Sigma = \exp{i \alpha (\cos\beta \lambda_2 + \sin\beta \lambda_5) }
+    = \cos\alpha + i (\lambda_2 \cos\beta + \lambda_5 \sin\beta)\sin\alpha.
+\end{equation}
+

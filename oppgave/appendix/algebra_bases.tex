@@ -4,7 +4,7 @@
 \subsection{Pauli matrices}
 \label{subsection: Pauli matrices}
 
-The $\lie{su}{2}$ basis used is the Pauli matrices,
+The Pauli matrices are
 \begin{align}
     \tau_1 = 
     \begin{pmatrix}
@@ -44,50 +44,150 @@ An arbitrary 2-by-2 matrix $M$ may be written
 \subsection{Gell-Mann matrices}
 \label{subsection: gell-mann matrices}
 
-\todo[inline]{write down the Gell-Mann matrices and their properties}
+
+The Gell-Mann matrices are
+%
+\begin{align}
+    \lambda_1
+    & = 
+    \begin{pmatrix}
+        0 & 1 & 0 \\
+        1 & 0 & 0 \\
+        0 & 0 & 0
+    \end{pmatrix},\,
+    \lambda_2
+    = 
+    \begin{pmatrix}
+        0 & -i & 0 \\
+        i & 0 & 0 \\
+        0 & 0 & 0
+    \end{pmatrix},\,
+    \lambda_3
+    = 
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & -1 & 0 \\
+        0 & 0 & 0
+    \end{pmatrix},\\
+    \lambda_4
+    & = 
+    \begin{pmatrix}
+        0 & 0 & 1 \\
+        0 & 0 & 0 \\
+        1 & 0 & 0
+    \end{pmatrix},\,
+    \lambda_5
+    = 
+    \begin{pmatrix}
+        0 & 0 & -i \\
+        0 & 0 & 0 \\
+        i & 0 & 0
+    \end{pmatrix},\,
+    \lambda_6
+    = 
+    \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 0 & 1 \\
+        0 & 1 & 0
+    \end{pmatrix},\\
+    \lambda_7
+    & = 
+    \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 0 & -i \\
+        0 & i & 0
+    \end{pmatrix},\,
+    \lambda_8
+    =  \frac{1}{\sqrt 3}
+    \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & -2
+    \end{pmatrix}.
+\end{align}
+%
+They obey
+%
+\begin{align}
+    [\lambda_a, \lambda_b] & = 2if^{abc} \lambda_c, \\
+    \{\lambda_a, \lambda_b\} & = \frac{4}{3} + 2d^{abc} \lambda_c, \\
+    \Tr{\lambda_a} & = 0, \\
+    \Tr{\lambda_a \lambda_b} &= 2 \delta_{ab}, \\
+    \Tr{\lambda_a \lambda_b \lambda_c \lambda_d} 
+    &= \frac{4}{3} \delta_{ab}\delta_{cd} + 2 h_{abe}h_{ecd},
+\end{align}
+%
+where the non-zero elements of $f_{abc}$ and $d_{abc}$ are
+%
+\begin{align}
+    f_{123} &= 1, \quad 
+    f_{147} = f_{246} = f_{257} = f_{345} = -f_{156} =  f_{367} = \frac{1}{2}, \quad
+    f_{458} = f_{678} = \frac{\sqrt 3}{2}, \\
+    d_{146} &= d_{157} = d_{256} = -d_{247} = d_{355} = - d_{366} = -d_{377} = \frac{1}{2} \\
+    d_{118}& = d_{228} = d_{338} = - d_{888} = \frac{1}{\sqrt 3}, \quad
+    d_{448} = d_{558} = d_{668} = d_{778} = - \frac{1}{2 \sqrt 3},
+\end{align}
+%
+and we have defined $h_{abc} = d_{abv} + if_{abv}$, which obeys $h^{abc} = h^{bca} = h^{cab}$, $h^{aab} = 0$~\autocite{borodulinCORECOmpendiumRElations2017}.
+
+
 
 
 \subsection{Gamma matrices}
 \label{subsection: gamma matrices}
 
 The gamma matrices $\gamma^\mu$, $\mu \in \{0, 1, 2, 3\}$, obey
+%
 \begin{align}
     \{\gamma^\mu,\gamma^\nu\} = 2 g^{\mu \nu} \one,\\
     {\gamma^0}^\dagger = \gamma^0, \quad {\gamma^i}^\dagger = - \gamma^i.
 \end{align}
+%
 These matrices, together with
+%
 \begin{align}
     \sigma^{\mu\nu} &= \frac{1}{2} [\gamma^\mu, \gamma^\mu], \\ 
     \gamma_A^\mu &= \gamma^\mu \gamma^5, \\
      \gamma^5 
     &= \frac{i}{4!}\epsilon_{\mu \nu \rho \sigma} \gamma^{\mu}\gamma^{\nu}\gamma^{\rho}\gamma^{\sigma},
 \end{align}
+%
 form the Clifford algebra $\text{Cl}_{1,3}$, also known as the \emph{space-time algebra}.
 The subscripts $(1, 3)$ denotes the signature of the metric.
 The ``fifth $\gamma$-matrix'', which can be expressed as $\gamma^5 = \gamma^0\gamma^1\gamma^2\gamma^3$, obey
+%
 \begin{equation}
     \{\gamma^5,\gamma^\mu\} = 0, \quad (\gamma^5)^2 = \one.
 \end{equation}
 
 
 The Euclidian counterpart of the space-time algebra, $\text{Cl}_4$, is defined by the ``Euclidian gamma matrices'', which obey
+%
 \begin{equation}
     \{\tilde \gamma_a, \tilde \gamma_b\} = 2 \delta_{ab}\one.
 \end{equation}
+%
 These can be related to the regular Minkowski-matrices by
+%
 \begin{equation}
     \tilde \gamma_0 = \gamma^0,\quad 
     \tilde \gamma_j = -i\gamma^j.
 \end{equation}
+%
 These then obey
+%
 \begin{equation}
     {\tilde\gamma_a}^\dagger = \tilde\gamma_a.
 \end{equation}
+%
 The Euclidean $\tilde \gamma_5$ is defined as
+%
 \begin{equation}
     \tilde \gamma_5 = \gamma_0\gamma_1\gamma_2\gamma_3 = i \gamma^0\gamma^1\gamma^2\gamma^3 = \gamma^5.
 \end{equation}
 It thus also anti-commutes with the Euclidean $\gamma$-matrices,
+%
 \begin{equation}
     \{\tilde \gamma_5, \tilde \gamma_a\} = 0.
 \end{equation}
+

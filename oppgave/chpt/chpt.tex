@@ -5,9 +5,9 @@ The systematics of chiral perturbation theory, or \chpt, was laid out by Gasser 
 In addition to these paper, this section is base on~\autocite{eckerChiralPerturbationTheory1995,fearingExtensionChiralPerturbation1996,schererIntroductionChiralPerturbation2002}.
 
 
-\subsection{*From QCD to an effective theory}
+\subsection{*Non-linear realization}
 
-To construct the Lagrangian of chiral perturbation theory, or \chpt, we start with the Lagrangian of massless QCD, 
+To construct the Lagrangian of chiral perturbation theory we start with the Lagrangian of massless QCD, 
 %
 \begin{equation}
     \Ell^0_\text{QCD} = i \bar q \slashed D q - \frac{1}{4} G^\alpha_{\mu \nu} G_\alpha^{\mu \nu}
@@ -19,19 +19,22 @@ Let $g \in G$.
 We write $g = (U_L, U_R)$, where $U_R \in \Lie{SU}{N_f}_R$, $U_L \in \Lie{SU}{N_f}_L$.
 Elements $h \in H$ are then of the form $h = (U, U)$.
 A general element $g$ can be written as
+%
 \begin{equation}
     g = (U_L, U_R) = (1, U_R U_L^\dagger) (U_L, U_L).
 \end{equation}
 %
 Since $(U_L, U_L) \in H$, this means that we can write the coset $g H$ as $(1, U_R U_L^\dagger)H$, which gives a way to choose a representative element for each coset.
 We identify
+%
 \begin{equation}
     \Sigma = U_R U_L^\dagger. 
 \end{equation}
 %
 This is our standard form for elements in $gH$.
 As we saw in \autoref{seciton: ccwz construction}, it therefore implicitly define transformation properties of the Goldstone bosons, which is given by the function $h(g, \xi)$.
-For $\tilde g \in G$, we have 
+For $\tilde g \in G$, we have
+%
 \begin{equation}
     \tilde g (1, \Sigma)
     = (\tilde U_L, \tilde U_R) (1, U_R U_L^\dagger)
@@ -66,7 +69,7 @@ Using $\partial_\mu [\Sigma(x)^\dagger\Sigma(x)] = 0 $, we can write
 \end{equation}
 %
 In \autoref{seciton: ccwz construction}, we found the lowest order terms, \autoref{first order terms CCWZ}.
-As $d_\mu \in \lie{su}{N_F}$, which we represent by the traceless matrices, we have
+As $d_\mu \in \lie{su}{N_f}$, which we represent by the traceless matrices, we have
 %
 \begin{equation}
     \Tr{d_\mu} = 0.
@@ -86,7 +89,7 @@ This is because we have not allowed for terms that change the Lagrangian with a 
 Terms of this type are called Wess-Zumino-Witten (WZW) terms~\cite{weinbergQuantumTheoryFields1996}.
 We will not consider these here, as they do not affect the thermodynamic quantities in question~\cite{adhikariTwoflavorChiralPerturbation2019}.
 
-\subsection{External currents and }
+\subsection{External currents}
 
 
 To incorporate other fields or terms that break $G$, such as the quark masses, we add a Lagrangian containing external currents.
@@ -102,7 +105,7 @@ The Lagrangian is
 \todo{Hva er grunnen til valgene av fortegn?}
 Here, $s$, $p$, $v_\mu$ and $a_\mu$ are all $N_f\times N_f$ matrices acting on the flavor indices.
 They are, respectively, the scalar, pseudo-scalar, vector, and pseudo-vector currents.
-We denote these currents collectively as $j = (s, p, v^\mu_a, a_a^\mu)$.
+We denote these currents collectively as $j = (s, p, v^\mu, a^\mu)$.
 The masses of the quarks are accounted for by setting the scalar current $s = m + \tilde s$.
 Here, $m$ is the mass matrix of the quarks, while $\tilde s$ are possible other scalar currents.
 Other examples of external currents are chemical potentials, such as the isospin chemical potential, which regulate conserved charges in the system.
@@ -181,35 +184,21 @@ Covariant derivative
 Scalar
 %
 \begin{equation}
-    \chi = 2 B_0 (s + ip), \quad s = m, \, p = 0.
+    \chi = 2 B_0 (s + ip), \quad \chi^\dagger = 2 B_0 (s - ip)  
 \end{equation}
 %
 Field strength tensor
 %
 \begin{equation}
     f_{\mu \nu}^{(r)} = \partial_\mu r_\nu - \partial_\nu r_\mu - i[r_\mu, r_\nu], 
-    \quad r\rightarrow l.
+    \quad f_{\mu \nu}^{(l)} = \partial_\mu l_\nu - \partial_\nu l_\mu - i[l_\mu, l_\nu].
 \end{equation}
 %
-EM + chemical potential:
-%
-\begin{equation}
-    r_\mu = l_\mu = v_\mu 
-    = 
-    \frac{1}{2} \mu_I \delta^0_\mu \tau_3
-    + e Q \mathcal{A}_\mu.
-\end{equation}
-%
-Transformations under $g \in G = \Lie{SU}{N_f}_R \times \Lie{SU}{N_f}_L \times \Lie{U}{1}_V$
+Transformations under $G = \Lie{SU}{N_f}_R \times \Lie{SU}{N_f}_L \times \Lie{U}{1}_V$, where
 \begin{align}
-    g\in G&, \quad  g = g_R \times g_L \times g_V, \\
-    g_I(q) &= (P_I U_I + P_{\bar{I}}) q = U_I q_I \quad
-    g_I(\bar q) = \bar q (P_{\bar{I}} U_I^\dagger + P_I), \\
-    g_V(q) & = U_V q, \, g_V(\bar q) = \bar q U_V^\dagger \\
-    U_I &= P_I \exp{-i \eta_\alpha \frac{\tau_\alpha}{2} }, \quad I = R, L, \\
-    U_V &= \exp{- i \theta}
+    U_I = P_I \exp{-i \eta_\alpha T_\alpha }, \quad I = R, L,  \quad U_V = \exp{- i \theta}
 \end{align}
-Promoting $G$ to gauge group, to get gauge invariance we must have
+%
 %
 \begin{align}
     \Sigma &\rightarrow U_R \Sigma U_L^\dagger, \\
