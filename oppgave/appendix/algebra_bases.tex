@@ -110,12 +110,20 @@ They obey
 %
 \begin{align}
     [\lambda_a, \lambda_b] & = 2if^{abc} \lambda_c, \\
-    \{\lambda_a, \lambda_b\} & = \frac{4}{3} + 2d^{abc} \lambda_c, \\
+    \{\lambda_a, \lambda_b\} & = \frac{4}{3}\one \delta_{ab} + 2d_{abc} \lambda_c, \\
     \Tr{\lambda_a} & = 0, \\
     \Tr{\lambda_a \lambda_b} &= 2 \delta_{ab}, \\
     \Tr{\lambda_a \lambda_b \lambda_c \lambda_d} 
-    &= \frac{4}{3} \delta_{ab}\delta_{cd} + 2 h_{abe}h_{ecd},
+    &= \frac{4}{3} \delta_{ab}\delta_{cd} + 2 (d_{abe} + if_{abe})(d_{cde} + if_{cde}).
 \end{align}
+%
+where
+%
+\begin{equation}
+    f_{abc} = -\frac{i}{4}\Tr{\lambda_a[\lambda_b, \lambda_c]}, 
+    \quad
+    d_{abc} = -\frac{i}{4}\Tr{\lambda_a\{\lambda_b, \lambda_c\}}.
+\end{equation}
 %
 where the non-zero elements of $f_{abc}$ and $d_{abc}$ are
 %
@@ -128,7 +136,8 @@ where the non-zero elements of $f_{abc}$ and $d_{abc}$ are
     d_{448} = d_{558} = d_{668} = d_{778} = - \frac{1}{2 \sqrt 3},
 \end{align}
 %
-and we have defined $h_{abc} = d_{abv} + if_{abv}$, which obeys $h^{abc} = h^{bca} = h^{cab}$, $h^{aab} = 0$~\autocite{borodulinCORECOmpendiumRElations2017}.
+or a permutation of the indices.
+The indices of $f$ are totally antisymmetric, while those of $d$ are totally symmetric~\autocite{borodulinCORECOmpendiumRElations2017}.
 
 
 

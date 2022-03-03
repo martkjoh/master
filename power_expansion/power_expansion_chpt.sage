@@ -4,9 +4,6 @@
 
 def Id(self, x): return self(x)
 
-p = vector([
-    function("pi"+str(i), latex_name="\\pi_"+str(i), conjugate_func=Id)(x) for i  in range(1, 4)
-])
 
 
 POW = lambda A, n : matrix.identity(A.dimensions()[0]) if (n == 0) else A * POW(A, n-1)
@@ -20,7 +17,7 @@ com = lambda A1, A2 : A1 * A2 - A2 * A1
 # Project matrices onto basis of pauli matrices
 def proj(A, s):
     n = A.nrows()
-    return [A.trace()/n, *[(A*si).trace()/2 for si in s]]
+    return [(A.trace()/n).full_simplify(), *[((A*si).trace()/2).full_simplify() for si in s]]
 
 
 # Helper functions
@@ -29,7 +26,7 @@ def mat_series(mat, x, n):
     d = mat.dimensions()
     for i in range(0, d[0]):
         for j in range(0, d[1]):
-            mat[i, j] = mat[i, j].series(x, n).truncate()
+            mat[i, j] = mat[i, j].series(x, n+1).truncate()
 
 def mat_simp(mat):
     d = mat.dimensions()

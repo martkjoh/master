@@ -2,8 +2,11 @@
 \label{section: three-flavor chpt to leading order}
 
 
-For $N_f = 3$, the generators are now $T_\alpha = \frac{1}{2} \lambda_\alpha$, where $\lambda_\alpha$ are the Gell-Mann matrices, as shown in \autoref{section: algebra bases}.
-The mass matrix $m$ is
+
+\subsection{Ground state}
+
+For $N_f = 3$, the generators are $T_\alpha = \frac{1}{2} \lambda_\alpha$, where $\lambda_\alpha$ are the Gell-Mann matrices, as shown in \autoref{section: algebra bases}.
+The mass matrix is now
 %
 \begin{equation}
     m = 
@@ -11,34 +14,10 @@ The mass matrix $m$ is
         m_u & 0 & 0 \\
         0 & m_d & 0 \\
         0 & 0 & m_s
-    \end{pmatrix}.
+    \end{pmatrix},
 \end{equation}
 %
-%
-\begin{equation}
-    \chi = \frac{2}{3} M_1^2 \one + M_2^2 \lambda_3 + M_3^2 \lambda_8,
-\end{equation}
-%
-%
-\begin{equation}
-    M_1^2 = B_0 (m_u + m_d + m_s), \quad
-    M_2^2 =?? \frac{2}{3}B_0 (m_u - m_d), \quad
-    M_3^2 =?? \frac{\sqrt 3}{4} B_0 \left[ \frac{1}{2} (m_u + m_d) - \frac{1}{2} m_s \right]
-\end{equation}
-%
-The chemical potentials are
-%
-\begin{equation}
-    \mu = 
-    \begin{pmatrix}
-        \mu_u & 0 & 0 \\
-        0 & \mu_d & 0 \\
-        0 & 0 & \mu_s
-    \end{pmatrix}
-    = \mu_B \one + \frac{1}{2} \mu_I \lambda_3 + \frac{1}{2}\mu_8\lambda_8,
-\end{equation}
-%
-where $\mu_B = \frac{1}{3}(\mu_u + \mu_d + \mu_s)$, $\mu_I = \mu_u - \mu_d $ and $\mu_8 = \frac{1}{\sqrt{3}}(\mu_u + \mu_d - 2 \mu_s)$.
+and the charge matrix is
 %
 \begin{equation}
     Q = \frac{1}{3}
@@ -50,64 +29,97 @@ where $\mu_B = \frac{1}{3}(\mu_u + \mu_d + \mu_s)$, $\mu_I = \mu_u - \mu_d $ and
     = \frac{1}{2} \left( \lambda_3 + \frac{1}{\sqrt{3}} \lambda_8 \right).
 \end{equation}
 %
-The covariant derivative is
+The leading order Lagrangian still has the same form,
 %
 \begin{equation}
-    \nabla_\mu \Sigma = \partial_\mu \Sigma - i [v_\mu, \Sigma]
+    \Ell_2 
+    = \frac{1}{4}f^2 \Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger}
+    + \frac{1}{4}f^2 \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
+    + e^2 C \Tr{\Sigma Q \Sigma^\dagger Q},
 \end{equation}
 %
-We again begin the analysis with $e = 0$, so the vector current due to isospin chemical potential i
+where
 %
 \begin{equation}
-    v_\mu = \frac{1}{2} \delta^0_\mu ( \mu_I  \lambda_3 + \mu_8 \lambda_8),
+    \chi = 2B_0 m =  \frac{2}{3} M_1^2 \one + M_2^2 \lambda_3 + M_3^2 \lambda_8,
 \end{equation}
 %
-where $\mu_s$ is the strange quark chemical potential.
+and
+%
+\begin{equation}
+    M_1^2 = B_0 (m_u + m_d + m_s), \quad
+    M_2^2 = B_0 (m_u - m_d), \quad
+    M_3^2 = \frac{1}{\sqrt 3} B_0 (m_u + m_d - 2m_S).
+\end{equation}
+%
+To find the ground state, we start with $e = 0$.
+The covariant derivative is then
+%
+\begin{equation}
+    \nabla_\mu \Sigma = \partial_\mu \Sigma - i [v_\mu, \Sigma], \quad 
+    v_\mu = \mu \delta^0_\mu,
+\end{equation}
+%
+Here, $\mu$ is the chemical potential matrix,
+%
+\begin{equation}
+    \mu = 
+    \begin{pmatrix}
+        \mu_u & 0 & 0 \\
+        0 & \mu_d & 0 \\
+        0 & 0 & \mu_s
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+        \frac{1}{3}\mu_B + \frac{1}{2}\mu_I & 0 & 0 \\
+        0 & \frac{1}{3}\mu_B - \frac{1}{2}\mu_I & 0 \\
+        0 & 0 & \frac{1}{3}\mu_B - \frac{1}{2}\mu_S
+    \end{pmatrix}
+    = \frac{1}{3}(\mu_B - \mu_S) \one 
+    + \frac{1}{2} \mu_I \lambda_3
+    + \frac{1}{\sqrt{3}}\mu_S\lambda_8,
+\end{equation}
+%
+where $\mu_B = \frac{3}{2}(\mu_u + \mu_d)$, $\mu_I = \mu_u - \mu_d $ and $\mu_S = \frac{1}{2}(\mu_u + \mu_d)-\mu_s$.
+Here, $\mu_u$, $\mu_d$ and $\mu_s$ is the up, down and strange quark chemical potentials, while $\mu_B$, $\mu_I$ and $\mu_S$ is baryon, isospin and strangeness chemical potentials.
+
 We need to parametrize the ground state, as we did in \autoref{subsection: parametrization}, and define
-Let
+Let\todo[color=red]{Dette er feil!}
 %
 \begin{equation}
     \Sigma_\alpha 
     = \exp{i \alpha n_a \lambda_a} = \cos \alpha + i n_a \lambda_a \sin \alpha,
-    \quad \alpha = \frac{1}{f} \sqrt{\pi_a^0 \pi_a^0}, \quad n_a = \frac{\pi_a^0}{\sqrt{\pi_b^0 \pi_b^0}}.
+    \quad \alpha = \frac{1}{f} \sqrt{\pi_a^0 \pi_a^0}, \quad n_a = \frac{\pi_a^0}{\sqrt{\pi_b^0 \pi_b^0}}. 
 \end{equation}
 %
-The covariant derivative is now
-%
-\begin{equation}
-    \nabla_\mu \Sigma_\alpha = -i v_\mu^a [\lambda_a, \Sigma].
-\end{equation}
+The relevant terms are then
 %
 \begin{align}
     \frac{1}{4} \Tr{\nabla_\mu \Sigma_\alpha \nabla^\mu \Sigma_\alpha^\dagger}
-    & = -\frac{1}{2} \sin^2 \alpha
-    \left\{
-        \mu_I^2 \left[n_1^2 + n_2^2 + \frac{1}{4}(n_6^2 + n_7^2)\right]
-        + \frac{1}{4} [\mu_I^2 + 3 \mu_8^2][n_4^2 + n_5^2] 
-    \right\} \\
+    & = \frac{1}{2} \sin^2\alpha
+    \left[
+        \mu_I^2 (n_1^2 + n_2^2) 
+        + \frac{1}{4} (\mu_I + 2\mu_s)^2(n_4^2 + n_5^2)
+        + \frac{1}{4} (\mu_I - 2\mu_s)^2(n_6^2 + n_7^2)
+    \right]\\
     \frac{1}{4} \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger} 
     & = M_1^2 \cos \alpha
 \end{align}
 %
-Static Hamiltonian is
+We notice that both terms are independent of $\mu_B$.\todo[]{hvorfor?}
+With this, the static Hamiltonian is
 %
 \begin{align}
-    \He / f^2
-    &= -\frac{1}{8} \sin^2 \alpha 
+    \He_0
+    = -\frac{1}{2}f^2\sin^2\alpha
     \left[
-        \mu_I^2 \left(4a^2 + b^2 + c^2\right) 
-        + 3 \mu_8^2 (b^2 + c^2)
-        + 2 \sqrt{3} \mu_8 \mu_I (b^2 - c^2)
+        \mu_I^2a^2 + \mu_\Kpm^2 b^2  + \mu_\Ko^2 c^2
     \right]
-    + M_1^2 \cos\alpha\\
-    &= -\frac{1}{8} \sin^2\alpha
-    \left[
-        4 \mu_I^2 a^2  + (\mu_I + \sqrt 3 \mu_8 )^2b^2 + (\mu_I - \sqrt 3 \mu_8)^2c^2  
-    \right]
-    + M_1^2 \cos\alpha
+    - f^2M_1^2 \cos\alpha
 \end{align}
 %
-Where
+We have defined the chemical potentials $\mu_{K^{\pm}} = \frac{1}{2}(\mu_I + 2 \mu_S) = \mu_u - \mu_s$ and $\mu_{K^{\pm}} = \frac{1}{2}(\mu_I - 2 \mu_S) = -\mu_d + \mu_s$, 
+and
 %
 \begin{equation}
     a^2 = n_1^2 + n_2^2, \quad
@@ -116,26 +128,91 @@ Where
     a^2 + b^2 + c^2 = 1 - n_3^2 - n_8^2.
 \end{equation}
 %
-Minimize static Hamiltonian.
-Assume, without loss of generality, that $\mu_I, \mu_8 \geq 0$.
-Thus, we must have $c = n_3 = n_8 = 0$.
-Define $a^2 = \cos^2\beta$ and $\mu_K = \frac{1}{2}(\mu_I^2 + \sqrt 3 \mu_8)$, which leaves
+All the terms with a square chemical potential factors are positive definite, which means that the Hamiltonian will always be minimized by $n_3 = n_8 = 0$.
+Furhtermore, we can without loss of generality chose $n_1 = n_4 = n_6 = 0$.
+This corresponds to changing basis of $\lie{su}{3}$.
+Depending on the signs of $\mu_I$ and $\mu_S$, we must have either $b = 0$ or $c = 0$
+If $\sgn(\mu_I) = \sgn(\mu_S)$, then $\mu_\Kpm > \mu_\Ko$, and $c = 0$.
+Likewise, if $\sgn(\mu_I) = - \sgn(\mu_S)$, then $\mu_\Kpm < \mu_\Ko$, and $b = 0$.
+To begin with, we assume the former.
+Define $a^2 = \cos^2\beta$, which implies $b^2 = \sin^2\beta$.
+The Hamiltonian density is then
 %
 \begin{equation}
-    \He / f^2 =
-    \frac{1}{2} 
+    \He_0 =
+    -\frac{1}{2} f^2
     \left[
-        \mu_I^2 \cos^2\beta + \mu_K^2\sin^2\beta
+        \mu_I^2 \cos^2\beta + \mu_\Kpm^2\sin^2\beta
     \right]
     \sin^2\alpha
-    +
-    M_1^2 \cos\alpha.
+    -
+    f^2 M_1^2 \cos\alpha.
 \end{equation}
-%
-Choose, without loss of generality, $n_1 = n_4 = 0$, which leaves $n_2 = \cos\beta$, $n_5 = \sin\beta$, and thus
+
+
+The $\beta$ parameter is set, as $\alpha$, by minimizing $\He$.
+We have
 %
 \begin{equation}
-    \Sigma = \exp{i \alpha (\cos\beta \lambda_2 + \sin\beta \lambda_5) }
-    = \cos\alpha + i (\lambda_2 \cos\beta + \lambda_5 \sin\beta)\sin\alpha.
+    \pdv{\He}{\beta} = \frac{1}{2} (\mu_I^2 - \mu_\Kpm^2) f^2 \sin^2\alpha\cos2\beta, \quad
+    \pdv[2]{\He}{\beta} = f^2 (\mu_I^2 - \mu_\Kpm^2) \sin^2\alpha\sin2\beta.
 \end{equation}
+%
+We see that, if we are in the pion condensate phase where $\alpha \neq 0$, the stationary points for $\beta$ are $0$ and $\pi/2$.
+However, which one these that is a minimum depends on the sign of $\mu_I^2 - \mu_\Kpm^2$, as this determines the sign of the second derivative.
+For $\mu_I^2 > \mu_\Kpm^2$, $\beta = 0$, while for $\mu_I^2 < \mu_\Kpm^2$ we have $\beta = \pi/2$.
+The analysis for $\sgn(\mu_I) = -\sgn(\mu_S)$ is the same, only with $\mu_\Kpm$ changed to $\mu_\Ko$.
+The different ground states are then
+%
+\begin{equation}
+    \Sigma_0 = \one, \quad
+    \Sigma_\pi = \exp{i\alpha \lambda_2}, \quad
+    \Sigma_\Kpm = \exp{i\alpha \lambda_5}, \quad
+    \Sigma_\Ko = \exp{i\alpha \lambda_7}.
+\end{equation}
+%
+As we found for two flavors, this corresponds to a transformation of the vacuum to a new ground state by, $\Sigma_0 \rightarrow A_\alpha \Sigma_0 A_\alpha$.
+We must therefore transform the excitations around ground state in the same way.
+However, now the transformation depend on which phase we are in.
+We therefore parametrize the fields as
+%
+\begin{align}
+    \Sigma = A^i_\alpha [U(x) \Sigma_0 U(x)] A_\alpha^i, \quad
+    U(x) = \exp{i \frac{\pi_a \lambda_a}{2 f}}, \quad
+    A_\alpha^i = \exp{i \alpha \lambda_i}.
+\end{align}
+%
+Here, there is no sum over $i$.
+Rather, $i = 2$, $5$, or $7$, dependent on if we are in the pion condensate, the charged kaon condensate or neutral kaon condensate.
+
+
+
+
+\subsection{Leading order}
+
+
+We work in the pion condensate, with $e = 0$.
+The relevant terms are then
+%
+\begin{align}
+    \nonumber
+    \frac{f^2}{8B_0}\Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
+    & =
+    - \frac{1}{4}(m_u + m_d)\cos\alpha (\pi_1^2 + \pi_2^2 + \pi_3^2)
+    - \frac{1}{4} 
+    \left[
+        (m_u + m_s)\cos^2\frac{\alpha}{2} - m_d \sin^2\frac{\alpha}{2}
+    \right](\pi_4^2 + \pi_5^2)\\ \nonumber
+    &- 
+    \left[
+        (m_d + m_s)\cos^2\frac{\alpha}{2} - m_u \sin^2\frac{\alpha}{2}
+    \right](\pi_6^2 + \pi_7^2) 
+    + \frac{1}{12} 
+    \left[
+        (m_u + m_d + 2m_s) \cos\alpha + 2m_s
+    \right] \pi_8^2 \\
+    &-\frac{1}{2 \sqrt{3}} (m_u - m_d) \pi_3 \pi_8
+    - \frac{1}{2}(m_u + m_d)\sin\alpha \pi_2
+    + \frac{1}{2}(m_u + m_d)\cos\alpha + \frac{1}{4}m_s(\cos\alpha + 1)
+\end{align}
 

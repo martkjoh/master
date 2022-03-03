@@ -47,11 +47,18 @@ l = [l1, l2, l3, l4, l5, l6, l7, l8]
 
 var("e", latex_name="\\varepsilon", domain="real")
 var("d", latex_name="\\delta", domain="real")
-var("mu", latex_name="\\mu_I", domain="real")
 var("a", latex_name="\\alpha", domain="real")
 
-# e A_mu
-var("eA", latex_name="e \\mathcal A_\\mu", domain="real")
+muS = var("muS", latex_name="\\mu_S")
+muB = var("muB", latex_name="\\mu_B")
+muI = var("muI", latex_name="\\mu_I")
+
+mu = diagonal_matrix([muB/3 + muI/2, muB/3 - muI/2, muB/3 - muS])
+
+v = d*mu
+
+# # e A_mu
+# var("eA", latex_name="e \\mathcal A_\\mu", domain="real")
 
 
 # chi with mass
@@ -65,12 +72,11 @@ var("eA", latex_name="e \\mathcal A_\\mu", domain="real")
 
 # pi_a tau_a
 
-# pi_s = e * sum([s[i]*p[i] for i in range(len(s))])
+p = vector([
+    function("pi"+str(i), latex_name="\\pi_"+str(i), conjugate_func=Id)(x) for i  in range(1, len(l)+1)
+])
+pi_s = e * sum([l[i]*p[i] for i in range(len(l))])
 
 
-
-# A_a = one*cos(a/2) + I * s1 * sin(a/2)
-# U = lambda n: EXP(I * pi_s/2, n)
-# SIGMA = lambda n: mat_prep(A_a * U(n) * U(n) * A_a, n)
 
 

@@ -38,7 +38,7 @@ v_I = 1/2*d*mu*s3
 
 # Charge matrix
 Q = 1/6 * one + 1/2*s3
-
+ 
 # e A_mu
 var("eA", latex_name="e \\mathcal A_\\mu", domain="real")
 v_EM = eA * Q
@@ -54,7 +54,9 @@ chi = (mm^2 * one + dm^2 * s3)
 
 
 # pi_a tau_a
-
+p = vector([
+    function("pi"+str(i), latex_name="\\pi_"+str(i), conjugate_func=Id)(x) for i  in range(1, len(s)+1)
+])
 pi_s = e * sum([s[i]*p[i] for i in range(len(s))])
 
 
