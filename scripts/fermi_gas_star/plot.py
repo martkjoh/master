@@ -171,9 +171,9 @@ def plot_mass_radius_compare():
 
     linestyles = ["-", "-.", "--", ":"]
     labels = [
-        "Relativistic EOS + TOV",
+        "Full EOS + TOV",
         "Non-relativistic EOS + TOV",
-        "Relativistic EOS + Newtonian gravity",
+        "Full EOS + Newtonian gravity",
         "Non-relativistic EOS + Newtonian gravity"
         ]
 
@@ -191,7 +191,7 @@ def plot_mass_radius_compare():
         n = len(x) // m
         assert m*n + 1 == len(x) # Are all points included?
         segments = [[[x[j], y[j]] for j in range(i*m, (i+1)*m+1)] for i in range(n)]
-        lc = collections.LineCollection(segments, cmap='viridis', norm=norm, ls=linestyles[i], label=labels[i])
+        lc = collections.LineCollection(segments, cmap='viridis', norm=norm, ls=linestyles[i], label=labels[i], lw=1.5)
         lc.set_array(z[::m])
         line = ax.add_collection(lc)
         
@@ -270,8 +270,8 @@ def plot_mass_of_pc():
 
 # plot_norm_pressure_mass()
 # plot_mass_radius()
-# plot_mass_radius_compare()
+plot_mass_radius_compare()
 # plot_eos()
-plot_mass_of_pc()
+# plot_mass_of_pc()
 
 # plot_mass_surface()

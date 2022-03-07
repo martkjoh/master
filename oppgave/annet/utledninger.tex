@@ -164,5 +164,55 @@ Energy density
 \end{align}
 
 
+\section{Newtonian stars}
+
+    \begin{equation}
+        \dd \left(\frac{u}{n}\right) = - p \dd \left(\frac{1}{n}\right).
+    \end{equation}
+    Polytrope: $p = K u^\gamma$, internal energy (assuming $\gamma \neq 1$): $u' = u - m n$, where $m$ is particle mass, $n$ particle number density, $p = K (mn)^\gamma (1 + u' / (mn))^\gamma$.
+    \begin{align}
+        \dd \frac{u}{n}= \dd \frac{u'}{n} =  \frac{1}{n} \dd u' + u'\dd \frac{1}{n}  = - k (m n)^\gamma \left(1 + \frac{u'}{mn}\right)^\gamma \dd \frac{1}{n}\\ 
+        \implies \dd u' = \left(\frac{u'}{mn} + k(mn)^{\gamma - 1}[1 + u' /(mn)]^\gamma \right) m \dd n.
+    \end{align}
+    non-relativistic limit, $u' \ll mn$, we get
+    \begin{equation}
+        u' = u - mn \sim \frac{k (mn)^\gamma}{\gamma - 1} \sim \frac{p}{\gamma - 1}, 
+    \end{equation}
+    as $p \sim k (mn)^\gamma$.
+
+\subsection{Energy}
+    \begin{equation}
+        \Phi = - \frac{G m u}{r}, \quad \odv{p}{r} = - \frac{G m u}{r^2}.
+    \end{equation}
+    Total kinetic energy is $T$, potential $V$.
+    \begin{align}
+        T &= 4 \pi \int_0^R\dd r\, r^2 u' = \frac{4 \pi}{\gamma - 1} \int r^2 p,\\
+        V &= - 4 \pi \int_0^R \dd r \,  r^2 \frac{G m u}{r} = \int \dd r \, r^3 \odv{p}{r}
+        = -3 \cdot 4 \pi \int \dd r\, r^2 p\\ 
+        & \implies T = -3 (\gamma - 1) V.
+    \end{align}
+    With $\dd m = 4 \pi r^2 u \dd r$, we get
+    \begin{equation}
+        I = 4 \pi \int \dd r^2 r^2 p = \int \dd m \frac{p}{u} = - \int \dd \left(\frac{p}{u}\right) m,
+    \end{equation}
+    where we integrated by parts and used $m(0) = p(R)/u(R) = 0$. (assum $\gamma > 1$).
+    \begin{equation}
+        \dd \frac{p}{u} = \frac{\gamma - 1}{\gamma} \frac{\dd p}{u} = -\frac{\gamma - 1}{\gamma} \frac{Gm}{r^2} \dd r,
+    \end{equation}
+    as $\gamma p \dd u = \dd p u$. With this, we integrate by parts to obtain
+    \begin{equation}
+        I = \frac{\gamma - 1}{\gamma} \int \dd r \frac{G m^2}{r}
+        = \frac{\gamma - 1}{\gamma} \left[  - \int \dd \left(\frac{1}{r}\right) Gm^2\right]
+        = -\frac{\gamma - 1}{\gamma} \left[\frac{GM^2}{R} - 2 \int \dd m \frac{G m}{r} \right]
+    \end{equation}
+    using $\dd m = 4 \pi r^2 u$, we get
+    \begin{equation}
+        \int \dd m \frac{G m}{r} = 4\pi\int \dd r\, r G m u = -3I, \implies I = \frac{5\gamma - 6}{\gamma - 1} \frac{GM^2}{R}
+    \end{equation}
+    Combining $E = T + V$, we get
+    \begin{equation}
+        E = - \frac{3 \gamma  - 4}{5 \gamma - 6} \frac{G M}{R^2}
+    \end{equation}
 
 \end{document}
+ 

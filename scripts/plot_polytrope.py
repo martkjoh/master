@@ -14,6 +14,7 @@ g = np.array([
     15/12,
     3/2,
     5/3,
+    # 3,
     np.inf
     ])
 n = len(g)
@@ -69,5 +70,6 @@ ax[1].set_ylabel("$M$")
 ax[0].set_xlabel("$\gamma$")
 ax[0].set_ylabel("$\\beta$")
 
-fig.savefig("figurer/mass_radius_relation_polytropes.pdf", bbox_inches="tight")
+plt.show()
+# fig.savefig("figurer/mass_radius_relation_polytropes.pdf", bbox_inches="tight")
 

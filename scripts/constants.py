@@ -54,10 +54,12 @@ if __name__=="__main__":
 
     # for const in get_const_fermi_gas(): print(const)
     # for const in get_const_pion(): print(const)
-    print("%.3e"%(C/(1e3)**4))
-    u0, _, _ = get_const_pion()
-    print("%.3e"%(C/(m_pi_MeV**2*f_pi_MeV**2)))
+    # print("%.3e"%(C/(1e3)**4))
+    # u0, _, _ = get_const_pion()
+    # print("%.3e"%(C/(m_pi_MeV**2*f_pi_MeV**2)))
     # print(Δ)
 
     # max_radius_pion_star()
     # print(sqrt(3/4)*pi)
+
+    print(( hbar * c / (2* G * m_pi**2) )**(3 / 2) * m_pi / M0)

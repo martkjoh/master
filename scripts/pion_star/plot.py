@@ -120,7 +120,7 @@ def plot_mass_radius_compare():
         n = len(x) // m
         assert m*n + 1 == len(x) # Are all points included?
         segments = [[[x[j], y[j]] for j in range(i*m, (i+1)*m+1)] for i in range(n)]
-        lc = collections.LineCollection(segments, cmap='viridis', norm=norm, ls=linestyles[i], label=labels[i], lw=3)
+        lc = collections.LineCollection(segments, cmap='viridis', norm=norm, ls=linestyles[i], label=labels[i], lw=2)
         lc.set_array(z[::m])
         line = ax.add_collection(lc)
         
@@ -326,9 +326,9 @@ def test():
 # plot_pressure_mass(name="_EM")
 
 # plot_mass_radius()
-# plot_mass_radius_compare()
+plot_mass_radius_compare()
 # plot_mass_radius(name="_EM")
-plot_mass_radius_compare_EM()
+# plot_mass_radius_compare_EM()
 
 # plot_eos()
 # plot_eos_EM()

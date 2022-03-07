@@ -10,10 +10,10 @@ The free energy density of two-flavor chiral perturbation theory, to leading-ord
     \Eff = - f^2 \left(\bar m^2 \cos \alpha + \frac{1}{2} \mu_I^2 \sin^2 \alpha\right).
 \end{equation}
 %
-The $\alpha$ parameter is determined by minimizing $\Eff$ for a given value of $\mu_I$,
+The parameter $\alpha$ is determined by minimizing $\Eff$ for a given value of $\mu_I$,
 %
 \begin{equation}
-    \pdv{\Eff}{\alpha} = f^2 \left(\bar m^2 - \mu_I^2 \cos \alpha\right) \sin(\alpha) = 0.
+    \pdv{\Eff}{\alpha} = f^2 \left(\bar m^2 - \mu_I^2 \cos \alpha\right) \sin\alpha = 0.
 \end{equation}
 %
 This gives an explicit formula for $\alpha$ in terms of $\mu_I$.
@@ -27,8 +27,7 @@ In this new phase, the solution is
 \end{align}
 %
 We introduce a dimensionless variable $x^2 = \cos\alpha = \bar m^2 / \mu_I^2$.
-This variable has the domain $[0, 1]$.
-By an argument using a right triangle, we can verify that $\cos \alpha = x^2$ implies that $\sin^2 \alpha = 1 - x^4$.
+This variable has the domain $[0, 1]$, and $\cos \alpha = x^2$ implies that $\sin^2 \alpha = 1 - x^4$.
 Substituting the dimensionless variable into the free energy density, we get 
 %
 \begin{equation}
@@ -50,7 +49,7 @@ We must, however, not assume any dependence of $\alpha$ on $\mu_I$ when taking t
 The isospin density therefore is
 %
 \begin{equation}
-    n_I = -\pdv{\Eff}{\mu_I} = ^2 \mu_I^2 \sin^2 \alpha 
+    n_I = -\pdv{\Eff}{\mu_I} = \mu_I^2 \sin^2 \alpha 
     = 
     \frac{u_0}{\mu_I} \left(\frac{1}{x^2} - x^2\right).
 \end{equation}
@@ -63,22 +62,28 @@ With this, the dimensionless energy density at $T = 0$ is
     = \frac{1}{2} \left( 2 + \frac{1}{x^2} - 3 x^2\right).
 \end{equation}
 % 
-The ratio of pressure to energy density is
+The ratio of pressure to energy density is~\autocite{sonQCDFiniteIsospin2001}
 %
 \begin{equation} 
     \label{pressure energy ratio leading order chpt}
-    \frac{p}{u} = \frac{1- 2x^2 + x^4  }{1 + 2x^2 -3x^4 }.
+    \frac{p}{u} = \frac{1- x^2}{1+3x^2}.
 \end{equation}
 %
 In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$ and thus $x \rightarrow 0$, we get $p / u = 1$, or $u_\text{ur} = p$.
-In the non-relativisitc limit, that is $x^{-2} = 1 + \epsilon$, $\epsilon \ll 1$, we get $\tilde p = \epsilon^2 / 2 $, and $\tilde u = 2\epsilon$, so the equation of state is $\tilde u_\text{nr} = 2 \sqrt 2 \sqrt{\tilde p}$.
+The non-relativistic limit is $\mu_I^2 = m_\pi^2(1 + \epsilon)$ and thus $x^{-2} = 1 + \epsilon$, $\epsilon \ll 1$.
+With this we get $\tilde p = \epsilon^2 / 2 $, and $\tilde u = 2\epsilon$, so the equation of state is $\tilde u_\text{nr} = \sqrt 8 \sqrt{\tilde p}$.
+The isospin density, and thus the pion number density, is $n_I = 2 \frac{u_0}{\bar m} \epsilon$, and we can therefore write the energy density in this limit as $u = \bar m n_I + \Oh(\epsilon^2)$.
+The energy density is thus dominated by the rest mass as $\epsilon \rightarrow 0$, as we expect from the non-relativistic limit.
 \autoref{fig: equation of state pions} shows the equation of state in two different regimes and compares it with the ultrarelativistic and non-relativistic limit.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.95\textwidth]{../scripts/figurer/pion_star/pion_eos.pdf}
     \caption{
-        This plot shows the leading order equation of state of two-flavor chiral perturbation theory and compares it with the ultrarelativistic and non-relativistic limit, shown as dashed lines. The $x$-axis shows the pressure normalized to $p_0$, while the $y$-axis shows the energy density normalized to $u_0$.
+        The leading order equation of state from two-flavor chiral perturbation theory, in two different regimes.
+        The full equation is shown as a solid line, and is compared to the ultrarelativistic and non-relativistic limit, shown as dashed lines. 
+        The $y$-axis shows the energy density normalized to $u_0$, $x$-axis shows the pressure normalized to $p_0$.
+        We have chosen $p_0 = u_0$.
     }
     \label{fig: equation of state pions}
 \end{figure}
@@ -102,28 +107,29 @@ We, therefore, expect both the radius and mass of the pion star to be around one
 
 \subsection{Limiting radius}
 
-We found that the non-relativisitc limit of the equation of state is $\tilde p = 2^{-3} \tilde u^2$, i.e., it is a polytrope with $\gamma = 2$.
+We found that the non-relativisitc limit of the equation of state is $\tilde p =8^{-1} \tilde u^2$, i.e., it is a polytrope with $\gamma = 2$.
 As discussed in \autoref{subsection: Newtonian limit and polytropes}, this corresponds to a situation where the radius of the star is independent of the central pressure, at least in the Newtonian limit of gravity.
 When simulating the Newtonian, non-relativistic limit of the pion star, we should expect the radius to be constant.
-From \autoref{Radius polytrope}, the radius is $R = r_0 C \xi_1$, where $\xi_1$ is the first zero of the Lane-Emden equation with $n = 1$, and
+From \autoref{Radius polytrope}, the radius is $R = C \xi_1$, where
 %
 \begin{equation}
-    C = \frac{1}{\sqrt{4(4\pi ) G u_0}} = \frac{1}{\sqrt{12}}r_0.
+    C = \frac{1}{\sqrt{4(4\pi ) G u_0}} = \frac{1}{\sqrt{12}}r_0,
 \end{equation}
 %
-To find $\xi_1$, we must find the root of
+and $\xi_1$ is the root of the Lane-Emden function $\theta(\xi)$ for polytrope index $n=1$, the solution to
 %
 \begin{equation}
     \theta'' + \frac{2}{\xi} \theta' + \theta = 0.
 \end{equation}
 %
-By substituting $\theta$ for its power series expansion, $\theta = \sum_n a_n \theta^n$, we get
+By substituting $\theta$ for its power series expansion, $\theta = \sum_n a_n \xi^n$, we get
 %
 \begin{equation}
-    \sum_n \left[ (n+2)(n+1) a_{n+2} + 2(n+1) a_{n+1} \xi^{-1} + a_n \right] \xi^n = 0,
+    \sum_n \left[ (n+2)(n+1) a_{n+2} + 2(n+1) a_{n+1} \xi^{-1} + a_n \right] \xi^n = 0.
 \end{equation}
 %
-and we get the recursion relation $a_{n+2} = - a_n / (n+1)(n+2)$.
+This must be obeyed for arbitrary $\xi$.
+We therefore get the recursion relation $a_{n+2} = - a_n / (n+1)(n+2)$.
 With our boundary condition, the solution is
 %
 \begin{equation}
@@ -154,8 +160,8 @@ This is similar to what we saw in the case of an incompressible fluid, \autoref{
     \centering
     \includegraphics[width=0.8\textwidth]{../scripts/figurer/pion_star/pressure_mass_pion_star.pdf}
     \caption{
-        Top: The pressure normalized to the central pressure, as a function of radius, normalized to the stellar radius.
-    Bottom: The mass, normalized to stellar mass, within a radius $r$, normalized to the stellar radius.
+    Top: The pressure normalized to the central pressure, as a function of radius, normalized to the stellar radius.
+    Bottom: The mass, normalized to the stellar mass, within a radius $r$, normalized to the stellar radius.
     Both plots show a range of stars with different central pressures, indicated by the color.
     The black dashed line corresponds to the star with the largest mass.
     }
@@ -166,7 +172,8 @@ This is similar to what we saw in the case of an incompressible fluid, \autoref{
     \centering
     \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star.pdf}
     \caption{
-        The plot shows the relationship between the mass and radius of a pion star. Mass is given in units of solar masses, while the radius is measured in kilometers.
+        The lowest order mass-radius relation a pion star using two-flavor chiral perturbation theory.
+        The mass is given in units of solar masses, while the radius is measured in kilometers.
         This line is parameterized by the central pressure $p_c$ of the star, as indicated by the color gradient.
         The dashed black line indicates the theoretical maximum mass for a given radius, and any configuration above it will collapse to a black hole.
         }
@@ -177,7 +184,7 @@ This is similar to what we saw in the case of an incompressible fluid, \autoref{
     \centering
     \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_comparison.pdf}
     \caption{
-        The plot compares the mass-radius relationship of the pion star from the full equation of state and the TOV-equation with various limits.
+        The mass-radius relationship of the pion star from the full, leading-order equation of state from two-flavor chiral perturbation and the TOV equation, compared with results in various limits.
         }
         \label{fig: mass-radius relation pion star comparison}
 \end{figure}
@@ -224,7 +231,7 @@ Below this value, $\alpha = 0$ remains the only solution.
 In the pion condensate phase, the solution is
 %
 \begin{equation}
-    \cos \alpha = \frac{x^2}{1 - \Delta x^2}.
+    \cos \alpha = \frac{x^2}{1 -  x^2 \Delta}.
 \end{equation}
 %
 This reduces to our old solution for $\Delta = 0$, as it should.
@@ -242,8 +249,8 @@ With the same procedure as in the last section, we get the pressure and energy d
     &= \frac{1}{2} 
     \left[
         \frac{1}{x^2} 
-        - x^2 \frac{3 - \Delta x^2}{(1 - \Delta x^2)^2}
-        + 2 + \Delta)
+        - x^2 \frac{3 - x^2 \Delta }{(1 - x^2 \Delta)^2}
+        + 2 + \Delta
     \right].
 \end{align}
 %
@@ -255,6 +262,7 @@ With the same procedure as in the last section, we get the pressure and energy d
         Left: The pressure, normalized to $p_0$, as a function of the chemical potential above the critical value, normalized to $\bar m$.
         Right: The energy density, normalized to $u_0$, also as a function of the chemical potential.
         Results with electromagnetic interaction are shown as dashed lines.
+        The $y$-axis corresponds to different absolute values of isospin-chemical potential, as the critical value of the chemical is changed by the inclusion of electromagnetic interactions, see main text for details.
         }
         \label{fig: pressure and energy with EM interaction}
 \end{figure}
@@ -267,6 +275,7 @@ With the same procedure as in the last section, we get the pressure and energy d
     \caption{
         The equation of state in the pion condensate phase. 
         Results with electromagnetic interactions are shown as dashed lines.
+        The energy density and pressure is normalized to $u_0$ and $p_0 = u_0$.
         }
     \label{fig: eos chpt em interaction}
 \end{figure}
@@ -275,7 +284,7 @@ In the limit $\Delta = 0$, these reduce to \autoref{pressure leading order chpt}
 In the ultra-relativistic limit, that is, for  $x \ll 1$, the behavior is the same as before, and we again approach $p = u$.
 We find the non-relativistic limit by substituting $x^{-2} = 1 + \Delta + \epsilon$.
 To first order in $\epsilon$ we get $\tilde p = \epsilon / 2$, which is the same as before.
-However, the limit of the energy density is slightly perturbed by the inclusion of electromagnetism and is now $\tilde u = 2(1 + \Delta) \tilde \epsilon$.
+However, the limit of the energy density is slightly perturbed by the inclusion of electromagnetism and is now $\tilde u = 2(1 + \Delta) \epsilon$.
 The non-relativistic equation of state is thus still a polytrope of the form $p = K u^2$, however the constant is now $K^{-1} = 8 (1+\Delta)^2$.
 With this, the radius of the polytrope and the limiting radius of the full system changes and is now
 %
@@ -288,22 +297,23 @@ With this, the radius of the polytrope and the limiting radius of the full syste
 \autoref{fig: pressure and energy with EM interaction} shows the pressure and energy density, normalized to their characteristic quantities, as a function of chemical potential above the critical value, normalized to $\bar m$.
 \autoref{fig: eos chpt em interaction} shows the equation of state.
 The results with and without electromagnetic results are compared.
+We see that the inclusion of electromagnetic contributions results in a less stiff equation of state; a given pressure correspond to a higher energy density when including electromagnetic interactions.
 
 \autoref{fig: mass-radius relation leading order pion star with em interaction} shows the mass-radius reaction of the pion star when the electromagnetic interaction is taken into account.
 We see that the shape of the curve has not changed much from our earlier result. 
 Both the maximum mass and radius are slightly smaller.
 The new result for maximum radius, $R_\text{max} = 80.35 \, \text{km}$, is in excellent agreement with our expectation, \autoref{maximum mass pion star with em interaction}.
 The result with and without electromagnetic interaction is compared in \autoref{fig: mass-radius relation comparison}.
-
+As discussed in \autoref{section: cold fermi star}, we expect a stiffer equation of state to correspond to a more massive star, as happens in this case.
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star_EM.pdf}
     \caption{
-        The mass-radius relation of a pion star including the electromagnetic interactions. 
-        The relation is parameterized by the logarithm of the central pressure. 
+        The mass-radius relation of a pion star including electromagnetic interactions, parameterized by the logarithm of the central pressure.
         The dashed line shows the absolute limiting mass for a given radius.
         The cross indicates the maximum mass configuration, and the dot the maximum radius configuration.
+        The mass is given in units of solar masses, while the radius is in kilometers.
         }
     \label{fig: mass-radius relation leading order pion star with em interaction}
 \end{figure}

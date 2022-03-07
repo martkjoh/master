@@ -13,7 +13,7 @@ To construct the Lagrangian of chiral perturbation theory we start with the Lagr
     \Ell^0_\text{QCD} = i \bar q \slashed D q - \frac{1}{4} G^\alpha_{\mu \nu} G_\alpha^{\mu \nu}
 \end{equation}
 %
-As discussed in last section, this Lagrangian is invariant under the full symmetry group $G = \Lie{U}{1}_V \times \Lie{SU}{N_f}_R \times \Lie{SU}{N_f}_L$, but the system undergoes spontaneous symmetry breaking to the smaller group $H = \Lie{SU}{N_f}_V$.
+As discussed in last section, this Lagrangian is invariant under the full symmetry group $G = \Lie{SU}{N_f}_R \times \Lie{SU}{N_f}_L$, but the system undergoes spontaneous symmetry breaking to the smaller group $H = \Lie{SU}{N_f}_V$.
 As we found in \autoref{seciton: ccwz construction}, the low energy dynamics will therefore be described by a $G/H = \Lie{SU}{N_f}_A$-valued field $\Sigma$.
 Let $g \in G$.
 We write $g = (U_L, U_R)$, where $U_R \in \Lie{SU}{N_f}_R$, $U_L \in \Lie{SU}{N_f}_L$.
@@ -105,6 +105,7 @@ The Lagrangian is
 \todo{Hva er grunnen til valgene av fortegn?}
 Here, $s$, $p$, $v_\mu$ and $a_\mu$ are all $N_f\times N_f$ matrices acting on the flavor indices.
 They are, respectively, the scalar, pseudo-scalar, vector, and pseudo-vector currents.
+\todo[]{Can we allow for them to have a trace?}
 We denote these currents collectively as $j = (s, p, v^\mu, a^\mu)$.
 The masses of the quarks are accounted for by setting the scalar current $s = m + \tilde s$.
 Here, $m$ is the mass matrix of the quarks, while $\tilde s$ are possible other scalar currents.
@@ -115,9 +116,7 @@ We define the right handed and left handed currents as
     r_\mu = v_\mu + a_\mu, \quad l_\mu = v_\mu - a_\mu
 \end{equation}
 %
-
-When we 
-
+\todo[]{Write about gaugeing the symmetry}
 
 Including dynamical fields, such as the photon field $\mathcal A_\mu$, is slightly more complicated.
 The electromagnetic interactions is a gauge theory with gauge group  $\Lie{U}{1}_\text{EM}$, a subgroup of $G$.
@@ -175,6 +174,7 @@ We now define the effective Lagrangian of $\chpt$, $\Ell_\text{eff}$ as
 
 \subsection{Building blocks}
 
+\todo[inline]{Write summary of included}
 Covariant derivative
 %
 \begin{equation}
@@ -194,16 +194,11 @@ Field strength tensor
     \quad f_{\mu \nu}^{(l)} = \partial_\mu l_\nu - \partial_\nu l_\mu - i[l_\mu, l_\nu].
 \end{equation}
 %
-Transformations under $G = \Lie{SU}{N_f}_R \times \Lie{SU}{N_f}_L \times \Lie{U}{1}_V$, where
+Transformations under $\Lie{U}{N_f}_R \times \Lie{U}{N_f}_L$, where
 \begin{align}
-    U_I = P_I \exp{-i \eta_\alpha T_\alpha }, \quad I = R, L,  \quad U_V = \exp{- i \theta}
-\end{align}
-%
-%
-\begin{align}
+    U_I &= e^{-i\theta} \exp{-i \eta_\alpha T_\alpha }, \quad I = R, L. \\
     \Sigma &\rightarrow U_R \Sigma U_L^\dagger, \\
-    r_\mu &\rightarrow U_V U_R (r_\mu + i\partial_\mu) U_R^\dagger U_V^\dagger
-    = U_R^\dagger (r_\mu + i \partial_\mu) U_R^\dagger - \partial_\mu \theta, \quad 
+    r_\mu &\rightarrow U_R (r_\mu + i\partial_\mu) U_R^\dagger, \quad 
     r, R \rightarrow l, L. \\
     \chi &\rightarrow U_R \chi U_L^\dagger \\
     Q_I &\rightarrow U_I Q_I U_I^\dagger, \, I = R, L.

@@ -1,22 +1,19 @@
 \section{The TOV equation}
 \label{section: TOV equation}
 
-This section is in part based on~\autocite{carrollSpacetimeGeometryIntroduction2019,glendenningCompactStarsNuclear2012}.
-We will model a star as being made up of a \emph{perfect fulid}, which is entirely described by its energy density $u$ and pressure $p$.
-The relationship between the pressure and energy density of a substance is called the \emph{equation of state}, or EOS, and has the form
-\begin{equation}
-    \label{EOS}
-    f(p, u, \{\xi_i\}) = 0,
-\end{equation}
-where $\{\xi_i\}$ are possible other thermodynamic variables.
-We will be working at zero temperature, in which case there are no other free thermodynamic variables.
-This allows us to, at least locally, express the energy density as a function of the pressure, $u = u(p)$.
-The stress-energy tensor of a perfect fluid is\todo{Forklar}
+This section is in part based on~\autocite{carrollSpacetimeGeometryIntroduction2019,,weinbergGravitationCosmologyPrinciples1972,glendenningCompactStarsNuclear2012}.
+We will model a star as being made up of a \emph{perfect fulid}.
+A fluid has a velocity field, $v_\mu$, and perfect fluids have zero viscosity and thus no sheer stress.
+Therefore, in the rest frame of the fluid, the stress-energy tensor will be diagonal.
+A perfect fluid is furthermore \emph{isotropic} in its rest frame.
+The stress-energy tensor thus takes the form $\diag(u, -p, -p, -p)$, where $u$ is the energy density and $p$ the pressure.
+We can then construct the stress-energy tensor in an arbitrary frame either by a Lorentz boost or by constructing a covariant tensor expression which gives us the correct equation in the rest frame.
+The result is 
 %
 \begin{equation}
-    T_{\mu \nu} = (u + p) u_\mu u_\nu - p g_{\mu \nu},
-\end{equation} 
-where $u_\mu$ is the 4-velocity of the fluid.
+    T_{\mu \nu} = (u + p) v_\mu v_\nu - p g_{\mu \nu},
+\end{equation}
+We now want an explicit expression for this tensor in our spherically symmetric spacetime.
 In the rest frame of the fluid, we may write 
 \begin{equation}
     v_\mu = \left(v_0, 0, 0, 0\right).
@@ -32,7 +29,7 @@ Using \autoref{spherically symmetric metric}, we see that
     v_0 = e^{\alpha(r)}.
 \end{equation}
 %
-This gives us the stress-energy tensor of the perfect fluid in its rest frame,
+This gives us the stress-energy tensor of the perfect fluid in its rest frame of our spacetime,
 %
 \begin{equation}
     T_{\mu \nu} 
@@ -47,7 +44,9 @@ This gives us the stress-energy tensor of the perfect fluid in its rest frame,
     \right).
 \end{equation}
 %
-We will use the $tt$ and $rr$ components of the Einstein field equations, which are
+
+With the stress-energy tensor, we may now input it into the Einstein field equation.
+We will use the $tt$ and $rr$ components of the equations, 
 %
 \begin{align}
     \label{tt equation}
@@ -139,14 +138,8 @@ the Tolman-Oppenheimer-Volkoff (TOV) equation.
 This equation was first obtained by Oppenheimer and Volkoff in 1939~\autocite{oppenheimerMassiveNeutronCores1939} and was based on earlier work by Tolman~\autocite{tolmanRelativityThermodynamicsCosmology1934}.
 In their paper, Oppenheimer and Volkoff studied the properties of a star made up of cold, degenerate fermions.
 
-To summarize, we have three unknown functions, $u(r)$, $p(r)$, and $m(r)$.
-The equation of state, \autoref{EOS}, determines $u = u(p)$, eliminating one unknown.
-The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_c$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integrated.
-As long as both the pressure and the energy density are positive, and we always are outside the Schwarzschild radius, i.e., $r<2 G m(r)$, then $\odv{p}/{r} \leq 0$ and the pressure is strictly decreasing.
-We define the point where the pressure vanishes as the stellar radius $R$, i.e., $p(R) = 0$.
-Given this, we can solve for all the unknown functions, either analytically or numerically.
 
-With $p(r)$, $u(r)$, and $m(r)$, we can construc the metric.
+With $p(r)$, $u(r)$, and $m(r)$, we can construct the metric.
 We already have the $rr$-component of the metric from \autoref{definition of m(r)}.
 If we combine \autoref{alpha in terms of p and u}, with \autoref{TOV}, we get the solution
 %
@@ -183,8 +176,41 @@ Inserting this into \autoref{spherically symmetric metric} gives the metric for 
 %
 We recognize this as the Schwarzchild metric, \autoref{Schwarzchild metric}.
 This justifies our choice of $m(r)$ as gravitational mass.
-As discussed earlier, the quantity $M$ in the Schwarzschild solution maps onto what we know as mass in the weak-field limit.
+As discussed earlier, the quantity $M$ in the Schwarzschild solution maps corresponds to Newtonian gravitational mass in the weak-field limit.
 
+
+In addition to the dynamics of spacetime, we to know the thermodynamic properties of the matter that make up our star.
+The relationship between the pressure and energy density of a substance is called the \emph{equation of state}, or EOS, and has the form
+\begin{equation}
+    \label{EOS}
+    f(p, u, \{\xi_i\}) = 0,
+\end{equation}
+where $\{\xi_i\}$ are possible other thermodynamic variables.
+This allows us to, at least locally, express the energy density as a function of the pressure, $u = u(p, \{\xi_i\})$, which is what we in this text will call the ``equation of state''.
+Our fluid is by assumption in thermodynamic equilibrium and is therefore bound by the first law of thermodynamics,
+%
+\begin{equation}
+    \label{first law of thermodynamics}
+    \dd U = T \dd S - p \dd V,
+\end{equation}
+%
+where $U = uV$ is the internal energy, $T=1/\beta$ the temperature, $S$ the entropy, and $V$ the volume.
+Given a conserved charge $Q = n V$, which in our case will be particle number and thus $n$ particle number density.
+We will in be concerned with stars at $T = 0$.
+Inserting this into \autoref{first law of thermodynamics}, we get
+%
+\begin{equation}
+    \label{firs law of thermodynamics fluid}
+    \dd\left(\frac{u}{n}\right) = - p \dd \left(\frac{1}{n}\right).
+    % \frac{\dd u}{p + u} = \frac{\dd n}{n}.
+\end{equation}
+
+To summarize, we have three unknown functions, $u(r)$, $p(r)$, and $m(r)$.
+The equation of state, \autoref{EOS}, determines $u = u(p)$, eliminating one unknown.
+The two differential equations \autoref{mass relation} and \autoref{TOV}, together with the boundary conditions $p(0) = p_c$ and $m(0) = 0$, then yield $p(r)$ and $m(r)$ when integrated.
+As long as both the pressure and the energy density are positive, and we always are outside the Schwarzschild radius, i.e., $r<2 G m(r)$, then $\odv{p}/{r} \leq 0$ and the pressure is strictly decreasing.
+We define the point where the pressure vanishes as the stellar radius $R$, i.e., $p(R) = 0$.
+Given this, we can solve for all the unknown functions, either analytically or numerically.
 
 
 We can gain some insight into the system without solving these equations by expressing the problem in terms of dimensionless variables.
@@ -249,14 +275,16 @@ In this limit, the lowest-order contribution to the TOV equation is
 Using the mass equation \autoref{mass relation dimensionless}, we can write this as
 %
 \begin{equation}
+    \label{newtonian limit 2}
     4 \pi \tilde r^2 \odv{\tilde p}{\tilde m}
     = - k' \frac{\tilde m}{\tilde r^2}, 
     \quad k' = \frac{4 \pi}{3} \frac{k_1}{k_2 k_3} = G \frac{m_0^2}{r_0^4 p_0}.
 \end{equation}
 %
-We may derive this equation directly from Newtonian gravity.
+It is illuminating to derive this equation directly from Newtonian gravity.
 Assume we have a static, gravitationally bound ball of matter, as illustrated in \autoref{fig: hydrostatic equillibrium}.
 The force due to the pressure gradient over a thin, spherical shell, $F_p = 4 \pi r^2 \dd p$, must be counteracted by the gravitational force on the same shell, $F_g = - G m \dd m / r^2$.
+Setting $F_g = F_p$, we obtain \autoref{newtonian limit 2}
 
 \begin{figure}[h]
     \centering
@@ -307,13 +335,13 @@ The stellar radius is defined by the first zero of the Lane-Emden function above
 %
 \begin{equation}
     \label{Radius polytrope}
-    \frac{R}{r_0}= C \xi_1  a^{\frac{\gamma-2}{2}}. 
+    R = C \xi_1  a^{\frac{\gamma-2}{2}}. 
 \end{equation}
 %
 The total mass of the star can be integrated using \autoref{mass relation dimensionless} and \autoref{Lane Emden equation},
 %
 \begin{equation}
-    \frac{M}{m_0} = 3 k_2 a^{\frac{3\gamma-4}{2}} C^3 \int^{\xi_1}_0 \dd \xi \, \xi^2 \theta^n = [-3 k_2 \xi_1^2 \theta'(\xi_1)] a^{\frac{3\gamma-4}{2}}.
+    M = \frac{3 k_2 C^3 }{r_0^3}\, a^{\frac{3\gamma-4}{2}}  \int^{\xi_1}_0 \dd \xi \, \xi^2 \theta^n = - \frac{3 k_2 C^3 }{r_0^3}\, \xi_1^2 \theta'(\xi_1)\, a^{\frac{3\gamma-4}{2}}.
 \end{equation}
 %
 Thus, given a specific equation of state, and thus $\gamma$, the mass-radius relationship is given by
@@ -328,7 +356,23 @@ For most values of $\gamma$, the stellar radius will increase as the mass increa
 The only range within which the radius decrease as the mass increase is $\gamma \in \left(\frac{4}{3}, 2 \right)$.
 At $\gamma = \frac{4}{3}$ and $\gamma = 2$, respectively the mass and radius become independent of the central density.
 If included in our figure, these polytropes would correspond to a horizontal and a vertical line.
-\todo[inline]{what about $\gamma = 1$?}
+
+The case of $\gamma = \frac{4}{3}$ was used by Chandrasekhar to find his eponymous upper mass limit for white dwarfs.
+In white dwarfs, most of the energy density is due to the rest mass of nucleons, while the pressure is provided by electron degeneracy.
+In the ultrarelativistic limit, where the Fermi energy of the electrons is much larger than their mass, this results in a polytrope with $\gamma = \frac{4}{3}$.
+As we will see, a pion condensate has a non-relativistic limit with $\gamma = 2$.
+In \autoref{chapter: pion stars}, we will use this to derive an upper limit for the radius of pion stars.
+
+In the case of $\gamma = 1$, we can integrate \autoref{first law of thermodynamics}, and obtain
+%
+\begin{equation}
+    u \propto n^{K + 1},
+\end{equation}
+%
+The non-relativistic limit of massive matter, on the other hand, is $u = m n$, where $m$ is the rest mass of the particles.
+$\gamma = 1$ is thus not a realistic model of low energy matter.
+Rather, it corresponds to radiation, in which case $p = \frac{1}{3} u$, or the ultrarelativistic limit of matter, as we will find later in this text.
+
 
 \begin{figure}[h]
     \centering
