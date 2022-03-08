@@ -103,5 +103,110 @@ Choose, without loss of generality, $n_1 = n_4 = 0$, which leaves $n_2 = \cos\be
 %
 
 
+\section{Feil three-flavor chpt beregning}
+
+We need to parametrize the ground state, as we did in {subsection: parametrization}, and define
+Let
+%
+\begin{equation}
+    \Sigma_\alpha 
+    = \exp{i \alpha n_a \lambda_a} = \cos \alpha + i n_a \lambda_a \sin \alpha,
+    \quad \alpha = \frac{1}{f} \sqrt{\pi_a^0 \pi_a^0}, \quad n_a = \frac{\pi_a^0}{\sqrt{\pi_b^0 \pi_b^0}}. 
+\end{equation}
+%
+The relevant terms are then
+%
+\begin{align}
+    \frac{1}{4} \Tr{\nabla_\mu \Sigma_\alpha \nabla^\mu \Sigma_\alpha^\dagger}
+    & = \frac{1}{2} \sin^2\alpha
+    \left[
+        \mu_I^2 (n_1^2 + n_2^2) 
+        + \frac{1}{4} (\mu_I + 2\mu_s)^2(n_4^2 + n_5^2)
+        + \frac{1}{4} (\mu_I - 2\mu_s)^2(n_6^2 + n_7^2)
+    \right]\\
+    \frac{1}{4} \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger} 
+    & = M_1^2 \cos \alpha
+\end{align}
+%
+We notice that both terms are independent of $\mu_B$.
+With this, the static Hamiltonian is
+%
+\begin{align}
+    \He_0
+    = -\frac{1}{2}f^2\sin^2\alpha
+    \left[
+        \mu_I^2a^2 + \mu_\Kpm^2 b^2  + \mu_\Ko^2 c^2
+    \right]
+    - f^2M_1^2 \cos\alpha
+\end{align}
+%
+We have defined the chemical potentials $\mu_{K^{\pm}} = \frac{1}{2}(\mu_I + 2 \mu_S) = \mu_u - \mu_s$ and $\mu_{K^{\pm}} = \frac{1}{2}(\mu_I - 2 \mu_S) = -\mu_d + \mu_s$, 
+and
+%
+\begin{equation}
+    a^2 = n_1^2 + n_2^2, \quad
+    b^2 = n_4^2 + n_5^2, \quad
+    c^2 = n_6^2 + n_7^2, \quad
+    a^2 + b^2 + c^2 = 1 - n_3^2 - n_8^2.
+\end{equation}
+%
+All the terms with a square chemical potential factors are positive definite, which means that the Hamiltonian will always be minimized by $n_3 = n_8 = 0$.
+Furhtermore, we can without loss of generality chose $n_1 = n_4 = n_6 = 0$.
+This corresponds to changing basis of $\lie{su}{3}$.
+Depending on the signs of $\mu_I$ and $\mu_S$, we must have either $b = 0$ or $c = 0$
+If $\sgn(\mu_I) = \sgn(\mu_S)$, then $\mu_\Kpm > \mu_\Ko$, and $c = 0$.
+Likewise, if $\sgn(\mu_I) = - \sgn(\mu_S)$, then $\mu_\Kpm < \mu_\Ko$, and $b = 0$.
+To begin with, we assume the former.
+Define $a^2 = \cos^2\beta$, which implies $b^2 = \sin^2\beta$.
+The Hamiltonian density is then
+%
+\begin{equation}
+    \He_0 =
+    -\frac{1}{2} f^2
+    \left[
+        \mu_I^2 \cos^2\beta + \mu_\Kpm^2\sin^2\beta
+    \right]
+    \sin^2\alpha
+    -
+    f^2 M_1^2 \cos\alpha.
+\end{equation}
+
+
+The $\beta$ parameter is set, as $\alpha$, by minimizing $\He$.
+We have
+%
+\begin{equation}
+    \pdv{\He}{\beta} = \frac{1}{2} (\mu_I^2 - \mu_\Kpm^2) f^2 \sin^2\alpha\cos2\beta, \quad
+    \pdv[2]{\He}{\beta} = f^2 (\mu_I^2 - \mu_\Kpm^2) \sin^2\alpha\sin2\beta.
+\end{equation}
+%
+We see that, if we are in the pion condensate phase where $\alpha \neq 0$, the stationary points for $\beta$ are $0$ and $\pi/2$.
+However, which one these that is a minimum depends on the sign of $\mu_I^2 - \mu_\Kpm^2$, as this determines the sign of the second derivative.
+For $\mu_I^2 > \mu_\Kpm^2$, $\beta = 0$, while for $\mu_I^2 < \mu_\Kpm^2$ we have $\beta = \pi/2$.
+The analysis for $\sgn(\mu_I) = -\sgn(\mu_S)$ is the same, only with $\mu_\Kpm$ changed to $\mu_\Ko$.
+The different ground states are then
+%
+\begin{equation}
+    \Sigma_0 = \one, \quad
+    \Sigma_\pi = \exp{i\alpha \lambda_2}, \quad
+    \Sigma_\Kpm = \exp{i\alpha \lambda_5}, \quad
+    \Sigma_\Ko = \exp{i\alpha \lambda_7}.
+\end{equation}
+%
+As we found for two flavors, this corresponds to a transformation of the vacuum to a new ground state by, $\Sigma_0 \rightarrow A_\alpha \Sigma_0 A_\alpha$.
+We must therefore transform the excitations around ground state in the same way.
+However, now the transformation depend on which phase we are in.
+We therefore parametrize the fields as
+%
+\begin{align}
+    \Sigma = A^i_\alpha [U(x) \Sigma_0 U(x)] A_\alpha^i, \quad
+    U(x) = \exp{i \frac{\pi_a \lambda_a}{2 f}}, \quad
+    A_\alpha^i = \exp{i \alpha \lambda_i}.
+\end{align}
+%
+Here, there is no sum over $i$.
+Rather, $i = 2$, $5$, or $7$, dependent on if we are in the pion condensate, the charged kaon condensate or neutral kaon condensate.
+
+
 
 \end{document}
