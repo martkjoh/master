@@ -21,6 +21,8 @@ m_pi = m_pi_MeV*MeV/c**2
 m_pipm_MeV = 139.57
 m_pipm = m_pipm_MeV*MeV/c**2
 
+m_K_MeV = 497.61
+
 e = sqrt(4*pi*alpha)
 
 Δm_MeV = sqrt(m_pipm_MeV**2 - m_pi_MeV**2)

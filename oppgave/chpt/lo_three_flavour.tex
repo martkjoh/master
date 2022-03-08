@@ -86,7 +86,7 @@ The baryon number of all mesons, the $\pi_a$'s, is zero, and $\Sigma$ transforms
 As a consequence, any result will be independent of $\mu_B$.
 We can also see this from the fact that $\mu_B$ only appears with the identity matrix $\one$ in $\mu$.
 As a consequence, any dependence on $\mu_B$ in $\nabla_\mu \Sigma$ will vanish as $\one$ commutes with everything.
-
+We will assume $\mu_I, \mu_S>0$.
 
 
 \subsection{Parametrization}
@@ -106,7 +106,7 @@ With this, we get the commutation relations
     [\lambda_i, \lambda_j] = 2i \epsilon_{ijk} \lambda_k,\quad
     ijk \in
     \begin{cases}
-        &\{1, 2, 3\}\\ &\{4, 5, \lambda_Q\}\\ &\{6, 7, \lambda_K\}.
+        &\{1, 2, 3\}\\ &\{4, 5, Q\}\\ &\{6, 7, K\}.
     \end{cases}
 \end{equation}
 %
@@ -120,7 +120,7 @@ To find the ground state, we define
 \end{equation}
 %
 For $\mu_S = 0$, we expect to recover the results from the two-flavor case, which corresponds to $n_1^2 + n_2^2 =1$, $n_a = 0$ for $i>2$.
-As argued earlier, we may chose $n_1 = 0$ without loss of generality, in which case the ground state becomes
+As argued earlier, we may choose $n_1 = 0$ without loss of generality, in which case the ground state becomes
 %
 \begin{equation}
     \Sigma_\alpha^{\pipm} = \exp{i \alpha \lambda_2} = (\one - \lambda^2_2) + \lambda_2^2 \cos\alpha + i \lambda_2\sin\alpha.
@@ -129,17 +129,40 @@ As argued earlier, we may chose $n_1 = 0$ without loss of generality, in which c
 If we define $\mu_\Kpm = \frac{1}{2}(\frac{1}{2}\mu_I + \mu_S)$ and $\mu_\Ko = \frac{1}{2}(\frac{1}{2}\mu_I - \mu_S)$, then we can write the external currents corresponding to $\mu_I$ and $\mu_S$ as
 %
 \begin{equation}
-    \frac{1}{2}\mu_I Q_I + \mu_S Q_8 = \mu_\Kpm Q_{\Kpm} + \mu_\Ko Q_\Ko.
+    \mu = \frac{1}{2}\mu_I Q_I + \mu_S Q_8 = \mu_\Kpm Q_{\Kpm} + \mu_\Ko Q_\Ko.
 \end{equation}
 %
+We assume $\mu_I,\mu_S>0$, so $\mu_\Kpm > \mu_\Ko$.
 Analogously to how turning up $\mu_I$ leads to a condensate in the first $\lie{su}{2}$ subalgebra, we can expect these chemical potentials to lead to a condensation in their respective subalgebra.
-We therefore choose the corresponding vacuums as
+As we work with $\mu_I, \mu_S >0$, we can assume $\mu_\Ko$, in which case we would expect the form
 %
 \begin{align}
-    \Sigma_\alpha^{\Kpm} = \exp{i \alpha \lambda_5} = (\one - \lambda^2_5) + \lambda_5^2 \cos\alpha + i \lambda_5\sin\alpha, \\
-    \Sigma_\alpha^{\K0} = \exp{i \alpha \lambda_7} = (\one - \lambda^2_7) + \lambda_7^2 \cos\alpha + i \lambda_7\sin\alpha.
+    \Sigma_\alpha^{\Kpm} = \exp{i \alpha \lambda_5} = (\one - \lambda^2_5) + \lambda_5^2 \cos\alpha + i \lambda_5\sin\alpha.
 \end{align}
 %
+Similarly, for $\mu_S<0$, we could set $\mu_\Kpm = 0$ and expect a ground state of the form $e^{i\alpha\lambda_7}$.
+In \autocite{kogutQCDSmallNonzero2001}, \citeauthor{kogutQCDSmallNonzero2001} show that exactly this happens. 
+At $\mu_\Kpm^2 = m_K^2 = \frac{1}{2}B(m_u + m_d + 2 m_s)$, we get a charged pion condensate, and a neutral kaon condensate at $\mu_\Ko^2 > m_K^2$.
+However, these domains are overlapping, so there is a first-order phase transition between the different condensates.
+\autoref{fig: phase diagram} show the phase diagram in the $\mu_I, \mu_S$-plane.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{../scripts/figurer/phase_diagram.pdf}
+    \label{fig: phase diagram}
+    \caption{Kladd}
+\end{figure}
+
+
+Excitations in these ground states are parametrized as
+%
+\begin{equation}
+    \Sigma(x) = A^i_\alpha U(x) \Sigma_0 U(x) A^i_\alpha, \quad
+    U(x) = \exp{i \frac{\pi_a \lambda_a}{2 f}}, \quad
+    A_\alpha^i = \exp{i \frac{\alpha \lambda_i}{2}},
+\end{equation}
+%
+where $i = 2, 5, 7$ depending on which ground state we are in.
 
 
 
@@ -165,7 +188,7 @@ The relevant terms are then
     \right](\pi_6^2 + \pi_7^2) 
     + \frac{1}{12} 
     \left[
-        (m_u + m_d + 2m_s) \cosalpha + 2m_s
+        (m_u + m_d + 2m_s) \cos\alpha + 2m_s
     \right] \pi_8^2 \\
     &-\frac{1}{2 \sqrt{3}} (m_u - m_d) \pi_3 \pi_8
     - \frac{1}{2}(m_u + m_d)\sin\alpha \pi_2
