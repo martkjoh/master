@@ -63,23 +63,6 @@
             + l_1 \Tr{\nabla_\mu \Sigma (\nabla^\mu \Sigma)^\dagger}^2+
             \dots
             $ \\
-            \item $\Sigma = \exp\left( i \pi_a \tau_a / f \right) \in \text{SU}(3)$, where $\text{SU}(3)$ is the broken symmetry.
-
-        \end{itemize}
-
-
-    \end{frame}
-
-    \begin{frame}
-        \frametitle{Thermodynamics}
-
-        \begin{textblock}{7}(8.5, 7)
-            \includegraphics[width=\textwidth]{../../scripts/figurer/pion_star/pion_eos_EM.pdf}
-        \end{textblock}
-         
-        \begin{itemize}
-            \itemsep 0.4cm
-            \item With the effective Lagrangian, we can calculate free energy density
             \item $
             \mathcal{F}
             = -\frac{i}{V \beta} 
@@ -89,13 +72,13 @@
                     i \int \dd^4x \, [\mathcal{L}_\text{eff} + \mu J]
                  \right)
             \right]
-            $
-            \item Include isospin and strangeness chemical \\
-            potential, EM-interactions, loops...
-            \item Phase transitions: pion condensation
-            \item Calculate equation of state
+            $, 
+            equation of state $u = u(P)$.
+
         \end{itemize}
+
     \end{frame}
+
 
     \begin{frame}
         \frametitle{Hydrostatic equilibrium}
@@ -113,36 +96,18 @@
             \left(m + 4 \pi r^3 P\right)}
             {\left(1 - \frac{2Gm}{r} \right)}
             ,
-            $ \\
             $
-            \odv{m}{r} = 4 \pi r^2 u
-            $
-            \item Numerical integration gives $P$, $u$ and thus $M$, $R$. 
+            \item Numerical integration gives $P$, $u$ and thus $M$, $R$.
+            \item Found explicit expression for $R_\text{max}= \frac{\pi}{\sqrt{12}} r^0$.
         \end{itemize}
 
         \end{column}
-        \begin{column}{0.6\textwidth}
-            \includegraphics[width=\textwidth]{../../scripts/figurer/pion_star/pressure_mass_pion_star.pdf}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=0.95\textwidth]{../../scripts/figurer/pion_star/pressure_mass_pion_star.pdf}
+            \includegraphics[width=0.8\textwidth]{../../scripts/figurer/pion_star/mass_radius_pion_star_compare.pdf}
         \end{column}
         \end{columns}
     \end{frame}
-
-    \begin{frame}
-        \frametitle{Results}
-        We get a family of results parametrized by central pressure.\\
-        Found explicit expression for $R_\text{max}= \frac{\pi}{\sqrt{12}} r^0$.
-        \vspace{1cm}
-        \begin{columns}
-            \begin{column}{0.55\textwidth}
-                \includegraphics[width=\textwidth]{../../scripts/figurer/pion_star/mass_radius_pion_star.pdf}
-            \end{column}
-            \begin{column}{0.55\textwidth}
-                \includegraphics[width=0.9\textwidth]{../../scripts/figurer/pion_star/mass_radius_pion_star_compare.pdf}
-            \end{column}
-        \end{columns}
-    \end{frame}
-
-
 
 
 \end{document}
