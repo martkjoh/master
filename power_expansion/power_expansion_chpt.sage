@@ -37,7 +37,7 @@ def mat_simp(mat):
 
 def mat_prep(mat, n):
     mat_series(mat, e, n)
-    mat_simp(mat)
+    # mat_simp(mat)
     return mat
 
 def print_e(elem):

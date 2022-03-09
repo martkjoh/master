@@ -72,9 +72,11 @@ v = d*mu
 
 # pi_a tau_a
 
-p = vector([
-    function("pi"+str(i), latex_name="\\pi_"+str(i), conjugate_func=Id)(x) for i  in range(1, len(l)+1)
-])
+x = var("x")
+
+
+p = vector([function("pi"+str(i), latex_name="\\pi_"+str(i))(x) for i  in range(1, len(l)+1)])
+
 pi_s = e * sum([l[i]*p[i] for i in range(len(l))])
 
 
