@@ -127,13 +127,14 @@ With this, the dimensionless energy density at $T = 0$ is
     = \frac{1}{2} \left( 2 + \frac{1}{x^2} - 3 x^2\right).
 \end{equation}
 % 
-The ratio of pressure to energy density is~\autocite{sonQCDFiniteIsospin2001}
+The ratio of pressure to energy density is
 %
 \begin{equation} 
     \label{pressure energy ratio leading order chpt}
-    \frac{p}{u} = \frac{1- x^2}{1+3x^2}.
+    \frac{p}{u} = \frac{1- x^2}{1+3x^2},
 \end{equation}
 %
+which matches earlier results~\autocite{sonQCDFiniteIsospin2001}.
 In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$ and thus $x \rightarrow 0$, we get $p / u = 1$, or $u_\text{ur} = p$.
 The non-relativistic limit is $\mu_I^2 = m_\pi^2(1 + \epsilon)$ and thus $x^{-2} = 1 + \epsilon$, $\epsilon \ll 1$.
 With this we get $\tilde p = \epsilon^2 / 2 $, and $\tilde u = 2\epsilon$, so the equation of state is $\tilde u_\text{nr} = \sqrt 8 \sqrt{\tilde p}$.
@@ -159,15 +160,16 @@ The energy density is thus dominated by the rest mass as $\epsilon \rightarrow 0
 \label{subsection: including electromagnetism lo eos}
 
 
-From \autoref{static lagrangian with EM}, the free energy density, including electromagnetic interactions, is
+From \autoref{static lagragniang three-flavor EM}, the free energy density, including electromagnetic interactions, is
 %
 \begin{equation}
     \Eff =
-    - f^2 \left[
-        \bar m^2 \cos \alpha 
-        + \frac{1}{2} \mu_I^2 \sin^2 \alpha
-        + \frac{1}{2} \Delta m_\pm^2 \left(\cos^2 \alpha - \frac{4}{9}\right)
-    \right].
+    - \frac{1}{2} f^2
+    \left(
+        \mu_I^2 \sin^2\alpha + 2 \bar m^2\cos\alpha 
+        + \Delta m_\text{EM}^2\cos^2\alpha
+        - \frac{1}{3}\Delta m_\text{EM}^2 + m_S^2
+    \right).
 \end{equation}
 %
 Free energy minimization now gives
@@ -178,7 +180,7 @@ Free energy minimization now gives
     \left[ \left( \frac{1}{x^2} - \Delta \right) \cos \alpha - 1\right] \sin \alpha = 0.
 \end{equation}
 %
-Here, $x$ is defined as before, and we introduced the new quantity $\Delta = \Delta m_{\pm}^2 / \bar m^2= 0.06916$.
+Here, $x$ is defined as before, and we introduced the new quantity $\Delta = \Delta m_{\text{EM}}^2 / \bar m^2= 0.06916$.
 We see that the phase transition is raised, the critical chemical potential is now $\mu_I^c = \bar m \sqrt{1 + \Delta}$, the mass of the charged pions.
 Below this value, $\alpha = 0$ remains the only solution.
 In the pion condensate phase, the solution is
@@ -207,6 +209,25 @@ With the same procedure as in the last section, we get the pressure and energy d
     \right].
 \end{align}
 %
+The ration between pressure and energy is now
+%
+\begin{equation}
+    \frac{p_\text{EM}}{u_\text{EM}} 
+    = 
+    \frac{
+        1 - (2\Delta + 1)x^2 + \Delta(\Delta + 1)x^4
+        }{
+        1 + 3x^2 - \Delta (\Delta +1)x^4
+        }.
+\end{equation}
+%
+In the limit $\Delta = 0$, these results reduce to those we found in the last section.
+In the ultra-relativistic limit, that is, for  $x \ll 1$, the behavior is the same as before, and we again approach $p = u$.
+As the mass of the charged pions have changed, the non-relativistic limit is now obtained by substituting $x^{-2} = 1 + \Delta + \epsilon$, for $\epsilon \ll 1$.
+To first order in $\epsilon$ we get $\tilde p = \epsilon / 2$, which is the same as before.
+However, the energy density limit is perturbed by the inclusion of electromagnetism and is now $\tilde u = 2(1 + \Delta) \epsilon$.
+The non-relativistic equation of state is thus still a polytrope of the form $p = K u^2$, however the constant is now $K^{-1} = 8 (1+\Delta)^2$.
+
 
 \begin{figure}[!htb]
     \centering
@@ -232,13 +253,6 @@ With the same procedure as in the last section, we get the pressure and energy d
         }
     \label{fig: eos chpt em interaction}
 \end{figure}
-
-In the limit $\Delta = 0$, these reduce to \autoref{pressure leading order chpt} and \autoref{energy density leading order chpt}.
-In the ultra-relativistic limit, that is, for  $x \ll 1$, the behavior is the same as before, and we again approach $p = u$.
-We find the non-relativistic limit by substituting $x^{-2} = 1 + \Delta + \epsilon$.
-To first order in $\epsilon$ we get $\tilde p = \epsilon / 2$, which is the same as before.
-However, the limit of the energy density is slightly perturbed by the inclusion of electromagnetism and is now $\tilde u = 2(1 + \Delta) \epsilon$.
-The non-relativistic equation of state is thus still a polytrope of the form $p = K u^2$, however the constant is now $K^{-1} = 8 (1+\Delta)^2$.
 
 
 \section{NLO analysis}

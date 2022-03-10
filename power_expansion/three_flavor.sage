@@ -55,19 +55,20 @@ muI = var("muI", latex_name="\\mu_I")
 
 mu = diagonal_matrix([muB/3 + muI/2, muB/3 - muI/2, muB/3 - muS])
 
-v = d*mu
+v_mu = d*mu
 
 # e A_mu
 var("qe", latex_name="e", domain="real")
-var("eA", latex_name="e \\mathcal A_\\mu", domain="real")
+var("A", latex_name="\\mathcal A_\\mu", domain="real")
 var("C")
-Q = diagonal_matrix(2/3, -1/3, -1/3)
+Q = diagonal_matrix( (2/3, -1/3, -1/3))
 
-
+v_em = qe*A*Q
 
 # pi_a tau_a
 
 x = var("x")
+var("f")
 
 
 p = vector([function("pi"+str(i), latex_name="\\pi_"+str(i))(x) for i  in range(1, len(l)+1)])
@@ -76,4 +77,8 @@ pi_s = e * sum([l[i]*p[i] for i in range(len(l))])
 
 
 
+var("dm", latex_name="\\Delta m")
+var("mbar", latex_name="\\bar m")
+var("mS", latex_name="m_S")
+chi = diagonal_matrix((mbar^2 + dm^2, mbar^2-dm^2, mS^2))
 
