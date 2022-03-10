@@ -57,17 +57,12 @@ mu = diagonal_matrix([muB/3 + muI/2, muB/3 - muI/2, muB/3 - muS])
 
 v = d*mu
 
-# # e A_mu
-# var("eA", latex_name="e \\mathcal A_\\mu", domain="real")
+# e A_mu
+var("qe", latex_name="e", domain="real")
+var("eA", latex_name="e \\mathcal A_\\mu", domain="real")
+var("C")
+Q = diagonal_matrix(2/3, -1/3, -1/3)
 
-
-# chi with mass
-
-# var("dm", latex_name="\\Delta m", domain="real")
-# var("mm", latex_name="\\bar m", domain="real")
-# var("B0", latex_name="B_0", domain="real")
-
-# chi = (mm^2 * one + dm^2 * s3)
 
 
 # pi_a tau_a

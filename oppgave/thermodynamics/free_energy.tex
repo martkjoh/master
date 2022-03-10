@@ -1,19 +1,17 @@
+\todo[inline]{Update first paragraph}
+
 With the leading order and next-to-leading order \chpt, Lagrangian, we can now compute thermodynamic properties such as the free energy and the equation of state and investigate the phase transition to the pion condensate phase.
 We will start with the free energy, computing the leading-order contribution to one loop, and the next-to-leading order contribution at tree-level, following the procedure used in~\autocite{adhikariTwoflavorChiralPerturbation2019,martinariaTwoflavorChiralPerturbation2020}.\footnote{Leading order and next-to-leading order, in this context, refers to Weinberg's power counting scheme.}
 
-
-
-\section{*Free energy at lowest order}
-\label{section: free energy at lowest order}
-\todo[inline]{Include em/three flavour}
-
-The free energy density of a homogenous system is
+In our case, we are working with a homogenous system, in which we may write the free energy as $F = V\Eff$, where $\Eff$ is the \emph{free energy density}.
+We work in the grand canonical ensemble, so this is the grand canonical free energy, also called the grand canonical potential.
+It is related to the partition function of statistical mechanics, $\mathcal{Z}$, by
 %
 \begin{equation}
     \Eff = - \frac{1}{V \beta} \ln \mathcal{Z}.
 \end{equation}
 %
-Here, $\mathcal{Z}$ is the partition function, $V$ is the volume of space, and $\beta = 1/T$ is inverse temperature.
+Here, $V$ is the volume, and $\beta = 1/T$ is inverse temperature.
 Using imaginary-time formalism for thermal field theory, described in \autoref{appendix: thermal field theory}, we find that the partition function is given by the path integral of the \emph{Euclidean} Lagrange density, as shown in equation \autoref{free scalar result 2}.
 In the zero temperature limit  $\beta \rightarrow \infty$, the partition function is related to the generating functional $Z = Z[j]$, as described in \autoref{section: path integral}, by a Wick rotation.
 The free energy density at zero temperature is therefore
@@ -23,66 +21,227 @@ The free energy density at zero temperature is therefore
 \end{equation}
 %
 where $VT$ is the volume of space-time.
-This equals the effective potential in the ground state.
+As we found in \autoref{1PI effective action}, this equals the effective potential in the ground state.
 In \autoref{section: effective action}, we found an explicit formula for this to one-loop order, \autoref{effective potential}.
-We write $\Eff = \Eff^{(0)} + \Eff^{(1)} + \dots$, where $\Eff^{(n)}$ refers to the $n$-loop contributions to the free energy density.
+In \autoref{appendix: consisten expansion}, we show how to expand free energy density and other thermodynamic quantities in a self-consistent way.
 
-
-\subsection{Tree-level contribution}
-
-The tree-level contribution $\Eff^{(0)}$ is the classical potential, which is given by the static ($\pi$-independent) part of the Lagrangian.
-From \autoref{L0} we have the leading order contribution,
+We are after the equation of state, which the free energy density will give us access to.
+The free energy is defined as
 %
 \begin{equation}
-    \label{leading order contribution free energy}
-    \Eff_2^{(0)}
-    = - \Ell_2^{(0)} 
-    = 
-    -f^2   
-    \left(
-        \bar m^2 \cos{\alpha}
-        + \frac{1}{2} \mu_I^2 \sin^2{\alpha}
-    \right),
+    \label{thermodynamic free energy}
+    F(T, V, \mu_I) = U - TS - \mu_I Q_I, 
+    \quad \dd 
+    F = - S \dd T - p \dd V - Q_I \dd \mu_I.
 \end{equation}
 %
-where $\alpha$ parameterizes the ground state.
-This parameter must minimize the free energy, which means that
+In our case, all results are for $T = 0$.
+From \autoref{thermodynamic free energy}, the pressure is given by
 %
-\begin{align}
-    &\pdv{}{\alpha} \Eff_2^{(0)} 
-    = f^2\left(\bar m^2 - \mu_I^2\cos{\alpha}\right)\sin{\alpha}
-    = 0.
-\end{align}
+\begin{equation}
+    \label{pressure form free energy}
+    p = - \left(\pdv{F}{V}\right)_{T, \mu_I} = - \Eff.
+\end{equation}
 %
-This equation defines the relationship between the chemical potential $\mu_I$ and $\alpha$, as illustrated in \autoref{fig: free energy surface}.
-This gives the criterion
+The total isospin is proportional to volume, which means that the isospin density is
 %
-\begin{align}
-    \label{leading order minimization}
-    \alpha \in \{0, \pi\} \quad
-    \mathrm{or} \quad
-    \cos{\alpha} = \frac{\bar m^2}{\mu_I{}^2}.
-\end{align}
+\begin{equation}
+    n_I = \frac{Q_I}{V} = - \frac{1}{V} \left(\pdv{F}{\mu_I}\right)_{T, V}
+    = - \pdv{\Eff}{\mu_I}.
+\end{equation}
 %
-As we see in the figure, $\alpha = \pi$ is a maximum and thus unstable.
-This means that for all values $\mu_I^2 \leq \bar m^2$, we will have $\alpha = 0$, and the system will remain in the vacuum.
+From \autoref{thermodynamic free energy} we get the energy density, $u = U/V$, at $T = 0$, is given by
+%
+\begin{equation}
+    \label{energy density form pressure and isospin}
+    u(\mu_I) = -p(\mu_I) + \mu_I n_I(\mu_I),
+\end{equation}
 
-In our discussion of the effective potential, we also found that the ground state should minimize the classical potential, as shown by \autoref{minimize classical potential}.
-As a consequence, the linear part of the classical potential should vanish.
-The linear part of the classical potential is given by \autoref{L1} to leading order. It reads $\Ve^{(1)} = f(\mu_I{}^2\cos{\alpha} - \bar m^2)\sin{\alpha} \, \pi_1 $, and vanishes given the minimizition criterion \autoref{leading order minimization}.
-\todo[]{include figure}
-\begin{figure}[ht]
+
+\section{Leading order analysis}
+
+The leading order contribution to free energy is given by the static Lagrangian, to first order in Weinberg's power counting scheme.
+We start by assuming $e = 0$, i.e., no electromagnetic interactions.
+We thus get the leading order contribution to the free energy density from \autoref{static three-flavor lagrangian}, and it is
+%
+\begin{equation}
+    \Eff 
+    = 
+    - \frac{1}{2} f^2
+    \left(
+        \mu_I^2 \sin^2\alpha
+        + 2\bar m \cos\alpha
+        + m_S
+    \right).
+\end{equation}
+%
+The parameter $\alpha$ is determined by minimizing $\Eff$ for a given value of $\mu_I$,
+%
+\begin{equation}
+    \pdv{\Eff}{\alpha} = f^2 \left(\bar m^2 - \mu_I^2 \cos \alpha\right) \sin\alpha = 0.
+\end{equation}
+%
+This gives an explicit formula for $\alpha$ in terms of $\mu_I$.
+As long as the chemical potential is lower than the critical value $\mu_I^c = \bar m$, the only solution to this equation is $\alpha = 0$.
+As the chemical potential reaches this critical value, the system undergoes a phase transition from the vacuum phase to the \emph{pion condensate} phase.
+In this new phase, the solution is
+%
+\begin{align}
+    \label{alpha as function of mu lowest order}
+    \cos \alpha = \frac{\bar m^2}{\mu_I^2}.
+\end{align}
+%
+We introduce a dimensionless variable $x^2 = \cos\alpha = \bar m^2 / \mu_I^2$.
+This variable has the domain $[0, 1]$, and $\cos \alpha = x^2$ implies that $\sin^2 \alpha = 1 - x^4$.
+Substituting the dimensionless variable into the free energy density, we get 
+%
+\begin{equation}
+    \Eff = - \frac{u_0}{2} \left( x^2 + \frac{1}{x^2} \right) +\const
+\end{equation}
+%
+We have introduced the characteristic energy density $u_0 = \bar m^2 f^2$.
+As we found in the last section, the pressure is given by negative the free energy density, normalized to $\mu_I = \bar m$, or $x = 1$.
+We choose $p_0 = u_0$, so the dimensionless pressure is
+%
+\begin{equation}
+    \label{pressure leading order chpt}
+    \tilde p = -\frac{1}{p_0} \left(\Eff - \Eff_{x=1}\right) 
+    = \frac{1}{2} \left( x^2 + \frac{1}{x^2} - 2 \right).
+\end{equation}
+%
+The charge density corresponding to a chemical potential is given by minus the derivative of the free energy with respect to that chemical potential. 
+We must, however, not assume any dependence of $\alpha$ on $\mu_I$ when taking this derivative.
+The isospin density therefore is
+%
+\begin{equation}
+    n_I = -\pdv{\Eff}{\mu_I} = \mu_I^2 \sin^2 \alpha 
+    = 
+    \frac{u_0}{\mu_I} \left(\frac{1}{x^2} - x^2\right).
+\end{equation}
+%
+With this, the dimensionless energy density at $T = 0$ is
+%
+\begin{equation}
+    \label{energy density leading order chpt}
+    \tilde u = - \tilde p + \frac{\mu_I n_I}{u_0}
+    = \frac{1}{2} \left( 2 + \frac{1}{x^2} - 3 x^2\right).
+\end{equation}
+% 
+The ratio of pressure to energy density is~\autocite{sonQCDFiniteIsospin2001}
+%
+\begin{equation} 
+    \label{pressure energy ratio leading order chpt}
+    \frac{p}{u} = \frac{1- x^2}{1+3x^2}.
+\end{equation}
+%
+In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$ and thus $x \rightarrow 0$, we get $p / u = 1$, or $u_\text{ur} = p$.
+The non-relativistic limit is $\mu_I^2 = m_\pi^2(1 + \epsilon)$ and thus $x^{-2} = 1 + \epsilon$, $\epsilon \ll 1$.
+With this we get $\tilde p = \epsilon^2 / 2 $, and $\tilde u = 2\epsilon$, so the equation of state is $\tilde u_\text{nr} = \sqrt 8 \sqrt{\tilde p}$.
+The isospin density, and thus the pion number density, is $n_I = 2 \frac{u_0}{\bar m} \epsilon$, and we can therefore write the energy density in this limit as $u = \bar m n_I + \Oh(\epsilon^2)$.
+The energy density is thus dominated by the rest mass as $\epsilon \rightarrow 0$, as we expect from the non-relativistic limit.
+\autoref{fig: equation of state pions} shows the equation of state in two different regimes and compares it with the ultrarelativistic and non-relativistic limit.
+
+\begin{figure}[h]
     \centering
-    % \includegraphics{../scripts/numerikk/plots//free_energy_surface.pdf}
+    \includegraphics[width=0.95\textwidth]{../scripts/figurer/pion_star/pion_eos.pdf}
     \caption{
-        The free energy surface as a function of $\mu_I$ and $\alpha$. $\alpha$ is the found by minimizing $\Eff$ for a given $\mu_I$. This leads to a curve across the free energy surface, as show in the plot.
-        }
-    \label{fig: free energy surface}
+        The leading order equation of state from two-flavor chiral perturbation theory, in two different regimes.
+        The full equation is shown as a solid line, and is compared to the ultrarelativistic and non-relativistic limit, shown as dashed lines. 
+        The $y$-axis shows the energy density normalized to $u_0$, $x$-axis shows the pressure normalized to $p_0$.
+        We have chosen $p_0 = u_0$.
+    }
+    \label{fig: equation of state pions}
 \end{figure}
 
 
 
-\subsection{One-loop contribution}
+\subsection{Including electromagnetism}
+\label{subsection: including electromagnetism lo eos}
+
+
+From \autoref{static lagrangian with EM}, the free energy density, including electromagnetic interactions, is
+%
+\begin{equation}
+    \Eff =
+    - f^2 \left[
+        \bar m^2 \cos \alpha 
+        + \frac{1}{2} \mu_I^2 \sin^2 \alpha
+        + \frac{1}{2} \Delta m_\pm^2 \left(\cos^2 \alpha - \frac{4}{9}\right)
+    \right].
+\end{equation}
+%
+Free energy minimization now gives
+%
+\begin{equation}
+    \frac{1}{u_0}\pdv{\Eff}{\alpha}
+    = 
+    \left[ \left( \frac{1}{x^2} - \Delta \right) \cos \alpha - 1\right] \sin \alpha = 0.
+\end{equation}
+%
+Here, $x$ is defined as before, and we introduced the new quantity $\Delta = \Delta m_{\pm}^2 / \bar m^2= 0.06916$.
+We see that the phase transition is raised, the critical chemical potential is now $\mu_I^c = \bar m \sqrt{1 + \Delta}$, the mass of the charged pions.
+Below this value, $\alpha = 0$ remains the only solution.
+In the pion condensate phase, the solution is
+%
+\begin{equation}
+    \cos \alpha = \frac{x^2}{1 -  x^2 \Delta}.
+\end{equation}
+%
+This reduces to our old solution for $\Delta = 0$, as it should.
+With the same procedure as in the last section, we get the pressure and energy density
+%
+\begin{align}
+    \tilde p_\text{EM} \
+    & = \frac{1}{2} 
+    \left[
+        \frac{1}{x^2} 
+        + \frac{x^2}{1 - x^2 \Delta} 
+        - 2 - \Delta
+    \right], \\
+    \tilde u_\text{EM}
+    &= \frac{1}{2} 
+    \left[
+        \frac{1}{x^2} 
+        - x^2 \frac{3 - x^2 \Delta }{(1 - x^2 \Delta)^2}
+        + 2 + \Delta
+    \right].
+\end{align}
+%
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../scripts/figurer/pion_star/pion_up.pdf}
+    \caption{
+        Left: The pressure, normalized to $p_0$, as a function of the chemical potential above the critical value, normalized to $\bar m$.
+        Right: The energy density, normalized to $u_0$, also as a function of the chemical potential.
+        Results with electromagnetic interaction are shown as dashed lines.
+        The $y$-axis corresponds to different absolute values of isospin-chemical potential, as the critical value of the chemical is changed by the inclusion of electromagnetic interactions, see main text for details.
+        }
+        \label{fig: pressure and energy with EM interaction}
+\end{figure}
+
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.65\textwidth]{../scripts/figurer/pion_star/pion_eos_EM.pdf}
+    \caption{
+        The equation of state in the pion condensate phase. 
+        Results with electromagnetic interactions are shown as dashed lines.
+        The energy density and pressure is normalized to $u_0$ and $p_0 = u_0$.
+        }
+    \label{fig: eos chpt em interaction}
+\end{figure}
+
+In the limit $\Delta = 0$, these reduce to \autoref{pressure leading order chpt} and \autoref{energy density leading order chpt}.
+In the ultra-relativistic limit, that is, for  $x \ll 1$, the behavior is the same as before, and we again approach $p = u$.
+We find the non-relativistic limit by substituting $x^{-2} = 1 + \Delta + \epsilon$.
+To first order in $\epsilon$ we get $\tilde p = \epsilon / 2$, which is the same as before.
+However, the limit of the energy density is slightly perturbed by the inclusion of electromagnetism and is now $\tilde u = 2(1 + \Delta) \epsilon$.
+The non-relativistic equation of state is thus still a polytrope of the form $p = K u^2$, however the constant is now $K^{-1} = 8 (1+\Delta)^2$.
+
+
+\section{NLO analysis}
 
 The one-loop contribution to the free energy density is
 %

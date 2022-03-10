@@ -1,10 +1,6 @@
 \section{Three-flavor \chpt\ to leading order}
 \label{section: three-flavor chpt to leading order}
 
-
-
-\subsection{Ground state}
-
 For $N_f = 3$, the generators are $T_\alpha = \frac{1}{2} \lambda_\alpha$, where $\lambda_\alpha$ are the Gell-Mann matrices, as shown in \autoref{section: algebra bases}.
 The mass matrix is now
 %
@@ -17,7 +13,27 @@ The mass matrix is now
     \end{pmatrix},
 \end{equation}
 %
-and the charge matrix is
+We define 
+%
+%
+\begin{equation}
+    \chi = 2B_0 m = 
+    \begin{pmatrix}
+        \bar m^2 + \Delta m^2 & 0 &0\\
+        0& \bar m^2 - \Delta m^2 & 0 \\
+        0&0&m_S^2
+    \end{pmatrix},
+\end{equation}
+%
+where
+%
+\begin{equation}
+    \bar m^2 =  B_0(m_u + m_d),\quad 
+    \Delta m^2 = B_0(m_u - m_d), \quad
+    m_S^2 = 2B_0 m_s.
+\end{equation}
+%
+The charge matrix is
 %
 \begin{equation}
     Q = \frac{1}{3}
@@ -39,21 +55,11 @@ The leading order Lagrangian still has the same form,
     + e^2 C \Tr{\Sigma Q \Sigma^\dagger Q},
 \end{equation}
 %
-where
-%
-\begin{equation}
-    \chi = 2B_0 m =  \frac{2}{3} M_1^2 \one + M_2^2 \lambda_3 + M_3^2 \lambda_8,
-\end{equation}
-%
-and
-%
-\begin{equation}
-    M_1^2 = B_0 (m_u + m_d + m_s), \quad
-    M_2^2 = B_0 (m_u - m_d), \quad
-    M_3^2 = \frac{1}{\sqrt 3} B_0 (m_u + m_d - 2m_S).
-\end{equation}
-%
-To find the ground state, we start with $e = 0$.
+
+
+\subsection{Ground state}
+
+We will start the analysis by assuming $e = 0$, and then reintroduce electromagnetic interactions later.
 The covariant derivative is then
 %
 \begin{equation}
@@ -89,8 +95,6 @@ We can also see this from the fact that $\mu_B$ only appears with the identity m
 As a consequence, any dependence on $\mu_B$ in $\nabla_\mu \Sigma$ will vanish as $\one$ commutes with everything.
 We will assume $\mu_I, \mu_S>0$.
 
-
-\subsection{Parametrization}
 
 From the structure constants of $\lie{su}{3}$, \autoref{structure constants su(3)}, we see that we can create three independent $\lie{su}{2}$ sub-algebras.
 We introduce the matrices
@@ -171,6 +175,7 @@ We start working in the pion condensate phase, so $i = 2$, and assume $\mu_I > 0
 Inserting this into \autoref{leading order three-flavor lagrangian}, and expending up to and including $\Oh\left((\pi/f)^2\right)$, we get
 %
 \begin{align}
+    \label{static three-flavor lagrangian}
     \Ell_2^{(0)} 
     &=
     \frac{1}{2} f^2
@@ -179,6 +184,7 @@ Inserting this into \autoref{leading order three-flavor lagrangian}, and expendi
         + 2\bar m \cos\alpha
         + m_S
     \right), \\
+    \label{linear three-flavor lagrangian}
     \Ell_2^{(1)}
     &=
     -f \mu_I \partial_0 \pi_1 \sin\alpha
@@ -186,6 +192,7 @@ Inserting this into \autoref{leading order three-flavor lagrangian}, and expendi
     \left(
         \mu_I^2\cos\alpha - \bar m^2
     \right)\pi_2, \\
+    \label{quadratic three-flavor lagrangian}
     \Ell_2^{(2)} 
     &= 
     \frac{1}{2}\partial_\mu \pi_a \partial^\mu \pi_a
@@ -210,9 +217,6 @@ where
 %
 and
 \begin{align}
-    \bar m^2 &=  B_0(m_u + m_d),\quad 
-    \Delta m^2 = B_0(m_u - m_d), \quad
-    m_S^2 = 2B_0 m_s, \\
     m_\pm^2 &= \frac{1}{2} (\bar m^2 \cos\alpha \pm \Delta m^2 + m_S^2),
     \quad
     m^2_{\mu\pm } = \frac{1}{4}\mu_I^2 \cos2\alpha \pm \mu_I\mu_S \cos\alpha + \mu_S^2.
@@ -233,6 +237,7 @@ At $\mu_S = \mu_I = 0$ and $\alpha = 0$, the off-diagonal terms $m_{ab}$ vanish,
 In the $K^\pm$-condensate, we get
 %
 \begin{align}
+    \label{static three-flavor lagrangian kaon condensate}
     \Ell^{(0)}_2 
     & =
     \frac{1}{2}f^2 
@@ -241,6 +246,7 @@ In the $K^\pm$-condensate, we get
         + 2m^2_\Kpm \cos\alpha
         + \bar m^2 - \Delta m^2
     \right), \\
+    \label{linear three-flavor lagrangian kaon condensate}
     \Ell_2^{(1)}
     & 
     =
@@ -250,6 +256,7 @@ In the $K^\pm$-condensate, we get
         \mu_\Kpm^2 \cos\alpha
         -m_\Kpm^2
     \right)\pi_5\\
+    \label{quadratic three-flavor lagrangian kaon condensate}
     \Ell_2^{(1)}
     & =
     \frac{1}{2} \partial_\mu \pi_a \partial^\mu \pi_a

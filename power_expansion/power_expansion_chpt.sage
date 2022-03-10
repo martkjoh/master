@@ -59,6 +59,13 @@ def print_e2(elem):
             pretty_print(s.factor().full_simplify())
 
 
+def print_coeff(elem):
+    coeff = elem.coefficients(e)
+    for i in range(len(coeff)):
+        print(e^coeff[i][1], ":")
+        pretty_print(coeff[i][0].full_simplify())
+
+
 # create terms
 
 def nabla_S_sq_terms(S, v, n):
