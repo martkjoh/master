@@ -17,7 +17,7 @@ mpi = 1
 
 muS = lambda muI : (-mpi**2 + np.sqrt((mpi**2 - muI**2)**2 + 4*mK**2*muI**2) )/ (2*muI)
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(6, 6))
 
 
 muI = np.linspace(0, 4, 500)
@@ -43,9 +43,20 @@ ax.plot(muI[mask3], -(mK - 1/2*muI)[mask3], "k")
 ax.plot(-muI[mask3], (mK - 1/2*muI)[mask3], "k")
 ax.plot(-muI[mask3], -(mK - 1/2*muI)[mask3], "k")
 
+ax.plot([0, 0], [mK, 10], "--k")
+ax.plot([0, 0], [-mK, -10], "--k")
 
-plt.xlim(-2, 2)
+
+plt.xlim(-2.2, 2.2)
 plt.ylim(-5, 5)
+
+plt.text(-0.94, 0, "Normal phase")
+plt.text(1, 4, "$\\langle K^+\\rangle$")
+plt.text(-1.6, -4.6, "$\\langle K^-\\rangle$")
+plt.text(1, -4.6, "$\\langle \\bar K^0\\rangle$")
+plt.text(-1.6, 4, "$\\langle K^0\\rangle$")
+plt.text(1.2, 0, "$\\langle \pi^+\\rangle$")
+plt.text(-1.9, 0, "$\\langle \pi^-\\rangle$")
 
 
 ax.set_xlabel("$\\mu_I / m_\pi$")

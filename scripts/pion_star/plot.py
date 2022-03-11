@@ -5,7 +5,7 @@ import sys
 from numpy import pi, sqrt, log10 as log
 from matplotlib import cm, colors, collections
 
-from pion_star_eos import u_nr, u_ur
+from pion_star_eos import u_nr, u_ur, p
 sys.path.append(sys.path[0] + "/..")
 from integrate_tov import get_u
 from constants import get_const_pion
@@ -210,6 +210,20 @@ def plot_eos():
     fig.savefig("figurer/pion_star/pion_eos.pdf", bbox_inches="tight")
 
 
+def plot_mu():
+    fig, ax = plt.subplots(figsize=(12, 6))
+    p = lambda x: 1/2 * (x**2 + 1/x**2 - 2)
+    mu = np.linspace(1, 10, 100)
+    ax.plot(mu, p(mu), "r-.", label="$ \\tilde p (\\mu_I/m_\\pi)$")
+    ax.set_xlabel("$\\mu / m_\\pi$")
+    ax.set_ylabel("$p / p_0$")
+
+    ax.legend()
+
+    fig.savefig("figurer/pion_star/pion_mu.pdf", bbox_inches="tight")
+
+
+
 def plot_eos_EM():
     p = np.linspace(0, 0.6, 1000)
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -326,10 +340,11 @@ def test():
 # plot_pressure_mass(name="_EM")
 
 # plot_mass_radius()
-plot_mass_radius_compare()
+# plot_mass_radius_compare()
 # plot_mass_radius(name="_EM")
 # plot_mass_radius_compare_EM()
 
 # plot_eos()
+plot_mu()
 # plot_eos_EM()
 # plot_u_p()

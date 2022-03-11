@@ -8,7 +8,7 @@ The vacuum parametrization of the Goldstone bosons is
     \Sigma(x) = \exp{i\frac{\pi_a \lambda_a}{f}}.
 \end{equation}
 %
-The $\pi_a$-fields, of which there are eight, are related to the observed pseudoscalar mesons as~s\autocite{schererIntroductionChiralPerturbation2002}
+The $\pi_a$-fields, of which there are eight, are related to the observed pseudoscalar mesons by~\autocite{schererIntroductionChiralPerturbation2002}
 %
 \begin{equation}
     \pi_a \lambda_a
@@ -26,7 +26,6 @@ The $\pi_a$-fields, of which there are eight, are related to the observed pseudo
     \end{pmatrix}.
 \end{equation}
 %
-
 The mass matrix is now
 %
 \begin{equation}
@@ -38,8 +37,7 @@ The mass matrix is now
     \end{pmatrix},
 \end{equation}
 %
-We define 
-%
+To include this in the effective Lagrangian, we define
 %
 \begin{equation}
     \chi = 2B_0 m = 
@@ -71,7 +69,7 @@ The charge matrix is
     = \frac{1}{2} \left( \lambda_3 + \frac{1}{\sqrt{3}} \lambda_8 \right).
 \end{equation}
 %
-The leading order Lagrangian still has the same form,
+The leading order Lagrangian still has the same form as for $\Lie{SU}{2}$,
 %
 \begin{equation}
     \label{leading order three-flavor lagrangian}
@@ -85,7 +83,7 @@ The leading order Lagrangian still has the same form,
 
 \subsection{Ground state}
 
-We will start the analysis by assuming $e = 0$, and then reintroduce electromagnetic interactions later.
+We will start the analysis by assuming $e = 0$ and then reintroduce electromagnetic interactions later.
 The covariant derivative is then
 %
 \begin{equation}
@@ -114,15 +112,14 @@ Here, $\mu$ is the chemical potential matrix,
 \end{equation}
 %
 where $\mu_B = \frac{3}{2}(\mu_u + \mu_d)$, $\mu_I = \mu_u - \mu_d $ and $\mu_S = \frac{1}{2}(\mu_u + \mu_d)-\mu_s$.
-Here, $\mu_u$, $\mu_d$, and $\mu_s$ are the up, down, and strange quark chemical potentials, while $\mu_B$, $\mu_I$, and $\mu_S$ are the baryon, isospin, and strangeness chemical potentials.
-The baryon number of all mesons, the $\pi_a$'s, is zero, and $\Sigma$ transforms as $\Sigma \rightarrow \Sigma$ under $U(1)_V$, the corresponding symmetry group.
-As a consequence, any result will be independent of $\mu_B$.
-We can also see this from the fact that $\mu_B$ only appears with the identity matrix $\one$ in $\mu$.
-As a consequence, any dependence on $\mu_B$ in $\nabla_\mu \Sigma$ will vanish as $\one$ commutes with everything.
-We will assume $\mu_I, \mu_S>0$.
+Here, $\mu_u$, $\mu_d$, and $\mu_s$ are the up, down, and strange quark chemical potentials, while $\mu_B$, $\mu_I$, and $\mu_S$ are the baryon number, isospin, and strangeness chemical potentials.
+The baryon number of mesons, and thus the $\pi_a$'s, is zero.
+Consequently, $\Sigma$ transforms as $\Sigma \rightarrow \Sigma$ under $U(1)_V$, the symmetry corresponding to the baryon number; it is a baryon number singlet.
+Therefore, the chemical potential corresponding to the baryon number, $\mu_B$, should not affect the final result.
+We can also see this because $\mu_B$ only appears with the identity matrix $\one$ in $\mu$.
+Any dependence on $\mu_B$ in $\nabla_\mu \Sigma$ will vanish as $\one$ commutes with everything.
 
-
-From the structure constants of $\lie{su}{3}$, \autoref{structure constants su(3)}, we see that we can create three independent $\lie{su}{2}$ sub-algebras.
+The $\lie{su}{3}$ Lie algebra has three independent $\lie{su}{2}$ sub-algebras.
 We introduce the matrices
 %
 \begin{equation}
@@ -130,8 +127,8 @@ We introduce the matrices
     \lambda_K = \lambda_3 - \frac{1}{\sqrt{3}}\lambda_8,
 \end{equation}
 %
-which commute, i.e., $[\lambda_Q, \lambda_K] = 0$.
-With this, we get the commutation relations
+From the structure constants, \autoref{structure constants su(3)}, we can conclude that they commute, i.e., $[\lambda_Q, \lambda_K] = 0$.
+Furthermore, we find the commutation relations
 %
 \begin{equation}
     [\lambda_i, \lambda_j] = 2i \epsilon_{ijk} \lambda_k,\quad
@@ -146,7 +143,7 @@ To find the ground state, we define
 %
 \begin{equation}
     \Sigma_\alpha 
-    = \exp{i \alpha n_a \lambda_a} = \cos \alpha + i n_a \lambda_a \sin \alpha,
+    = \exp{i \alpha n_a \lambda_a},
     \quad \alpha = \frac{1}{f} \sqrt{\pi_a^0 \pi_a^0}, \quad n_a = \frac{\pi_a^0}{\sqrt{\pi_b^0 \pi_b^0}}. 
 \end{equation}
 %
@@ -157,38 +154,44 @@ As argued earlier, we may choose $n_1 = 0$ without loss of generality, in which 
     \Sigma_\alpha^{\pipm} = \exp{i \alpha \lambda_2} = (\one - \lambda^2_2) + \lambda_2^2 \cos\alpha + i \lambda_2\sin\alpha.
 \end{equation}
 %
-If we define $\mu_\Kpm = \frac{1}{2}(\frac{1}{2}\mu_I + \mu_S)$ and $\mu_\Ko = \frac{1}{2}(\frac{1}{2}\mu_I - \mu_S)$, then we can write the external currents corresponding to $\mu_I$ and $\mu_S$ as
+If we define $\mu_\Kpm = (\frac{1}{2}\mu_I + \mu_S)$ and $\mu_\Ko = (\frac{1}{2}\mu_I - \mu_S)$, then we can write the external currents corresponding to $\mu_I$ and $\mu_S$ as
 %
 \begin{equation}
-    \mu = \frac{1}{2}\mu_I Q_I + \mu_S Q_8 = \mu_\Kpm Q_{\Kpm} + \mu_\Ko Q_\Ko.
+    \mu = \frac{1}{2}\mu_I \lambda_3 + \frac{1}{3}\mu_S \lambda_8 = \frac{1}{2}\mu_\Kpm \lambda_Q + \frac{1}{2} \mu_\Ko \lambda_K.
 \end{equation}
 %
-We assume $\mu_I,\mu_S>0$, so $\mu_\Kpm > \mu_\Ko$.
-Analogously to how turning up $\mu_I$ leads to a condensate in the first $\lie{su}{2}$ subalgebra, we can expect these chemical potentials to lead to a condensation in their respective subalgebra.
-As we work with $\mu_I, \mu_S >0$, we can assume $\mu_\Ko$, in which case we would expect the form
+Analogously to how turning up $\mu_I$ leads to a condensate in the first $\lie{su}{2}$ subalgebra, we can expect these chemical potentials to lead to different condensates in their respective subalgebras.
+If we assume $\mu_\Ko = 0$, we would expect the new ground state to take the form
 %
 \begin{align}
     \Sigma_\alpha^{\Kpm} = \exp{i \alpha \lambda_5} = (\one - \lambda^2_5) + \lambda_5^2 \cos\alpha + i \lambda_5\sin\alpha.
 \end{align}
 %
-Similarly, for $\mu_S<0$, we could set $\mu_\Kpm = 0$ and expect a ground state of the form $e^{i\alpha\lambda_7}$.
+This analysis extends to all four quadrants of the $\mu_I-\mu_S$ plane.
+If we set $\mu_\Kpm = 0$, we would expect a ground state of the form $e^{i\alpha\lambda_7}$.
 In \autocite{kogutQCDSmallNonzero2001}, \citeauthor{kogutQCDSmallNonzero2001} show that exactly this happens. 
-At $\mu_\Kpm^2 = m_K^2 = \frac{1}{2}B(m_u + m_d + 2 m_s)$, we get a charged pion condensate, and a neutral kaon condensate at $\mu_\Ko^2 > m_K^2$.
-However, these domains are overlapping, so there is a first-order phase transition between the different condensates.
-\autoref{fig: phase diagram} show the phase diagram in the $\mu_I, \mu_S$-plane.
+At $\mu_\Kpm^2 \geq m_K^2 = \bar m + m_S(+\Delta m?)$, we get a charged pion condensate, and a neutral kaon condensate at $\mu_\Ko^2 \geq m_K^2$.\todo[]{skal det egt. være $m_\Kpm$ og $m_\Ko$?}
+However, the domains of the different condensates overlap, so there is a phase transition between the condensates.
+\todo[]{Find the criterion for phase transition between the condensates}
+\autoref{fig: phase diagram} shows the phase diagram in the $\mu_I-\mu_S$-plane.
 
-\begin{figure}
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=0.6\textwidth]{../scripts/figurer/phase_diagram.pdf}
+    \caption{
+        The phase diagram of \chpt\ in the $\mu_I-\mu_S$-plane.
+        Chemical potentials are given in units of then pion mass.
+        The expectation values in each region indicate which particles form a condensate.
+        The dashed lines are first-order phase transitions between the condensates, while the solid line indicates the second-order phase transition from the normal phase of the vacuum to the condensates.
+        }
     \label{fig: phase diagram}
-    \caption{Kladd}
 \end{figure}
 
 
 
-\subsection{Pion condensate phase}
+\subsection{The pion condensate phase}
 
-Excitations in these ground states are parametrized as
+Excitations from the ground states of the different condensates are parametrized as
 %
 \begin{equation}
     \Sigma(x) = A^i_\alpha U(x) \Sigma_0 U(x) A^i_\alpha, \quad
@@ -196,7 +199,7 @@ Excitations in these ground states are parametrized as
     A_\alpha^i = \exp{i \frac{\alpha \lambda_i}{2}},
 \end{equation}
 %
-where $i = 2, 5, 7$ depending on which ground state we are in.
+where $i = 2, 5, 7$ depending on which condensate we are in.
 We start working in the pion condensate phase, so $i = 2$, and assume $\mu_I > 0$ and $e = 0$.
 Inserting this into \autoref{leading order three-flavor lagrangian}, and expending up to and including $\Oh\left((\pi/f)^2\right)$, we get
 %
@@ -270,6 +273,101 @@ At $\mu_S = \mu_I = 0$ and $\alpha = 0$, the off-diagonal terms $m_{ab}$ vanish,
 \end{align}
 %
 
+We now turn to analyze the propagator and spectrum of this theory, following~\autocite{adhikariTwoflavorChiralPerturbation2019,adhikariQuarkPionAxial2021a}.
+The spectrum is given by the zero of the inverse propagator, which in momentum space is
+%
+\begin{align}
+    \nonumber
+    D_{ab}^{-1} 
+    %TODO: Fiks fdv!!! 
+    &= \frac{\delta^2S}{\delta \pi_a \delta \pi_b}
+    =
+    (p^2 - m_a^2)\delta_{ab} + i p_0 m_{ab}\\
+    &= 
+    \begin{pmatrix}
+        p^2 - m_1^2 & -ip_0 m_{12} &&&&&&\\
+        ip_0 m_{12} & p^2 - m_1^2 &&&&&&\\
+        &&p^2 - m_3^2&&&&&\\
+        &&&p^2 - m_4^2&-ip_0 m_{45}&&&\\
+        &&&ip_0 m_{45}&p^2 - m_5^2&&&\\
+        &&&&&p^2 - m_6^2&-ip_0 m_{67}&\\
+        &&&&&ip_0 m_{67}&p^2 - m_7^2&\\
+        &&&&&&&p^2 - m_8^2
+    \end{pmatrix}
+\end{align}
+%
+The spectrum is given by the zeros of the determinant,
+%
+\begin{align}
+    \nonumber
+    \det\left(D^{-1}\right)
+    =
+    (p^2 - m_3^2)(p^2 - m_8^2) 
+    &\left[ (p^2 - m_1^2)(p^2 - m_2^2) + p_0^2m_{12}^2  \right]
+    \left[ (p^2 - m_4^2)(p^2 - m_5^2) + p_0^2m_{45}^2  \right]\\
+    \times&\left[ (p^2 - m_6^2)(p^2 - m_7^2) + p_0^2m_{67}^2  \right]
+    = 0.
+\end{align}
+%
+Writing the four-momentum as $(p_0, \vv p)$, the zeros are
+%
+\begin{align}
+    E_0^2 &= |\vv p | - m_3^2 \\
+    E_\eta^2 &= |\vv p | - m_8^2 \\
+    E_\pipm
+    & = |\vv p|^2 +
+    \frac{1}{2}
+    \left(
+        m_1^2 + m_2^2 + m_{12}^2 
+    \right)
+    \pm 
+    \frac{1}{2}
+    \sqrt{
+        4|\vv p|^2m_{12}^2 
+        +
+        \left(
+            m_1^2 + m_2^2 + m_{12}^2
+        \right)^2
+        - 4 m_1^2 m_2^2
+    }, \\
+    E_\Kpm
+    & = |\vv p|^2 +
+    \frac{1}{2}
+    \left(
+        m_4^2 + m_5^2 + m_{45}^2 
+    \right)
+    \pm 
+    \frac{1}{2}
+    \sqrt{
+        4|\vv p|^2m_{12}^2 
+        +
+        \left(
+            m_4^2 + m_5^2 + m_{45}^2
+        \right)^2
+        - 4 m_4^2 m_5^2
+    },\\
+    E_\Ko
+    & = |\vv p|^2 +
+    \frac{1}{2}
+    \left(
+        m_6^2 + m_7^2 + m_{67}^2 
+    \right)
+    \pm 
+    \frac{1}{2}
+    \sqrt{
+        4|\vv p|^2m_{67}^2 
+        +
+        \left(
+            m_6^2 + m_7^2 + m_{67}^2
+        \right)^2
+        - 4 m_6^2 m_7^2
+    }.
+\end{align}
+\todo[inline]{plot masses, show low-$\mu$ limits, find propagator, hva med $\eta-\pi$-miksing?}
+
+
+
+
 
 
 \subsection{Kaon condensate phase}
@@ -306,6 +404,7 @@ In the $K^\pm$-condensate, we get
 \end{align}
 %
 where
+\todo[]{Sjekk disse}
 %
 \begingroup
 \allowdisplaybreaks
@@ -365,9 +464,10 @@ and
 \end{align}
 \endgroup
 %
-We see that the both the Lagrangian and the masses have a similar structure to the pion condensate, only with $\pi_4$ and $\pi_5$ taking the roles of $\pi_1$ and $\pi_2$, and $\mu_\Kpm$ and $m_\Kpm$ the roles of $\mu_I$ and $\bar m$.
+We see that both the Lagrangian and the masses have a similar structure to the pion condensate, only with $\pi_4$ and $\pi_5$ taking the roles of $\pi_1$ and $\pi_2$, and $\mu_\Kpm$ and $m_\Kpm$ the roles of $\mu_I$ and $\bar m$.
 
 
+ 
 \subsection{Electromagnetic contributions}
 
 We now reintroduce $e$.
@@ -390,9 +490,9 @@ Inserting this into the terms of the leading-order Lagrangian, \autoref{leading 
     + f^2 \left(\bar m^2 + \frac{1}{2} m_S^2 + \frac{2}{3}C e^2\right)\\
     &+ e \mathcal A^\mu 
     (
-        \pi_1 \partial_\mu \pi_2 
-        - \pi_2 \partial_\mu \pi_1 
-        + \pi_4 \partial_\mu \pi_5 
+        \pi_1 \partial_\mu \pi_2
+        - \pi_2 \partial_\mu \pi_1
+        + \pi_4 \partial_\mu \pi_5
         - \pi_5 \partial_\mu \pi_4
     )
     + \frac{1}{2} e^2 \mathcal A^2 (\pi_1^2 +\pi_2^2 + \pi_4^2 +\pi_5^2).
@@ -418,7 +518,7 @@ From the values listed in \autoref{section: units}, we find
 This corresponds to $C = 0.3771 \, u_0 = 5.824 \cdot 10^{-5} \, \text{GeV}^4$.
 \todo[]{Compare/use Urec's results: $C=\times10^{-6}\text{GeV}^4$. Which to use?}
 
-In the pioncondensate, the covariant derivative is
+In the pion condensate, the covariant derivative is
 %
 \begin{equation}
     \nabla_\mu \Sigma = \partial_\mu \Sigma - i [v_\mu, \Sigma],
