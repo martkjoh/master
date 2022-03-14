@@ -80,5 +80,5 @@ pi_s = e * sum([l[i]*p[i] for i in range(len(l))])
 var("dm", latex_name="\\Delta m")
 var("mbar", latex_name="\\bar m")
 var("mS", latex_name="m_S")
-chi = diagonal_matrix((mbar^2 + dm^2, mbar^2-dm^2, mS^2))
+chi = diagonal_matrix((mbar^2 - dm^2, mbar^2 + dm^2, mS^2))
 

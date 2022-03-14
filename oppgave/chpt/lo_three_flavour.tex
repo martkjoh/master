@@ -5,18 +5,18 @@ For $N_f = 3$, the generators are $T_\alpha = \frac{1}{2} \lambda_\alpha$, where
 The vacuum parametrization of the Goldstone bosons is
 %
 \begin{equation}
-    \Sigma(x) = \exp{i\frac{\pi_a \lambda_a}{f}}.
+    \Sigma(x) = \exp{i\frac{\varphi_a \lambda_a}{f}}.
 \end{equation}
 %
-The $\pi_a$-fields, of which there are eight, are related to the observed pseudoscalar mesons by~\autocite{schererIntroductionChiralPerturbation2002}
+The $\varphi_a$-fields, of which there are eight, are related to the observed pseudoscalar mesons by~\autocite{schererIntroductionChiralPerturbation2002}
 %
 \begin{equation}
-    \pi_a \lambda_a
+    \varphi_a \lambda_a
     =
     \begin{pmatrix}
-        \pi_3 + \frac{1}{\sqrt{3}} \pi_8 & \pi_1 - i \pi_2 & \pi_4 - i \pi_5 \\
-        \pi_1 + i \pi_2 & \pi_3 + \frac{1}{\sqrt{3}} \pi_8 & \pi_6 - i \pi_7  \\
-        \pi_4 - i \pi_5 & \pi_6 - i \pi_7  & \frac{2}{\sqrt{3}} \eta
+        \varphi_3 + \frac{1}{\sqrt{3}} \varphi_8 & \varphi_1 - i \varphi_2 & \varphi_4 - i \varphi_5 \\
+        \varphi_1 + i \varphi_2 & \varphi_3 + \frac{1}{\sqrt{3}} \varphi_8 & \varphi_6 - i \varphi_7  \\
+        \varphi_4 - i \varphi_5 & \varphi_6 - i \varphi_7  & \frac{2}{\sqrt{3}} \varphi_8
     \end{pmatrix}
     =
     \begin{pmatrix}
@@ -42,8 +42,8 @@ To include this in the effective Lagrangian, we define
 \begin{equation}
     \chi = 2B_0 m = 
     \begin{pmatrix}
-        \bar m^2 + \Delta m^2 & 0 &0\\
-        0& \bar m^2 - \Delta m^2 & 0 \\
+        \bar m^2 - \Delta m^2 & 0 &0\\
+        0& \bar m^2 + \Delta m^2 & 0 \\
         0&0&m_S^2
     \end{pmatrix},
 \end{equation}
@@ -52,7 +52,7 @@ where
 %
 \begin{equation}
     \bar m^2 =  B_0(m_u + m_d),\quad 
-    \Delta m^2 = B_0(m_u - m_d), \quad
+    \Delta m^2 = B_0(m_d - m_u), \quad
     m_S^2 = 2B_0 m_s.
 \end{equation}
 %
@@ -69,14 +69,14 @@ The charge matrix is
     = \frac{1}{2} \left( \lambda_3 + \frac{1}{\sqrt{3}} \lambda_8 \right).
 \end{equation}
 %
-The leading order Lagrangian still has the same form as for $\Lie{SU}{2}$,
+The leading order Lagrangian has the same form as for $\Lie{SU}{2}$,
 %
 \begin{equation}
     \label{leading order three-flavor lagrangian}
     \Ell_2 
     = \frac{1}{4}f^2 \Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger}
     + \frac{1}{4}f^2 \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
-    + e^2 C \Tr{\Sigma Q \Sigma^\dagger Q},
+    + e^2 C \Tr{\Sigma Q \Sigma^\dagger Q}.
 \end{equation}
 %
 
@@ -104,7 +104,7 @@ Here, $\mu$ is the chemical potential matrix,
     \begin{pmatrix}
         \frac{1}{3}\mu_B + \frac{1}{2}\mu_I & 0 & 0 \\
         0 & \frac{1}{3}\mu_B - \frac{1}{2}\mu_I & 0 \\
-        0 & 0 & \frac{1}{3}\mu_B - \frac{1}{2}\mu_S
+        0 & 0 & \frac{1}{3}\mu_B - \mu_S
     \end{pmatrix}
     = \frac{1}{3}(\mu_B - \mu_S) \one 
     + \frac{1}{2} \mu_I \lambda_3
@@ -138,13 +138,14 @@ Furthermore, we find the commutation relations
     \end{cases}
 \end{equation}
 %
-We here define the Levi-Civita symbol by $\epsilon_{123} = \epsilon_{34Q} =\epsilon_{76K} = 1$.
+We here define the Levi-Civita symbol by $\epsilon_{123} = \epsilon_{34Q} =\epsilon_{76K} = 1$. \todo[]{Dobbeltsjekk rekkefølge på 76K}
+This is the defining commutation relation of $\lie{su}{2}$.
 To find the ground state, we define
 %
 \begin{equation}
     \Sigma_\alpha 
     = \exp{i \alpha n_a \lambda_a},
-    \quad \alpha = \frac{1}{f} \sqrt{\pi_a^0 \pi_a^0}, \quad n_a = \frac{\pi_a^0}{\sqrt{\pi_b^0 \pi_b^0}}. 
+    \quad \alpha = \frac{1}{f} \sqrt{\varphi_a^0 \varphi_a^0}, \quad n_a = \frac{\varphi_a^0}{\sqrt{\varphi_b^0 \varphi_b^0}}. 
 \end{equation}
 %
 For $\mu_S = 0$, we expect to recover the results from the two-flavor case, which corresponds to $n_1^2 + n_2^2 =1$, $n_a = 0$ for $i>2$.
@@ -157,7 +158,7 @@ As argued earlier, we may choose $n_1 = 0$ without loss of generality, in which 
 If we define $\mu_\Kpm = (\frac{1}{2}\mu_I + \mu_S)$ and $\mu_\Ko = (\frac{1}{2}\mu_I - \mu_S)$, then we can write the external currents corresponding to $\mu_I$ and $\mu_S$ as
 %
 \begin{equation}
-    \mu = \frac{1}{2}\mu_I \lambda_3 + \frac{1}{3}\mu_S \lambda_8 = \frac{1}{2}\mu_\Kpm \lambda_Q + \frac{1}{2} \mu_\Ko \lambda_K.
+    \frac{1}{2}\mu_I \lambda_3 + \frac{1}{\sqrt 3}\mu_S \lambda_8 = \frac{1}{2}\mu_\Kpm \lambda_Q + \frac{1}{2} \mu_\Ko \lambda_K.
 \end{equation}
 %
 Analogously to how turning up $\mu_I$ leads to a condensate in the first $\lie{su}{2}$ subalgebra, we can expect these chemical potentials to lead to different condensates in their respective subalgebras.
@@ -189,19 +190,19 @@ However, the domains of the different condensates overlap, so there is a phase t
 
 
 
-\subsection{The pion condensate phase}
+\subsection{The pion condensed phase}
 
 Excitations from the ground states of the different condensates are parametrized as
 %
 \begin{equation}
     \Sigma(x) = A^i_\alpha U(x) \Sigma_0 U(x) A^i_\alpha, \quad
-    U(x) = \exp{i \frac{\pi_a \lambda_a}{2 f}}, \quad
+    U(x) = \exp{i \frac{\varphi_a \lambda_a}{2 f}}, \quad
     A_\alpha^i = \exp{i \frac{\alpha \lambda_i}{2}},
 \end{equation}
 %
-where $i = 2, 5, 7$ depending on which condensate we are in.
+where $i = 2, 5, 7$ depending on which phase we are in.
 We start working in the pion condensate phase, so $i = 2$, and assume $\mu_I > 0$ and $e = 0$.
-Inserting this into \autoref{leading order three-flavor lagrangian}, and expending up to and including $\Oh\left((\pi/f)^2\right)$, we get
+Inserting this into \autoref{leading order three-flavor lagrangian}, and expanding up to and including $\Oh\left((\pi/f)^2\right)$, we get
 %
 \begin{align}
     \label{static three-flavor lagrangian}
@@ -236,14 +237,14 @@ where
 \allowdisplaybreaks
 \begin{align}
     m_{12} & = 2 \mu_I\cos\alpha,\\
-    m_{45} & =\mu_I\cos\alpha + \mu_S, \\
-    m_{76} & = \mu_I\cos\alpha - \mu_S, \\
+    m_{45} & =\mu_I\cos\alpha + 2\mu_S, \\
+    m_{76} & = \mu_I\cos\alpha - 2\mu_S, \\
     m_1^2 &=  \bar m^2\cos\alpha - \mu_I^2 \cos^2\alpha,\\
     m_2^2 &= \bar m^2\cos\alpha - \mu_I^2 \cos2\alpha, \\
     m_3^2 &= \bar m^2\cos\alpha + \mu_I^2 \sin^2\alpha, \\
-    m_4^2 &= m_5^2 = m_+^2 - m_{\mu+}^2, \\
-    m_6^2 &= m_7^2 = m_-^2 - m^2_{\mu-}, \\
-    m_8^2 &= \frac{1}{3} (\bar m\cos\alpha + 2 m_S^2), \\
+    m_4^2 &= m_5^2 = m_-^2 - m_{\mu+}^2, \\
+    m_6^2 &= m_7^2 = m_+^2 - m^2_{\mu-}, \\
+    m_8^2 &= \frac{1}{3} (\bar m^2 \cos\alpha + 2 m_S^2), \\
 \end{align}
 \endgroup
 %
@@ -262,10 +263,10 @@ At $\mu_S = \mu_I = 0$ and $\alpha = 0$, the off-diagonal terms $m_{ab}$ vanish,
     = \bar m^2 
     = B_0(m_u + m_d) = m_\pi^2, \\
     m_4^2 & = m_5^2 
-    = \frac{1}{2} (\bar m^2 + \Delta m^2 + m_S^2) 
+    = \frac{1}{2} (\bar m^2 - \Delta m^2 + m_S^2) 
     = B_0(m_u + m_s) = m_{\Kpm}^2, \\
     m_6^2 &= m_7^2 
-    = \frac{1}{2} (\bar m^2 - \Delta m^2 + m_S^2) 
+    = \frac{1}{2} (\bar m^2 + \Delta m^2 + m_S^2) 
     = B_0(m_d + m_s) = m_{\Ko }^2, \\
     m_8^2 
     &= \frac{1}{3}(\bar m^2  + 2m_S^2) 
@@ -274,6 +275,7 @@ At $\mu_S = \mu_I = 0$ and $\alpha = 0$, the off-diagonal terms $m_{ab}$ vanish,
 %
 
 We now turn to analyze the propagator and spectrum of this theory, following~\autocite{adhikariTwoflavorChiralPerturbation2019,adhikariQuarkPionAxial2021a}.
+
 The spectrum is given by the zero of the inverse propagator, which in momentum space is
 %
 \begin{align}
@@ -286,12 +288,12 @@ The spectrum is given by the zero of the inverse propagator, which in momentum s
     &= 
     \begin{pmatrix}
         p^2 - m_1^2 & -ip_0 m_{12} &&&&&&\\
-        ip_0 m_{12} & p^2 - m_1^2 &&&&&&\\
+        ip_0 m_{12} & p^2 - m_1^2 &&&&&0&\\
         &&p^2 - m_3^2&&&&&\\
         &&&p^2 - m_4^2&-ip_0 m_{45}&&&\\
         &&&ip_0 m_{45}&p^2 - m_5^2&&&\\
         &&&&&p^2 - m_6^2&-ip_0 m_{67}&\\
-        &&&&&ip_0 m_{67}&p^2 - m_7^2&\\
+        &0&&&&ip_0 m_{67}&p^2 - m_7^2&\\
         &&&&&&&p^2 - m_8^2
     \end{pmatrix}
 \end{align}
@@ -314,7 +316,7 @@ Writing the four-momentum as $(p_0, \vv p)$, the zeros are
 \begin{align}
     E_0^2 &= |\vv p | - m_3^2 \\
     E_\eta^2 &= |\vv p | - m_8^2 \\
-    E_\pipm
+    E_\pipm^2
     & = |\vv p|^2 +
     \frac{1}{2}
     \left(
@@ -330,38 +332,14 @@ Writing the four-momentum as $(p_0, \vv p)$, the zeros are
         \right)^2
         - 4 m_1^2 m_2^2
     }, \\
-    E_\Kpm
-    & = |\vv p|^2 +
-    \frac{1}{2}
-    \left(
-        m_4^2 + m_5^2 + m_{45}^2 
-    \right)
-    \pm 
-    \frac{1}{2}
-    \sqrt{
-        4|\vv p|^2m_{12}^2 
-        +
-        \left(
-            m_4^2 + m_5^2 + m_{45}^2
-        \right)^2
-        - 4 m_4^2 m_5^2
-    },\\
-    E_\Ko
-    & = |\vv p|^2 +
-    \frac{1}{2}
-    \left(
-        m_6^2 + m_7^2 + m_{67}^2 
-    \right)
-    \pm 
-    \frac{1}{2}
-    \sqrt{
-        4|\vv p|^2m_{67}^2 
-        +
-        \left(
-            m_6^2 + m_7^2 + m_{67}^2
-        \right)^2
-        - 4 m_6^2 m_7^2
-    }.
+    E_\Kpm^2
+    & = |\vv p|^2 + m_4^2 + \frac{1}{2} m_{45}^2 
+    \pm
+    \frac{1}{2} m_{45} \sqrt{4|\vv p|^2 + 4 m_4^2 + m_{45}^2},\\
+    E_\Ko^2
+    &= |\vv p|^2 + m_6^2 + \frac{1}{2} m_{67}^2 
+    \pm
+    \frac{1}{2} m_{67} \sqrt{4|\vv p|^2 + 4 m_6^2 + m_{67}^2}.
 \end{align}
 \todo[inline]{plot masses, show low-$\mu$ limits, find propagator, hva med $\eta-\pi$-miksing?}
 
@@ -545,3 +523,6 @@ Inserting this in the leading-order Lagrangian \autoref{leading order three-flav
         - \frac{1}{3}\Delta m_\text{EM}^2 + m_S^2
     \right)
 \end{equation}
+
+
+
