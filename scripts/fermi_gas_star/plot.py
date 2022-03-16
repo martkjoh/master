@@ -135,7 +135,10 @@ def plot_mass_radius(name="neutron"):
 
 
     i = np.argmax(M)
-    label ="$M_\\mathrm{max} = " + "{:3f}".format(M[i]*m0) + "\, M_\odot$"
+    label ="$(M, R) = " \
+        + "(%.3f" %(M[i]*m0)\
+        + "\, M_\odot, %.3f" %(R[i]*r0) \
+        + "\, \mathrm{km})$ "
     ax.plot(R[i]*r0, M[i]*m0, "kx", ms=10, label=label)
 
     R_oppenheimer = [21.1, 13.3, 9.5, 6.8, 3.1]
@@ -269,8 +272,8 @@ def plot_mass_of_pc():
 
 
 # plot_norm_pressure_mass()
-# plot_mass_radius()
-plot_mass_radius_compare()
+plot_mass_radius()
+# plot_mass_radius_compare()
 # plot_eos()
 # plot_mass_of_pc()
 

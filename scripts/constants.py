@@ -44,7 +44,7 @@ def get_const_fermi_gas():
     return u0, m0, r0
 
 def get_const_pion():
-    u0 = m_pi**2*f_pi**2 * (c/hbar**3)
+    u0 = m_pi_SI**2*f_pi_SI**2 * (c/hbar**3)
     m0 = c**4 / sqrt(4*pi/3 * u0 * G**3) / M0
     r0 = G * m0*M0 / c**2 / 1e3
     return u0, m0, r0
@@ -69,4 +69,6 @@ if __name__=="__main__":
     # max_radius_pion_star()
     # print(sqrt(3/4)*pi)
 
-    print(( hbar * c / (2* G * m_pi**2) )**(3 / 2) * m_pi / M0)
+    # print(( hbar * c / (2* G * m_pi**2) )**(3 / 2) * m_pi / M0)
+
+    print(Dm**4/m_K0**4)

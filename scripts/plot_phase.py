@@ -10,9 +10,9 @@ plt.rc("axes", grid=True)
 plt.rc("grid", linestyle="--", alpha=1)
 
 
-from constants import m_pi_MeV, m_K_MeV
+from constants import m_pi, m_Kpm
 
-mK = m_K_MeV / m_pi_MeV
+mK = m_Kpm / m_pi
 mpi = 1
 
 muS = lambda muI : (-mpi**2 + np.sqrt((mpi**2 - muI**2)**2 + 4*mK**2*muI**2) )/ (2*muI)
@@ -44,11 +44,11 @@ ax.plot(-muI[mask3], (mK - 1/2*muI)[mask3], "k")
 ax.plot(-muI[mask3], -(mK - 1/2*muI)[mask3], "k")
 
 ax.plot([0, 0], [mK, 10], "--k")
-ax.plot([0, 0], [-mK, -10], "--k")
+# ax.plot([0, 0], [-mK, -10], "--k")
 
 
-plt.xlim(-2.2, 2.2)
-plt.ylim(-5, 5)
+plt.xlim(-0.4, 2.2)
+plt.ylim(0, 5)
 
 plt.text(-0.94, 0, "Normal phase")
 plt.text(1, 4, "$\\langle K^+\\rangle$")
@@ -62,4 +62,5 @@ plt.text(-1.9, 0, "$\\langle \pi^-\\rangle$")
 ax.set_xlabel("$\\mu_I / m_\pi$")
 ax.set_ylabel("$\\mu_S / m_\pi$")
 
-fig.savefig("figurer/phase_diagram.pdf", bbox_inches="tight")
+# fig.savefig("figurer/phase_diagram.pdf", bbox_inches="tight")
+plt.show()

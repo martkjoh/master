@@ -168,11 +168,14 @@ def plot_mass_radius(name=""):
     ax.plot(Rs, 4 / 9 * Rs, "k--", label="$M = \\frac{4}{9} R$")
 
     i = np.argmax(M)
-    label ="$M_\\mathrm{max} = " + "{:3f}".format(M[i]*m0) + "\, M_\odot$"
+    label ="$(M, R) = " \
+        + "(%.3f" %(M[i]*m0)\
+        + "\, M_\odot, %.3f" %(R[i]*r0) \
+        + "\, \mathrm{km})$ "
     ax.plot(R[i]*r0, M[i]*m0, "kx", ms=10, label=label) 
 
     i = np.argmax(R)
-    label ="$R_\\mathrm{max} = " + "{:3f}".format(R[i]*r0) + "\, \mathrm{km}$"
+    label ="$R_\\mathrm{max} = " + "{:.3f}".format(R[i]*r0) + "\, \mathrm{km}$"
     ax.plot(R[i]*r0, M[i]*m0, "ko", ms=10, label=label) 
 
 
@@ -290,14 +293,22 @@ def plot_mass_radius_compare_EM():
     fig, ax = plt.subplots(figsize=(16, 8))
 
     labels = ["Only strong interactions", "EM interactions"]
-    colors = ["tab:blue     ", "k"]
+    colors = ["tab:blue", "k"]
     alpha = [1, 0.8]
     style = ["-","--"]
+    marker = ["x", "*"]
     for i, data in enumerate(datas):
         R, M, pc = [np.array(d) for d in data]
         x, y, z = R*r0, M*m0, log(pc)
 
         ax.plot(x, y, label=labels[i], color=colors[i], ls=style[i], alpha=alpha[i])
+        j = np.argmax(M)
+        label ="$(M, R) = " \
+            + "(%.3f" %(M[j]*m0)\
+            + "\, M_\odot, %.3f" %(R[j]*r0) \
+            + "\, \mathrm{km})$ "
+        ax.plot(R[j]*r0, M[j]*m0, "k", marker=marker[i], ls="", ms=10, label=label)
+
 
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
@@ -342,9 +353,9 @@ def test():
 # plot_mass_radius()
 # plot_mass_radius_compare()
 # plot_mass_radius(name="_EM")
-# plot_mass_radius_compare_EM()
+plot_mass_radius_compare_EM()
 
 # plot_eos()
-plot_mu()
+# plot_mu()
 # plot_eos_EM()
 # plot_u_p()

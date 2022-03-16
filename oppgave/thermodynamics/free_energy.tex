@@ -1,6 +1,7 @@
 In this chapter, we will use the results from \chpt\ to calculate the thermodynamic properties of our system, such as pressure and energy density, and study the phase diagram of \chpt.
 We follow the procedure used in~\autocite{adhikariTwoflavorChiralPerturbation2019,martinariaTwoflavorChiralPerturbation2020}.
 
+\section{Free energy in a homogenous system}
 In our case, we are working with a homogenous system, in which we may write the free energy as $F = V\Eff$, where $\Eff$ is the \emph{free energy density}.
 We use the grand canonical ensemble, so this is the grand canonical free energy, also called the grand canonical potential.
 It is related to the partition function of statistical mechanics, $\mathcal{Z}$, by
@@ -28,31 +29,33 @@ The free energy is defined as
 %
 \begin{equation}
     \label{thermodynamic free energy}
-    F(T, V, \mu_I) = U - TS - \mu_I Q_I, 
+    F(T, V, \mu_I) = U - TS - {\sum}_i \mu_i Q_i, 
     \quad \dd 
-    F = - S \dd T - p \dd V - Q_I \dd \mu_I.
+    F = - S \dd T - p \dd V - {\sum}_i Q_i \dd \mu_i.
 \end{equation}
 %
+Here, $U$ is the energy and $S$ the entropy.
+$Q_i$ are conserved charges, in our case the isospin and strangeness charge, and $\mu_i$ their corresponding chemical potentials.
 In our case, all results are for $T = 0$.
 From \autoref{thermodynamic free energy}, the pressure is given by
 %
 \begin{equation}
     \label{pressure form free energy}
-    p = - \left(\pdv{F}{V}\right)_{T, \mu_I} = - \Eff.
+    p = - \left(\pdv{F}{V}\right)_{T, \mu} = - \Eff.
 \end{equation}
 %
-The total isospin is proportional to volume, which means that the isospin density is
+The total charges are proportional to volume, which means that the corresponding densities are
 %
 \begin{equation}
-    n_I = \frac{Q_I}{V} = - \frac{1}{V} \left(\pdv{F}{\mu_I}\right)_{T, V}
-    = - \pdv{\Eff}{\mu_I}.
+    n_i = \frac{Q_i}{V} = - \frac{1}{V} \left(\pdv{F}{\mu_i}\right)_{T, V,\mu\neq\mu_i}
+    = - \pdv{\Eff}{\mu_i}, \quad i = I, S.
 \end{equation}
 %
 From \autoref{thermodynamic free energy} we get the energy density, $u = U/V$, at $T = 0$, is given by
 %
 \begin{equation}
     \label{energy density form pressure and isospin}
-    u(\mu_I) = -p(\mu_I) + \mu_I n_I(\mu_I),
+    u(\mu_I) = -p(\mu_i) + {\sum }_i\mu_i n_i(\mu_i),
 \end{equation}
 
 
@@ -105,19 +108,21 @@ We choose $p_0 = u_0$, so the dimensionless pressure is
 \begin{equation}
     \label{pressure leading order chpt}
     \tilde p = -\frac{1}{p_0} \left(\Eff - \Eff_{x=1}\right) 
-    = \frac{1}{2} \left( x^2 + \frac{1}{x^2} - 2 \right).
+    % = \frac{1}{2} \left( x^2 + \frac{1}{x^2} - 2 \right).
+    = \frac{1}{2} \left(x - \frac{1}{x}\right)^2.
 \end{equation}
 %
 The charge density corresponding to a chemical potential is given by minus the derivative of the free energy with respect to that chemical potential. 
 We must, however, not assume any dependence of $\alpha$ on $\mu_I$ when taking this derivative.
-The isospin density therefore is
+The isospin density k is
 %
 \begin{equation}
     n_I = -\pdv{\Eff}{\mu_I} = \mu_I^2 \sin^2 \alpha 
     = 
-    \frac{u_0}{\mu_I} \left(\frac{1}{x^2} - x^2\right).
+    \frac{u_0}{\mu_I} \left(\frac{1}{x^2} - x^2\right),
 \end{equation}
 %
+while the strangeness is zero.
 With this, the dimensionless energy density at $T = 0$ is
 %
 \begin{equation}
@@ -192,20 +197,26 @@ This reduces to our old solution for $\Delta = 0$, as it should.
 With the same procedure as in the last section, we get the pressure and energy density
 %
 \begin{align}
-    \tilde p_\text{EM} \
+    \label{pressure with em interaction}
+    \tilde p_\text{EM}
+    % & = \frac{1}{2} 
+    % \left[
+    %     \frac{1}{x^2} - \Delta
+    %     + \frac{x^2}{1 - x^2 \Delta} 
+    %     - 2 
+    % \right], \\
     & = \frac{1}{2} 
-    \left[
-        \frac{1}{x^2} 
-        + \frac{x^2}{1 - x^2 \Delta} 
-        - 2 - \Delta
-    \right], \\
+    \left(
+        \sqrt{\frac{1}{x^2} - \Delta}
+        -\frac{1}{\sqrt{\frac{1}{x^2} - \Delta}} 
+    \right)^2, \\
     \tilde u_\text{EM}
     &= \frac{1}{2} 
-    \left[
+    \left(
         \frac{1}{x^2} 
         - x^2 \frac{3 - x^2 \Delta }{(1 - x^2 \Delta)^2}
         + 2 + \Delta
-    \right].
+    \right).
 \end{align}
 %
 The ration between pressure and energy is now
@@ -257,7 +268,7 @@ The non-relativistic equation of state is thus still a polytrope of the form $p 
 
 
 
-\section{Phase transition}
+\section{Phase transitions}
 
 As the static Lagrangian has the same form in the kaon condensate phase, the analysis will be the same.
 The system will be in the phase whose static Lagrangian minimizes the free energy, or equivalently maximizes the pressure.
@@ -266,15 +277,140 @@ Using \autoref{pressure leading order chpt}, and the similar expression in the k
 %
 \begin{equation}
     p 
-    = \frac{1}{2} m_\Kpm \left( \frac{\mu_\Kpm}{m_\Kpm} - \frac{m_\Kpm}{\mu_\Kpm} \right)^2
+    = \frac{1}{2} f^2 m_\Kpm^2 \left( \frac{\mu_\Kpm}{m_\Kpm} - \frac{m_\Kpm}{\mu_\Kpm} \right)^2
     =
-    \frac{1}{2} m_\pi \left( \frac{\mu_I}{m_\pi} - \frac{m_\pi}{\mu_I} \right)^2.
+    \frac{1}{2} f^2m_\pi^2  \left( \frac{\mu_I}{m_\pi} - \frac{m_\pi}{\mu_I} \right)^2.
 \end{equation}
 %
+Solving for $\mu_\Kpm$, we get
+%
+\begin{equation}
+    \label{transition line pion and charged condensates}
+    \mu_\Kpm =\frac{1}{2\mu_I} \left(\mu_I^2 - m_\pi^2  + \sqrt{(\mu_I^2 - m_\pi^2)^2 + 4\mu_I^2 m_\Kpm^2}\right).
+\end{equation}
+%
+The transitions into the condensates are at $\mu_I = m_\pi$, and $\mu_\Kpm = m_\Kpm$.
+This point, $(\mu_I, \mu_S) = (m_\pi, m_\Kpm - m_\pi/2)$, satisfies \autoref{transition line pion and charged condensates}, and is thus a triple point between the normal phase, $\pipm$ condensate and the $\Kpm$ condensate. 
+
+Similarly, the line between the charged and neutral kaon condensed phase is defined by
+%
+\begin{equation}
+    \frac{1}{2} f^2 m_\Kpm^2 \left( \frac{\mu_\Kpm}{m_\Kpm} - \frac{m_\Kpm}{\mu_\Kpm} \right)^2
+    =
+    \frac{1}{2} f^2 m_\Ko^2 \left( \frac{\mu_\Ko}{m_\Ko} - \frac{m_\Ko}{\mu_\Ko} \right)^2.
+\end{equation}
+%
+The solution is
+%
+\begin{equation}
+    2 \mu_\Kpm 
+    = \frac{1}{\mu_\Ko}
+    \left(
+        \mu_\Ko^2 - m_\Ko^2  + \sqrt{(\mu_\Ko^2 - m_\Ko^2)^2 + 4\mu_\Ko^2m_\Kpm^2}
+    \right).
+\end{equation}
+%
+We can expand this to first order in the difference in mass between the kaons, $m_\Ko^2 - m_\Kpm^2 = \Delta m^2$, which gives
+%
+\begin{align}
+    \nonumber
+    \mu_\Kpm
+    &= \frac{1}{\mu_\Ko} 
+    \left(
+        \mu_\Ko^2 - m_\Ko^2 + \sqrt{(\mu_\Ko^2 + m_\Ko^2)^2 + 4\mu_\Ko^2 \Delta m^2}
+    \right)\\
+    &= \mu_\Ko \left(1 + \frac{\Delta m^2}{\mu_\Ko^2 + m_\Ko^2}\right)
+    + \Oh\left( \frac{\Delta m^4}{ (\mu_\Ko^2 + m_\Ko^2)^2} \right)
+\end{align}
+%
+This is an excellent approximation, as $\Delta m^4 / m_\Ko^4 \approx 4 \times 10^{-4}$.
+The triple point is in this case at $\mu_\Kpm = m_\Kpm$, $\mu_\Ko = m_\Ko$ or $(\mu_I, \mu_S) = (m_\Kpm - m_\Ko, [m_\Kpm+m_\Ko]/2)$.
+If we consider $\Delta m = 0$, then this reduces to $ \mu_\Kpm = \mu_\Ko$, or $\mu_S = 0$, as obtained in~\autocite{kogutQCDSmallNonzero2001}.
+Similar analysis gives the transition line between all phases.
+\autoref{fig: phase diagram} shows the phase diagram in the $\mu_I-\mu_S$-plane.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../scripts/figurer/phase_diagram.pdf}
+    \caption{
+        The phase diagram of \chpt\ in the $\mu_I-\mu_S$-plane.
+        Chemical potentials are given in units of then pion mass.
+        The expectation values in each region indicate which particles form a condensate.
+        The dashed lines are first-order phase transitions between the condensates, while the solid line indicates the second-order phase transition from the normal phase of the vacuum to the condensates.
+        }
+    \label{fig: phase diagram}
+\end{figure}
 
 
+As we have seen, physical quantities such as the pressure and various densities are given by the free energy minimizing state.
+At the line of phase transition, this changes.
+In the pion phase, the isospin and strangeness densities are
+%
+\begin{equation}
+    n_I = - \pdv{\Eff}{\mu_I} = \mu_I \left( 1 - \frac{m_\pi^4}{\mu_I^4} \right), \quad
+    n_S = - \pdv{\Eff}{\mu_S} = 0.
+\end{equation}
+%
+In the charged kaon condensate, they are
+%
+\begin{equation}
+    n_I = - \pdv{\Eff}{\mu_I} = 2 \pdv{\Eff}{\mu_\Kpm}
+    = 2\mu_\Kpm \left( 1 - \frac{m_\Kpm^4}{\mu_\Kpm^4} \right), \quad
+    n_S = - \pdv{\Eff}{\mu_S} = \mu_\Kpm \left( 1 - \frac{m_\Kpm^4}{\mu_\Kpm^4} \right).
+\end{equation}
+%
+At the line of phase transition, $\mu_\Kpm > m_\Kpm$.
+The strangeness density thus jumps discontinuously to a non-zero value.
+This phase transition is therefore of first order.
+In the neutral kaon condensate, the isospin density is
+%
+\begin{equation}
+    n_I = - \pdv{\Eff}{\mu_I} = -2 \pdv{\Eff}{\mu_\Kpm}
+    = - 2 \mu_\Kpm \left( 1 - \frac{m_\Kpm^4}{\mu_\Kpm^4} \right).
+\end{equation}
+%
+This too will change discontinuously between the two kaon condensates.
+Similar arguments hold between all condensates, so phase transitions between condensates are of first order.
 
 
+\subsection{Electromagnetic contribution}
+
+As we found in \autoref{subsection: including electromagnetism lo eos}, the effect of the electromagnetic interaction is to modify the isospin chemical potential by $\mu^2_I \rightarrow \mu^2_I + \Delta m_\text{EM}^2$ in all expressions.
+From the structure of the Lagrangian \autoref{static lagragniang three-flavor EM kaon}, the same will happen in the case of the charged kaon, only the change will be $\mu^2_\Kpm \rightarrow \mu^2_\Kpm + \Delta m_\text{EM}^2$, while from \autoref{static lagrangian neutral kaon} we see that the results will be unchanged by electromagnetic interactions.
+We define the effective chemical potential by ${\mu'}^2 = \mu^2 - \Delta_Em^2$
+The transitions between the normal phase and the condensed phase will now be $\mu'_I = \bar m$ and $\mu_\Kpm' = m_\Kpm$.
+The line between the pion condensed phase and the charged kaon condensed phase is now
+%
+\begin{equation}
+    m_\Kpm^2
+    \left(
+         \frac{{\mu_\Kpm'}}{m_\Kpm}
+         - \frac{m_\Kpm}{{\mu_\Kpm'}^2} 
+        \right)^2
+    =
+    m_\pi^2  
+    \left( 
+        \frac{{\mu_I'}}{m_\pi}
+        - \frac{m_\pi}{{\mu_I'}^2}  
+    \right)^2,
+\end{equation}
+%
+\begin{figure}[!htb]
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\textwidth]{../scripts/figurer/phase_diagram_EM.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \includegraphics[width=\textwidth]{../scripts/figurer/phase_diagram_EM3.pdf}
+        \includegraphics[width=\textwidth]{../scripts/figurer/phase_diagram_EM2.pdf}
+    \end{subfigure}
+    \caption{
+        The phase diagram of \chpt\ in the $\mu_I-\mu_S$-plane.
+        The red lines are including electromagnetic interactions, while the black are without it.
+        To the right we have zoomed in on two of the triple points.
+        }
+    \label{fig: phase diagram EM}
+\end{figure}
 
 
 
