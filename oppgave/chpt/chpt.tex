@@ -17,18 +17,18 @@ As discussed in last section, this Lagrangian is invariant under the full symmet
 As we found in \autoref{seciton: ccwz construction}, the low energy dynamics will therefore be described by a $G/H = \Lie{SU}{N_f}_A$-valued field $\Sigma$.
 Let $g \in G$.
 We write $g = (U_L, U_R)$, where $U_R \in \Lie{SU}{N_f}_R$, $U_L \in \Lie{SU}{N_f}_L$.
-Elements $h \in H$ are then of the form $h = (U, U)$.
+Elements in $H$ are then of the form $(U, U)$, while elements in $G$ are of the for $(U, U^dagger)$.
 A general element $g$ can be written as
 %
 \begin{equation}
-    g = (U_L, U_R) = (1, U_R U_L^\dagger) (U_L, U_L).
+    g = (U_L, U_R) = (1, U_R {U_L}^\dagger) (U_L, U_L).
 \end{equation}
 %
-Since $(U_L, U_L) \in H$, this means that we can write the coset $g H$ as $(1, U_R U_L^\dagger)H$, which gives a way to choose a representative element for each coset.
+Since $(U_L, U_L) \in H$, this means that we can write the coset $g H$ as $(1, U_R {U_L}^\dagger)H$, which gives a way to choose a representative element for each coset.
 We identify
 %
 \begin{equation}
-    \Sigma = U_R U_L^\dagger. 
+    \Sigma = U_R {U_L}^\dagger. 
 \end{equation}
 %
 This is our standard form for elements in $gH$.
@@ -37,21 +37,23 @@ For $\tilde g \in G$, we have
 %
 \begin{equation}
     \tilde g (1, \Sigma)
-    = (\tilde U_L, \tilde U_R) (1, U_R U_L^\dagger)
-    = (1, \tilde U_R (U_R U_L^\dagger) \tilde U_L^\dagger) (\tilde U_L, \tilde U_L)
+    = (\tilde U_L, \tilde U_R) (1, U_R {U_L}^\dagger)
+    = (1, \tilde U_R (U_R {U_L}^\dagger) \tilde {U_L}^\dagger) (\tilde U_L, \tilde U_L)
     = (1, \tilde U_R \Sigma \tilde U_L) \tilde h.
 \end{equation}
 %
 This gives the transformation rule
 \begin{equation}
-    \Sigma \rightarrow \Sigma' = U_R \Sigma U_L^\dagger.
+    \Sigma \rightarrow \Sigma' = U_R \Sigma {U_L}^\dagger.
 \end{equation}
 %
-Under transformations by $h = (U, U^\dagger) \in H$, we have
-\begin{equation}
+This gives simple transformation rules for $(U, U) \in H$ and $(U, U^\dagger) \in G/H$,
+\begin{align}
     \label{sigma transform under H}
-    \Sigma \rightarrow \Sigma' = U \Sigma U^\dagger.
-\end{equation}
+    H:& \quad \Sigma \rightarrow \Sigma' = U \Sigma U^\dagger, \\
+    \label{sigma transform under G/H}
+    G/H:& \quad \Sigma \rightarrow \Sigma' = U \Sigma U.
+\end{align}
 %
 Due to how $G$ factors into two Lie groups, the constituents of the Mauer-Cartan form are 
 \todo[]{hvorfor?}
@@ -198,10 +200,10 @@ Field strength tensor
 Transformations under $\Lie{U}{N_f}_R \times \Lie{U}{N_f}_L$, where
 \begin{align}
     U_I &= e^{-i\theta} \exp{-i \eta_\alpha T_\alpha }, \quad I = R, L. \\
-    \Sigma &\rightarrow U_R \Sigma U_L^\dagger, \\
+    \Sigma &\rightarrow U_R \Sigma {U_L}^\dagger, \\
     r_\mu &\rightarrow U_R (r_\mu + i\partial_\mu) U_R^\dagger, \quad 
     r, R \rightarrow l, L. \\
-    \chi &\rightarrow U_R \chi U_L^\dagger \\
+    \chi &\rightarrow U_R \chi {U_L}^\dagger \\
     Q_I &\rightarrow U_I Q_I U_I^\dagger, \, I = R, L.
 \end{align}
 %

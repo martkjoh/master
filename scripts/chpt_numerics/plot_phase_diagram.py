@@ -190,10 +190,11 @@ fig.savefig("figurer/phase_diagram_EM.pdf", bbox_inches="tight")
 
 ax.set_xlim(0.8, 1.6)
 ax.set_ylim(3.1, 3.4)
-fig.set_size_inches(6, 4)
+fig.set_size_inches(6, 4.8)
 fig.savefig("figurer/phase_diagram_EM2.pdf", bbox_inches="tight")
 
 ax.set_xlim(-0.2, 0.2)
 ax.set_ylim(3.5, 3.8)
-fig.set_size_inches(6, 4)
+fig.set_size_inches(6, 4.8)
+ax.set_xlabel("")
 fig.savefig("figurer/phase_diagram_EM3.pdf", bbox_inches="tight")

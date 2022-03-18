@@ -36,8 +36,8 @@ The free energy is defined as
 %
 Here, $U$ is the energy and $S$ the entropy.
 $Q_i$ are conserved charges, in our case the isospin and strangeness charge, and $\mu_i$ their corresponding chemical potentials.
-In our case, all results are for $T = 0$.
-From \autoref{thermodynamic free energy}, the pressure is given by
+We work with $T = 0$.
+From \autoref{thermodynamic free energy}, the pressure is then given by
 %
 \begin{equation}
     \label{pressure form free energy}
@@ -102,8 +102,8 @@ Substituting the dimensionless variable into the free energy density, we get
 \end{equation}
 %
 We have introduced the characteristic energy density $u_0 = \bar m^2 f^2$.
-As we found in the last section, the pressure is given by negative the free energy density, normalized to $\mu_I = \bar m$, or $x = 1$.
-We choose $p_0 = u_0$, so the dimensionless pressure is
+As we found in the last section, the pressure is given by negative the free energy density. 
+We normalized the pressure to $\mu_I = \bar m$, or $x = 1$, and choose $p_0 = u_0$, so the dimensionless pressure is
 %
 \begin{equation}
     \label{pressure leading order chpt}
@@ -114,7 +114,7 @@ We choose $p_0 = u_0$, so the dimensionless pressure is
 %
 The charge density corresponding to a chemical potential is given by minus the derivative of the free energy with respect to that chemical potential. 
 We must, however, not assume any dependence of $\alpha$ on $\mu_I$ when taking this derivative.
-The isospin density k is
+The isospin density is
 %
 \begin{equation}
     n_I = -\pdv{\Eff}{\mu_I} = \mu_I^2 \sin^2 \alpha 
@@ -190,7 +190,8 @@ Below this value, $\alpha = 0$ remains the only solution.
 In the pion condensate phase, the solution is
 %
 \begin{equation}
-    \cos \alpha = \frac{x^2}{1 -  x^2 \Delta}.
+    \cos \alpha = \frac{\bar m^2}{\mu_I^2 - \Delta m_\text{EM}^2}
+    = \frac{1}{\frac{1}{x^2} -  \Delta}.
 \end{equation}
 %
 This reduces to our old solution for $\Delta = 0$, as it should.
@@ -199,17 +200,17 @@ With the same procedure as in the last section, we get the pressure and energy d
 \begin{align}
     \label{pressure with em interaction}
     \tilde p_\text{EM}
-    % & = \frac{1}{2} 
-    % \left[
-    %     \frac{1}{x^2} - \Delta
-    %     + \frac{x^2}{1 - x^2 \Delta} 
-    %     - 2 
-    % \right], \\
     & = \frac{1}{2} 
     \left(
-        \sqrt{\frac{1}{x^2} - \Delta}
-        -\frac{1}{\sqrt{\frac{1}{x^2} - \Delta}} 
-    \right)^2, \\
+        \frac{1}{x^2} - \Delta
+        + \frac{x^2}{1 - x^2 \Delta} 
+        - 2 
+    \right), \\
+    % & = \frac{1}{2} 
+    % \left(
+    %     \sqrt{\frac{1}{x^2} - \Delta}
+    %     -\frac{1}{\sqrt{\frac{1}{x^2} - \Delta}} 
+    % \right)^2, \\
     \tilde u_\text{EM}
     &= \frac{1}{2} 
     \left(
@@ -270,7 +271,7 @@ The non-relativistic equation of state is thus still a polytrope of the form $p 
 
 \section{Phase transitions}
 
-As the static Lagrangian has the same form in the kaon condensate phase, the analysis will be the same.
+As the static Lagrangian has the same form in the kaon condensate phase as in the pion condensate, the analysis of the phase transition and $\alpha$ as a function of $\mu_\Kpm$ will be the same in the pion condensate.
 The system will be in the phase whose static Lagrangian minimizes the free energy, or equivalently maximizes the pressure.
 We can therefore find the transition line between the condensates by setting pressure of the two condensates equal.
 Using \autoref{pressure leading order chpt}, and the similar expression in the kaon condensate, we get
@@ -291,7 +292,6 @@ Solving for $\mu_\Kpm$, we get
 %
 The transitions into the condensates are at $\mu_I = m_\pi$, and $\mu_\Kpm = m_\Kpm$.
 This point, $(\mu_I, \mu_S) = (m_\pi, m_\Kpm - m_\pi/2)$, satisfies \autoref{transition line pion and charged condensates}, and is thus a triple point between the normal phase, $\pipm$ condensate and the $\Kpm$ condensate. 
-
 Similarly, the line between the charged and neutral kaon condensed phase is defined by
 %
 \begin{equation}
@@ -342,8 +342,6 @@ Similar analysis gives the transition line between all phases.
 \end{figure}
 
 
-As we have seen, physical quantities such as the pressure and various densities are given by the free energy minimizing state.
-At the line of phase transition, this changes.
 In the pion phase, the isospin and strangeness densities are
 %
 \begin{equation}
@@ -370,16 +368,17 @@ In the neutral kaon condensate, the isospin density is
 \end{equation}
 %
 This too will change discontinuously between the two kaon condensates.
-Similar arguments hold between all condensates, so phase transitions between condensates are of first order.
+Similar arguments hold between all condensates.
+This indicates that the transitions between condensates are of \emph{first order}.
+
 
 
 \subsection{Electromagnetic contribution}
 
-As we found in \autoref{subsection: including electromagnetism lo eos}, the effect of the electromagnetic interaction is to modify the isospin chemical potential by $\mu^2_I \rightarrow \mu^2_I + \Delta m_\text{EM}^2$ in all expressions.
+We can describe the effect of electromagnetic interactions on the pressure, as obtained \autoref{subsection: including electromagnetism lo eos}, by modifying the isospin chemical potential by $\mu^2_I \rightarrow \mu^2_I + \Delta m_\text{EM}^2$.
 From the structure of the Lagrangian \autoref{static lagragniang three-flavor EM kaon}, the same will happen in the case of the charged kaon, only the change will be $\mu^2_\Kpm \rightarrow \mu^2_\Kpm + \Delta m_\text{EM}^2$, while from \autoref{static lagrangian neutral kaon} we see that the results will be unchanged by electromagnetic interactions.
-We define the effective chemical potential by ${\mu'}^2 = \mu^2 - \Delta_Em^2$
-The transitions between the normal phase and the condensed phase will now be $\mu'_I = \bar m$ and $\mu_\Kpm' = m_\Kpm$.
-The line between the pion condensed phase and the charged kaon condensed phase is now
+We define the effective chemical potential by ${\mu'}^2 = \mu^2 - \Delta_\text{EM}^2$.
+The transitions between the normal phase and the condensed phase will now be $\mu'_I = \bar m$ and $\mu_\Kpm' = m_\Kpm$, while the line between these condensed phases is now
 %
 \begin{equation}
     m_\Kpm^2
@@ -395,6 +394,29 @@ The line between the pion condensed phase and the charged kaon condensed phase i
     \right)^2,
 \end{equation}
 %
+The neutral pion condensate, on the other hand, remains unchanged by the inclusion of electromagnetic interactions.
+The line between the kaon condensate is thus given by
+%
+\begin{equation}
+    m_\Kpm^2
+    \left(
+         \frac{{\mu_\Kpm'}}{m_\Kpm}
+         - \frac{m_\Kpm}{{\mu_\Kpm'}^2} 
+        \right)^2
+    =
+    m_\Ko^2  
+    \left( 
+        \frac{{\mu_\Ko}}{m_\Ko}
+        - \frac{m_\Ko}{{\mu_\Ko}^2}  
+    \right)^2.
+\end{equation}
+%
+The new phase diagram is shown in \autoref{fig: phase diagram EM} in red, where it is compared with the results without electromagnetic interactions, in black.
+We see that the change is very small, however it affects the pion condensation more than the charged kaon.
+Although the electromagnetic contribution to the \emph{square} of the mass is the same by Dashen's theorem, $\Delta m_\text{EM}^2$, the absolute shift will depend on the ration between $\Delta m_\text{EM}$ and the non-electromagnetic mass.
+This is thus lower for the heavier kaon.
+The line between the kaon condensates is moved slightly closer to $\mu_I = 0$, as the electromagnetic contribution to the lighter charged kaon mass reduces the difference between its and the neutral kaon's mass.
+
 \begin{figure}[!htb]
     \centering
     \begin{subfigure}{0.49\textwidth}
@@ -406,8 +428,9 @@ The line between the pion condensed phase and the charged kaon condensed phase i
     \end{subfigure}
     \caption{
         The phase diagram of \chpt\ in the $\mu_I-\mu_S$-plane.
-        The red lines are including electromagnetic interactions, while the black are without it.
+        The black lines are results without the electromagnetic interactions, while red lines are results including them. 
         To the right we have zoomed in on two of the triple points.
+        At the top is intersection of the normal, neutral kaon condensed and charged kaon condensed phases, while at the bottom is the intersection of the normal, pion condensed and charged kaon condensed phases.
         }
     \label{fig: phase diagram EM}
 \end{figure}
@@ -704,4 +727,3 @@ The total one-loop contribution is then, using \autoref{tilde m1} and \autoref{t
     \right]
     + \Oh(\epsilon).
 \end{align}
-

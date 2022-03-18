@@ -20,7 +20,6 @@ plt.rc("grid", linestyle="--", alpha=1)
 
 lo = lambda x: x.subs(m, 1.).subs(f, f_pi/m_pi).subs(mS, m_S/m_pi).subs(dm, Dm/m_pi)
 
-print((m_Kpm-m_pi/2)/ m_pi)
 # Everything is done in units of m_pi
 m, mS, f = sp.symbols("m, m_S, f")
 # This is usefull to write rational numbers
@@ -52,6 +51,7 @@ m67 = muI*sp.cos(a) - 2*muS
 E0_sq = p**2 + m3_sq
 Eeta_sq = p**2 + m8_sq
 
+
 def get_E(m1_sq, m2_sq, m12, p=p):
     M_sq = (m1_sq + m2_sq + m12**2)
     Ep_sq = \
@@ -63,13 +63,15 @@ def get_E(m1_sq, m2_sq, m12, p=p):
         - 1/2 * sp.sqrt(4 * p**2 * m12**2 + M_sq**2 - 4*m1_sq*m2_sq)
     return Ep_sq, Em_sq
 
-Epip_sq, Epim_sq = get_E(m1_sq, m2_sq, m12)
-EKp_sq, EKm_sq = get_E(m4_sq, m4_sq, m45)
-EK0_sq, EK0bar_sq = get_E(m6_sq, m6_sq, m67)
+
+Epim_sq, Epip_sq = get_E(m1_sq, m2_sq, m12)
+EKm_sq, EKp_sq = get_E(m4_sq, m4_sq, m45)
+EK0bar_sq, EK0_sq = get_E(m6_sq, m6_sq, m67)
+
 
 # first approx to alpha as a function of mu_I, analytical result
 def alpha_0(mu):
-    mu = np.atleast_1d(mu)
+    mu = np.atleast_1d(mu).astype(float)
     morethan_m = mu**2 > np.ones_like(mu)
     a = np.zeros_like(mu)
     a[morethan_m] = arccos((1/mu[morethan_m]**2))
@@ -79,8 +81,8 @@ def alpha_0(mu):
 l = lambda E : lambdify((p, muS, muI, a), lo(E),"numpy") 
 
 mpi0 = lambda muS, muI, a : sqrt(l(E0_sq)(0, muS, muI, a))
-mpip = lambda muS, muI, a : sqrt(l(Epip_sq)(0, muS, muI, a))
-mpim = lambda muS, muI, a : sqrt(l(Epim_sq)(0, muS, muI, a+0j))
+mpip = lambda muS, muI, a : sqrt(l(Epip_sq)(0, muS, muI, a+0j))
+mpim = lambda muS, muI, a : sqrt(l(Epim_sq)(0, muS, muI, a))
 
 mKp = lambda muS, muI, a : sqrt(l(EKp_sq)(0, muS, muI, a+0j))
 mKm = lambda muS, muI, a : sqrt(l(EKm_sq)(0, muS, muI, a+0j))
@@ -89,68 +91,72 @@ mK0bar = lambda muS, muI, a : sqrt(l(EK0bar_sq)(0, muS, muI, a+0j))
 meta = lambda muS, muI, a : sqrt(l(Eeta_sq)(0, muS, muI, a+0j))
 
 
-def plot_pion_masses():
-    fig, ax = plt.subplots(figsize=(8, 5))
-    mu_list = np.linspace(0, 2.5, 100)
+def plot_meson_masses():
+    fig, ax = plt.subplots(2 ,figsize=(10, 14), sharex=True)
+    mu_list = np.linspace(0, 2.5, 400)
     alpha_list = alpha_0(mu_list)
 
-    ax.plot(mu_list, mpi0(0, mu_list, alpha_list), "-", color="tab:blue", label="$m_{0}$")
-    ax.plot(mu_list, mpip(0, mu_list, alpha_list), "r-.", label="$m_{+}$")
-    ax.plot(mu_list, mpim(0, mu_list, alpha_list).real, "k--",  label="$m_{-}$")
+    ax[1].plot(mu_list, mpi0(0, mu_list, alpha_list), "-", color="tab:blue", label="$\\pi^{0}$")
+    ax[1].plot(mu_list, mpip(0, mu_list, alpha_list), "r-.", label="$\\pi^{+}$")
+    ax[1].plot(mu_list, mpim(0, mu_list, alpha_list).real, "k--",  label="$\\pi^{-}$")
 
-    ax.set_xlabel("$\\mu_I/m_\\pi$")
-    ax.set_ylabel("$m/m_\\pi$")
+    muS_n = 0
+    ax[0].plot(mu_list, mKp(muS_n, mu_list, alpha_list), "k--", label="$K^+$")
+    ax[0].plot(mu_list, mKm(muS_n, mu_list, alpha_list), "k-.",  label="$K^-$")
+    ax[0].plot(mu_list, mK0(muS_n, mu_list, alpha_list), "r--", label="$K^0$")
+    ax[0].plot(mu_list, mK0bar(muS_n, mu_list, alpha_list), "r-.",  label="$\\bar K^0$")
+    ax[0].plot(mu_list, meta(muS_n, mu_list, alpha_list), "-", color="tab:blue", label="$\\eta$")
 
-    ax.legend()
-    plt.show()
+    ax[1].set_xlabel("$\\mu_I/m_\\pi$")
+    ax[0].set_ylabel("$m/m_\\pi$")
+    ax[0].set_ylabel("$m/m_\\pi$")
 
-
-def plot_charged_kaon_masses(muS_n):
-    fig, ax = plt.subplots(figsize=(8, 5))
-    mu_list = np.linspace(0, 2.5, 100)
-    alpha_list = alpha_0(mu_list)
+    ax[0].legend()
+    ax[1].legend()
+    fig.savefig("figurer/masses_mesons.pdf", bbox_inches="tight")
     
-    ax.plot(mu_list, mKp(muS_n, mu_list, alpha_list), "k--", label="$K^+$")
-    ax.plot(mu_list, mKm(muS_n, mu_list, alpha_list), "k-.",  label="$K^-$")
-    ax.plot(mu_list, mK0(muS_n, mu_list, alpha_list), "r--", label="$K^0$")
-    ax.plot(mu_list, mK0bar(muS_n, mu_list, alpha_list), "r-.",  label="$\\bar K^0$")
-    ax.plot(mu_list, meta(muS_n, mu_list, alpha_list), ":", color="tab:blue", label="$\\eta$")
+
+def plot_charged_kaon_masses():
+    fig, ax = plt.subplots(figsize=(12, 8))
+    mu_list = np.linspace(0, 2.5, 400)
+    alpha_list = alpha_0(mu_list)
+    muS_n = 0 
+    
+
 
     ax.set_xlabel("$\\mu_I/m_\\pi$")
     ax.set_ylabel("$m/m_\pi$")
+    ax.set_ylim(2.9, 4.18)
 
-    plt.legend()
-    plt.show()
+    plt.legend(loc="lower right")
+    fig.savefig("figurer/masses_kaons.pdf", bbox_inches="tight")
+
+
 
 def plot_charged_kaon_masses2():
-    fig, ax = plt.subplots(figsize=(8, 5))
-    muI_n = 1
-    a = 0
-    muS = np.linspace(0, 5, 500)
+    fig, ax = plt.subplots(figsize=(12, 5))
+    muI_n = 0.5
+    a = alpha_0(muI_n)
+    mKpm = sqrt( (m_pi**2 + m_S**2 - Dm**2)/2 )/m_pi
+    muS = np.linspace(0, mKpm, 500)
+    b = mKpm- 1/2*muI_n
+    ax.plot([b, b], [0, 10], "-k", alpha=0.4)
 
-    y1 = mKp(muS, muI_n, a)
-    y2 = mKm(muS, muI_n, a)
-    y3 = mK0(muS, muI_n, a)
-    y4 = mK0bar(muS, muI_n, a)
-    print(y2)
-    (y1, y2, y3, y4) = [y[np.abs(y.imag)<1e-6] for y in (y1, y2, y3, y4)]
-    ax.plot(muS, y1, "k--", label="$K^+$")
-    ax.plot(muS, y2, "k-.",  label="$K^-$")
-    ax.plot(muS, y3, "r--", label="$K^0$")
-    ax.plot(muS, y4, "r-.",  label="$\\bar K^0$")
-    # ax.plot(muS, meta(muS, muI_n, a), ":", color="tab:blue", label="$\\eta$")
+    ax.plot(muS, mKp(muS, muI_n, a), "k--", label="$K^+$")
+    ax.plot(muS, mKm(muS, muI_n, a), "k-.",  label="$K^-$")
+    ax.plot(muS, mK0(muS, muI_n, a), "r--", label="$K^0$")
+    ax.plot(muS, mK0bar(muS, muI_n, a), "r-.",  label="$\\bar K^0$")
+    ax.set_title("$\mu_I = %.2f" %muI_n + "\\, m_\\pi$")
 
     ax.set_xlabel("$\\mu_S/m_\\pi$")
     ax.set_ylabel("$m/m_\pi$")
 
-    plt.legend()
-    plt.show()
+    plt.legend(loc="upper left")
+    ax.set_ylim(-0.2, 8.2)
+    fig.savefig("figurer/masses_kaons2.pdf", bbox_inches="tight")
 
 
 
-
-# plot_pion_masses() 
-plot_charged_kaon_masses(0)
-plot_charged_kaon_masses(1)
+plot_meson_masses() 
+plot_charged_kaon_masses()
 plot_charged_kaon_masses2()
-

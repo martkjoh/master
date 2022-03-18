@@ -12,11 +12,9 @@
 % nice derivatives
 \usepackage{derivative}
 % I should not have to do this
-\DeclareOdvVariant{\odv}{d}[style-inf=\mathrm]
-% \DeclareOdvVariant{\fdv}{\delta}[]
-% \DecalreOdvVariant{\fdv}{\delta}[style-var=multiple]
-
-% \usepackage{physics}
+% \DeclareOdvVariant{\odv}{d}[style-inf=\mathrm]
+\usepackage{diffcoeff}
+\renewcommand{\fdv}[2]{\diff.delta.{#1}{#2}}
 
 \usepackage{slashed}
 
