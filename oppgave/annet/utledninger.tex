@@ -18,12 +18,6 @@
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.8em}
 
-\chapter{Test}
-eq:
-\begin{equation}
-    \pdv{f}{x,y} = g(x, y), \quad
-    \fdv{S}{x,y}= D^{-1}_{i, j}(x, y)
-\end{equation}
 
 \chapter{CHPT}
 \section{Leading order Lagrangian}
@@ -220,6 +214,74 @@ Energy density
     \begin{equation}
         E = - \frac{3 \gamma  - 4}{5 \gamma - 6} \frac{G M}{R^2}
     \end{equation}
+
+
+
+
+
+
+
+\section{Ward identities}
+
+(TODO: Gjør ward-identity utledningen med scalarfelt)
+
+
+
+Consider, for defenders, a massless scalar field with the Lagrangian
+%
+\begin{align}
+    \Ell = \frac{1}{2} \partial_\mu \varphi_i \partial^\mu \varphi_i - \Ve[\varphi]. 
+\end{align}
+%
+Assume this theory has a global $\Lie{O}{N}$ symmetry,
+%
+\begin{equation}
+    \varphi_i \rightarrow \varphi_i' = M_{ij}\varphi_J = (\delta_{ij} + i \eta_\alpha T^\alpha_{ij}) \varphi_j.
+\end{equation}
+%
+so $\Ve[\varphi'] = \Ve[\varphi]$, where $\varphi'$ is related to $\varphi$ via a symmetry transformation.
+The system then has the conserved current
+%
+\begin{equation}
+    J^\mu_{\alpha} = (\partial^\mu \varphi_i ) T^\alpha_{ij} \varphi_j. 
+\end{equation}
+%
+The action, with scalar sources $j$ and vector sources $v_{i,\alpha}^\mu$ is then
+%
+\begin{equation}
+    S[\varphi, j, v]
+    = 
+    \int \dd^4 x\,
+    \left(
+        \frac{1}{2} \partial_\mu \varphi_i \partial^\mu \varphi_i
+        - \Ve[\varphi]
+        + j_i \varphi_i + v^{\alpha}_\mu J_{\alpha}^\mu
+    \right).
+\end{equation}
+%
+As with the derivation of the Dyson-Schwinger equations, we now perform a \emph{local} $\Lie{O}{N}$ transformation but without setting the external sources to zero.
+The action then becomes
+%
+\begin{align}
+    S[\varphi', j, v]
+    = S[\varphi, j, v]
+    + \int \dd^4 x \,
+    \left[
+        j_i M_{ij}\varphi_j
+        + J{\alpha,i}^\mu
+        ()
+    \right]
+\end{align}
+
+
+If a theory is globally invariant under some transformation, $\varphi(x) \rightarrow \varphi(x) + i \epsilon V \varphi(x)$, and assuming the measure is as well, then a \emph{local} transformation $\varphi(x) \rightarrow \varphi(x) + i \epsilon V(x) \varphi(x)$ will give...
+%
+\begin{equation}
+    aaa
+\end{equation}
+
+
+
 
 \end{document}
  

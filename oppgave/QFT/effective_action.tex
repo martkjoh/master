@@ -22,7 +22,7 @@ The Legendre transformation of $W$ is then
 Using the definition of $\varphi_J$, we have that
 \begin{equation}
     \label{effective equation of motion}
-    \fdv{\varphi_J(x)} \Gamma[\varphi_J]
+    \fdv{\Gamma[\varphi_J]}{\varphi_J(x)}
     = \int \dd^4 y \, \fdv{J(y)}{\varphi_J(x)} \fdv{J(y)} W[J]
     - \int \dd^4 y \, \fdv{J(y)}{\varphi_J(x)} \varphi_J(y)
     - J(x)
@@ -40,7 +40,7 @@ To interpret $\Gamma$ further, we observe what happens if we treat $\Gamma[\varp
 The generating functional in this new theory is
 \begin{equation}
     \label{partition function with g}
-    Z[J, g] = \int \D \varphi 
+    Z[J, g] = \int \D \varphi \,
     \exp{ i g^{-1} \left( \Gamma[\varphi] + \int \dd^4x \, \varphi(x) J(x) \right) }
 \end{equation}
 %
@@ -62,7 +62,7 @@ This means that in the limit $g \rightarrow 0$, the theory is fully described at
 In this limit, we may use the stationary phase approximation, as described in \autoref{appendix: Functional derivatives}, which gives
 \begin{equation}
     Z[J, g\rightarrow 0] \approx 
-    C \det(- \fdv{ \Gamma[\varphi_J]}{\varphi(x), \varphi(y)})
+    C \det\left(- \fdv{ \Gamma[\varphi_J]}{\varphi(x), \varphi(y)}\right)\,
     \exp{i g^{-1} \left(\Gamma[\varphi_J] + \int \dd^4x \, J(x) \varphi_J(x) \right)  }.
 \end{equation}
 %
@@ -88,7 +88,7 @@ Using the chain rule, together with \autoref{effective equation of motion}, we g
     (-i)\int \dd^4 z \frac{\delta \varphi_J[z]}{\delta J(x)}
     \frac{\delta^2 \Gamma[\varphi_J]}{\delta \varphi_J(z) \varphi_J(y)}
     =
-    \fdv{}{J(x)}  \fdv{\Gamma[\varphi_J]}{\varphi_J(y)}
+    (-i)\fdv{}{J(x)}  \fdv{\Gamma[\varphi_J]}{\varphi_J(y)}
     = i\delta(x - y).
 \end{align}
 %
@@ -115,13 +115,16 @@ By assumption, $\ex{\eta}_J = 0$, which means this path integral is described by
     \exp{i \Gamma[\varphi_J]} = \int \D \eta \, \exp{iS[\varphi_J + \eta]}.
 \end{equation}
 %
-Comparing this to \todo{skriv om integrating out dof}{integrating out degrees of freedom}, we see that the 1PI effective potential corresponds to integrating out \emph{all} degrees of freedom, and let the expectation value appear as a static background field,
+As we will discuss later, we interpret this form as \emph{integrating out} the $\eta$ degrees of freedom, leaving us with an effective description of the physics dependent only on the ground state solution $\varphi_J$.
+The disadvantage of this is that there is no bound on how complicated $\Gamma$ might be---it is not restricted by the usual assumptions of the form of the action, such as locality~\autocite{schwartzQuantumFieldTheory2013}.
+With some simplifying assumptions, though, we can still make use of the 1PI effective action, as we will see in the next subsection.
+
 
 
 
 \subsection{Effective potential}
 
-For a constant field configuration $\varphi(x) = \varphi_0$, the effective action, which is a functional, becomes a regular function.
+For a constant field configuration $\varphi(x) = \varphi_0$, the effective action, a functional, becomes a regular function.
 We define the effective potential $\Veff$ by
 %
 \begin{equation}
@@ -175,7 +178,7 @@ where the dots indicate higher derivatives.
 When we insert this expansion into the generating functional $Z[J]$ we get
 %
 \begin{align}
-    &Z[J] = \int \D \eta
+    &Z[J] = \int \D \eta \,
     \exp{
         i \int \dd^4 x \left(  \Ell[\varphi_0] + J \varphi_0  \right)
         +i \int \dd^4x \, \eta(x) \, 
@@ -262,29 +265,29 @@ The first term is quadratic in $\eta$, and can therefore be evaluated as a gener
 %
 \begin{align*}
     & 
-    \ln\Bigg\{
+    \ln\Bigg[
         \int \D \eta \, 
-    \exp(
+    \exp{
             i g^{-1} \frac{1}{2} \int \dd^4x \dd^4y\,  \eta(x) \eta(y) \, 
             \fdv{S[\varphi_0]}{\varphi(x),\varphi(y)} 
-        )
-    \Bigg\}
+    }
+    \Bigg]
     \\
     & 
     = 
-    \ln\Bigg\{
+    \ln\Bigg[
         \det\left( - g^{-1} \fdv{S[\varphi_0]}{\varphi(x), \varphi(y)} \right)^{-1/2}
-    \Bigg\}
+    \Bigg]
     = -\frac{1}{2}
     \Tr{
-        \ln(
+        \ln\left[
         - \fdv{S[\varphi_0]}{\varphi(x), \varphi(y)}
-        )
+        \right]
     }
     + \const
 \end{align*}
 %
-We then use the identity $\ln \det M = \Tr \ln M$.
+We then use the identity $\ln\{\det M \}= \Tr{\ln M}$.
 After we remove the constant, this term is proportional to $g^0$, i.e., it is made up of one-loop terms.
 
 The last term can be evaluated by first expanding the exponential containing the $S_I$ term, then using $\ln(1 + x) = \sum_n \frac{1}{n}x^n$.

@@ -24,10 +24,10 @@ This allows us to look at ``infinitesimal'' transformations,
 \begin{equation}
     \label{infinitesimal transformation}
     \varphi'(x) = f_\epsilon[\varphi] 
-    = \varphi(x) + \epsilon \odv{ f_t[\varphi] }{t}\bigg |_{t=0} + \Oh{\epsilon}.
+    = \varphi(x) + \epsilon \odv{ f_t[\varphi] }{t}\bigg |_{t=0} + \Oh(\epsilon).
 \end{equation}
 %
-When considering infinitesimal transformations, we will not always write $ + \Oh{\epsilon}$, but rather consider it implicit.
+When considering infinitesimal transformations, we will not always write $ + \Oh(\epsilon)$, but rather consider it implicit.
 We will consider internal, global transformations which act linearly on $\varphi$.
 For $N$ fields, $\varphi_i$, this can be written
 \begin{equation}
@@ -42,7 +42,8 @@ That is, a transformation $\varphi \rightarrow \varphi'$ is a symmetry if
     \Ell[\varphi'] = \Ell[\varphi] + \partial_\mu K^\mu[\varphi],
 \end{equation}
 %
-where $K^\mu[\varphi]$ is a functional of $\varphi$.\footnote{Terms of the form $\partial_\mu K^\mu$ does not affect the physics, as variational principle $\delta S = 0$ do not vary the fields at infinity. Together with the divergence theorem, this means that such terms do not influence the equations of motion.}
+where $K^\mu[\varphi]$ is a functional of $\varphi$.\footnote{
+    Terms of the form $\partial_\mu K^\mu$ do not affect the physics, as variational principle $\delta S = 0$ do not vary the fields at infinity. Together with the divergence theorem, this means that such terms do not influence the equations of motion.}
 This is a requirement for symmetry in quantum field theory too.
 However, as physical quantities in quantum field theory are given not just by the action of a single state but the path integral, the integration measure $\D \varphi$ has to be invariant as well.
 If a classical symmetry fails due to the non-invariance of the integration measure, it is called an \emph{anomaly}.
@@ -163,17 +164,21 @@ This is Nöther's theorem; a continuous symmetry implies the existence of a cons
 
 The current flux through some spacelike surface $V$ defines a conserved charge. The surface of constant time in some reference frame has the normal vector $n_\mu = (1, 0, 0, 0)$, so the charge is
 \begin{equation}
-    Q = \int_V \dd^4 x \, n_\mu j^\nu = \int_V \dd^3 x \, j^0.
+    Q = \int_V \dd^4 x \, n_\mu j^\mu = \int_V \dd^3 x \, j^0.
 \end{equation}
 %
 We can then use the divergence theorem.
 Assume $\partial V$ is the boundary of $V$, which has the space-like normal vector $k_i$, and that the current falls of quickly towards infinity.
-Then
+Then, using $\partial_\mu j^\mu = 0 $,
 \begin{equation}
-    \odv{Q}{t} = - \int_V \dd^3 x \, \partial_i j^i = - \int_{\partial V} \dd^2 x\, k_i j^i = 0,
+    \odv{Q}{t} 
+    = \int_V \dd^3 \, \partial_0 j^0
+    = - \int_V \dd^3 x \, \partial_i j^i 
+    = - \int_{\partial V} \dd^2 x\, k_i j^i 
+    = 0,
 \end{equation}
 %
-proving that the charge is conserved.
+proving that the charge is conserved over time.
 
 \subsection{Goldstone's theorem}
 
@@ -216,7 +221,7 @@ In \autoref{effective action symmetry requirement} we found that, if $V$ is the 
     \int \dd^4 x\, \fdv{\Gamma[\varphi_J]}{\varphi_i} V_{ij} \ex{\varphi_j}_0 = 0,
 \end{equation}
 %
-We now differentiate this expression with respect to $\varphi_k(y)$ and evaluate it in the vacuum, which gives
+We now differentiate this expression with respect to $\varphi_k(y)$, which gives
 \begin{equation}
     \int \dd^4 x \, \fdv{\Gamma[\varphi_0]}{\varphi_k(y), \varphi_i(x)}
     V_{ij} \ex{\varphi_j}_0 = 0.
@@ -227,8 +232,8 @@ With the assumption that the ground state is constant, we get
     \pdv{\Veff}{\varphi_k, \varphi_i} \, V_{i j} \ex{\varphi_j}_0 = 0.
 \end{equation}
 %
-This is trival for unbroken symmetries, as $t^a_{ij}\ex{\varphi_j}_0 = 0$ by definition.
-However, in the case of a broken symmetry, the second derivative of the effective potential has an eigenvector $x^\ell_{ij} \ex{\varphi_j}_0$ with a zero eigenvalue for each broken generator.
+This is trivial for unbroken symmetries, as $t^a_{ij}\ex{\varphi_j}_0 = 0$ by definition.
+However, in the case of a broken symmetry, the second derivative of the effective potential must have an eigenvector $x^\ell_{ij} \ex{\varphi_j}_0$ with a zero eigenvalue for each broken generator.
 Here, $\ell$ label the set of generators, while $(ij)$ are the indices corresponding to field-components $\varphi_i$.
 In \autoref{Effective action inverse propagator}, we found that the second derivative of the effective action is the inverse propagator,
 \begin{equation}
@@ -244,11 +249,12 @@ Using this, we can write
 \end{equation}
 %
 Zeros of the inverse propagator correspond to the physical mass of particles.
-In Lorentz-invariant systems, each zero-eigenvalue vector corresponds to a masses particle, called a Goldstone boson.\footnote{ The particles are bosons due to the bosonic nature of the transformations, $g$. If the generators are Grassmann numbers, the resulting particles, called goldstinos, are fermions.}
+In Lorentz-invariant systems, each zero-eigenvalue vector corresponds to a massless particle, called a Goldstone boson.\footnote{
+    The particles are bosons due to the bosonic nature of the transformations, $g$. If the generators are Grassmann numbers, the resulting particles, called goldstinos, are fermions.}
 This means there are $n_G = \dim G -\dim H$ zero-mass modes.
 In general, the counting of massless modes is complicated and depends on the dispersion relation of the particles at low momenta.
 Systems with Goldstone bosons with quadratic dispersion relation, that is $E \propto |\vv p|^2$ when $\vv p \rightarrow 0$, often exhibit a lower number of massless modes.
-An example is ferromagnets, where the $\mathrm{SU}(2)$ rotational symmetry is broken down to $\mathrm{U}(1)$ when they align along one axis. 
+An example is ferromagnetic, where the $\mathrm{SU}(2)$ rotational symmetry is broken down to $\mathrm{U}(1)$ when they align along one axis. 
 This corresponds to two broken generators, yet the system exhibits only one massless mode~\autocite{braunerSpontaneousSymmetryBreaking2010}.
 
 \begin{figure}[ht]
@@ -277,7 +283,7 @@ This is illustrated in \autoref{fig:ground state manifold}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=.35\linewidth]{figurer/SU(3).pdf}
-    \caption{Excitations for the $N=3$ sigma model. Two of the symmetries are broken, while rotations around the groundstate leaves the system unchanged.}
+    \caption{Excitations for the $N=3$ sigma model. Two of the symmetries are broken, while rotations around the ground state leaves the system unchanged.}
     \label{fig:ground state manifold}
 \end{figure}
 

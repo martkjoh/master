@@ -1,0 +1,266 @@
+\section{Effective field theories}
+
+
+One of the most powerful concepts in quantum field theory is the notion of effective field theories.
+The methods we have laid out for quantum field theory involves, in general, calculations where we must integrate over all possible momenta, and thus all possible energies.
+However, we do not profess to know how physics behaves at arbitrarily energies, which as first glance seem to render our theories moot.
+The fact that the standard model allows for such precise predictions, then, suggest that the physics which happen at energies that are accessible to us can be described without knowledge of physics at the highest energies.
+This is a familiar concept from our everyday life---we can describe billiard balls colliding or rocks falling with high precision without having an accurate microscopic description of these objects.
+An effective field theory is a description of the physics of some underlying theory, some degrees of freedom $\varphi_a$ governed by a Lagrangian $\Ell[\varphi]$, in terms of a smaller set of degrees of freedom, $\pi_i$, governed by an effective Lagrangian $\Ell_\text{eff}[\pi]$.
+These two descriptions are related by 
+%
+\begin{equation}
+    Z[J] = \int \D \varphi \, \exp{i\int \dd^4 x \, \left( \Ell[\varphi] + \varphi_a J_a \right)}
+    = \int \D \pi\, \exp{i\int \dd^4 x \, \left( \Ell_\text{eff}[\pi, J]\right)}.
+\end{equation}
+%
+We say that the degrees of freedom not present in the effective description have been \emph{integrated out}.
+An effective theory can come from integrating out all degrees of freedom above some energy cut off, or integrating out a particle and describe the interactions it mediates as point-like.
+In \autoref{section: effective action}, we found that the 1PI effective action resulted from integrating out all fluctuations away from the ground state.
+The modern understanding of the Standard Model is that is itself an effective field theory~\autocite{pencoIntroductionEffectiveField2020}.
+\todo[inline]{Skriv om: Renormalization group, renormalizable theories}
+
+One of the pioneers of the philosophy of effective field theories was Steven Weinberg.
+He proposed that quantum field theories, in themselves, have almost no content beyond some basic assumptions~\autocite{weinbergDevelopmentEffectiveField2021}.
+What this means is that if we write down the most general possible Lagrangian, then we cannot really be wrong.
+This was formulated more precisely in---as Weinberg himself called it---a ``theorem'':
+\begin{quote}
+    ``[I]f one writes down the most general possible Lagrangian, including all terms consistent with assumed symmetry principles, and then calculates matrix elements with this Lagrangian to any given order of perturbation theory, the result will simply be the most general possible $S$-matrix consistent with analyticity, perturbative unitary, cluster decomposition and the assumed symmetry principles.''~\autocite{weinbergPhenomenologicalLagrangians1979}
+\end{quote}
+
+Cluster decomposition concerns a system of $N$ sets of particles, $\alpha_i$, that evolve into the sets $\beta_i$.
+That is,
+\begin{equation}
+    \ket{\alpha_1, \alpha_2, ... \alpha_N}_\text{in}
+    \longrightarrow
+    \ket{\beta_1, \beta_2, ... \beta_N}_\text{out}.
+\end{equation}
+It says that if the sets of particles $\alpha_i$, $\beta_i$ are located far enough apart, then the $S$-matrix factors as
+\begin{equation}
+    {\braket{\beta_1, \beta_2, ... \beta_N|\alpha_1, \alpha_2, ... \alpha_N}}
+    =
+    \braket{\beta_1|\alpha_1}\braket{\beta_2|\alpha_2}... \braket{\beta_N|\alpha_N}.
+\end{equation}
+This is a familiar property, as it essentially says that wildly separated experiments do not interfere, and one that we expect all good effective descriptions to have~\autocite{weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
+Such a ``most general possible Lagrangian'' will have the form
+\begin{equation}
+    \Ell_\text{eff}[\pi] = \sum_i \lambda_i \mathcal O_i,
+\end{equation}
+where $\mathcal O_i$ are local functions of the effective fields and their derivatives, and $\lambda_i$ are coupling constants.
+The coupling constants are free parameters, which parametrizes the most general $S$-matrix consistent with foundational assumptions and the underlying theory.
+A Lagrangian with an infinite amount of free parameters might seem useless.
+However, if we can find a consistent series expansion, then only a finite number of terms are needed to calculate quantities to any given order in perturbation theory.
+
+In last section, we showed that the Goldstone modes will always appear in the Lagrangian in the form of the terms of the Mauer-Cartan form, $d_\mu$ and $e_\mu$.
+The approach to create an effective theory of Goldstone bosons, such as chiral perturbation theory, is then to write down the most general Lagrangian, consistent with the underlying symmetries, made up of these terms.
+Then, using Weinberg's power counting scheme, as we discuss in \autoref{subsection: Weinberg's power counting scheme}, we expand perturbatively in the Goldstone boson energies.
+This will give us a self-consistent description of pions alone.
+However, we need a few more concepts to be able to include other fields.
+
+
+
+\subsection{Schwinger-Dyson equations}
+
+\todo[inline]{finish, connect to foundations of chpt}
+
+\begin{align}
+    Z[j] = \frac{1}{Z_0} \int \D \varphi \, 
+    \exp{i \int \dd^4 x 
+    \left[  
+        \frac{1}{2} \varphi \partial^2 \varphi - \Ve[\varphi] + j\varphi 
+    \right]}
+\end{align}
+%
+Transform $\varphi(x) \rightarrow \varphi(x) + \epsilon(x)$.
+This is a field redefinition, so $Z$ is unchanged.
+So is $\D \varphi$.
+Consider $\braket{\varphi}$,
+%
+\begin{align}
+    \braket{\varphi(y)} &= \frac{1}{Z_0} \int \D \varphi \, 
+    [\varphi(y) + \epsilon(y)]\,
+    \exp{i \int \dd^4 x 
+    \left[  
+        \frac{1}{2} \varphi \partial^2 \varphi 
+        + \epsilon \partial^2 \varphi 
+        + \varphi \partial^ 2 \epsilon 
+        - \Ve[\varphi] - \epsilon \Ve'[\varphi] + j\varphi + j \epsilon
+    \right]}\\
+    & = \braket{\varphi(y)}
+    + \Braket{ \epsilon(y) 
+    + \int \dd^4 x  \varphi(y) \epsilon(x)
+    \left[
+        \partial_x^2 \varphi
+        - \Ve'[\varphi](x)
+    \right] 
+    }
+    + \Oh(\epsilon^2),
+\end{align}
+%
+or
+%
+\begin{align}
+    \partial^2_x \Braket{\varphi(y)\varphi(x)} 
+    = 
+    \Braket{\Ve'[\varphi](x) \varphi(y)}
+    - i \delta(y - x).
+\end{align}
+%
+This realizes to 
+%
+\begin{align*}
+    \partial^2_x \braket{\varphi(x)\varphi(x_1)\dots \varphi(x_n)}
+    = \Braket{\Ve'[\varphi](x)\varphi(x_1)\dots\varphi(x_n)} 
+    -i \sum_i\delta(x - x_i)\braket{\varphi(x_1)\dots \varphi(x_{i-1})\varphi(x_{i+1})\dots \varphi(x_n)}.
+\end{align*}
+%
+These are the  Schwinger-Dyson equations, which encode the full quantum theory~\autocite{schwartzQuantumFieldTheory2013}.
+
+
+\subsection{Ward-identities}
+
+
+Ward-identities are similar relations to the Schwinger-Dyson equations, which encodes the symmetries of a theory, and are the generalization of conservation equations in classical field theory, such as $\partial_\mu J^\mu = 0$.
+Consider a massless spinor field with the Lagrangian,
+%
+\begin{equation}
+    \Ell = i \bar \psi \slashed \partial \psi - \Ve[\psi, \bar \psi].
+\end{equation}
+%
+Assume this theory has a global $\Lie{SU}{N}$ symmetry, so the $\Ve$ remains unchanged under the transformation $\psi \rightarrow U \psi$, $\bar \psi \rightarrow \bar \psi U^\dagger$.
+The system then has a corresponding conserved current,
+%
+\begin{equation}
+    J_\alpha^\mu = \bar \psi T_\alpha \gamma^\mu \psi,
+\end{equation}
+%
+where $T_\alpha$ are the generators of $\Lie{U}{N}$.
+The action, with spinor sources $\eta = \eta_\alpha T_\alpha$ and a vector sources $v_\mu = v_\mu^\alpha T_\alpha$, is then
+%
+\begin{equation}
+    S[\psi, \bar \psi, \eta, \bar \eta, v]
+    = 
+    \int \dd^4 x \,
+    \left(
+        i \bar \psi \slashed d \psi - \Ve[\psi, \bar \psi]
+        + \bar \eta \psi 
+        + \bar \psi \eta + v_\mu^\alpha J^\mu_\alpha
+    \right).
+\end{equation}
+%
+As in the derivation of the Dyson-Schwinger equations, we now perform a \emph{local} $\Lie{U}{1}$ transformation, $\psi \rightarrow e^{i\eta_\alpha(x)T_\alpha} \psi$.
+The action then changes as
+%
+\begin{equation}
+    S \rightarrow 
+    \int \dd^4 x \,
+    \left[
+        i \bar \psi \slashed \partial \psi 
+        - \Ve[\psi, \bar \psi]
+        + \bar \eta U \psi
+        + \bar \psi U^\dagger \eta 
+        + \bar \psi \gamma^\mu (U^\dagger v_\mu U + i U^\dagger \partial_\mu U)\psi
+    \right].
+\end{equation}
+%
+Even thought the original action has a global symmetry, it does not remain invariant under a local transformation.
+However, if we treat the external sources as gauge fields, transforming them to counteract the local transformation, then we get an invariance criterion.
+We treat gauge theories in more detail in \autoref{subsection: yang-mills theory and gauge symmetry}.
+The gauge transformation of the external sources are
+%
+\begin{equation}
+    \eta \rightarrow U \eta, \quad
+    \bar \eta \rightarrow \bar \eta U^\dagger,\quad
+    v_\mu \rightarrow U(v_\mu + i \partial_\mu) U^\dagger.
+\end{equation}
+%
+This gives the relation
+%
+\begin{equation}
+    \label{Equality for action Ward idientities}
+    S[\psi', \bar \psi', \eta', \bar \eta', v'] =
+    S[\psi, \bar \psi, \eta, \bar \eta, v],
+\end{equation}
+%
+where the mark indicates the gauge transformed field.
+As we argued in the subsection on the Dyson-Schwinger equations, we can change the integration variables inside the path integral without changing the result.
+This gives us the relation, using $U \sim 1 + i \epsilon(x) V $
+%
+\begin{equation}
+    \label{local invariance with external fields as gauge fields}
+    0 = Z[\eta, \bar \eta, v] - Z[\eta', \bar \eta', v']
+    =
+    i \int \dd^4 x 
+    \Braket{
+        i \epsilon(x) \bar \psi V \eta
+        - i \epsilon(x) \bar \eta V^\dagger \psi
+        + i \bar \psi \gamma^\mu 
+        (
+            i\epsilon (x) [V, v_\mu] - i \partial_\mu \epsilon V
+        ) \psi
+    }
+\end{equation}
+%
+This must vanish.
+Let $V = \theta_\alpha T_\alpha$, then
+%
+\begin{equation}
+    \int \dd^4 x \, \epsilon(x) \theta_\alpha
+    \Braket{
+        \bar \psi T_\alpha \eta
+        - \bar \eta T_\alpha \psi
+        % + i\bar \psi \gamma^\mu [T_\alpha, v_\mu] \psi
+        % + i v_{\mu}^\beta J^\mu_\gamma (2i f_{\alpha \beta \gamma})
+        % + i \partial_\mu J_\alpha^\mu
+        + D^{\alpha\beta}_\mu J^\mu_\beta
+    }
+    = 0.
+\end{equation}
+%
+Here, $D^{\alpha\beta}_\mu$ is the covariant derivative, 
+$D^{\alpha\beta}_\mu J^\beta_\nu = \partial_\mu J_\nu^\alpha +  i [T^\alpha, T^\beta]J^\nu_\beta $.
+As this holds for an arbitrary function $\epsilon$ and vector $\theta_\alpha$, the integrand must vanish.
+We can get more general expression by writing this using the generating functional $W$,~\autocite{schererIntroductionChiralPerturbation2002}
+%
+\begin{equation}
+    \left( 
+        \fdv{}{\eta_\alpha(x)} \eta - \bar \eta \fdv{}{\bar \eta_\alpha(x)}  
+        + D_{\mu}^{\alpha \beta} \fdv{}{v_\mu^\beta(x)}
+        \right) W[\eta, \bar \eta, v] = 0.
+\end{equation}
+%
+From this, we can generate the familiar form of Ward-identities, by taking the functional derivative and evaluating at vanishing, source, which gives
+%
+\begin{equation}
+    D_{x, \mu}^{\alpha \beta }\Braket{J^\mu_{\eta}(x) \psi(x_1) \psi(x_2)}
+    = [\delta(x - x_1) - \delta(x - x_2)] \Braket{\bar \psi(x_1) \psi (x_2)}.
+\end{equation}
+%
+For vanishing $\eta$, $\bar \eta$, we get the conservation law
+%
+\begin{equation}
+    \Braket{D_\mu^{\alpha \beta} J^\mu_\beta} = 0.
+\end{equation}
+
+
+We have now seen how the Ward-identities encode the global symmetries of the theory, and that they may be derived by transforming external source fields as gauge field to ensure the invariance of the action under the corresponding \emph{local} transformations.
+This is the key insight behind the systematic development of chiral perturbation theory~\autocite{gasserChiralPerturbationTheory1984,gasserChiralPerturbationTheory1985,leutwylerFoundationsChiralPerturbation1994}.
+With the CCWZ construction, we can create the Lagrangian of Goldstone bosons alone, given only the symmetry breaking pattern $G \rightarrow G/H$.
+However, it does not tell us how external fields couples to them.
+With the constraint \autoref{local invariance with external fields as gauge fields}, however, we know that the new action must be invariant under \emph{local} $G$ transformations, given that we transform the external fields as gauge fields.
+When including external fields, the new effective Lagrangian $\Ell_\text{eff}$ must therefore not only be invariant under global $G$-transformations, but rather local $G$-transformations.
+If we modify the Mauer-Cartan form \autoref{Mauer-Cartan form} by introducing a covariant derivative,
+%
+\begin{equation}
+    i\Sigma(x)^{-1} \partial_\mu \Sigma(x)
+    \rightarrow i\Sigma(x)^{-1} \nabla_\mu \Sigma(x),
+\end{equation}
+%
+then all terms that were globally $G$-invariant becomes locally so.
+This is because, as in the case of covariant derivative in \autoref{subsection: goemetry and the metric}, the covariant derivative transforms as the object it acts on.
+In addition to the modified terms we get from introducing the covariant derivative, we can now also combine the external currents and $\Sigma$ into $G$-invariant terms.
+This will allow us to take into account approximate symmetries as well.
+By treating the symmetry-breaking parameter in the underlying Lagrangian, such as the mass of quarks in the case of chiral perturbation theory, as an external current, we can still apply this procedure.
+Such fields are called \emph{spurion fields}.
+We will apply this theory to derive chiral perturbation theory in \autoref{chapter: chpt}.
+

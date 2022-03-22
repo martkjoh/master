@@ -35,7 +35,7 @@ This is because  $e^{i \theta_a t_a} = h \in H$, and $h \varphi_0 = \varphi_0$, 
 The set of all equivalent $\tilde \Sigma$'s is exactly the left coset, $gH = \setbuilder{gh}{ h \in H}$.
 The set of cosets forms a new manifold, $G / H$, called the Goldstone manifold.
 This is a manifold of dimension $\dim(G/H) = \dim(G) - \dim(H)$, which is the number of broken generators and thus also the number of Goldstone modes.
-Membership of a certain coset form an equivalence relation, $g \sim g'$ if $g' = gh$.
+Membership of a certain coset is an equivalence relation, $g \sim g'$ if $g' = gh$.
 This means that the cosets $gH$ form a partition of $G$ and that each element $g \in G$ belongs to one, and only one, coset.
 To remove the redundancy in the parametrization, we need to choose one representative element from each coset.
 
@@ -85,12 +85,14 @@ The original Lagrangian $\Ell[\varphi]$ was invariant under global transformatio
 However, any terms that only depend on $\varphi(x)$, and not its derivatives, will also be invariant under a \emph{local} transformation, $\varphi(x) \mapsto g(x)\varphi(x)$.
 Our parametrization of the fields, $\varphi(x) = \Sigma(x)\varphi_0$ is exactly such a transformation, which means that any such terms are independent of the Goldstone bosons.
 We can therefore write
+%
 \begin{equation}
     \Ell[\varphi] = \Ell_{\mathrm{kin}}[\varphi] + V(\varphi_0),
 \end{equation}
 %
-where all terms in $\Ell_{\mathrm{kin}}$ are proportional to at least one derivative term, $\partial_\mu \varphi(x)$.
+where all terms in $\Ell_{\mathrm{kin}}$ are proportional to at least one derivative term, $\partial_\mu \varphi(x)$, while $V$ is independent of $\Sigma(x)$
 Inserting the parametrization into this derivative term, we get
+%
 \begin{equation}
     \partial_\mu \varphi(x) = \partial_\mu [\Sigma(x) \varphi_0]
     = \Sigma(x) [\Sigma(x)^{-1} \partial_{\mu} \Sigma(x)] \varphi_0.
@@ -98,7 +100,9 @@ Inserting the parametrization into this derivative term, we get
 %
 The Lagrangian will therefore depend on $\xi_i$ via terms of the form $\Sigma(x)^{-1}\partial_\mu \Sigma(x)$, which is called the Mauer-Cartan form.
 This is a $\mathfrak g$-valued function, which means that it can be written as
+%
 \begin{align}
+    \label{Mauer-Cartan form}
     i\Sigma(x)^{-1}\partial_\mu \Sigma(x) & 
     = d_{\mu}(x) + e_{\mu}(x), \\
     d_{\mu} & = i x_i d_{ij}(\xi) \partial_\mu \xi_j, \\
@@ -107,14 +111,19 @@ This is a $\mathfrak g$-valued function, which means that it can be written as
 %
 where $d_{ij}$ and $e_{ai}$ are as-of-yet unknown real valued functions of $\xi$~\autocite{watanabeEffectiveLagrangianNonrelativistic2014,weinbergQuantumTheoryFields1996}.
 
+
+
 \subsection{Transformation properties of Goldstone bosons}
+
 We can deduce how the Goldstone bosons transforms under $G$ from how $\varphi$ transforms.
 In general, 
+%
 \begin{equation}
     \varphi' = g \varphi = (g \Sigma(\xi)) \varphi_0 = \Sigma(\xi') \varphi_0 \quad g \in G.
 \end{equation}
 %
 While $\Sigma(\xi')$ has the standard form by assumption,
+%
 \begin{equation}
     \Sigma(\xi') = \exp{i \xi'_i x_i},
 \end{equation}
@@ -127,6 +136,8 @@ $g\Sigma(\xi)$ does not, in general.
     \caption{The top figure illustrates the transformation of $\varphi_0$ to $\varphi$ and then $\varphi'$, and the alternative, direct transformation $\varphi_0 \rightarrow \varphi'$. The bottom figure illustrates how this can rotate a neighborhood of $\varphi_0$ differently.}
     \label{fig:Curvature of SO(3)}
 \end{figure}
+
+
 \autoref{fig:Curvature of SO(3)} illustrates this in the case of $G = \SO(3)$.
 $\Sigma(\xi)$ transforms $\varphi_0$ to $\varphi$, then $g$ transforms $\varphi$ to $\varphi' = \Sigma(\xi') \varphi_0$.
 Assuming $\varphi$ and $\varphi'$ are close enough to $\varphi_0$, we can write $\Sigma(\xi)$ and $\Sigma(\xi')$ on the standard form.
@@ -135,6 +146,7 @@ However, if we follow a small neighborhood around $\varphi_0$ as it is acted on 
 $g\Sigma(\xi)$ and $\Sigma(\xi')$ are in the same coset, as they by assumption corresponds to the same physical state.
 This means that we can write $g\Sigma(\xi) = \Sigma(\xi') h(g, \xi)$, where $h(g, \xi) \in H$.
 The transformation rule of $\xi$ under $G$ is therefore implicitly defined by
+%
 \begin{equation}
     \Sigma(\xi') = g \Sigma(\xi) [h(g, \xi)]^{-1}.
 \end{equation}
@@ -143,6 +155,7 @@ This is, in general, not a linear representation, which is why this construction
 Using the transformation rule, we can obtain the transformation rule of the Maurer-Cartan form.
 We use the shorthand $\Sigma = \Sigma(\xi),\, \Sigma' = \Sigma(\xi')$, and $h = h(g, \xi)$.
 This gives
+%
 \begin{align*}
     \Sigma^{-1} \partial_\mu \Sigma
     \rightarrow 
@@ -153,45 +166,21 @@ This gives
     + h \partial_\mu h^{-1} \\
     & = h (\Sigma^{-1} \partial_\mu \Sigma + \partial_\mu) h^{-1}.
 \end{align*}
+%
 In terms of $d_\mu$ and $e_\mu$,
+%
 \begin{align}
     d_\mu & \rightarrow h d_\mu h^{-1} \\
     e_\mu & \rightarrow h (e_\mu + i\partial_\mu )h^{-1}.
 \end{align}
 %
-These are our building blocks for constructing a general, $G$-invariant effective Lagrangian.
-The trace of a product of $d_\mu$'s are invariant under $G$,
-\begin{equation}
-    \Tr{d_\mu d_\nu \dots d_\rho} 
-    \rightarrow
-    \Tr{h d_\mu h^{-1} h d_\nu h^{-1} h \dots d_\rho h^{-1}}
-    = \Tr{d_\mu d_\nu \dots d_\rho},
-\end{equation}
-%
-where we have used the cyclic property of trace.
-However, the terms must also obey the other symmetries of the Lagrangian, such as C or P-parity and Lorentz invariance.
-The last criterion excludes any terms with free space-time indices.
-In \autoref{section: chiral perturbation theory}, we will construct an effective Lagrangian in powers of $d$.
-The lowest order terms are therefore
-\begin{equation}
-    \label{first order terms CCWZ}
-    \Tr{d_\mu} \Tr{d^\mu}, 
-    \quad 
-    \Tr{d_\mu d^\mu}.
-\end{equation}
-%
-We see that $e_\mu$ transforms like a gauge field, with the gauge group $H$.
-If we include massive degrees of freedom and not only the Goldtone modes, $e_\mu$ is used to create a covariant derivative of the massive modes.
+The transformation rule of $e_\mu$ is that of a gauge field, with the gauge group $H$.
+We will discuss gauge fields in more detail in \autoref{chapter: chpt}.
+If we include massive degrees of freedom and not only the Goldstone modes, $e_\mu$ is used to create a covariant derivative of the massive modes.
 We are only interested in the Goldstone modes and will therefore be satisfied with $d_\mu$.
-With these tools, we can create an effective theory of quantum chromodynamics at low energies.
+We have now greatly constrained the way the Goldstone modes may appear in the Lagrangian.
+However, this does not yet solve the problem of the strong force being non-perturbative.
+To do this, we need to create an effective field theory in which the strong force has been integrated out.
 
 
 
-\subsection{Effective field theory}
-
-\todo[]{Beskriv effective field theory, Weinberg's theorem, Ward identities, schwinger-dyson og grunnlag for chpt}
-
-\begin{equation}
-    Z[J] = \int \D \varphi \, \exp{i\int \dd^4 x \, \left( \Ell[\varphi, J] \right)}
-    = \int \D \pi\, \exp{i\int \dd^4 x \, \Ell[\pi, J]}.
-\end{equation}
