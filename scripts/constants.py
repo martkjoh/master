@@ -1,33 +1,40 @@
 import numpy as np
-from numpy import sqrt, pi
+from numpy import sqrt, pi, log as ln
 
 
 c = 2.998e8
 G = 6.674e-11
 hbar = 1.055e-34
 alpha = 7.297e-3
+e = sqrt(4*pi*alpha)
 
 M0 = 1.988 * 10**30
 MeV = 1.60218e-19*1e6
 
 # Nuclear mass
 m_N = 939.57*MeV/c**2
-# pion decay constant
-f_pi = 130.2/sqrt(2)
+
 # pion mass
 m_pi = 134.98
 m_pipm = 139.57
 m_K0 = 497.61
 m_Kpm = 493.68
 m_eta = 547.86
+m_rho = 770
 
-Dm_EM = sqrt(m_pipm**2 - m_pi**2)
+# pion decay constant
+f_pi = 130.2/sqrt(2)
+f_rho = 154
+
+
+# C = 1/2 * f_pi**2 / e**2 * Dm_EM**2
+C = f_pi**2/(2*e**2) * (m_pipm**2 - m_pi**2)
+C2 = 3 / (32*pi**2) * m_rho**2*f_rho**2 * ln(f_rho**2 /(f_rho**2 - f_pi**2))
+
+Dm_EM = sqrt(2 * e**2/f_pi**2 * C)
 Dm = sqrt(m_K0**2 - (m_Kpm**2 - Dm_EM**2))
 m_S = sqrt((3*m_eta**2 - m_pi**2)/2)
 
-
-e = sqrt(4*pi*alpha)
-C = 1/2 * f_pi**2 / e**2 * Dm**2
 D = Dm_EM**2 / m_pi**2
 
 f_pi_SI = f_pi*MeV
@@ -61,9 +68,17 @@ if __name__=="__main__":
 
     # for const in get_const_fermi_gas(): print(const)
     # for const in get_const_pion(): print(const)
+
     # print("%.3e"%(C/(1e3)**4))
-    # u0, _, _ = get_const_pion()
-    # print("%.3e"%(C/(m_pi**2*f_pi**2)))
+    # print("%.3e"%(C2/(1e3)**4))
+    # print(Dm_EM)
+    # print(m_pi * sqrt(1 + Dm_EM**2/m_pi**2) - m_pi)
+    # print(m_pi * sqrt(1 + Dm_EM**2 / m_pi**2) - m_pi)
+    # print(Dm**2/m_pi**2)
+    # print(m_Kpm * (1 - sqrt(1 - Dm_EM**2 / m_Kpm**2))  )
+    print((m_K0 - sqrt(m_Kpm**2 - Dm_EM**2))  /  1)
+    # print(Dm)
+    
     # print(Δ)
 
     # max_radius_pion_star()
@@ -71,4 +86,4 @@ if __name__=="__main__":
 
     # print(( hbar * c / (2* G * m_pi**2) )**(3 / 2) * m_pi / M0)
 
-    print(Dm**4/m_K0**4)
+    # print(Dm**4/m_K0**4)
