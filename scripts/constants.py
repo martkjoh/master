@@ -22,6 +22,9 @@ m_Kpm = 493.68
 m_eta = 547.86
 m_rho = 770
 
+m_e = 0.5110
+m_mu = 1776
+
 # pion decay constant
 f_pi = 130.2/sqrt(2)
 f_rho = 154
@@ -76,7 +79,10 @@ if __name__=="__main__":
     # print(m_pi * sqrt(1 + Dm_EM**2 / m_pi**2) - m_pi)
     # print(Dm**2/m_pi**2)
     # print(m_Kpm * (1 - sqrt(1 - Dm_EM**2 / m_Kpm**2))  )
-    print((m_K0 - sqrt(m_Kpm**2 - Dm_EM**2))  /  1)
+    # print((m_K0 - sqrt(m_Kpm**2 - Dm_EM**2))  /  1)
+    print("%.4e" % (3 *pi**2 * m_pi*f_pi/m_e**2))
+    print((3 *pi**2 * m_pi*f_pi/m_mu**2))
+
     # print(Dm)
     
     # print(Δ)

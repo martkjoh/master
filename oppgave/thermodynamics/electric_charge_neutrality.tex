@@ -1,0 +1,72 @@
+\section{Electric charge neutrality}
+
+
+A pion condensate will have an electric charge.
+For three flavor QCD, the electric charge matrix, \autoref{three-flavor charge matrix}, will appear in the QCD Lagrangian as $\mu_Q \bar q Q q$, where $\bar q Q q$ is the electric charge density, and $\mu_Q = \mu_I + 2 \mu_S$ is the electric charge chemical potential.
+In the case of $\mu_S = 0$, this is thus the 
+The charge density is therefore
+%
+\begin{equation}
+    n_Q = - \pdv{\Eff}{\mu_Q} = n_I.
+\end{equation}
+%
+A realistic astrophysical object will not have a macroscopic electric charge.
+We will therefore model pion stars with the additional constraint of charge neutrality, by including charged leptons, muons or electrons.
+These leptons are free fermions, with an electric charge of $- e$, and we may therefore use the results from \autoref{section: cold fermi star} and \autoref{section: fermions}.
+The electric charge density of the leptons is given by minus particle number $n_\ell$, which we found in \autoref{Fermi gas particle density},
+%
+\begin{equation}
+    n_{\ell} = \frac{8}{3} \frac{u_{\ell, 0}}{m_\ell} x_f^3,
+\end{equation}
+%
+where $x_f = \sqrt{\mu^2_\ell - m_\ell^2}/m_\ell$ is the dimensionless Fermi momentum, $m_\ell$ the lepton mass, and $\mu_\ell$ the lepton chemical potential.
+We have introduced the characteristic energy density of the lepton, which is defined by
+%
+\begin{equation}
+    u_{\ell, 0} = \frac{m^4_\ell}{3 \pi^2}
+\end{equation}
+%
+The criterion for charge neutrality is thus
+%
+\begin{equation}
+    n_I = n_\ell.
+\end{equation}
+%
+This determines the lepton chemical potential $\mu_\ell$, given $\mu_I$.
+To leading order and excluding electromagnetic contribution to the pion interaction, we can use \autoref{pressure leading order chpt} write this explicitly as
+%
+\begin{equation}
+    A \left(\frac{\mu_\ell^2 }{m_\ell^2} - 1 \right)^{3/2}
+    = \frac{\mu_I}{m_\pi}\left( 1 - \frac{m_\pi^4}{\mu_I^4}  \right),
+\end{equation}
+%
+The right and left side vanish at $(\mu_I, \mu_\ell) = (m_\pi, m_\ell)$, which we have seen earlier is the point where the pressure and energy density of both the Fermi gas and the pion condensate vanish.
+This shows that our pion star will have a well-defined radius.
+We have introduced the constant
+%
+\begin{equation}
+    A = \frac{3}{8} \frac{m_\ell} {u_{0, \ell}} \frac{u_0}{m_\pi}
+    = 3\pi^2 \frac{m_\pi f_\pi^2}{m_\ell^3}  
+\end{equation}
+%
+Setting the lepton mass to the electron mass or muon mass gives, respectively, $A = 1.409\times10^{6}$ and $A = 1.167\times 10^{-1}$.
+Inserting $\mu_\ell^2/m_\ell^2 = 1 + \epsilon^2$ and $\mu_I^2 / m_\pi^2 = 1 + \epsilon'^2$, then this relationship is, to the lowest order in $\epsilon$ and $\epsilon'$, $A \epsilon^3 = \epsilon'^4$.
+
+
+
+The total pressure and energy density will now be the sum of the contributions from the pion condensate and the leptons.
+The lepton contribution to these, which we found in \autoref{Fermi gas energy density} and \autoref{Fermi gas pressure}, is
+%
+\begin{align}
+    u_\ell 
+    &= u_{\ell,0} 
+    \left[
+        (2x_f^3 + x_f) \sqrt{1+x_f^2} - \arcsinh(x_f)
+    \right]. \\
+    p_\ell 
+    &=\frac{1}{2} u_{\ell,0} 
+    \left[
+        (2x_f^3 - 3x_f) \sqrt{1+x_f^2} + 3\arcsinh(x_f)
+    \right].
+\end{align}
+%
