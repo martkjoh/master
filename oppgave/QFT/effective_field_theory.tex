@@ -3,11 +3,11 @@
 
 One of the most powerful concepts in quantum field theory is the notion of effective field theories.
 The methods we have laid out for quantum field theory involves, in general, calculations where we must integrate over all possible momenta, and thus all possible energies.
-However, we do not profess to know how physics behaves at arbitrarily energies, which as first glance seem to render our theories moot.
+However, we do not profess to know how physics behaves at arbitrarily energies, which at first glance seem to render our theories moot.
 The fact that the standard model allows for such precise predictions, then, suggest that the physics which happen at energies that are accessible to us can be described without knowledge of physics at the highest energies.
 This is a familiar concept from our everyday life---we can describe billiard balls colliding or rocks falling with high precision without having an accurate microscopic description of these objects.
 An effective field theory is a description of the physics of some underlying theory, some degrees of freedom $\varphi_a$ governed by a Lagrangian $\Ell[\varphi]$, in terms of a smaller set of degrees of freedom, $\pi_i$, governed by an effective Lagrangian $\Ell_\text{eff}[\pi]$.
-These two descriptions are related by 
+As they describe the same physics, these two descriptions are related by 
 %
 \begin{equation}
     Z[J] = \int \D \varphi \, \exp{i\int \dd^4 x \, \left( \Ell[\varphi] + \varphi_a J_a \right)}
@@ -16,13 +16,14 @@ These two descriptions are related by
 %
 We say that the degrees of freedom not present in the effective description have been \emph{integrated out}.
 An effective theory can come from integrating out all degrees of freedom above some energy cut off, or integrating out a particle and describe the interactions it mediates as point-like.
-In \autoref{section: effective action}, we found that the 1PI effective action resulted from integrating out all fluctuations away from the ground state.
+In \autoref{section: effective action}, we found that the 1PI effective action resulted from integrating out all fluctuations away from the ground state, leaving us with an effective field-theory in which all interactions are described entirely at tree-level.
+
 The modern understanding of the Standard Model is that is itself an effective field theory~\autocite{pencoIntroductionEffectiveField2020}.
-\todo[inline]{Skriv om: Renormalization group, renormalizable theories}
+\todo[inline]{Skriv om: Hvorfor, renormalization group, renormalizable theories}
 
 One of the pioneers of the philosophy of effective field theories was Steven Weinberg.
 He proposed that quantum field theories, in themselves, have almost no content beyond some basic assumptions~\autocite{weinbergDevelopmentEffectiveField2021}.
-What this means is that if we write down the most general possible Lagrangian, then we cannot really be wrong.
+What this means is that if we try to model a system by writing down the most general possible Lagrangian, then we cannot really be wrong.
 This was formulated more precisely in---as Weinberg himself called it---a ``theorem'':
 \begin{quote}
     ``[I]f one writes down the most general possible Lagrangian, including all terms consistent with assumed symmetry principles, and then calculates matrix elements with this Lagrangian to any given order of perturbation theory, the result will simply be the most general possible $S$-matrix consistent with analyticity, perturbative unitary, cluster decomposition and the assumed symmetry principles.''~\autocite{weinbergPhenomenologicalLagrangians1979}
@@ -54,73 +55,114 @@ However, if we can find a consistent series expansion, then only a finite number
 In last section, we showed that the Goldstone modes will always appear in the Lagrangian in the form of the terms of the Mauer-Cartan form, $d_\mu$ and $e_\mu$.
 The approach to create an effective theory of Goldstone bosons, such as chiral perturbation theory, is then to write down the most general Lagrangian, consistent with the underlying symmetries, made up of these terms.
 Then, using Weinberg's power counting scheme, as we discuss in \autoref{subsection: Weinberg's power counting scheme}, we expand perturbatively in the Goldstone boson energies.
-This will give us a self-consistent description of pions alone.
-However, we need a few more concepts to be able to include other fields.
+This will give us a self-consistent description of only the Goldstone bosons of the theory, the pseudoscalar mesons.
+The world is, of course, not only made up of pseudoscalar bosons.
+We also need to describe how these fields interact with other fields, or external sources.
+Furthermore, the global $\Lie{SU}{N_f}\times\Lie{SU}{N_f}$ symmetry of QCD with $N_f$ quarks is only approximate, as we will explore further in \autoref{chapter: chpt}.
+We must extend the CCWZ construction to incorporate these effects, which we will do by introducing some new QFT tools in the next section.
 
 
 
-\subsection{Schwinger-Dyson equations}
+\subsection{Schwinger-Dyson equations and Ward identities}
 
-\todo[inline]{finish, connect to foundations of chpt}
 
-\begin{align}
-    Z[j] = \frac{1}{Z_0} \int \D \varphi \, 
-    \exp{i \int \dd^4 x 
-    \left[  
-        \frac{1}{2} \varphi \partial^2 \varphi - \Ve[\varphi] + j\varphi 
-    \right]}
-\end{align}
+Given an action of fields $\varphi_a$ including external sources $j$, $S[\varphi, j] = S[\varphi] + \varphi_a j^a$, the expectation value of some functional of the fields, $F[ \varphi]$, is given by 
 %
-Transform $\varphi(x) \rightarrow \varphi(x) + \epsilon(x)$.
-This is a field redefinition, so $Z$ is unchanged.
-So is $\D \varphi$.
-Consider $\braket{\varphi}$,
+\begin{equation}
+    \label{Most general schwinger dyson equation}
+    \Braket{ F[\varphi] } = \int \D \varphi \, e^{iS[\varphi, J]} F[\varphi].
+\end{equation}
 %
-\begin{align}
-    \braket{\varphi(y)} &= \frac{1}{Z_0} \int \D \varphi \, 
-    [\varphi(y) + \epsilon(y)]\,
-    \exp{i \int \dd^4 x 
-    \left[  
-        \frac{1}{2} \varphi \partial^2 \varphi 
-        + \epsilon \partial^2 \varphi 
-        + \varphi \partial^ 2 \epsilon 
-        - \Ve[\varphi] - \epsilon \Ve'[\varphi] + j\varphi + j \epsilon
-    \right]}\\
-    & = \braket{\varphi(y)}
-    + \Braket{ \epsilon(y) 
-    + \int \dd^4 x  \varphi(y) \epsilon(x)
-    \left[
-        \partial_x^2 \varphi
-        - \Ve'[\varphi](x)
-    \right] 
-    }
-    + \Oh(\epsilon^2),
-\end{align}
+If we perform a \emph{local} transformation of the field on the form $\varphi(x) \rightarrow \varphi(x) + \epsilon \eta(x)$, the expectation value should remain unchanged, as this amounts to a change of integration variables.
+Expanding to first order in $\epsilon$, this gives us 
 %
-or
+\begin{equation}
+    \Braket{i \delta_\eta S[\varphi] F[\varphi]} + \Braket{\delta_\eta F[\varphi]} = 0.
+\end{equation}
 %
-\begin{align}
-    \partial^2_x \Braket{\varphi(y)\varphi(x)} 
-    = 
-    \Braket{\Ve'[\varphi](x) \varphi(y)}
-    - i \delta(y - x).
-\end{align}
+From \autoref{appendix: Functional derivatives}, we can use the definition of the functional derivative, and as the variational parameter $\eta(x)$ is arbitrary, we can set the integrand to zero leaving us with the identity
 %
-This realizes to 
+\begin{equation}
+    \label{Generalized schwinger dyson equation}
+    \Braket{\fdv{S}{\varphi(x)} F[\varphi]} = i \Braket{\fdv{F}{\varphi(x)}}.
+\end{equation}
+%
+
+
+One important special case are the Schwinger-Dyson equations, which are the equations of motion of correlation functions.
+They thus incorporate the dynamics of a theory.
+We derive them by setting $F[\varphi] = \varphi(x_1)...\varphi(x_n)$.
+If we have a Lagrangian on the form $\Ell = - \varphi(\partial^2 + m^2)\varphi - V[\varphi]$, then \autoref{Generalized schwinger dyson equation} becomes
 %
 \begin{align*}
-    \partial^2_x \braket{\varphi(x)\varphi(x_1)\dots \varphi(x_n)}
-    = \Braket{\Ve'[\varphi](x)\varphi(x_1)\dots\varphi(x_n)} 
-    -i \sum_i\delta(x - x_i)\braket{\varphi(x_1)\dots \varphi(x_{i-1})\varphi(x_{i+1})\dots \varphi(x_n)}.
+    (\partial^2_x + m^2)\braket{\varphi(x)\varphi(x_1)\dots \varphi(x_n)}
+    = - \Braket{\Ve'[\varphi](x)\varphi(x_1)\dots\varphi(x_n)} 
+    -i \sum_i\delta(x - x_i)
+    \Braket{\varphi(x_1)\dots \widehat {\varphi(x_{i})} \dots \varphi(x_n)},
 \end{align*}
 %
-These are the  Schwinger-Dyson equations, which encode the full quantum theory~\autocite{schwartzQuantumFieldTheory2013}.
+where the hat denotes that the field is \emph{omitted}.
+If $n = 1$ and $\Ve = 0$, we get the definining relation for the free Greens funciton,
+%
+\begin{equation}
+    (\partial^2_x + m^2)\braket{\varphi(x)\varphi(y)}
+    = -i \delta(x - y).
+\end{equation}
+%
+
+We may also consider slightly more general transformations of $\varphi(x)$, such as local phase-transformations $\varphi(x) \rightarrow e^{i\epsilon(x)}\varphi(x)$, as long as this does not affect the measure of the path integral.
+We will use this to derive identities, related to the Schwinger-Dyson equations, which encode the theories symmetries.
+If $\varphi \rightarrow \varphi + \delta \varphi$ is a global symmetry transformation, so that $\delta \Ell = 0$ and the integration measure is unchanged, then $\varphi(x) \rightarrow \varphi(x) + \eta(x) \delta \varphi(x)$ is a corresponding local transformation.
+We recover the global transformation for $\eta = 1$.
+The variation of the action from this transformation will be
+%
+\begin{align}
+    \delta S 
+    &= 
+    \int \dd^4 x \,
+    \left(
+        \pdv{\Ell}{\varphi} \eta \delta \varphi
+        + \pdv{\Ell}{(\partial_\mu\varphi) } \partial_\mu (\eta \delta \varphi)
+    \right)\\
+    & =
+    \int \dd^4 x \, J^\mu \partial_\mu \eta
+    + \int \dd^4 x \, \eta \delta \varphi
+    \left( 
+        \pdv{\Ell}{\varphi} \delta \varphi 
+        + \pdv{\Ell}{(\partial_\mu \varphi)} \partial_\mu \delta \varphi  
+    \right)
+\end{align}
+%
+We have introduced the Nöther current $J^\mu = \pdv{\Ell}{(\partial_\mu \varphi)} \delta \varphi$.
+The term within the parenthesis is precisely $\delta \Ell$ for $\eta = 1$, and thus vanish by assumption.
+Integrating by parts, we are thus left with
+%
+\begin{equation}
+    \label{delta S}
+    \delta S = - \int \dd^4 x \, \eta(x) \partial_\mu J^\mu.
+\end{equation}
+%
+For $F = 1$, $\delta F = 0$ and we can insert \autoref{delta S} into \autoref{Most general schwinger dyson equation} to obtain the quantum version of the conservation-equation,
+%
+\begin{equation}
+    \Braket{\partial_\mu J^\mu} = 0,
+\end{equation}
+%
+With $F = \varphi(x_1) \varphi(x_2)$, we get
+%
+\begin{equation}
+    \partial_{x, \mu} \braket{J^\mu (x)\varphi(x_1) \varphi(x_2)}
+    = -i \delta(x - x_1) \braket{\delta \varphi(x_1) \varphi(x_2)}
+    - i \delta(x - x_2) \braket{\varphi(x_1) \delta \varphi(x_2)}
+\end{equation}
+%
+
+Let us now consider external fields
+\autocite{schwartzQuantumFieldTheory2013,peskinIntroductionQuantumField1995}.
 
 
-\subsection{Ward-identities}
 
 
-Ward-identities are similar relations to the Schwinger-Dyson equations, which encodes the symmetries of a theory, and are the generalization of conservation equations in classical field theory, such as $\partial_\mu J^\mu = 0$.
 Consider a massless spinor field with the Lagrangian,
 %
 \begin{equation}
