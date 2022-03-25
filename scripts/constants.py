@@ -66,6 +66,16 @@ def max_radius_pion_star():
     print(R)
     print(R / (1 + D))
 
+
+
+def get_const_lepton(m_l):
+    u0 = f_pi**2*m_pi**2
+    ul0 = m_l**4 / (3*pi**2)
+    A = 1/(8*pi**2) * m_l**3/(m_pi*f_pi)
+    return u0, ul0, A
+
+
+
 if __name__=="__main__":
     pass
 
@@ -80,8 +90,13 @@ if __name__=="__main__":
     # print(Dm**2/m_pi**2)
     # print(m_Kpm * (1 - sqrt(1 - Dm_EM**2 / m_Kpm**2))  )
     # print((m_K0 - sqrt(m_Kpm**2 - Dm_EM**2))  /  1)
-    print("%.4e" % (3 *pi**2 * m_pi*f_pi/m_e**2))
-    print((3 *pi**2 * m_pi*f_pi/m_mu**2))
+
+    _, _, A = get_const_lepton(m_e)
+    print("%.4e" % A)
+
+    _, _, A = get_const_lepton(m_mu)
+    print("%.4e" % A)
+
 
     # print(Dm)
     

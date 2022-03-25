@@ -1,7 +1,8 @@
 import numpy as np
 import sys
 
-from pion_star_eos import u_nr
+from chpt_eos import u_nr
+# from chpt_lepton_eos import u
 sys.path.append(sys.path[0] + "/..")
 from integrate_tov import get_u, integrate
 
@@ -35,7 +36,6 @@ def sim_newt_non_rel():
     np.save("pion_star/data/sols_newt_non_rel", sols)
 
 
-
 # sim()
 # sim_non_rel()
 # sim_newt()
@@ -50,4 +50,21 @@ def sim_EM():
     np.save("pion_star/data/sols_EM", sols)
 
 
-sim_EM()
+# sim_EM()
+
+
+pcs = 10**np.linspace(-10, -2, n)
+
+def sim_e():
+    u = get_u("pion_star/data/eos_e.npy")
+    # max_step = 1
+    max_step = 1e-2
+    sols = integrate(u, pcs, max_step=max_step, r_max=1e8, info=True)
+    np.save("pion_star/data/sols_e", sols)
+
+
+sim_e()
+
+
+
+

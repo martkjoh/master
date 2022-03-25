@@ -5,7 +5,7 @@ import sys
 from numpy import pi, sqrt, log10 as log
 from matplotlib import cm, colors, collections
 
-from pion_star_eos import u_nr, u_ur, p
+from chpt_eos import u_nr, u_ur, p
 sys.path.append(sys.path[0] + "/..")
 from integrate_tov import get_u
 from constants import get_const_pion
@@ -213,6 +213,27 @@ def plot_eos():
     fig.savefig("figurer/pion_star/pion_eos.pdf", bbox_inches="tight")
 
 
+def plot_eos_leptons():
+    fig, ax = plt.subplots(figsize=(8, 6))
+    u = get_u("pion_star/data/eos.npy")
+    u_e = get_u("pion_star/data/eos_e.npy")
+    u_mu = get_u("pion_star/data/eos_mu.npy")
+
+    p = np.linspace(0, 0.01, 1000) 
+    fig, ax = plt.subplots(figsize=(12, 6)) 
+
+    ax.plot(p, [u(p0) for p0 in p], label="$ \\pi$")
+    ax.plot(p, [u_e(p0) for p0 in p], "k--", label="$ \\pi + e$")
+    ax.plot(p, [u_mu(p0) for p0 in p], "r-.", label="$ \\pi + \\mu$")
+
+    ax.set_xlabel("$p / u_0$")
+    ax.set_ylabel("$u / u_0$")
+
+    ax.legend()
+    fig.savefig("figurer/pion_star/pion_eos_leptson.pdf", bbox_inches="tight")
+
+
+
 def plot_mu():
     fig, ax = plt.subplots(figsize=(12, 6))
     p = lambda x: 1/2 * (x**2 + 1/x**2 - 2)
@@ -319,33 +340,27 @@ def plot_mass_radius_compare_EM():
 
 
 def test():
-    sols = load_sols()
+    sols = load_sols(name="_e")
     data = [[], [], []]
+
     for i, s in enumerate(sols):
         data[0].append(s.t[-1])
         data[1].append(s.y[1][-1])
         data[2].append(s.y[0][0])
 
-
+    u0, m0, r0 = get_const_pion()
     R, M, pc = [np.array(d) for d in data]
 
-    n = 50
-    plt.plot(R[:n], M[:n], "x")
-    
-    s = linregress(R[:n], M[:n])
-    a, b = s.slope, s.intercept
-    x = np.linspace(R[n], R[0])
-    plt.plot(x, a*x + b)
-    plt.plot(-b/a, 0, "kx", label="$R = %.3f\, \mathrm{km} $"%((-b/a)*r0))
-
-    R0 = pi/sqrt(12)
-    plt.plot(R0, 0, "x")
-    plt.legend()
+    plt.plot(R*r0, M*m0)
     plt.show()
 
+
+
+plot_eos_leptons()
+
+
+
 # test()
-
-
 
 # plot_pressure_mass()
 # plot_pressure_mass(name="_EM")
@@ -353,7 +368,7 @@ def test():
 # plot_mass_radius()
 # plot_mass_radius_compare()
 # plot_mass_radius(name="_EM")
-plot_mass_radius_compare_EM()
+# plot_mass_radius_compare_EM()
 
 # plot_eos()
 # plot_mu()

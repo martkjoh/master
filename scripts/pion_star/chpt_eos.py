@@ -6,9 +6,9 @@ sys.path.append(sys.path[0] + "/..")
 from constants import D
 
 xrange = (0, 5) 
-N = 1_00
+N = 1_000
 
-p = lambda x: 1/2 * (x**2 + 1/x**2 - 2)
+p = lambda x: 1/2 * (x - 1/x)**2
 u = lambda x: 1/2 * (2 + 1/x**2 - 3*x**2)
 
 
@@ -20,6 +20,7 @@ def gen_eos_list():
 
     ulst = u(x)
     plst = p(x)
+    print(plst)
 
     # Can only interpolate with unique points
     assert len(np.unique(plst)) == len(plst)
@@ -60,5 +61,5 @@ def gen_eos_list_EM():
 
 
 if __name__=="__main__":
-    # gen_eos_list()
+    gen_eos_list()
     gen_eos_list_EM()

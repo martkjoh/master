@@ -47,7 +47,7 @@ def get_u(name):
     return u
 
 
-def integrate(u, pcs, dense_output=True, max_step=0.001, r_max=1e3, newtonian_limit=False):
+def integrate(u, pcs, dense_output=True, max_step=0.001, r_max=1e3, newtonian_limit=False, info=False):
     """ Integrate TOV for a list of central pressures pcs"""
 
     dmdr = lambda r, y, args: dmdr_general(u, r, y, args) 
@@ -63,6 +63,15 @@ def integrate(u, pcs, dense_output=True, max_step=0.001, r_max=1e3, newtonian_li
         return p
     stop.terminal = True # attribute for solve_ivp
 
+    
+    if not info:
+        def y (r, y, args):
+            return 1
+    else:
+        def y(r, y, args):
+            print("r = %.3e"% r + ", p = %.3e" % y[0])
+            return 1
+
     if type(max_step)==float:
         max_step = np.ones_like(pcs)*max_step
 
@@ -74,7 +83,7 @@ def integrate(u, pcs, dense_output=True, max_step=0.001, r_max=1e3, newtonian_li
             (0, r_max), 
             (pc, 0), 
             args=(pc,), 
-            events=stop, 
+            events=(stop, y),
             max_step=s, 
             dense_output=dense_output,
         )
