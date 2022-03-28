@@ -352,11 +352,12 @@ def test():
     R, M, pc = [np.array(d) for d in data]
 
     plt.plot(R*r0, M*m0)
+    print(r0)
     plt.show()
 
 
 
-plot_eos_leptons()
+test()
 
 
 
