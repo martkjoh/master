@@ -16,7 +16,7 @@ As they describe the same physics, these two descriptions are related by
 %
 We say that the degrees of freedom not present in the effective description have been \emph{integrated out}.
 An effective theory can come from integrating out all degrees of freedom above some energy cut off, or integrating out a particle and describe the interactions it mediates as point-like.
-In \autoref{section: effective action}, we found that the 1PI effective action resulted from integrating out all fluctuations away from the ground state, leaving us with an effective field-theory in which all interactions are described entirely at tree-level.
+In \autoref{section: effective action}, we found that the 1PI effective action resulted from integrating out all fluctuations away from the ground state, leaving us with an effective field-theory in which all interactions are described entirely at the tree-level.
 
 The modern understanding of the Standard Model is that is itself an effective field theory~\autocite{pencoIntroductionEffectiveField2020}.
 \todo[inline]{Skriv om: Hvorfor, renormalization group, renormalizable theories}
@@ -66,33 +66,41 @@ We must extend the CCWZ construction to incorporate these effects, which we will
 \subsection{Schwinger-Dyson equations and Ward identities}
 
 
-Given an action of fields $\varphi_a$ including external sources $j$, $S[\varphi, j] = S[\varphi] + \varphi_a j^a$, the expectation value of some functional of the fields, $F[ \varphi]$, is given by 
+Given an action of fields $\varphi_a$ governed by some action $S[\varphi]$, the expectation value of some functional of the fields, $F[ \varphi]$, is given by 
 %
 \begin{equation}
     \label{Most general schwinger dyson equation}
-    \Braket{ F[\varphi] } = \int \D \varphi \, e^{iS[\varphi, J]} F[\varphi].
+    \Braket{ F[\varphi] } = \int \D \varphi \, e^{iS[\varphi]} F[\varphi].
 \end{equation}
 %
-If we perform a \emph{local} transformation of the field on the form $\varphi(x) \rightarrow \varphi(x) + \epsilon \eta(x)$, the expectation value should remain unchanged, as this amounts to a change of integration variables.
-Expanding to first order in $\epsilon$, this gives us 
+If we perform a \emph{local} transformation of the field on the form $\varphi(x) \rightarrow \varphi(x) + \epsilon \eta(x)$, the integral measure will remain unchanged.
+The expectation value, to first order in $\epsilon$, then changes as
 %
 \begin{equation}
-    \Braket{i \delta_\eta S[\varphi] F[\varphi]} + \Braket{\delta_\eta F[\varphi]} = 0.
+    \Braket{F} \rightarrow
+    \int \D \varphi \, e^{i(S+\epsilon \delta S)}(F + \epsilon \delta F)
+    = \Braket{F} +  \epsilon\Braket{i(\delta_\eta S) F} + \epsilon\Braket{\delta_\eta F}.
 \end{equation}
 %
-From \autoref{appendix: Functional derivatives}, we can use the definition of the functional derivative, and as the variational parameter $\eta(x)$ is arbitrary, we can set the integrand to zero leaving us with the identity
+Where the variation $\delta_\eta S = \int \dd^n x\, \fdv{S[\varphi]}{\varphi(x)} \eta(x)$, as defined in \autoref{appendix: Functional derivatives}.
+As this amounts to a change of variable, the expectation value should remain unchanged.
+This gives us the important identity
+%
+\begin{equation}
+    \Braket{i (\delta_\eta S[\varphi]) F[\varphi]} + \Braket{\delta_\eta F[\varphi]} = 0.
+\end{equation}
+%
+Using the form of the variation, and the fact that $\eta$ is independent of $\varphi$, we may write this identity on the form
 %
 \begin{equation}
     \label{Generalized schwinger dyson equation}
-    \Braket{\fdv{S}{\varphi(x)} F[\varphi]} = i \Braket{\fdv{F}{\varphi(x)}}.
+    \Braket{\fdv{S[\varphi]}{\varphi(x)} F[\varphi]} = i \Braket{\fdv{F[\varphi]}{\varphi(x)}}.
 \end{equation}
 %
-
-
-One important special case are the Schwinger-Dyson equations, which are the equations of motion of correlation functions.
+One important special case of this identity are the Schwinger-Dyson equations, which are the equations of motion of correlation functions.
 They thus incorporate the dynamics of a theory.
 We derive them by setting $F[\varphi] = \varphi(x_1)...\varphi(x_n)$.
-If we have a Lagrangian on the form $\Ell = - \varphi(\partial^2 + m^2)\varphi - V[\varphi]$, then \autoref{Generalized schwinger dyson equation} becomes
+If we have a Lagrangian on the form $\Ell = - \frac{1}{2}\varphi(\partial^2 + m^2)\varphi - V[\varphi]$, then \autoref{Generalized schwinger dyson equation} becomes
 %
 \begin{align*}
     (\partial^2_x + m^2)\braket{\varphi(x)\varphi(x_1)\dots \varphi(x_n)}
@@ -109,10 +117,9 @@ If $n = 1$ and $\Ve = 0$, we get the definining relation for the free Greens fun
     = -i \delta(x - y).
 \end{equation}
 %
-
 We may also consider slightly more general transformations of $\varphi(x)$, such as local phase-transformations $\varphi(x) \rightarrow e^{i\epsilon(x)}\varphi(x)$, as long as this does not affect the measure of the path integral.
-We will use this to derive identities, related to the Schwinger-Dyson equations, which encode the theories symmetries.
-If $\varphi \rightarrow \varphi + \delta \varphi$ is a global symmetry transformation, so that $\delta \Ell = 0$ and the integration measure is unchanged, then $\varphi(x) \rightarrow \varphi(x) + \eta(x) \delta \varphi(x)$ is a corresponding local transformation.
+We will use this to derive identities, related to the Schwinger-Dyson equations, that incorporate the symmetries of a given theory.
+If $\varphi(x) \rightarrow \varphi(z) + \delta \varphi(x)$ is a global symmetry transformation, so that $\delta \Ell = \partial_\mu K^\mu$ and the integration measure is unchanged, then $\varphi(x) \rightarrow \varphi(x) + \eta(x) \delta \varphi(x)$ is a corresponding local transformation.
 We recover the global transformation for $\eta = 1$.
 The variation of the action from this transformation will be
 %
@@ -125,30 +132,34 @@ The variation of the action from this transformation will be
         + \pdv{\Ell}{(\partial_\mu\varphi) } \partial_\mu (\eta \delta \varphi)
     \right)\\
     & =
-    \int \dd^4 x \, J^\mu \partial_\mu \eta
-    + \int \dd^4 x \, \eta \delta \varphi
+    \int \dd^4 x \, \left( \pdv{\Ell}{(\partial_\mu \varphi)} \delta \varphi \right) \partial_\mu \eta
+    + \int \dd^4 x \, \eta(x)
     \left( 
         \pdv{\Ell}{\varphi} \delta \varphi 
         + \pdv{\Ell}{(\partial_\mu \varphi)} \partial_\mu \delta \varphi  
-    \right)
+    \right)\\
+    &=
+    - \int \dd^4 x \, \eta(x) \partial_\mu 
+    \left(  \pdv{\Ell}{(\partial_\mu \varphi)} \delta \varphi - K^\mu \right)
 \end{align}
 %
-We have introduced the Nöther current $J^\mu = \pdv{\Ell}{(\partial_\mu \varphi)} \delta \varphi$.
-The term within the parenthesis is precisely $\delta \Ell$ for $\eta = 1$, and thus vanish by assumption.
-Integrating by parts, we are thus left with
+In the last line, we integrated by parts, and used $\delta \Ell = \partial_\mu K^\mu$.
+The term within the parenthesis is precisely the Nõther current $J^\mu$, so
 %
 \begin{equation}
     \label{delta S}
     \delta S = - \int \dd^4 x \, \eta(x) \partial_\mu J^\mu.
 \end{equation}
 %
-For $F = 1$, $\delta F = 0$ and we can insert \autoref{delta S} into \autoref{Most general schwinger dyson equation} to obtain the quantum version of the conservation-equation,
+As $\varphi$ is an integration variable in the path integral, it is not necessarily on-shell.
+We can therefore not use Nöther's theorem, $\partial_\mu J^\mu = 0$, as this relies on the equation of motion.
+However, $F = 1$ and thus $\delta F = 0$, we can insert \autoref{delta S} into \autoref{Most general schwinger dyson equation} to obtain the quantum version of the current conservation equation,
 %
 \begin{equation}
-    \Braket{\partial_\mu J^\mu} = 0,
+    \partial_\mu \Braket{J^\mu} = 0.
 \end{equation}
 %
-With $F = \varphi(x_1) \varphi(x_2)$, we get
+With $F = \varphi(x_1) \varphi(x_2)$, we get~\autocite{schwartzQuantumFieldTheory2013,peskinIntroductionQuantumField1995}
 %
 \begin{equation}
     \partial_{x, \mu} \braket{J^\mu (x)\varphi(x_1) \varphi(x_2)}
@@ -156,13 +167,34 @@ With $F = \varphi(x_1) \varphi(x_2)$, we get
     - i \delta(x - x_2) \braket{\varphi(x_1) \delta \varphi(x_2)}
 \end{equation}
 %
+These are Ward-Takashi identities, often called just Ward-identities, and encode the symmetries of a theory.
+In case symmetry is only approximate, so $\Delta \Ell = \partial_\mu K^\mu + \Delta$, where $\Delta$ is some small symmetry breaking operator, or it is subject to an anomaly, so $\D \varphi \rightarrow \D \varphi (1 + \Delta)$, then the conservation equation is modified to
+%
+\begin{equation}
+    \partial_\mu \Braket{J^\mu} = \Braket{\Delta}.
+\end{equation}
 
-Let us now consider external fields
-\autocite{schwartzQuantumFieldTheory2013,peskinIntroductionQuantumField1995}.
+Let us now consider external fields.
+If we modify the Lagrangian to read $\Ell[\varphi, j] = \Ell[\varphi] + j^\mu J_\mu$, where $J_\mu$ is the symmetry current.
+The generating functional is then
+%
+\begin{equation}
+    Z[j] = \int\D \varphi \, e^{iS[\varphi, j]}.
+\end{equation}
+%
+This new action does not, in general, obey the symmetries of original action.
+Under the global symmetry transformation, $\varphi \rightarrow \delta \varphi$, the action now transforms as
+%
+\begin{equation}
+    S[\varphi, j] \rightarrow S[\varphi, j] + \int \dd^n x \, \delta \varphi(x) j(x).
+\end{equation}
+%
+However, if we can transform $j \rightarrow j' = j + \delta j$ in such a way that it counteracts this new, additional term, then the action will remain unchanged.
+In other words, to counteract the transformation $\varphi \rightarrow \varphi'$, we define $j \rightarrow j'$ such that $\varphi j = \varphi' j'$.
+Then, $\varphi \delta j = -\delta \varphi j$, and $S[\varphi, j] = S[\varphi', j']$.
 
-
-
-
+We will now make the symmetry local, as we did to derive the Ward identities.
+We will consider an example of spinor fields adapted from~\autocite{schererIntroductionChiralPerturbation2002}, as this is what we will apply this theory to when constructing chiral perturbation theory.
 Consider a massless spinor field with the Lagrangian,
 %
 \begin{equation}
@@ -176,21 +208,9 @@ The system then has a corresponding conserved current,
     J_\alpha^\mu = \bar \psi T_\alpha \gamma^\mu \psi,
 \end{equation}
 %
-where $T_\alpha$ are the generators of $\Lie{U}{N}$.
-The action, with spinor sources $\eta = \eta_\alpha T_\alpha$ and a vector sources $v_\mu = v_\mu^\alpha T_\alpha$, is then
-%
-\begin{equation}
-    S[\psi, \bar \psi, \eta, \bar \eta, v]
-    = 
-    \int \dd^4 x \,
-    \left(
-        i \bar \psi \slashed d \psi - \Ve[\psi, \bar \psi]
-        + \bar \eta \psi 
-        + \bar \psi \eta + v_\mu^\alpha J^\mu_\alpha
-    \right).
-\end{equation}
-%
-As in the derivation of the Dyson-Schwinger equations, we now perform a \emph{local} $\Lie{U}{1}$ transformation, $\psi \rightarrow e^{i\eta_\alpha(x)T_\alpha} \psi$.
+where $T_\alpha$ are the generators of $\Lie{SU}{N}$.
+We then include spinor sources $\eta = \eta_\alpha T_\alpha$ and vector sources $v_\mu = v_\mu^\alpha T_\alpha$ by adding the terms $ \bar \eta \psi$, $\bar \psi \eta$, and $v_\mu^\alpha J^\mu_\alpha$ to the Lagrangian.
+We then perform a \emph{local} $\Lie{SU}{1}$ transformation, $\psi \rightarrow e^{i\eta_\alpha(x)T_\alpha} \psi$.
 The action then changes as
 %
 \begin{equation}
@@ -205,8 +225,9 @@ The action then changes as
     \right].
 \end{equation}
 %
-Even thought the original action has a global symmetry, it does not remain invariant under a local transformation.
-However, if we treat the external sources as gauge fields, transforming them to counteract the local transformation, then we get an invariance criterion.
+The last term corresponds to the change in action without sources, which we found earlier \autoref{delta S}.
+As before, we define transformations of the external fields to counteract the additional terms.
+As these transformations now are local, these fields acts as gauge fields.
 We treat gauge theories in more detail in \autoref{subsection: yang-mills theory and gauge symmetry}.
 The gauge transformation of the external sources are
 %
@@ -217,16 +238,13 @@ The gauge transformation of the external sources are
 \end{equation}
 %
 This gives the relation
-%
-\begin{equation}
-    \label{Equality for action Ward idientities}
+$
     S[\psi', \bar \psi', \eta', \bar \eta', v'] =
     S[\psi, \bar \psi, \eta, \bar \eta, v],
-\end{equation}
-%
+$
 where the mark indicates the gauge transformed field.
 As we argued in the subsection on the Dyson-Schwinger equations, we can change the integration variables inside the path integral without changing the result.
-This gives us the relation, using $U \sim 1 + i \epsilon(x) V $
+Using $U \sim 1 + i \epsilon(x) V $ and expanding to first order in $\epsilon$, we get
 %
 \begin{equation}
     \label{local invariance with external fields as gauge fields}
@@ -244,48 +262,34 @@ This gives us the relation, using $U \sim 1 + i \epsilon(x) V $
 \end{equation}
 %
 This must vanish.
-Let $V = \theta_\alpha T_\alpha$, then
+If we let $V = \theta_\alpha T_\alpha$, do a partial integration, and exploit the fact that $\epsilon(x)$ is arbitrary, we get the relation
 %
 \begin{equation}
-    \int \dd^4 x \, \epsilon(x) \theta_\alpha
     \Braket{
         \bar \psi T_\alpha \eta
         - \bar \eta T_\alpha \psi
-        % + i\bar \psi \gamma^\mu [T_\alpha, v_\mu] \psi
-        % + i v_{\mu}^\beta J^\mu_\gamma (2i f_{\alpha \beta \gamma})
-        % + i \partial_\mu J_\alpha^\mu
         + D^{\alpha\beta}_\mu J^\mu_\beta
     }
     = 0.
 \end{equation}
 %
-Here, $D^{\alpha\beta}_\mu$ is the covariant derivative, 
-$D^{\alpha\beta}_\mu J^\beta_\nu = \partial_\mu J_\nu^\alpha +  i [T^\alpha, T^\beta]J^\nu_\beta $.
-As this holds for an arbitrary function $\epsilon$ and vector $\theta_\alpha$, the integrand must vanish.
-We can get more general expression by writing this using the generating functional $W$,~\autocite{schererIntroductionChiralPerturbation2002}
+Here, $D^{\alpha\beta}_\mu$ is the covariant derivative in the adjoint representation,
+$D^{\alpha\beta}_\mu J^\beta_\nu = (\delta_{\alpha\beta}\partial_\mu +  i v_\mu^\gamma f^{\alpha \gamma \beta} )J^\nu_\beta $, and $f^{\alpha \beta \gamma}$ are the structure constants of $\lie{su}{N}$.
+We can get more general expression by writing this using the generating functional $W$,
 %
 \begin{equation}
+    \label{generating equation ward identitites}
     \left( 
         \fdv{}{\eta_\alpha(x)} \eta - \bar \eta \fdv{}{\bar \eta_\alpha(x)}  
         + D_{\mu}^{\alpha \beta} \fdv{}{v_\mu^\beta(x)}
         \right) W[\eta, \bar \eta, v] = 0.
 \end{equation}
 %
-From this, we can generate the familiar form of Ward-identities, by taking the functional derivative and evaluating at vanishing, source, which gives
-%
-\begin{equation}
-    D_{x, \mu}^{\alpha \beta }\Braket{J^\mu_{\eta}(x) \psi(x_1) \psi(x_2)}
-    = [\delta(x - x_1) - \delta(x - x_2)] \Braket{\bar \psi(x_1) \psi (x_2)}.
-\end{equation}
-%
-For vanishing $\eta$, $\bar \eta$, we get the conservation law
-%
-\begin{equation}
-    \Braket{D_\mu^{\alpha \beta} J^\mu_\beta} = 0.
-\end{equation}
+If we evaluate this at $\eta = \bar \eta = v_\mu = 0$, we get the quantum conservation equation $\partial_\mu \Braket{J^\mu_\alpha} = 0$.
+From \autoref{generating equation ward identitites}, we can also get more general ward identities by taking functional derivatives with respect to the external sources.
 
 
-We have now seen how the Ward-identities encode the global symmetries of the theory, and that they may be derived by transforming external source fields as gauge field to ensure the invariance of the action under the corresponding \emph{local} transformations.
+We have now seen how the Ward identities encode the global symmetries of the theory, and that they may be derived by transforming external source fields as gauge field to ensure the invariance of the action under the corresponding \emph{local} transformations.
 This is the key insight behind the systematic development of chiral perturbation theory~\autocite{gasserChiralPerturbationTheory1984,gasserChiralPerturbationTheory1985,leutwylerFoundationsChiralPerturbation1994}.
 With the CCWZ construction, we can create the Lagrangian of Goldstone bosons alone, given only the symmetry breaking pattern $G \rightarrow G/H$.
 However, it does not tell us how external fields couples to them.
