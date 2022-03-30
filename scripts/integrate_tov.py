@@ -41,7 +41,7 @@ def get_u(name):
 
     def u(p):
         if p < plst[0]: return 0
-        if p > plst[-1]: print("p=%" % p); raise Exception("p-value outside interpolation area")
+        if p > plst[-1]: raise Exception("p-value outside interpolation area, p=%.3e" % p)
         else: return splev(p, tck)[None][0]
 
     return u

@@ -339,8 +339,8 @@ def plot_mass_radius_compare_EM():
     
 
 
-def test():
-    sols = load_sols(name="_e")
+def test(name):
+    sols = load_sols(name="_"+name)
     data = [[], [], []]
 
     for i, s in enumerate(sols):
@@ -352,12 +352,13 @@ def test():
     R, M, pc = [np.array(d) for d in data]
 
     plt.plot(R*r0, M*m0)
-    print(r0)
+
     plt.show()
 
 
 
-test()
+test("e")
+# test("mu")
 
 
 
