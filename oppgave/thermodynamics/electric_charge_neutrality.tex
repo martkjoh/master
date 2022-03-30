@@ -197,7 +197,8 @@ and the equation of state is thus
     \end{subfigure}
     \caption{
         The full equation of state of the pion + lepton system, compared with intermediate and non-relativistic limit.
-    On the right, the lepton is the m
+    On the right, the lepton is the electron, while on the right it is the muon.
+    The full equation of state is compared to two different limits.
     }
     \label{fig: intermediate regime}
 \end{figure}
@@ -209,11 +210,36 @@ and the equation of state is thus
 %
 This is illustrated in \autoref{fig: intermediate regime}.
 In this figure, both the intermediate limit and the non-relativistic limit is shown.
-To the left is the system with electrons, and we see that even though $m_e > m_\pi$, there is still a regime of validity of around five orders of magnitude for the intermediate limit.
+To the left is the system with electrons, and we see that even though $m_e < m_\pi$, there is still a regime of validity of around five orders of magnitude for the intermediate limit.
 For $p/u_0 < 10^{-10}$, we see that the non-relativistic limit is very good.
 On the right, we see that the intermediate limit has a very large range of applicability, of more than ten orders of magnitude.
 The equation of state does finally approach the non-relativistic limit around $p/u_0 < 10^{-16}$, however it is necessary with higher-than-normal precision in the numerical calculations to see this.
  
 
 
+\subsection{Stars}
+
+
+The mass-radius relation for pion stars including leptons is shown in \autoref{fig: mass radius relation with leptons}, and is compared to the relation for pion stars of only pions.
+We see that the two leptons affect the relation in different ways.
+The light electron does not contribute much to the energy density and the ultrarelativistic limit of the full equation of state quickly approaches that of only the pion. The maximum mass is therefore not changed much, and the corresponding radius is only slightly larger.
+In the non-relativisitic regime, however, the electron results in a stiffer equation, and a different polytropic index.
+There is therefore no upper limit to the radius, which only grows with lower total mass.
+The muon, on the other hand, is much heavier and thus mostly contributes to the energy density.
+This results in a less stiff equation of state, and a smaller and less massive star.
+As the intermediate limit, where $\gamma = 2$, is such a good approximation for the equation of state, this relation seems to approach a maximum radius.
+However, we can notice a slight curve towards higher radius at the lowest mass.
+We expect this to continue in the non-relativisitic limit, as the pressure from the pion becomes negligible compared to the degeneracy from muons.
+This effect, however, we would need much higher precision numerical computation to show.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_radius_lepton.pdf}
+    \caption{
+        The mass-radius relation of pion stars, with and without a lepton to enforce charge neutrality.
+        The radius is given in km, and the mass in solar masses.
+        }
+        \label{fig: mass radius relation with leptons}
+\end{figure}
 

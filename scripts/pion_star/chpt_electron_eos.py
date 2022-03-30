@@ -147,21 +147,30 @@ def plt_tot(m_l=m_e, name="e"):
 
  
 
-def gen_eos_list(xm1, m_l=m_e, name="e"):
+def gen_eos_list(r, m_l=m_e, name="e"):
+    print(N)
+    x = 1 + np.logspace(*r, N-1, dtype=np.longdouble())
+    x = np.concatenate([[1], x])
+
     f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_l)
 
-    ulst = u(xm1)
-    plst = p(xm1)
+    ulst = u(x)
+    plst = p(x)
+
+    plt.loglog(plst, ulst)
+    plt.show()
+    print(plst[:100])
+    print(np.diff(plst)[:100])
 
     # Can only interpolate with unique points
     assert len(np.unique(plst)) == len(plst)
     assert len(np.unique(ulst)) == len(ulst)
+    assert np.sum(np.diff(plst)<0) == 0
+    assert np.sum(np.diff(ulst)<0) == 0
+    
 
-    print(np.sum(np.diff(plst[:100])<0))
 
-    plt.plot(plst, ulst)
-    plt.show()
-    np.save("pion_star/data/eos_"+name, [xm1, plst, ulst])
+    np.save("pion_star/data/eos_"+name, [x, plst, ulst])
 
 
 def load_eos_list(name):
@@ -174,7 +183,6 @@ N = 10000
 def plot_all(r, name="nr"):
     fig, ax = plt.subplots(figsize=(8, 5))
     x = 1 + np.logspace(*r, N-1)
-    x = np.concatenate([[1], x])
 
     f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_e)
     pe = p(x)
@@ -204,14 +212,15 @@ def plot_all(r, name="nr"):
 # plt_tot(m_l=m_e, name="e")
 # plt_tot(m_l=m_mu, name="\\mu")
 
-# r = (-13, 2)
-# x = 1 + np.logspace(*r, N-1)
-# gen_eos_list(x, m_e, name="e")
-# gen_eos_list(x, m_mu, name="mu")
+N = 1000
+# r = (-13, 3)
+# gen_eos_list(r, m_e, name="e")
+r = (-10, 5)
+gen_eos_list(r, m_mu, name="mu")
 
-r = (-5,-2)
-plot_all(r, name="nr")
-r = (-2, 1)
-plot_all(r, name="ur")
+# r = (-5,-2)
+# plot_all(r, name="nr")
+# r = (-2, 1)
+# plot_all(r, name="ur")
 
 

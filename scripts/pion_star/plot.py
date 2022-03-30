@@ -339,27 +339,39 @@ def plot_mass_radius_compare_EM():
     
 
 
-def test(name):
-    sols = load_sols(name="_"+name)
-    data = [[], [], []]
+def test():
+    sols1 = load_sols()
+    sols2 = load_sols(name="_e")
+    sols3 = load_sols(name="_mu")
+    N = len(sols1)
+    sols = [sols1, sols2, sols3]
+    datas = [[[], [], []] for _ in sols]
+    for j, sol in enumerate(sols):
+        for i, s in enumerate(sol):
+            datas[j][0].append(s.t[-1])
+            datas[j][1].append(s.y[1][-1])
+            datas[j][2].append(s.y[0][0])
 
-    for i, s in enumerate(sols):
-        data[0].append(s.t[-1])
-        data[1].append(s.y[1][-1])
-        data[2].append(s.y[0][0])
 
     u0, m0, r0 = get_const_pion()
-    R, M, pc = [np.array(d) for d in data]
 
-    plt.plot(R*r0, M*m0)
+    fig, ax = plt.subplots(figsize=(16, 6))
+    lines = ["-", "--", "-."]
+    colors = ["tab:blue", "k", "r"]
+    labels = ["\\pi", "\\pi+e", "\\pi+\\mu"]
+    for i, data in enumerate(datas):
+        R, M, pc = [np.array(d) for d in data] 
+        ax.plot(R*r0, M*m0, ls=lines[i], color=colors[i], label="$"+labels[i]+"$")
+ 
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
+    ax.legend()
 
-    plt.show()
+    fig.savefig("figurer/pion_star/mass_radius_lepton.pdf", bbox_inches="tight")
 
 
 
-test("e")
-# test("mu")
-
+test()
 
 
 # test()

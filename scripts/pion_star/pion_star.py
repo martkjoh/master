@@ -53,7 +53,7 @@ def sim_EM():
 # sim_EM()
 
 # n=30
-pcs = 10**np.linspace(-5, 4 , n)
+pcs = 10**np.linspace(-3.2, 5 , n)
 
 def sim_e():
     u = get_u("pion_star/data/eos_e.npy")
@@ -61,17 +61,17 @@ def sim_e():
     sols = integrate(u, pcs, max_step=max_step, r_max=1e8)
     np.save("pion_star/data/sols_e", sols)
 
-# sim_e()
+sim_e()
 
-pcs = 10**np.linspace(-3.5, 1 , n)
+pcs = 10**np.linspace(-5, 5 , n)
 def sim_mu():
     u = get_u("pion_star/data/eos_mu.npy")
     max_step = 1e-4
-    sols = integrate(u, pcs, max_step=max_step, r_max=1e8, info=True)
+    sols = integrate(u, pcs, max_step=max_step, r_max=1e8)
     np.save("pion_star/data/sols_mu", sols)
 
 
-sim_mu()
+# sim_mu()
 
 
 # u = get_u("pion_star/data/eos_mu.npy")
