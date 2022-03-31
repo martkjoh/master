@@ -1,8 +1,9 @@
 \section{Chiral perturbation theory}
 \label{section: chiral perturbation theory}
 
+We now apply the theory we developed in \autoref{chapter: QFT}.
 The systematics of chiral perturbation theory, or \chpt, was laid out by Gasser and Leutwyler~\autocite{gasserChiralPerturbationTheory1984,gasserChiralPerturbationTheory1985} and is based on Weinberg's idea that quantum field theories on their own does not contain more information than the bare minimum~\autocite{weinbergPhenomenologicalLagrangians1979}.
-In addition to these paper, this section is base on~\autocite{eckerChiralPerturbationTheory1995,fearingExtensionChiralPerturbation1996,schererIntroductionChiralPerturbation2002}.
+In addition to these paper, this section is based on~\autocite{eckerChiralPerturbationTheory1995,fearingExtensionChiralPerturbation1996,schererIntroductionChiralPerturbation2002}.
 
 
 \subsection{*Non-linear realization}
@@ -17,7 +18,7 @@ As discussed in last section, this Lagrangian is invariant under the full symmet
 As we found in \autoref{seciton: ccwz construction}, the low energy dynamics will therefore be described by a $G/H = \Lie{SU}{N_f}_A$-valued field $\Sigma$.
 Let $g \in G$.
 We write $g = (U_L, U_R)$, where $U_R \in \Lie{SU}{N_f}_R$, $U_L \in \Lie{SU}{N_f}_L$.
-Elements in $H$ are then of the form $(U, U)$, while elements in $G$ are of the for $(U, U^dagger)$.
+Elements in $H$ are then of the form $(U, U)$, while elements in $G$ are of the for $(U, U^\dagger)$.
 A general element $g$ can be written as
 %
 \begin{equation}
@@ -63,26 +64,25 @@ Due to how $G$ factors into two Lie groups, the constituents of the Mauer-Cartan
     e_\mu = 0.
 \end{equation}
 %
-Using $\partial_\mu [\Sigma(x)^\dagger\Sigma(x)] = 0 $, we can write
-\begin{equation}
-    d_\mu d^\mu = 
-    - \Sigma(x)^\dagger [\partial_\mu \Sigma(x)] \Sigma(x)^\dagger [\partial^\mu \Sigma(x)]
-    =\Sigma(x)^\dagger [\partial_\mu \Sigma(x)] [\partial^\mu \Sigma(x)^\dagger] \Sigma(x).
-\end{equation}
-%
-In \autoref{seciton: ccwz construction}, we found the lowest order terms, \autoref{first order terms CCWZ}.
-As $d_\mu \in \lie{su}{N_f}$, which we represent by the traceless matrices, we have
+We can now create $G$-invariant terms by taking traces of $d_\mu$'s.
+As we will discuss in \autoref{subsection: Weinberg's power counting scheme}, the order of a term in the Lagrangian will be dependent on the number of $d_\mu$'s.
+As $d_\mu \in \lie{su}{N_f}$, which we represent by the traceless matrices, the lowest order term is trivial,
 %
 \begin{equation}
     \Tr{d_\mu} = 0.
 \end{equation}
 %
-This leaves us with the single leading order term
+Using $\partial_\mu [\Sigma(x)^\dagger\Sigma(x)] = 0 $, we can write
+\begin{equation}
+    d_\mu d_\nu = 
+    - \Sigma(x)^\dagger [\partial_\mu \Sigma(x)] \Sigma(x)^\dagger [\partial_\nu \Sigma(x)]
+    =\Sigma(x)^\dagger [\partial_\mu \Sigma(x)] [\partial_\nu \Sigma(x)^\dagger] \Sigma(x).
+\end{equation}
+%
+This leaves us with the single Lorentz invariant leading order term,
 \begin{equation}
     \Tr{d_\mu d^\mu} = \Tr{\partial_\mu \Sigma (\partial^\mu \Sigma)^\dagger},
 \end{equation}
-%
-where we have used the cyclic property of the trace.
 
 
 However, constructing the effective Lagrangian out of terms invariant under $G$ is too restrictive to get the most general effective action.
@@ -94,9 +94,9 @@ We will not consider these here, as they do not affect the thermodynamic quantit
 \subsection{External currents}
 
 
-To incorporate other fields or terms that break $G$, such as the quark masses, we add a Lagrangian containing external currents.
-These can include either couple to the conserved currents, \autoref{conserved currents qcd}, or the other bilinears we can create out of quarks, $\bar q q$, $\bar q\gamma^5 q$, $\bar q T_\alpha q$, and $\bar q T_\alpha \gamma^5 q$.
-The Lagrangian is
+As discussed in \autoref{section: effective field theories}, we can incorporate external currents and symmetry breaking terms by promoting the symmetry $G$ to a gauge symmetry, treating the external currents as gauge fields, and demanding gauge invariance of the effective Lagrangian.
+The external currents may couple to conserved currents, \autoref{conserved currents qcd}, or the other bilinears we can create out of quarks, $\bar q q$, $\bar q\gamma^5 q$, $\bar q T_\alpha q$, and $\bar q T_\alpha \gamma^5 q$.
+The Lagrangian of these external currens is
 %
 \begin{align}
     \Ell_{\text{ext}}
@@ -107,22 +107,40 @@ The Lagrangian is
 \todo{Hva er grunnen til valgene av fortegn?}
 Here, $s$, $p$, $v_\mu$ and $a_\mu$ are all $N_f\times N_f$ matrices acting on the flavor indices.
 They are, respectively, the scalar, pseudo-scalar, vector, and pseudo-vector currents.
-\todo[]{Can we allow for them to have a trace?}
 We denote these currents collectively as $j = (s, p, v^\mu, a^\mu)$.
 The masses of the quarks are accounted for by setting the scalar current $s = m + \tilde s$.
 Here, $m$ is the mass matrix of the quarks, while $\tilde s$ are possible other scalar currents.
 Other examples of external currents are chemical potentials, such as the isospin chemical potential, which regulate conserved charges in the system.
-
-We define the right handed and left handed currents as
+We now need to find the transformation properties of these currents under $G$.
+We define
+%
 \begin{equation}
-    r_\mu = v_\mu + a_\mu, \quad l_\mu = v_\mu - a_\mu
+    r_\mu = v_\mu + a_\mu, \quad l_\mu = v_\mu - a_\mu, \quad  
+    \chi = 2 B_0 (s +ip), \quad
+    \chi^\dagger = 2 B_0(s - ip).
 \end{equation}
 %
-\todo[]{Write about gaugeing the symmetry}
-
+By making a local $G$-transformation and enforcing gauge-invariance, we find that these transform as
+%
+\begin{align}
+    r_\mu &\rightarrow U_R (r_\mu + i\partial_\mu) U_R^\dagger, \\
+    l_\mu &\rightarrow U_L (l_\mu + i\partial_\mu) U_L^\dagger, \\
+    \chi &\rightarrow U_R \chi {U_L}^\dagger.
+\end{align}
+%
+As in Yang-Mills theory, we can now create field strength tensors of the gauge fields, to build more gauge-invariant terms.
+We define
+%
+\begin{equation}
+    f_{\mu \nu}^{(r)} 
+    = 
+    \partial_\mu r_\nu - \partial_\nu r_\mu - i[r_\mu, r_\nu], 
+    \quad f_{\mu \nu}^{(l)} 
+    = \partial_\mu l_\nu - \partial_\nu l_\mu - i[l_\mu, l_\nu].
+\end{equation}
+%
 Including dynamical fields, such as the photon field $\mathcal A_\mu$, is slightly more complicated.
-The electromagnetic interactions is a gauge theory with gauge group  $\Lie{U}{1}_\text{EM}$, a subgroup of $G$.
-The electromagnetic covariant derivative acing on quarks is
+Quantum electrodynamics, or QED, is a gauge theory with a $\Lie{U}{1}_\text{EM}$ gauge group, where the covariant derivative acing on quarks is
 %
 \begin{equation}
     \label{EM covariant derivative on quarks}
@@ -132,14 +150,21 @@ The electromagnetic covariant derivative acing on quarks is
     =
     i \bar q \slashed \partial q - e \mathcal A_\mu J^\mu,
 \end{equation}
-where $\mathcal A_\mu$ is the photon field corresponding to the gauge group, $e = |e|$ is the elementary charge as given in \autoref{Elementary charge}, $J^\mu = - \bar q Q \gamma^\mu q$ is the electromagnetic charge current, and $Q$ is the quark charge matrix.
-This matrix is the generator of $\Lie{U}{1}_\text{EM}$, and thus is a part of Lie algebra corresponding to $G$. 
-In the case of $N_f=3$,  $Q = \text{diag}(\frac{2}{3}, -\frac{1}{3}, -\frac{1}{3})$, while the last term is not included for $N_f=2$.
+%
+Here, $\mathcal A_\mu$ is the photon field corresponding to the gauge group, $e = |e|$ is the elementary charge as given in \autoref{Elementary charge}, $J^\mu = - \bar q Q \gamma^\mu q$ is the electromagnetic charge current, and $Q$ is the quark charge matrix.
+This matrix is the generator of $\Lie{U}{1}_\text{EM}$.
+In the case of $N_f=3$,  $Q = \text{diag}(\frac{2}{3}, -\frac{1}{3}, -\frac{1}{3})$.
 From \autoref{EM covariant derivative on quarks}, we see that $eQ\mathcal A_\mu$ is a vector current.
-We therefore include it by setting $ v^{\mu} = e Q \mathcal{A}^\mu + \tilde v^\mu$, where again $\tilde v^\mu$ are possible other vector currents.
-
-\todo[inline]{skriv om infføringen av $Q_I$, $I = R, L$}
-
+Although the transformation of the quarks under the electromagnetic gauge group can be seen as a subgroup of $G$, we \emph{do not} transform external currents to enforce gauge invariance, this is instead done by $\mathcal{A}_\mu$.
+As $\mathcal{A}_\mu$ is a dynamical field, we can not use it to enforce $G$-gauge invariance.
+However, if we treat the charge matrix $Q$ as an external field, then we can restore the invariance.
+This gives the transformation rule
+%
+\begin{equation}
+    Q_I \rightarrow U_I Q_I U_I^\dagger, \, I = R, L.
+\end{equation}
+%
+Here, $Q_I = P_I Q$ are the chiral charge matrices.
 Lastly, we must include terms from quantum electrodynamics involving only the photon field, which are
 %
 \begin{equation}
@@ -147,7 +172,16 @@ Lastly, we must include terms from quantum electrodynamics involving only the ph
     = -\frac{1}{4} F^{\mu \nu}F_{\mu \nu}, \quad
     F_{\mu \nu} = 2 \partial_{[\mu}\mathcal A_{\nu]}.
 \end{equation}
- 
+%
+The covariant derivative now becomes
+%
+%
+\begin{equation}
+    \nabla_\mu\Sigma = \partial_\mu \Sigma - ir'_\mu \Sigma + i \Sigma l'_\mu,
+\end{equation}
+%
+where $r'_\mu = r_\mu + eQ\mathcal{A}_\mu$ and $l'_\mu = l_\mu + eQ\mathcal{A}_\mu$.
+We do not strictly \emph{need} to include the electromagnetic field in the gauge derivative, we could just build $G$ invariant terms of $eQ$, $\mathcal A_\mu$ and $\Sigma$, however this is the most economical way to achieve this.
 
 The full Lagrangian is then
 %
@@ -169,43 +203,6 @@ We now define the effective Lagrangian of $\chpt$, $\Ell_\text{eff}$ as
 \end{equation}
 
 
-\subsection{Winberg's power counting scheme}
+\subsection{Weinberg's power counting scheme}
 \label{subsection: Weinberg's power counting scheme}
 \todo[inline]{Skriv/kopier tekst om Weinberg's power counting scheme}
-
-
-
-\subsection{Building blocks}
-
-\todo[inline]{Write summary of included}
-Covariant derivative
-%
-\begin{equation}
-    \nabla_\mu\Sigma = \partial_\mu \Sigma - ir_\mu \Sigma + i \Sigma l_\mu.
-\end{equation}
-%
-Scalar
-%
-\begin{equation}
-    \chi = 2 B_0 (s + ip), \quad \chi^\dagger = 2 B_0 (s - ip)  
-\end{equation}
-%
-Field strength tensor
-%
-\begin{equation}
-    f_{\mu \nu}^{(r)} = \partial_\mu r_\nu - \partial_\nu r_\mu - i[r_\mu, r_\nu], 
-    \quad f_{\mu \nu}^{(l)} = \partial_\mu l_\nu - \partial_\nu l_\mu - i[l_\mu, l_\nu].
-\end{equation}
-%
-Transformations under $\Lie{U}{N_f}_R \times \Lie{U}{N_f}_L$, where
-\begin{align}
-    U_I &= e^{-i\theta} \exp{-i \eta_\alpha T_\alpha }, \quad I = R, L. \\
-    \Sigma &\rightarrow U_R \Sigma {U_L}^\dagger, \\
-    r_\mu &\rightarrow U_R (r_\mu + i\partial_\mu) U_R^\dagger, \quad 
-    r, R \rightarrow l, L. \\
-    \chi &\rightarrow U_R \chi {U_L}^\dagger \\
-    Q_I &\rightarrow U_I Q_I U_I^\dagger, \, I = R, L.
-\end{align}
-%
-We count $\chi$ as order 2, $e$ as order 2 and $\nabla_\mu\Sigma$ as order 1.
-Notice that $e$ and $Q$ must always appear as $e Q$, as the orignal Lagrangian \autoref{definition effective lagrangian chpt} is invariant under the transformation $e \rightarrow e/\lambda$ and $Q \rightarrow \lambda Q$~\autocite{pencoIntroductionEffectiveField2020}.

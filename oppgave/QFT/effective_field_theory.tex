@@ -1,9 +1,9 @@
 \section{Effective field theories}
-
+\label{section: effective field theories}
 
 One of the most powerful concepts in quantum field theory is the notion of effective field theories.
 The methods we have laid out for quantum field theory involves, in general, calculations where we must integrate over all possible momenta, and thus all possible energies.
-However, we do not profess to know how physics behaves at arbitrarily energies, which at first glance seem to render our theories moot.
+However, we do not profess to know how physics behaves at arbitrarily high energies, which at first glance seem to render our theories moot.
 The fact that the standard model allows for such precise predictions, then, suggest that the physics which happen at energies that are accessible to us can be described without knowledge of physics at the highest energies.
 This is a familiar concept from our everyday life---we can describe billiard balls colliding or rocks falling with high precision without having an accurate microscopic description of these objects.
 An effective field theory is a description of the physics of some underlying theory, some degrees of freedom $\varphi_a$ governed by a Lagrangian $\Ell[\varphi]$, in terms of a smaller set of degrees of freedom, $\pi_i$, governed by an effective Lagrangian $\Ell_\text{eff}[\pi]$.
@@ -19,30 +19,20 @@ An effective theory can come from integrating out all degrees of freedom above s
 In \autoref{section: effective action}, we found that the 1PI effective action resulted from integrating out all fluctuations away from the ground state, leaving us with an effective field-theory in which all interactions are described entirely at the tree-level.
 
 The modern understanding of the Standard Model is that is itself an effective field theory~\autocite{pencoIntroductionEffectiveField2020}.
-\todo[inline]{Skriv om: Hvorfor, renormalization group, renormalizable theories}
+\todo[inline]{Skriv om: Standard model as effective field thoery and renormalization group.}
 
 One of the pioneers of the philosophy of effective field theories was Steven Weinberg.
 He proposed that quantum field theories, in themselves, have almost no content beyond some basic assumptions~\autocite{weinbergDevelopmentEffectiveField2021}.
 What this means is that if we try to model a system by writing down the most general possible Lagrangian, then we cannot really be wrong.
 This was formulated more precisely in---as Weinberg himself called it---a ``theorem'':
+%
 \begin{quote}
     ``[I]f one writes down the most general possible Lagrangian, including all terms consistent with assumed symmetry principles, and then calculates matrix elements with this Lagrangian to any given order of perturbation theory, the result will simply be the most general possible $S$-matrix consistent with analyticity, perturbative unitary, cluster decomposition and the assumed symmetry principles.''~\autocite{weinbergPhenomenologicalLagrangians1979}
 \end{quote}
-
-Cluster decomposition concerns a system of $N$ sets of particles, $\alpha_i$, that evolve into the sets $\beta_i$.
-That is,
-\begin{equation}
-    \ket{\alpha_1, \alpha_2, ... \alpha_N}_\text{in}
-    \longrightarrow
-    \ket{\beta_1, \beta_2, ... \beta_N}_\text{out}.
-\end{equation}
-It says that if the sets of particles $\alpha_i$, $\beta_i$ are located far enough apart, then the $S$-matrix factors as
-\begin{equation}
-    {\braket{\beta_1, \beta_2, ... \beta_N|\alpha_1, \alpha_2, ... \alpha_N}}
-    =
-    \braket{\beta_1|\alpha_1}\braket{\beta_2|\alpha_2}... \braket{\beta_N|\alpha_N}.
-\end{equation}
-This is a familiar property, as it essentially says that wildly separated experiments do not interfere, and one that we expect all good effective descriptions to have~\autocite{weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
+%
+The properties of ``analyticity, perturbative unitarity and cluster decomposition'' are basic properties we expect of good, effective theories.
+Analyticity are assumptions about the poles of the S-matrix, and perturbative unitarity is that the theory should be unitary, as quantum theories should, for \emph{any order in perturbation theory}.
+Cluster decomposition states that non-entangled processes far apart should be independent~\autocite{weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
 Such a ``most general possible Lagrangian'' will have the form
 \begin{equation}
     \Ell_\text{eff}[\pi] = \sum_i \lambda_i \mathcal O_i,
@@ -52,11 +42,11 @@ The coupling constants are free parameters, which parametrizes the most general 
 A Lagrangian with an infinite amount of free parameters might seem useless.
 However, if we can find a consistent series expansion, then only a finite number of terms are needed to calculate quantities to any given order in perturbation theory.
 
-In last section, we showed that the Goldstone modes will always appear in the Lagrangian in the form of the terms of the Mauer-Cartan form, $d_\mu$ and $e_\mu$.
+In last section, we showed that the Goldstone modes will always appear in the Lagrangian as the terms of the Mauer-Cartan form, $d_\mu$ and $e_\mu$.
 The approach to create an effective theory of Goldstone bosons, such as chiral perturbation theory, is then to write down the most general Lagrangian, consistent with the underlying symmetries, made up of these terms.
 Then, using Weinberg's power counting scheme, as we discuss in \autoref{subsection: Weinberg's power counting scheme}, we expand perturbatively in the Goldstone boson energies.
 This will give us a self-consistent description of only the Goldstone bosons of the theory, the pseudoscalar mesons.
-The world is, of course, not only made up of pseudoscalar bosons.
+The world is, of course, not only made up of pseudoscalar mesons.
 We also need to describe how these fields interact with other fields, or external sources.
 Furthermore, the global $\Lie{SU}{N_f}\times\Lie{SU}{N_f}$ symmetry of QCD with $N_f$ quarks is only approximate, as we will explore further in \autoref{chapter: chpt}.
 We must extend the CCWZ construction to incorporate these effects, which we will do by introducing some new QFT tools in the next section.
@@ -90,7 +80,7 @@ This gives us the important identity
     \Braket{i (\delta_\eta S[\varphi]) F[\varphi]} + \Braket{\delta_\eta F[\varphi]} = 0.
 \end{equation}
 %
-Using the form of the variation, and the fact that $\eta$ is independent of $\varphi$, we may write this identity on the form
+Using the form of the variation, and the fact that $\eta$ is independent of $\varphi$, we may write this identity as
 %
 \begin{equation}
     \label{Generalized schwinger dyson equation}
@@ -110,7 +100,7 @@ If we have a Lagrangian on the form $\Ell = - \frac{1}{2}\varphi(\partial^2 + m^
 \end{align*}
 %
 where the hat denotes that the field is \emph{omitted}.
-If $n = 1$ and $\Ve = 0$, we get the definining relation for the free Greens funciton,
+If $n = 1$ and $\Ve = 0$, we get the defining relation for the free Greens function,
 %
 \begin{equation}
     (\partial^2_x + m^2)\braket{\varphi(x)\varphi(y)}
@@ -124,6 +114,7 @@ We recover the global transformation for $\eta = 1$.
 The variation of the action from this transformation will be
 %
 \begin{align}
+    \nonumber
     \delta S 
     &= 
     \int \dd^4 x \,
@@ -131,6 +122,7 @@ The variation of the action from this transformation will be
         \pdv{\Ell}{\varphi} \eta \delta \varphi
         + \pdv{\Ell}{(\partial_\mu\varphi) } \partial_\mu (\eta \delta \varphi)
     \right)\\
+    \nonumber
     & =
     \int \dd^4 x \, \left( \pdv{\Ell}{(\partial_\mu \varphi)} \delta \varphi \right) \partial_\mu \eta
     + \int \dd^4 x \, \eta(x)
@@ -138,6 +130,7 @@ The variation of the action from this transformation will be
         \pdv{\Ell}{\varphi} \delta \varphi 
         + \pdv{\Ell}{(\partial_\mu \varphi)} \partial_\mu \delta \varphi  
     \right)\\
+    \nonumber
     &=
     - \int \dd^4 x \, \eta(x) \partial_\mu 
     \left(  \pdv{\Ell}{(\partial_\mu \varphi)} \delta \varphi - K^\mu \right)
@@ -153,7 +146,7 @@ The term within the parenthesis is precisely the Nõther current $J^\mu$, so
 %
 As $\varphi$ is an integration variable in the path integral, it is not necessarily on-shell.
 We can therefore not use Nöther's theorem, $\partial_\mu J^\mu = 0$, as this relies on the equation of motion.
-However, $F = 1$ and thus $\delta F = 0$, we can insert \autoref{delta S} into \autoref{Most general schwinger dyson equation} to obtain the quantum version of the current conservation equation,
+However, for $F = 1$ and thus $\delta F = 0$, we can insert \autoref{delta S} into \autoref{Most general schwinger dyson equation} to obtain the quantum version of the current conservation equation,
 %
 \begin{equation}
     \partial_\mu \Braket{J^\mu} = 0.
@@ -167,34 +160,20 @@ With $F = \varphi(x_1) \varphi(x_2)$, we get~\autocite{schwartzQuantumFieldTheor
     - i \delta(x - x_2) \braket{\varphi(x_1) \delta \varphi(x_2)}
 \end{equation}
 %
-These are Ward-Takashi identities, often called just Ward-identities, and encode the symmetries of a theory.
-In case symmetry is only approximate, so $\Delta \Ell = \partial_\mu K^\mu + \Delta$, where $\Delta$ is some small symmetry breaking operator, or it is subject to an anomaly, so $\D \varphi \rightarrow \D \varphi (1 + \Delta)$, then the conservation equation is modified to
+Identities of these form are Ward-Takashi identities, often called just Ward-identities, and encode the symmetries of a theory.
+In case symmetry is only approximate, so $\delta \Ell = \partial_\mu K^\mu + \Delta$, where $\Delta$ is some small symmetry breaking operator, or it is subject to an anomaly, so $\D \varphi \rightarrow \D \varphi (1 + \Delta)$, then the conservation equation is modified to
 %
 \begin{equation}
     \partial_\mu \Braket{J^\mu} = \Braket{\Delta}.
 \end{equation}
 
-Let us now consider external fields.
-If we modify the Lagrangian to read $\Ell[\varphi, j] = \Ell[\varphi] + j^\mu J_\mu$, where $J_\mu$ is the symmetry current.
-The generating functional is then
-%
-\begin{equation}
-    Z[j] = \int\D \varphi \, e^{iS[\varphi, j]}.
-\end{equation}
-%
-This new action does not, in general, obey the symmetries of original action.
-Under the global symmetry transformation, $\varphi \rightarrow \delta \varphi$, the action now transforms as
-%
-\begin{equation}
-    S[\varphi, j] \rightarrow S[\varphi, j] + \int \dd^n x \, \delta \varphi(x) j(x).
-\end{equation}
-%
-However, if we can transform $j \rightarrow j' = j + \delta j$ in such a way that it counteracts this new, additional term, then the action will remain unchanged.
-In other words, to counteract the transformation $\varphi \rightarrow \varphi'$, we define $j \rightarrow j'$ such that $\varphi j = \varphi' j'$.
-Then, $\varphi \delta j = -\delta \varphi j$, and $S[\varphi, j] = S[\varphi', j']$.
-
-We will now make the symmetry local, as we did to derive the Ward identities.
-We will consider an example of spinor fields adapted from~\autocite{schererIntroductionChiralPerturbation2002}, as this is what we will apply this theory to when constructing chiral perturbation theory.
+To create the generating functional, we must add external currents $j$.
+These new terms in the Lagrangian, however, might break the invariance under some symmetry transformation $\varphi \rightarrow \varphi'$.
+If we transform the external currents as $j \rightarrow j'$ to counteract the transformation of the fields, then the theory should remain invariant.
+As before, we make both these transformations local, making sure that they leave the measure invariant.
+We can then again change variable in the path integral, which relates generating functional with different external currents, $Z[j] = Z[j']$.
+As an illustration, we consider an example of spinor fields adapted from~\autocite{schererIntroductionChiralPerturbation2002}, as this is closely related to the construction of chiral perturbation theory.
+Spinors and gauge theory, which is relevant for this example, are discussed in more depth in \autoref{chapter: chpt}.
 Consider a massless spinor field with the Lagrangian,
 %
 \begin{equation}
@@ -210,8 +189,7 @@ The system then has a corresponding conserved current,
 %
 where $T_\alpha$ are the generators of $\Lie{SU}{N}$.
 We then include spinor sources $\eta = \eta_\alpha T_\alpha$ and vector sources $v_\mu = v_\mu^\alpha T_\alpha$ by adding the terms $ \bar \eta \psi$, $\bar \psi \eta$, and $v_\mu^\alpha J^\mu_\alpha$ to the Lagrangian.
-We then perform a \emph{local} $\Lie{SU}{1}$ transformation, $\psi \rightarrow e^{i\eta_\alpha(x)T_\alpha} \psi$.
-The action then changes as
+Under a local $\Lie{SU}{1}$ transformation, $\psi \rightarrow e^{i\theta\alpha(x)T_\alpha} \psi$, the action changes as
 %
 \begin{equation}
     S \rightarrow 
@@ -226,9 +204,8 @@ The action then changes as
 \end{equation}
 %
 The last term corresponds to the change in action without sources, which we found earlier \autoref{delta S}.
-As before, we define transformations of the external fields to counteract the additional terms.
+We then define transformations of the external fields to counteract the additional terms.
 As these transformations now are local, these fields acts as gauge fields.
-We treat gauge theories in more detail in \autoref{subsection: yang-mills theory and gauge symmetry}.
 The gauge transformation of the external sources are
 %
 \begin{equation}
@@ -244,25 +221,26 @@ $
 $
 where the mark indicates the gauge transformed field.
 As we argued in the subsection on the Dyson-Schwinger equations, we can change the integration variables inside the path integral without changing the result.
-Using $U \sim 1 + i \epsilon(x) V $ and expanding to first order in $\epsilon$, we get
+Considering and infinitesimal transformation, and expanding to first order in $\theta$, we get
 %
-\begin{equation}
+\begin{align}
+    \nonumber
+    0 &= Z[\eta, \bar \eta, v] - Z[\eta', \bar \eta', v']\\
     \label{local invariance with external fields as gauge fields}
-    0 = Z[\eta, \bar \eta, v] - Z[\eta', \bar \eta', v']
-    =
+    &=
     i \int \dd^4 x 
     \Braket{
-        i \epsilon(x) \bar \psi V \eta
-        - i \epsilon(x) \bar \eta V^\dagger \psi
+        i \theta_\alpha(x) \bar \psi T_\alpha \eta
+        - i \theta_\alpha(x) \bar \eta T_\alpha \psi
         + i \bar \psi \gamma^\mu 
         (
-            i\epsilon (x) [V, v_\mu] - i \partial_\mu \epsilon V
+            i\theta_\alpha(x) [T_\alpha, v_\mu] - i \partial_\mu \theta_\alpha(x) T_\alpha
         ) \psi
     }
-\end{equation}
+\end{align}
 %
-This must vanish.
-If we let $V = \theta_\alpha T_\alpha$, do a partial integration, and exploit the fact that $\epsilon(x)$ is arbitrary, we get the relation
+As the transformation, and thus $\theta_\alpha$, is arbitrary, the integrand must vanish.
+After integrating by parts, we are left with
 %
 \begin{equation}
     \Braket{
