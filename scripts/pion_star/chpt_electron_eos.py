@@ -105,10 +105,10 @@ def plot_lepton(name="\\ell"):
 
     f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(100)
     x = 1+np.linspace(0, 0.2, N)
-    ax.plot(pl(x), ul(x), label="$u_{\\ell, \mathrm{nr}}(p)$")
+    ax.plot(pl(x), ul(x), label="$u_\\ell(p)$")
 
     y = sqrt(x**2-1)
-    ax.plot(pl_lim0(y), ul_lim0(y), "k--", label="$u_{\\ell, \\mathrm{nr}}$")
+    ax.plot(pl_lim0(y), ul_lim0(y), "k--", label="$u_{\\ell, \\mathrm{nr}}(p)$")
 
     # assert (y[0]==0)
     tit = "$\\frac{\mu_"+name+"}{m_"+name+"}  \in [1,%.2f], \\quad" %(1+x[-1])+"$"
@@ -202,12 +202,17 @@ def plot_all(r, name="nr"):
     fig.savefig("figurer/charge_neutrality/eos_"+name+".pdf", bbox_inches="tight")
 
 
+
+
+test((8, 8.5))
+# test2()
+
 # plot_mus(m_l=m_mu, name="\\mu")
 # plot_mus(m_l=m_e, name="e")
 # plot_mus_lim(m_l=m_mu, name="\\mu")
 # plot_mus_lim(m_l=m_e, name="e")
 
-# plot_lepton()
+plot_lepton()
  
 # plt_tot(m_l=m_e, name="e")
 # plt_tot(m_l=m_mu, name="\\mu")
@@ -216,7 +221,7 @@ N = 1000
 # r = (-13, 3)
 # gen_eos_list(r, m_e, name="e")
 r = (-10, 5)
-gen_eos_list(r, m_mu, name="mu")
+# gen_eos_list(r, m_mu, name="mu")
 
 # r = (-5,-2)
 # plot_all(r, name="nr")

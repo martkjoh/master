@@ -359,10 +359,21 @@ def test():
     lines = ["-", "--", "-."]
     colors = ["tab:blue", "k", "r"]
     labels = ["\\pi", "\\pi+e", "\\pi+\\mu"]
+    marker=["", "x", "*"]
     for i, data in enumerate(datas):
         R, M, pc = [np.array(d) for d in data] 
         ax.plot(R*r0, M*m0, ls=lines[i], color=colors[i], label="$"+labels[i]+"$")
- 
+
+        if i!=0:
+            j = np.argmax(M)
+            label ="$(M, R) = " \
+                + "(%.3f" %(M[j]*m0)\
+                + "\, M_\odot, %.3f" %(R[j]*r0) \
+                + "\, \mathrm{km})$ "
+            ax.plot(R[j]*r0, M[j]*m0, "k", marker=marker[i], ls="", ms=10, label=label)
+
+    ax.plot(42.64, 0, ".k", label="$R=42.64\\,\\mathrm{km}$")
+    
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
     ax.legend()

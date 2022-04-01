@@ -45,7 +45,6 @@ m_pi_SI = m_pi*MeV/c**2
 m_pipm_SI = m_pipm*MeV/c**2
 
 
-
 def get_const_fermi_gas():
     """Constants fermi gas"""
     u0 = m_N**4 / (8 * pi**2) * (c**5 / hbar**3) 
@@ -74,6 +73,15 @@ def get_const_lepton(m_l):
     A = 1/(8*pi**2) * m_l**3/(m_pi*f_pi)
     return u0, ul0, A
 
+def get_D_mu():
+    u0, ul0, A = get_const_lepton(m_mu)
+    return 8/3*ul0/u0/A
+
+def get_R_mu():
+    D_mu = get_D_mu()
+    _, _, r0 = get_const_pion()
+    R_mu = pi /(sqrt(12)*(1+D_mu)) * r0
+    return R_mu
 
 
 if __name__=="__main__":
@@ -91,13 +99,13 @@ if __name__=="__main__":
     # print(m_Kpm * (1 - sqrt(1 - Dm_EM**2 / m_Kpm**2))  )
     # print((m_K0 - sqrt(m_Kpm**2 - Dm_EM**2))  /  1)
 
-    _, _, A = get_const_lepton(m_e)
-    print("%.4e" % A)
+    # _, _, A = get_const_lepton(m_e)
+    # print("%.4e" % A)
 
-    _, _, A = get_const_lepton(m_mu)
-    print("%.4e" % A)
+    # _, _, A = get_const_lepton(m_mu)
+    # print("%.4e" % A)
 
-
+    print(get_R_mu())
     # print(Dm)
     
     # print(Δ)
