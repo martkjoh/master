@@ -62,9 +62,11 @@ The lowest order terms are
 %
 Here, $\alpha$ is the index in $\lie{su}{N}$-space.
 
+
+
 \subsection{The QCD Lagrangian}
 
-Quantum chromodynamics, or QCD, is the specific gauge theory of quarks $q_{fc}$, spin-$\frac{1}{2}$ particles, interacting via the strong force, a $\Lie{SU}{3}_c$ gauge field denoted $A_\mu$.
+Quantum chromodynamics, or QCD, is the specific gauge theory of quarks $q_{fc}$, spin-$\frac{1}{2}$ spinor particles, interacting via the strong force, a $\Lie{SU}{3}_c$ gauge field denoted $A_\mu$.
 There are six quarks $q$, called flavors and indexed by $f$, and the quantum number corresponding to the strong force is called color indexed by $c$.
 The quarks, labeled u, d, s, c, t, and b, have different masses.
 This thesis will include the two or three lightest quarks at different times.
@@ -79,7 +81,8 @@ The Lagrangian of QCD, including only the strong force, is
 We have suppressed color and flavor indices.
 $\slashed D q = \gamma^\mu (\partial_\mu - i g A_\mu) q$ is the covariant derivative associated with the $\Lie{SU}{3}_c$ gauge group with coupling constant $g$, and $\gamma^\mu$ are the Dirac matrices, as described in \autoref{section: algebra bases}.
 The quark mass matrix, $m$, acts on the flavor indexes as the flavor states are mass eigenstates.
-There are no known symmetries that forbid a $\epsilon^{\mu \nu \rho \sigma} G_{\mu \nu}^\alpha G_{\rho \sigma}^\alpha$-term, and its absence is dubbed the strong CP problem~\autocite{schwartzQuantumFieldTheory2013}.
+There are no known symmetries that forbid an $\epsilon^{\mu \nu \rho \sigma} G_{\mu \nu}^\alpha G_{\rho \sigma}^\alpha$-term, however it is an empirical fact that it either not present or highly suppressed. 
+Its absence is dubbed the strong CP problem~\autocite{schwartzQuantumFieldTheory2013}.
 
 
 
@@ -153,12 +156,8 @@ This is called the \emph{chiral limit}.
 However, when we include the fact that the masses of the quarks are different, we break the symmetry further.
 Other external currents, chemical potentials, and the electromagnetic interaction also break the symmetry.
 
-Lastly, the symmetry is broken spontaneously by the ground state quark condensate,
-%
-\begin{equation}
-    \ex{\bar q_f q_f} = -f^2 B_0 \neq 0, \, f \in \{ u, d, s\}.
-\end{equation}
-%
+Lastly, the symmetry is broken spontaneously by the ground state quark condensate, $\braket{\bar q q} \neq = 0$.
+In the chiral limit, one can show that the scalar bilinear for all three quarks $u$, $d$, and $s$ must be equal, and we define $\braket{\bar q q} = {\sum}_f \braket{\bar q_f q_f}$~\autocite{schererIntroductionChiralPerturbation2002}.
 The scalar quark operator is not invariant under $\Lie{SU}{N_f}_A$, and as discussed in \autoref{section: symmetry and goldstone's theorem}, this leads to the spontaneous symmetry breaking pattern.
 %
 \begin{equation}
@@ -169,5 +168,19 @@ The scalar quark operator is not invariant under $\Lie{SU}{N_f}_A$, and as discu
 %
 This pattern enables us to construct an effective low energy theory for QCD physics.
 We will take this symmetry breaking as an axiom and use it to construct \chpt.
-
-
+The scalar quark condensate is quantified by the constant $B_0$ via the relation
+%
+\begin{equation}
+    \ex{\bar q q} = - f_\pi B_0.
+\end{equation}
+%
+Here, $f_\pi$ is the pion decay constant.
+With the spontaneous symmetry breaking of the quark condensate, we get resulting Goldstone bosnos $\varphi_a$.
+The pion decay constant is defined by the overlap between the axial vector current $A_\alpha^\mu$ acting on the single-particle momentum eigenstates of the Goldstone bosons, and the vacuum.
+By Lorentz invariance, this matrix element can be written as
+%
+\begin{equation}
+    \braket{0| \text{T} A^\mu_a (x) | \varphi_b(p)} = i p_\mu f_\pi \delta_{ab} e^{i p_\mu x^\mu}.
+\end{equation}
+%
+We are now ready to construct \chpt.

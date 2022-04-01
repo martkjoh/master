@@ -165,6 +165,16 @@ This gives the transformation rule
 \end{equation}
 %
 Here, $Q_I = P_I Q$ are the chiral charge matrices.
+With these external fields, we must introduce a covariant derivative acting on $\Sigma$ to enforce local $G$ invariance.
+This is
+%
+\begin{equation}
+    \nabla_\mu\Sigma = \partial_\mu \Sigma - ir'_\mu \Sigma + i \Sigma l'_\mu,
+\end{equation} 
+%
+where $r'_\mu = r_\mu + eQ\mathcal{A}_\mu$ and $l'_\mu = l_\mu + eQ\mathcal{A}_\mu$.
+We do not strictly \emph{need} to include the electromagnetic field in the gauge derivative, we could just build $G$ invariant terms of $eQ$, $\mathcal A_\mu$ and $\Sigma$, however this is the most economical way to achieve this.
+
 Lastly, we must include terms from quantum electrodynamics involving only the photon field, which are
 %
 \begin{equation}
@@ -173,16 +183,6 @@ Lastly, we must include terms from quantum electrodynamics involving only the ph
     F_{\mu \nu} = 2 \partial_{[\mu}\mathcal A_{\nu]}.
 \end{equation}
 %
-The covariant derivative now becomes
-%
-%
-\begin{equation}
-    \nabla_\mu\Sigma = \partial_\mu \Sigma - ir'_\mu \Sigma + i \Sigma l'_\mu,
-\end{equation}
-%
-where $r'_\mu = r_\mu + eQ\mathcal{A}_\mu$ and $l'_\mu = l_\mu + eQ\mathcal{A}_\mu$.
-We do not strictly \emph{need} to include the electromagnetic field in the gauge derivative, we could just build $G$ invariant terms of $eQ$, $\mathcal A_\mu$ and $\Sigma$, however this is the most economical way to achieve this.
-
 The full Lagrangian is then
 %
 \begin{equation}
@@ -199,7 +199,7 @@ We now define the effective Lagrangian of $\chpt$, $\Ell_\text{eff}$ as
     \exp{i\int \dd^4 x \Ell_\text{QCD}[q, \bar q, A, \mathcal A, j] }
     = 
     \int \D \pi \D \mathcal A\,
-    \exp{i\int \dd^4 x \Ell_\text{eff}[\pi, \mathcal{A}, j] }.
+    \exp{i\int \dd^4 x \Ell_\text{eff}[\varphi, \mathcal{A}, j] }.
 \end{equation}
 
 
