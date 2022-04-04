@@ -5,7 +5,7 @@
 Using the building blocks from last section, we can build the leading order Lagrangian, which is~\autocite{eckerRoleResonancesChiral1989,gasserChiralPerturbationTheory1984,gasserChiralPerturbationTheory1985,schererIntroductionChiralPerturbation2002}
 %
 \begin{equation}
-    \label{leading order three-flavor lagrangian}
+    \label{leading order three-flavor Lagrangian}
     \Ell_2 
     = \frac{1}{4}f^2 \Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger}
     + \frac{1}{4}f^2 \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
@@ -191,7 +191,7 @@ Furthermore, we showed that we may choose $n_1 = 0$ without loss of generality, 
 \end{equation}
 %
 The ground state is thus parameterized by $\alpha$ only.
-As we will show in \autoref{chapter: thermodynamics}, when the isospin chemical potential exedes a critical value, $\mu_I \geq \mu_I^c$, the system undergoes a phase transition from the normal phase to a phase in which $\alpha \neq 0$, and the charged pions form a condensate.
+As we will show in \autoref{chapter: thermodynamics}, when the isospin chemical potential exedes a critical value, $\mu_I \geq \mu_I^c$, the system undergoes a phase transition from the vacuum phase to a phase in which $\alpha \neq 0$, and the charged pions form a condensate.
 It is only when we reach this phase that the equation of state is non-trivial at $T=0$, which makes it possible for pion stars to form.
 
 If we define $\mu_\Kpm = \mu_S + \frac{1}{2}\mu_I$ and $\mu_\Ko = \mu_S - \frac{1}{2}\mu_I$, then we can write the terms of the QCD Lagrangian made up of $\mu_I$ and $\mu_S$ and their corresponding currents densities as
@@ -229,10 +229,10 @@ Similar to what we found for the two-flavor case in \autoref{section: two-flavor
 %
 where $i = 2, 5, 7$ depending on which phase we are in.
 We start working in the pion-condensed phase, so $i = 2$, and assume $\mu_I > 0$ and $e = 0$.
-Inserting this into \autoref{leading order three-flavor lagrangian}, and expanding up to and including $\Oh\left((\pi/f)^2\right)$, we get
+Inserting this into \autoref{leading order three-flavor Lagrangian}, and expanding up to and including $\Oh\left((\pi/f)^2\right)$, we get
 %
 \begin{align}
-    \label{static three-flavor lagrangian}
+    \label{static three-flavor Lagrangian}
     \Ell_2^{(0)} 
     &=
     \frac{1}{2} f^2
@@ -241,7 +241,7 @@ Inserting this into \autoref{leading order three-flavor lagrangian}, and expandi
         + 2\bar m \cos\alpha
         + m_S
     \right), \\
-    \label{linear three-flavor lagrangian}
+    \label{linear three-flavor Lagrangian}
     \Ell_2^{(1)}
     &=
     -f \mu_I \partial_0 \varphi_1 \sin\alpha
@@ -249,7 +249,7 @@ Inserting this into \autoref{leading order three-flavor lagrangian}, and expandi
     \left(
         \mu_I^2\cos\alpha - \bar m^2
     \right)\varphi_2, \\
-    \label{quadratic three-flavor lagrangian}
+    \label{quadratic three-flavor Lagrangian}
     \Ell_2^{(2)} 
     &= 
     \frac{1}{2}\partial_\mu \varphi_a \partial^\mu \varphi_a
@@ -398,7 +398,7 @@ The masses of the various mesons are shown in \autoref{fig: leading order masses
 These results use the relationship between $\mu_I$ and $\alpha$, which we derive in next chapter.
 In the lower plot, we see the Zeeman splitting of the pion masses, which persists until the mass of the positive pion vanishes.
 As we explore further in next chapter, this happens as the exact isospin symmetry $\Lie{U}{1}_{I_3} \subset \Lie{SU}{3}_V $ is broken spontaneously by the pion condensate, and $\pi^+$ is the corresponding Goldstone boson.
-On the top, we see that the kaons also get this Zeeman splitting in the normal phase.
+On the top, we see that the kaons also get this Zeeman splitting in the vacuum phase.
 %
 \begin{figure}
     \centering
@@ -437,7 +437,7 @@ At this point, the results obtained in this section will become invalid, as $\Si
 In the $K^\pm$-condensate, we get
 %
 \begin{align}
-    \label{static three-flavor lagrangian kaon condensate}
+    \label{static three-flavor Lagrangian kaon condensate}
     \Ell^{(0)}_2 
     & =
     \frac{1}{2}f^2 
@@ -446,7 +446,7 @@ In the $K^\pm$-condensate, we get
         + 2m^2_\Kpm \cos\alpha
         + \bar m^2 +\Delta m^2
     \right), \\
-    \label{linear three-flavor lagrangian kaon condensate}
+    \label{linear three-flavor Lagrangian kaon condensate}
     \Ell_2^{(1)}
     & 
     =
@@ -456,7 +456,7 @@ In the $K^\pm$-condensate, we get
         \mu_\Kpm^2 \cos\alpha
         -m_\Kpm^2
     \right)\varphi_5\\
-    \label{quadratic three-flavor lagrangian kaon condensate}
+    \label{quadratic three-flavor Lagrangian kaon condensate}
     \Ell_2^{(1)}
     & =
     \frac{1}{2} \partial_\mu \varphi_a \partial^\mu \varphi_a
@@ -531,7 +531,7 @@ The phase with a $\Ko$-condensate, with the ground state $\Sigma = \exp{i \lambd
 The static Lagrangian is
 %
 \begin{equation}
-    \label{static lagrangian neutral kaon}
+    \label{static Lagrangian neutral kaon}
     \Ell_2^{(0)} = \frac{1}{2}f^2 
     \left(
         \mu_\Ko^2 \sin^2\alpha
@@ -552,7 +552,7 @@ First, we set $\mu_I = \mu_S = 0$, so we are in the vacuum phase, $\Sigma = U^2 
 \end{equation}
 %
 where $Q$ is the charge matrix \autoref{three-flavor charge matrix}.
-Inserting this into the terms of the leading-order Lagrangian, \autoref{leading order three-flavor lagrangian}, and expanding to and including $\Oh\left((\pi/f)^2\right)$ yields
+Inserting this into the terms of the leading-order Lagrangian, \autoref{leading order three-flavor Lagrangian}, and expanding to and including $\Oh\left((\pi/f)^2\right)$ yields
 %
 \begin{align}
     \nonumber
@@ -572,9 +572,9 @@ Inserting this into the terms of the leading-order Lagrangian, \autoref{leading 
     + \frac{1}{2} e^2 \mathcal A^2 (\varphi_1^2 +\varphi_2^2 + \varphi_4^2 +\varphi_5^2).
 \end{align}
 %
-Here, $m_{a}$ is the masses  we found in \autoref{leading order three-flavor lagrangian}, at $\mu_I = \mu_S = \alpha = 0$, while $\Delta m_{\text{EM}, a}$ is the new electromagnetic contribution to the masses.
+Here, $m_{a}$ are the masses  we found in \autoref{leading order three-flavor Lagrangian}, at $\mu_I = \mu_S = \alpha = 0$, while $\Delta m_{\text{EM}, a}$ is the new electromagnetic contribution to the masses.
 This only affects the charged pions $\pipm$, which are linear combinations $\varphi_1$ and $\varphi_2$, and the charged kaons, $\Kpm$, which are linear combinations of $\varphi_4$ and $\varphi_5$.
-The contribution to mass from electromagnetic effect is, at least to leading order, the same for these particles,
+The contribution to mass from electromagnetic effects are, to leading order, the same for these particles,
 %
 \begin{equation}
     \Delta m_{\text{EM}, a}^2 = 2C \frac{e^2}{f^2} := \Delta m^2_\text{EM}, \quad a \in \{1, 2, 4, 5\}.
@@ -584,6 +584,7 @@ This is known as Dashen's theorem~\autocite{dashenChiralMathrmSUEnsuremath1969}.
 We can express $C$ in terms of the pion decay constant, and the mass and decay constant of the $\rho$-meson.
 This was first done in~\autocite{dasElectromagneticMassDifference1967}, using the then newly derive Weinberg sum rules relating the masses of heavier mesons~\autocite{weinbergPreciseRelationsSpectra1967}.
 This yields
+\todo[]{Sjekk denne formelen}
 %
 \begin{equation}
     \label{C from rho}
@@ -599,7 +600,7 @@ Using the values listed in \autoref{section: units}, we find
 %
 \begin{equation}
     \label{C from pion masses}
-    C= \frac{f^2}{2 e^2}(m_{\pi_\pm}^2 - m_{\pi}^2) = 5.824 \, (\text{GeV})^4,
+    C= \frac{f^2}{2 e^2}(m_{\pi_\pm}^2 - m_{\pi}^2) = 5.824 \, 10^{-6} (\text{GeV})^4 ,
 \end{equation}
 %
 or in the characteristic units of the system, $C = 0.3771 \, u_0$.
@@ -664,10 +665,10 @@ To zeroth order in $\pi/f$, the field parametrization is
     \Sigma = (\one - \lambda_2^2) + \lambda_2^2 \cos\alpha + i \lambda_2\sin\alpha.
 \end{equation}
 %
-Inserting this in the leading-order Lagrangian \autoref{leading order three-flavor lagrangian}, and setting $\mathcal A_\mu = 0$ gives us the static Lagrangian including electromagnetic effects,
+Inserting this in the leading-order Lagrangian \autoref{leading order three-flavor Lagrangian}, and setting $\mathcal A_\mu = 0$ gives us the static Lagrangian including electromagnetic effects,
 %
 \begin{equation}
-    \label{static lagragniang three-flavor EM}
+    \label{static Lagrangian three-flavor EM}
     \Ell_2^{\text{EM}, (0)}
     =
     \frac{1}{2} f^2
@@ -681,7 +682,7 @@ Inserting this in the leading-order Lagrangian \autoref{leading order three-flav
 Similarly, the static Lagrangian in the charged kaon condensate is
 %
 \begin{equation}
-    \label{static lagragniang three-flavor EM kaon}
+    \label{static Lagrangian three-flavor EM kaon}
     \Ell_2^{\text{EM}, (0)}
     =
     \frac{1}{2} f^2

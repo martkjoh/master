@@ -11,6 +11,8 @@ plt.rc("lines", lw=2)
 plt.rc("axes", grid=True)
 plt.rc("grid", linestyle="--", alpha=1)
 
+import sys
+sys.path.append(sys.path[0] + "/..")
 from constants import Dm, Dm_EM, m_pi, m_K0
 
 D = Dm/m_pi
@@ -126,8 +128,8 @@ ax.plot(-np.ones(N), -y7, "k")
 
 
 
-plt.text(-0.7, 0, "Normal")
-plt.text(-0.58, -0.3, "phase")
+plt.text(-0.75, 0, "Vacuum")
+plt.text(-0.55, -0.3, "phase")
 
 plt.text(1, 4, "$\\langle K^+\\rangle$")
 plt.text(-1.9, -4.6, "$\\langle K^-\\rangle$")
