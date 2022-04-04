@@ -437,44 +437,46 @@ Inserting this into the equation for parallel transport, \autoref{parallel trans
 \end{equation}
 %
 This has the same form as the definition of the unitary time-evolution operator in quantum mechanics, and we could therefore write down a solution involving an exponential and a path ordering operator, $\mathcal P$, analogous to the time ordering operator from quantum mechanics.
-However, we only need the first approximation for $\lambda = \epsilon \ll 1$.
-In that case, the parallel propagator takes the form
+We may rewrite the equation as an integral equation,
 %
 \begin{equation}
-    P^\mu{}_\nu(\epsilon) 
-    = 
-    \delta^\mu_\nu - \int_0^\epsilon \dd \eta \, 
-    \Gamma^\mu_{\nu\rho}  \odv{x^\rho}{\lambda} + \Oh(\epsilon^2).
+    P^\mu{}_\nu(\lambda) = \delta^\mu_\nu 
+    - \int^\lambda_0 \dd \lambda' \Gamma^\mu_{\rho \sigma} V^\rho P^\sigma{}_\nu,
 \end{equation}
 %
-With this, we will investigate how much a vector $V^\mu$ is changed by its motion around in a small loop.
+where we denote $\odv{x^\mu}{\lambda} = V^\mu$.
+This allows us to solve the equation iteratively.
+If $\lambda \leq \epsilon \ll 1$, then we would expect this to converge, as long as the $g$ is well-behaved.
+In that case, we can start with the zeroth-order solution $P^{\mu}{}_\nu = \delta^\mu_\nu$, then iterate twice to obtain
+%
+\begin{equation}
+    \label{iterative paralell propagator}
+    P^\mu{}_\nu(\lambda) 
+    = 
+    \delta^\mu_\nu 
+    - \int_0^\lambda \dd \lambda' \, 
+    \Gamma^\mu_{\rho \nu} V^\rho
+    + \int_0^{\lambda} \dd \lambda ' \int_0^{\lambda'} \dd \lambda ''\,
+    \Gamma^\mu_{\rho \sigma} \Gamma^\sigma_{\eta \nu} V^\rho V^\eta
+    + \Oh(\epsilon^3).
+\end{equation}
+%
+With this, we will investigate how much a vector $v^\mu$ is changed by being parallel transported around in a small loop.
 This is illustrated in \autoref{fig: parallel transport in loop}.
-A vector $V^\mu$, is parallel transported in a loop along the coordinate lines.
-These lines are where either the coordinates $x^{\mu_1}$ or $x^{\mu_2}$ are equal to $0$ or $\epsilon$.
-Here, the indices $\mu_1$ and $\mu_2$ are not free but identify the two coordinate functions which define this loop.
-
-
+%
 \begin{figure}
     \centering
     \includegraphics{figurer/parallel_transport.pdf}
-    \caption{fig}
+    \caption{(Bytt V med v) 
+    A vector $v^\mu$ is parallel transported in a small, closed loop, defined by the coordinate functions $x^{\mu_1}$ and $x^{\mu_2}$.
+    As a consequence of the curvature, it has changed by $\delta v^\mu$ by the time it arrives back at $A$.}
     \label{fig: parallel transport in loop}
 \end{figure}
-
-
-
-Using the parallel propagator, the vector at point $B$ is, to first order in $\epsilon$
 %
-\begin{equation}
-    V^\mu |_B = 
-    \left(    
-        \delta^\mu_\nu 
-        - \int_0^\epsilon \dd \eta \, 
-        \Gamma^\mu_{\nu \rho}  \odv{x^\rho}{\lambda} 
-    \right) V^\nu|_A.
-\end{equation}
-%
-The line from $A$ to $B$, defined by $x^{\mu_1} = 0$, is parametrized by $x^\mu(\lambda) = \lambda \delta^\mu_{\mu_2}$.
+A vector $v^\mu$, is parallel transported in a loop along the coordinate lines.
+These lines are where either of the coordinate functions $x^{\mu_1}$ or $x^{\mu_2}$ are equal to $0$ or $\epsilon$.
+Here, the indices $\mu_1$ and $\mu_2$ are not free, but identify the two coordinate functions which define this loop.
+The line from $A$ to $B$, defined by $x^{\mu_1} = 0$, is parametrized by $x^\mu(\lambda) = \lambda \delta^\mu_{\mu_2}$, so $ V^\mu = \delta^\mu_{\mu_2} $.
 The Christoffel symbol along this line is
 %
 \begin{equation}
@@ -483,16 +485,21 @@ The Christoffel symbol along this line is
     + \lambda \partial_{\mu_2} \Gamma^{\mu}_{\nu \rho}|_A + \Oh(\lambda^2)
 \end{equation}
 %
-we can therefore evaluate the integral as
+Inserting this into \autoref{iterative paralell propagator}, we get
 %
 \begin{equation}
-    \int_0^\epsilon \dd \eta \, \Gamma^\mu_{\nu \mu_2}
-    = \epsilon \Gamma^{\mu}_{\nu \mu_2}|_A
-    + \frac{1}{2} \epsilon^2 \partial_{\mu_2} \Gamma^{\mu}_{\nu \rho}|_A 
+    P^\mu{}_\nu(\epsilon)
+    = \delta^\mu_\nu 
+    - \epsilon \Gamma^{\mu}_{\nu \mu_2}|_A
+    + \frac{1}{2} \epsilon^2 
+    \left(
+        \Gamma^\mu_{\mu_2 \sigma}\Gamma^\sigma_{\mu_2 \nu} |_A 
+        -\partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_2}|_A 
+    \right)
     + \Oh(\epsilon^3).
 \end{equation}
 %
-Next, from $B$ to $C$, the line is $x^\mu(\lambda) = \epsilon \delta^\mu_{\mu_2} + \lambda \delta^{\mu}_{\mu_1}$, and the Christoffel symbols are 
+Next, from $B$ to $C$, the line is $x^\mu(\lambda) = \epsilon \delta^\mu_{\mu_2} + \lambda \delta^{\mu}_{\mu_1}$, so $V^\mu = \delta^\mu_{\mu_1}$, and the Christoffel symbols are 
 $ 
 \Gamma^{\mu}_{\nu\rho}
 = 
@@ -507,37 +514,51 @@ Then, we get
     \Gamma^{\mu}_{\nu\rho}
     =
     \Gamma^{\mu}_{\nu \rho}|_A + \epsilon \partial_{\mu_2} \Gamma^{\mu}_{\nu \rho}|_A
-    + \lambda \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_2}|_A,
+    + \lambda \partial_{\mu_1} \Gamma^{\mu}_{\nu \rho}|_A,
 \end{equation}
 %
-where we have expanded to first order in $\epsilon$, and treat $\lambda$ as order $\epsilon$.
-The integral in the parallel propagator from $B$ to $C$ is then
+The parallel propagator from $B$ to $C$ is then
 %
 \begin{equation}
-    \int_0^\epsilon \dd \eta \, \Gamma^\mu_{\nu \mu_1}
+    P^{\mu}{}_\nu(\epsilon)
     = 
-    \epsilon \Gamma^{\mu}_{\nu \mu_1}|_A 
-    + \epsilon^2 \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1}|_A
-    + \frac{1}{2} \epsilon^2 \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_1}|_A.
+    \delta^\mu_\nu
+    - \epsilon \Gamma^{\mu}_{\nu \mu_1}|_A 
+    + \frac{1}{2}\epsilon^2
+    \left(
+        \Gamma^\mu_{\sigma \mu_1}\Gamma^\sigma_{\nu \mu_1}
+        - \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_1}|_A
+        - 2 \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1}|_A.
+    \right)
 \end{equation}
 %
-The combined propagator, from $A$ to $C$ is then
+The combined propagator, from $A$ to $C$ is then, to second order in $\epsilon$, 
 %
 \begin{align}
-    P^\mu{}_{\nu}
-    & = \left[ 
+    \nonumber
+    {P_{AC}}^\mu{}_{\nu}
+    & = 
+    \left[ 
         \delta^\mu_\sigma 
         -\epsilon \Gamma^{\mu}_{\sigma \mu_1}
-        - \epsilon^2 \partial_{\mu_2} \Gamma^{\mu}_{\sigma \mu_1}
-        - \frac{1}{2} \epsilon^2 \partial_{\mu_1} \Gamma^{\mu}_{\sigma \mu_1}
+        + \frac{1}{2} \epsilon^2 
+        \left(
+        \Gamma^\mu_{\eta \mu_1}\Gamma^\eta_{\sigma \mu_1}
+        - \partial_{\mu_2} \Gamma^{\mu}_{\sigma \mu_2}
+        - 2 \partial_{\mu_2} \Gamma^{\mu}_{\sigma \mu_1}
+        \right)
     \right]
     \cdot 
     \left[
         \delta^\sigma_\nu
-        - \epsilon\Gamma^{\sigma}_{\nu \mu_2}
-        - \frac{1}{2} \epsilon^2 \partial_{\mu_2} \Gamma^{\sigma}_{\nu \mu_2}
-    \right] \\
-    &=
+        - \epsilon \Gamma^{\sigma}_{\nu \mu_2}
+        + \frac{1}{2} \epsilon^2 
+        \left(
+            \Gamma^\sigma_{\eta \mu_2}\Gamma^\eta_{\nu \mu_2}
+            - \partial_{\mu_2} \Gamma^{\sigma}_{\nu \mu_2}
+        \right)
+    \right] \\ \nonumber
+    & =
     \delta^\mu_\nu
     - \epsilon 
     \left(
@@ -546,73 +567,60 @@ The combined propagator, from $A$ to $C$ is then
         \Gamma^{\mu}_{\nu \mu_2}
     \right)
     + \epsilon^2
+    \frac{1}{2}
     \left(  
-        \Gamma^{\mu}_{\sigma \mu_1} \Gamma^{\sigma}_{\nu \mu_2}
-        - \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1}
-        - \frac{1}{2} \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_1}
-        - \frac{1}{2} \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_2}
+        2\Gamma^{\mu}_{\sigma \mu_1} \Gamma^{\sigma}_{\nu \mu_2}
+        + \Gamma^\mu_{\sigma \mu_1}\Gamma^\sigma_{\nu \mu_1}
+        + \Gamma^\mu_{\sigma \mu_2}\Gamma^\sigma_{\nu \mu_2}
+        - 2 \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1}
+        - \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_1}
+        - \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_2}
     \right)
-    + \Oh(\epsilon^3)
 \end{align}
 %
 To create the parallel propagator for $CDA$ is the propagator for $ADC$ with its signs flipped, and the $ADC$ propagator is the same as $ABC$ only with the $\mu_1$ and $\mu_2$ indices exchanged in the derivative terms.
-Propagator for the full loop is, therefore, to and including second order in $\epsilon$,
+It is thus
 %
 \begin{align}
-    P^\mu{}_\nu
+    \nonumber
+    {P_{CA}}^\mu{}_\nu
     & =
-    \left[
-        \delta^\mu_\sigma
-        + \epsilon 
-        \left(
-            \Gamma^{\mu}_{\sigma \mu_2}
-            +\Gamma^{\mu}_{\sigma \mu_1}
-        \right)
-        + \epsilon^2
-        \left( 
-            \Gamma^{\mu}_{\rho \mu_1} \Gamma^{\rho}_{\sigma \mu_2}
-            + \partial_{\mu_1} \Gamma^{\mu}_{\sigma \mu_2}
-            + \frac{1}{2} \partial_{\mu_2} \Gamma^{\mu}_{\sigma \mu_2}
-            + \frac{1}{2} \partial_{\mu_1} \Gamma^{\mu}_{\sigma \mu_1}
-        \right)
-    \right] \\
-    & \quad
-    \left[
-        \delta^\sigma_\nu
-        - \epsilon 
-        \left(
-            \Gamma^{\sigma}_{\nu \mu_1}
-            +\Gamma^{\sigma}_{\nu \mu_2}
-        \right)
-        + \epsilon^2
-        \left(  
-            \Gamma^{\sigma}_{\rho \mu_1} \Gamma^{\rho}_{\nu \mu_2}
-            - \partial_{\mu_2} \Gamma^{\sigma}_{\nu \mu_1}
-            - \frac{1}{2} \partial_{\mu_1} \Gamma^{\sigma}_{\nu \mu_1}
-            - \frac{1}{2} \partial_{\mu_2} \Gamma^{\sigma}_{\nu \mu_2}
-        \right)
-    \right]
+    \delta^\mu_\nu
+    + \epsilon 
+    \left(
+        \Gamma^{\mu}_{\nu \mu_2}
+        +
+        \Gamma^{\mu}_{\nu \mu_1}
+    \right)
+    + \epsilon^2
+    \frac{1}{2}
+    \left(  
+        2\Gamma^{\mu}_{\sigma \mu_2} \Gamma^{\sigma}_{\nu \mu_1}
+        + \Gamma^\mu_{\sigma \mu_2}\Gamma^\sigma_{\nu \mu_2}
+        + \Gamma^\mu_{\sigma \mu_1}\Gamma^\sigma_{\nu \mu_1}
+        + 2 \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_2}
+        + \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_2}
+        + \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_1}
+    \right).
 \end{align}
 %
+The full propagator, from $A$ to $A$, is $P^\mu{}_\nu = {P_{CA}}^\mu{}_\rho {P_{AC}}^\rho{}_\nu$.
 The terms linear in $\epsilon$ vanish, and the same with the terms with two equal $\mu_i$-indices.
 The change in the vector as it is rotated around the loop is therefore, to second order in $\epsilon$,
 %
 \begin{align}
-    \delta V^\mu 
-    &= P^\mu{}_\nu V^\nu - V^\mu \\ \nonumber
-    & = \epsilon^2  
+    \delta v^\mu 
+    = P^\mu{}_\nu v^\nu - v^\mu 
+    = \epsilon^2  
     \left(
         \Gamma^\mu_{\sigma \mu_1} \Gamma^\sigma_{\nu \mu_2}
         -\Gamma^\mu_{\sigma \mu_2} \Gamma^\sigma_{\nu \mu_1}
-        -\Gamma^\mu_{\sigma \mu_2} \Gamma^\sigma_{\nu \mu_2} 
-        -\Gamma^\mu_{\sigma \mu_1} \Gamma^\sigma_{\nu \mu_1}
         + \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_2}
         - \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1} 
-    \right) V^\nu.
+    \right) v^\nu.
 \end{align}
-\todo[inline, color=red]{find why these extra terms appear}
 Comparing with \autoref{riemann tensor in terms of christoffel symbols}, we see that this is the Riemann curvature tensor.
-In other words, this tensor encodes how a vector is transformed by transporting it in small, closed loops.
+In other words, the Riemann tensor encodes how a vector is transformed when parallel transported in a small, closed loop.
 
 
 

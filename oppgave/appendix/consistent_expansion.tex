@@ -9,10 +9,10 @@ We write
 \end{equation}
 %
 where $\Eff^{(n)}_D$ is the $n$-loop contribution with chiral dimension $D$.
-In \autoref{section: free energy at lowest order}, we found a relationship between $\alpha$ and $\mu_I$, using the lowest-order result for $\Eff$, given in \autoref{leading order minimization}.
+In \autoref{chapter: thermodynamics}, we found a relationship between $\alpha$ and $\mu_I$, using the leading-order result for $\Eff$.
 To calculate any thermodynamic quantities to leading order, at tree-level, we must use this result.
 When using the NLO result for the free energy, we must consistently calculate this and other quantities to the same order.
-As we have seen in \autoref{1PI effective action}, when replacing the action by $S[\varphi] \rightarrow g^{-1}S[\varphi]$, the $L$-loop contribution is proportional to $g^{L-1}$.
+As we have seen in \autoref{section: effective action}, when replacing the action by $S[\varphi] \rightarrow g^{-1}S[\varphi]$, the $L$-loop contribution is proportional to $g^{L-1}$.
 In Weinberg's power counting scheme, we scale $p \rightarrow t p$ and $m_q \rightarrow t^2 m_q$.
 Then, the $n$th term in the expansion is proportional to $t^{2n}$.
 Using both these scalings, the expansion of the free energy becomes
@@ -40,7 +40,7 @@ The free energy expansion is
     \Eff = s^{-1}\sum_{k = 0}^\infty \tilde \Eff_k \, s^{k}.
 \end{equation}
 %
-As argued earlier, $\alpha$ must minimize the free energy, and therefore satisfy
+As argued earlier, $\alpha$ must minimize the free energy and therefore satisfy
 %
 \begin{equation}
     \pdv{\Eff}{\alpha} = 0,
@@ -142,18 +142,9 @@ We therefore use the criterion
 \end{equation}
 %
 to calculate $\alpha_\text{NLO}$.
-The result is shown in \autoref{fig: alpha}, which compares the leading order and next-to-leading order results for $\alpha$.
-
-\todo[]{fiks figur}
-\begin{figure}
-    \centering
-    % \includegraphics[width=0.7\textwidth]{../scripts/numerikk/plots/alpha.pdf}
-    \caption{The leading order and next-to-leading order results for $\alpha$ as a function of $\mu_I$, which is given in units of $m_\pi$. }
-    \label{fig: alpha}
-\end{figure}
 
 We can use the expansion in $s$ to consistently evaluate any observable to any power in perturbation theory.
-Assume that $f$ is some obserable, and a function of $\alpha$.
+Assume that $f$ is some observable, and a function of $\alpha$.
 We then expand in $s$,
 %
 \begin{equation}
@@ -177,7 +168,7 @@ When Taylor expanding around the leading order result for $\alpha$, we get
     + \Oh(s^2).
 \end{align*}
 %
-We see that, to get a consistent expansion, we must evaluate the leading order result for the function $f_0$ at next-to-leading order in $\alpha$, while next-to-leading order correction can be evaluated at leading order.
+To get a consistent expansion, we must evaluate the leading order result for the function $f_0$ at next-to-leading order in $\alpha$, while next-to-leading order correction can be evaluated at leading order.
 However, as
 %
 \begin{equation}
@@ -185,4 +176,4 @@ However, as
 \end{equation}
 %
 we also get a consistent expansion if we evaluate the leading-order result and its correction at next-to-leading order in $\alpha$.
-We will do this to obtain the results in the next section.
+This is what we do in all results in this thesis.
