@@ -359,6 +359,7 @@ We imagine following an arrow we are holding without turning it as we walk.
 Using the definition of parallel transport \autoref{parallel transport criterion}, together with the covariant derivative \autoref{covariant derivative diff geom}, we get the geodesic equation,
 %
 \begin{equation}
+    \label{goedesic equation}
     \odv[2]{x^\mu}{\lambda} 
     + \Gamma^\mu_{\rho \sigma} \odv{x^\rho}{\lambda} \odv{x^\rho}{\lambda}
     = 0.
@@ -424,10 +425,10 @@ If we apply this on $\delta^{\mu}_{\nu}$, we get the differential Bianchi identi
 \end{equation}
 %
 To interpret the Riemann tensor, we define the parallel propagator $P$.
-A vector that is parallel transported along a curve parametrized by $\lambda$, so that $V^\mu(\lambda)$ obey the criterion of parallel transport \autoref{parallel transport criterion}, obey
+A vector that is parallel transported along a curve parametrized by $\lambda$, so that $v^\mu(\lambda)$ obey the criterion of parallel transport \autoref{parallel transport criterion}, obey
 %
 \begin{equation}
-    V^\mu(\lambda) = P^\mu{}_\nu(\lambda) V^\nu.
+    v^\mu(\lambda) = P^\mu{}_\nu(\lambda) v^\nu.
 \end{equation}
 %
 Inserting this into the equation for parallel transport, \autoref{parallel transport criterion}, this operator must obey
@@ -466,9 +467,8 @@ This is illustrated in \autoref{fig: parallel transport in loop}.
 %
 \begin{figure}
     \centering
-    \includegraphics{figurer/parallel_transport.pdf}
-    \caption{(Bytt V med v) 
-    A vector $v^\mu$ is parallel transported in a small, closed loop, defined by the coordinate functions $x^{\mu_1}$ and $x^{\mu_2}$.
+    \includegraphics[width=0.8\textwidth]{figurer/parallel_transport.pdf}
+    \caption{A vector $v^\mu$ is parallel transported in a small, closed loop, defined by the coordinate functions $x^{\mu_1}$ and $x^{\mu_2}$.
     As a consequence of the curvature, it has changed by $\delta v^\mu$ by the time it arrives back at $A$.}
     \label{fig: parallel transport in loop}
 \end{figure}
@@ -482,7 +482,7 @@ The Christoffel symbol along this line is
 \begin{equation}
     \Gamma^{\mu}_{\nu \rho}(\lambda) 
     = \Gamma^{\mu}_{\nu \rho}|_A
-    + \lambda \partial_{\mu_2} \Gamma^{\mu}_{\nu \rho}|_A + \Oh(\lambda^2)
+    + \lambda \partial_{\mu_2} \Gamma^{\mu}_{\nu \rho}|_A + \Oh(\lambda^2).
 \end{equation}
 %
 Inserting this into \autoref{iterative paralell propagator}, we get
@@ -528,11 +528,11 @@ The parallel propagator from $B$ to $C$ is then
     \left(
         \Gamma^\mu_{\sigma \mu_1}\Gamma^\sigma_{\nu \mu_1}
         - \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_1}|_A
-        - 2 \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1}|_A.
-    \right)
+        - 2 \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1}|_A
+    \right).
 \end{equation}
 %
-The combined propagator, from $A$ to $C$ is then, to second order in $\epsilon$, 
+The combined propagator from $A$ to $C$ is then, to second order in $\epsilon$, 
 %
 \begin{align}
     \nonumber
@@ -575,10 +575,11 @@ The combined propagator, from $A$ to $C$ is then, to second order in $\epsilon$,
         - 2 \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1}
         - \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_1}
         - \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_2}
-    \right)
+    \right).
 \end{align}
 %
-To create the parallel propagator for $CDA$ is the propagator for $ADC$ with its signs flipped, and the $ADC$ propagator is the same as $ABC$ only with the $\mu_1$ and $\mu_2$ indices exchanged in the derivative terms.
+The parallel propagator for $CDA$ is the propagator for $ADC$ with its signs flipped. 
+The $ADC$ propagator is the same as $ABC$, only with the $\mu_1$ and $\mu_2$ indices switched.
 It is thus
 %
 \begin{align}

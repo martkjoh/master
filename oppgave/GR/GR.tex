@@ -1,24 +1,87 @@
 General relativity describes how matter and energy curve the fabric of space and time.
 Einstein first wrote down the theory more than a century ago, and it is still our most accurate theory of gravitational effects.
-It makes accurate and counterintuitive predictions, which experiments have borne out.
+It makes precise and counterintuitive predictions, which experiments have borne out.
 This chapter surveys the basics of general relativity.
 We will then use this to derive the Tolman-Oppenheimer-Volkoff (TOV) equation, a differential equation used to model stars.
+However, first we will shortly summarize the theory it succeeded.
 
-(Newtonian gravity??)
-\todo{Short about newtonian gravity/motivation}
+
+\section{Newtonian Gravity}
+
+
+Newton's famous law of gravity states that the force of gravity from an object of mass $M$ acting on another object of mass $m$ is proportional to both objects' masses and is inversely proportional to the distance between them squared.
+This force is directed radially inwards.
+Formulating this as an equation, with $\vv r$ as the vector from the object with mass $M$ to that with mass $m$, gives
+%
+\begin{equation}
+    \vv F_g = - \frac{G M m}{r^2} \hat r.
+\end{equation}
+%
+Here, $G$ is Newton's gravitation constant, and $\hat r = \vv r / |\vv r|$.
+The vector $\vv r$ is a purely spatial three-vector, as space is separated from time in the Newtonian picture.
+The law of gravitation, together with Newton's second law of motion,
+%
+\begin{equation}
+    \label{Newton's second law}
+    \sum_i \vv F_i = m \vv a,
+\end{equation}
+%
+where $\vv a$ is the acceleration of an object and $\vv F_i$ the forces acting upon it, can account for the motion of stellar objects.
+These laws work well in all but the most extreme circumstances, involving very massive objects or very short distances.
+As we will see, such extreme circumstances can be quantified by $2G M \approx r$.
+Newtonian gravity works well as an approximation because $G$ is small in everyday units.
+Highly precise measurements of the orbit of Mercury were needed before any deviation from it was noticed.
+
+We restate Newtonian gravity in a field-theoretic language to better compare Newtonian gravity to its successor theory.
+The gravitational potential from a mass $M$, which gives rise to Newton's force law, obeys the equation
+%
+\begin{equation}
+    \nabla^2 \Phi_g = - 4 \pi G \rho.
+\end{equation}
+%
+Here, $\rho$ is the mass density.
+For a single point mass, $\rho(\vv r) = M \delta(\vv r)$, this has the solution $\Phi_g = G M / r$.
+The acceleration due to gravity is then
+%
+\begin{equation}
+    \label{acceleration from Newtonian gravitational potential}
+    \vv a = - \vec \nabla \Phi_g.
+\end{equation}
+%
+We see that mass acts as a gravitational charge.
+Due to the success of Newtonian gravity, we expect it to be a limit of any theory that succeeds it.
+This gives us the ability to theoretically test any new theory of gravity, as well as to connect parameters in the new theory to old, known quantities.
+
+
 
 \section{General relativity}
 This section is based on~\cite{carrollSpacetimeGeometryIntroduction2019}.
 The derivation of the spherically symmetric metric is done using computer code, as described in \autoref{appendix: code}.
+
+
 
 \subsection{Einstein's field equations}
 
 General relativity describes spacetime as a smooth manifold $\Em$, with a (pseudo-Riemannian) metric, $g_{\mu \nu}$.
 This metric is treated as a dynamical field, which is affected by the presence of matter and energy.
 The matter and energy contents of spacetime are encoded in the stress-energy tensor $T_{\mu \nu}$, while the behavior of $g^{\mu \nu}$ is encoded in a scalar Lagrangian density.
-Some of the mathematics used in this section, such as functional derivatives, are covered in \autoref{appendix: Functional derivatives}.
-
-The most obvious---and correct---choice as the Lagrangian for $g^{\mu \nu}$ is the Ricci scalar, which results in the Einstein-Hilbert action,
+We employ the minimal-coupling rule to reformulate laws from special relativity to curved spacetime.
+This rule states that laws written in an inertial frame in a coordinate-independent way remain true in curved spacetime.
+In an inertial frame, the Crisoffel-symbols vanish, so $\nabla_\mu = \partial_\mu$.
+We can thus write any laws containing partial derivatives in a coordinate impenitent way by exchanging them for covariant derivatives.
+To generalize Newton's second law \autoref{Newton's second law}, we must first make it relativistic by introducing a 4-force, $F^\mu = \odv{}{\tau} p^\mu $, where $p^\mu$ is the 4-momentum.
+Newton's second law then becomes, using \autoref{goedesic equation},
+%
+\begin{equation}
+    \label{covariant version of second law}
+    \sum_i F_i^\mu 
+    = \odv[2]{x^\mu}{\lambda} + \Gamma^\mu_{\nu \rho} \odv{x^\nu}{\lambda} \odv{x^\rho}{\lambda}.
+\end{equation}
+%
+In the absence of any external forces, objects will follow geodesics in spacetime.
+With this, we must now find the law governing $g^{\mu\nu}$.
+As this is a field, we will do this by assigning it a Lagrangian density.
+The most obvious---and correct---choice as the Lagrangian is the Ricci scalar, which results in the Einstein-Hilbert action,
 %
 \begin{equation}
     \label{Einstein-Hilbert action}
@@ -38,7 +101,7 @@ The equations of motion of the dynamical field, which in this case is the metric
 Using functional derivatives, as defined in \autoref{subsection: functional calculus on a curved manifold}, this is stated as
 %
 \begin{equation}
-    \fdv{S}{g^{\mu\nu}} = 0,
+    \fdv{S}{g^{\mu\nu}} = 0.
 \end{equation}
 %
 We define the stress-energy tensor as
@@ -220,9 +283,17 @@ This equation has the solution
 \end{equation}
 %
 where $R_s$, the Schwarzschild radius, is a constant.
-Using the weak field limit, we can match the solution to Newtonian gravity and show that $R_s = 2 G M$, where $G$ is Newton's constant of gravitation and $M$ is the mass of the point particle.
-\todo{Gjøre weak field limit?}
-The metric is then
+With this, we should obtain Newtonian law of gravity with a small perturbation, $g_{\mu \nu} = \eta_{\mu \nu} + h_{\mu \nu}$, and at slow speeds, $\odv*{x^i}{\tau} \ll \odv*{t}{\tau}$.
+Inserting this into the geodesic equation \autoref{covariant version of second law} with $F_i = 0$, using $\partial_0 g_{\mu \nu} = 0$ and expanding to leading order, we get
+%
+\begin{equation}
+    \odv[2]{x^i}{t} = \frac{1}{2}\eta^{i j}\partial_j h_{00}.
+\end{equation}
+%
+We now obtain Newtonian gravity, as formulated in \autoref{acceleration from Newtonian gravitational potential}, if we identify $h_{00} = 1 -  e^{2\alpha} = - 2 \Phi_g$.
+The Schwarzschild radius is thus $R_s = 2 G M$, and we see that this solution corresponds to a point-mass $M$ located at $\vv r = 0$.
+We will extend our discussion to finite densities in the next section.
+Inserting or results into the metric, we get the Schwarzschild metric
 %
 \begin{equation}
     \label{Schwarzchild metric}
