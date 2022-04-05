@@ -58,19 +58,17 @@ def get_const_pion():
     r0 = G * m0*M0 / c**2 / 1e3
     return u0, m0, r0
 
-
 def max_radius_pion_star():
     _, _, r0 = get_const_pion()
     R = pi/sqrt(12) * r0
     print(R)
     print(R / (1 + D))
 
-
-
 def get_const_lepton(m_l):
     u0 = f_pi**2*m_pi**2
     ul0 = m_l**4 / (3*pi**2)
-    A = 1/(8*pi**2) * m_l**3/(m_pi*f_pi)
+    # A = 1/(8*pi**2) * m_l**3/(m_pi*f_pi**2)
+    A = 8 / 3 * ul0/m_l * 1/(u0/m_pi)
     return u0, ul0, A
 
 def get_D_mu():

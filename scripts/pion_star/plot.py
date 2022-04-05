@@ -339,7 +339,7 @@ def plot_mass_radius_compare_EM():
     
 
 
-def test():
+def plot_lepton_compare():
     sols1 = load_sols()
     sols2 = load_sols(name="_e")
     sols3 = load_sols(name="_mu")
@@ -363,29 +363,64 @@ def test():
     for i, data in enumerate(datas):
         R, M, pc = [np.array(d) for d in data] 
         ax.plot(R*r0, M*m0, ls=lines[i], color=colors[i], label="$"+labels[i]+"$")
-
-        if i!=0:
-            j = np.argmax(M)
-            label ="$(M, R) = " \
-                + "(%.3f" %(M[j]*m0)\
-                + "\, M_\odot, %.3f" %(R[j]*r0) \
-                + "\, \mathrm{km})$ "
-            ax.plot(R[j]*r0, M[j]*m0, "k", marker=marker[i], ls="", ms=10, label=label)
-
-    ax.plot(42.64, 0, ".k", label="$R=42.64\\,\\mathrm{km}$")
     
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+
+    Rs = np.linspace(0, 8e4, 100)
+    ax.set_ylim(1e-3, 1e3)
+    ax.plot(Rs, 4 / 9 * Rs, color="tab:purple", label="$M = \\frac{4}{9} R$")
     ax.legend()
 
-    fig.savefig("figurer/pion_star/mass_radius_lepton.pdf", bbox_inches="tight")
+    fig.savefig("figurer/pion_star/mass_radius_lepton_compare.pdf", bbox_inches="tight")
 
 
 
-test()
+def plot_lepton(name = "_e"):
+    sols = load_sols(name=name)
+    N = len(sols)
+    data = [[], [], []]
+
+    for s in sols:
+        data[0].append(s.t[-1])
+        data[1].append(s.y[1][-1])
+        data[2].append(s.y[0][0])
 
 
-# test()
+    u0, m0, r0 = get_const_pion()
+
+    fig, ax = plt.subplots(figsize=(16, 6))
+    R, M, pc = [np.array(d) for d in data] 
+    ax.plot(R*r0, M*m0)
+
+    j = np.argmax(M)
+    label ="$(M, R) = " \
+        + "(%.3f" %(M[j]*m0)\
+        + "\, M_\odot, %.3f" %(R[j]*r0) \
+        + "\, \mathrm{km})$ "
+    ax.plot(R[j]*r0, M[j]*m0, "kx", label=label)
+
+    if name=="_mu": 
+        r0 = 6.072
+        ax.plot(r0, 0, ".k", label="$R=%.3f\\,\\mathrm{km}$"%r0)
+        ax.set_xlim(2, 12)
+    else:
+        ax.set_xlim(0, 2e5)
+    
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
+
+    ax.legend()
+
+    fig.savefig("figurer/pion_star/mass_radius_"+name+".pdf", bbox_inches="tight")
+
+
+
+# plot_lepton()
+plot_lepton(name="_mu")
+# plot_lepton_compare()
 
 # plot_pressure_mass()
 # plot_pressure_mass(name="_EM")

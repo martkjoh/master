@@ -173,42 +173,59 @@ As discussed in \autoref{section: cold fermi star}, we expect a stiffer equation
 
 
 We now apply the results from \autoref{section: charge neturality}, where we added a lepton to enforce charge neutrality.
-The mass-radius relation for charge-neutral stars consisting of pions and leptons is shown in \autoref{fig: mass radius relation with leptons}, and is compared to the relation for pion of only pions.
-The smaller star is due to the inclusion of the muon, while the larger is from including the electron.
-We see that the two leptons affect the relationship in different ways.
-The light electron does not contribute much to the energy density, and the ultrarelativistic limit of the full equation of state quickly approaches that of only the pion. 
-Therefore, the maximum mass is not changed much, and the corresponding radius is only slightly larger.
-However, in the non-relativistic regime, the electron results in a stiffer equation and a different polytropic index.
-As expected, there is no upper limit to the radius, which only grows with lower total mass and central pressure.
-The maximum mass is $ 10.42\, M_\odot $, and the corresponding maximum radius is $59.84\,\text{km}$.
-This is slightly less massive and larger than the star of only pions.
+The star with electrons is shown in  \autoref{fig: mass radius relation with electrons}.
+We see that this star is much larger than those made of only pions.
+This is because the light electrons make the equation of state much stiffer.
+Furthermore, the non-relativisitic equation of state is now a polytrope with $\gamma = \frac{5}{3}$, instead of $\gamma = 2$, and there is therefore no upper mass limit.
+The maximum mass is now $146\, M_\odot $, and the corresponding maximum radius is $ 1.87\times 10^4 \,\text{km}$.
 
-On the other hand, the muon is much heavier and thus primarily contributes to the energy density.
-This results in a less stiff equation of state and a smaller and less massive star.
-The maximum mass is $ 5.970\, M_\odot $, and the corresponding maximum radius is $31.52\,\text{km}$.
-As discussed, the equation of state here admits an intermediate limit over a large interval, where it behaves as a polytrope with $\gamma = 2$.
-As this is such a good approximation for the equation of state, the mass-radius relation seems to approach a maximum radius.
-Similarly to what happens with the inclusion of electromagnetic interaction, the polytrope constant $K$ is modified to $K^{-1} = 8 (1 + \Delta_\ell)^2$, where
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_radius__e.pdf}
+    \caption{
+        The mass-radius relation of pion stars with electrons to enforce charge neutrality.
+        The radius is given in kilometers and the mass in units of solar masses.
+        }
+        \label{fig: mass radius relation with electrons}
+\end{figure}
+
+
+The mass radius relation for a star where the lepton is a muon is shown in \autoref{fig: mass radius relation with muons}.
+We see that the two different leptons affect the mass-radius relation in very different ways.
+The heavy muon results in a much \emph{less} stiff equation of state, and thus smaller and lighter stars.
+In this case, the maximum mass is $ 1.08\, M_\odot $, and the corresponding maximum radius is $6.66\,\text{km}$.
+As in the case wit the electron, there is no upper limit to the radius as the central pressure decreases.
+This is because also here, the non-relativisitic limit is a polytrope with $\gamma = \frac{5}{3}$.
+However, as we found in \autoref{section: charge neturality}, there is an intermediate range where the equation of state behaves as a polytrope with $\gamma = 2$.
+Likewise, there is an intermediate range of the mass-radius relation, where it seems to approach a limiting mass, before the mass quickly start to grow again.
+We can get a rough estimate for this ``seeming'' limit, by using the polytrope constant of the intermediate limit, which is $K^{-1} = 8 (1 + \Delta_\ell)^2$, where
 %
 \begin{equation}
     \Delta_\ell = \frac{4}{3} \frac{u_{\ell, 0}}{u_0} A^{-1}.
 \end{equation}
 %
-In the case of the muon, this leads to a modified maximum radius,
+Following our earlier analysis, this leads to the limiting radius
 %
 \begin{equation}
-    R = \frac{\pi}{\sqrt{12} (1 + \Delta_\mu)} = 42.64\, \text{km}.
+    R = \frac{\pi}{\sqrt{12} (1 + \Delta_\mu)} = 6.072 \, \text{km}.
 \end{equation}
 %
-From \autoref{fig: mass radius relation with leptons}, we see that this fits well with the numerical results.
-However, this limit is only intermediate, and we should expect that as the central pressure falls even further, the radius will start to grow without bounds.
-Indeed, we can notice a slight curve towards a higher radius at the lowest mass.
-To demonstrate this effect further, we would need much higher precision numerical computation, and it would take us to a regime where other approximations such as zero temperature become dubious.
+The results using both electrons and muons are compared to the results with only pions in \autoref{fig: mass radius relation with leptons}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_radius__mu.pdf}
+    \caption{
+        The mass-radius relation of pion stars, including leptons to enforce charge neutrality, is compared with pion stars of only pions.
+        The radius is given in kilometers and the mass in units of solar masses.
+        }
+        \label{fig: mass radius relation with muons}
+\end{figure}
 
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_radius_lepton.pdf}
+    \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_radius_lepton_compare.pdf}
     \caption{
         The mass-radius relation of pion stars, including leptons to enforce charge neutrality, is compared with pion stars of only pions.
         The radius is given in kilometers and the mass in units of solar masses.

@@ -3,7 +3,7 @@
 
 
 A pion condensate will have an electric charge.
-In the grand canonical ensemble, the QCD Lagrangian will have the term  $\mu_Q \bar q \gamma^0 Q q$, where $\bar q \gamma^\mu Q q$ is the electric charge density, $Q$ the quark charge matrix \autoref{three-flavor charge matrix}, and $\mu_Q = \mu_I + 2 \mu_S$ is the electric charge chemical potential.
+In the grand canonical ensemble, the QCD Lagrangian will have the term  $\mu_Q \bar q \gamma^0 Q q$, where $\bar q \gamma^\mu Q q$ is the electric current density, $Q$ the quark charge matrix \autoref{three-flavor charge matrix}, and $\mu_Q = \mu_I + 2 \mu_S$ is the electric charge chemical potential.
 In the case of $\mu_S = 0$, the charge density is thus
 %
 \begin{equation}
@@ -56,7 +56,7 @@ We have introduced the dimensionless constant
     = \frac{1}{8 \pi^2} \frac{m_\ell^3}{m_\pi f_\pi^2}.
 \end{equation}
 %
-Setting the lepton mass equal the electron mass or muon mass gives, respectively, $A = 1.360 \times10^{- 7}$ and $A = 5.709 \times 10^{3}$.
+Setting the lepton mass equal the electron mass or muon mass gives, respectively, $A = 1.1 \times10^{- 8}$ and $A = 4.4 \times 10^{2}$.
 In this case, we can write the expression for $\mu_\ell(\mu_I)$ as an explicit function,
 %
 \begin{equation}
@@ -147,7 +147,7 @@ In \autoref{section: cold fermi star}, we found the non-relativistic limit of th
 Inserting this new result into these limits, we get the leading low energy limits of the pressure and energy, 
 %
 \begin{equation}
-    u_{\ell, \text{nr}} = \frac{8}{3} A^{-1} u_{\ell,0} \epsilon, \quad
+    u_{\ell, \text{nr}} = \frac{8}{3} \frac{2}{A} u_{\ell,0} \epsilon, \quad
     p_{\ell, \text{nr}} = \frac{8}{15} \left(\frac{2}{A} \right)^{5/3}  u_{\ell,0}  \epsilon^{5/3}.
 \end{equation}
 %
@@ -162,7 +162,7 @@ However, the lepton pressure is of a lower order, and \emph{only} this will cont
 At low enough isospin chemical potential, then, the leading order behavior of the combined system is
 %
 \begin{equation}
-    u_{\text{nr}} = 2 u_0 \left(1+ \frac{4}{3} \frac{u_{\ell,0}}{u_0} A^{-1} \right)\epsilon ,\quad
+    u_{\text{nr}} = 2 u_0 \left(1 + \frac{8}{3} \frac{u_{\ell,0}}{u_0} A^{-1} \right)\epsilon ,\quad
     p_{\text{nr}} = \frac{8}{15} u_{\ell,0} \left(\frac{2}{A} \right)^{5/3} \epsilon^{5/3}.
 \end{equation}
 %
@@ -179,7 +179,12 @@ This figure is not dependent on the mass of the lepton.
 \end{figure}
 
 
-In an intermediate range, however, the pressure of a heavy lepton will be suppressed by a factor $u_{\ell,0}/ u_0 A^{-5/3}\propto (m_\pi^{1/3} f_\pi^{{2}/{3}})^5 (m_\pi f_\pi)^{æ2} m_\ell^{-1}$, which for $m_\ell \gg m_\pi$ and $m_\ell \gg f_\pi$ is $\ll 1$, and the pion contribution might be dominant for a while.
+In an intermediate range, however, the pressure of a heavy lepton will be suppressed by a factor 
+$
+u_{\ell,0}/ u_0 A^{-5/3}\propto 
+(m_\pi^{1/3} f_\pi^{{2}/{3}})^5 (m_\pi f_\pi)^{-2} m_\ell^{-1}
+$, 
+which for $m_\ell \gg m_\pi$ and $m_\ell \gg f_\pi$ is $\ll 1$, and the pion contribution might be dominant for a while.
 In this regime, the equation of state is still a polytrope with $\gamma = 2$, but the constant is changed due to the lepton contribution to the energy density.
 The pressure in the intermediate range is
 %
@@ -196,26 +201,26 @@ and the equation of state is thus
 
 \begin{figure}[!htb]
     \centering
-    \begin{subfigure}{0.49\textwidth}
+    \begin{subfigure}{0.9\textwidth}
         \includegraphics[width=\textwidth]{../scripts/figurer/charge_neutrality/eos_lepton_limitse.pdf}
     \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
+    \begin{subfigure}{0.9\textwidth}
         \includegraphics[width=\textwidth]{../scripts/figurer/charge_neutrality/eos_lepton_limitsmu.pdf}
     \end{subfigure}
     \caption{
         The full equation of state of the pion + lepton system, compared with intermediate and non-relativistic limit.
-    On the right, the lepton is the electron, while on the left is the muon.
+    On the top, the lepton is the electron, while on the bottom it is the muon.
     The full equation of state is compared to two different limits.
     }
     \label{fig: intermediate regime}
 \end{figure}
 
 This is illustrated in \autoref{fig: intermediate regime}.
-In this figure, both the intermediate limit and the non-relativistic limit is shown.
-To the left is the system with electrons, and we see that even though $m_e < m_\pi$, there is still a regime of validity of around five orders of magnitude for the intermediate limit.
+In this figure, both the intermediate limit and the non-relativistic limit is compared to the full equation of state.
+On the top is the system with electrons, and as $m_e < m_\pi$, the intermediate limit has no validity.
 For $p/u_0 < 10^{-10}$, we see that the non-relativistic limit is very good.
-On the right, we see that the intermediate limit has a very large range of applicability, of more than ten orders of magnitude.
-The equation of state does finally approach the non-relativistic limit around $p/u_0 < 10^{-16}$, however it is necessary with higher-than-normal precision in the numerical calculations to see this.
+On the bottom, we see that the intermediate limit has a range of applicability, around $p/u_0 = 1$ to $p/u_0 = 1$ $p/u_0 = 10^{-3}$.
+The equation of state is then very well approximated by the non-relativistic limit around $p/u_0 < 10^{-5}$.
  
 We can find the ultrarelativistic regime by letting $\mu_I^2/m_\pi^2 = y$, $y \gg 1$.
 From \autoref{mu ell from mu I}, we find that the lepton chemical potential to leading order in $y$ is $\mu_\ell^2 \propto y^{1/3}$.
