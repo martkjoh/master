@@ -346,7 +346,7 @@ With these, we can find an explicit formula of the Christoffel symbols in terms 
 %
 With the notion of a covariant derivative, we may also generalize \emph{parallel transport} to curved spaces.
 The notion of parallel transport of a vector in flat $\R^n$ is intuitive---given a line $x^\mu(\lambda)$, a vector $v^\mu$ at $x^\mu(\lambda_0)$ is parallel transported to $v'^\mu$ at $x^\mu(\lambda_1)$ if they ``point in the same direction''.
-To make this more precise, a vector field $v^\mu$ is parallel transported along $x^\mu(\lambda)$ if $\odv{}{\lambda} v^\mu = \odv{x^\nu}{\lambda} \partial_\nu v^\mu$.
+To make this more precise, a vector field $v^\mu$ is parallel transported along $x^\mu(\lambda)$ if $\odv{}{\lambda} v^\mu = \odv{x^\nu}{\lambda} \partial_\nu v^\mu$ = 0.
 We generalize this to curved spaces by replacing the partial derivative with a covariant derivative, and so the criterion for parallel transport is
 %
 \begin{equation}
@@ -387,7 +387,7 @@ which in our case gives the explicit formula
 %
 Although the Christoffel symbols are not tensors, the Riemann tensor is due to its definition using covariant derivatives.
 We can therefore contract some of its indices to get other tensor quantities.
-We  define the Ricci tensor and Ricci scalar as
+We  efine the Ricci tensor and Ricci scalar as
 %
 \begin{align}
     \label{Ricci tensor}
@@ -408,7 +408,7 @@ This form gives us several useful identities, such as
     R_{\mu \nu \rho \sigma }.
 \end{equation}
 %
-Using can use the Jacobi identity of the commutator, we have
+Using the Jacobi identity of the commutator, we have
 %
 \begin{equation}
     \label{Jacobi identity differential geometry}
@@ -526,7 +526,7 @@ The parallel propagator from $B$ to $C$ is then
     - \epsilon \Gamma^{\mu}_{\nu \mu_1}|_A 
     + \frac{1}{2}\epsilon^2
     \left(
-        \Gamma^\mu_{\sigma \mu_1}\Gamma^\sigma_{\nu \mu_1}
+        \Gamma^\mu_{\sigma \mu_1}\Gamma^\sigma_{\nu \mu_1}|_A
         - \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_1}|_A
         - 2 \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1}|_A
     \right).

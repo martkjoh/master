@@ -1,46 +1,53 @@
-\section{*Lie groups}
+\section{*The mathematics of symmetry}
 
-This section is based on~\autocite{leeIntroductionSmoothManifolds2003d,peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
+One application of differential geometry is in the field of Lie groups.
+The primary use case of these structures is to study the symmetries of manifolds, particularly those that represent physical systems.
+Symmetries are a vital part of modern physics and will be used throughout this text.
+In this section, we will develop the tools that we need for this study.
+It is based on~\autocite{leeIntroductionSmoothManifolds2003d,peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
 
 
-\subsection{Groups}
-Lie groups are a natural structure to capture the symmetries of a physical theory.
-A Lie group is a smooth manifold, with the additional structure of a \emph{group}.
+\subsection{Lie groups}
+
+Inspired by Èvariste Galois' use of finite groups to study the finite solution set of algebraic equations, Sophus Lie introduced Lie groups, \emph{topological groups}, to study the solutions of differential equations.
+Groups are natural structures to capture symmetries, as they can be defined as actions on an object which leave it unchanged.
 A group is a set, $G$, together with a map
 %
 \begin{align}
     (\cdot, \cdot):  G \times G &\longmapsto G ,\\
-    (g_1, g_2) &\longmapsto g_3,
+    (g_1, g_2) &\longmapsto g_3 = g_1 g_2,
 \end{align}
 % 
-called group multiplication. This map obeys the group axioms, which are the existence of an identity element $\one$, associativity and the existence of an inverse element $g^{-1}$ for all $\in G$.
+called group multiplication. 
+This map obeys the group axioms, which are the existence of an identity element $\one$, associativity, and the existence of an inverse element $g^{-1}$ for all $g \in G$.
 These can be written as
-\begin{table}[!h]
-    \centering
+\begin{equation}
     \begin{tabular}{l l}
-        $\forall g \in G, $&$ (g, \one) = g, $\\
-        $\forall g_1, g_2, g_3 \in G, $ & $ (g_1, (g_2, g_3)) = ((g_1, g_2), g_3), $\\
-        $\forall g \in G,\, \exists g^{-1} \in G,\, \text{s.t.}, $ & $ (g, g^{-1}) = \one.$
+        $\exists \one \in G, \, \text{s.t.,}\, \forall g \in G, $&$ g \one = g, $\\
+        $\forall g_1, g_2, g_3 \in G, $ & $ g_1(g_2g_3) = (g_1 g_2) g_3, $\\
+        $\forall g \in G,\, \exists g^{-1} \in G,\, \text{s.t.}, $ & $ g g^{-1} = \one.$
     \end{tabular}
-\end{table}
+\end{equation}
+A Lie group is a manifold $G$ with a group structure.
+Elements $g_1, g_2 \in G$ can thus be combined by group multiplication and be mapped to their inverses.
+We additionally require these maps to be smooth, which is equivalent to $(g_1, g_2) \rightarrow g_1 g_2^{-1}$ being smooth.
 
-In addition, we require that both the multiplication map and the inverse map, $g \mapsto g^{-1}$, are smooth.
-As we will discuss later, a symmetry transformation is a map between physical states which leave the equations governing that system unchanged.
+As we will discuss in more detail in the next chapter, a symmetry transformation is a map between physical states which leaves the equations governing that system unchanged.
 Assume the field, or set of fields, $\varphi$ is governed by the equation $f(\varphi) = 0$.
-A symmetry transformation $\varphi \mapsto g \varphi$ will then obey $f(g\varphi) = 0$.
+A symmetry transformation $\varphi \mapsto g \varphi$, where $g\varphi$ represents the action $g$ acting on $\varphi$, will then obey $f(g\varphi) = 0$.
 This is what makes groups the natural structures to describe symmetries.
-Assume $G$ is the set of all, or a subset closed under compositions, symmetries of a system,
+Assume $G$ is the set of all symmetries of a system or a subset of all symmetries closed under compositions, 
 %
 \begin{equation}
-    G = \setbuilder{g}{f(g\varphi) = 0},
+    G = \setbuilder{g}{f(g\varphi) = 0}.
 \end{equation}
 %
-as a Lie group.
-The group $G$ might act on $\varphi$ linearly, so $(g\varphi)_i = g_{ij}\varphi_j$, or in a more complicated matter.
+The group $G$ might act on $\varphi$ linearly, so $(g\varphi)_i = g_{ij}\varphi_j$, or in a more complicated manner.
+A linear realization of a Lie group is called a \emph{representation}.
 In this case, the group multiplication is composition, i.e., performing transformations in succession.
 This map is closed, as the composite of two symmetry transformations is another symmetry transformation.
 The identity map is a symmetry transformation, and composition is associative.
-This means that invertible symmetry transformations form a group.
+This means that invertible symmetry transformations form a group, and for continuous sets, this group is a Lie group.
 
 We will focus on connected Lie groups, in which all elements $g \in G$ are in the same connected piece as the identity map $\one \varphi = \varphi$.
 This means that for each $g\in G$, one can find a continuous path $\gamma(t)$ in the manifold, such that $\gamma(0) = \one$ and $\gamma(1) = g$.
@@ -49,7 +56,7 @@ As the Lie group is a smooth manifold, we can write\footnote{
     The factor $i$ is a physics convention and differs from how mathematicians define generators of a Lie group.
     }
 \begin{equation}
-    \gamma(\epsilon) = \one + i \epsilon V + \Oh(\epsilon).
+    \gamma(\epsilon) = \one + i \epsilon V + \Oh(\epsilon^2).
 \end{equation}
 %
 $V$ is a generator, and is defined as
@@ -66,50 +73,97 @@ We can then write the generator as
 \begin{equation}
     V = \odv{\gamma}{t}\Big|_{t=0} = \odv{\eta_\alpha}{t}\Big|_{t=0} \pdv{g}{\eta_\alpha}\Big|_{\eta=0}
     = v_\alpha T_\alpha, \quad 
-    T_\alpha = \odv{\eta_\alpha}{t}\Big|_{t=0}, \quad
-    \pdv{g}{\eta_\alpha}\Big|_{\eta=0}.
+    T_\alpha = \pdv{g}{\eta_\alpha}\Big|_{\eta=0}, \quad
+    v_\alpha = \odv{\eta_\alpha}{t}\Big|_{t=0}.
 \end{equation}
 %
 Infinitesimal transformations can therefore be written as
 \begin{equation}
-    \gamma(\epsilon) = \one + i \epsilon v_\alpha T_\alpha + \Oh{\epsilon}.
+    \gamma(\epsilon) = \one + i \epsilon v_\alpha T_\alpha + \Oh(\epsilon^2).
 \end{equation}
+%
+The generators form a new algebraic structure, the Lie algebra.
+This is the linearization of the Lie group, but it encodes information about the whole group.
+We will, in fact, mostly focus on the generators rather than the full transformations, which makes the Lie algebra an important structure.
 
 
-\subsection{Lie algebra}
-The tangent space $T_\one G$, together with the additional operation
+
+\subsection{Lie algebras}
+
+An abstract Lie algebra $\mathfrak g$ is a vector space $V$, together with a binary operation,
+%
+\begin{align}
+    [\cdot, \cdot]: \mathfrak g \times \mathfrak g &\longmapsto \mathfrak g,\\
+    (V_1, V_2) & \longmapsto V_3 = [V_1, V_2].
+\end{align}
+%
+This map is linear in both arguments, antisymmetric, and obeys the \emph{Jacobi identity}, 
+%
+\begin{equation}
+    [V_1, [V_2, V_3]] + [V_2, [V_3, V_1]] + [V_3, [V_1, V_2]] = 0, \quad
+    \forall V_1, V_2, V_3 \in \mathfrak g.
+\end{equation}
+%
+In our case, we will work with concrete Lie algebras $\mathfrak g$, corresponding to Lie groups $G$.
+As long as $G$ is simply connected, i.e., connected to the identity and without holes, then this is a one-to-one correspondence.
+This was Sophus Lie's main result.
+The space $V$ is then $T_\one G$ with the basis $T_\alpha$, and we can define the Lie bracket by 
 %
 \begin{align}
     \label{structure constants}
-    [T_\alpha, T_\beta] = iC_{\alpha\beta}^\gamma T_\gamma,
+    [T_\alpha, T_\beta] = if_{\alpha\beta}^\gamma T_\gamma,
 \end{align}
 %
-called the Lie bracket, form a Lie algebra denoted $\mathfrak{g}$.
-$C_{\alpha \beta}^\gamma$ are called structure constants.
-They obey the Jacobi identity, \todo[inline, color=red]{FEIL! FIKS!}
+where $f_{\alpha \beta}^\gamma$ are the structure constants of the algebra.
+These are obey $f_{\alpha \beta}^\gamma = - f_{\beta \alpha}^\gamma$ and they follow their own version of the Jacobi identity,
 %
 \begin{equation}
     \label{jacobi identity}
-    C_{\alpha \beta}^\gamma + C_{\beta\gamma}^\alpha +  C_{\gamma\alpha}^\beta = 0,
+    f_{\alpha \beta}^\mu f_{\gamma \mu}^\nu 
+    + f_{\beta \gamma}^\mu f_{\alpha \mu}^\nu
+    + f_{\gamma \alpha}^\mu f_{\beta \mu}^\nu = 0.
 \end{equation}
 %
-which mean that they are totally antisymmetric.
-For matrix groups, which we deal with in this text, the Lie bracket is the commutator.
+A algebra is called \emph{abelian} if $f^\alpha_{\beta\gamma} = 0$.
+Any abelian algebra is just a direct sum of $N$ of the Lie algebras of $\Lie{U}{1}$, $\lie{u}{1}$.
+A simple Lie algebra is a non-abelian algebra that does not contain any non-trivial \emph{ideals}, also called invariant sub-algebras~\footnote{
+    Some authors do not have the non-abelian criterion, then includes $\lie{u}{1}$ as simple.}
+An ideal $\mathfrak i \subset \mathfrak g$ is a set such that $[\mathfrak i, \mathfrak g] \subset \mathfrak i$.
+A semi-simple Lie algebra can be written as a direct sum of simple algebras.
+The total classification of simple Lie algebras was done by Cartan and Killing and involved four infinite families, the classical algebras such as $\lie{su}{N}$, and five exceptional algebras which do not fit into these families.
+There is a natural metric on Lie groups, called the Killing form, $B_{\alpha \beta} = - f^{\gamma}_{\alpha \eta}f^\eta_{\beta \gamma}$.
+This is non-degenerate if the algebra is simple, and additionally positive definite if it is compact.
+In that case, one can choose a basis of the algebras so that the structure constants are \emph{totally antisymmetric}.
+This is trivially true for abelian groups, and as a consequence, the structure constants of a direct sum of compact, simple algebras and abelian algebras are totally antisymmetric.
+In that case, one can write $f^\alpha_{\beta \gamma} = f_{\alpha \beta \gamma}$
+~\autocite{weinbergQuantumTheoryFields1996}.
+
+
+As with Lie groups, Lie algebras have representations.
+A representation of a Lie algebra $\mathfrak g$ is a homomorphism, i.e., a map that preserves the Lie bracket, from $\mathfrak g$ to the Lie algebra of linear maps on a vector space $V$, i.e., matrices, called $\lie{gl}{V}$.
+In $\lie{gl}{V}$, the Lie bracket is the matrix commutator.
+A representation is faithful if the homomorphism is an isomorphism.
+The most important representations are the fundamental and the adjoint.
+The fundamental representation is the smallest non-trivial representation, and in the case of the familiar groups such as $\lie{so}{N}$ and $\lie{su}{N}$, the fundamental representation is the defining one.
+In the adjoint representation, the generators $T^A_\alpha$ are the structure constants, $(T^A_\alpha)^\beta_\gamma = -i f^\beta_{\alpha\gamma} $.
+For compact Lie algebras, i.e., the algebras of compact Lie groups, the representations are Hermitian.
+These can be written as direct sums of simple or abelian Lie groups and thus have fully antisymmetric structure constants.
+
 A subset of the original Lie group, $H \subset G$, closed under the group action, is called a subgroup.
 $H$ then has its own Lie algebra $\mathfrak{h}$, with a set of $m = \dim H$ generators, $t_a$, which is a subset of the original generators $T_\alpha$.
 We denote the remaining set of generators $x_i$, such that $t_a$ and $x_i$ together span $\mathfrak{g}$.
+Assume $G$ is compact.
 The commutators of $t_a$ must be closed, which means that we can write
 %
 \begin{align}
-    [t_a, t_b] &= i C_{ab}^{c} t_c,\\
-    [t_a, x_i] &= i C_{ai}^k x_k, \\
-    [x_i, x_j] &= i C_{ij}^k x_k + i C_{ij}^c t_c,
+    [t_a, t_b] &= i f_{ab}^{c} t_c,\\
+    [t_a, x_i] &= i f_{ai}^k x_k, \\
+    [x_i, x_j] &= i f_{ij}^k x_k + i f_{ij}^c t_c,
 \end{align}
 %
 where $abc$ runs over the generators of $\mathfrak h$, and $ijk$ runs over the rest.
-The second formula can be derived using the Jacobi identity \autoref{jacobi identity}, which implies that $C_{ab}^k = 0 = -C_{ak}^b$.
+The second formula can be derived using the total anti-symmetry of the structure constants, which implies that $f_{ab}^k = 0 = -f_{ak}^b$.
 This is called a Cartan decomposition.
-
 One parameter subgroups are one special case of Lie subgroups.
 If a curve $\gamma(t)$ through $G$ obey
 %
@@ -136,5 +190,3 @@ For matrix groups, the exponential equals the familiar series expansion
     \exp{X} = \sum_n \frac{1}{n!} X^n.
 \end{equation}
 %
-
-\todo[]{write short about the fundamental and adjoint representation}
