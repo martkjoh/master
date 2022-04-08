@@ -78,7 +78,7 @@ def integrate(u, pcs, dense_output=True, max_step=0.001, r_max=1e3, newtonian_li
     sols = [None for _ in pcs] # empty list to keep solutions
     for i, pc in enumerate(tqdm(pcs)):
         s = max_step[i]
-        sols[i] = solve_ivp(
+        sol = solve_ivp(
             f, 
             (0, r_max), 
             (pc, 0), 
@@ -87,4 +87,12 @@ def integrate(u, pcs, dense_output=True, max_step=0.001, r_max=1e3, newtonian_li
             max_step=s, 
             dense_output=dense_output,
         )
+        
+        sols[i] = {
+            "f" : sol.sol,
+            "R" : sol.t[-1],
+            "M" : sol.y[1][-1],
+            "pc": sol.y[0][0]
+        }
+
     return np.array(sols)

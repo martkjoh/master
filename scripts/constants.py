@@ -23,7 +23,7 @@ m_eta = 547.86
 m_rho = 770
 
 m_e = 0.5110
-m_mu = 1776
+m_mu = 105.7
 
 # pion decay constant
 f_pi = 130.2/sqrt(2)
@@ -66,7 +66,7 @@ def max_radius_pion_star():
 
 def get_const_lepton(m_l):
     u0 = f_pi**2*m_pi**2
-    ul0 = m_l**4 / (3*pi**2)
+    ul0 = m_l**4 / (8*pi**2)
     # A = 1/(8*pi**2) * m_l**3/(m_pi*f_pi**2)
     A = 8 / 3 * ul0/m_l * 1/(u0/m_pi)
     return u0, ul0, A
@@ -104,6 +104,7 @@ if __name__=="__main__":
     # print("%.4e" % A)
 
     print(get_R_mu())
+
     # print(Dm)
     
     # print(Δ)
@@ -114,3 +115,4 @@ if __name__=="__main__":
     # print(( hbar * c / (2* G * m_pi**2) )**(3 / 2) * m_pi / M0)
 
     # print(Dm**4/m_K0**4)
+

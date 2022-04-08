@@ -3,11 +3,11 @@
 
 
 A pion condensate will have an electric charge.
-In the grand canonical ensemble, the QCD Lagrangian will have the term  $\mu_Q \bar q \gamma^0 Q q$, where $\bar q \gamma^\mu Q q$ is the electric current density, $Q$ the quark charge matrix \autoref{three-flavor charge matrix}, and $\mu_Q = \mu_I + 2 \mu_S$ is the electric charge chemical potential.
-In the case of $\mu_S = 0$, the charge density is thus
+In the grand canonical ensemble, the QCD Lagrangian will have the term  $\mu_Q e\bar q \gamma^0 Q q$, where $e \bar q \gamma^\mu Q q$ is the electric current density, $Q$ the quark charge matrix \autoref{three-flavor charge matrix}, and $e \mu_Q = \mu_I + 2 \mu_S$ is the electric charge chemical potential.
+In the case of $\mu_S = 0$, the charge density is
 %
 \begin{equation}
-    n_Q = - e \pdv{\Eff}{\mu_Q} = e n_I.
+    n_Q = - \pdv{\Eff}{\mu_Q} = e n_I.
 \end{equation}
 %
 A realistic astrophysical object will not have a macroscopic electric charge.
@@ -28,7 +28,7 @@ This formula is valid for $\mu_\ell \geq m_\ell$.
 We have introduced the characteristic energy density of leptons,
 %
 \begin{equation}
-    u_{\ell, 0} = \frac{m^4_\ell}{3 \pi^2}.
+    u_{\ell, 0} = \frac{m^4_\ell}{8 \pi^2}.
 \end{equation}
 %
 The criterion for charge neutrality is then
@@ -52,11 +52,11 @@ Both densities vanish at the point $(\mu_I, \mu_\ell) = (m_\pi, m_\ell)$, which 
 We have introduced the dimensionless constant
 %
 \begin{equation}
-    A = \frac{3}{8} \frac{m_\pi} {m_\ell} \frac{u_{0, \ell}}{u_0}
-    = \frac{1}{8 \pi^2} \frac{m_\ell^3}{m_\pi f_\pi^2}.
+    A = \frac{8}{3} \frac{m_\pi} {m_\ell} \frac{u_{0, \ell}}{u_0}
+    = \frac{1}{3 \pi^2} \frac{m_\ell^3}{m_\pi f_\pi^2}.
 \end{equation}
 %
-Setting the lepton mass equal the electron mass or muon mass gives, respectively, $A = 1.1 \times10^{- 8}$ and $A = 4.4 \times 10^{2}$.
+Setting the lepton mass equal the electron mass or muon mass gives, respectively, $A = 3.9 \times10^{- 9}$ and $A = 3.5 \times 10^{-2}$.
 In this case, we can write the expression for $\mu_\ell(\mu_I)$ as an explicit function,
 %
 \begin{equation}
@@ -72,9 +72,9 @@ In this case, we can write the expression for $\mu_\ell(\mu_I)$ as an explicit f
 \end{equation}
 %
 These relationships are illustrated in \autoref{fig: chemical potentials}.
-The plot on the left is the electron chemical potential as a function of isospin chemical potential, both normalized to the masses of their corresponding particles.
-We see that the value of the electron chemical potential as a fraction of the particle mass is far greater than that of the pion condensate, as it is suppressed by the $A$ constant in \autoref{equation mu ell mu I}.
-The muon chemical potential, shown on the right and normalized to the muon mass, is promoted by $A$ and thus much smaller than the isospin chemical potential.
+The plot on the left is the electron chemical potential as a function of isospin chemical potential, both normalized to the masses of their corresponding particles, while the muon chemical potential is on the right.
+We see that both lepton potentials are suppressed, relative to the isospin chemical potential, by the $A$ constant in \autoref{equation mu ell mu I}.
+The electron is much lighter than the pion, and therefore grows much faster than the muon chemical potential.
 
 \begin{figure}[!htb]
     \centering
@@ -85,7 +85,7 @@ The muon chemical potential, shown on the right and normalized to the muon mass,
         \includegraphics[width=\textwidth]{../scripts/figurer/charge_neutrality/chemical_potential_mu.pdf}
     \end{subfigure} 
     \caption{
-        The lepton chemical potentials as functions of the isospin chemical potential normalized to their respective particles mass.
+        The lepton chemical potentials as functions of the isospin chemical potential normalized to their respective particles masses.
         The electron chemical potential is shown to the left, the muon to the right.
     } 
     \label{fig: chemical potentials}
@@ -118,11 +118,14 @@ This leads to a total pressure and energy
 \end{equation}
 %
 As \autoref{criterion charge neutrality} gives $\mu_\ell$ as a function of $\mu_I$, these are both parametrized by the isospin chemical potential, and we can extract the equation of state $u = u(p)$.
-The full equation of state in two different regimes is shown in \autoref{fig: eos with leptons}.
-The plot on the left is the low-pressure regime.
-As the light electron almost immediately enters the ultrarelativistic regime, defined by $\mu_e\gg m_e$, it will contribute mainly to the pressure.
-On the other hand, the heavy muon is non-relativistic and thus contributes mainly to the energy density due to its rest mass.
-On the right, we see that the ultrarelativistic limit is dominated by the pion contribution.
+The full equation of state in different regimes is shown in \autoref{fig: eos with leptons}.
+On the top left, the addition of the electron results in a much stiffer equation of state than the addition of the muon.
+We have seen that the low-pressure energy density of the pion is $m_\pi n_I $, while for the lepton it is $m_\ell n_\ell$.
+As $n_I = n_\ell$, the low pressure limit of the energy of the energy density is $(m_\pi + m_\ell)n_ I$, which explains why the muon, where $m_\mu \approx m_\pi$, contributes a lot more to the energy density than the electron, for which $m_e \ll m_\pi$.
+On the top right, we see that the pressure regime is dominated by the pion contribution.
+However, as chiral perturbation assumes small pion energies and small external currents, this result must be used carefully.
+On the bottom, the equation of state in an intermediate range is shown.
+It is not very sensitive to the mass of the lepton, at least as long as it is less than the pion mass.
 
 \begin{figure}
     \centering
@@ -132,6 +135,7 @@ On the right, we see that the ultrarelativistic limit is dominated by the pion c
     \begin{subfigure}{0.49\textwidth}
         \includegraphics[width=\textwidth]{../scripts/figurer/charge_neutrality/eos_ur.pdf}
     \end{subfigure}
+    \includegraphics[width=\textwidth]{../scripts/figurer/charge_neutrality/eos_I.pdf}
     \caption{
         The equation of state including a lepton is compared with the equation of state of only the pion condensate in two different regimes.
         The pressure and energy density is normalized to $u_0 = f_\pi^2 m_\pi^2$.
@@ -139,8 +143,13 @@ On the right, we see that the ultrarelativistic limit is dominated by the pion c
     \label{fig: eos with leptons}
 \end{figure}
 
+We can find the ultrarelativistic limit by letting $\mu_I^2/m_\pi^2 = y$, $y \gg 1$.
+From \autoref{mu ell from mu I}, we find that the lepton chemical potential to leading order in $y$ is $\mu_\ell^2 \propto y^{1/3}$.
+In \autoref{section: cold fermi star}, we found that in the ultrarelativistic limit of non-interacting fermions, both the pressure and energy is proportional to $x_f^4 \propto y^{2/3}$.
+In the case of the pion, however, both are proportional to $\mu_I^2 \propto y$.
+Therefore, the ultrarelativistic limit of the combined system is, to leading order, given by the ultrarelativistic limit of the pion condensate alone.
 
-We can study the limit of the combined system by again letting $\mu_I^2/m_\pi^2 = 1 + \epsilon$.
+As before, we can find the non-relativisitic limit by letting $\mu_I^2/m_\pi^2 = 1 + \epsilon$.
 Inserting this into \autoref{mu ell from mu I} and expanding to first order in $\epsilon$, we get $\mu_\ell = 1 + (2 A^{-1} \epsilon)^{2/3} $.
 This is equivalent to $x_f = (2 A^{-1} \epsilon)^{1/3} $.
 In \autoref{section: cold fermi star}, we found the non-relativistic limit of the pressure and energy of the Fermi gas, i.e., the lowest order contribution in $x_f$, as $x_f \rightarrow 0$.
@@ -162,69 +171,22 @@ However, the lepton pressure is of a lower order, and \emph{only} this will cont
 At low enough isospin chemical potential, then, the leading order behavior of the combined system is
 %
 \begin{equation}
-    u_{\text{nr}} = 2 u_0 \left(1 + \frac{8}{3} \frac{u_{\ell,0}}{u_0} A^{-1} \right)\epsilon ,\quad
+    u_{\text{nr}} 
+    = 2 u_0 \left(1 + \frac{1}{2}\frac{m_\ell}{m_\pi} \right)  \epsilon, \quad
     p_{\text{nr}} = \frac{8}{15} u_{\ell,0} \left(\frac{2}{A} \right)^{5/3} \epsilon^{5/3}.
 \end{equation}
 %
 The equation of state is now a polytrope with $\gamma = \frac{5}{3}$, different from the $\gamma = 2$ polytrope of only the pion condensate.
-The equation of state of the lepton is compared with this limit in \autoref{fig: lepton eos}
-This figure is not dependent on the mass of the lepton.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.6\textwidth]{../scripts/figurer/charge_neutrality/eos_lepton.pdf}
-    \caption{The equation of state of the lepton, compared with the non-relativisitic limit.
-    Both energy density and pressure are normalized to the characteristic lepton density.}
-    \label{fig: lepton eos}
-\end{figure}
-
-
-In an intermediate range, however, the pressure of a heavy lepton will be suppressed by a factor 
-$
-u_{\ell,0}/ u_0 A^{-5/3}\propto 
-(m_\pi^{1/3} f_\pi^{{2}/{3}})^5 (m_\pi f_\pi)^{-2} m_\ell^{-1}
-$, 
-which for $m_\ell \gg m_\pi$ and $m_\ell \gg f_\pi$ is $\ll 1$, and the pion contribution might be dominant for a while.
-In this regime, the equation of state is still a polytrope with $\gamma = 2$, but the constant is changed due to the lepton contribution to the energy density.
-The pressure in the intermediate range is
-%
-\begin{equation}
-    p_i = \frac{1}{2} u_0 \epsilon^2,
-\end{equation}
-%
-and the equation of state is thus
-%
-\begin{equation}
-    p_i = K \left(\frac{u_\text{nr}}{u_0}\right)^2, \quad 
-    K = \frac{1}{8} \left( 1 + \frac{4}{3} \frac{u_{\ell,0}}{u_0} A^{-1} \right)^{-2}.
-\end{equation}
+For a heavy lepton, $m_\ell \gg m_\pi$, the factor $\smash{A^{-\frac{5}{3}}}$ would suppress leading order the lepton contribution to the pressure.
+Thus, the equation of state would have an intermediate range in which it would be well approximated as a polytrope with $\gamma = 2$, and a modified poly tropic constant $K'^{-1} = 8 (1 + \frac{1}{2} m_\ell/m_\pi)^2$.
+The full equation of state is compared to the non-relativisitic limit in \autoref{fig: lepton eos limit}.
 
 \begin{figure}[!htb]
     \centering
-    \begin{subfigure}{0.9\textwidth}
-        \includegraphics[width=\textwidth]{../scripts/figurer/charge_neutrality/eos_lepton_limitse.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.9\textwidth}
-        \includegraphics[width=\textwidth]{../scripts/figurer/charge_neutrality/eos_lepton_limitsmu.pdf}
-    \end{subfigure}
+    \includegraphics[width=\textwidth]{../scripts/figurer/charge_neutrality/eos_lim.pdf}
     \caption{
-        The full equation of state of the pion + lepton system, compared with intermediate and non-relativistic limit.
-    On the top, the lepton is the electron, while on the bottom it is the muon.
-    The full equation of state is compared to two different limits.
+        The full equation of state of the pion + lepton systems, compared with the non-relativistic limit.
+        Both the energy density and the pressure is given in units of $u_0 = m_\pi^2 f_\pi^2$.
     }
-    \label{fig: intermediate regime}
+    \label{fig: lepton eos limit}
 \end{figure}
-
-This is illustrated in \autoref{fig: intermediate regime}.
-In this figure, both the intermediate limit and the non-relativistic limit is compared to the full equation of state.
-On the top is the system with electrons, and as $m_e < m_\pi$, the intermediate limit has no validity.
-For $p/u_0 < 10^{-10}$, we see that the non-relativistic limit is very good.
-On the bottom, we see that the intermediate limit has a range of applicability, around $p/u_0 = 1$ to $p/u_0 = 1$ $p/u_0 = 10^{-3}$.
-The equation of state is then very well approximated by the non-relativistic limit around $p/u_0 < 10^{-5}$.
- 
-We can find the ultrarelativistic regime by letting $\mu_I^2/m_\pi^2 = y$, $y \gg 1$.
-From \autoref{mu ell from mu I}, we find that the lepton chemical potential to leading order in $y$ is $\mu_\ell^2 \propto y^{1/3}$.
-In \autoref{section: cold fermi star}, we found that the ultrarelativistic limit of the Fermi, both the pressure and energy is proportional to $x_f^4 \propto y^{2/3}$.
-In the case of the pion, however, both are proportional to $\mu_I^2 \propto y$.
-Therefore, the ultrarelativistic limit of the combined system is to leading order given by the ultrarelativistic limit of the pion condensate alone.
-

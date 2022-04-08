@@ -78,17 +78,23 @@ def plot_mus(m_l=m_e, name="e"):
 
 
 # limit
-def plot_mus_lim(m_l=m_e, name="e"):
-    x = 1+np.logspace(-20, 4, N)
-    fig, ax = plt.subplots(figsize=(12, 8))
+def plot_mus_lim():
+    x = 1+np.logspace(-14, 4, N)
+    fig, ax = plt.subplots(figsize=(18, 8))
 
-    f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_l)
+    f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_e)
     ax.plot(x-1, f_l(x)-1, lw=5, alpha=0.6)
-    ax.set_xlabel("$\\mu_I/m_\\pi$")
-    ax.set_ylabel("$\mu_\\ell/m_\\ell$")
-
     eps = (x-1)
     ax.plot(eps/2, (2*eps/A)**(2/3)/2, "k--", lw=2)
+
+    f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_mu)
+    ax.plot(x-1, f_l(x)-1, lw=5, alpha=0.6)
+    eps = (x-1)
+    ax.plot(eps/2, (2*eps/A)**(2/3)/2, "k--", lw=2)
+
+
+    ax.set_xlabel("$\\mu_I/m_\\pi$")
+    ax.set_ylabel("$\mu_\\ell/m_\\ell$")
     ax.set_xscale("log")
     ax.set_yscale("log")
 
@@ -103,7 +109,7 @@ def plot_lepton(name="\\ell"):
     ax.plot(pl(x), ul(x), label="$u_\\ell(p)$")
 
     y = sqrt(x**2-1)
-    ax.plot(pl_lim0(y), ul_lim0(y), "k--", label="$u_{\\ell, \\mathrm{nr}}(p)$")
+    # ax.plot(pl_lim0(y), ul_lim0(y), "k--", label="$u_{\\ell, \\mathrm{nr}}(p)$")
 
     # assert (y[0]==0)
     tit = "$\\frac{\mu_"+name+"}{m_"+name+"}  \in [1,%.2f], \\quad" %(1+x[-1])+"$"
@@ -164,8 +170,8 @@ def gen_eos_list(r, N, m_l=m_e, name="e"):
     np.save("pion_star/data/eos_"+name, [x, plst, ulst])
 
 
-def plot_all(r, N, name="nr"):
-    fig, ax = plt.subplots(figsize=(8, 5))
+def plot_all(r, N, name="nr", fs=(8, 5)):
+    fig, ax = plt.subplots(figsize=fs)
     x = 1 + np.logspace(*r, N-1)
 
     f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_e)
@@ -182,11 +188,45 @@ def plot_all(r, N, name="nr"):
     ax.set_xlabel("$p/u_0$")
     ax.set_ylabel("$u/u_0$")
 
-    # ax.set_xlim(0, 0.0001)
-    # ax.set_ylim(0, 0.1)
+    ax.legend()
+    ax.ticklabel_format(style="scientific", scilimits=(-2, 2))
+    fig.savefig("figurer/charge_neutrality/eos_"+name+".pdf", bbox_inches="tight")
+
+
+def plot_all_log(r, N):
+    fig, ax = plt.subplots(figsize=(15, 6))
+    x = 1 + np.logspace(*r, N-1)
+
+    f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_e)
+    pe = p(x)
+    ue = u(x)
+
+    a = ul0/u0 
+    y = (x-1)*2
+    pe_lim = a*pl_lim(y)
+    ue_lim =  u_pi_lim(y) + a*ul_lim(y)
+
+    f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_mu)
+    pmu = p(x)
+    umu = u(x)
+    a = ul0/u0 
+    y = (x-1)*2
+    pmu_lim = a*pl_lim(y)
+    umu_lim =  u_pi_lim(y) + a*ul_lim(y)
+
+    ax.plot(pe, ue, lw=3, alpha=0.8, label="$\\pi + e$")
+    ax.plot(pmu, umu, lw=3, alpha=0.8, label="$\\pi + \\mu$")
+    ax.plot(pe_lim, ue_lim, "k--", label="$u_\\mathrm{nr}(p)$")
+    ax.plot(pmu_lim, umu_lim, "k--")
+
+    ax.set_xlabel("$p/u_0$")
+    ax.set_ylabel("$u/u_0$")
+    ax.set_xscale("log")
+    ax.set_yscale("log")
 
     ax.legend()
-    fig.savefig("figurer/charge_neutrality/eos_"+name+".pdf", bbox_inches="tight")
+    fig.savefig("figurer/charge_neutrality/eos_lim.pdf", bbox_inches="tight")
+
 
 
 
@@ -204,25 +244,36 @@ def test():
 # test()
     
 
-# plot_mus(m_l=m_mu, name="\\mu")
-# plot_mus(m_l=m_e, name="e")
-
-# plot_mus_lim(m_l=m_mu, name="\\mu")
-# plot_mus_lim(m_l=m_e, name="e")
-
+# plot_mus_lim()
 # plot_lepton()
+
+
+# plt_tot(m_l=m_e, name="e")
+# plt_tot(m_l=m_mu, name="\\mu")
+
+
+
+###! Actually useful plots: 
  
-plt_tot(m_l=m_e, name="e")
-plt_tot(m_l=m_mu, name="\\mu")
+plot_mus(m_l=m_mu, name="\\mu")
+plot_mus(m_l=m_e, name="e")
 
-# r = (-5,-1)
-# plot_all(r, N, name="nr")
-# r = (-2, 2.5)
-# plot_all(r, N, name="ur")
+r = (-5, -2)
+plot_all(r, N, name="nr")
+r = (-3, 0.2)
+plot_all(r, N, name="I", fs=(18,7))
+r = (-2, 2)
+plot_all(r, N, name="ur")
+
+plot_all_log((-12, 2), N)
 
 
-# N = 1000
-# r = (-15, 4)
-# gen_eos_list(r, N, m_e, name="e")
-# r = (-11, 4)
-# gen_eos_list(r, N, m_mu, name="mu")
+###! Gen data: 
+
+N = 1000
+r = (-16, 4)
+gen_eos_list(r, N, m_e, name="e")
+r = (-15, 4)
+gen_eos_list(r, N, m_mu, name="mu")
+
+

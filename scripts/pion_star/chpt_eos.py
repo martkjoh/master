@@ -13,18 +13,20 @@ u = lambda x: 1/2 * (2 + 1/x**2 - 3*x**2)
 
 
 def gen_eos_list():
-    xrange = (-3, 10) 
-    y = 10**np.linspace(*xrange, N-1)
+    r = (-8, 10)
+    y = np.logspace(*r, N-1, dtype=np.longdouble()) 
     y = np.concatenate([[0.,], y])
+
     x = 1 / np.sqrt(1 + y**2)
 
     ulst = u(x)
     plst = p(x)
-    print(plst)
-
+    
     # Can only interpolate with unique points
     assert len(np.unique(plst)) == len(plst)
     assert len(np.unique(ulst)) == len(ulst)
+    assert np.sum(np.diff(plst)<0) == 0
+    assert np.sum(np.diff(ulst)<0) == 0
     np.save("pion_star/data/eos", [x, plst, ulst])
 
 

@@ -36,44 +36,36 @@ def sim_newt_non_rel():
     np.save("pion_star/data/sols_newt_non_rel", sols)
 
 
-# sim()
-# sim_non_rel()
-# sim_newt()
-# sim_newt_non_rel()
-
-pcs = 10**np.linspace(-6, 6, n)
-
-def sim_EM():
+def sim_EM(r=(-6, 6)):
+    pcs = 10**np.linspace(r, n)
     u = get_u("pion_star/data/eos_EM.npy")
     max_step = 1e-3
     sols = integrate(u, pcs, max_step=max_step)
     np.save("pion_star/data/sols_EM", sols)
 
 
-# sim_EM()
-
-n=201
-pcs = 10**np.linspace(-18, 2 , n)
-
-def sim_e():
+def sim_e(r=(-18, 2), max_step=1e-1, info=False):
+    pcs = np.logspace(*r , n)
     u = get_u("pion_star/data/eos_e.npy")
-    max_step = 1e-0
-    sols = integrate(u, pcs, max_step=max_step, r_max=1e8)
+    sols = integrate(u, pcs, max_step=max_step, r_max=1e8, info=info)
     np.save("pion_star/data/sols_e", sols)
 
-sim_e()
 
-pcs = 10**np.linspace(-5, 5 , n)
-def sim_mu():
+def sim_mu(r=(-12, 4), max_step=1e-1, info=False):
+    pcs = np.logspace(*r , n)
     u = get_u("pion_star/data/eos_mu.npy")
-    max_step = 1e-4
-    sols = integrate(u, pcs, max_step=max_step, r_max=1e8)
+    sols = integrate(u, pcs, max_step=max_step, r_max=1e8, info=info)
     np.save("pion_star/data/sols_mu", sols)
 
+# sim()
+# sim_non_rel()
+# sim_newt()
+# sim_newt_non_rel()
 
-sim_mu()
+# sim_EM()
+
+# sim_e(max_step=1e0)
+sim_mu(max_step=1e-2)
 
 
-# u = get_u("pion_star/data/eos_mu.npy")
-# print(u(1e5))
 

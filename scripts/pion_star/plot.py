@@ -348,10 +348,9 @@ def plot_lepton_compare():
     datas = [[[], [], []] for _ in sols]
     for j, sol in enumerate(sols):
         for i, s in enumerate(sol):
-            datas[j][0].append(s.t[-1])
-            datas[j][1].append(s.y[1][-1])
-            datas[j][2].append(s.y[0][0])
-
+            datas[j][0].append(s["R"])
+            datas[j][1].append(s["M"])
+            datas[j][2].append(s["pc"])
 
     u0, m0, r0 = get_const_pion()
 
@@ -370,9 +369,9 @@ def plot_lepton_compare():
     ax.set_yscale("log")
 
     Rs = np.linspace(0, 8e4, 100)
-    ax.set_ylim(1e-3, 1e3)
+    ax.set_ylim(3e-2, 1e3)
     ax.plot(Rs, 4 / 9 * Rs, color="tab:purple", label="$M = \\frac{4}{9} R$")
-    ax.legend()
+    ax.legend(loc="lower right")
 
     fig.savefig("figurer/pion_star/mass_radius_lepton_compare.pdf", bbox_inches="tight")
 
@@ -384,10 +383,9 @@ def plot_lepton(name = "_e"):
     data = [[], [], []]
 
     for s in sols:
-        data[0].append(s.t[-1])
-        data[1].append(s.y[1][-1])
-        data[2].append(s.y[0][0])
-
+        data[0].append(s["R"])
+        data[1].append(s["M"])
+        data[2].append(s["pc"])
 
     u0, m0, r0 = get_const_pion()
 
@@ -401,16 +399,14 @@ def plot_lepton(name = "_e"):
         + "\, M_\odot, %.3f" %(R[j]*r0) \
         + "\, \mathrm{km})$ "
     ax.plot(R[j]*r0, M[j]*m0, "kx", label=label)
-
-    if name=="_mu": 
-        r0 = 6.072
-        ax.plot(r0, 0, ".k", label="$R=%.3f\\,\\mathrm{km}$"%r0)
-        ax.set_xlim(2, 12)
-    else:
-        ax.set_xlim(0, 2e5)
     
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
+
+    if name == "_e":
+        ax.set_xlim(0, 4e5)
+    else: 
+        ax.set_xlim(0, 2e3)
 
     ax.legend()
 
@@ -418,9 +414,9 @@ def plot_lepton(name = "_e"):
 
 
 
-# plot_lepton()
+plot_lepton()
 plot_lepton(name="_mu")
-# plot_lepton_compare()
+plot_lepton_compare()
 
 # plot_pressure_mass()
 # plot_pressure_mass(name="_EM")
