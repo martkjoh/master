@@ -354,9 +354,9 @@ def plot_lepton_compare():
 
     u0, m0, r0 = get_const_pion()
 
-    fig, ax = plt.subplots(figsize=(16, 6))
+    fig, ax = plt.subplots(figsize=(16, 10))
     lines = ["-", "--", "-."]
-    colors = ["tab:blue", "k", "r"]
+    colors = ["tab:blue", "tab:green", "r"]
     labels = ["\\pi", "\\pi+e", "\\pi+\\mu"]
     marker=["", "x", "*"]
     for i, data in enumerate(datas):
@@ -370,7 +370,7 @@ def plot_lepton_compare():
 
     Rs = np.linspace(0, 8e4, 100)
     ax.set_ylim(3e-2, 1e3)
-    ax.plot(Rs, 4 / 9 * Rs, color="tab:purple", label="$M = \\frac{4}{9} R$")
+    ax.plot(Rs, 4 / 9 * Rs, "k--", label="$M = \\frac{4}{9} R$")
     ax.legend(loc="lower right")
 
     fig.savefig("figurer/pion_star/mass_radius_lepton_compare.pdf", bbox_inches="tight")
@@ -399,6 +399,9 @@ def plot_lepton(name = "_e"):
         + "\, M_\odot, %.3f" %(R[j]*r0) \
         + "\, \mathrm{km})$ "
     ax.plot(R[j]*r0, M[j]*m0, "kx", label=label)
+
+    pc_max = data[2][j]
+
     
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
@@ -408,6 +411,7 @@ def plot_lepton(name = "_e"):
     else: 
         ax.set_xlim(0, 2e3)
 
+    ax.ticklabel_format(style="scientific", scilimits=(-2, 2))
     ax.legend()
 
     fig.savefig("figurer/pion_star/mass_radius_"+name+".pdf", bbox_inches="tight")
@@ -415,8 +419,8 @@ def plot_lepton(name = "_e"):
 
 
 plot_lepton()
-plot_lepton(name="_mu")
-plot_lepton_compare()
+# plot_lepton(name="_mu")
+# plot_lepton_compare()
 
 # plot_pressure_mass()
 # plot_pressure_mass(name="_EM")
