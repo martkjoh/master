@@ -9,7 +9,7 @@ from numpy import arccos, sqrt
 from matplotlib import cm
 
 sys.path.append(sys.path[0] + "/..")
-from constants import f_pi, m_S, m_pi, Dm, m_Kpm
+from constants import f_pi, m_S, m_pi, Dm, m_Kpm, Dm_EM
 
 plt.rc("font", family="serif", size=20)
 plt.rc("mathtext", fontset="cm")
@@ -84,11 +84,18 @@ mpi0 = lambda muS, muI, a : sqrt(l(E0_sq)(0, muS, muI, a))
 mpip = lambda muS, muI, a : sqrt(l(Epip_sq)(0, muS, muI, a+0j))
 mpim = lambda muS, muI, a : sqrt(l(Epim_sq)(0, muS, muI, a))
 
+
 mKp = lambda muS, muI, a : sqrt(l(EKp_sq)(0, muS, muI, a+0j))
 mKm = lambda muS, muI, a : sqrt(l(EKm_sq)(0, muS, muI, a+0j))
 mK0 = lambda muS, muI, a : sqrt(l(EK0_sq)(0, muS, muI, a+0j))
 mK0bar = lambda muS, muI, a : sqrt(l(EK0bar_sq)(0, muS, muI, a+0j))
 meta = lambda muS, muI, a : sqrt(l(Eeta_sq)(0, muS, muI, a+0j))
+
+mKpEM = lambda muS, muI, a : sqrt(l(EKp_sq)(0, muS, muI, a+0j) + (Dm_EM/m_pi)**2)
+mKmEM = lambda muS, muI, a : sqrt(l(EKm_sq)(0, muS, muI, a+0j) + (Dm_EM/m_pi)**2)
+mpipEM = lambda muS, muI, a : sqrt(l(Epip_sq)(0, muS, muI, a+0j) + (Dm_EM/m_pi)**2)
+mpimEM = lambda muS, muI, a : sqrt(l(Epim_sq)(0, muS, muI, a) + (Dm_EM/m_pi)**2)
+
 
 
 def plot_meson_masses():
@@ -114,6 +121,30 @@ def plot_meson_masses():
     ax[0].legend()
     ax[1].legend()
     fig.savefig("figurer/masses_mesons.pdf", bbox_inches="tight")
+
+def plot_meson_em_masses():
+    fig, ax = plt.subplots(2 ,figsize=(10, 14), sharex=True)
+    mu_list = np.linspace(0, 2.5, 400)
+    alpha_list = alpha_0(mu_list)
+
+    ax[1].plot(mu_list, mpi0(0, mu_list, alpha_list), "-", color="tab:blue", label="$\\pi^{0}$")
+    ax[1].plot(mu_list, mpipEM(0, mu_list, alpha_list), "r-.", label="$\\pi^{+}$")
+    ax[1].plot(mu_list, mpimEM(0, mu_list, alpha_list).real, "k--",  label="$\\pi^{-}$")
+
+    muS_n = 0
+    ax[0].plot(mu_list, mKpEM(muS_n, mu_list, alpha_list), "k--", label="$K^+$")
+    ax[0].plot(mu_list, mKmEM(muS_n, mu_list, alpha_list), "k-.",  label="$K^-$")
+    ax[0].plot(mu_list, mK0(muS_n, mu_list, alpha_list), "r--", label="$K^0$")
+    ax[0].plot(mu_list, mK0bar(muS_n, mu_list, alpha_list), "r-.",  label="$\\bar K^0$")
+    ax[0].plot(mu_list, meta(muS_n, mu_list, alpha_list), "-", color="tab:blue", label="$\\eta$")
+
+    ax[1].set_xlabel("$\\mu_I/m_\\pi$")
+    ax[0].set_ylabel("$m/m_\\pi$")
+    ax[0].set_ylabel("$m/m_\\pi$")
+
+    ax[0].legend()
+    ax[1].legend()
+    fig.savefig("figurer/masses_mesons_EM.pdf", bbox_inches="tight")
     
 
 def plot_charged_kaon_masses():
@@ -157,6 +188,8 @@ def plot_charged_kaon_masses2():
 
 
 
-plot_meson_masses() 
-plot_charged_kaon_masses()
-plot_charged_kaon_masses2()
+# plot_meson_masses() 
+# plot_charged_kaon_masses()
+# plot_charged_kaon_masses2()
+
+plot_meson_em_masses()

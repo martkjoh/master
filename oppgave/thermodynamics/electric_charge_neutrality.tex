@@ -120,12 +120,12 @@ This leads to a total pressure and energy
 As \autoref{criterion charge neutrality} gives $\mu_\ell$ as a function of $\mu_I$, these are both parametrized by the isospin chemical potential, and we can extract the equation of state $u = u(p)$.
 The full equation of state in different regimes is shown in \autoref{fig: eos with leptons}.
 On the top left, the addition of the electron results in a much stiffer equation of state than the addition of the muon.
-We have seen that the low-pressure energy density of the pion is $m_\pi n_I $, while for the lepton it is $m_\ell n_\ell$.
-As $n_I = n_\ell$, the low pressure limit of the energy of the energy density is $(m_\pi + m_\ell)n_ I$, which explains why the muon, where $m_\mu \approx m_\pi$, contributes a lot more to the energy density than the electron, for which $m_e \ll m_\pi$.
-On the top right, we see that the pressure regime is dominated by the pion contribution.
+We have seen that the low-pressure energy density of the pion is $m_\pi n_I $, while for the lepton, it is $m_\ell n_\ell$.
+As $n_I = n_\ell$, the low-pressure limit of the energy density is $(m_\pi + m_\ell)n_ I$, which explains why the muon, where $m_\mu \approx m_\pi$, contributes a lot more to the energy density than the electron, for which $m_e \ll m_\pi$.
+We see that the pion contribution dominates the high-pressure regime in the top right plot.
 However, as chiral perturbation assumes small pion energies and small external currents, this result must be used carefully.
-On the bottom, the equation of state in an intermediate range is shown.
-It is not very sensitive to the mass of the lepton, at least as long as it is less than the pion mass.
+The equation of state in an intermediate-range is shown on the bottom.
+It is not very sensitive to the lepton mass, at least as long as it is less than the pion mass.
 
 \begin{figure}
     \centering
@@ -150,7 +150,7 @@ In the case of the pion, however, both are proportional to $\mu_I^2 \propto y$.
 Therefore, the ultrarelativistic limit of the combined system is, to leading order, given by the ultrarelativistic limit of the pion condensate alone.
 
 As before, we can find the non-relativisitic limit by letting $\mu_I^2/m_\pi^2 = 1 + \epsilon$.
-Inserting this into \autoref{mu ell from mu I} and expanding to first order in $\epsilon$, we get $\mu_\ell = 1 + (2 A^{-1} \epsilon)^{2/3} $.
+Inserting this into \autoref{mu ell from mu I} and expanding to first order in $\epsilon$, we get $\mu_\ell^2/m_\ell^2 = 1 + (2 A^{-1} \epsilon)^{2/3} $.
 This is equivalent to $x_f = (2 A^{-1} \epsilon)^{1/3} $.
 In \autoref{section: cold fermi star}, we found the non-relativistic limit of the pressure and energy of the Fermi gas, i.e., the lowest order contribution in $x_f$, as $x_f \rightarrow 0$.
 Inserting this new result into these limits, we get the leading low energy limits of the pressure and energy, 
@@ -177,9 +177,9 @@ At low enough isospin chemical potential, then, the leading order behavior of th
 \end{equation}
 %
 The equation of state is now a polytrope with $\gamma = \frac{5}{3}$, different from the $\gamma = 2$ polytrope of only the pion condensate.
-For a heavy lepton, $m_\ell \gg m_\pi$, the factor $\smash{A^{-\frac{5}{3}}}$ would suppress leading order the lepton contribution to the pressure.
+For a heavy lepton, $m_\ell \gg m_\pi$, the factor $\smash{A^{-\frac{5}{3}}}$ would suppress the leading order of the lepton contribution to the pressure.
 Thus, the equation of state would have an intermediate range in which it would be well approximated as a polytrope with $\gamma = 2$, and a modified poly tropic constant $K'^{-1} = 8 (1 + \frac{1}{2} m_\ell/m_\pi)^2$.
-The full equation of state is compared to the non-relativisitic limit in \autoref{fig: lepton eos limit}.
+The full equation of state is compared to the non-relativistic limit in \autoref{fig: lepton eos limit}.
 
 \begin{figure}[!htb]
     \centering
@@ -190,3 +190,22 @@ The full equation of state is compared to the non-relativisitic limit in \autore
     }
     \label{fig: lepton eos limit}
 \end{figure}
+
+
+Results for the equation of state of the pion condensate, as well as the system with pions and electrons or muons, were obtained by \citeauthor{brandtNewClassCompact2018} in \autocite{brandtNewClassCompact2018} using computational QCD lattice methods.
+Their results are shown in \autoref{fig: brandt eos}, and compared with our results.
+There is a good agreement between the results, although the computational results tend to give a slightly less stiff equation of state.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/brandt_eos.pdf}
+    \caption{
+        The equation of state of only pions, pions and electrons, and pions and muons.
+        The results of \citeauthor{brandtNewClassCompact2018}, solid color, are compared with our results, dashed lines.
+        The result of \citeauthor{brandtNewClassCompact2018} incorporate statistical and systematic uncertainty in both $u$ and $p$ in the width of the lines.
+        Both energy density and pressure are shown in units of $u_0 = f_\pi^2 m_\pi^2$.
+    }
+    \label{fig: brandt eos}
+\end{figure}
+
+
