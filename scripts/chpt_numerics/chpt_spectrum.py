@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import sympy as sp
 import sys
-
+from numpy import cos, sin
 
 from sympy import lambdify
 from numpy import arccos, sqrt
@@ -19,6 +19,7 @@ plt.rc("grid", linestyle="--", alpha=1)
 
 
 lo = lambda x: x.subs(m, 1.).subs(f, f_pi/m_pi).subs(mS, m_S/m_pi).subs(dm, Dm/m_pi)
+l = lambda E : lambdify((p, muS, muI, a), lo(E),"numpy") 
 
 # Everything is done in units of m_pi
 m, mS, f = sp.symbols("m, m_S, f")
@@ -77,29 +78,58 @@ def alpha_0(mu):
     a[morethan_m] = arccos((1/mu[morethan_m]**2))
     return a
 
-
-l = lambda E : lambdify((p, muS, muI, a), lo(E),"numpy") 
-
 mpi0 = lambda muS, muI, a : sqrt(l(E0_sq)(0, muS, muI, a))
 mpip = lambda muS, muI, a : sqrt(l(Epip_sq)(0, muS, muI, a+0j))
 mpim = lambda muS, muI, a : sqrt(l(Epim_sq)(0, muS, muI, a))
-
-
 mKp = lambda muS, muI, a : sqrt(l(EKp_sq)(0, muS, muI, a+0j))
 mKm = lambda muS, muI, a : sqrt(l(EKm_sq)(0, muS, muI, a+0j))
 mK0 = lambda muS, muI, a : sqrt(l(EK0_sq)(0, muS, muI, a+0j))
 mK0bar = lambda muS, muI, a : sqrt(l(EK0bar_sq)(0, muS, muI, a+0j))
 meta = lambda muS, muI, a : sqrt(l(Eeta_sq)(0, muS, muI, a+0j))
 
-mKpEM = lambda muS, muI, a : sqrt(l(EKp_sq)(0, muS, muI, a+0j) + (Dm_EM/m_pi)**2)
-mKmEM = lambda muS, muI, a : sqrt(l(EKm_sq)(0, muS, muI, a+0j) + (Dm_EM/m_pi)**2)
-mpipEM = lambda muS, muI, a : sqrt(l(Epip_sq)(0, muS, muI, a+0j) + (Dm_EM/m_pi)**2)
-mpimEM = lambda muS, muI, a : sqrt(l(Epim_sq)(0, muS, muI, a) + (Dm_EM/m_pi)**2)
 
+
+#### EM version
+
+D = Dm_EM**2/m_pi**2
+
+m1_sq_EM = m**2 * sp.cos(a) - ( muI**2 - D)* sp.cos(2 * a)
+m2_sq_EM = m**2 * sp.cos(a) - ( muI**2 - D)* sp.cos(a)**2
+m3_sq_EM = m**2 * sp.cos(a) + ( muI**2 - D)* sp.sin(a)**2
+
+m_mu_p_sq_EM = one/4 * muI**2*sp.cos(2*a) + muI*muS*sp.cos(a) + muS**2 +(sp.cos(a)**2 + sp.cos(a))*D/2
+m_mu_m_sq_EM = one/4 * muI**2*sp.cos(2*a) - muI*muS*sp.cos(a) + muS**2 -(sp.cos(a)**2 - sp.cos(a))*D/2
+m4_sq_EM = m_m_sq - m_mu_p_sq_EM
+m6_sq_EM = m_p_sq - m_mu_m_sq_EM
+
+
+E0_sq_EM = p**2 + m3_sq_EM
+
+Epim_sq_EM, Epip_sq_EM = get_E(m1_sq_EM, m2_sq_EM, m12)
+EKm_sq_EM, EKp_sq_EM = get_E(m4_sq_EM, m4_sq_EM, m45)
+EK0bar_sq_EM, EK0_sq_EM = get_E(m6_sq_EM, m6_sq_EM, m67)
+
+def alpha_EM(mu):
+    mu = np.atleast_1d(mu).astype(float)
+    morethan_m = mu**2 > (1+D)*np.ones_like(mu)
+    a = np.zeros_like(mu)
+    x = 1/ (mu[morethan_m]**2 - D)
+    a[morethan_m] = arccos(x)
+    return a
+
+
+mpi0EM = lambda muS, muI, a : sqrt(l(E0_sq_EM)(0, muS, muI, a))
+mpipEM = lambda muS, muI, a : sqrt(l(Epip_sq_EM)(0, muS, muI, a+0j))
+mpimEM = lambda muS, muI, a : sqrt(l(Epim_sq_EM)(0, muS, muI, a))
+
+mKpEM = lambda muS, muI, a : sqrt(l(EKp_sq_EM)(0, muS, muI, a+0j))
+mKmEM = lambda muS, muI, a : sqrt(l(EKm_sq_EM)(0, muS, muI, a+0j))
+mK0EM = lambda muS, muI, a : sqrt(l(EK0_sq_EM)(0, muS, muI, a+0j))
+mK0barEM = lambda muS, muI, a : sqrt(l(EK0bar_sq_EM)(0, muS, muI, a+0j))
 
 
 def plot_meson_masses():
-    fig, ax = plt.subplots(2 ,figsize=(10, 14), sharex=True)
+    fig, ax = plt.subplots(2 ,figsize=(12, 12), sharex=True)
     mu_list = np.linspace(0, 2.5, 400)
     alpha_list = alpha_0(mu_list)
 
@@ -115,17 +145,18 @@ def plot_meson_masses():
     ax[0].plot(mu_list, meta(muS_n, mu_list, alpha_list), "-", color="tab:blue", label="$\\eta$")
 
     ax[1].set_xlabel("$\\mu_I/m_\\pi$")
-    ax[0].set_ylabel("$m/m_\\pi$")
-    ax[0].set_ylabel("$m/m_\\pi$")
+    ax[0].set_ylabel("$m/m_{\\pi}$")
+    ax[1].set_ylabel("$m/m_{\\pi}$")
 
     ax[0].legend()
     ax[1].legend()
     fig.savefig("figurer/masses_mesons.pdf", bbox_inches="tight")
 
+
 def plot_meson_em_masses():
-    fig, ax = plt.subplots(2 ,figsize=(10, 14), sharex=True)
+    fig, ax = plt.subplots(2 ,figsize=(12, 12), sharex=True)
     mu_list = np.linspace(0, 2.5, 400)
-    alpha_list = alpha_0(mu_list)
+    alpha_list = alpha_EM(mu_list)
 
     ax[1].plot(mu_list, mpi0(0, mu_list, alpha_list), "-", color="tab:blue", label="$\\pi^{0}$")
     ax[1].plot(mu_list, mpipEM(0, mu_list, alpha_list), "r-.", label="$\\pi^{+}$")
@@ -138,9 +169,9 @@ def plot_meson_em_masses():
     ax[0].plot(mu_list, mK0bar(muS_n, mu_list, alpha_list), "r-.",  label="$\\bar K^0$")
     ax[0].plot(mu_list, meta(muS_n, mu_list, alpha_list), "-", color="tab:blue", label="$\\eta$")
 
-    ax[1].set_xlabel("$\\mu_I/m_\\pi$")
-    ax[0].set_ylabel("$m/m_\\pi$")
-    ax[0].set_ylabel("$m/m_\\pi$")
+    ax[1].set_xlabel("$\\mu_I/m_{\\pi^0}$")
+    ax[0].set_ylabel("$m/m_{\\pi^0}$")
+    ax[1].set_ylabel("$m/m_{\\pi^0}$")
 
     ax[0].legend()
     ax[1].legend()
@@ -188,7 +219,7 @@ def plot_charged_kaon_masses2():
 
 
 
-# plot_meson_masses() 
+plot_meson_masses() 
 # plot_charged_kaon_masses()
 # plot_charged_kaon_masses2()
 

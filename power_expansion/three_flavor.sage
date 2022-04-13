@@ -59,11 +59,11 @@ v_mu = d*mu
 
 # e A_mu
 var("qe", latex_name="e", domain="real")
-var("A", latex_name="\\mathcal A_\\mu", domain="real")
+var("A_mu", latex_name="\\mathcal A_\\mu", domain="real")
 var("C")
 Q = diagonal_matrix( (2/3, -1/3, -1/3))
 
-v_em = qe*A*Q
+v_em = qe*A_mu*Q
 
 # pi_a tau_a
 

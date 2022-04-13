@@ -218,6 +218,8 @@ We will study the different condensates and the transition between them in \auto
 
 
 \subsection{The pion-condensed phase}
+\label{subsection: pion-condensed phase}
+
 
 Similar to what we found for the two-flavor case in \autoref{section: two-flavor chpt to leading order}, the ground states of the different condensates are parameterized as
 %
@@ -276,6 +278,7 @@ The diagonal mass terms are
 where
 %
 \begin{equation}
+    \label{mass terms in pion condensate}
     m_\pm^2 = \frac{1}{2} (\bar m^2 \cos\alpha \pm \Delta m^2 + m_S^2),
     \quad
     m^2_{\mu\pm } = \frac{1}{4}\mu_I^2 \cos2\alpha \pm \mu_I\mu_S \cos\alpha + \mu_S^2.
@@ -389,8 +392,8 @@ The masses of the particles are given by the energy at $\vv p = 0$.
 For $\alpha = 0$, which we will later show this is valid for low $\mu$'s, we get a Zeeman-like splitting of the energies of the pions,
 %
 \begin{equation}
-    E_0^2 =\sqrt{|\vv p|^2 + \bar m^2}, \quad
-    E_\pipm^2 = \sqrt{|\vv p|^2 + \bar m^2} \mp \mu_I.
+    E_0 =\sqrt{|\vv p|^2 + \bar m^2}, \quad
+    E_\pipm = \sqrt{|\vv p|^2 + \bar m^2} \mp \mu_I.
 \end{equation}
 %
 The kaons have a similar splitting, only due to the kaon chemical potentials $\mu_\Kpm$ and $\mu_\Ko$ instead.
@@ -402,7 +405,7 @@ On the top, we see that the kaons also get this Zeeman splitting in the vacuum p
 %
 \begin{figure}
     \centering
-    \includegraphics[width=0.6\textwidth]{../scripts/figurer/masses_mesons.pdf}
+    \includegraphics[width=0.8\textwidth]{../scripts/figurer/masses_mesons.pdf}
     \caption{
         The leading order masses of the pseudoscalar mesons, as functions of the isospin chemical potential.
         Both the masses and chemical potential are normalized to the pion mass.
@@ -645,7 +648,7 @@ The electromagnetic contribution to the mass of the charged kaon is
 The difference due to $\Delta m$, on the other hand, is
 %
 \begin{equation}
-    m_\Ko - \sqrt{m_\Kpm - \Delta m_\text{EM}^2}
+    m_\Ko - \sqrt{m_\Kpm^2 - \Delta m_\text{EM}^2}
     = 3.858\,m_\pi = 5.208\, \text{MeV}.
 \end{equation}
 
@@ -694,3 +697,32 @@ Similarly, the static Lagrangian in the charged kaon condensate is
 %
 In the neutral kaon condensate, on the other hand, the static Lagrangian remains unchanged.
 
+In the pion condensate, the $\alpha$-dependent masses we found in \autoref{subsection: pion-condensed phase} are also affected by the inclusion of electromagnetic effects.
+The diagonal mass terms are now 
+%
+\begingroup
+\allowdisplaybreaks
+\begin{align}
+    m_1^2 &=  \bar m^2\cos\alpha - (\mu_I^2 - \Delta m_\text{EM}^2) \cos^2\alpha,\\
+    m_2^2 &= \bar m^2\cos\alpha - (\mu_I^2  - \Delta m_\text{EM}^2)\cos2\alpha, \\
+    m_3^2 &= \bar m^2\cos\alpha + (\mu_I^2  - \Delta m_\text{EM}^2)\sin^2\alpha, \\
+    m_4^2 &= m_5^2 = m_-^2 - m_{\mu+}^2 + \frac{1}{2}\cos\alpha(\cos\alpha + 1) \Delta m_\text{EM}^2 , \\
+    m_6^2 &= m_7^2 = m_+^2 - m^2_{\mu-} + \frac{1}{2}\cos\alpha(\cos\alpha - 1) \Delta m_\text{EM}^2, \\
+    m_8^2 &= \frac{1}{3} (\bar m^2 \cos\alpha + 2 m_S^2),
+\end{align}
+\endgroup
+%
+where $m_\pm$ and $m_{\mu \pm}$ are defined as in \autoref{mass terms in pion condensate}.
+These masses are illustrated in \autoref{fig: leading order masses mesons EM}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../scripts/figurer/masses_mesons_EM.pdf}
+    \caption{
+        The leading order masses of the pseudoscalar mesons, as functions of the isospin chemical potential, including electromagnetic effects.
+        Both the masses and chemical potential are normalized to the pion mass.
+        These results are at $\mu_S = 0$.
+        The difference between the kaons at $\mu_I = 0$ is a result of the fact that $\Delta m \neq 0$.
+        }
+    \label{fig: leading order masses mesons EM}
+\end{figure}
