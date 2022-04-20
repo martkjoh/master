@@ -209,3 +209,132 @@ There is a good agreement between the results, although the computational result
 \end{figure}
 
 
+
+
+\subsection{Neutrinos}
+
+
+The primary decay mode of charged pions is via the strong force, which couples quarks to a charged lepton, $\ell$, and its corresponding neutrino, $\nu_\ell$.
+Neutrinos are very light leptons which only interact via the weak force.
+The exact nature of the mass of neutrinos are still an open problem~\Autocite{schwartzQuantumFieldTheory2013}.
+In this text, we will regard the neutrinos as massless.
+The leading order diagrams for the relevant interaction is
+%
+\begin{equation*}
+    \feynmandiagram [horizontal=a to b]{
+        u [particle=$u$] 
+        -- [fermion] a -- [fermion]
+        d [particle=$\bar b$], 
+        a -- [photon, edge label=$W^+ $] b,
+        ell [particle=$\ell^+$] -- [fermion] b -- [fermion]
+        nu [particle=$\nu_\ell$]
+        };
+    \quad\quad\quad\quad\quad\quad\quad
+    \feynmandiagram [horizontal=a to b]{
+        u [particle=$\bar u$]
+        -- [anti fermion] a -- [anti fermion]
+        d [particle=$b$], 
+        a -- [photon, edge label=$W^-$] b,
+        ell [particle=$\ell^-$] -- [anti fermion] b -- [anti fermion]
+        nu [particle=$\bar \nu_\ell$]
+        };
+\end{equation*}
+%
+The $W^\pm$-boson, the mediator of the weak force, only couples to left-handed fermions.
+That is, the coupling term has the form $W^\pm_\mu \bar \psi_L \gamma^\mu \psi_L$, where $\psi_L = P_L \psi$, as discussed in \autoref{subsection: chiral symmetry}.
+This will result in effective interactions of the form
+%
+\begin{equation*}
+    \feynmandiagram [horizontal=a to b]{
+        pi [particle=$\pi^+$] -- [fermion] a  [blob], 
+        a -- [photon, edge label=$W^+ $] b,
+        ell [particle=$\ell^+$] -- [fermion] b -- [fermion]
+        nu [particle=$\nu_\ell$]
+        };
+        \quad\quad\quad\quad\quad\quad\quad
+        \feynmandiagram [horizontal=a to b]{
+            pi [particle=$\pi^-$] -- [fermion] a  [blob], 
+            a -- [photon, edge label=$W^- $] b,
+            ell [particle=$\ell^-$] -- [anti fermion] b -- [anti fermion]
+            nu [particle=$\bar \nu_\ell$]
+            };
+\end{equation*}
+%
+where the blob represents the effective interaction between the pions and the $W$-bosons.
+The decay is dominated by $\pi \rightarrow \mu \nu_\mu$, and not $\pi \rightarrow e \nu_e$ as one might first expect, as a lighter particle have a large phase space.
+This is due to \emph{helicity suppression}.
+For light fermions such as the electrons, the helicity, i.e., the alignment of spin and momentum, is approximately given by the chirality.
+This process gives to left-handed particles, and in the mass-less limit this is equivalent with particles with helicity $h = -1$ and antiparticles with $h = 1$.
+However, this is forbidden on grounds of conservation of linear and angular momentum~\autocite{griffithsIntroductionElementaryParticles2008}.
+
+We treat neutrinos $\nu_\ell$ as free, massless fermions, which then has its own chemical potential, $\mu_{\nu_e\ll}$.
+The process we described above can be written as $\pi^+\ell \rightarrow \nu_\ell $ using crossing symmetry.
+In chemical equilibrium the chemical potentials will therefore obey
+%
+\begin{equation}
+    \label{chemical equillibrium weak interaction}
+    \mu_I + \mu_\ell = \mu_{\nu_\ell}.
+\end{equation}
+%
+In chemical equilibrium, there will be created both electrons and muons.
+Lepton-numbers $L_\ell$, the sum of the particle number of the charged lepton $\ell$ and its neutrino $\nu_\ell$, is not a conserved quantity in the real world.
+This is due to neutrino oscillations, processes on the form $\nu_\ell \rightarrow \nu_{\ell'}$.
+These oscillations happen constantly, as the flavor states of neutrinos are not the same as the mass eigenstates, and there will thus also be a chemical equilibrium between electrons and muons too, defined by
+%
+\begin{equation}
+    \mu_e = \mu_\mu.
+\end{equation}
+%
+The equation for charge neutrality now becomes $n_I = n_e + n_\mu$, or
+%
+\begin{equation}
+    \frac{\mu_I}{m_\pi} \left(1 - \frac{m_\pi^4}{\mu_I^4}\right)
+    =
+    A_e \sqrt{\frac{\mu_e^2}{m_e^2} - 1}
+    +
+    \theta(\mu_e - m_\mu) 
+    A_\mu \sqrt{a^2 \frac{\mu_e^2}{m_e^2} - 1}.
+\end{equation}
+%
+where $a = m_e/m_\mu \approx 1 / 200$.
+Thus, for low densities there will be no muons.
+The pressure and energy from the neutrino is given by the ultrarelativistic limit of the free fermion result, which we found in \autoref{section: cold fermi star}.
+We have here divided by a factor two, as there are only left-handed neutrinos, and thus only half as many degrees-of-freedom as fermions where both charities appear.
+The chemical potential and Fermi momentum of a massless particle are equal, which gives us
+%
+\begin{equation}
+    p_{\nu_\ell} = \frac{\mu_{\nu_\ell}^4}{8 \pi^2}, \quad 
+    u_{\nu_\ell} = \frac{\mu_{\nu_\ell}^4}{24 \pi^2}.
+\end{equation}
+%
+
+The total pressure and energy density is now, as before, the sum of the individual contribution of each species.
+
+As before, the criterion of charge neutrality ensures that the transition into the vacuum phase for the pion condensate, at $\mu_I = m_\pi$, happens simultaneously as the fermion density vanish, here at $\mu_e = m_e$.
+However, due to the weak-interaction chemical equilibrium, \autoref{chemical equillibrium weak interaction}, the neutrino chemical potential and thus the neutrino pressure will be non-zero even with no pion condensate nor any leptons. 
+
+
+
+% \begin{tikzpicture}
+%     \begin{feynman}
+%         \vertex (u) {$u$};
+%         \vertex[right=1cm of u] (b1);
+%         \vertex[right=1cm of b1] (b2);
+%         \vertex[right=1cm of b2] (ell) {$\ell^+$};
+        
+%         \vertex[below=0.75cm of b1] (a1);
+%         \vertex[below=0.75cm of b2] (a2);
+        
+%         \vertex[below=1.5cm of u] (d) {$\bar d$};
+%         \vertex[below=1.5cm of ell] (nu) {$\nu_\ell$};
+
+%         \diagram* {
+%             {[edges=fermion]
+%             (u) -- (a1) -- (d) 
+%             },
+%             {[edges=fermion]
+%             (ell) -- (a2) -- (nu)
+%             },
+%         };
+%     \end{feynman}
+% \end{tikzpicture}
