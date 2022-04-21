@@ -298,6 +298,18 @@ The equation for charge neutrality now becomes $n_I = n_e + n_\mu$, or
 %
 where $a = m_e/m_\mu \approx 1 / 200$.
 Thus, for low densities there will be no muons.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/neutrino_mu.pdf}
+    \caption{
+        cap
+    }
+    \label{fig: neutrino mu}
+\end{figure}
+
+
+
 The pressure and energy from the neutrino is given by the ultrarelativistic limit of the free fermion result, which we found in \autoref{section: cold fermi star}.
 We have here divided by a factor two, as there are only left-handed neutrinos, and thus only half as many degrees-of-freedom as fermions where both charities appear.
 The chemical potential and Fermi momentum of a massless particle are equal, which gives us
@@ -308,10 +320,34 @@ The chemical potential and Fermi momentum of a massless particle are equal, whic
 \end{equation}
 %
 
-The total pressure and energy density is now, as before, the sum of the individual contribution of each species.
+The total pressure and energy density is now, as before, the sum of the individual contribution of each species,
+%
+\begin{equation}
+    p = p_\pi + p_e + p_\mu + p_{\nu_e} + p_{\nu_\mu}, \quad
+    u = u_\pi + u_e + u_\mu + u_{\nu_e} + u_{\nu_\mu}.
+\end{equation}
+%+
 
 As before, the criterion of charge neutrality ensures that the transition into the vacuum phase for the pion condensate, at $\mu_I = m_\pi$, happens simultaneously as the fermion density vanish, here at $\mu_e = m_e$.
 However, due to the weak-interaction chemical equilibrium, \autoref{chemical equillibrium weak interaction}, the neutrino chemical potential and thus the neutrino pressure will be non-zero even with no pion condensate nor any leptons. 
+As both the electron and muon neutrino contributes, the pressure is here
+%
+\begin{equation}
+    p_\text{min} = \frac{m_\pi+m_e}{12 \pi^2}.
+\end{equation}
+%
+After this point, $\mu_I$ and $\mu_\ell$ do not have a strict functional relationship, as there is a continuum of charge neutral states.
+The equation of state is then given only by the neutrinos, $u = 3p$.
+This is not correct for arbitrarily low pressure, as the finite neutrino mass will at some point become relevant.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/neutrino_eos.pdf}
+    \caption{
+        cap
+    }
+    \label{fig: neutrino eos}
+\end{figure}
 
 
 

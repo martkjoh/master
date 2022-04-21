@@ -41,11 +41,11 @@ for i, name in enumerate(names):
     u = np.concatenate([u+err_u/sqrt(2), (u-err_u/sqrt(2))[::-1]])
     ax.fill(p, u, color=colors[i], alpha=0.3, label=labels[i])
 
-
 names=["", "_e", "_mu"]
-p_max = 1.5
-p_max = 0.0004
-u_max = 0.004
+p_max = 1
+u_max = 2.5
+# p_max = 0.0004
+# u_max = 0.004
 
 for name in names:
     u_path = "pion_star/data/eos"+name+".npy"
@@ -54,6 +54,7 @@ for name in names:
     u = np.array([u(p0) for p0 in p])
     ax.plot(p, u, "k--")
 
+ax.plot(p, 3*p)
 
 
 ax.set_xlim(0, p_max)

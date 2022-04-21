@@ -193,8 +193,6 @@ The maximum mass is now $238\, M_\odot $, and the corresponding maximum radius i
 The mass radius relation for a star where the lepton is a muon is shown in \autoref{fig: mass radius relation with muons}.
 This has a similar form to that where the lepton was the electron, only smaller and lighter, as the equation of state in this case is less stiff.
 The maximum mass is now $18.6\, M_\odot $, and the corresponding maximum radius is $ 262 \,\text{km}$.
-Both mass-radius relations are compared to the results with only the pion in \autoref{fig: mass radius relation with leptons}.
-
 
 \begin{figure}[!htb]
     \centering
@@ -207,9 +205,29 @@ Both mass-radius relations are compared to the results with only the pion in \au
 \end{figure}
 
 
+
+\subsection{Neutrinos}
+
+
+The mass-radius relation of monsters with charged leptons and neutrinos is shown in \autoref{fig: mass radius neutrino}.
+The stellar radius is $R$ now defined as $p(R) = p_\text{min}$, where the pion condensate vanishes.
+
+
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_radius_lepton_compare.pdf}
+    \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_radius_neutrino.pdf}
+    \caption{
+        The mass-radius relation of pion stars, including leptons and neutrinos in equillibrium.
+        The radius is given in kilometers and the mass in units of solar masses.
+        }
+        \label{fig: mass radius neutrino}
+\end{figure}
+
+All results are compared in \autoref{fig: mass radius relation with leptons}.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_radius_all.pdf}
     \caption{
         The mass-radius relation of pion stars, including leptons to enforce charge neutrality, is compared with pion stars of only pions.
         The radius is given in kilometers and the mass in units of solar masses.
@@ -229,9 +247,13 @@ Both mass-radius relations are compared to the results with only the pion in \au
         $\pi + \text{EM}$& 10.11 & 53.58 &&&& \\
         $\pi + e$& 283.8 & $3.171 \times10^4$ & $2.550\times10^{-6}$ & $1.995\times10^{-8}$ && \\
         $\pi + \mu$& 18.58 & 262.3 & 0.1412 & $1.202\times 10^{-2}$ && \\
+        $\pi + \ell + \nu_\ell$& 28.92 & 188.8 &  &  &&
     \end{tabular}
 \end{table}
 
+
+
+\subsection{Comparison with numerical results}
 
 In \autocite{brandtNewClassCompact2018}, \citeauthor{brandtNewClassCompact2018} used the equation of state obtained by QCD lattice methods to obtain mass-radius relations for pion stars, with and without leptons for charge neutrality.
 Their results are compared with ours in  \autoref{fig: brandt mass-radius}.

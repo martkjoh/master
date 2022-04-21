@@ -15,15 +15,6 @@ plt.rc("axes", grid=True)
 plt.rc("grid", linestyle="--", alpha=1)
 
 
-# x = mu_\ell
-xf = lambda x: sqrt(x**2 - 1)
-pl = lambda x: 1 / 3 * ((2*xf(x)**3 - 3*xf(x)) * x + 3*arcsinh(xf(x))) 
-ul = lambda x: (2*xf(x)**3 + xf(x)) * x - arcsinh(xf(x))
-
-# x = mu_I
-p_pi = lambda  x: 1/2 * (x - 1/x)**2
-u_pi = lambda x: 1/2 * (2 + x**2 - 3/x**2)
-
 
 def const():
     _, ue0, Ae = get_const_lepton(m_e)
@@ -32,40 +23,118 @@ def const():
     u0 = f_pi**2*m_pi**2
     return a, Ae, Amu, ue0, umu0, u0
 
-
 a, Ae, Amu, ue0, umu0, u0 = const()
 
+
+def xi(x):
+    l = x>1
+    x0 = np.ones_like(x)
+    x0[l] = x[l]
+    return x0
+
 def eq(x, y): # x = mu_I/m_\pi, y = mu_e / m_e
-    a, Ae, Amu, ue0, umu0, u0 = const()
     more = a*y > 1
     assert np.all(np.diff(more)>=0) # more should only go from 0 to 1
     y2 = np.ones_like(y)/a
     y2[more] = y[more]
-    sgn = -1
-    return sgn*(x*(1 - 1/x**4) - Ae * (y**2 - 1)**(3/2) - Amu * ((a*y2)**2 - 1)**(3/2))
-
+    return xi(x)*(1 - 1/xi(x)**4) - Ae * (xi(y)**2 - 1)**(3/2) - Amu * ((a*y2)**2 - 1)**(3/2)
 
 def mu_e(x):
     _, ue0, Ae = get_const_lepton(m_e)
-    return sqrt(1 + 1/Ae**(2/3) * (x * (1-1/x**4))**(2/3))
+    return sqrt(1 + 1/Ae**(2/3) * ( xi(x)*(1-1/xi(x)**4) )**(2/3))
 
+def x_e(x_I):
+    x_e0 = mu_e(x_I)
+
+    f = lambda x_e: eq(x_I, x_e)
+    x, conv, _ = newton(f, x_e0, full_output=True)
+    assert np.all(conv)
+    return x
+
+# x = mu_\ell
+def xf(x):
+    l = x>1
+    x0 = np.ones_like(x)
+    x0[l] = sqrt(x[l]**2 - 1)
+    return x0
+
+xf = lambda x: sqrt(x**2 - 1)
+def pl(x):
+    p0 = np.zeros_like(x)
+    m = x>1
+    p0[m] = 1 / 3 * ((2*xf(x[m])**3 - 3*xf(x[m])) * x[m] + 3*arcsinh(xf(x[m])))
+    return p0
+
+def ul(x):
+    u0 = np.zeros_like(x)
+    m = x>1
+    u0[m] = (2*xf(x[m])**3 + xf(x[m])) * x[m] - arcsinh(xf(x[m]))
+    return u0
+
+xnu = lambda x: x + m_e/m_pi * x_e(x)
+pnu = lambda x: xnu(x)**4 / (24 * pi**2)
+unu = lambda x: xnu(x)**4 / (8 * pi**2)
+
+# x = mu_I
+p_pi = lambda  x: 1/2 * (xi(x) - 1/xi(x))**2
+u_pi = lambda x: 1/2 * (2 + xi(x)**2 - 3/xi(x)**2)
+
+
+pe = lambda x: ue0/u0*pl(x_e(x))
+ue = lambda x: ue0/u0*ul(x_e(x))
+pmu = lambda x: umu0/u0*pl(a*x_e(x))
+umu = lambda x: umu0/u0*ul(a*x_e(x))
+ 
+p = lambda x: p_pi(x) + pe(x) + pmu(x) + 2*pnu(x)
+u = lambda x: u_pi(x) + ue(x) + umu(x) + 2*unu(x)
 
 
 def plot_mu():
     N = 1000
-    x = np.linspace(1, 1.4, N)
-    y0 = mu_e(x)
+    x = np.linspace(1, 3, N)
+    y = x_e(x)
 
-    f = lambda y: eq(x, y)
-    y, a, _ = newton(f, y0, full_output=True)
-    assert np.all(a)
-
-
-    plt.plot(x, y)
-    plt.plot(x, mu_e(x), "k--")
-    plt.show()
+    fig, ax = plt.subplots(figsize=(12, 8)) 
+    ax.plot(x, y)
+    ax.plot(x, mu_e(x), "k--")
 
 
+    dy = np.diff(y)/np.diff(x)
+    # i = np.argmax(np.abs(dddy))
+    # ax2 = plt.twinx(ax)
+    # ax2.plot(x[:-1], dy)
+    # ax2.plot(x[:-1][i], dy[i], "rx")
+    
+    fig.savefig("figurer/neutrino_mu.pdf", bbox_inches="tight")
 
 
+pmin = 2*(1+m_e/m_pi) / (24*pi**2)
+def plot_eos():
+    x = np.concatenate([np.linspace(0, 1, 100), 1+np.logspace(-10, 0, 1000)])
+    fig, ax = plt.subplots(figsize=(12, 8))
+    ax.plot(p(x), 3*p(x), "k--", label="$u = 3 p$")
+    ax.plot(p(x), u(x), "r")
+    ax.plot(pmin, 3*pmin, "x", label="$p_\\mathrm{min}$")
+    plt.legend()
+
+    fig.savefig("figurer/neutrino_eos.pdf", bbox_inches="tight")
+
+
+def save_eos():
+    x = np.concatenate([np.linspace(0, 1, 100), 1+np.logspace(-14, 2 , 1000)])
+    ulst = u(x)
+    plst = p(x)
+    
+    # Can only interpolate with unique points
+    assert len(np.unique(plst)) == len(plst)
+    assert len(np.unique(ulst)) == len(ulst)
+    assert np.sum(np.diff(plst)<0) == 0
+    assert np.sum(np.diff(ulst)<0) == 0
+    np.save("pion_star/data/eos_neutrino", [x, plst, ulst])
+
+
+plot_mu()
+
+plot_eos()
+# save_eos()
 

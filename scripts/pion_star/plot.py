@@ -138,31 +138,36 @@ def plot_mass_radius_compare():
 
 
 
+def plot_gradient(x, y, z, ax, fig, zr=None, add_cb=True):
+    if zr==None:
+        zr = (z.min(), z.max())
+    norm = colors.Normalize(*zr)
+    points = np.array([x, y]).T.reshape(-1,1,2)
+    segments = np.concatenate([points[:-2], points[1:-1], points[2:]], axis=1)
+    lc = collections.LineCollection(segments, cmap='viridis', norm=norm)
+    lc.set_array(z)
+    line = ax.add_collection(lc)
+    if add_cb:
+        cb = fig.colorbar(line, ax=ax)
+        cb.set_label(label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
+
+
 def plot_mass_radius(name=""):
     sols = load_sols(name)
     N = len(sols)    
 
     data = [[], [], []]
     for i, s in enumerate(sols):
-        data[0].append(s.t[-1])
-        data[1].append(s.y[1][-1])
-        data[2].append(s.y[0][0])
+        data[0].append(s["R"])
+        data[1].append(s["M"])
+        data[2].append(s["pc"])
 
 
     R, M, pc = [np.array(d) for d in data]
     x, y, z = R*r0, M*m0, log(pc)
 
     fig, ax = plt.subplots(figsize=(16, 8))
-
-    norm = colors.Normalize(z.min(), z.max()) 
-    points = np.array([x, y]).T.reshape(-1,1,2)
-    segments = np.concatenate([points[:-2], points[1:-1], points[2:]], axis=1)
-    lc = collections.LineCollection(segments, cmap='viridis', norm=norm)
-    lc.set_array(z)
-    line = ax.add_collection(lc)
-    cb = fig.colorbar(line, ax=ax)
-    cb.set_label(label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
-
+    plot_gradient(x, y, z, ax, fig)
 
     Rs = np.linspace(0, 50, 100)
     ax.plot(Rs, 4 / 9 * Rs, "k--", label="$M = \\frac{4}{9} R$")
@@ -252,11 +257,9 @@ def plot_eos_EM():
     p = np.linspace(0, 0.6, 1000)
     fig, ax = plt.subplots(figsize=(10, 6))
 
-
     u = get_u("pion_star/data/eos.npy")
     us = [u(p0) for p0 in p]
     ax.plot(p, us, label="$ \\tilde u(\\tilde p)$", lw=1, alpha=0.8)
-
 
     u = get_u("pion_star/data/eos_EM.npy")
     us = [u(p0) for p0 in p]
@@ -375,6 +378,40 @@ def plot_lepton_compare():
 
     fig.savefig("figurer/pion_star/mass_radius_lepton_compare.pdf", bbox_inches="tight")
 
+def plot_all():
+    sols1 = load_sols()
+    sols2 = load_sols(name="_e")
+    sols3 = load_sols(name="_mu")
+    sols4 = load_sols(name="_neutrino")
+    N = len(sols1)
+    sols = [sols1, sols2, sols3, sols4]
+    datas = [[[], [], []] for _ in sols]
+    for j, sol in enumerate(sols):
+        for i, s in enumerate(sol):
+            datas[j][0].append(s["R"])
+            datas[j][1].append(s["M"])
+            datas[j][2].append(s["pc"])
+
+    u0, m0, r0 = get_const_pion()
+
+    fig, ax = plt.subplots(figsize=(16, 10))
+    lines = ["-", "--", "-.", ":"]
+    colors = ["blue", "green", "r", "purple"]
+    labels = ["\\pi", "\\pi+e", "\\pi+\\mu", "\\pi+\\ell+\\nu_\\ell"]
+    for i, data in enumerate(datas):
+        R, M, pc = [np.array(d) for d in data] 
+        ax.plot(R*r0, M*m0, ls=lines[i], color=colors[i], label="$"+labels[i]+"$")
+    
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+
+    Rs = np.linspace(0, 8e4, 100)
+    ax.set_ylim(3e-2, 1e3)
+    ax.plot(Rs, 4 / 9 * Rs, "k--", label="$M = \\frac{4}{9} R$")
+    ax.legend(loc="lower right")
+    fig.savefig("figurer/pion_star/mass_radius_all.pdf", bbox_inches="tight")
 
 
 def plot_lepton(name = "_e"):
@@ -390,8 +427,10 @@ def plot_lepton(name = "_e"):
     u0, m0, r0 = get_const_pion()
 
     fig, ax = plt.subplots(figsize=(16, 6))
-    R, M, pc = [np.array(d) for d in data] 
-    ax.plot(R*r0, M*m0)
+    R, M, pc = [np.array(d) for d in data]
+
+    x, y, z = R*r0, M*m0, log(pc)
+    plot_gradient(x, y, z, ax, fig)
 
     j = np.argmax(M)
     label ="$(M, R) = " \
@@ -417,10 +456,39 @@ def plot_lepton(name = "_e"):
     fig.savefig("figurer/pion_star/mass_radius_"+name+".pdf", bbox_inches="tight")
 
 
+def plot_neutrino(name = "_neutrino"):
+    sols = load_sols(name=name)
+    N = len(sols)
+    data = [[], [], []]
 
-plot_lepton()
-# plot_lepton(name="_mu")
-# plot_lepton_compare()
+    for s in sols:
+        data[0].append(s["R"])
+        data[1].append(s["M"])
+        data[2].append(s["pc"])
+
+    u0, m0, r0 = get_const_pion()
+
+    fig, ax = plt.subplots(figsize=(16, 6))
+    R, M, pc = [np.array(d) for d in data] 
+    x, y, z = R*r0, M*m0, log(pc)
+    plot_gradient(x, y, z, ax, fig)
+
+    j = np.argmax(M)
+    label ="$(M, R) = " \
+        + "(%.3f" %(M[j]*m0)\
+        + "\, M_\odot, %.3f" %(R[j]*r0) \
+        + "\, \mathrm{km})$ "
+    ax.plot(R[j]*r0, M[j]*m0, "kx", label=label)
+
+    
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
+
+    ax.ticklabel_format(style="scientific", scilimits=(-2, 2))
+    ax.legend()
+
+    fig.savefig("figurer/pion_star/mass_radius_neutrino.pdf", bbox_inches="tight")
+
 
 # plot_pressure_mass()
 # plot_pressure_mass(name="_EM")
@@ -434,3 +502,12 @@ plot_lepton()
 # plot_mu()
 # plot_eos_EM()
 # plot_u_p()
+
+# plot_lepton()
+# plot_lepton(name="_mu")
+# plot_lepton_compare()
+
+plot_neutrino()
+
+plot_all()
+
