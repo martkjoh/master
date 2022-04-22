@@ -59,7 +59,7 @@ With this, we get a closed-form expression for the stellar radius of this non-re
 \end{equation}
 
 
-\subsection{Results}
+\subsection{Numerical results}
 
 The code used for obtaining numerical results is discussed in \autoref{appendix: code}.
 
@@ -113,11 +113,8 @@ We see that the largest radius in our results, corresponding to  $p_c = 10^{-6} 
 \autoref{fig: mass-radius relation pion star comparison} compares the mass-radius relation from the full equation of state and TOV equation with various limits.
 In the non-relativistic, Newtonian limit, the stellar radius is independent of the mass, as we found in our earlier analysis.
 
-\todo[inline]{Vis kjemisk potensial}
 
-
-
-\FloatBarrier
+% \FloatBarrier
 \subsection{Including electromagnetic contributions}
 
 
@@ -156,7 +153,7 @@ As discussed in \autoref{section: cold fermi star}, we expect a stiffer equation
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star_compare.pdf}
+    \includegraphics[width=0.8\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star_compare.pdf}
     \caption{
         The mass-radius relation of pion stars with and without the effects of electromagnetism included.
         The radius is given in kilometers and the mass in units of the solar mass.
@@ -165,8 +162,8 @@ As discussed in \autoref{section: cold fermi star}, we expect a stiffer equation
         \label{fig: mass-radius relation comparison}
 \end{figure}
 
-\clearpage
 
+\FloatBarrier
 
 
 \subsection{Charge neutral stars}
@@ -208,16 +205,24 @@ The maximum mass is now $18.6\, M_\odot $, and the corresponding maximum radius 
 
 \subsection{Neutrinos}
 
-
-The mass-radius relation of monsters with charged leptons and neutrinos is shown in \autoref{fig: mass radius neutrino}.
-The stellar radius is $R$ now defined as $p(R) = p_\text{min}$, where the pion condensate vanishes.
+In \autoref{subsection: neutrinos}, we found the equation of state when including neutrinos in addition to charged leptons and the decay of pions due to the weak force.
+In this case, the pressure and energy density does not vanish as the isospin density vanish, but rather and $p = p_\text{min}>0$ as defined in \autoref{p min}
+This is due to the contribution from neutrinos.
+We therefore define the stellar radius $R$ by $p(R) = p_\text{min}$, where the pion condensate vanishes.
+Such a star will therefore have an atmosphere of ultrarelativistic neutrinos.
+For $p < p_\text{min}$, the equation of state is that of massless fermions and will therefore not have a finite radius.\todo[]{Vise dette?}
+There is a $p+u$ on the right-hand side of the TOV equation, \autoref{TOV}.
+When we defined the stellar radius by $p(R) = 0$, this factor vanishes as we approach the surface of the star, while now $p+u \geq 4 p_\text{min}$.
+Close to the surface, the pressure will therefore fall faster, as a consequence of $p_\text{min}>0$.
+The resulting mass-radius relation is shown in \autoref{fig: mass radius neutrino}.
+We see that, in contrast to the earlier results, both the mass and radius approach zero as $p_c \rightarrow p_\text{min}$.
 
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_radius_neutrino.pdf}
     \caption{
-        The mass-radius relation of pion stars, including leptons and neutrinos in equillibrium.
+        The mass-radius relation of pion stars, including leptons and neutrinos in equilibrium.
         The radius is given in kilometers and the mass in units of solar masses.
         }
         \label{fig: mass radius neutrino}
@@ -236,7 +241,10 @@ All results are compared in \autoref{fig: mass radius relation with leptons}.
 \end{figure}
 
 
-\begin{table}
+\subsection{Key values}
+
+
+\begin{table}[!htb]
     \centering
     \caption{The values of various quantities at for the maximum mass stars}
     \begin{tabular}{c  c  c  c  c c c}

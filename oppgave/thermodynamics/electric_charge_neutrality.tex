@@ -107,8 +107,8 @@ The lepton contribution to these, which we found in \autoref{Fermi gas energy de
 The contribution from the pion condensate is, as we found in \autoref{pressure leading order chpt} and \autoref{energy density leading order chpt},
 %
 \begin{align}
-    u_\pi &= \frac{1}{2} u_0 \left( \frac{\mu_I}{m_\pi} - \frac{m_\pi}{\mu_I}\right)^2 \\
-    p_\pi &= \frac{1}{2} u_0 \left( 2 + \frac{\mu_I^2}{m_\pi^2} - 3 \frac{m_\pi^2}{\mu_I^2}  \right)
+    p_\pi &= \frac{1}{2} u_0 \left( \frac{\mu_I}{m_\pi} - \frac{m_\pi}{\mu_I}\right)^2 \\
+    u_\pi &= \frac{1}{2} u_0 \left( 2 + \frac{\mu_I^2}{m_\pi^2} - 3 \frac{m_\pi^2}{\mu_I^2}  \right)
 \end{align}
 %
 This leads to a total pressure and energy
@@ -212,13 +212,14 @@ There is a good agreement between the results, although the computational result
 
 
 \subsection{Neutrinos}
+\label{subsection: neutrinos}
 
-
-The primary decay mode of charged pions is via the strong force, which couples quarks to a charged lepton, $\ell$, and its corresponding neutrino, $\nu_\ell$.
-Neutrinos are very light leptons which only interact via the weak force.
-The exact nature of the mass of neutrinos are still an open problem~\Autocite{schwartzQuantumFieldTheory2013}.
+The primary decay mode for charged pions is via the weak force.
+The $W^\pm$ bosons, which together with the $Z$ boson mediate the weak force, couple to quarks, charged leptons $\ell$ and their corresponding neutrinos $\nu_\ell$.
+Neutrinos are very light leptons that only interact via the weak force.
+The exact nature of the mass of neutrinos is still an open problem~\Autocite{schwartzQuantumFieldTheory2013}.
 In this text, we will regard the neutrinos as massless.
-The leading order diagrams for the relevant interaction is
+The leading order diagrams for the relevant interactions are
 %
 \begin{equation*}
     \feynmandiagram [horizontal=a to b]{
@@ -240,8 +241,8 @@ The leading order diagrams for the relevant interaction is
         };
 \end{equation*}
 %
-The $W^\pm$-boson, the mediator of the weak force, only couples to left-handed fermions.
-That is, the coupling term has the form $W^\pm_\mu \bar \psi_L \gamma^\mu \psi_L$, where $\psi_L = P_L \psi$, as discussed in \autoref{subsection: chiral symmetry}.
+The $W^\pm$ boson only couples to left-handed fermions, $\psi_L = P_L \psi$, as discussed in \autoref{subsection: chiral symmetry}.
+Therefore, the coupling has the form $W^\pm_\mu \bar \psi_L \gamma^\mu \psi_L$.
 This will result in effective interactions of the form
 %
 \begin{equation*}
@@ -260,59 +261,67 @@ This will result in effective interactions of the form
             };
 \end{equation*}
 %
-where the blob represents the effective interaction between the pions and the $W$-bosons.
-The decay is dominated by $\pi \rightarrow \mu \nu_\mu$, and not $\pi \rightarrow e \nu_e$ as one might first expect, as a lighter particle have a large phase space.
+Here, the shaded circle represents the effective interaction between the pions and the $W^\pm$ bosons.
+Although the $\pi \rightarrow e \nu_e$ decay has a larger phase-space than $\pi \rightarrow \mu \nu_\mu$ due to the lighter mass of the electron, the latter decay mode is dominating.
 This is due to \emph{helicity suppression}.
-For light fermions such as the electrons, the helicity, i.e., the alignment of spin and momentum, is approximately given by the chirality.
-This process gives to left-handed particles, and in the mass-less limit this is equivalent with particles with helicity $h = -1$ and antiparticles with $h = 1$.
-However, this is forbidden on grounds of conservation of linear and angular momentum~\autocite{griffithsIntroductionElementaryParticles2008}.
+In the zero-mass limit, the helicity of a particle, i.e., the alignment of spin and momentum, is given by its chirality.
+A left-handed, massless particle has helicity $h = -1$ and the corresponding antiparticle has $h = 1$.
+The decay product from a weak interaction has the same chirality and thus opposite helicity, which is forbidden by the conservation of linear and angular momentum.
+This effect suppresses the decay into the light electron~\autocite{griffithsIntroductionElementaryParticles2008}.
 
-We treat neutrinos $\nu_\ell$ as free, massless fermions, which then has its own chemical potential, $\mu_{\nu_e\ll}$.
-The process we described above can be written as $\pi^+\ell \rightarrow \nu_\ell $ using crossing symmetry.
-In chemical equilibrium the chemical potentials will therefore obey
+We treat neutrinos $\nu_\ell$ as free, massless fermions, with chemical potentials $\mu_{\nu_\ell}$.
+In chemical equilibrium, the processes $\pi^+ \leftrightarrow \ell^+ \nu_\ell $ and $\pi^- \leftrightarrow \ell^- \bar\nu_\ell $ are balanced, and the chemical potentials therefore obey
 %
 \begin{equation}
-    \label{chemical equillibrium weak interaction}
-    \mu_I + \mu_\ell = \mu_{\nu_\ell}.
+    \label{chemical equilibrium weak interaction}
+    \mu_I = \mu_{\nu_\ell} - \mu_\ell.
 \end{equation}
 %
-In chemical equilibrium, there will be created both electrons and muons.
-Lepton-numbers $L_\ell$, the sum of the particle number of the charged lepton $\ell$ and its neutrino $\nu_\ell$, is not a conserved quantity in the real world.
-This is due to neutrino oscillations, processes on the form $\nu_\ell \rightarrow \nu_{\ell'}$.
-These oscillations happen constantly, as the flavor states of neutrinos are not the same as the mass eigenstates, and there will thus also be a chemical equilibrium between electrons and muons too, defined by
+Even though we regard the neutrinos as massless when working with the dynamics, the non-zero mass will affect the results via \emph{neutrino oscillations}.
+As the mass eigenstates of neutrinos are not the same as the flavor eigenstates, the neutrino spontaneously and continuously undergoes processes of the form $\nu_\ell \rightarrow \nu_{\ell'}$.
+As a result, neither the individual lepton particle numbers $n_{\nu_\ell}$ and $n_{\ell}$, nor individual lepton numbers $L_\ell = n_\ell + n_{\nu_\ell}$ are conserved.
+However, the sum of all lepton numbers is conserved.
+In chemical equilibrium, neutrino oscillations will result in the relationship
 %
 \begin{equation}
-    \mu_e = \mu_\mu.
+    \mu_{\nu_e} = \mu_{\nu_\mu}.
 \end{equation}
 %
+This is equivalent to $\mu_e = \mu_\mu$.
 The equation for charge neutrality now becomes $n_I = n_e + n_\mu$, or
 %
 \begin{equation}
+    \label{chemical potential relationship neutrinos}
     \frac{\mu_I}{m_\pi} \left(1 - \frac{m_\pi^4}{\mu_I^4}\right)
     =
+    \theta(\mu_e - m_e) 
     A_e \sqrt{\frac{\mu_e^2}{m_e^2} - 1}
     +
-    \theta(\mu_e - m_\mu) 
-    A_\mu \sqrt{a^2 \frac{\mu_e^2}{m_e^2} - 1}.
+    \theta(\mu_e - m_\mu)
+    A_\mu \sqrt{a^2 \frac{\mu_e^2}{m_e^2} - 1},
 \end{equation}
 %
 where $a = m_e/m_\mu \approx 1 / 200$.
-Thus, for low densities there will be no muons.
+Thus, for $\mu_e < m_\mu$, there will be no muons. 
+The relationship between $\mu_e$ and $\mu_I$ is the same as with only pions and electrons, while it deviates for $\mu_e > m_\mu$.
+These results are compared in \autoref{fig: neutrino mu}.
+The plot also illustrates the derivative of $\mu_e$ with respect to $\mu_I$, which remains continuous even at the point where muons start to contribute.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\textwidth]{../scripts/figurer/neutrino_mu.pdf}
+    \includegraphics[width=0.8\textwidth]{../scripts/figurer/neutrino_mu.pdf}
     \caption{
-        cap
+        The electron chemical potential as a function of isospin chemical potential when including only electrons, $\mu_e'$, and when including neutrinos and weak interactions, $\mu_e$.
+        The electron chemical potential is normalized to $m_e$ and the isospin chemical potential to $m_\pi$.
+        The derivative of $\mu_e$ is illustrated.
     }
     \label{fig: neutrino mu}
 \end{figure}
 
 
-
-The pressure and energy from the neutrino is given by the ultrarelativistic limit of the free fermion result, which we found in \autoref{section: cold fermi star}.
-We have here divided by a factor two, as there are only left-handed neutrinos, and thus only half as many degrees-of-freedom as fermions where both charities appear.
-The chemical potential and Fermi momentum of a massless particle are equal, which gives us
+The pressure and energy from the neutrinos are given by the ultrarelativistic limit of the free fermion results, which we found in \autoref{section: cold fermi star}.
+These results are divided by two, as there are only left-handed neutrinos, and thus only half as many degrees of freedom as fermions where both charities appear.
+The chemical potential of a massless particle equals its Fermi momentum, so the result is
 %
 \begin{equation}
     p_{\nu_\ell} = \frac{\mu_{\nu_\ell}^4}{8 \pi^2}, \quad 
@@ -320,57 +329,47 @@ The chemical potential and Fermi momentum of a massless particle are equal, whic
 \end{equation}
 %
 
-The total pressure and energy density is now, as before, the sum of the individual contribution of each species,
+The total pressure and energy density is now, as before, the sum of the individual contribution from each species,
 %
 \begin{equation}
     p = p_\pi + p_e + p_\mu + p_{\nu_e} + p_{\nu_\mu}, \quad
     u = u_\pi + u_e + u_\mu + u_{\nu_e} + u_{\nu_\mu}.
 \end{equation}
-%+
+%
 
-As before, the criterion of charge neutrality ensures that the transition into the vacuum phase for the pion condensate, at $\mu_I = m_\pi$, happens simultaneously as the fermion density vanish, here at $\mu_e = m_e$.
-However, due to the weak-interaction chemical equilibrium, \autoref{chemical equillibrium weak interaction}, the neutrino chemical potential and thus the neutrino pressure will be non-zero even with no pion condensate nor any leptons. 
-As both the electron and muon neutrino contributes, the pressure is here
+As before, the criterion of charge neutrality \autoref{chemical potential relationship neutrinos} ensures that the transition into the vacuum phase for the pion condensate, at $\mu_I = m_\pi$, happens simultaneously as the charged lepton density vanishes, here at $\mu_e = m_e$.
+However, due to the weak-interaction chemical equilibrium, \autoref{chemical equilibrium weak interaction}, the neutrino chemical potential and thus the neutrino pressure will be non-zero even with no pion condensate nor any charged leptons. 
+As both the electron and muon neutrino contributes, the pressure is
 %
 \begin{equation}
-    p_\text{min} = \frac{m_\pi+m_e}{12 \pi^2}.
+    \label{p min}
+    p_\text{min} = \frac{(m_\pi+m_e)^4}{12 \pi^2}.
 \end{equation}
 %
-After this point, $\mu_I$ and $\mu_\ell$ do not have a strict functional relationship, as there is a continuum of charge neutral states.
-The equation of state is then given only by the neutrinos, $u = 3p$.
+After this point, $\mu_I$ and $\mu_\ell$ do not have a strict functional relationship, as \autoref{chemical potential relationship neutrinos} no longer applies.
+The equation of state is then given only by the neutrinos and is $u = 3p$.
 This is not correct for arbitrarily low pressure, as the finite neutrino mass will at some point become relevant.
+The equation of state of the full system is shown in \autoref{fig: neutrino eos}, where it is compared to the equation of state of only neutrinos.
+This equation of state is compared to our earlier results in \autoref{fig: all eos}.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\textwidth]{../scripts/figurer/neutrino_eos.pdf}
+    \includegraphics[width=.49\textwidth]{../scripts/figurer/neutrino_eos2.pdf}
+    \includegraphics[width=.49\textwidth]{../scripts/figurer/neutrino_eos.pdf}
     \caption{
-        cap
+        The equation of state for a system of pions, charged leptons and neutrinos in chemical equilibrium, solid line, is compared to the equation of state of only neutrinos, $u = 3 p$.
+        Both the energy density and the pressure is normalized to $u_0 = f_\pi^2 m_\pi^2$.
     }
     \label{fig: neutrino eos}
 \end{figure}
 
 
-
-% \begin{tikzpicture}
-%     \begin{feynman}
-%         \vertex (u) {$u$};
-%         \vertex[right=1cm of u] (b1);
-%         \vertex[right=1cm of b1] (b2);
-%         \vertex[right=1cm of b2] (ell) {$\ell^+$};
-        
-%         \vertex[below=0.75cm of b1] (a1);
-%         \vertex[below=0.75cm of b2] (a2);
-        
-%         \vertex[below=1.5cm of u] (d) {$\bar d$};
-%         \vertex[below=1.5cm of ell] (nu) {$\nu_\ell$};
-
-%         \diagram* {
-%             {[edges=fermion]
-%             (u) -- (a1) -- (d) 
-%             },
-%             {[edges=fermion]
-%             (ell) -- (a2) -- (nu)
-%             },
-%         };
-%     \end{feynman}
-% \end{tikzpicture}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.8\textwidth]{../scripts/figurer/pion_star/pion_all_eos.pdf}
+    \caption{
+        The equation of state of pion condensate alone, and including other particles.
+        Both the pressure and the energy density are normalized to $u_0 = f_\pi^2 m_\pi^2$.
+    }
+    \label{fig: all eos}
+\end{figure}

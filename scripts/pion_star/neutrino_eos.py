@@ -91,34 +91,56 @@ u = lambda x: u_pi(x) + ue(x) + umu(x) + 2*unu(x)
 
 def plot_mu():
     N = 1000
-    x = np.linspace(1, 3, N)
+    x = np.linspace(1, 1.1, N)
     y = x_e(x)
 
-    fig, ax = plt.subplots(figsize=(12, 8)) 
-    ax.plot(x, y)
-    ax.plot(x, mu_e(x), "k--")
+    fig, ax = plt.subplots(figsize=(9, 5)) 
+    ax.plot(x, y, label="$\mu_e(\mu_I)$")
+    ax.plot(x, mu_e(x), "k--", label="$\mu_e'(\mu_I)$")
+
+    ax.set_xlabel("$\\mu_I/m_\\pi$")
+    ax.set_ylabel("$\mu_e/m_e$")
 
 
-    dy = np.diff(y)/np.diff(x)
-    # i = np.argmax(np.abs(dddy))
-    # ax2 = plt.twinx(ax)
-    # ax2.plot(x[:-1], dy)
-    # ax2.plot(x[:-1][i], dy[i], "rx")
+    dy = a* np.diff(y)/np.diff(x)
+    ax2 = plt.twinx(ax)
+    dmu = "$\\frac{\\mathrm{d} \\mu_e}{\\mathrm{d} \\mu_I}$"
+    ax2.plot(x[:-1]+np.diff(x), dy, "k-.", lw=1, label=dmu)
+    ax2.set_ylim(-2.05, 45)
+    ax2.grid(False)
+    dmu = "${\\mathrm{d} \\mu_e}/{\\mathrm{d} \\mu_I}$"
+    ax2.set_ylabel(dmu)
+
+    fig.legend(loc=(0.65, 0.4))
     
     fig.savefig("figurer/neutrino_mu.pdf", bbox_inches="tight")
 
 
 pmin = 2*(1+m_e/m_pi) / (24*pi**2)
 def plot_eos():
-    x = np.concatenate([np.linspace(0, 1, 100), 1+np.logspace(-10, 0, 1000)])
-    fig, ax = plt.subplots(figsize=(12, 8))
+    x = np.linspace(0, 2.2, 1000)
+    fig, ax = plt.subplots(figsize=(8, 5))
     ax.plot(p(x), 3*p(x), "k--", label="$u = 3 p$")
-    ax.plot(p(x), u(x), "r")
-    ax.plot(pmin, 3*pmin, "x", label="$p_\\mathrm{min}$")
+    ax.plot(p(x), u(x), label="$u(p)$")
+    ax.set_xlabel("$p/u_{0}$")
+    ax.set_ylabel("$u/u_{0}$")
     plt.legend()
 
     fig.savefig("figurer/neutrino_eos.pdf", bbox_inches="tight")
 
+
+def plot_eos2():
+    x = np.linspace(0, 1.01, 1000)
+    fig, ax = plt.subplots(figsize=(8, 5))
+    ax.plot(p(x), 3*p(x), "k--", label="$u = 3 p$")
+    ax.plot(p(x), u(x), label="$u(p)$")
+    ax.plot(pmin, 3*pmin, "kx", label="$p_\\mathrm{min}$")
+    plt.legend()
+    ax.set_xlabel("$p/u_{0}$")
+    ax.set_ylabel("$u/u_{0}$")
+
+    fig.savefig("figurer/neutrino_eos2.pdf", bbox_inches="tight")
+    
 
 def save_eos():
     x = np.concatenate([np.linspace(0, 1, 100), 1+np.logspace(-14, 2 , 1000)])
@@ -133,8 +155,10 @@ def save_eos():
     np.save("pion_star/data/eos_neutrino", [x, plst, ulst])
 
 
-plot_mu()
+# plot_mu()
 
-plot_eos()
+# plot_eos()
+# plot_eos2()
+
 # save_eos()
 

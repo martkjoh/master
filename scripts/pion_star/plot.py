@@ -237,7 +237,26 @@ def plot_eos_leptons():
     ax.legend()
     fig.savefig("figurer/pion_star/pion_eos_leptson.pdf", bbox_inches="tight")
 
+def plot_all_eos():
+    fig, ax = plt.subplots(figsize=(12, 6))
 
+    p = np.linspace(0, 0.8, 1000)
+
+    names = ["", "_e", "_mu", "_neutrino"]
+    labels = ["$\\pi$", "$\\pi+e$", "$\\pi+\\mu$", "$\\pi+\\ell+\\nu_\\ell$"]
+    lines = ["-", "-.", "--", ":"]
+    # colors = ["tab:blue", "green", "red", "black"]
+    colors = ["blue", "green", "orange", "black"]
+
+    for i, name in enumerate(names):
+        u = get_u("pion_star/data/eos"+name+".npy")
+        ax.plot(p, [u(p0) for p0 in p], lines[i], color=colors[i], label=labels[i], lw=2, alpha=0.8)
+
+    ax.set_xlabel("$p / u_0$")
+    ax.set_ylabel("$u / u_0$")
+    ax.legend()
+    ax.set_ylim(-0.1, 2.6)
+    fig.savefig("figurer/pion_star/pion_all_eos.pdf", bbox_inches="tight")
 
 def plot_mu():
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -396,11 +415,12 @@ def plot_all():
 
     fig, ax = plt.subplots(figsize=(16, 10))
     lines = ["-", "--", "-.", ":"]
-    colors = ["blue", "green", "r", "purple"]
+    # colors = ["blue", "green", "r", "purple"]
+    colors = ["blue", "green", "orange", "black"]
     labels = ["\\pi", "\\pi+e", "\\pi+\\mu", "\\pi+\\ell+\\nu_\\ell"]
     for i, data in enumerate(datas):
         R, M, pc = [np.array(d) for d in data] 
-        ax.plot(R*r0, M*m0, ls=lines[i], color=colors[i], label="$"+labels[i]+"$")
+        ax.plot(R*r0, M*m0, ls=lines[i], color=colors[i], label="$"+labels[i]+"$", lw=3, alpha=0.65)
     
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
@@ -507,7 +527,8 @@ def plot_neutrino(name = "_neutrino"):
 # plot_lepton(name="_mu")
 # plot_lepton_compare()
 
-plot_neutrino()
+plot_all_eos()
+# plot_neutrino()
 
 plot_all()
 
