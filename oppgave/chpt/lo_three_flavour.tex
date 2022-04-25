@@ -9,7 +9,7 @@ Using the building blocks from last section, we can build the leading order Lagr
     \Ell_2 
     = \frac{1}{4}f^2 \Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger}
     + \frac{1}{4}f^2 \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
-    + e^2 C \Tr{\Sigma Q \Sigma^\dagger Q}.
+    + e^2 C \Tr{\Sigma Q_L \Sigma^\dagger Q_R}.
 \end{equation}
 %
 We will work with three flavors, i.e. $N_f = 3$, so the mass matrix is now
@@ -697,6 +697,19 @@ Similarly, the static Lagrangian in the charged kaon condensate is
 %
 In the neutral kaon condensate, on the other hand, the static Lagrangian remains unchanged.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{../scripts/figurer/masses_mesons_EM.pdf}
+    \caption{
+        The leading order masses of the pseudoscalar mesons, as functions of the isospin chemical potential, including electromagnetic effects.
+        Both the masses and chemical potential are normalized to the pion mass.
+        These results are at $\mu_S = 0$.
+        The difference between the kaons at $\mu_I = 0$ is a result of the fact that $\Delta m \neq 0$.
+        }
+    \label{fig: leading order masses mesons EM}
+\end{figure}
+
+
 In the pion condensate, the $\alpha$-dependent masses we found in \autoref{subsection: pion-condensed phase} are also affected by the inclusion of electromagnetic effects.
 The diagonal mass terms are now 
 %
@@ -714,15 +727,3 @@ The diagonal mass terms are now
 %
 where $m_\pm$ and $m_{\mu \pm}$ are defined as in \autoref{mass terms in pion condensate}.
 These masses are illustrated in \autoref{fig: leading order masses mesons EM}.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{../scripts/figurer/masses_mesons_EM.pdf}
-    \caption{
-        The leading order masses of the pseudoscalar mesons, as functions of the isospin chemical potential, including electromagnetic effects.
-        Both the masses and chemical potential are normalized to the pion mass.
-        These results are at $\mu_S = 0$.
-        The difference between the kaons at $\mu_I = 0$ is a result of the fact that $\Delta m \neq 0$.
-        }
-    \label{fig: leading order masses mesons EM}
-\end{figure}

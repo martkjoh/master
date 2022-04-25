@@ -1,0 +1,33 @@
+\section{Next-to-leading order}
+\label{section: nlo chpt}
+
+
+To construct the next-to-leading order Lagrangian, one follows the same appraoch of combining the terms we found in \autoref{chapter: chpt} into locally $\Lie{SU}{3}_R\times\Lie{SU}{3}_L$-invariant terms.
+We do not need to include terms with the field strength tensors $f_{\mu\nu}^{(r)}$ and $f_{\mu\nu}^{(l)}$, as in our case they will vanish, and we do not include the electromagnetic interaction.
+With this, the NLO Lagrangian is~\autocite{gasserChiralPerturbationTheory1985}
+%
+\begin{align}
+    \label{NLO Lagrangian three flavor}
+    \nonumber
+    \Ell_4 
+    ={} &
+    L_1\Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger}
+    + L_2 \Tr{\nabla_\mu \Sigma \nabla_\nu \Sigma^\dagger} 
+    \Tr{\nabla^\mu \Sigma \nabla^\nu \Sigma^\dagger}
+    + L_3 \Tr{\left(\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger\right)^2} \\ \nonumber
+    & + L_4 \Tr{\nabla_\mu \Sigma \nabla^\nu \Sigma^\dagger} 
+    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
+    + L_5 \Tr{
+        \nabla_\mu \Sigma \nabla^\nu \Sigma^\dagger 
+        \left(\chi \Sigma^\dagger + \Sigma \chi^\dagger\right)
+    }\\
+    &+ L_6 \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}^2 
+     + L_7 \Tr{\chi \Sigma^\dagger - \Sigma \chi^\dagger}^2
+    + L_8 \Tr{ \left(\chi^\dagger \Sigma \right)^2 + \left(\chi \Sigma^\dagger \right)^2}
+    + H_2 \Tr{\chi \chi^\dagger}.
+\end{align}
+%
+Here, $L_i$ and $H_i$ are the necessary free parameters, called low energy constants (LEO).
+
+
+
