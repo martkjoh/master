@@ -2,13 +2,71 @@
 \label{section: chiral perturbation theory}
 
 We now apply the theory we developed in \autoref{chapter: QFT}.
-The systematics of chiral perturbation theory, or \chpt, was laid out by Gasser and Leutwyler~\autocite{gasserChiralPerturbationTheory1984,gasserChiralPerturbationTheory1985} and is based on Weinberg's idea that quantum field theories on their own does not contain more information than the bare minimum~\autocite{weinbergPhenomenologicalLagrangians1979}.
-In addition to these paper, this section is based on~\autocite{eckerChiralPerturbationTheory1995,fearingExtensionChiralPerturbation1996,schererIntroductionChiralPerturbation2002}.
+The systematics of chiral perturbation theory, or \chpt, was laid out by Gasser and Leutwyler~\autocite{gasserChiralPerturbationTheory1984,gasserChiralPerturbationTheory1985} and is based on Weinberg's idea that quantum field theories on their own do not contain more information than the bare minimum~\autocite{weinbergPhenomenologicalLagrangians1979}.
+In addition to these papers, this section is based on~\autocite{eckerChiralPerturbationTheory1995,fearingExtensionChiralPerturbation1996,schererIntroductionChiralPerturbation2002}.
+
+
+\subsection{*Weinberg's power counting scheme}
+\label{subsection: Weinberg's power counting scheme}
+
+
+Our plan is now to use the results from \autoref{seciton: ccwz construction} to construct the most general Lagrangian of the Goldstone bosons due to the breaking of the QCD vacuum.
+This, however, will result in a theory with an infinite number of free parameters, making it unwieldy.
+We need an expansion scheme in order to compute observable perturbatively.
+We are working in the low-energy limit, so it is natural to expand in pion momenta.
+As we saw in \autoref{seciton: ccwz construction}, the terms in the Lagrangian will be made up of combinations of the terms $e_\mu$ and $d_\mu$ of the Maurer-Cartan form, $i\Sigma \partial_\mu \Sigma = e_\mu + d_\mu$.
+Therefore, all terms in the effective Lagrangian will be proportional to a certain number of derivatives of the Goldston bosons, which Lorentz invariance demands to be even.
+
+Consider the matrix element $\mathcal M$ for a given Feynman diagram with external pion lines with momenta $q_n$, where both the energies and momenta are less than or equal to some energy scale $Q$.
+If we scale $Q\rightarrow tQ$, and consequently also the external momenta $q \rightarrow tq$, momentum conservation at each vertex ensures that each internal momentum $p$ of the diagram scales as $p \rightarrow tp$.
+Assume this diagram is made up of $V_i$ copies of the vertex $i$, which contain $d_i$ derivatives.
+Each of these vertices scale as $t^{d_i}$.
+The propagators contribute a factor $p^{-2}$ and will therefore scale as $t^{-2}$, and the integration measure $\dd^4 p$ scales as $t^4$.
+This means that a matrix element with $L$ loops and $I$ internal lines scales as
+%
+\begin{equation}
+    \mathcal M(q) \rightarrow \mathcal M(t q) = t^D \mathcal M(q),
+\end{equation}
+%
+where 
+\begin{equation}
+    D = \sum_i V_i d_i - 2 I + 4 L.
+\end{equation}
+%
+
+$D$ is called the \emph{chiral dimension} of $\mathcal M$.
+Using the formula \autoref{Number of loops} for number of loops in a Feynman diagram, we get
+\begin{equation}
+    D = \sum_i V_i(d_i - 2) + 2 L + 2.
+\end{equation}
+%
+For low energy scales $Q$, the largest contribution will come from the matrix elements of the smallest chiral dimension $D$.
+A general process will consist of a sum of matrix elements of different chiral dimensions.
+We can expand this element in powers of the pion momenta by using $t$ as the expansion parameter.
+The leading order term will be those where $L = 0$ and $d_i = 2$ so that $D = 2$.
+This means that all tree-level contributions of the lowest chiral dimension are from terms in the Lagrangian with exactly two derivatives.
+Next is $D = 4$, which contains both tree-level contributions from terms with $d_i = 4$ and a one-loop contribution from $d_i = 2$.
+We therefore expand the effective Lagrangian as
+\begin{equation}
+    \Ell_\text{eff} = \Ell_2 + \Ell_4 + ...,
+\end{equation}
+%
+where $\Ell_{2n}$ contains $2n$ derivatives.
+This is equivalent to scaling the space-time coordinates as $x^\mu \rightarrow tx^\mu$, and expanding the Lagrangian in powers of $t$.
+
+We must also allow for the fact that pions have non-zero mass and that there is a finite isospin chemical potential.
+This is all implemented by external currents, which we also have to assume are small.
+Any external pions are on-shell, so the pion mass $m_\pi$ must be less than the energy scale $Q$.
+As we will see, this corresponds to scaling the quark masses as $m_q \rightarrow t^2 m_q$.
+Similarly, $\mu_I$ must also be less than $Q$, which means that we scale it as $\mu_I\rightarrow t \mu_I$.
+We include electromagnetic interaction by scaling the fundamental electric charge $e$ as $e\rightarrow te$~\autocite{urechVirtualPhotonsChiral1995}.
+Following these rules, each term in the effective Lagrangian will have a well-defined chiral dimension $D$, ensuring a consistent series expansion.
+The term $\Ell_{D}$ then contain all allowed terms that scale as $t^D$~\autocite{schererIntroductionChiralPerturbation2002,weinbergPhenomenologicalLagrangians1979,weinbergQuantumTheoryFields1996}.
 
 
 \subsection{*Non-linear realization}
 
-To construct the Lagrangian of chiral perturbation theory we start with the Lagrangian of massless QCD, 
+To construct the Lagrangian of chiral perturbation theory, we start with the Lagrangian of massless QCD,
 %
 \begin{equation}
     \Ell^0_\text{QCD} = i \bar q \slashed D q - \frac{1}{4} G^\alpha_{\mu \nu} G_\alpha^{\mu \nu}
@@ -104,7 +162,6 @@ The Lagrangian of these external currens is
     + \bar q \gamma^\mu  \left(v_\mu + \gamma^5 a_\mu\right)q.
 \end{align}
 %
-\todo{Hva er grunnen til valgene av fortegn?}
 Here, $s$, $p$, $v_\mu$ and $a_\mu$ are all $N_f\times N_f$ matrices acting on the flavor indices.
 They are, respectively, the scalar, pseudo-scalar, vector, and pseudo-vector currents.
 We denote these currents collectively as $j = (s, p, v^\mu, a^\mu)$.
@@ -202,7 +259,3 @@ We now define the effective Lagrangian of $\chpt$, $\Ell_\text{eff}$ as
     \exp{i\int \dd^4 x \Ell_\text{eff}[\varphi, \mathcal{A}, j] }.
 \end{equation}
 
-
-\subsection{Weinberg's power counting scheme}
-\label{subsection: Weinberg's power counting scheme}
-\todo[inline]{Skriv/kopier tekst om Weinberg's power counting scheme}

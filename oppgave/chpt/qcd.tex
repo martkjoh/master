@@ -1,38 +1,54 @@
-In this chapter, we will take the general knowledge from the general theory in \autoref{chapter: QFT} and apply it to the specific case of quantum chromodynamics, which results in \emph{chiral perturbation theory}, or \chpt.
+In this chapter, we will take the theory in \autoref{chapter: QFT} and apply it to the specific case of quantum chromodynamics to derive \emph{chiral perturbation theory}.
+Chiral perturbation theory is an effective description in which the \emph{pseudoscalar mesons}, such as the pions, are the degrees of freedom.
+They are pseudo-Goldstone bosons due to the spontaneous breaking of the QCD vacuum and allow for a perturbative description of the strong force even at low energies.
+We begin with a description of quantum chromodynamics.
 
-\section{QCD}
+
+\section{Quantum chromodynamics}
+\label{section:qcd}
+
 This section is based on~\autocite{peskinIntroductionQuantumField1995,schererIntroductionChiralPerturbation2002,schwartzQuantumFieldTheory2013}.
+Quantum chromodynamics, QCD, is the theory of quarks, $q_{fc}$, interacting via the strong force.
+Quarks are spin-$\frac{1}{2}$ spinors, and thus fermions.
+There are six \emph{flavors} of quarks divided into three \emph{generations}.
+The first generation is the up and down quarks, the second is the charm and strange quarks, and the third generation is the top and bottom quarks.
+The flavors are labeled by the index $f$.
+The second index, $c$, labels the quantum number associated with the strong force, called color.
+The strong force is mediated by gluons, denoted $A_\mu^c$, and is an example of a Yang-Mills theory.
+We will give a short overview of Yang-Mills theory before we detail QCD further.
+
 
 \subsection{Yang-Mills theory and Gauge symmetry}
 \label{subsection: yang-mills theory and gauge symmetry}
 
 
+In quantum electrodynamics, two systems are related by a gauge transform where the photon field transforms as $\mathcal A_\mu \rightarrow \mathcal A_\mu + \partial_\mu \alpha(x)$, are physically indistinguishable.
+This principle of gauge invariance dictates the form of interactions of the theory.
+Yang-Mills theory generalizes this approach.
 In our discussion on global symmetries, we considered the global transformation of fields by some group $G$.
-In gauge theories, we will consider local transformations.
+As we did in \autoref{subsection: ward identities}, we now promote this to a local transformation.
 That is, the transformations are themselves functions of spacetime, $U = U(x)$, and take on some value in $G$ for all points in space.
 With this, however, we encounter a problem with comparing the value of a field at different points.
 As the symmetry is local, a gauge transformation will generally affect the field at two points differently.
-We must find a way to compare fields at different points independent of gauge transformations.
+We must find a way independent of gauge choice to compare fields at different points in space.
 This is similar to a problem we have encountered before.
 In differential geometry, as described in \autoref{section: differential geometry}, we needed a connection $\Gamma^\rho_{\mu \nu}$ to compare vectors in different tangent spaces in a coordinate independent way.
 In gauge theories, we generalize this by defining a connection, $A_\mu$, to compare field values at different points in a gauge-independent way.
 
-Consider a set of $N_c$ fields $\psi_c$, which the symmetry group $\Lie{SU}{N}$ acts linearly on as $\psi_c \rightarrow U_{cc'} \psi_{c'}$.
-We can write $U = \exp{i \eta_\alpha T_\alpha}$, where $T_\alpha$ are the generators of $\lie{su}{N_c}_c$, and can therefore be written $A_\mu = A_\mu^\alpha T_\alpha$.
+Consider a set of $N$ fields $\psi_c$, which the symmetry group $\Lie{SU}{N}$ acts linearly on as $\psi_c \rightarrow U_{cc'} \psi_{c'}$.
+We can write $U = \exp{i \eta_\alpha T_\alpha}$, where $T_\alpha$ are the generators of $\lie{su}{N}$.
 The transformation is then made local by letting the coordinates of $\Lie{SU}{N}$ be functions of spacetime, $\eta_\alpha = \eta_\alpha(x)$.
 As we did in \autoref{section: differential geometry}, we define the covariant derivative $D_\mu$ to transform as the thing on which it acts.
-It has the form
+Assume this covariant derivative has the form
 %
 \begin{equation}
     \label{covariant derivative Yang-Mills}
     D_\mu^{cc'} \psi_{c'} = (\delta_{cc'}\partial_\mu - i g A_\mu^{cc'} )\psi_{c'},
 \end{equation}
 %
-where $A_\mu^{cc'}$ is a new, dynamic field, the gauge field.
-This field takes values in the Lie algebra of the gauge group, $\lie{su}{N}$.
-\todo[]{Why? Mention it is adjoint rep., and explain.}
+where $A_\mu^{cc'}(x)$ is a new, dynamic field.
+This is similar to what we did in differential geometry, \autoref{covariant derivative diff geom}.
 We will suppress the $c$-indices for cleaner notation.
-This field also transform under the gauge group.
 By enforcing the transformation rule $D_\mu A_\nu \rightarrow U D_\mu A_\nu$, we can deduce the transformation properties of the gauge field, 
 %
 \begin{equation}
@@ -40,9 +56,17 @@ By enforcing the transformation rule $D_\mu A_\nu \rightarrow U D_\mu A_\nu$, we
     A_\mu\rightarrow U \left(A_\mu + \frac{i}{g} \partial_\mu\right) U^\dagger
 \end{equation}
 %
+For an infinitesimal transformation, this becomes
+%
+\begin{equation}
+    A_\mu \rightarrow A_\mu + i \eta_\alpha [T_\alpha, A_\mu] + \frac{1}{g} \partial_\mu \eta_\alpha T_\alpha.
+\end{equation}
+%
+From \autoref{subsection: lie algebras}, we see that $A_\mu$ transform under the adjoint representation of global $\lie{su}{N}$.
+We can therefore write $A_\mu = A_\mu^\alpha T_\alpha$.
 With the covariant derivative, we can create gauge-invariant terms, such as $\bar \psi D_\mu \psi$.
-In \autoref{section: differential geometry} we introduced the Riemann tensor as the commutator of covaraint derivatives, \autoref{Riemann tensor}.
-This ensures that it transforms as a tensor and gives us the interpretation as a quantity that measures the amount vectors curved when parallel transported in a small loop.
+In \autoref{section: differential geometry}, we introduced the Riemann tensor as the commutator of covariant derivatives, \autoref{Riemann tensor}, which ensures that it transforms as a tensor.
+We found that this tensor measures how much a vector is rotated by the curvature of space when parallel transported around in a small loop.
 In analogy, we define the \emph{field strength tensor},
 %
 \begin{equation}
@@ -51,7 +75,7 @@ In analogy, we define the \emph{field strength tensor},
 \end{equation}
 %
 $A_\mu$ is an element of a Lie algebra, so the commutator is given by the structure constants of that algebra, \autoref{structure constants}.
-The field strength tensor transforms as $G_\mu \rightarrow U G_{\mu \nu}U^\dagger$.
+The field strength tensor transforms as $G_{\mu\nu} \rightarrow U G_{\mu \nu}U^\dagger$.
 This allows us to create gauge-invariant terms of only this tensor, which, as with the Ricci scalar in general relativity, are the building blocks of the Lagrangian of the gauge field.
 The lowest order terms are
 %
@@ -66,11 +90,6 @@ Here, $\alpha$ is the index in $\lie{su}{N}$-space.
 
 \subsection{The QCD Lagrangian}
 
-Quantum chromodynamics, or QCD, is the specific gauge theory of quarks $q_{fc}$, spin-$\frac{1}{2}$ spinor particles, interacting via the strong force, a $\Lie{SU}{3}_c$ gauge field denoted $A_\mu$.
-There are six quarks $q$, called flavors and indexed by $f$, and the quantum number corresponding to the strong force is called color indexed by $c$.
-The quarks, labeled u, d, s, c, t, and b, have different masses.
-This thesis will include the two or three lightest quarks at different times.
-Therefore, we denote the number of flavors by $N_f$.
 The Lagrangian of QCD, including only the strong force, is
 %
 \begin{equation}
@@ -78,8 +97,14 @@ The Lagrangian of QCD, including only the strong force, is
     = \bar q (i \slashed D - m)q - \frac{1}{4} G_{\mu \nu}^\alpha G^{\mu \nu}_\alpha.
 \end{equation}
 %
-We have suppressed color and flavor indices.
-$\slashed D q = \gamma^\mu (\partial_\mu - i g A_\mu) q$ is the covariant derivative associated with the $\Lie{SU}{3}_c$ gauge group with coupling constant $g$, and $\gamma^\mu$ are the Dirac matrices, as described in \autoref{section: algebra bases}.
+We have suppressed color and flavor indices, which are summed over, and $\bar q = q^\dagger \gamma^0$.
+The gauge group of the strong force is $\Lie{SU}{3}_c$ with the coupling constant $g$, and the corresponding covariant derivative is
+%
+\begin{equation}
+    D_\mu q_f =  (\delta_{cc'} \partial_\mu - i g A_\mu^{cc'}) q_{c'f},
+\end{equation}
+%
+We employ the Feynman slash-notation, where $\slashed D = \gamma^\mu D_\mu$, and $\gamma^\mu$ are the Dirac matrices, as described in \autoref{section: algebra bases}.
 The quark mass matrix, $m$, acts on the flavor indexes as the flavor states are mass eigenstates.
 There are no known symmetries that forbid an $\epsilon^{\mu \nu \rho \sigma} G_{\mu \nu}^\alpha G_{\rho \sigma}^\alpha$-term, however it is an empirical fact that it either not present or highly suppressed. 
 Its absence is dubbed the strong CP problem~\autocite{schwartzQuantumFieldTheory2013}.
@@ -155,9 +180,9 @@ Next, the mass term explicitly breaks this symmetry.
 If we consider all quarks to have the same mass $m_q$, so that $m = m_q \one$, only $\Lie{U}{N_f}_A$ is broken.
 This is called the \emph{chiral limit}.  
 However, when we include the fact that the masses of the quarks are different, we break the symmetry further.
-Other external currents, chemical potentials, and the electromagnetic interaction also break the symmetry.
+Other external currents, chemical potentials, and electromagnetic interactions also break the symmetry.
 
-Lastly, the symmetry is broken spontaneously by the ground state quark condensate, $\braket{\bar q q} \neq = 0$.
+Lastly, the symmetry is broken spontaneously by the ground state quark condensate, $\braket{\bar q q} \neq 0$.
 In the chiral limit, one can show that the scalar bilinear for all three quarks $u$, $d$, and $s$ must be equal, and we define $\braket{\bar q q} = {\sum}_f \braket{\bar q_f q_f}$~\autocite{schererIntroductionChiralPerturbation2002}.
 The scalar quark operator is not invariant under $\Lie{SU}{N_f}_A$, and as discussed in \autoref{section: symmetry and goldstone's theorem}, this leads to the spontaneous symmetry breaking pattern.
 %
@@ -176,8 +201,8 @@ The scalar quark condensate is quantified by the constant $B_0$ via the relation
 \end{equation}
 %
 Here, $f_\pi$ is the pion decay constant.
-With the spontaneous symmetry breaking of the quark condensate, we get resulting Goldstone bosnos $\varphi_a$.
-The pion decay constant is defined by the overlap between the axial vector current $A_\alpha^\mu$ acting on the single-particle momentum eigenstates of the Goldstone bosons, and the vacuum.
+With the spontaneous symmetry breaking of the quark condensate, we get the resulting Goldstone bosons $\varphi_a$.
+The pion decay constant is defined by the overlap between the axial vector current $A_\alpha^\mu$ acting on the single-particle momentum eigenstates of the Goldstone bosons and the vacuum.
 By Lorentz invariance, this matrix element can be written as
 %
 \begin{equation}
