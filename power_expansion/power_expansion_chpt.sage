@@ -1,3 +1,7 @@
+from IPython.display import display, Latex
+def pprint(ex):
+    return display(Latex("$$" +latex(ex)+ "$$") )
+
 # Hack
 # Needed to take conjugate of pi functions
 # Do not know of a better way
@@ -63,7 +67,13 @@ def print_coeff(elem):
     coeff = elem.coefficients(e)
     for i in range(len(coeff)):
         print(e^coeff[i][1], ":")
-        pretty_print(coeff[i][0].full_simplify())
+        pprint(coeff[i][0].full_simplify())
+
+def print_coeff2(elem):
+    coeff = elem.coefficients(e)
+    for i in range(len(coeff)):
+        print(e^coeff[i][1], ":")
+        pprint(coeff[i][0].expand().simplify())
 
 
 # create terms

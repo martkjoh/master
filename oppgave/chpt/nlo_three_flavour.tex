@@ -15,10 +15,10 @@ With this, the NLO Lagrangian is~\autocite{gasserChiralPerturbationTheory1985}
     + L_2 \Tr{\nabla_\mu \Sigma \nabla_\nu \Sigma^\dagger} 
     \Tr{\nabla^\mu \Sigma \nabla^\nu \Sigma^\dagger}
     + L_3 \Tr{\left(\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger\right)^2} \\ \nonumber
-    & + L_4 \Tr{\nabla_\mu \Sigma \nabla^\nu \Sigma^\dagger} 
+    & + L_4 \Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger} 
     \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
     + L_5 \Tr{
-        \nabla_\mu \Sigma \nabla^\nu \Sigma^\dagger 
+        \nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger 
         \left(\chi \Sigma^\dagger + \Sigma \chi^\dagger\right)
     }\\
     &+ L_6 \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}^2 
@@ -28,6 +28,21 @@ With this, the NLO Lagrangian is~\autocite{gasserChiralPerturbationTheory1985}
 \end{align}
 %
 Here, $L_i$ and $H_i$ are the necessary free parameters, called low energy constants (LEO).
-
-
+\todo[inline]{Include values and running of these couplings}.
+Expanding to zeroth order in the pion condensate, this becomes
+%
+\begin{align}
+    \nonumber
+    \Ell_4
+    = {}&
+    2(2L_1 + 2L_2 + L_3) \mu_I^4 \sin^4\alpha
+    + 4  L_4 \left( 2 \bar m^2 \cos\alpha + m_S^2 \right) \mu_I^2\sin^2\alpha
+    + 4 L_5 \mu_I^2\sin^2 \alpha 
+    \\ & 
+    + 4 L_6 (2\bar m\cos\alpha + m_S)^2
+    + 2 L_8 \left(2 \bar m^4 \cos2\alpha + 2 \Delta m + m_S\right)
+    + H_1 \left(2\bar m^4 + 2\Delta m^4 + m_S^4 \right).
+\end{align}
+%
+All the terms in the NLO Lagrangian, up and to including  $\Oh((\pi/f)^2)$, calculated using cas-software, is shown in \autoref{section: symbolic calculations}.
 

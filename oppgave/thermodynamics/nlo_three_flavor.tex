@@ -1,0 +1,246 @@
+\section{Next-to-leading order contribution}
+
+The next-to-leading order contribution to free energy are due to one-loop effects of the leading order Lagrangian, in Weinber's power counting scheem, as well as tree-level effects from the next-to-leading order Lagrangian.
+We explain how to creat a self-consistent expansion scheme in \autoref{appendix: consisten expansion}, which is used to evaluate thermodynamic quantities. 
+When calculating loop-integrals the results will diverge, and we must regularize and renormalize.
+As laid out in \autoref{section: chiral perturbation theory}, the power counting scheme ensures that all terms in $\Ell_{2n}$ scales as $t^{2n}$ when the momenta $p$ are scaled as  $p \rightarrow t p$.\footnote{
+    Remember that we scale pion mass $\bar m = B_0(m_u + m_d)$ as $t^2$, and the chemical potential and fundamental charge as $t$.
+    }
+The tree-level free energy from $\Ell_{2n}$ is thus of order $p^{2n}$.
+The $m$-loop correction to the tree level result is then suppressed by $p^{2m}$~\autocite{gasserChiralPerturbationTheory1984,weinbergPhenomenologicalLagrangians1979}.
+Our one-loop calculation using $\Ell_2$ therefore contains divergences of order $p^{4}$. 
+Since $\Ell_4$ is, by construction, the most general possible Lagrangian at order $p^4$, it contains coupling constants that can be renormalized to absorb all these divergences.
+
+\subsection{One-loop contribution}
+
+From the formula for the effective potential, \autoref{effective potential}, we have that the one loop-contribution to one-loop order is 
+%
+\begin{equation}
+    \Eff^{(1)}
+    =
+    - \frac{i}{V T} \frac{1}{2}
+    \Tr{\ln\left( - D_{ab}^{-1}\right)}.
+\end{equation}
+%
+Where $D_{ab}^{-1}$ is the inverse propagator.
+Using the result from \autoref{subsection: pion-condensed phase}, and the identity $\Tr{\ln(A)} = \ln\{\det(A)\}$, we may write the trace, to leading order in Weinberg's power counting scheeme, as
+%
+\begin{equation}
+    \Tr{\ln\left( - D_{ab}^{-1}\right)}
+    = 
+    \sum_i \Tr{\ln(-p_0^2 + E_i^2)}
+    =
+    (VT) \sum_i \int \frac{\dd^4 p}{(2\pi^4)} \,\ln(-p_0^2 + E_i^2).
+\end{equation}
+%
+where the sum is over the spectra of all the particles, given in \autoref{E1}, \autoref{E2}, \autoref{E3} and \autoref{E4}.
+We now rewrite the integrals as shown in \autoref{section: integral}, and the one-loop contribution is now on the form
+%
+\begin{align}
+    \nonumber
+    \Eff^{(1)} 
+     & = 
+    \frac{1}{2} 
+    \int \frac{\dd^3 p}{(2\pi)^3}
+    \left[
+        E_{\pi^0} + E_\eta + (E_{\pi^+} + E_{\pi^-})
+        + (E_{K^+} + E_{K^-})
+        + (E_{K^0} + E_{\bar K^0})
+    \right] \\
+    & = \Eff^{(1)}_{\pi^0} 
+    + \Eff^{(1)}_\eta 
+    + \Eff^{(1)}_{\pi^\pm}
+    + \Eff^{(1)}_{K^\pm} 
+    + \Eff^{(1)}_{K^0}.
+\end{align}
+%
+We see that the result is what we would expect physically; the total energy is the integral of each mode's energy.
+This also agrees with the result from \autoref{appendix: thermal field theory} in the zero-temperature limit $\beta \rightarrow \infty$.
+
+\todo[inline]{include eta}
+The first integral is identical to what we find for a free field in \autoref{section:free scalar field}, in the zero-temperature limit.
+These terms are all divergent and must be regularized.
+We will use dimensional regularization, in which the integral is generalized to $d$ dimensions, and the $\overline{\mathrm{MS}}$-scheme, as described in \autoref{section: regualting free energy}.
+Using the result for a free field \autoref{free field regularized energy}, we get
+%
+\begin{equation}
+    \label{Free energy pi 0}
+    \Eff^{(1)}_{\pi^0} 
+    = 
+    - \mu^{-2 \epsilon}  \frac{1}{4} \frac{m_3^4}{(4\pi)^2} 
+    \left( \frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{m_3^2} \right)
+    + \mathcal{O}(\epsilon),
+\end{equation}
+%
+where $\mu$ is the renormalization scale, a parameter with mass-dimension 1, introduced to ensure the action integral remains dimensionless during dimensional regularization.
+$\tilde \mu$ is a related to $\mu$ as described in \autoref{definition mu tilde MS bar}.
+
+The contribution to the free energy from the $\pi^+$ and $\pi^-$ particles is more complicated, as the dispersion relation is given by
+%
+\begin{equation}
+    E_\pm
+    = 
+    \sqrt{
+        |\vv p|^2 +
+        \frac{1}{2}
+        \left(
+            m_1^2 + m_2^2 + m_{12}^2 
+        \right)
+        \pm 
+        \frac{1}{2}
+        \sqrt{
+            4|\vv p|^2m_{12}^2 
+            +
+            \left(
+                m_1^2 + m_2^2 + m_{12}^2
+            \right)^2
+            - 4 m_1^2 m_2^2
+        }
+    }.
+\end{equation}
+%
+This is not an integral we can easily do in dimensional regularization.
+Instead, we will seek a function $f(|\vv p|)$ with the same UV-behavior, that is, behavior for large $\vv p$, as $E_+ + E_-$.
+If we then add $0 = f(|\vv p|) - f(|\vv p|)$ to the integrand, we can isolate the divergent behavior
+%
+\begin{equation}
+    \Eff_{\pi_\pm}^{(1)}
+    = 
+    \frac{1}{2} \int \frac{\dd^3 p}{(2\pi)^3} [E_+ + E_- + f(|\vv p|) - f(|\vv p|)]
+    = \Eff^{(1)}_{\mathrm{fin}, \pi_\pm } + \Eff^{(1)}_{\mathrm{div}, \pi_\pm}.
+\end{equation}
+%
+This results in a finite integral,
+%
+\begin{equation}
+    \Eff^{(1)}_{\mathrm{fin}, \pi_\pm } = \frac{1}{2} \int \frac{\dd^3 p}{(2\pi)^3} [E_+ + E_- - f(|\vv p|)],
+\end{equation}
+%
+which we can evaluate numerically, and a divergent integral
+%
+\begin{equation}
+    \Eff^{(1)}_{\mathrm{div}, \pi_\pm }
+    = 
+    \frac{1}{2} \int \frac{\dd^3 p}{(2\pi)^3} f(|\vv p|),
+\end{equation}
+%
+which we hopefully will be able to do in dimensional regularization.
+We can explore the UV-behavior of $E_+ + E_-$ by expanding it in powers of $1 / \abs{\vv{p}}$,
+%
+\begin{align}
+    \nonumber
+    E_+ + E_-
+    & = 
+    2  \abs{\vv{p}}
+    + \frac{m_{12} + 2(m_1^2 + m_2^2)}{4} \, {\abs{\vv{p}}}^{-1}
+    - \frac{m_{12}^4 + 4 m_{12}^2(m_1^2 + m_2^2) + 8(m_1^4 + m_2^4)}{64}
+    {\abs{\vv{p}}}^{-3}
+    + \Oh (\abs{\vv{p}}^{-5})
+    \\
+    & = 
+    a_1  \abs{\vv{p}}
+    + a_2 \, {\abs{\vv{p}}}^{-1}
+    + a_3
+    {\abs{\vv{p}}}^{-3}
+    + \Oh (\abs{\vv{p}}^{-5}).
+\end{align}
+%
+We have defined new constants $a_i$ for brevity of notation.
+As
+%
+\begin{equation}
+    \int_{\R^3} \frac{\dd^3 p}{(2 \pi)^3} |\vv p|^{n}
+    = C \int_{0}^\infty \dd p \, p^{2 + n}
+\end{equation}
+%
+is UV divergent for $n \geq -3$, $f$ need to match the expansion of $E_+ + E_-$ up to and including $\Oh(|\vv{p}|^{-3})$ for $\Eff^{(1)}_{\mathrm{fin}, \pi_\pm }$ to be finite.
+The most obvious choice for $f$ is
+%
+\begin{equation}
+    f(|\vv p|) 
+    = a_1  \abs{\vv{p}} + a_2 \, {\abs{\vv{p}}}^{-1} + a_3 \, {\abs{\vv{p}}}^{-3}.
+\end{equation}
+%
+However, this introduces a new problem.
+$f$ has the same UV-behavior as $E_+ + E_-$, but the last term diverges in the IR, that is, for low $|\vv p|$.
+This can be amended by introducing a mass term.
+Let
+%
+\begin{equation}
+    |\vv p|^{-3} 
+    = 
+    \left(\frac{1}{\sqrt{|\vv p|^2}}\right)^3 
+    \longrightarrow 
+    \left(\frac{1}{\sqrt{|\vv p|^2 + m^2}}\right)^3.
+\end{equation}
+%
+For $|\vv p|^2 \rightarrow \infty$, this is asymptotic to $|\vv p|^{-3}$, so it retains its UV behavior.
+However, for $|\vv p| \rightarrow 0$, it now approaches $m^{-3}$, so the IR-divergence is gone.
+The cost of this technique is that we have introduced an arbitrary mass parameter.
+Any final result must thus be independent of the value of $m$ to be acceptable.
+
+We will instead regularize the integral by defining $E_i = \sqrt{|\vv{p}|^2 + \tilde m_i^2}$, and $\tilde m_i^2 = m_i^2 + \frac{1}{4} m_{12}^2$.
+Using the definition of the masses, \autoref{m1} to \autoref{m8} and \autoref{m12} to \autoref{m76}, we get
+%
+\begin{align}
+    m_3^2 & = \bar m^2 \cos \alpha + \mu_ I^2 \sin^2 \alpha, \\
+    \label{tilde m1}
+    \tilde m_1^2 
+    & 
+    = m_1^2 + \mu^2 \cos\alpha^2
+    = \bar m^2 \cos \alpha + \mu_I^2 \sin^2 \alpha
+    = m_3^2 \\
+    \label{tilde m2}
+    \tilde m_2^2 
+    & = m_2^2 + \mu^2 \cos\alpha^2
+    = \bar m^2 \cos \alpha.
+\end{align}
+%
+Finally, we define $f(|\vv p|) = E_1 + E_2$, which differ from $E_+ + E_-$ by $\Oh\left(|\vv p|^{-5}\right)$ and is well-behaved in the IR.
+This leads to a divergent integral the same form as in the case of a free scalar.
+Thus, in the $\mathrm{\overline{MS}}$-scheme, 
+%
+\begin{equation}
+    \Eff^{(1)}_{\mathrm{div}, \pi_\pm }
+    =
+    - \mu^{-2 \epsilon} \frac{1}{4} \frac{\tilde m_1^4}{(4\pi)^2} 
+    \left(
+        \frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{\tilde m_1^2}
+    \right) 
+    -  \mu^{-2 \epsilon} \frac{1}{4} \frac{\tilde m_2^4}{(4\pi)^2} 
+    \left(
+        \frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{\tilde m_2^2}
+    \right) 
+    + \mathcal{O}(\epsilon).
+\end{equation}
+%
+We define
+%
+\begin{equation}
+    \Eff^{(1)}_{\mathrm{fin}, \pi_\pm}
+    = 
+    \frac{1}{2} \int \frac{\dd^3 p}{(2\pi)^3} (E_+ + E_- - E_1 - E_2),
+\end{equation}
+%
+which is a finite integral.
+The total one-loop contribution is then, using \autoref{tilde m1} and \autoref{tilde m2},
+%
+\begin{align}
+    \Eff^{(2)}
+    & = 
+    \Eff^{(1)}_{\mathrm{fin}, \pi_\pm}
+    - \mu^{-2 \epsilon} \frac{1}{2}\frac{1}{(4\pi)^2}
+    \left[
+        \left( \frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{m_3^2 } \right)
+        m_3^4
+        +
+        \frac{1}{2}
+        \left( \frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{\tilde m_2^2} \right)
+        \tilde m_2^4
+    \right]
+    + \Oh(\epsilon).
+\end{align}
+
+
+\todo[inline]{contribution from kaons}
+

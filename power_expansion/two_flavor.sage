@@ -60,7 +60,6 @@ p = vector([
 pi_s = e * sum([s[i]*p[i] for i in range(len(s))])
 
 
-
 A_a = one*cos(a/2) + I * s1 * sin(a/2)
 U = lambda n: EXP(I * pi_s/2, n)
 SIGMA = lambda n: mat_prep(A_a * U(n) * U(n) * A_a, n)

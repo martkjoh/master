@@ -1,0 +1,397 @@
+GNU gdb (Ubuntu 9.2-0ubuntu1~20.04.1) 9.2
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+[New LWP 60529]
+[New LWP 60530]
+[New LWP 60531]
+[New LWP 60532]
+[New LWP 60533]
+[New LWP 60534]
+[New LWP 60535]
+[New LWP 60536]
+[New LWP 60537]
+[New LWP 60538]
+[New LWP 60540]
+[New LWP 60552]
+[New LWP 60553]
+[New LWP 60554]
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+0x00007f389f87bffb in __GI___select (nfds=61, readfds=0x7ffe7e4d0c20, 
+    writefds=0x7ffe7e4d0ba0, exceptfds=0x7ffe7e4d0b20, timeout=0x0)
+    at ../sysdeps/unix/sysv/linux/select.c:41
+
+Stack backtrace
+---------------
+    writefds=0x7ffe7e4d0ba0, exceptfds=0x7ffe7e4d0b20, timeout=0x0)
+    at ../sysdeps/unix/sysv/linux/select.c:41
+        resultvar = 18446744073709551102
+        sc_cancel_oldtype = 0
+        sc_ret = <optimized out>
+#1  0x0000000000637210 in ?? ()
+No symbol table info available.
+#2  0x00000000005c4a40 in ?? ()
+No symbol table info available.
+#3  0x0000000000570035 in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#4  0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#5  0x00000000005f6a13 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#6  0x000000000056b0ae in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#7  0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#8  0x00000000005f6a13 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#9  0x000000000056b1da in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#10 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#11 0x00000000005f6a13 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#12 0x000000000056b1da in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#13 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#14 0x00000000005f6a13 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#15 0x000000000056b1da in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#16 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#17 0x00000000005f6a13 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#18 0x000000000056b1da in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#19 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#20 0x000000000050aaa0 in ?? ()
+No symbol table info available.
+#21 0x0000000000570035 in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#22 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#23 0x000000000050aaa0 in ?? ()
+No symbol table info available.
+#24 0x0000000000570035 in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#25 0x000000000050a92e in ?? ()
+No symbol table info available.
+#26 0x0000000000570035 in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#27 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#28 0x000000000050aaa0 in ?? ()
+No symbol table info available.
+#29 0x000000000056c28c in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#30 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#31 0x00000000005f6a13 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#32 0x000000000056c28c in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#33 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#34 0x00000000005f6a13 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#35 0x000000000059bfb7 in ?? ()
+No symbol table info available.
+#36 0x00000000005f3d7f in _PyObject_MakeTpCall ()
+No symbol table info available.
+#37 0x0000000000570af9 in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#38 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#39 0x00000000005f6a13 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#40 0x000000000059cdae in ?? ()
+No symbol table info available.
+#41 0x00000000005f3e1e in _PyObject_MakeTpCall ()
+No symbol table info available.
+#42 0x0000000000570266 in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#43 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#44 0x000000000068d047 in PyEval_EvalCode ()
+No symbol table info available.
+#45 0x00000000006003a4 in ?? ()
+No symbol table info available.
+#46 0x00000000005c4a40 in ?? ()
+No symbol table info available.
+#47 0x000000000056b0ae in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#48 0x00000000005002d8 in ?? ()
+No symbol table info available.
+#49 0x000000000056cadf in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#50 0x00000000005002d8 in ?? ()
+No symbol table info available.
+#51 0x000000000056cadf in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#52 0x00000000005002d8 in ?? ()
+No symbol table info available.
+#53 0x0000000000503fb6 in ?? ()
+No symbol table info available.
+#54 0x000000000056b1da in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#55 0x00000000005f6836 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#56 0x000000000056b0ae in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#57 0x00000000005f6836 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#58 0x000000000056b1da in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#59 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#60 0x00000000005f6a13 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#61 0x000000000050aa2c in ?? ()
+No symbol table info available.
+#62 0x00000000005f3547 in PyObject_Call ()
+No symbol table info available.
+#63 0x000000000056c8cd in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#64 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#65 0x000000000050aaa0 in ?? ()
+No symbol table info available.
+#66 0x000000000056c28c in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#67 0x00000000005002d8 in ?? ()
+No symbol table info available.
+#68 0x000000000056cadf in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#69 0x00000000005002d8 in ?? ()
+No symbol table info available.
+#70 0x000000000056cadf in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#71 0x00000000005002d8 in ?? ()
+No symbol table info available.
+#72 0x000000000056cadf in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#73 0x00000000005002d8 in ?? ()
+No symbol table info available.
+#74 0x000000000056cadf in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#75 0x00000000005002d8 in ?? ()
+No symbol table info available.
+#76 0x00007f389ec14ef9 in ?? ()
+   from /usr/lib/python3.8/lib-dynload/_asyncio.cpython-38-x86_64-linux-gnu.so
+No symbol table info available.
+#77 0x00007f389ec16083 in ?? ()
+   from /usr/lib/python3.8/lib-dynload/_asyncio.cpython-38-x86_64-linux-gnu.so
+No symbol table info available.
+#78 0x00000000005f3e1e in _PyObject_MakeTpCall ()
+No symbol table info available.
+#79 0x00000000005fef43 in ?? ()
+No symbol table info available.
+#80 0x00000000005c4927 in ?? ()
+No symbol table info available.
+#81 0x00000000005f2f5d in PyVectorcall_Call ()
+No symbol table info available.
+#82 0x000000000057126d in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#83 0x00000000005f6836 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#84 0x000000000056b1da in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#85 0x00000000005f6836 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#86 0x000000000056b1da in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#87 0x00000000005f6836 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#88 0x000000000056b1da in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#89 0x00000000005f6836 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#90 0x000000000056b1da in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#91 0x00000000005f6836 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#92 0x000000000056b1da in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#93 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#94 0x000000000050aaa0 in ?? ()
+No symbol table info available.
+#95 0x000000000056c28c in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#96 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#97 0x000000000068d047 in PyEval_EvalCode ()
+No symbol table info available.
+#98 0x00000000006003a4 in ?? ()
+No symbol table info available.
+#99 0x00000000005c4a40 in ?? ()
+No symbol table info available.
+#100 0x000000000056b0ae in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#101 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#102 0x00000000005f6a13 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#103 0x000000000056b0ae in _PyEval_EvalFrameDefault ()
+No symbol table info available.
+#104 0x000000000056939a in _PyEval_EvalCodeWithName ()
+No symbol table info available.
+#105 0x00000000005f6a13 in _PyFunction_Vectorcall ()
+No symbol table info available.
+#106 0x00000000005f3547 in PyObject_Call ()
+No symbol table info available.
+#107 0x00000000006b6d42 in ?? ()
+No symbol table info available.
+#108 0x00000000006b7149 in Py_RunMain ()
+No symbol table info available.
+#109 0x00000000006b736d in Py_BytesMain ()
+No symbol table info available.
+#110 0x00007f389f78b0b3 in __libc_start_main (main=0x4eead0 <main>, argc=5, 
+    argv=0x7ffe7e4e1d98, init=<optimized out>, fini=<optimized out>, 
+    rtld_fini=<optimized out>, stack_end=0x7ffe7e4e1d88)
+    at ../csu/libc-start.c:308
+        self = <optimized out>
+        result = <optimized out>
+        unwind_buf = {cancel_jmp_buf = {{jmp_buf = {7041920, 
+                -7743151264028816809, 6268320, 140731017469328, 0, 0, 
+                7743429864489880151, 7709021278278781527}, 
+              mask_was_saved = 0}}, priv = {pad = {0x0, 0x0, 0x5, 
+              0x7ffe7e4e1d98}, data = {prev = 0x0, cleanup = 0x0, 
+              canceltype = 5}}}
+        not_first_call = <optimized out>
+#111 0x00000000005fa5ce in _start ()
+No symbol table info available.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+Cython backtrace
+----------------
+#0  0x00007f389f87bf90 in __GI___select () at /build/glibc-sMfBJT/glibc-2.31/misc/../sysdeps/unix/sysv/linux/select.c:41
+#1  0x0000000000000000 in ?? ()
+#2  0x0000000000000000 in ?? ()
+#3  0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#4  0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#5  0x00000000005f6680 in _PyFunction_Vectorcall ()
+#6  0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#7  0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#8  0x00000000005f6680 in _PyFunction_Vectorcall ()
+#9  0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#10 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#11 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#12 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#13 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#14 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#15 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#16 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#17 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#18 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#19 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#20 0x0000000000000000 in ?? ()
+#21 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#22 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#23 0x0000000000000000 in ?? ()
+#24 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#25 0x0000000000000000 in ?? ()
+#26 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#27 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#28 0x0000000000000000 in ?? ()
+#29 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#30 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#31 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#32 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#33 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#34 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#35 0x0000000000000000 in ?? ()
+#36 0x00000000005f3b80 in _PyObject_MakeTpCall ()
+#37 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#38 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#39 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#40 0x0000000000000000 in ?? ()
+#41 0x00000000005f3b80 in _PyObject_MakeTpCall ()
+#42 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#43 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#44 0x000000000068d020 in PyEval_EvalCode ()
+#45 0x0000000000000000 in ?? ()
+#46 0x0000000000000000 in ?? ()
+#47 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#48 0x0000000000000000 in ?? ()
+#49 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#50 0x0000000000000000 in ?? ()
+#51 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#52 0x0000000000000000 in ?? ()
+#53 0x0000000000000000 in ?? ()
+#54 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#55 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#56 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#57 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#58 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#59 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#60 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#61 0x0000000000000000 in ?? ()
+#62 0x00000000005f3350 in PyObject_Call ()
+#63 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#64 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#65 0x0000000000000000 in ?? ()
+#66 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#67 0x0000000000000000 in ?? ()
+#68 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#69 0x0000000000000000 in ?? ()
+#70 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#71 0x0000000000000000 in ?? ()
+#72 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#73 0x0000000000000000 in ?? ()
+#74 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#75 0x0000000000000000 in ?? ()
+#76 0x0000000000000000 in ?? ()
+#77 0x0000000000000000 in ?? ()
+#78 0x00000000005f3b80 in _PyObject_MakeTpCall ()
+#79 0x0000000000000000 in ?? ()
+#80 0x0000000000000000 in ?? ()
+#81 0x00000000005f2dd0 in PyVectorcall_Call ()
+#82 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#83 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#84 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#85 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#86 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#87 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#88 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#89 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#90 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#91 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#92 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#93 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#94 0x0000000000000000 in ?? ()
+#95 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#96 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#97 0x000000000068d020 in PyEval_EvalCode ()
+#98 0x0000000000000000 in ?? ()
+#99 0x0000000000000000 in ?? ()
+#100 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#101 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#102 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#103 0x000000000056a980 in _PyEval_EvalFrameDefault ()
+#104 0x0000000000569130 in _PyEval_EvalCodeWithName ()
+#105 0x00000000005f6680 in _PyFunction_Vectorcall ()
+#106 0x00000000005f3350 in PyObject_Call ()
+#107 0x0000000000000000 in ?? ()
+#108 0x00000000006b6dd0 in Py_RunMain ()
+#109 0x00000000006b7340 in Py_BytesMain ()
+#110 0x00007f389f78afc0 in __libc_start_main () at /build/glibc-sMfBJT/glibc-2.31/csu/../csu/libc-start.c:308
+#111 0x00000000005fa5a0 in _start ()
+
+[Inferior 1 (process 60524) detached]
+41	../sysdeps/unix/sysv/linux/select.c: No such file or directory.

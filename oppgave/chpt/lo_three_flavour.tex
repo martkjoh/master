@@ -266,11 +266,13 @@ The diagonal mass terms are
 \begingroup
 \allowdisplaybreaks
 \begin{align}
+    \label{m1}
     m_1^2 &=  \bar m^2\cos\alpha - \mu_I^2 \cos^2\alpha,\\
     m_2^2 &= \bar m^2\cos\alpha - \mu_I^2 \cos2\alpha, \\
     m_3^2 &= \bar m^2\cos\alpha + \mu_I^2 \sin^2\alpha, \\
     m_4^2 &= m_5^2 = m_-^2 - m_{\mu+}^2, \\
     m_6^2 &= m_7^2 = m_+^2 - m^2_{\mu-}, \\
+    \label{m8}
     m_8^2 &= \frac{1}{3} (\bar m^2 \cos\alpha + 2 m_S^2),
 \end{align}
 \endgroup
@@ -308,8 +310,10 @@ At $\mu_S = \mu_I = 0$ and $\alpha = 0$, these correspond to the well known lead
 In addition, we have off-diagonal terms,
 %
 \begin{align}
+    \label{m12}
     m_{12} & = 2 \mu_I\cos\alpha,\\
     m_{45} & =\mu_I\cos\alpha + 2\mu_S, \\
+    \label{m76}
     m_{76} & = \mu_I\cos\alpha - 2\mu_S.
 \end{align}
 %
@@ -321,21 +325,22 @@ We follow~\autocite{adhikariTwoflavorChiralPerturbation2019,adhikariQuarkPionAxi
 The spectrum is given by the zero of the inverse propagator, which in momentum space is
 %
 \begin{align}
+    \label{inverse propagator}
     \nonumber
     D_{ab}^{-1} 
-    &= \fdv{S}{\pi_a,\pi_b}
+    &= \fdv{S}{\varphi_a,\varphi_b}
     =
     (p^2 - m_a^2)\delta_{ab} - i p_0 m_{ab}\\
     &= 
     \begin{pmatrix}
-        p^2 - m_1^2 & -ip_0 m_{12} &&&&&&\\
-        ip_0 m_{12} & p^2 - m_1^2 &&&&&0&\\
-        &&p^2 - m_3^2&&&&&\\
-        &&&p^2 - m_4^2&-ip_0 m_{45}&&&\\
-        &&&ip_0 m_{45}&p^2 - m_5^2&&&\\
-        &&&&&p^2 - m_6^2&-ip_0 m_{67}&\\
-        &0&&&&ip_0 m_{67}&p^2 - m_7^2&\\
-        &&&&&&&p^2 - m_8^2
+        p^2 - m_1^2 & -ip_0 m_{12} &0&0&0&0&0&0\\
+        ip_0 m_{12} & p^2 - m_1^2 &0&0&0&0&0&0\\
+        0&0&0p^2 - m_3^2&0&0&0&0&0\\
+        0&0&0&p^2 - m_4^2&-ip_0 m_{45}&0&0&0\\
+        0&0&0&ip_0 m_{45}&p^2 - m_5^2&0&0&0\\
+        0&0&0&0&0&p^2 - m_6^2&-ip_0 m_{67}&0\\
+        0&0&0&0&0&0ip_0 m_{67}&p^2 - m_7^2&0\\
+        0&0&0&0&0&0&0&p^2 - m_8^2
     \end{pmatrix}.
 \end{align}
 %
@@ -359,7 +364,9 @@ Writing the four-momentum as $p^\mu = (p_0, \vv p)$, these zeros are
 \begingroup
 \allowdisplaybreaks
 \begin{align}
+    \label{E1}
     E_0^2 &= |\vv p |^2 + m_3^2, \\
+    \label{E2}
     E_\eta^2 &= |\vv p |^2 + m_8^2, \\
     E_\pipm^2
     & = |\vv p|^2 +
@@ -377,10 +384,12 @@ Writing the four-momentum as $p^\mu = (p_0, \vv p)$, these zeros are
         \right)^2
         - 4 m_1^2 m_2^2
     }, \\
+    \label{E3}
     E_\Kpm^2
     & = |\vv p|^2 + m_4^2 + \frac{1}{2} m_{45}^2 
     \mp
     \frac{1}{2} m_{45} \sqrt{4|\vv p|^2 + 4 m_4^2 + m_{45}^2},\\
+    \label{E4}
     E_\Ko^2
     &= |\vv p|^2 + m_6^2 + \frac{1}{2} m_{67}^2 
     \pm

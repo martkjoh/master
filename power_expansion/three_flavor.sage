@@ -71,9 +71,11 @@ x = var("x")
 var("f")
 
 
-p = vector([function("pi"+str(i), latex_name="\\pi_"+str(i))(x) for i  in range(1, len(l)+1)])
+p = vector([function("phi"+str(i), latex_name="\\varphi_"+str(i))(x) for i  in range(1, len(l)+1)])
+p_s = e * sum([l[i]*p[i] for i in range(len(l))])
 
-pi_s = e * sum([l[i]*p[i] for i in range(len(l))])
+pvar = vector([var("phi"+str(i), latex_name="\\varphi_"+str(i)) for i  in range(1, len(l)+1)])
+dpvar = vector([var("dphi"+str(i), latex_name="\\partial_\\mu\\varphi_"+str(i)) for i  in range(1, len(l)+1)])
 
 
 
@@ -81,4 +83,36 @@ var("dm", latex_name="\\Delta m")
 var("mbar", latex_name="\\bar m")
 var("mS", latex_name="m_S")
 chi = diagonal_matrix((mbar^2 - dm^2, mbar^2 + dm^2, mS^2))
+
+exp_l_a = lambda l, a: (one - l**2) + l**2 * cos(a) + I * l * sin(a)
+
+A = lambda l: exp_l_a(l, a/2)
+U = lambda n: EXP(I * p_s, n)
+U_d = lambda n: EXP(-I * p_s, n)
+
+SIGMA = lambda n, A: mat_prep(A * U(n) * A, n)
+SIGMA_d = lambda n, A: mat_prep(A.C.T * U_d(n) * A.C.T, n)
+
+
+def sub(S, p, pvar):
+	for i, p0 in enumerate(pvar):
+		for j in range(3):
+			for k in range(3):
+				S[j, k]=S[j, k].subs(p[i]==p0)
+
+def get_S(n, li, indx="mu"):
+	S = SIGMA(n, A(li))
+	Sd = SIGMA_d(n, A(li))
+	dS = diff(S, x)
+	dSd = diff(Sd, x)
+
+					
+	sub(S, p, pvar)
+	sub(Sd, p, pvar)
+	dpvar = vector([var("dphi"+str(i)+indx, latex_name="\\partial_\\"+indx+"\\varphi_"+str(i)) for i  in range(1, len(l)+1)])
+	sub(dS, diff(p, x), dpvar)
+	sub(dSd, diff(p, x), dpvar)
+
+	return S, Sd, dS, dSd
+
 
