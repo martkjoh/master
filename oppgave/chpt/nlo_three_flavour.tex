@@ -28,8 +28,87 @@ With this, the NLO Lagrangian is~\autocite{gasserChiralPerturbationTheory1985}
 \end{align}
 %
 Here, $L_i$ and $H_i$ are the necessary free parameters, called low energy constants (LEO).
-\todo[inline]{Include values and running of these couplings}.
-Expanding to zeroth order in the pion condensate, this becomes
+These are the bare coupling constants, which are unobservable, but they are related to the observable renormalized couping constants.
+The renormalized coupling constants in $\Ell_4$ have been calculated for $\mu_I = 0$~\autocite{gasserChiralPerturbationTheory1985}.
+They are independent of $\mu_I$, and we can therefore use them in this calculation.
+The renormalized coupling constants in the $\overline{\mathrm{MS}}$-scheme, as explained in \autoref{section:free scalar field}, are related to the bare couplings through
+\begin{align}
+    L_i 
+    & = 
+    L_i^r 
+    - \mu^{-2\epsilon}\frac{1}{2} \frac{\Gamma_i}{(4 \pi)^2} 
+    \left(\frac{1}{\epsilon} + 1 \right),
+    H_i = 
+    H_i^r
+    - \mu^{-2\epsilon} \frac{1}{2}  \frac{\Delta_i }{(4 \pi)^2} 
+    \left(\frac{1}{\epsilon} + 1 \right).
+\end{align}
+%
+Here, $\Gamma_i$ and $\Delta_i$ are numerical constants which are used to match the divergences.
+\begin{equation}
+    \Gamma_1 = \frac{3}{32}, \quad
+    \Gamma_2 = \frac{3}{16}, \quad
+    \Gamma_3 = 0, \quad
+    \Gamma_4 = \frac{1}{8}, \quad
+    \Gamma_5 = \frac{3}{8}, \quad
+    \Gamma_6 = \frac{11}{144}, \quad
+    \Gamma_8 = \frac{5}{48}, \quad
+    \Delta_2 = \frac{5}{24}.
+\end{equation}
+%
+The bare coupling constants $L_i$ and $H_i$ are independent of our renormalization scale $\mu$.
+From this we obtain the renormalization group equations for the running coupling constants,
+\begin{equation}
+    \mu \diff{L_i^r}{\mu } 
+    = - \mu^{-2\epsilon} \frac{\Gamma_i }{(4 \pi)^2} + \mathcal{O}(\epsilon), \quad
+    \mu \diff{H_i^r}{\mu } 
+    = -  \mu^{-2\epsilon}\frac{\Delta_i}{(4 \pi)^2}+ \mathcal{O}(\epsilon).
+\end{equation}
+%
+These have the general solutions
+%
+\begin{equation}
+    L_i^r(\mu)
+    = 
+    L_i^r(M)
+    - \frac{1}{2} \mu^{-2\epsilon} \frac{\Gamma_i}{(4 \pi)^2} 
+    \ln{\frac{\tilde \mu^2}{M^2}} + \mathcal{O}(\epsilon),
+    \quad
+    H_i^r (\mu)
+    = 
+    H_i^r (M)
+    - \frac{1}{2} \mu^{-2\epsilon} \frac{\Delta_i}{(4 \pi)^2} 
+    \ln{\frac{\tilde \mu^2}{M^2}} + \mathcal{O}(\epsilon).
+\end{equation}
+%
+$L_i(M)$ and $H_i(M)$ are constants of and must be measured.
+This only applies if the numerical constants $\Gamma_i$/$\Delta_i$ are non-zero.
+If they are zero, then the coupling is not running, and the measured value can be applied at all energies.
+The values used in this text are given in \autoref{table: coupling constants}.
+They are given at the $\rho$-meson mass, $m_\rho = 770\, \text{MeV}$.
+%
+\begin{table}
+    \centering
+    \def\arraystretch{1.2}
+    \caption{The renormalized coupling constants, measured at $M = m_\rho$.}
+    \label{table: coupling constants}
+    \begin{tabular}{c c c}
+        \hline \hline
+        constant & value [$\times 10^{-3}$] & source \\
+        \hline
+        $L_1^r(m_\rho)$ & $\phantom{-}1.0 \pm 0.1 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $L_2^r(m_\rho)$ & $-1.6 \pm 0.2 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $L_3^r(m_\rho)$ & $-3.8 \pm 0.3 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $L_4^r(m_\rho)$ & $\phantom{-}0.0 \pm 0.3 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $L_5^r(m_\rho)$ & $\phantom{-}1.2 \pm 0.1 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $L_6^r(m_\rho)$ & $\phantom{-}0.0 \pm 0.4 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $L_8^r(m_\rho)$ & $\phantom{-}0.5 \pm 0.2 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $H_2^r(m_\rho)$ & $-3.4 \pm 1.5 $ & \autocite{jaminFlavoursymmetryBreakingQuark2002} 
+    \end{tabular}
+\end{table}
+
+
+Expanding to zeroth order in the pion condensate, the Lagrangian  becomes
 %
 \begin{align}
     \nonumber
@@ -45,4 +124,6 @@ Expanding to zeroth order in the pion condensate, this becomes
 \end{align}
 %
 All the terms in the NLO Lagrangian, up and to including  $\Oh((\pi/f)^2)$, calculated using cas-software, is shown in \autoref{section: symbolic calculations}.
+
+
 

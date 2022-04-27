@@ -333,14 +333,14 @@ The spectrum is given by the zero of the inverse propagator, which in momentum s
     (p^2 - m_a^2)\delta_{ab} - i p_0 m_{ab}\\
     &= 
     \begin{pmatrix}
-        p^2 - m_1^2 & -ip_0 m_{12} &0&0&0&0&0&0\\
-        ip_0 m_{12} & p^2 - m_1^2 &0&0&0&0&0&0\\
-        0&0&0p^2 - m_3^2&0&0&0&0&0\\
-        0&0&0&p^2 - m_4^2&-ip_0 m_{45}&0&0&0\\
-        0&0&0&ip_0 m_{45}&p^2 - m_5^2&0&0&0\\
-        0&0&0&0&0&p^2 - m_6^2&-ip_0 m_{67}&0\\
-        0&0&0&0&0&0ip_0 m_{67}&p^2 - m_7^2&0\\
-        0&0&0&0&0&0&0&p^2 - m_8^2
+        p^2 - m_1^2 & -ip_0 m_{12}          &0&0&0&0&0&0\\
+        ip_0 m_{12} & p^2 - m_1^2           &0&0&0&0&0&0\\
+        0&0& p^2 - m_3^2                    &0&0&0&0&0\\
+        0&0&0& p^2 - m_4^2 & -ip_0 m_{45}   &0&0&0\\
+        0&0&0& ip_0 m_{45} & p^2 - m_5^2    &0&0&0\\
+        0&0&0&0&0& p^2 - m_6^2 &-ip_0 m_{67}&0\\
+        0&0&0&0&0& ip_0 m_{67} &p^2 - m_7^2 &0\\
+        0&0&0&0&0&0&0& p^2 - m_8^2
     \end{pmatrix}.
 \end{align}
 %
@@ -352,9 +352,10 @@ The spectrum of the theory is given by the zeros of the determinant of the propa
     \det\left(D^{-1}\right)
     =&\,
     (p^2 - m_3^2)(p^2 - m_8^2)
-    \left[ (p^2 - m_1^2)(p^2 - m_2^2) + p_0^2m_{12}^2  \right]\\
+    \left[ (p^2 - m_1^2)(p^2 - m_2^2) - p_0^2m_{12}^2  \right]\\
     &\times
-    \left[ (p^2 - m_4^2)(p^2 - m_5^2) + p_0^2m_{45}^2  \right]\left[ (p^2 - m_6^2)(p^2 - m_7^2) + p_0^2m_{67}^2  \right]
+    \left[ (p^2 - m_4^2)(p^2 - m_5^2) -  p_0^2m_{45}^2  \right]
+    \left[ (p^2 - m_6^2)(p^2 - m_7^2) -  p_0^2m_{67}^2  \right]
     = 0.
 \end{align}
 %
