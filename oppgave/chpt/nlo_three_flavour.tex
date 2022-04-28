@@ -28,7 +28,24 @@ With this, the NLO Lagrangian is~\autocite{gasserChiralPerturbationTheory1985}
 \end{align}
 %
 Here, $L_i$ and $H_i$ are the necessary free parameters, called low energy constants (LEO).
-These are the bare coupling constants, which are unobservable, but they are related to the observable renormalized couping constants.
+Expanding to zeroth order in the pion condensate, the Lagrangian  becomes
+%
+\begin{align}
+    \nonumber
+    \Ell_4
+    = {}&
+    2(2L_1 + 2L_2 + L_3) \mu_I^4 \sin^4\alpha
+    + 4  L_4 \left( 2 \bar m^2 \cos\alpha + m_S^2 \right) \mu_I^2\sin^2\alpha
+    + 4 L_5 \bar m^2 \mu_I^2 \cos\alpha \sin^2 \alpha 
+    \\ & 
+    + 4 L_6 (2\bar m\cos\alpha + m_S)^2
+    + 2 L_8 \left(2 \bar m^4 \cos2\alpha + 2 \Delta m + m_S\right)
+    + H_1 \left(2\bar m^4 + 2\Delta m^4 + m_S^4 \right).
+\end{align}
+%
+All the terms in the NLO Lagrangian, up and to including  $\Oh((\pi/f)^2)$, calculated using cas-software, is shown in \autoref{section: symbolic calculations}.
+
+The LECs are the bare coupling constants, which are unobservable, but they are related to the observable renormalized couping constants.
 The renormalized coupling constants in $\Ell_4$ have been calculated for $\mu_I = 0$~\autocite{gasserChiralPerturbationTheory1985}.
 They are independent of $\mu_I$, and we can therefore use them in this calculation.
 The renormalized coupling constants in the $\overline{\mathrm{MS}}$-scheme, as explained in \autoref{section:free scalar field}, are related to the bare couplings through
@@ -106,24 +123,38 @@ They are given at the $\rho$-meson mass, $m_\rho = 770\, \text{MeV}$.
         $H_2^r(m_\rho)$ & $-3.4 \pm 1.5 $ & \autocite{jaminFlavoursymmetryBreakingQuark2002} 
     \end{tabular}
 \end{table}
-
-
-Expanding to zeroth order in the pion condensate, the Lagrangian  becomes
+%
+Inserting the renormalized coupling constants, this becomes
 %
 \begin{align}
+    \label{nlo static lagrangian}
     \nonumber
     \Ell_4
     = {}&
-    2(2L_1 + 2L_2 + L_3) \mu_I^4 \sin^4\alpha
-    + 4  L_4 \left( 2 \bar m^2 \cos\alpha + m_S^2 \right) \mu_I^2\sin^2\alpha
-    + 4 L_5 \mu_I^2\sin^2 \alpha 
-    \\ & 
-    + 4 L_6 (2\bar m\cos\alpha + m_S)^2
-    + 2 L_8 \left(2 \bar m^4 \cos2\alpha + 2 \Delta m + m_S\right)
-    + H_1 \left(2\bar m^4 + 2\Delta m^4 + m_S^4 \right).
+    2(2L_1^r + 2L_2^r + L_3^r) \mu_I^4 \sin^4\alpha
+    + 4  L_4^r \left( 2 \bar m^2 \cos\alpha + m_S^2 \right) \mu_I^2\sin^2\alpha
+    + 4 L_5^r \bar m^2 \mu_I^2 \cos\alpha \sin^2 \alpha 
+    \\ \nonumber
+    & 
+    + 4 L_6^r (2\bar m\cos\alpha + m_S)^2
+    + 2 L_8^r \left(2 \bar m^4 \cos2\alpha + 2 \Delta m + m_S\right)
+    + H_1^r \left(2\bar m^4 + 2\Delta m^4 + m_S^4 \right)
+    \\ \nonumber
+    &
+    - \frac{1}{2}\frac{\mu^{-2\epsilon}}{(4\pi)^2}
+    \left( \frac{1}{\epsilon} + 1 + \ln\frac{\tilde \mu^2}{M^2} \right)
+    \Bigg[
+        \frac{37}{15} (\bar m^2 \cos\alpha)^2
+        +\frac{5}{2} (\bar m^2 \cos\alpha)(\mu_I^2\sin^2\alpha)
+        +\frac{9}{8} (\mu_I^2\sin^2\alpha)^2 \\
+        &
+        \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+        +\frac{11}{9} (\bar m^2 \cos\alpha)m_S^2
+        +\frac{1}{2} (\mu_I^2\sin^2\alpha)m_S^2
+        +\frac{5}{6} \Delta m^4
+        +\frac{13}{18} m_S^2
+    \Bigg].
 \end{align}
-%
-All the terms in the NLO Lagrangian, up and to including  $\Oh((\pi/f)^2)$, calculated using cas-software, is shown in \autoref{section: symbolic calculations}.
 
 
 

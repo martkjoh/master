@@ -40,9 +40,6 @@ one = matrix.identity(l1.dimensions()[0])
 
 l = [l1, l2, l3, l4, l5, l6, l7, l8]
 
-
-
-
 # Isospin chemical potential current
 
 var("e", latex_name="\\varepsilon", domain="real")
