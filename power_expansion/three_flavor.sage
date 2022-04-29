@@ -1,4 +1,4 @@
-load("power_expansion_chpt.sage") 
+load("../power_expansion_chpt.sage") 
 import numpy as np
 
 # Gell-Mann matrices
@@ -98,18 +98,20 @@ def sub(S, p, pvar):
 				S[j, k]=S[j, k].subs(p[i]==p0)
 
 def get_S(n, li, indx="mu"):
-	S = SIGMA(n, A(li))
-	Sd = SIGMA_d(n, A(li))
-	dS = diff(S, x)
-	dSd = diff(Sd, x)
+    if li==None: Ai = one
+    else: Ai = A(li)
+    S = SIGMA(n, Ai)
+    Sd = SIGMA_d(n, Ai)
+    dS = diff(S, x)
+    dSd = diff(Sd, x)
 
-					
-	sub(S, p, pvar)
-	sub(Sd, p, pvar)
-	dpvar = vector([var("dphi"+str(i)+indx, latex_name="\\partial_\\"+indx+"\\varphi_"+str(i)) for i  in range(1, len(l)+1)])
-	sub(dS, diff(p, x), dpvar)
-	sub(dSd, diff(p, x), dpvar)
+                
+    sub(S, p, pvar)
+    sub(Sd, p, pvar)
+    dpvar = vector([var("dphi"+str(i)+indx, latex_name="\\partial_\\"+indx+"\\varphi_"+str(i)) for i  in range(1, len(l)+1)])
+    sub(dS, diff(p, x), dpvar)
+    sub(dSd, diff(p, x), dpvar)
 
-	return S, Sd, dS, dSd
+    return S, Sd, dS, dSd
 
 

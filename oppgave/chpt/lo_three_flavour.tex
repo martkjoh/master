@@ -475,7 +475,7 @@ In the $K^\pm$-condensate, we get
     \frac{1}{2} \partial_\mu \varphi_a \partial^\mu \varphi_a
     + \frac{1}{2}m'_{ab} \varphi_a\partial_0\varphi_a
     - \frac{1}{2}m'^2_{a} \varphi_a^2
-    - \frac{1}{2}\Delta_{\varphi\eta} \varphi_3\varphi_8
+    - \frac{1}{2}\Delta_{\eta\pi} \varphi_3\varphi_8
 \end{align}
 %
 where
@@ -574,7 +574,7 @@ Inserting this into the terms of the leading-order Lagrangian, \autoref{leading 
     \frac{1}{2} \partial_\mu \varphi_a \partial^\mu \varphi_a
     - \frac{1}{2}(m_{a}^2 + \Delta m_{\text{EM},a}^2)\varphi_a^2
     - \frac{\Delta m^2}{\sqrt 3} \varphi_3 \varphi_8
-    + f^2 \left(\bar m^2 + \frac{1}{2} m_S^2 + \frac{2}{3}C e^2\right)\\
+    + f^2 \left(\bar m^2 + \frac{1}{2} m_S^2 + \frac{2}{3}\frac{C e^2}{f^2}\right)\\
     &+ e \mathcal A^\mu 
     (
         \varphi_1 \partial_\mu \varphi_2
@@ -684,11 +684,10 @@ Inserting this in the leading-order Lagrangian \autoref{leading order three-flav
     \Ell_2^{\text{EM}, (0)}
     =
     \frac{1}{2} f^2
-    \left(
-        \mu_I^2 \sin^2\alpha + 2 \bar m^2\cos\alpha 
-        + \Delta m_\text{EM}^2\cos^2\alpha
-        - \frac{1}{3}\Delta m_\text{EM}^2 + m_S^2
-    \right)
+    \left[
+        (\mu_I^2 - \Delta m_\text{EM}^2)\sin^2\alpha + 2 \bar m^2\cos\alpha 
+        + \frac{2}{3}\Delta m_\text{EM}^2 + m_S^2
+    \right]
 \end{equation}
 %
 Similarly, the static Lagrangian in the charged kaon condensate is
@@ -698,11 +697,10 @@ Similarly, the static Lagrangian in the charged kaon condensate is
     \Ell_2^{\text{EM}, (0)}
     =
     \frac{1}{2} f^2
-    \left(
-        \mu_\Kpm^2 \sin^2\alpha + 2 m_\Kpm^2\cos\alpha 
-        + \Delta m_\text{EM}^2\cos^2\alpha
-        - \frac{1}{3}\Delta m_\text{EM}^2 + \bar m^2 + \Delta m^2
-    \right)
+    \left[
+        (\mu_\Kpm^2 - \Delta m_\text{EM}^2) \sin^2\alpha + 2 m_\Kpm^2\cos\alpha 
+        + \frac{2}{3}\Delta m_\text{EM}^2 + \bar m^2 + \Delta m^2
+    \right]
 \end{equation}
 %
 In the neutral kaon condensate, on the other hand, the static Lagrangian remains unchanged.

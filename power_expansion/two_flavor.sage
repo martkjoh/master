@@ -1,4 +1,4 @@
-load("power_expansion_chpt.sage")
+load("../power_expansion_chpt.sage")
 # Pauli matrices
 
 import numpy as np
