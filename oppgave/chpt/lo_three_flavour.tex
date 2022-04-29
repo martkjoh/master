@@ -283,7 +283,8 @@ where
     \label{mass terms in pion condensate}
     m_\pm^2 = \frac{1}{2} (\bar m^2 \cos\alpha \pm \Delta m^2 + m_S^2),
     \quad
-    m^2_{\mu\pm } = \frac{1}{4}\mu_I^2 \cos2\alpha \pm \mu_I\mu_S \cos\alpha + \mu_S^2.
+    m^2_{\mu\pm } = \left(\pm \mu_S + \frac{1}{2}\mu_I\cos\alpha \right)^2 
+    - \frac{1}{4}\mu_I^2 \sin^2\alpha.
 \end{equation}
 %
 At $\mu_S = \mu_I = 0$ and $\alpha = 0$, these correspond to the well known leading-order masses of the pseudoscalar mesons~\autocite{eckerChiralPerturbationTheory1995},
@@ -312,35 +313,55 @@ In addition, we have off-diagonal terms,
 \begin{align}
     \label{m12}
     m_{12} & = 2 \mu_I\cos\alpha,\\
-    m_{45} & =\mu_I\cos\alpha + 2\mu_S, \\
+    m_{45} & = 2 \left( \mu_S + \frac{1}{2} \mu_I  \cos\alpha\right), \\
     \label{m76}
-    m_{76} & = \mu_I\cos\alpha - 2\mu_S.
+    m_{67} & =  2 \left( - \mu_S + \frac{1}{2} \mu_I  \cos\alpha\right).
 \end{align}
 %
 Here, $m_{ab} = -m_{ba}$, and terms not defined above are zero.
 These terms mean that the basis $\varphi_a$ does not correspond to mass eigenstates.
 This is to be expected, as they are not eigenstates of isospin nor strangeness.
 To find the physical masses, we must analyze the propagator and the spectrum of the theory.
-We follow~\autocite{adhikariTwoflavorChiralPerturbation2019,adhikariQuarkPionAxial2021a}.
-The spectrum is given by the zero of the inverse propagator, which in momentum space is
+We follow~\autocite{adhikariTwoflavorChiralPerturbation2019,adhikariQuarkPionAxial2021}.
+The spectrum is given by the zero of the inverse propagator, which has a block diagonal form.
+In momentum space, it reads
 %
 \begin{align}
     \label{inverse propagator}
-    \nonumber
     D_{ab}^{-1} 
     &= \fdv{S}{\varphi_a,\varphi_b}
     =
-    (p^2 - m_a^2)\delta_{ab} - i p_0 m_{ab}\\
-    &= 
+    (p^2 - m_a^2)\delta_{ab} - i p_0 m_{ab}
+    =
     \begin{pmatrix}
-        p^2 - m_1^2 & -ip_0 m_{12}          &0&0&0&0&0&0\\
-        ip_0 m_{12} & p^2 - m_1^2           &0&0&0&0&0&0\\
-        0&0& p^2 - m_3^2                    &0&0&0&0&0\\
-        0&0&0& p^2 - m_4^2 & -ip_0 m_{45}   &0&0&0\\
-        0&0&0& ip_0 m_{45} & p^2 - m_5^2    &0&0&0\\
-        0&0&0&0&0& p^2 - m_6^2 &-ip_0 m_{67}&0\\
-        0&0&0&0&0& ip_0 m_{67} &p^2 - m_7^2 &0\\
-        0&0&0&0&0&0&0& p^2 - m_8^2
+        D_{12}^{-1}   &0&0&0&0\\
+        0& p^2 - m_3^2  &0&0&0\\
+        0&0& D_{45}^{-1}  &0&0\\
+        0&0&0& D_{67}^{-1}  &0\\
+        0&0&0&0&p^2 - m_3^2 
+    \end{pmatrix}
+\end{align}
+%
+where
+%
+\begin{align}
+    D_{12}^{-1}
+    = 
+    \begin{pmatrix}
+        p^2 - m_1^2 & -ip_0 m_{12} \\
+        ip_0 m_{12} & p^2 - m_1^2           
+    \end{pmatrix}, \quad
+    D_{45}^{-1}
+    = 
+    \begin{pmatrix}
+        p^2 - m_4^2 & -ip_0 m_{45} \\
+        ip_0 m_{45} & p^2 - m_5^2           
+    \end{pmatrix}, \quad
+    D_{67}^{-1}
+    = 
+    \begin{pmatrix}
+        p^2 - m_6^2 & -ip_0 m_{ 67} \\
+        ip_0 m_{67} & p^2 - m_7^2           
     \end{pmatrix}.
 \end{align}
 %
@@ -366,7 +387,7 @@ Writing the four-momentum as $p^\mu = (p_0, \vv p)$, these zeros are
 \allowdisplaybreaks
 \begin{align}
     \label{E1}
-    E_0^2 &= |\vv p |^2 + m_3^2, \\
+    E_{\pi^0}^2 &= |\vv p |^2 + m_3^2, \\
     \label{E2}
     E_\eta^2 &= |\vv p |^2 + m_8^2, \\
     E_\pipm^2

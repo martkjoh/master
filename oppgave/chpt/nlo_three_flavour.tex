@@ -1,9 +1,10 @@
-\section{Next-to-leading order}
+\section{Next-to-leading order Lagrangian}
 \label{section: nlo chpt}
 
 
-To construct the next-to-leading order Lagrangian, one follows the same appraoch of combining the terms we found in \autoref{chapter: chpt} into locally $\Lie{SU}{3}_R\times\Lie{SU}{3}_L$-invariant terms.
-We do not need to include terms with the field strength tensors $f_{\mu\nu}^{(r)}$ and $f_{\mu\nu}^{(l)}$, as in our case they will vanish, and we do not include the electromagnetic interaction.
+To construct the next-to-leading order Lagrangian, one follows the same approach of combining the building blocks we found in \autoref{chapter: chpt} into locally $\Lie{SU}{3}_R\times\Lie{SU}{3}_L$-invariant terms.
+We do not need to include terms with the field strength tensors $f_{\mu\nu}^{(r)}$ and $f_{\mu\nu}^{(l)}$, as in our case, they will vanish.
+We will not consider electromagnetic interactions.
 With this, the NLO Lagrangian is~\autocite{gasserChiralPerturbationTheory1985}
 %
 \begin{align}
@@ -27,8 +28,8 @@ With this, the NLO Lagrangian is~\autocite{gasserChiralPerturbationTheory1985}
     + H_2 \Tr{\chi \chi^\dagger}.
 \end{align}
 %
-Here, $L_i$ and $H_i$ are the necessary free parameters, called low energy constants (LEO).
-Expanding to zeroth order in the pion condensate, the Lagrangian  becomes
+Here, $L_i$ and $H_i$ are coupling constants called low energy constants (LEO).
+The static Lagrangian in the pion-condensed phase is
 %
 \begin{align}
     \nonumber
@@ -43,25 +44,28 @@ Expanding to zeroth order in the pion condensate, the Lagrangian  becomes
     + H_1 \left(2\bar m^4 + 2\Delta m^4 + m_S^4 \right).
 \end{align}
 %
-All the terms in the NLO Lagrangian, up and to including  $\Oh((\pi/f)^2)$, calculated using cas-software, is shown in \autoref{section: symbolic calculations}.
+All the terms in the NLO Lagrangian up to and including $\Oh((\pi/f)^2)$, calculated using CAS-software, are shown in \autoref{section: symbolic calculations}.
 
-The LECs are the bare coupling constants, which are unobservable, but they are related to the observable renormalized couping constants.
-The renormalized coupling constants in $\Ell_4$ have been calculated for $\mu_I = 0$~\autocite{gasserChiralPerturbationTheory1985}.
-They are independent of $\mu_I$, and we can therefore use them in this calculation.
+$L_i$ and $H_i$  are bare coupling constants, which are unobservable, but they are related to the observable renormalized coupling constants.
 The renormalized coupling constants in the $\overline{\mathrm{MS}}$-scheme, as explained in \autoref{section:free scalar field}, are related to the bare couplings through
+%
 \begin{align}
     L_i 
     & = 
     L_i^r 
-    - \mu^{-2\epsilon}\frac{1}{2} \frac{\Gamma_i}{(4 \pi)^2} 
-    \left(\frac{1}{\epsilon} + 1 \right),
+    -
+    \frac{1}{2} \frac{\mu^{-2\epsilon}} {(4 \pi)^2}
+    \left(\frac{1}{\epsilon} + 1 \right) \Gamma_i, \quad
     H_i = 
     H_i^r
-    - \mu^{-2\epsilon} \frac{1}{2}  \frac{\Delta_i }{(4 \pi)^2} 
-    \left(\frac{1}{\epsilon} + 1 \right).
+    -  \frac{1}{2}  \frac{\mu^{-2\epsilon}}{(4 \pi)^2} 
+    \left(\frac{1}{\epsilon} + 1 \right) \Delta_i .
 \end{align}
 %
 Here, $\Gamma_i$ and $\Delta_i$ are numerical constants which are used to match the divergences.
+These have been calculated for $\mu_I = 0$~\autocite{gasserChiralPerturbationTheory1985}.
+They are independent of $\mu_I$, and we can therefore use them in this calculation.
+They are
 \begin{equation}
     \Gamma_1 = \frac{3}{32}, \quad
     \Gamma_2 = \frac{3}{16}, \quad
@@ -77,28 +81,28 @@ The bare coupling constants $L_i$ and $H_i$ are independent of our renormalizati
 From this we obtain the renormalization group equations for the running coupling constants,
 \begin{equation}
     \mu \diff{L_i^r}{\mu } 
-    = - \mu^{-2\epsilon} \frac{\Gamma_i }{(4 \pi)^2} + \mathcal{O}(\epsilon), \quad
+    = - \frac{  \mu^{-2\epsilon} }{(4 \pi)^2} \Gamma_i + \mathcal{O}(\epsilon), \quad
     \mu \diff{H_i^r}{\mu } 
-    = -  \mu^{-2\epsilon}\frac{\Delta_i}{(4 \pi)^2}+ \mathcal{O}(\epsilon).
+    = - \frac{ \mu^{-2\epsilon}}{(4 \pi)^2} \Delta_i + \mathcal{O}(\epsilon).
 \end{equation}
 %
-These have the general solutions
+Inserting the solutions back into the bare coupling constants, we get to the first order in $\epsilon$
 %
 \begin{equation}
-    L_i^r(\mu)
+    L_i(\mu)
     = 
     L_i^r(M)
-    - \frac{1}{2} \mu^{-2\epsilon} \frac{\Gamma_i}{(4 \pi)^2} 
-    \ln{\frac{\tilde \mu^2}{M^2}} + \mathcal{O}(\epsilon),
+    - \frac{1}{2} \frac{\mu^{-2\epsilon}} {(4 \pi)^2}
+    \left(\frac{1}{\epsilon} + 1 + \ln{\frac{\tilde \mu^2}{M^2}}\right) \Gamma_i,
     \quad
-    H_i^r (\mu)
+    H_i (\mu)
     = 
     H_i^r (M)
-    - \frac{1}{2} \mu^{-2\epsilon} \frac{\Delta_i}{(4 \pi)^2} 
-    \ln{\frac{\tilde \mu^2}{M^2}} + \mathcal{O}(\epsilon).
+    - \frac{1}{2} \frac{\mu^{-2\epsilon}} {(4 \pi)^2}
+    \left(\frac{1}{\epsilon} + 1 + \ln{\frac{\tilde \mu^2}{M^2}}\right) \Delta_i.
 \end{equation}
 %
-$L_i(M)$ and $H_i(M)$ are constants of and must be measured.
+$L_i^r(M)$ and $H_i^r(M)$ are constants of integration and must be measured.
 This only applies if the numerical constants $\Gamma_i$/$\Delta_i$ are non-zero.
 If they are zero, then the coupling is not running, and the measured value can be applied at all energies.
 The values used in this text are given in \autoref{table: coupling constants}.
@@ -124,7 +128,7 @@ They are given at the $\rho$-meson mass, $m_\rho = 770\, \text{MeV}$.
     \end{tabular}
 \end{table}
 %
-Inserting the renormalized coupling constants, this becomes
+After inserting the renormalized coupling constants into the Lagrangian, it can be written
 %
 \begin{align}
     \label{nlo static lagrangian}
@@ -133,7 +137,7 @@ Inserting the renormalized coupling constants, this becomes
     = {}&
     2(2L_1^r + 2L_2^r + L_3^r) \mu_I^4 \sin^4\alpha
     + 4  L_4^r \left( 2 \bar m^2 \cos\alpha + m_S^2 \right) \mu_I^2\sin^2\alpha
-    + 4 L_5^r \bar m^2 \mu_I^2 \cos\alpha \sin^2 \alpha 
+    + 4 L_5^r (\bar m^2 \cos\alpha) (\mu_I^2  \sin^2 \alpha )
     \\ \nonumber
     & 
     + 4 L_6^r (2\bar m\cos\alpha + m_S)^2

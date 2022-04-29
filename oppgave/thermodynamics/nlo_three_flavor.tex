@@ -1,7 +1,7 @@
 \section{Next-to-leading order contribution}
 
-The next-to-leading ord econtributions to the free energy are of two types.
-Contributions of the first type are the one-loop effects from the leading order, in Weinberg's power counting scheme, Lagrangian $\Ell_2$, and the second type are tree-level effects from the next-to-leading order Lagrangian, $\Ell_2$.
+The next-to-leading order contributions to free energy are of two types.
+Contributions of the first type are the one-loop effects from the Lagrangian of the lowest chiral dimension $\Ell_2$, and the second type are tree-level effects from the next-to-leading order Lagrangian, $\Ell_4$.
 We must include all these contributions to be able to renormalize the results.
 When calculating loop integrals, the results will diverge, and they must be regularized and renormalized.
 As laid out in \autoref{section: chiral perturbation theory}, the power counting scheme ensures that all terms in $\Ell_{2n}$ scales as $t^{2n}$ when the momenta $p$ are scaled as  $p \rightarrow t p$.\footnote{
@@ -11,14 +11,14 @@ The tree-level free energy from $\Ell_{2n}$ is thus of order $p^{2n}$.
 The $m$-loop correction to the tree level result is then suppressed by $p^{2m}$~\autocite{gasserChiralPerturbationTheory1984,weinbergPhenomenologicalLagrangians1979}.
 Our one-loop calculation using $\Ell_2$ therefore contains divergences of order $p^{4}$. 
 Since $\Ell_4$ is, by construction, the most general possible Lagrangian at order $p^4$, it contains coupling constants that can be renormalized to absorb all these divergences.
-This expansion in both loops and chiral dimension, which is used to evaluate all physical quantities, is elaborated on in \autoref{appendix: consisten expansion}, 
+This expansion in both loops and chiral dimension, which is used to evaluate all physical quantities, is elaborated on in \autoref{appendix: consisten expansion},
 
 
 \subsection{One-loop contribution}
 
-We now calculate the one-loop contribution to the free energy, to leading order.
+We now calculate the one-loop contribution to the free energy to leading order.
 The loop integrals will diverge, and we must therefore regularize the integrals.
-We will use dimensional regularization, in which the integral is generalized to $d$ dimensions, and the $\overline{\mathrm{MS}}$-scheme.
+We will use dimensional regularization, in which the integral is generalized to $d$ dimensions, and employ the $\overline{\mathrm{MS}}$-scheme.
 From the formula for the effective potential, \autoref{effective potential}, we have that the one loop-contribution to one-loop order is 
 %
 \begin{equation}
@@ -29,64 +29,70 @@ From the formula for the effective potential, \autoref{effective potential}, we 
 \end{equation}
 %
 Where $D_{ab}^{-1}$ is the inverse propagator.
-Using the result from \autoref{subsection: pion-condensed phase}, and the identity $\Tr{\ln(A)} = \ln\{\det(A)\}$, we may write the trace, to leading order in Weinberg's power counting scheeme, as
-%
-\begin{equation}
-    \Tr{\ln\left( - D_{ab}^{-1}\right)}
-    =
-    \ln\left\{\prod_i \det\left( -p_0^2 + E_i^2  \right)  \right\}
-    =
-    \sum_i \Tr{\ln(-p_0^2 + E_i^2)}
-    =
-    (VT) \sum_i \int \frac{\dd^4 p}{(2\pi^4)} \,\ln(-p_0^2 + E_i^2).
-\end{equation}
-%
-where the sum is over the spectra of all the particles, given in \autoref{E1}, \autoref{E2}, \autoref{E3} and \autoref{E4}.
-We now rewrite the integrals as shown in \autoref{section: integral}, and the one-loop contribution now has the form
+In \autoref{subsection: pion-condensed phase}, we found the inverse propagator to be on a block-diagonal form.
+The trace is then a sum of the trace of each block.
 %
 \begin{align}
     \nonumber
-    \Eff^{(1)} 
-     & = 
-    \frac{1}{2} 
-    \int \frac{\dd^3 p}{(2\pi)^3}
-    \left[
-        E_{\pi^0} + E_\eta + (E_{\pi^+} + E_{\pi^-})
-        + (E_{K^+} + E_{K^-})
-        + (E_{K^0} + E_{\bar K^0})
-    \right] \\
-    & = \Eff^{(1)}_{\pi^0} 
-    + \Eff^{(1)}_\eta 
-    + \Eff^{(1)}_{\pi^\pm}
-    + \Eff^{(1)}_{K^\pm} 
-    + \Eff^{(1)}_{K^0}.
+    &\Tr{\ln\left( - D_{ab}^{-1}\right)}
+    =\\\nonumber
+    &\quad\quad
+    \Tr{\ln(-p^2 + m_3^2)}
+    + \Tr{\ln(-p^2 + m_8^2)}
+    + \Tr{\ln(-D_{12}^{-1})}
+    + \Tr{\ln(-D_{45}^{-1})}
+    + \Tr{\ln(-D_{67}^{-1})}.
 \end{align}
+%
+The trace, in this case, is not only a sum over the matrix-indices of the propagator, but is an operator trace, as discussed in \autoref{section:free scalar field}.
+Writing the trace on integral form, the contributions from the neutral pion and the eta particle are
+%
+\begin{align}
+    \Eff_{\pi^0}^{(1)}
+    = -i\frac{1}{2} \int \frac{\dd^4 p}{(2\pi)^4}\, \ln(-p^2 + m_3^2), \quad
+    \Eff_{\eta}^{(1)}
+    = -i\frac{1}{2} \int \frac{\dd^4 p}{(2\pi)^4}\, \ln(-p^2 + m_8^2).
+\end{align}
+%
+As shown in \autoref{section: integral}, we may rewrite integrals of this form,
+%
+\begin{equation}
+    -i\frac{1}{2} \int \frac{\dd^4 p}{(2\pi)^4}\, \ln(-p_0^2 + E^2)
+    = \frac{1}{2} \int  \frac{\dd^3 p}{(2\pi)^3 } \, E.
+\end{equation}
 %
 We see that the result is what we would expect physically; the total energy is the integral of each mode's energy.
 This also agrees with the result from \autoref{appendix: thermal field theory} in the zero-temperature limit $\beta \rightarrow \infty$.
-
-The spectrums of the $I_3 = 0$ particles, the $\pi^0$ and $\eta$, are of the simple form $E^2 = |\vv p|^2 + m^2$, the same as what we find for a free scalar field in \autoref{section:free scalar field}.
-This allows us to use \autoref{dimreg integral}, and the contributions are therefore
+With the integral on this form, we can regularize and evaluate it as described in  \autoref{section:free scalar field}, which gives
 %
 \begin{equation}
     \label{Free energy pi 0}
     \Eff^{(1)}_{\pi^0} 
     = 
-    - \mu^{-2 \epsilon}  \frac{1}{4} \frac{m_3^4}{(4\pi)^2} 
+    -  \frac{1}{4} \frac{ \mu^{-2 \epsilon}}{(4\pi)^2}
     \left( \frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{m_3^2} \right)
+    m_3^4
     + \mathcal{O}(\epsilon), \quad
     \Eff^{(1)}_{\eta}
     = 
-    - \mu^{-2 \epsilon}  \frac{1}{4} \frac{m_8^4}{(4\pi)^2} 
+    - \frac{1}{4} \frac{\mu^{-2 \epsilon}}{(4\pi)^2} 
     \left( \frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{m_8^2} \right)
+    m_8^4
     + \mathcal{O}(\epsilon).
 \end{equation}
 %
 Here, $d = 3 - 2\epsilon$, and $\mu$ is the renormalization scale, a parameter with mass-dimension 1, introduced to ensure the action integral remains dimensionless during dimensional regularization. The scale $\tilde \mu$ is a related to $\mu$ as described in \autoref{definition mu tilde MS bar}.
 
-
-The contribution to the free energy from the $\pi^+$ and $\pi^-$ particles is more complicated than that of the $\pi^0$ and the $\eta$ particles.
-Their spectra are
+Using the identity $\ln\{\det(A)\} = \Tr{\ln(A)}$, and spectrum we found in \autoref{subsection: pion-condensed phase}, we can write the charged pion contribution as
+%
+\begin{equation}
+    \Eff_{\pi^\pm}^{(1)}
+    = - \frac{i}{VT}\frac{1}{2}\Tr{\ln(-D_{12}^{-1})}
+    =
+    \frac{1}{2} \int  \frac{\dd^3 p}{(2\pi)^3 } \, (E_{\pi^+} + E_{\pi^-}).
+\end{equation}
+%
+However, the similarities stop here, as the spectra of the charged pions are much more complicated,
 %
 \begin{equation}
     E_{\pi^\pm}
@@ -125,11 +131,11 @@ If we then add $0 = f(|\vv p|) - f(|\vv p|)$ to the integrand, we can isolate th
 %
 This results in a finite integral, $\Eff^{(1)}_{\mathrm{fin}, \pipm }$, which can be evaluated numerically, and a divergent integral $\Eff^{(1)}_{\mathrm{div}, \pipm }$, which we hope can be evaluated in dimensional regularization.
 
-We can explore the UV-behavior of $E^+ + E^-$ by expanding it in powers of $1 / \abs{\vv{p}}$,
+We can explore the UV-behavior of $E_{\pi^+} + E_{\pi^-}$ by expanding it in powers of $1 / \abs{\vv{p}}$,
 %
 \begin{align}
     \nonumber
-    E_+ + E_-
+    E_{\pi^+} + E_{\pi^-}
     & = 
     2  \abs{\vv{p}}
     + \frac{m_{12} + 2(m_1^2 + m_2^2)}{4} \, {\abs{\vv{p}}}^{-1}
@@ -153,7 +159,7 @@ As
     = C \int_{0}^\infty \dd p \, p^{2 + n}
 \end{equation}
 %
-is UV divergent for $n \geq -3$, $f$ need to match the expansion of $E_+ + E_-$ up to and including $\Oh(|\vv{p}|^{-3})$ for $\Eff^{(1)}_{\mathrm{fin}, \pi_\pm }$ to be finite.
+is UV divergent for $n \geq -3$, $f$ need to match the expansion of $E_{\pi^+} + E_{\pi^-}$ up to and including $\Oh(|\vv{p}|^{-3})$ for $\Eff^{(1)}_{\mathrm{fin}, \pipm }$ to be finite.
 The most obvious choice for $f$ is
 %
 \begin{equation}
@@ -162,7 +168,7 @@ The most obvious choice for $f$ is
 \end{equation}
 %
 However, this introduces a new problem.
-$f$ has the same UV behavior as $E_+ + E_-$, but the last term diverges in the IR, that is, for low $|\vv p|$.
+$f$ has the same UV behavior as $E_{\pi^+} + E_{\pi^-}$, but the last term diverges in the IR, that is, for low $|\vv p|$.
 This can be amended by introducing a mass term.
 Let
 %
@@ -180,43 +186,45 @@ The cost of this technique is that we have introduced an arbitrary mass paramete
 Any final result must thus be independent of the value of $m$ to be acceptable.
 
 We will instead regularize the integral by defining $E_i = \sqrt{|\vv{p}|^2 + \tilde m_i^2}$, and $\tilde m_i^2 = m_i^2 + \frac{1}{4} m_{12}^2$.
-Then, we define $f(|\vv p|) = E_1 + E_2$, which differ from $E_+ + E_-$ by $\Oh\left(|\vv p|^{-5}\right)$ and is well-behaved in the IR.
+Then, we define $f(|\vv p|) = E_1 + E_2$, which differ from $E_{\pi^+} + E_{\pi^-}$ by $\Oh\left(|\vv p|^{-5}\right)$ and is well-behaved in the IR.
 This leads to a divergent integral of the same form as in the case of a free scalar, and we may again use the result from \autoref{section: regualting free energy}.
-With this, the divergent part of the  in the $\mathrm{\overline{MS}}$-scheme, 
+With this, the divergent part of the free energy is
 %
 \begin{equation}
-    \Eff^{(1)}_{\mathrm{div}, \pi_\pm }
+    \Eff^{(1)}_{\mathrm{div}, \pipm }
     =
-    - \mu^{-2 \epsilon} \frac{1}{4} \frac{\tilde m_1^4}{(4\pi)^2} 
+    - \frac{1}{4} \frac{\mu^{-2 \epsilon}}{(4\pi)^2} 
     \left(
         \frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{\tilde m_1^2}
-    \right) 
-    -  \mu^{-2 \epsilon} \frac{1}{4} \frac{\tilde m_2^4}{(4\pi)^2} 
+    \right) \tilde m_1^4
+    - \frac{1}{4} \frac{\mu^{-2 \epsilon}}{(4\pi)^2} 
     \left(
         \frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{\tilde m_2^2}
-    \right) 
+    \right) \tilde m_2^4
     + \mathcal{O}(\epsilon).
 \end{equation}
 %
 We then define the finite integral
 %
 \begin{equation}
-    \Eff^{(1)}_{\mathrm{fin}, \pi_\pm}
+    \Eff^{(1)}_{\mathrm{fin}, \pipm}
     = 
-    \frac{1}{2} \int \frac{\dd^3 p}{(2\pi)^3} (E_+ + E_- - E_1 - E_2),
+    \frac{1}{2} \int \frac{\dd^3 p}{(2\pi)^3} (E_{\pi^+} + E_{\pi^-} - E_1 - E_2),
 \end{equation}
 
-We may write the contribution from the charged kaons as
+The charged kaon contribution is
 %
 \begin{equation}
     \Eff^{(1)}_{\Kpm}
     =
+    -\frac{i}{VT}\frac{1}{2}
     \ln\left\{ 
-        \det\left(- p_0^2 + E_{K^+}^2 \right) \det\left(- p_0^2 + E_{K^+}^2 \right) 
+        \det(-D_{45}^{-1})
     \right\}
     =
+    -\frac{i}{VT}\frac{1}{2}
     \ln\left\{ 
-        \det\left[(p^2 - m_4)(p^2 - m_5) - p_0^2m_{45}^2\right]
+        \det\left[(- p^2 + m_4)(- p^2 + m_5) - p_0^2m_{45}^2\right]
     \right\},
 \end{equation}
 %
@@ -238,15 +246,14 @@ To performe the integral, we will use the following rewritings
     \tilde m_{45}^2, 
 \end{align}
 %
-where
-%
-\begin{equation}
-    \tilde m_{45}^2 = \frac{1}{2}(m_4^2 + m_5^2) + \frac{1}{4} m_{45}^2
-\end{equation}
-%
+where we have defined 
+$
+\tilde m_{45}^2 = \frac{1}{2}(m_4^2 + m_5^2) + \frac{1}{4} m_{45}^2.
+$
 As $m_4 = m_5$, we can then write the free energy integrals on the form
 %
-\begin{equation}
+\begin{equation} 
+    \nonumber
     \Eff_\Kpm^{(1)}
     =
     \frac{1}{2} \int \frac{\dd^4 p}{(2\pi^4)}
@@ -271,10 +278,10 @@ The result is therefore
 \begin{equation}
     \Eff_\Kpm^{(1)}
     =
-    - \mu^{-2 \epsilon} \frac{1}{2} \frac{\tilde m_{45}^4}{(4\pi)^2} 
+    - \frac{1}{2} \frac{\mu^{-2 \epsilon} }{(4\pi)^2} 
     \left(
         \frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{\tilde m_{45}^2}
-    \right).
+    \right)\tilde m_{45}^4.
 \end{equation}
 %
 The approach for the neutral kaon is the same, only with different masses.
@@ -283,20 +290,17 @@ The result is
 \begin{equation}
     \Eff_\Kpm^{(1)}
     =
-    - \mu^{-2 \epsilon} \frac{1}{2} \frac{\tilde m_{67}^4}{(4\pi)^2} 
+    - \frac{1}{2} \frac{ \mu^{-2 \epsilon}}{(4\pi)^2} 
     \left(
         \frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{\tilde m_{67}^2}
-    \right).
+    \right)\tilde m_{67}^4.
 \end{equation}
 %
 where
-%
-\begin{equation}
-    \tilde m_{67}^2 = \frac{1}{2}(m_6^2 + m_7^2) + \frac{1}{4} m_{67}^2
-    = \frac{1}{2}(\bar m^2 \cos\alpha + \Delta m^2 + m_S^2) + \frac{1}{4} \mu_I^2\sin^2\alpha.
-\end{equation}
-%
-The leading-order, one-loop contribution to the free energy is therefore
+$
+\tilde m_{67}^2 = \frac{1}{2}(m_6^2 + m_7^2) + \frac{1}{4} m_{67}^2.
+$
+The leading-order, one-loop contribution to the free energy is
 %
 \begin{align}
     \label{one-loop free energy}
@@ -356,15 +360,14 @@ where
 \subsection{Renormalization}
 
 
-The second order tree-level contribution is given by second order the static Lagrangian,
+The second-order, tree-level contribution is given by second-order the static Lagrangian,
 %
 \begin{equation}
     \Eff^{(0)}_4 = - \Ell_4^{(0)},
 \end{equation}
 %
 which we found in \autoref{nlo static lagrangian}.
-The divergent $1/\epsilon$-terms in this contribution and \autoref{one-loop free energy} cancel exactly, and the total NLO contribution is therefore finite even as $\epsilon\rightarrow 0$, as expected.
-The free energy to next-to-leading order is 
+In combination with the results from the last subsection, this gives the total next-to-leading order contribution to the free energy,
 %
 \begin{align}
     \nonumber
@@ -380,17 +383,17 @@ The free energy to next-to-leading order is
     - 2 L_8^r \left(2 \bar m^4 \cos2\alpha + 2 \Delta m + m_S\right)
     - H_1^r \left(2\bar m^4 + 2\Delta m^4 + m_S^4 \right) \\\nonumber
     & - \frac{1}{2} \frac{1}{(4 \pi)^2}  
-    \Bigg\{
+    \Bigg[
         \left(
             1 + \ln\frac{M^2}{m_3^2}
         \right)
         \left(\bar m^2 \cos\alpha + \mu_I^2\sin^2\alpha\right)^2
         + 
-        \frac{1}{2}
+        \frac{1}{18}
         \left(
             1 + \ln\frac{M^2}{m_8^2} 
         \right)
-        \frac{1}{9}\left(\bar m^2\cos\alpha+2m_S^2\right)^2
+        \left(\bar m^2\cos\alpha+2m_S^2\right)^2
         \\ \nonumber
         & 
         \quad\quad\quad\quad\quad
@@ -401,18 +404,22 @@ The free energy to next-to-leading order is
         \right)
         \bar m^4\cos^2\alpha
         +
+        \frac{1}{4}
         \left(
             1 + \ln\frac{M^2}{\tilde m_{45}^2}
         \right)
-        \left[\frac{1}{2}(\bar m^2 \cos \alpha - \Delta m^2 + m_S^2)\right]^2
+        \left(\bar m^2 \cos \alpha - \Delta m^2 + m_S^2\right)^2
         \\
         & 
         \quad\quad\quad\quad\quad
         +
+        \frac{1}{4}
         \left(
             1 + \ln\frac{M^2}{\tilde m_{67}^2} 
         \right)
-        \left[\frac{1}{2}(\bar m^2 \cos \alpha + \Delta m^2 + m_S^2)\right]^2
-    \Bigg\}
+        \left(\bar m^2 \cos \alpha + \Delta m^2 + m_S^2\right)^2
+    \Bigg]
 \end{align}
 %
+Notice that divergent $1/\epsilon$-terms cancel exactly, and the total NLO contribution is therefore finite even as $\epsilon\rightarrow 0$, as expected.
+Furthermore, all dependence on the unphysical parameter $\mu$ has vanished, and only the renormalized coupling constants and the mass $M$ at which they are defined remain.
