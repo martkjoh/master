@@ -508,6 +508,35 @@ def plot_neutrino(name = "_neutrino"):
     ax.legend()
 
     fig.savefig("figurer/pion_star/mass_radius_neutrino.pdf", bbox_inches="tight")
+    
+    
+    
+def test():
+
+    fig, ax = plt.subplots(figsize=(16, 6))
+    pmins = [0.1, 0.01, 0.001]
+    names = ["_light_%.2e"%pmin for pmin in pmins]
+    names.append("_neutrino")
+
+    for name in names:
+        sols = load_sols(name=name)
+        N = len(sols)
+        data = [[], [], []]
+
+        for s in sols:
+            data[0].append(s["R"])
+            data[1].append(s["M"])
+            data[2].append(s["pc"])
+
+        u0, m0, r0 = get_const_pion()
+        R, M, pc = [np.array(d) for d in data]
+        x, y, z = R*r0, M*m0, log(pc)
+        ax.loglog(x[1::], y[1::])
+    
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
+
+    fig.savefig("figurer/pion_star/mass_radius_light.pdf", bbox_inches="tight")
 
 
 # plot_pressure_mass()
@@ -527,8 +556,10 @@ def plot_neutrino(name = "_neutrino"):
 # plot_lepton(name="_mu")
 # plot_lepton_compare()
 
-plot_all_eos()
+# plot_all_eos()
 # plot_neutrino()
 
-plot_all()
+# plot_all()
+
+test()
 

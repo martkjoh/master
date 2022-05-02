@@ -15,8 +15,6 @@ plt.rc("axes", grid=True)
 plt.rc("grid", linestyle="--", alpha=1)
 
 
-
-
 def get_MR(data):
     M = data[0]
     err_M = sqrt(data[1]**2 + data[2]**2)
@@ -24,8 +22,6 @@ def get_MR(data):
     err_R = sqrt(data[4]**2 + data[5]**2)
 
     return M, R, err_M, err_R
-
-
 
 
 def load_data(name=""):
@@ -57,9 +53,17 @@ for i, name in enumerate(names):
     ax.fill_between(R, M-err_M, M+err_M, color=colors[i], label=labels[i], alpha=0.3)
     ax.fill_betweenx(M, R-err_R, R+err_R, color=colors[i], alpha=0.3)
 
+name = "data_brandt/MR_pilnu.txt"
+data = np.loadtxt(name, unpack=True)
+M, err_M, R, err_R, stable = data
+color="purple"
+label="$\\pi+\ell+\\nu_\\ell$"
+ax.fill_between(R, M-err_M, M+err_M, color=color, label=label, alpha=0.3)
+ax.fill_betweenx(M, R-err_R, R+err_R, color=color, alpha=0.3)
 
 
-names = ["", "_e", "_mu"]
+
+names = ["", "_e", "_mu", "_neutrino"]
 u0, m0, r0 = get_const_pion()
 
 for name in names:
@@ -74,5 +78,5 @@ ax.set_xlabel("$R [\\mathrm{km}]$")
 ax.set_ylabel("$M / M_\odot$")
 ax.legend()
 
-fig.savefig("figurer/pion_star/mass_radius_brandt.pdf", bbox_inches="tight")
-
+fig.savefig("figurer/pion_star/mass_radius_brandt_all.pdf", bbox_inches="tight")
+# plt.show() 

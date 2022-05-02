@@ -13,7 +13,6 @@ plt.rc("grid", linestyle="--", alpha=1)
 
 
 
-
 eq = lambda x, y: A * (y**2-1)**(3/2) - x*(1-1/x**4)
 
 N = 100

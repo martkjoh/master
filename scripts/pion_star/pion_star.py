@@ -69,6 +69,20 @@ def sim_neut(r=(np.log(pmin), 0), max_step=1e-3, info=False):
     sols = integrate(u, pcs, max_step=max_step, r_max=1e8, info=info, pmin=pmin, dense_output=False)
     np.save("pion_star/data/sols_neutrino", sols)
 
+
+pmin = 0.0085
+n=51
+pmins = [0.1, 0.01, 0.001]
+def sim_light(max_step=1e-3, info=False):
+    for pmin in pmins:
+        r=(np.log10(pmin), 1)
+        pcs = np.logspace(*r, n)
+        u = lambda p: 3*p
+        sols = integrate(u, pcs, max_step=max_step, r_max=1e8, info=info, pmin=pmin, dense_output=False)
+        np.save("pion_star/data/sols_light_%.2e"%pmin, sols)
+
+
+
 # sim()
 # sim_non_rel()
 # sim_newt()
@@ -78,6 +92,6 @@ def sim_neut(r=(np.log(pmin), 0), max_step=1e-3, info=False):
 
 # sim_e(max_step=1e0)
 # sim_mu(max_step=1e-2)
-sim_neut()
-
+# sim_neut()
+sim_light()
 
