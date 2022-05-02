@@ -1,6 +1,18 @@
 \section{Leading order analysis}
 \label{section: thermodynamics leading order}
 
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../scripts/figurer/free_energy_surface.pdf}
+    \caption{
+        The surface is the free energy as a function of $\alpha$ and $\mu_I$.
+        The black dashed lines illustrates the value of $\alpha$ which minimizes the free energy for a given value of $\mu_I$.
+    }
+    \label{fig: free energy surface}
+\end{figure}
+
+\todo[inline]{Være konsekvent: bruk kun fysiske eller bare masser/konstanter}
 The leading order contribution to free energy is given by the static Lagrangian, to first order in Weinberg's power counting scheme.
 We start by assuming $e = 0$, i.e., no electromagnetic interactions.
 We thus get the leading order contribution to the free energy density from \autoref{static three-flavor Lagrangian}, and it is
@@ -11,8 +23,8 @@ We thus get the leading order contribution to the free energy density from \auto
     - \frac{1}{2} f^2
     \left(
         \mu_I^2 \sin^2\alpha
-        + 2\bar m \cos\alpha
-        + m_S
+        + 2\bar m^2 \cos\alpha
+        + m_S^2
     \right).
 \end{equation}
 %
@@ -41,6 +53,10 @@ Substituting the dimensionless variable into the free energy density, we get
 \end{equation}
 %
 We have introduced the characteristic energy density $u_0 = \bar m^2 f^2$.
+This process of minimizing free energy for a given $\mu_I$ is illustrated in \autoref{fig: free energy surface}.
+
+
+
 As we found in the last section, the pressure is given by negative the free energy density. 
 We normalized the pressure to $\mu_I = \bar m$, or $x = 1$, and choose $p_0 = u_0$, so the dimensionless pressure is
 %
@@ -70,7 +86,7 @@ With this, the dimensionless energy density at $T = 0$ is
     \tilde u = - \tilde p + \frac{\mu_I n_I}{u_0}
     = \frac{1}{2} \left( 2 + \frac{1}{x^2} - 3 x^2\right).
 \end{equation}
-% 
+%
 The ratio of pressure to energy density is
 %
 \begin{equation} 
@@ -86,7 +102,7 @@ The isospin density, and thus the pion number density, is $n_I = 2 \frac{u_0}{\b
 The energy density is thus dominated by the rest mass as $\epsilon \rightarrow 0$, as we expect from the non-relativistic limit.
 \autoref{fig: equation of state pions} shows the equation of state in two different regimes and compares it with the ultrarelativistic and non-relativistic limits.
 
-\begin{figure}[h]
+\begin{figure}[!htb]
     \centering
     \includegraphics[width=0.95\textwidth]{../scripts/figurer/pion_star/pion_eos.pdf}
     \caption{

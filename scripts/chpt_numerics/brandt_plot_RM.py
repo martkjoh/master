@@ -62,7 +62,6 @@ ax.fill_between(R, M-err_M, M+err_M, color=color, label=label, alpha=0.3)
 ax.fill_betweenx(M, R-err_R, R+err_R, color=color, alpha=0.3)
 
 
-
 names = ["", "_e", "_mu", "_neutrino"]
 u0, m0, r0 = get_const_pion()
 

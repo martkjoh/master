@@ -240,8 +240,8 @@ Inserting this into \autoref{leading order three-flavor Lagrangian}, and expandi
     \frac{1}{2} f^2
     \left(
         \mu_I^2 \sin^2\alpha
-        + 2\bar m \cos\alpha
-        + m_S
+        + 2\bar m^2 \cos\alpha
+        + m_S^2
     \right), \\
     \label{linear three-flavor Lagrangian}
     \Ell_2^{(1)}
@@ -284,32 +284,11 @@ where
     m_\pm^2 = \frac{1}{2} (\bar m^2 \cos\alpha \pm \Delta m^2 + m_S^2),
     \quad
     m^2_{\mu\pm } = \left(\pm \mu_S + \frac{1}{2}\mu_I\cos\alpha \right)^2 
-    - \frac{1}{4}\mu_I^2 \sin^2\alpha.
+    - \frac{1}{4}\mu_I^2 \sin^2\alpha,
 \end{equation}
-%
-At $\mu_S = \mu_I = 0$ and $\alpha = 0$, these correspond to the well known leading-order masses of the pseudoscalar mesons~\autocite{eckerChiralPerturbationTheory1995},
-%
-\begin{align}
-    \label{leading order pion mass mu=0}
-    m_1^2 & = m_2^2 = m_3^2 
-    = \bar m^2 
-    = B_0(m_u + m_d) = m_\pi^2, \\
-    \label{leading order charged kaon mass mu=0}
-    m_4^2 & = m_5^2 
-    = \frac{1}{2} (\bar m^2 - \Delta m^2 + m_S^2) 
-    = B_0(m_u + m_s) = m_{\Kpm}^2, \\
-    \label{leading order neutral kaon mass mu=0}
-    m_6^2 &= m_7^2 
-    = \frac{1}{2} (\bar m^2 + \Delta m^2 + m_S^2) 
-    = B_0(m_d + m_s) = m_{\Ko }^2, \\
-    \label{leading order eta mass mu=0}
-    m_8^2 
-    &= \frac{1}{3}(\bar m^2  + 2m_S^2) 
-    = \frac{1}{3}B_0(m_u + m_d + 4m_s) = m_\eta^2 .
-\end{align}
-%
-In addition, we have off-diagonal terms,
-%
+%%
+and the off-diagonal terms are
+%%
 \begin{align}
     \label{m12}
     m_{12} & = 2 \mu_I\cos\alpha,\\
@@ -321,7 +300,38 @@ In addition, we have off-diagonal terms,
 Here, $m_{ab} = -m_{ba}$, and terms not defined above are zero.
 These terms mean that the basis $\varphi_a$ does not correspond to mass eigenstates.
 This is to be expected, as they are not eigenstates of isospin nor strangeness.
-To find the physical masses, we must analyze the propagator and the spectrum of the theory.
+
+At $\mu_S = \mu_I = 0$ and $\alpha = 0$, we obtain the well-known, tree-level masses of the pseudoscalar masses~\autocite{eckerChiralPerturbationTheory1995},
+%
+\begin{align}
+    \label{leading order pion mass mu=0}
+    m_{\pi,0}^2 &
+    = \bar m^2 
+    = B_0(m_u + m_d)\\
+    \label{leading order charged kaon mass mu=0}
+    m_{\Kpm, 0}^2 
+    & = \frac{1}{2} (\bar m^2 - \Delta m^2 + m_S^2) 
+    = B_0(m_u + m_s), \\
+    \label{leading order neutral kaon mass mu=0}
+    m_{\Ko, 0}^2
+    & = \frac{1}{2} (\bar m^2 + \Delta m^2 + m_S^2) 
+    = B_0(m_d + m_s), \\
+    \label{leading order eta mass mu=0}
+    m_{\eta, 0}^2
+    &= \frac{1}{3}(\bar m^2  + 2m_S^2) 
+    = \frac{1}{3}B_0(m_u + m_d + 4m_s).
+\end{align}
+%
+To leading order, these are the physical masses of the pions, charged kaons, neutral kaons, and the $\eta$-particle.
+The values used in this thesis are given in \autoref{section: units}.
+Similarly, the $f$-constant is, to leading order, given by
+%
+\begin{equation}
+    f = f_\pi.
+\end{equation}
+
+
+To find the physical masses in the pion-condensed phase, we must analyze the propagator and the spectrum of the theory.
 We follow~\autocite{adhikariTwoflavorChiralPerturbation2019,adhikariQuarkPionAxial2021}.
 The spectrum is given by the zero of the inverse propagator, which has a block diagonal form.
 In momentum space, it reads
@@ -477,7 +487,7 @@ In the $K^\pm$-condensate, we get
     \frac{1}{2}f^2 
     \left(
         \mu_\Kpm^2 \sin^2\alpha
-        + 2m^2_\Kpm \cos\alpha
+        + 2m^2_{\Kpm, 0} \cos\alpha
         + \bar m^2 +\Delta m^2
     \right), \\
     \label{linear three-flavor Lagrangian kaon condensate}
@@ -488,7 +498,7 @@ In the $K^\pm$-condensate, we get
     + f\sin\alpha
     \left(
         \mu_\Kpm^2 \cos\alpha
-        -m_\Kpm^2
+        -m_{\Kpm,0}^2
     \right)\varphi_5\\
     \label{quadratic three-flavor Lagrangian kaon condensate}
     \Ell_2^{(1)}
@@ -518,14 +528,14 @@ where
         + \Delta m^2 (\cos\alpha -1)
         + m_S^2(\cos\alpha - 1)
     \right)\\
-    {m'}_4^2 & = m_\Kpm^2\cos\alpha -\mu_\Kpm \cos^2\alpha \\
-    {m'}_5^2 & = m_\Kpm^2\cos\alpha -\mu_\Kpm \cos 2\alpha \\
+    {m'}_4^2 & = m_{\Kpm,0}^2\cos\alpha -\mu_\Kpm \cos^2\alpha \\
+    {m'}_5^2 & = m_{\Kpm,0}^2\cos\alpha -\mu_\Kpm \cos 2\alpha \\
     {m'}_6^2 & = m_7^2 = {m'}_+^2 + {m'}_{\mu+}^2\\
     {m'}_8^2
     & =
     \frac{1}{12}
     \left[
-        \frac{9}{4}\mu_\Kpm^2\sin^2\alpha
+        \frac{9}{4}\mu_{\Kpm,0}^2\sin^2\alpha
         + \bar m^2(5\cos\alpha-1) 
         + 5\Delta m^2(\cos\alpha-1)
         + m_S^2(5\cos\alpha+3))
@@ -615,8 +625,8 @@ The contribution to mass from electromagnetic effects are, to leading order, the
 \end{equation}
 %
 This is known as Dashen's theorem~\autocite{dashenChiralMathrmSUEnsuremath1969}.
-We can express $C$ in terms of the pion decay constant, and the mass and decay constant of the $\rho$-meson.
-This was first done in~\autocite{dasElectromagneticMassDifference1967}, using the then newly derive Weinberg sum rules relating the masses of heavier mesons~\autocite{weinbergPreciseRelationsSpectra1967}.
+We can express $C$ in terms of the pion decay constant and the mass and decay constant of the $\rho$-meson.
+This was first done in~\autocite{dasElectromagneticMassDifference1967}, using the then newly derived Weinberg sum rules relating the masses of heavier mesons~\autocite{weinbergPreciseRelationsSpectra1967}.
 This yields
 %
 \begin{equation}
@@ -639,18 +649,18 @@ or in the characteristic units of the system, $C = 0.3771 \, u_0$.
 This corresponds to $\Delta m_\text{EM}^2 = 35.50 \, \text{MeV}$.
 We see that the numerical differences between these results are small.
 When choosing the numerical values to use, we must take care to use a consistent set of values.
-Formulas such as \autoref{C from rho} mean that the decay constants and masses are over constrained.
-In this text, we use the masses and the decay constant listed in \autoref{section: units}, and therefore choose the value in \autoref{C from pion masses} for $C$.
+Formulas such as \autoref{C from rho} mean that the decay constants and masses are over-constrained.
+In this text, we use the masses and the decay constant listed in \autoref{section: units} and therefore choose the value in \autoref{C from pion masses} for $C$.
 
 The contribution to the pion mass from electromagnetic interactions is
 %
 \begin{equation}
     m_\pipm - m_\pi = \left(\sqrt{1 + \Delta m_\text{EM}^2 / m_\pi^2} - 1\right) m_\pi
-    = 3.401\times 10^{-2} \,m_0 = 4.590\,\text{MeV}.
+    = 3.401\times 10^{-2} \,m_\pi = 4.590\,\text{MeV}.
 \end{equation}
 %
-Even though the contribution to the \emph{square} of the masses of the charged pion and kaons are the same, we see that the absolute difference between the neutral and charged pion depend on $\Delta m_\text{EM}/ m_\pi $.
-We therefore expect the mass contribution from electromagnetic interactions to be lower for the heavier charged kaon.
+Even though the contribution to the \emph{square} of the masses of the charged pion and kaons are the same, we see that the absolute difference between the neutral and charged pion depends on $\Delta m_\text{EM}/ m_\pi $.
+We, therefore, expect the mass contribution from electromagnetic interactions to be lower for the heavier charged kaon.
 From the values in \autoref{section: units}, however, we see that the mass difference between the charged and neutral pions masses are very close to that of the charged and neutral kaons.
 This is because the difference in mass of the kaons is not only due to the electric charge at leading order, unlike the pions, but also due to $\Delta m$,
 %
@@ -719,7 +729,7 @@ Similarly, the static Lagrangian in the charged kaon condensate is
     =
     \frac{1}{2} f^2
     \left[
-        (\mu_\Kpm^2 - \Delta m_\text{EM}^2) \sin^2\alpha + 2 m_\Kpm^2\cos\alpha 
+        (\mu_\Kpm^2 - \Delta m_\text{EM}^2) \sin^2\alpha + 2 m_{\Kpm,0}^2\cos\alpha 
         + \frac{2}{3}\Delta m_\text{EM}^2 + \bar m^2 + \Delta m^2
     \right]
 \end{equation}
