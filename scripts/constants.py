@@ -44,6 +44,19 @@ f_pi_SI = f_pi*MeV
 m_pi_SI = m_pi*MeV/c**2
 m_pipm_SI = m_pipm*MeV/c**2
 
+# nlo coupling constants
+Lr = np.array([
+    -3.4,       # H_2
+    1,          # L_1
+    -1.6,       # ...
+    -3.8,
+    0,
+    1.2,
+    0,
+    0,          # L_7, not in use. Only here for right indexing
+    0.5
+]) * 1e-3
+
 
 def get_const_fermi_gas():
     """Constants fermi gas"""
