@@ -15,18 +15,16 @@ def get_nlo_const():
 
     C = 1/(4*pi)**2
     mpi_nlo_sq = lambda m, mS, f:\
-        mpi0_sq(m, mS, f) *\
-        (
+        mpi0_sq(m, mS, f) * (
             1
-            + (16*Lr[8] - 8*Lr[5] + C/2 * ln( mpi0_sq(m, mS, f)/m_rho**2 ) ) \
+            + (16*Lr[8] - 8*Lr[5] + C/2 * ln( mpi0_sq(m, mS, f)/m_rho**2 ) )
                 * mpi0_sq(m, mS, f)/f**2
-            + (24*Lr[6] - 12*Lr[4] - C/6 * ln( meta0_sq(m, mS, f)/m_rho**2 ) )  \
+            + (24*Lr[6] - 12*Lr[4] - C/6 * ln( meta0_sq(m, mS, f)/m_rho**2 ) )
                 * meta0_sq(m, mS, f)/f**2   
     )
 
     mK_nlo_sq = lambda m, mS, f:\
-        mK0_sq(m, mS, f) *\
-        (
+        mK0_sq(m, mS, f) * (
             1
             + 8*(Lr[6] - Lr[4]) * mpi0_sq(m, mS, f)/f**2
             + 8*(2*Lr[8] - Lr[5] + 4*Lr[6] - 2*Lr[4]) * mK0_sq(m, mS, f)/f**2 
@@ -34,8 +32,7 @@ def get_nlo_const():
     )
 
     f_nlo_sq = lambda m, mS, f:\
-        f**2 *\
-        (
+        f**2 *(
             1
             + (8*Lr[4] + 8*Lr[5] - 2*C * ln(mpi0_sq(m, mS, f)/m_rho**2)) \
                 * mpi0_sq(m, mS, f)/f**2
@@ -56,6 +53,5 @@ def get_nlo_const():
     return newton(eq, x0) # m , mS, f
 
 
-get_nlo_const()
 
 

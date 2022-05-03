@@ -23,8 +23,8 @@ num_lo = lambda x: lambdify((muI, a), lo(x), "numpy")
 
 
 # Mass-parameters
-m1_sq = m**2 * cos(a) - muI**2 * cos(2 * a)
-m2_sq = m**2 * cos(a) - muI**2 * cos(a)**2
+m1_sq = m**2 * cos(a) - muI**2 * cos(a)**2
+m2_sq = m**2 * cos(a) - muI**2 * cos(2*a)
 m3_sq = m**2 * cos(a) + muI**2 * sin(a)**2
 m8_sq = one/3*(m**2*cos(a) + 2*mS**2)
 

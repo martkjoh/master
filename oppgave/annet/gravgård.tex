@@ -513,5 +513,60 @@ Following our earlier analysis, this leads to the limiting radius
 The results using both electrons and muons are compared to the results with only pions in \autoref{fig: mass radius relation with leptons}.
 
 
+\section{NLO parameters}
+
+We can simplify numerical evaluation of this expression by substituting some of the bare constants with their physical values, as the expression remains valid at next-to leading order.
+Using $f^2 = f_\pi^2 + \Oh(p^2)$, $m_{p,0}^2 = m_p^2(1 + \Oh(p^2))$ for $p = \pi, K $ or $\eta$, and thus $\ln \frac{m_{p,0}^2}{M^2} = \ln \frac{m_{p}^2}{M^2} + \Oh(p^2)$, we get
+\begin{align}
+    m_\pi^2 
+    =&\, 
+    m_{\pi,0}^2
+    \left[
+        1
+        +
+        \left(
+            16L_8^r - 8L_5^r
+            +
+            \frac{1}{2(4\pi)^2}
+            \ln\frac{m_{\pi}^2}{M^2}
+        \right)\frac{m_{\pi,0}^2}{f_\pi^2}
+        +
+        \left(
+            24L_6^r - 12L_4^r
+            -
+            \frac{1}{6(4\pi)^2}
+            \ln\frac{m_{\eta}^2}{M^2}
+        \right)\frac{m_{\eta,0}^2}{f_\pi^2}
+    \right] \\
+    m_{K}
+    =&\,
+    m_{K}^2
+    \left[
+        1
+        + 8\left(2L_6^r - L_4^r\right) \frac{m_{\pi,0}^2}{f_\pi^2}
+        + 8\left(2L_8^r - L_5^r + 4L_6^r- 2L_4^r\right) \frac{m_{K,0}^2}{f_\pi^2}
+        +
+        \left(
+            \frac{1}{3(4 \pi)^2} \ln\frac{m_{\eta}^2}{M^2} 
+        \right)
+        \frac{m_{\eta,0}^2}{f_\pi^2}
+    \right]\\
+    f_\pi^2
+    =&\, f^2
+    \left[
+        1
+        + 
+        \left(
+            8 L_4^r + 8 L_5^r - \frac{2}{(4\pi)^2} \ln\frac{m_{\pi}^2}{M^2}
+        \right) \frac{m_{\pi,0}^2}{f_\pi^2}
+        +
+        \left(
+            16 L_4^r
+            -\frac{1}{(4\pi)^2} \ln\frac{m_{K}^2}{M^2}
+        \right) \frac{m_{K,0}^2}{f_\pi^2}
+    \right]
+\end{align}
+
+
 
 \end{document}
