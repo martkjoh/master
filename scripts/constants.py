@@ -47,14 +47,14 @@ m_pipm_SI = m_pipm*MeV/c**2
 # nlo coupling constants
 Lr = np.array([
     -3.4,       # H_2
-    1,          # L_1
-    1.6,     # ...
-    -3.8,
-    0,
-    1.2,
-    0,
-    0,          # L_7, not in use. Only here for right indexing
-    0.5
+    1.,          # L_1
+    1.6,        # L_2
+    -3.8,       # L_3
+    0.,          # L_4
+    1.2,        # L_5
+    0.,          # L_6
+    0.,          # L_7, not in use. Only here for right indexing
+    0.5         # L_8
 ]) * 1e-3 
 
 

@@ -23,10 +23,8 @@ def gen_eos_list():
     plst = p(x)
     
     # Can only interpolate with unique points
-    assert len(np.unique(plst)) == len(plst)
-    assert len(np.unique(ulst)) == len(ulst)
-    assert np.sum(np.diff(plst)<0) == 0
-    assert np.sum(np.diff(ulst)<0) == 0
+    assert np.sum(np.diff(plst)>0) == len(plst)-1
+    assert np.sum(np.diff(ulst)>0) == len(ulst)-1
     np.save("pion_star/data/eos", [x, plst, ulst])
 
 

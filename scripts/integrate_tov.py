@@ -37,17 +37,31 @@ def get_u(name):
     """ Get equation of state from list of samples """
     # Cubic spline, no smoothing
     _, plst, ulst = np.load(name)
-    tck = splrep(plst, ulst, s=0, k=3)
+    tck = splrep(plst, ulst, s=0, k=1)
 
     def u(p):
-        if p < plst[0]: return 0
-        if p > plst[-1]: raise Exception("p-value outside interpolation area, p=%.3e" % p)
-        else: return splev(p, tck)[None][0]
+        t = type(p)
+        p = np.atleast_1d(p)
+        assert np.all(p<=plst[-1]), "p-value outside interpolation area, p=%.3e" % plst[-1]
+        mask = p>0
+        up = np.zeros_like(p)
+        if not len(up[mask])==0:
+            up[mask] = splev(p[mask], tck)
+        if t!=np.ndarray: up=t(up)
+        return up
 
     return u
 
 
-def integrate(u, pcs, dense_output=True, max_step=0.001, r_max=1e3, newtonian_limit=False, info=False, pmin=0):
+def integrate(
+    u, pcs, 
+    dense_output=True, 
+    max_step=0.001, 
+    r_max=1e3, 
+    newtonian_limit=False, 
+    info=False, 
+    pmin=0.
+    ):
     """ Integrate TOV for a list of central pressures pcs"""
 
     dmdr = lambda r, y, args: dmdr_general(u, r, y, args) 
@@ -58,7 +72,7 @@ def integrate(u, pcs, dense_output=True, max_step=0.001, r_max=1e3, newtonian_li
     f = lambda r, y, args: (dpdr(r, y, args), dmdr(r, y, args))
 
     def stop(r, y, args):
-        """Termiation cirerion, p(r) = 0"""
+        """Termiation cirerion, p(r) = pmin"""
         p, m = y
         return p - pmin
     stop.terminal = True # attribute for solve_ivp
@@ -69,7 +83,11 @@ def integrate(u, pcs, dense_output=True, max_step=0.001, r_max=1e3, newtonian_li
             return 1
     else:
         def y(r, y, args):
-            print("r = %.3e"% r + ", p = %.3e" % y[0] +", p-pmin = %.3e " % stop(r, y, args))
+            print(
+                "r = %.3e"% r 
+                + ", p = %.3e" % y[0] 
+                +", p-pmin = %.3e " % stop(r, y, args)
+            )
             return 1
 
     if type(max_step)==float:

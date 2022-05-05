@@ -5,8 +5,8 @@ import sys
 from numpy import pi, sqrt, log10 as log
 from matplotlib import cm, colors, collections
 
-from chpt_eos import u_nr, u_ur, p
 sys.path.append(sys.path[0] + "/..")
+from chpt_numerics.chpt_eos import u_nr, u_ur, p
 from integrate_tov import get_u
 from constants import get_const_pion
 
@@ -25,11 +25,19 @@ def load_sols(name=""):
     return np.load("pion_star/data/sols"+name+".npy", allow_pickle=True)
 
 
+def get_data(sols):
+    data = [[], [], []]
+    for s in sols:
+        data[0].append(s["R"])
+        data[1].append(s["M"])
+        data[2].append(s["pc"])
+    return data
+
+
 def plot_pressure_mass(name=""):
     all_sols = load_sols(name)
     sols = all_sols[30:180:8]
     N = len(sols)
-     
     
     fig, ax = plt.subplots(2, figsize=(14, 10), sharex=True)
     [a.grid(linestyle="--", alpha=1, lw=0.4) for a in ax]
@@ -57,7 +65,6 @@ def plot_pressure_mass(name=""):
     ax[0].plot(r, p, "--k", lw=2)
     ax[1].plot(r, m, "--k", lw=2, label="$M_\\mathrm{max}$") 
 
-
     ax[0].set_ylabel("$p/p_c$")
     ax[1].set_ylabel("$m/M$")
     ax[1].set_xlabel("$r / R$")
@@ -72,7 +79,6 @@ def plot_pressure_mass(name=""):
     cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
 
     fig.legend(bbox_to_anchor=(0.73, 0.87))
-    
 
     fig.savefig("figurer/pion_star/pressure_mass_pion_star"+name+".pdf", bbox_inches="tight")
 
@@ -87,12 +93,7 @@ def plot_mass_radius_compare():
 
     N = len(sols1)
     assert N == len(sols2); assert N ==len(sols3)
-    datas = [[[], [], []] for _ in sols]
-    for j, solsi in enumerate(sols):
-        for i, s in enumerate(solsi):
-            datas[j][0].append(s.t[-1])
-            datas[j][1].append(s.y[1][-1])
-            datas[j][2].append(s.y[0][0])
+    datas = [get_data(s) for s in sols]
         
     fig, ax = plt.subplots(figsize=(16, 8))
 
@@ -103,8 +104,6 @@ def plot_mass_radius_compare():
         "Full EOS + Newtonian gravity",
         "Non-relativistic EOS + Newtonian gravity"
         ]
-
-
 
     for i, data in enumerate(datas):
         R, M, p0 = [np.array(d) for d in data]
@@ -123,7 +122,6 @@ def plot_mass_radius_compare():
         lc = collections.LineCollection(segments, cmap='viridis', norm=norm, ls=linestyles[i], label=labels[i], lw=2)
         lc.set_array(z[::m])
         line = ax.add_collection(lc)
-        
 
     cb = fig.colorbar(line)
     cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
@@ -154,14 +152,8 @@ def plot_gradient(x, y, z, ax, fig, zr=None, add_cb=True):
 
 def plot_mass_radius(name=""):
     sols = load_sols(name)
-    N = len(sols)    
-
-    data = [[], [], []]
-    for i, s in enumerate(sols):
-        data[0].append(s["R"])
-        data[1].append(s["M"])
-        data[2].append(s["pc"])
-
+    N = len(sols)
+    data = get_data(sols)
 
     R, M, pc = [np.array(d) for d in data]
     x, y, z = R*r0, M*m0, log(pc)
@@ -182,7 +174,6 @@ def plot_mass_radius(name=""):
     i = np.argmax(R)
     label ="$R_\\mathrm{max} = " + "{:.3f}".format(R[i]*r0) + "\, \mathrm{km}$"
     ax.plot(R[i]*r0, M[i]*m0, "ko", ms=10, label=label) 
-
 
     ax.set_xlim(8, 100)
     ax.set_ylim(0, 15)
@@ -218,6 +209,23 @@ def plot_eos():
     fig.savefig("figurer/pion_star/pion_eos.pdf", bbox_inches="tight")
 
 
+def plot_eos_nlo():
+    fig, ax = plt.subplots(figsize=(10, 6))
+    p = np.linspace(0, 0.0001, 1000)
+
+    u = get_u("pion_star/data/eos.npy")
+    ax.plot(p, u(p), "r-.", label="$ u_{\\mathrm{LO}}(p)$")
+    u = get_u("pion_star/data/eos_nlo.npy")
+    ax.plot(p, u(p), "k--", label="$ u_\\mathrm{NLO}(p)$")
+    ax.set_xlabel("$p / p_0$")
+    ax.set_ylabel("$u / u_0$")
+
+    ax.legend(loc="upper left")
+    plt.show()
+
+    # fig.savefig("figurer/pion_star/pion_eos_nlo.pdf", bbox_inches="tight")
+
+
 def plot_eos_leptons():
     fig, ax = plt.subplots(figsize=(8, 6))
     u = get_u("pion_star/data/eos.npy")
@@ -236,6 +244,7 @@ def plot_eos_leptons():
 
     ax.legend()
     fig.savefig("figurer/pion_star/pion_eos_leptson.pdf", bbox_inches="tight")
+
 
 def plot_all_eos():
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -258,6 +267,7 @@ def plot_all_eos():
     ax.set_ylim(-0.1, 2.6)
     fig.savefig("figurer/pion_star/pion_all_eos.pdf", bbox_inches="tight")
 
+
 def plot_mu():
     fig, ax = plt.subplots(figsize=(12, 6))
     p = lambda x: 1/2 * (x**2 + 1/x**2 - 2)
@@ -269,7 +279,6 @@ def plot_mu():
     ax.legend()
 
     fig.savefig("figurer/pion_star/pion_mu.pdf", bbox_inches="tight")
-
 
 
 def plot_eos_EM():
@@ -289,7 +298,6 @@ def plot_eos_EM():
     ax.legend(loc="upper left")
 
     fig.savefig("figurer/pion_star/pion_eos_EM.pdf", bbox_inches="tight")
-
 
 
 def plot_u_p():
@@ -320,19 +328,12 @@ def plot_u_p():
     fig.savefig("figurer/pion_star/pion_up.pdf", bbox_inches="tight")
 
 
-
 def plot_mass_radius_compare_EM():
     sols1 = load_sols()
     sols2 = load_sols(name="_EM")
     N = len(sols1)
     sols = [sols1, sols2]
-    datas = [[[], [], []] for _ in sols]
-    for j, sol in enumerate(sols):
-        for i, s in enumerate(sol):
-            datas[j][0].append(s.t[-1])
-            datas[j][1].append(s.y[1][-1])
-            datas[j][2].append(s.y[0][0])
-
+    datas = [get_data(s) for s in sols]
     fig, ax = plt.subplots(figsize=(16, 8))
 
     labels = ["Only strong interactions", "EM interactions"]
@@ -352,7 +353,6 @@ def plot_mass_radius_compare_EM():
             + "\, \mathrm{km})$ "
         ax.plot(R[j]*r0, M[j]*m0, "k", marker=marker[i], ls="", ms=10, label=label)
 
-
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
     plt.legend()
@@ -360,19 +360,13 @@ def plot_mass_radius_compare_EM():
     fig.savefig("figurer/pion_star/mass_radius_pion_star_compare.pdf", bbox_inches="tight")
     
 
-
 def plot_lepton_compare():
     sols1 = load_sols()
     sols2 = load_sols(name="_e")
     sols3 = load_sols(name="_mu")
     N = len(sols1)
     sols = [sols1, sols2, sols3]
-    datas = [[[], [], []] for _ in sols]
-    for j, sol in enumerate(sols):
-        for i, s in enumerate(sol):
-            datas[j][0].append(s["R"])
-            datas[j][1].append(s["M"])
-            datas[j][2].append(s["pc"])
+    datas = [get_data(s) for s in sols]
 
     u0, m0, r0 = get_const_pion()
 
@@ -397,6 +391,7 @@ def plot_lepton_compare():
 
     fig.savefig("figurer/pion_star/mass_radius_lepton_compare.pdf", bbox_inches="tight")
 
+
 def plot_all():
     sols1 = load_sols()
     sols2 = load_sols(name="_e")
@@ -404,12 +399,7 @@ def plot_all():
     sols4 = load_sols(name="_neutrino")
     N = len(sols1)
     sols = [sols1, sols2, sols3, sols4]
-    datas = [[[], [], []] for _ in sols]
-    for j, sol in enumerate(sols):
-        for i, s in enumerate(sol):
-            datas[j][0].append(s["R"])
-            datas[j][1].append(s["M"])
-            datas[j][2].append(s["pc"])
+    datas = [get_data(s) for s in sols]
 
     u0, m0, r0 = get_const_pion()
 
@@ -431,19 +421,14 @@ def plot_all():
     ax.set_ylim(3e-2, 1e3)
     ax.plot(Rs, 4 / 9 * Rs, "k--", label="$M = \\frac{4}{9} R$")
     ax.legend(loc="lower right")
+
     fig.savefig("figurer/pion_star/mass_radius_all.pdf", bbox_inches="tight")
 
 
 def plot_lepton(name = "_e"):
     sols = load_sols(name=name)
     N = len(sols)
-    data = [[], [], []]
-
-    for s in sols:
-        data[0].append(s["R"])
-        data[1].append(s["M"])
-        data[2].append(s["pc"])
-
+    data = get_data(sols)
     u0, m0, r0 = get_const_pion()
 
     fig, ax = plt.subplots(figsize=(16, 6))
@@ -460,7 +445,6 @@ def plot_lepton(name = "_e"):
     ax.plot(R[j]*r0, M[j]*m0, "kx", label=label)
 
     pc_max = data[2][j]
-
     
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
@@ -479,13 +463,8 @@ def plot_lepton(name = "_e"):
 def plot_neutrino(name = "_neutrino"):
     sols = load_sols(name=name)
     N = len(sols)
-    data = [[], [], []]
-
-    for s in sols:
-        data[0].append(s["R"])
-        data[1].append(s["M"])
-        data[2].append(s["pc"])
-
+    data = get_data(sols)
+    
     u0, m0, r0 = get_const_pion()
 
     fig, ax = plt.subplots(figsize=(16, 6))
@@ -499,7 +478,6 @@ def plot_neutrino(name = "_neutrino"):
         + "\, M_\odot, %.3f" %(R[j]*r0) \
         + "\, \mathrm{km})$ "
     ax.plot(R[j]*r0, M[j]*m0, "kx", label=label)
-
     
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
@@ -510,7 +488,51 @@ def plot_neutrino(name = "_neutrino"):
     fig.savefig("figurer/pion_star/mass_radius_neutrino.pdf", bbox_inches="tight")
     
     
+def plot_light():
+
+    fig, ax = plt.subplots(figsize=(16, 6))
+    pmins = [0.1, 0.01, 0.001]
+    names = ["_light_%.2e"%pmin for pmin in pmins]
+    names.append("_neutrino")
+
+    for name in names:
+        sols = load_sols(name=name)
+        N = len(sols)
+        data = get_data(sols)
+
+        u0, m0, r0 = get_const_pion()
+        R, M, pc = [np.array(d) for d in data]
+        x, y, z = R*r0, M*m0, log(pc)
+        ax.loglog(x[1::], y[1::])
     
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
+
+    fig.savefig("figurer/pion_star/mass_radius_light.pdf", bbox_inches="tight")
+
+
+def plot_nlo():
+    fig, ax = plt.subplots(figsize=(16, 6))
+    sol1 = load_sols()
+    sol2 = load_sols(name="_nlo")
+    sols = [
+        sol1,
+        sol2
+        ]
+    u0, m0, r0 = get_const_pion()
+
+    for sol in sols:
+        data = get_data(sol)
+
+        R, M, pc = [np.array(d) for d in data]
+        x, y, z = R*r0, M*m0, log(pc)
+        ax.plot(x, y)
+
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
+    plt.show()
+    # fig.savefig("figurer/pion_star/mass_radius_light.pdf", bbox_inches="tight")
+
 def test():
 
     fig, ax = plt.subplots(figsize=(16, 6))
@@ -521,12 +543,7 @@ def test():
     for name in names:
         sols = load_sols(name=name)
         N = len(sols)
-        data = [[], [], []]
-
-        for s in sols:
-            data[0].append(s["R"])
-            data[1].append(s["M"])
-            data[2].append(s["pc"])
+        data = get_data(sols)
 
         u0, m0, r0 = get_const_pion()
         R, M, pc = [np.array(d) for d in data]
@@ -560,6 +577,8 @@ def test():
 # plot_neutrino()
 
 # plot_all()
+# test()
 
-test()
+plot_eos_nlo()
 
+# plot_nlo()

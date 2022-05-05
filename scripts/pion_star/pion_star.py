@@ -2,21 +2,29 @@ import numpy as np
 import sys
 from numpy import pi
 
-from chpt_eos import u_nr
 # from chpt_lepton_eos import u
 sys.path.append(sys.path[0] + "/..")
+from chpt_numerics.chpt_eos import u_nr
 from integrate_tov import get_u, integrate
 from constants import m_e, m_pi
 
 n = 201
 pcs = 10**np.linspace(-6, 6, n)
 
-
 def sim():
     u = get_u("pion_star/data/eos.npy")
     max_step = 1e-3
-    sols = integrate(u, pcs, max_step=max_step)
+    sols = integrate(u, pcs, max_step=max_step, dense_output=True)
     np.save("pion_star/data/sols", sols)
+
+n = 101
+pcs = 10**np.linspace(-3, 1, n)
+# pcs = np.array([1,])
+def sim_nlo():
+    u = get_u("pion_star/data/eos_nlo.npy")
+    max_step = 1e-3
+    sols = integrate(u, pcs, max_step=max_step)
+    np.save("pion_star/data/sols_nlo", sols)
 
 
 def sim_non_rel():
@@ -88,10 +96,12 @@ def sim_light(max_step=1e-3, info=False):
 # sim_newt()
 # sim_newt_non_rel()
 
+sim_nlo()
+ 
 # sim_EM()
 
 # sim_e(max_step=1e0)
 # sim_mu(max_step=1e-2)
 # sim_neut()
-sim_light()
+# sim_light()
 
