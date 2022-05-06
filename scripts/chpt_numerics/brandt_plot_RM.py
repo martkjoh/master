@@ -78,4 +78,4 @@ ax.set_ylabel("$M / M_\odot$")
 ax.legend()
 
 fig.savefig("figurer/pion_star/mass_radius_brandt_all.pdf", bbox_inches="tight")
-# plt.show() 
+plt.show() 

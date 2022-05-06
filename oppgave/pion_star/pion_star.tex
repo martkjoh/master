@@ -75,6 +75,8 @@ As we found, the inclusion of leptons will change the low-density limit of the e
 
 \section{Numerical results}
 
+
+\todo[inline]{Pass på at tall i tekst matcher med figurer!}
 In this section, we present the results of integrating the TOV-equation numerically.
 The computer code used to obtain these results is discussed in \autoref{appendix: code}.
 
@@ -241,6 +243,17 @@ We see that, in contrast to the earlier results, both the mass and radius approa
         \label{fig: mass radius neutrino}
 \end{figure}
 
+In \autoref{fig: light stars}, the pion stars including charged leptons and neutrinos are compared to a family of stars with $u = 3p$ but different values for $p_\text{min}$.
+We see that the mass-radius relation of the pion star closely resembles that of such a star and that the mass-radius relationship, therefore, is mostly set by $p_\text{min}$.
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_radius_light.pdf}
+    \caption{Stars with equation of state $u = 3p$, but different $p_\text{min}>0$ is compared to the pion star with charged leptons and neutrinos.}
+    \label{fig: light stars}
+\end{figure}
+
 
 \subsection{NLO pion condensate}
 
@@ -294,14 +307,21 @@ Key values for each system are shown in \autoref{table: key values}.
     \label{table: key values}
     \begin{tabular}{c  c  c  c  c c c}
         \hline \hline
-        system & $M_\text{max}/M_\odot$ & $R / \text{km}$ & $u/u_0$ & $p/u_0$ & $\mu_I/m_\pi-1$ & $\mu_\ell/m_\ell-1$ \\
+        system & $M_\text{max}/M_\odot$ & $R / \text{km}$ & 
+        $u/u_0$ & $p/u_0$ & $\mu_I/m_\pi-1$ & $\mu_\ell/m_\ell-1$ \\
         \hline
-        $\pi\, \text{LO}$& 10.47 & 55.38 & 2.865 & 1.318 && \\
-        $\pi\, \text{NLO}$& 9.04 & 54.09 &  &  && \\
-        $\pi + \text{EM}$& 10.11 & 53.58 &&&& \\
-        $\pi + e$& 283.8 & $3.171 \times10^4$ & $2.550\times10^{-6}$ & $1.995\times10^{-8}$ && \\
-        $\pi + \mu$& 18.58 & 262.3 & 0.1412 & $1.202\times 10^{-2}$ && \\
-        $\pi + \ell + \nu_\ell$& 28.92 & 188.8 &  &  && \\
+        $\pi\,\, \text{LO}$& 10.47 & 55.38 & 2.864 & 1.318 & 0.8461& \\
+        $\pi\, \text{NLO}$& 9.04 & 54.09 & 3.020 & 1.139 & 0.9256 & \\
+        $\pi\,\,\text{EM}$& 10.11 & 53.58 & 2.930 & 1.318 & 0.8463 & \\
+        $\pi + e$& 283.8 & 3.171$\times10^4$ & 
+        2.550$\times10^{-6}$ & 1.995$\times10^{-8}$ & 
+        6.222$\times10^{-6}$ & \\
+        $\pi + \mu$& 18.58 & 262.3 & 
+        0.1411 & 1.202$\times 10^{-2}$ &
+        1.732$\times10^{-2}$& \\
+        $\pi + \ell + \nu_\ell$& 28.92 & 188.8 &
+        0.2262  & 6.847$\times 10^{-2}$ &
+        5.264$\times10^{-3}$& \\
         \hline
     \end{tabular}
 \end{table}

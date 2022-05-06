@@ -36,7 +36,7 @@ def gen_eos_list():
     # Can only interpolate with unique points
     assert np.sum(np.diff(plst)>0) == len(plst)-1
     assert np.sum(np.diff(ulst)>0) == len(ulst)-1
-    np.save("pion_star/data/eos", [x, plst, ulst])
+    np.save("pion_star/data/eos", [y, plst, ulst])
 
 
 def u_nr(p):
@@ -56,8 +56,11 @@ uEM = lambda x, D: 1/2 * (
 
 
 def gen_eos_list_EM():
-    y = np.logspace(-3, 5, N)
-    y = np.concatenate([[0,], y])
+    r = (-4.4 , 10)
+    y = np.logspace(*r, N-1, dtype=np.longdouble()) 
+    y = np.concatenate([[0.,], y])
+
+
     x = 1 / sqrt(1 + D + y**2)
 
     ulst = uEM(x, D)
@@ -67,7 +70,7 @@ def gen_eos_list_EM():
     assert len(np.unique(plst)) == len(plst)
     assert len(np.unique(ulst)) == len(ulst)
 
-    np.save("pion_star/data/eos_EM", [x, plst, ulst])
+    np.save("pion_star/data/eos_EM", [y, plst, ulst])
 
 
 if __name__=="__main__":

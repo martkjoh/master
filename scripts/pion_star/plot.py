@@ -35,6 +35,7 @@ def get_data(sols):
     return data
 
 
+# TODO: Fix for new data-structure
 def plot_pressure_mass(name=""):
     all_sols = load_sols(name)
     sols = all_sols[30:180:8]
@@ -44,11 +45,9 @@ def plot_pressure_mass(name=""):
     [a.grid(linestyle="--", alpha=1, lw=0.4) for a in ax]
     p0s = []
     for i, s in enumerate(sols):
-        p, m = s.y
+        p, m = s["f"]
         r = s.t
-        R = r[-1]
-        M = m[-1]
-        p0 = p[0]
+        R, M, p0 = s["R"], s["M"], s["pc"]
         p0s.append(p0)
 
         c = cm.viridis(i/N)
@@ -341,7 +340,7 @@ def plot_eos_EM():
 
 
 def plot_u_p():
-    from pion_star_eos import u, p, uEM, pEM, D
+    from chpt_numerics.chpt_eos import u, p, uEM, pEM, D
     fig, ax = plt.subplots(1, 2, figsize=(15, 5))
 
     N = 200
@@ -582,11 +581,20 @@ def plot_nlo():
 def test():
 
     fig, ax = plt.subplots(figsize=(16, 6))
-    pmins = [0.1, 0.01, 0.001]
+
+    # name = "data_brandt/MR_pilnu.txt"
+    # data = np.loadtxt(name, unpack=True)
+    # M, err_M, R, err_R, stable = data
+    # color="purple"
+    # label="$\\pi+\ell+\\nu_\\ell$"
+    # ax.fill_between(R, M-err_M, M+err_M, color=color, label=label, alpha=0.3)
+    # ax.fill_betweenx(M, R-err_R, R+err_R, color=color, alpha=0.3)
+
+    pmins = [0.1, 0.015, 0.001]
     names = ["_light_%.2e"%pmin for pmin in pmins]
     names.append("_neutrino")
-
-    for name in names:
+    line = ["r", "b", "g", "k--"]
+    for i, name in enumerate(names):
         sols = load_sols(name=name)
         N = len(sols)
         data = get_data(sols)
@@ -594,14 +602,18 @@ def test():
         u0, m0, r0 = get_const_pion()
         R, M, pc = [np.array(d) for d in data]
         x, y, z = R*r0, M*m0, log(pc)
-        ax.loglog(x[1::], y[1::])
+        if i<3:label = "$p_\\mathrm{min}=%.1e$"%pmins[i]
+        else: label = "$\\pi\\ell\\nu_\\ell$"
+        ax.loglog(x, y, line[i], label=label)
     
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
+    plt.legend()
 
     fig.savefig("figurer/pion_star/mass_radius_light.pdf", bbox_inches="tight")
 
 
+# TODO: fix these
 # plot_pressure_mass()
 # plot_pressure_mass(name="_EM")
 
@@ -623,10 +635,11 @@ def test():
 # plot_neutrino()
 
 # plot_all()
-# test()
 
 # plot_nlo_quantities()
 # plot_eos_nlo()
 
 # plot_mass_radius("_nlo", rmax=False)
-plot_nlo()
+# plot_nlo()
+
+test()
