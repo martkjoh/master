@@ -5,11 +5,22 @@ import sys
 sys.path.append(sys.path[0] + "/..")
 from constants import D
 
+
+# first approx to alpha as a function of mu_I, analytical result
+def alpha_0(mu):
+    mu = np.atleast_1d(mu).astype(float)
+    morethan_m = mu**2 > np.ones_like(mu)
+    a = np.zeros_like(mu)
+    a[morethan_m] = np.arccos((1/mu[morethan_m]**2))
+    return a
+
+
 xrange = (0, 5) 
 N = 1_000
 
 p = lambda x: 1/2 * (x - 1/x)**2
-u = lambda x: 1/2 * (2 + 1/x**2 - 3*x**2)
+u = lambda x: 1/2 * (2 + 1/x**2 - 3*x**2) 
+nI = lambda x: (1/x**2 - x**2)*x
 
 
 def gen_eos_list():
@@ -26,7 +37,6 @@ def gen_eos_list():
     assert np.sum(np.diff(plst)>0) == len(plst)-1
     assert np.sum(np.diff(ulst)>0) == len(ulst)-1
     np.save("pion_star/data/eos", [x, plst, ulst])
-
 
 
 def u_nr(p):

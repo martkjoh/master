@@ -9,7 +9,8 @@ from matplotlib import pyplot as plt
 from tqdm import tqdm
 import sys
 
-sys.path.append(sys.path[0] + "/..")
+if __name__=="__main__":
+    sys.path.append(sys.path[0] + "/..")
 from integrate_tov import get_u
 from constants import m_pi, m_rho, Lr as Lr_num
 from nlo_const import get_nlo_const
@@ -113,7 +114,7 @@ F_ln = \
 
 dF_fin = 1 / (2 * pi)**2 * p**2 * (
     sqrt(Epip_sq) + sqrt(Epim_sq) - sqrt(E1_sq) - sqrt(E2_sq)
-    ) / u0
+) / u0
 
 
 F1 = (
@@ -125,29 +126,29 @@ F1 = (
 def get_total_nlo(F1, dF_fin):
     F_fin = f_from_df(dF_fin)
     g = l(F1)
-
     return lambda muI, a: g(muI, a) + F_fin(muI, a)
-
 
 
 ##############
 # find alpha #
 ##############
-def gen_alpha(N=1000, r=(0, 5)):
+def gen_alpha(N=1000, r=(-8, np.log10(5.5))):
     ### Free energy diff alpha
 
     F1_diff_a = F1.diff(a)
     dF_fin_diff_a = dF_fin.diff(a)
     F_diff_a = get_total_nlo(F1_diff_a, dF_fin_diff_a)
 
-    mus = np.linspace(*r, N) * m_pi
+    x0 = np.linspace(0, 1, 100)
+    x = 1+np.logspace(*r, N-100) # change 1 to point of phase transition?
+    x = np.concatenate([x0, x])
+
+    mus = x * m_pi
+
     alphas = np.empty_like(mus)
     for i, mu in enumerate(tqdm(mus)):
         a0 = alpha_0(mu/m_pi)[0]
-        F_diff_a_of_a = lambda ai: F_diff_a(mu, ai)
-        a1, r = newton(F_diff_a_of_a, a0, full_output=True)
-        print((a0, a1, mu/(4*np.pi*f_pi)))
-        print(r)
+        a1, r = newton(lambda ai: F_diff_a(mu, ai), a0, full_output=True)
         alphas[i] = a1
 
     alphas = np.array(alphas)
@@ -187,143 +188,56 @@ def gen_nI():
     F_diff_muI = get_total_nlo(F1_diff_muI, dF_fin_diff_muI)
 
     mus, alphas = np.load("pion_star/data/nlo_mu_alpha.npy")
-    nuIs = np.array([-F_diff_muI(mu, a) for mu, a in zip(mus, alphas)])
-    np.save("pion_star/data/nlo_nI", nuIs)
-
-    plt.plot(mus/m_pi, nuIs*m_pi)
-    def n(mu):
-        n=np.zeros_like(mu)
-        mask = mu>1
-        n[mask]=(mu[mask]**2 - 1/mu[mask]**2)/mu[mask]
-        return n
-    plt.plot(mus/m_pi, n(mus/m_pi))
-    plt.show()
+    nI = np.array([-F_diff_muI(mu, a)*m_pi for mu, a in zip(mus, alphas)])
+    np.save("pion_star/data/nlo_nI", nI)
 
 
-def gen_F():
+def gen_p():
     mus, alphas = np.load("pion_star/data/nlo_mu_alpha.npy")
-    
-        
-    def F0(mu):
-        a0 = alpha_0(mu/m_pi)
-        return -f_pi**2/2*(mu**2*np.sin(a0)**2 + 2*m_pi**2*np.cos(a0) + m_S**2)
-        
-    plt.plot(mus/m_pi, F0(mus)/u0, label="F0")
+    F = get_total_nlo(F1, dF_fin)
+    P = np.array([-F(mu, a) + F(0, 0) for mu, a in zip(mus, alphas)])
+    np.save("pion_star/data/nlo_p", P)
 
-
-    F_0_2_num = l(F_0_2)
-    F_0_4_num = l(F_0_4)
-    F_ln_num = l(F_ln)
-    F_fin_num = f_from_df(dF_fin)
-    Fs = [
-        F_0_2_num, 
-        F_0_4_num, 
-        F_ln_num,
-        F_fin_num
-        ]
-
-
-    Fs_array = [[F(mu, a) for mu, a in zip(mus, alphas)] for F in Fs]
-    labels = [
-        "F02", 
-        "F04", 
-        "Fln",
-        "Ffin"]
-    [plt.plot(mus/m_pi, F_array, label= labels[i]) for i, F_array in enumerate(Fs_array)]
-
-
-    F1 = np.sum(np.array(Fs_array), axis=0)
-    plt.plot(mus/m_pi, F1, label="F1")
-
-    plt.legend()
-    plt.show()
 
 
 def gen_u():
     mus, alphas = np.load("pion_star/data/nlo_mu_alpha.npy")
     nI = np.load("pion_star/data/nlo_nI.npy")
-    p = np.load("pion_star/data/nlo_p.npy")
-    
-    u = -p + mus*nI
+    P = np.load("pion_star/data/nlo_p.npy")
+    u = -P + mus/m_pi*nI
 
     np.save("pion_star/data/nlo_u", u)
 
-    plt.plot(p, u, "k--")
-    plt.show()
 
-
-def gen_eos(r=(-10, 0.7)):
+def gen_eos():
     N = 1000
-
-    alpha = get_alpha_nlo()
-
-    # x = 1+np.logspace(*r, N-1)
-    # x = np.concatenate([[1.,], x])
-    # i = np.where(alpha(x)>1e-10)[0][0]
-    # x_min = x[i]
-
-    x_min = 1
-
-    x = x_min+np.logspace(*r, N-1)
-    x = np.concatenate([[x_min,], x])
-    a = alpha(x)
-    mu = x*m_pi
-
-    F1_diff_muI = F1.diff(muI)
-    dF_fin_diff_muI = dF_fin.diff(muI)
-    F_diff_muI = get_total_nlo(F1_diff_muI, dF_fin_diff_muI)
-    nI = np.array([-F_diff_muI(x, y) for x, y in zip(mu, a)])
+    mus, alphas = np.load("pion_star/data/nlo_mu_alpha.npy")
+    x = mus/m_pi
+    P = np.load("pion_star/data/nlo_p.npy")
+    u = np.load("pion_star/data/nlo_u.npy")
     
-    F = get_total_nlo(F1, dF_fin)
-    p = np.array([-F(x, y) + F(0, 0) for x, y in zip(mu, a)])
-    u = -p+mu*nI
-
-    mask = (p>1e-10)
+    # The transition do not happen exactly at m_pi, it only does so to
+    # NLO. NNLO terms may contribute numrically. These filte out terms 
+    # before in the vacuum phase
+    mask = (P>1e-10)
     i = np.where(np.logical_not(mask))[0][-1]
     mask[i] = True # Add one (0, 0) point
-    p = p[mask]
+    P = P[mask]
     u = u[mask]
     x = x[mask]
-    print(p)
-    print(i)
-
-    assert np.sum(np.diff(p)>0) == len(p)-1
+    
+    # Both p and u should be strictly increasing
+    assert np.sum(np.diff(P)>0) == len(P)-1
     assert np.sum(np.diff(u)>0) == len(u)-1
 
-    np.save("pion_star/data/eos_nlo", [x, p, u])
-    return p, u
+    np.save("pion_star/data/eos_nlo", [x, P, u])
+
 
 
 
 if __name__=="__main__":
-    print(4*np.pi*f_pi/m_pi)
-    mus, alpha = gen_alpha(N=100, r=(1, 8))
-    # mus, alpha = gen_alpha(N=1000, r=(.9, 1.1))
-    # x = mus/m_pi
-    x = np.linspace(.9, 1.1, 10000)
-    alpha = get_alpha_nlo()
-    plt.plot(x, alpha_0(x), "k--")
-    plt.plot(x, alpha(x))
-    plt.show()
-
-    ##
-
-    # gen_alpha(N = 1000, r=(0, 7))
-    # gen_eos() 
-
-    # _, p, u = np.load("pion_star/data/eos_nlo.npy")
-    # p = np.linspace(0, 1e-4, 10000)
-    # u = get_u("pion_star/data/eos_nlo.npy")
-    # plt.plot(p, u(p))
-    # plt.show()
-
-    # save_eos(r=(-6, 0.5))
-
-    # _, P, u2 = np.load("pion_star/data/eos_nlo.npy")
-    # print(P)
-    # plt.plot(P, u2)
-
-    # u1 = get_u("pion_star/data/eos_nlo.npy")
-    # plt.plot(P, u1(P), "k--")
-
-    # plt.show()
+    # gen_alpha()
+    gen_nI()
+    gen_p()
+    gen_u()
+    gen_eos() 

@@ -55,7 +55,7 @@ def get_u(name):
 
 def integrate(
     u, pcs, 
-    dense_output=True, 
+    dense_output=False,
     max_step=0.001, 
     r_max=1e3, 
     newtonian_limit=False, 

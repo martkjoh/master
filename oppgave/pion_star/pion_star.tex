@@ -1,13 +1,16 @@
-We apply the results from \autoref{chapter: thermodynamics} to study the properties of pion stars.
+As we found in \autoref{section: TOV equation}, the Tolman-Oppenheimer-Volkoff equation, \autoref{TOV}, determines the pressure as a function of the radius of a star given the equation of state and the central pressure.
+From \autoref{chapter: thermodynamics}, we have various equations of state for the pion condensate.
+In this chapter, we will apply these results to study pion stars, bosonic stars composed of a gravitationally bound pion condensate, first proposed by \citeauthor{brandtNewClassCompact2018}~\autocite{brandtNewClassCompact2018}.
 
-\section{Leading-order results}
 
-We start with the most simple model, using the leading order equation of state with $e = 0$.
-We can gain some insights by reviewing the units of the problem.
+
+\section{Units and limiting radius}
+
+We can gain some insights by reviewing the characteristic quantities of the problem.
 The characteristic mass and length, as discussed in \autoref{section: TOV equation}, are found by setting $k_1 = k_2 = k_3 = 1$.
 These are the dimensionless constants of the TOV equation, \autoref{dimensionless constants TOV}.
 At leading order, the bare constants $f$ and $\bar m$ are related to physical constants by $f = f_\pi$ and $m = m_\pi$, the pion decay constant and the pion mass.
-Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} and reinstating $c$ and $\hbar$, these quantities are give in by
+Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} and reinstating $c$ and $\hbar$, these quantities are given by
 %
 \begin{align}
     u_0 & =m_\pi^2 f_\pi^2 \frac{c}{\hbar^3}
@@ -19,9 +22,9 @@ Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} an
 We, therefore, expect both the radius and mass of the pion star to be around one order of magnitude larger than the star made up of cold neutrons.
 \todo[inline]{Can we make a better argument by setting gravitational + internal energy equal 0?}
 
-\subsection{Limiting radius}
 
-We found that the non-relativisitc limit of the equation of state is $\tilde p =8^{-1} \tilde u^2$, i.e., it is a polytrope with $\gamma = 2$.
+In \autoref{section: thermodynamics leading order}, we found that the leading order, the non-relativistic limit of the equation of state of a pure pion-condensate, without electromagnetic interaction, is $\tilde p =8^{-1} \tilde u^2$.
+That is, it is a polytrope with $\gamma = 2$.
 As discussed in \autoref{subsection: Newtonian limit and polytropes}, this corresponds to a situation where the radius of the star is independent of the central pressure, at least in the Newtonian limit of gravity.
 When simulating the Newtonian, non-relativistic limit of the pion star, we should expect the radius to be constant.
 From \autoref{Radius polytrope}, the radius is $R = C \xi_1$, where
@@ -57,11 +60,29 @@ With this, we get a closed-form expression for the stellar radius of this non-re
     \label{radius pion star nr limit}
     R = \frac{\pi}{\sqrt{12}} r_0 = 85.97 \, \text{km}.
 \end{equation}
+%
+When including electromagnetic interactions, as done in \autoref{subsection: including electromagnetism lo eos}, the non-relativistic equation of state remains a polytrope with $\gamma=2$, however with a new constant by a factor $(1+\Delta)^2$, where $\Delta = \Delta m^2_\text{EM}/m_\pi^2$.
+This affects the maximum radius, which now is
+%
+\begin{equation}
+    \label{maximum mass pion star with em interaction}
+    R = \frac{\pi}{\sqrt{12}(1 + \Delta)} r_0 = 80.40 \, \text{km}.
+\end{equation}
+%
+These limits are only available when considering the pion condensate alone, without leptons.
+As we found, the inclusion of leptons will change the low-density limit of the equation of state, and it is only for $\gamma=2$ where the Lane-Emden equation admits a non-zero limit radius of this sort.
 
 
-\subsection{Numerical results}
+\section{Numerical results}
 
-The code used for obtaining numerical results is discussed in \autoref{appendix: code}.
+In this section, we present the results of integrating the TOV-equation numerically.
+The computer code used to obtain these results is discussed in \autoref{appendix: code}.
+
+\subsection{Pion star of pure pion condensate}
+
+
+We start with the simplest case of a pure pion condensate, in which there are only strong interactions, to leading order as described in \autoref{subsection: pure pion condensate}.
+The equation of state of this system is shown in \autoref{fig: equation of state pions}.
 
 \autoref{fig: pressure and mass for pion star} show the pressure and mass as a function of radius for varying values of central pressure.
 The quantities are normalized to the stellar radius, stellar mass, and central pressure, respectively.
@@ -69,40 +90,6 @@ The black dashed line corresponds to the configuration with the maximum mass.
 We see that both the pressure and mass distribution are very similar for stars with a mass less than the maximum.
 As the central pressure increase beyond that of the star with maximum mass, the pressure gradient close to the center grows sharply.
 This is similar to what we saw in the case of an incompressible fluid, \autoref{subsection: incompressible fluid}.
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../scripts/figurer/pion_star/pressure_mass_pion_star.pdf}
-    \caption{
-    Top: The pressure normalized to the central pressure, as a function of radius, normalized to the stellar radius.
-    Bottom: The mass, normalized to the stellar mass, within a radius $r$, normalized to the stellar radius.
-    Both plots show a range of stars with different central pressures, indicated by the color.
-    The black dashed line corresponds to the star with the largest mass.
-    }
-    \label{fig: pressure and mass for pion star}
-\end{figure}
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star.pdf}
-    \caption{
-        The lowest order mass-radius relation a pion star using two-flavor chiral perturbation theory.
-        The mass is given in units of solar masses, while the radius is measured in kilometers.
-        This line is parameterized by the central pressure $p_c$ of the star, as indicated by the color gradient.
-        The dashed black line indicates the theoretical maximum mass for a given radius, and any configuration above it will collapse to a black hole.
-        }
-        \label{fig: mass-radius relation pion star}
-\end{figure}
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_comparison.pdf}
-    \caption{
-        The mass-radius relationship of the pion star from the full, leading-order equation of state from two-flavor chiral perturbation and the TOV equation, compared with results in various limits.
-        }
-        \label{fig: mass-radius relation pion star comparison}
-\end{figure}
-
 
 \autoref{fig: mass-radius relation pion star} shows the mass-radius relation for the pion star.
 As in the case of the neutron star, it has a maximum mass, in this case of $M_\text{max} = 10.47\, M_\odot$.
@@ -114,22 +101,49 @@ We see that the largest radius in our results, corresponding to  $p_c = 10^{-6} 
 In the non-relativistic, Newtonian limit, the stellar radius is independent of the mass, as we found in our earlier analysis.
 
 
-% \FloatBarrier
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../scripts/figurer/pion_star/pressure_mass_pion_star.pdf}
+    \caption{
+    Top: The pressure normalized to the central pressure, as a function of radius, normalized to the stellar radius.
+    Bottom: The mass, normalized to the stellar mass, within a radius $r$, normalized to the stellar radius.
+    Both plots show a range of stars with different central pressures, indicated by the color.
+    The black dashed line corresponds to the star with the largest mass.
+    }
+    \label{fig: pressure and mass for pion star}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star.pdf}
+    \caption{
+        The lowest order mass-radius relation of a pion star using two-flavor chiral perturbation theory.
+        The mass is given in units of solar masses, while the radius is measured in kilometers.
+        This line is parameterized by the central pressure $p_c$ of the star, as indicated by the color gradient.
+        The dashed black line indicates the theoretical maximum mass for a given radius, and any configuration above it will collapse to form a black hole.
+        }
+        \label{fig: mass-radius relation pion star}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_comparison.pdf}
+    \caption{
+        The mass-radius relationship of the pion star from the full, leading-order equation of state from two-flavor chiral perturbation and the TOV equation, compared with results in various limits.
+        }
+        \label{fig: mass-radius relation pion star comparison}
+\end{figure}
+
+
+
+\FloatBarrier
 \subsection{Including electromagnetic contributions}
 
-
-With the results from\autoref{subsection: including electromagnetism lo eos}, the radius of the polytrope and the limiting radius of the full system changes and is now
-%
-\begin{equation}
-    \label{maximum mass pion star with em interaction}
-    R = \frac{\pi}{\sqrt{12}(1 + \Delta)} r_0 = 80.40 \, \text{km}.
-\end{equation}
-
-
+As we found in \autoref{subsection: including electromagnetism lo eos}, the electromagnetic interaction of the pseudoscalar mesons contributes to the equation of state, even at leading order.
 \autoref{fig: pressure and energy with EM interaction} shows the pressure and energy density, normalized to their characteristic quantities, as a function of chemical potential above the critical value, normalized to $\bar m$.
 \autoref{fig: eos chpt em interaction} shows the equation of state.
 The results with and without electromagnetic results are compared.
-We see that the inclusion of electromagnetic contributions results in a less stiff equation of state; a given pressure correspond to a higher energy density when including electromagnetic interactions.
+We see that the inclusion of electromagnetic contributions results in a less stiff equation of state; a given pressure corresponds to a higher energy density when including electromagnetic interactions.
 
 \autoref{fig: mass-radius relation leading order pion star with em interaction} shows the mass-radius reaction of the pion star when the electromagnetic interaction is taken into account.
 We see that the shape of the curve has not changed much from our earlier result. 
@@ -164,32 +178,31 @@ As discussed in \autoref{section: cold fermi star}, we expect a stiffer equation
 
 
 \FloatBarrier
-
-
 \subsection{Charge neutral stars}
 
 
 We now apply the results from \autoref{section: charge neturality}, where we added a lepton to enforce charge neutrality.
-The star with electrons is shown in  \autoref{fig: mass radius relation with electrons}.
+As the electromagnetic force is long-range, we should expect any macroscopic astronomical object to be charge neutral.
+First, we apply the system of pions and one charged lepton.
+The star with electrons is shown in \autoref{fig: mass-radius relation with electrons}.
 We see that this star is much larger than those made of only pions.
 This is because the light electrons make the equation of state stiffer at low pressures.
-The non-relativisitic equation of state is now a polytrope with $\gamma = \frac{5}{3}$, instead of $\gamma = 2$, and there is therefore no upper limit on the radius.
+The non-relativistic equation of state is now a polytrope with $\gamma = \frac{5}{3}$, instead of $\gamma = 2$, and there is, therefore, no upper limit on the radius.
 The maximum mass is now $238\, M_\odot $, and the corresponding maximum radius is $ 3.11\times 10^4 \,\text{km}$.
+
+The mass-radius relation for a star where the lepton is a muon is shown in \autoref{fig: mass-radius relation with muons}.
+This has a similar form to that where the lepton was the electron, only smaller and lighter, as the equation of state, in this case, is less stiff.
+The maximum mass is now $18.6\, M_\odot $, and the corresponding maximum radius is $ 262 \,\text{km}$.
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_radius__e.pdf}
     \caption{
-        The mass-radius relation of pion stars with electrons to enforce charge neutrality.
+        The mass-radius relation of pion stars with electrons enforcing charge neutrality.
         The radius is given in kilometers and the mass in units of solar masses.
         }
-        \label{fig: mass radius relation with electrons}
+        \label{fig: mass-radius relation with electrons}
 \end{figure}
-
-
-The mass radius relation for a star where the lepton is a muon is shown in \autoref{fig: mass radius relation with muons}.
-This has a similar form to that where the lepton was the electron, only smaller and lighter, as the equation of state in this case is less stiff.
-The maximum mass is now $18.6\, M_\odot $, and the corresponding maximum radius is $ 262 \,\text{km}$.
 
 \begin{figure}[!htb]
     \centering
@@ -198,7 +211,7 @@ The maximum mass is now $18.6\, M_\odot $, and the corresponding maximum radius 
         The mass-radius relation of pion stars, including leptons to enforce charge neutrality, is compared with pion stars of only pions.
         The radius is given in kilometers and the mass in units of solar masses.
         }
-        \label{fig: mass radius relation with muons}
+        \label{fig: mass-radius relation with muons}
 \end{figure}
 
 
@@ -206,11 +219,11 @@ The maximum mass is now $18.6\, M_\odot $, and the corresponding maximum radius 
 \subsection{Neutrinos}
 
 In \autoref{subsection: neutrinos}, we found the equation of state when including neutrinos in addition to charged leptons and the decay of pions due to the weak force.
-In this case, the pressure and energy density does not vanish as the isospin density vanish, but rather and $p = p_\text{min}>0$ as defined in \autoref{p min}
-This is due to the contribution from neutrinos.
+In this case, the pressure and energy density does not vanish as the isospin density vanish, but rather as $p = p_\text{min}>0$ as defined in \autoref{p min}
+This is due to the contribution of neutrinos.
 We therefore define the stellar radius $R$ by $p(R) = p_\text{min}$, where the pion condensate vanishes.
 Such a star will therefore have an atmosphere of ultrarelativistic neutrinos.
-For $p < p_\text{min}$, the equation of state is that of massless fermions and will therefore not have a finite radius.\todo[]{Vise dette?}
+For $p < p_\text{min}$, the equation of state is that of massless fermions and will therefore not have a finite radius.
 There is a $p+u$ on the right-hand side of the TOV equation, \autoref{TOV}.
 When we defined the stellar radius by $p(R) = 0$, this factor vanishes as we approach the surface of the star, while now $p+u \geq 4 p_\text{min}$.
 Close to the surface, the pressure will therefore fall faster, as a consequence of $p_\text{min}>0$.
@@ -228,7 +241,38 @@ We see that, in contrast to the earlier results, both the mass and radius approa
         \label{fig: mass radius neutrino}
 \end{figure}
 
-All results are compared in \autoref{fig: mass radius relation with leptons}.
+
+\subsection{NLO pion condensate}
+
+We now use the next-to-leading order results for the pure pion condensate, which we found in \autoref{section: nlo thermodynamics}.
+The mass-radius relationship, in this case, is shown in \autoref{fig: mass-radius relation nlo}.
+THe maximum mass is $M_\text{max} = 9.94\, M_0$, and the corresponding radius is $R = 54.09\,\text{km}$.
+In \autoref{fig: mass-radius relation compare nlo}, we compare the leading order and next-to-leading order mass-radius relations.
+The results are similar, however, the next-to-leading order star is smaller and less massive, as is expected for a less stiff equation of state.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star_nlo.pdf}
+    \caption{The mass-radius relation of a pion star with the next-to-leading order equation of state.}
+    \label{fig: mass-radius relation nlo}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/pion_star/mass_compare_order.pdf}
+    \caption{
+        The mass-radius relation of a pion star using the leading and next-to-leading order equation of state is compared. 
+        The mass is given in solar masses and the radius in kilometers.}
+    \label{fig: mass-radius relation compare nlo}
+\end{figure}
+
+
+
+\section{Comparison and key values}
+
+
+
+All results are compared in \autoref{fig: mass-radius relation with leptons}.
 
 \begin{figure}[!htb]
     \centering
@@ -237,25 +281,28 @@ All results are compared in \autoref{fig: mass radius relation with leptons}.
         The mass-radius relation of pion stars, including leptons to enforce charge neutrality, is compared with pion stars of only pions.
         The radius is given in kilometers and the mass in units of solar masses.
         }
-        \label{fig: mass radius relation with leptons}
+        \label{fig: mass-radius relation with leptons}
 \end{figure}
 
 
-\subsection{Key values}
+Key values for each system are shown in \autoref{table: key values}.
 
 
 \begin{table}[!htb]
     \centering
     \caption{The values of various quantities at for the maximum mass stars}
+    \label{table: key values}
     \begin{tabular}{c  c  c  c  c c c}
         \hline \hline
-        & $M_\text{max}/M_\odot$ & $R / \text{km}$ & $u/u_0$ & $p/u_0$ & $\mu_I/m_\pi-1$ & $\mu_\ell/m_\ell-1$ \\
+        system & $M_\text{max}/M_\odot$ & $R / \text{km}$ & $u/u_0$ & $p/u_0$ & $\mu_I/m_\pi-1$ & $\mu_\ell/m_\ell-1$ \\
         \hline
-        $\pi$& 10.47 & 55.38 & 2.865 & 1.318 && \\
+        $\pi\, \text{LO}$& 10.47 & 55.38 & 2.865 & 1.318 && \\
+        $\pi\, \text{NLO}$& 9.04 & 54.09 &  &  && \\
         $\pi + \text{EM}$& 10.11 & 53.58 &&&& \\
         $\pi + e$& 283.8 & $3.171 \times10^4$ & $2.550\times10^{-6}$ & $1.995\times10^{-8}$ && \\
         $\pi + \mu$& 18.58 & 262.3 & 0.1412 & $1.202\times 10^{-2}$ && \\
-        $\pi + \ell + \nu_\ell$& 28.92 & 188.8 &  &  &&
+        $\pi + \ell + \nu_\ell$& 28.92 & 188.8 &  &  && \\
+        \hline
     \end{tabular}
 \end{table}
 

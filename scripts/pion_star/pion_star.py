@@ -17,12 +17,11 @@ def sim():
     sols = integrate(u, pcs, max_step=max_step, dense_output=True)
     np.save("pion_star/data/sols", sols)
 
-n = 101
-pcs = 10**np.linspace(-3, 1, n)
-# pcs = np.array([1,])
 def sim_nlo():
     u = get_u("pion_star/data/eos_nlo.npy")
-    max_step = 1e-3
+    max_step = 5e-4
+    n = 201
+    pcs = 10**np.linspace(-6, np.log10(30), n)
     sols = integrate(u, pcs, max_step=max_step)
     np.save("pion_star/data/sols_nlo", sols)
 
@@ -99,7 +98,6 @@ def sim_light(max_step=1e-3, info=False):
 sim_nlo()
  
 # sim_EM()
-
 # sim_e(max_step=1e0)
 # sim_mu(max_step=1e-2)
 # sim_neut()

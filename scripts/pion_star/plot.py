@@ -6,9 +6,10 @@ from numpy import pi, sqrt, log10 as log
 from matplotlib import cm, colors, collections
 
 sys.path.append(sys.path[0] + "/..")
-from chpt_numerics.chpt_eos import u_nr, u_ur, p
+from chpt_numerics.chpt_eos import u_nr, u_ur, p, u, nI
 from integrate_tov import get_u
-from constants import get_const_pion
+from constants import get_const_pion, m_pi
+from chpt_numerics.chpt_eos import alpha_0
 
 from scipy.stats import linregress
 
@@ -150,7 +151,7 @@ def plot_gradient(x, y, z, ax, fig, zr=None, add_cb=True):
         cb.set_label(label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
 
 
-def plot_mass_radius(name=""):
+def plot_mass_radius(name="", rmax=True):
     sols = load_sols(name)
     N = len(sols)
     data = get_data(sols)
@@ -171,9 +172,10 @@ def plot_mass_radius(name=""):
         + "\, \mathrm{km})$ "
     ax.plot(R[i]*r0, M[i]*m0, "kx", ms=10, label=label) 
 
-    i = np.argmax(R)
-    label ="$R_\\mathrm{max} = " + "{:.3f}".format(R[i]*r0) + "\, \mathrm{km}$"
-    ax.plot(R[i]*r0, M[i]*m0, "ko", ms=10, label=label) 
+    if rmax:
+        i = np.argmax(R)
+        label ="$R_\\mathrm{max} = " + "{:.3f}".format(R[i]*r0) + "\, \mathrm{km}$"
+        ax.plot(R[i]*r0, M[i]*m0, "ko", ms=10, label=label) 
 
     ax.set_xlim(8, 100)
     ax.set_ylim(0, 15)
@@ -209,21 +211,59 @@ def plot_eos():
     fig.savefig("figurer/pion_star/pion_eos.pdf", bbox_inches="tight")
 
 
+def plot_nlo_quantities():
+    fig, ax = plt.subplots(figsize=(8, 5))
+    
+    mu, alpha = np.load("pion_star/data/nlo_mu_alpha.npy")
+    x = mu/m_pi
+    ax.plot(x, alpha_0(x), "k--", label="$\\alpha_\\mathrm{LO}$")
+    ax.plot(x, alpha, "r-.", label="$\\alpha_\\mathrm{NLO}$")
+
+    ax.set_xlabel("$\\mu_I / m_\pi$")
+    ax.set_ylabel("$\\alpha$")
+
+    ax.set_ylim(-0.08, np.pi/2*1.02)
+    ax.set_xlim(-0.1, 3)
+    
+    plt.legend()
+    fig.savefig("figurer/pion_nlo_alpha.pdf", bbox_inches="tight")
+
+    names = ["p", "u", "nI"]
+    label = ["$p", "$u", "${n_{I,}}"]
+    y_label = ["$p/p_0$", "$u/u_0$", "$n_I/n_0$"]
+    j = np.where(x>=1)[0][0]
+
+    lo_func = [p, u, nI]
+    lo = [np.concatenate([np.zeros_like(x[:j]), f(1/x[j:])]) for f in lo_func]
+    ns = [945, -1]
+    for n in ns:
+        for i, name in enumerate(names):
+            y = np.load("pion_star/data/nlo_"+name+".npy")
+            
+            fig, ax = plt.subplots(figsize=(8, 5))
+            ax.plot(x, lo[i], "k--", label=label[i]+"_\\mathrm{LO}$")
+            ax.plot(x, y, "r-.", label=label[i]+"_\\mathrm{NLO}$")
+            ax.set_ylim(-0.1, 1.05*y[n])
+            ax.set_xlim(-0.1, x[n])
+            ax.set_xlabel("$\\mu_I/m_\pi$")
+            ax.set_ylabel(y_label[i])
+            plt.legend()
+            fig.savefig("figurer/pion_nlo_"+name+"_"+str(n)+".pdf", bbox_inches="tight")
+
+
 def plot_eos_nlo():
     fig, ax = plt.subplots(figsize=(10, 6))
-    p = np.linspace(0, 0.0001, 1000)
+    p = np.linspace(0, 5, 1000)
 
     u = get_u("pion_star/data/eos.npy")
-    ax.plot(p, u(p), "r-.", label="$ u_{\\mathrm{LO}}(p)$")
+    ax.plot(p, u(p), "k--", label="$ u_{\\mathrm{LO}}(p)$")
     u = get_u("pion_star/data/eos_nlo.npy")
-    ax.plot(p, u(p), "k--", label="$ u_\\mathrm{NLO}(p)$")
+    ax.plot(p, u(p), "r-.", label="$ u_\\mathrm{NLO}(p)$")
     ax.set_xlabel("$p / p_0$")
     ax.set_ylabel("$u / u_0$")
 
     ax.legend(loc="upper left")
-    plt.show()
-
-    # fig.savefig("figurer/pion_star/pion_eos_nlo.pdf", bbox_inches="tight")
+    fig.savefig("figurer/pion_eos_nlo.pdf", bbox_inches="tight")
 
 
 def plot_eos_leptons():
@@ -518,20 +558,26 @@ def plot_nlo():
     sols = [
         sol1,
         sol2
-        ]
+    ]
     u0, m0, r0 = get_const_pion()
-
-    for sol in sols:
+    label = ["LO", "NLO"]
+    line = ["k--", "r-."]
+    for i, sol in enumerate(sols):
         data = get_data(sol)
 
         R, M, pc = [np.array(d) for d in data]
+        imin = np.where(pc>1e-5)[0][0]
+        imax = np.where(pc>2.9e1)[0][0]
         x, y, z = R*r0, M*m0, log(pc)
-        ax.plot(x, y)
+        x, y, z = x[imin:imax], y[imin:imax], z[imin:imax]
+        ax.plot(x, y, line[i], label=label[i])
 
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
-    plt.show()
-    # fig.savefig("figurer/pion_star/mass_radius_light.pdf", bbox_inches="tight")
+    ax.set_title("$p_c/p_0 \\in [10^{-5}, 30]$")
+
+    plt.legend()
+    fig.savefig("figurer/pion_star/mass_compare_order.pdf", bbox_inches="tight")
 
 def test():
 
@@ -579,6 +625,8 @@ def test():
 # plot_all()
 # test()
 
-plot_eos_nlo()
+# plot_nlo_quantities()
+# plot_eos_nlo()
 
-# plot_nlo()
+# plot_mass_radius("_nlo", rmax=False)
+plot_nlo()

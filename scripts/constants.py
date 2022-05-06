@@ -46,16 +46,16 @@ m_pipm_SI = m_pipm*MeV/c**2
 
 # nlo coupling constants
 Lr = np.array([
-    -3.4,       # H_2
-    1.,          # L_1
-    1.6,        # L_2
-    -3.8,       # L_3
-    0.,          # L_4
-    1.2,        # L_5
-    0.,          # L_6
-    0.,          # L_7, not in use. Only here for right indexing
-    0.5         # L_8
-]) * 1e-3 
+    -3.4,   # H_2
+    1.,     # L_1
+    1.6,    # L_2
+    -3.8,   # L_3
+    0.,     # L_4
+    1.2,    # L_5
+    0.,     # L_6
+    0.,     # L_7, not in use. Only here for right indexing
+    0.5     # L_8
+]) * 1e-3
 
 
 def get_const_fermi_gas():
@@ -128,4 +128,5 @@ if __name__=="__main__":
     # print(( hbar * c / (2* G * m_pi**2) )**(3 / 2) * m_pi / M0)
 
     # print(Dm**4/m_K0**4)
+    print(4*pi*78.55/m_pi)
 

@@ -1,4 +1,5 @@
-\section{Next-to-leading order contribution}
+\section{Next-to-leading results}
+\label{section: nlo thermodynamics}
 
 
 The next-to-leading order contributions to free energy are of two types.
@@ -50,16 +51,16 @@ Writing the trace on integral form, the contributions from the neutral pion and 
 %
 \begin{align}
     \Eff_{\pi^0}^{(1)}
-    = -i\frac{1}{2} \int \frac{\dd^4 p}{(2\pi)^4}\, \ln(-p^2 + m_3^2), \quad
+    = -i\frac{1}{2} \int \frac{\dd^4 p}{{(2\pi)}^4}\, \ln(-p^2 + m_3^2), \quad
     \Eff_{\eta}^{(1)}
-    = -i\frac{1}{2} \int \frac{\dd^4 p}{(2\pi)^4}\, \ln(-p^2 + m_8^2).
+    = -i\frac{1}{2} \int \frac{\dd^4 p}{{(2\pi)}^4}\, \ln(-p^2 + m_8^2).
 \end{align}
 %
 As shown in \autoref{section: integral}, we may rewrite integrals of this form,
 %
 \begin{equation}
-    -i\frac{1}{2} \int \frac{\dd^4 p}{(2\pi)^4}\, \ln(-p_0^2 + E^2)
-    = \frac{1}{2} \int  \frac{\dd^3 p}{(2\pi)^3 } \, E.
+    -i\frac{1}{2} \int \frac{\dd^4 p}{{(2\pi)}^4}\, \ln(-p_0^2 + E^2)
+    = \frac{1}{2} \int  \frac{\dd^3 p}{{(2\pi)}^3 } \, E.
 \end{equation}
 %
 We see that the result is what we would expect physically; the total energy is the integral of each mode's energy.
@@ -90,7 +91,7 @@ Using the identity $\ln\{\det(A)\} = \Tr{\ln(A)}$, and spectrum we found in \aut
     \Eff_{\pi^\pm}^{(1)}
     = - \frac{i}{VT}\frac{1}{2}\Tr{\ln(-D_{12}^{-1})}
     =
-    \frac{1}{2} \int  \frac{\dd^3 p}{(2\pi)^3 } \, (E_{\pi^+} + E_{\pi^-}).
+    \frac{1}{2} \int  \frac{\dd^3 p}{{(2\pi)}^3 } \, (E_{\pi^+} + E_{\pi^-}).
 \end{equation}
 %
 However, the similarities stop here, as the spectra of the charged pions are much more complicated,
@@ -124,9 +125,9 @@ If we then add $0 = f(|\vv p|) - f(|\vv p|)$ to the integrand, we can isolate th
 \begin{equation}
     \Eff_{\pi^\pm}^{(1)}
     = 
-    \frac{1}{2} \int \frac{\dd^3 p}{(2\pi)^3} 
+    \frac{1}{2} \int \frac{\dd^3 p}{{(2\pi)}^3} 
     \left[E_{\pi^+} + E_{\pi^- } - f(|\vv p|)\right]
-    + \frac{1}{2} \int \frac{\dd^3 p}{(2\pi)^3} f(|\vv p|)
+    + \frac{1}{2} \int \frac{\dd^3 p}{{(2\pi)}^3} f(|\vv p|)
     = \Eff^{(1)}_{\mathrm{fin}, \pipm } + \Eff^{(1)}_{\mathrm{div}, \pipm}.
 \end{equation}
 %
@@ -210,7 +211,7 @@ We then define the finite integral
 \begin{equation}
     \Eff^{(1)}_{\mathrm{fin}, \pipm}
     = 
-    \frac{1}{2} \int \frac{\dd^3 p}{(2\pi)^3} (E_{\pi^+} + E_{\pi^-} - E_1 - E_2),
+    \frac{1}{2} \int \frac{\dd^3 p}{{(2\pi)}^3} (E_{\pi^+} + E_{\pi^-} - E_1 - E_2),
 \end{equation}
 
 The charged kaon contribution is
@@ -341,7 +342,7 @@ The leading-order, one-loop contribution to the free energy is
 \end{align}
 %
 This contribution, however, is not finite as $\epsilon\rightarrow 0$.
-We must therefore include couter-terms from the higher order Lagrangian.
+We must therefore include counter-terms from the higher-order Lagrangian.
 
 
 \subsection{Renormalization}
@@ -424,23 +425,23 @@ Here, the mass terms are
 Notice that divergent $1/\epsilon$-terms cancel exactly, and the total NLO contribution is therefore finite even as $\epsilon\rightarrow 0$, as expected.
 Furthermore, all dependence on the unphysical parameter $\mu$ has vanished, and only the renormalized coupling constants and the mass $M$ at which they are defined remain.
 
-We also need the relationships between the bare constants that appear in the Lagrangian and their corresponding physical constants.
+ When evaluating the free energy and quantities derived from it, wee need the NLO relationship between the bare constants that appear in the Lagrangian and the physical constants.
 For numerical results, we will consider $\Delta m = 0$.
 This is done in the QCD-lattice research and allows for easier comparison with those results~\autocite{brandtNewClassCompact2018}.
 Furthermore, we expect this to have marginal effects on our results, as $\Delta m$ do not affect the results until NLO.
-After setting $\Delta m = 0$, we are left with the bare masses $\bar m$ and $m_S$, as well as the bare decay constant $f_\pi$.
-Given a choice of three physical constants to determine these, we will be able to predict other constants.
-We must therefore use measured values of \emph{only} three constants, as more would lead to an overdetermined system of equations and inconsistencies.
+After setting $\Delta m = 0$, we are left with three independent bare constants, $\bar m$, $m_S$, and $f$.
+We must therefore use physical values of three constants, as more would lead to an overdetermined system of equations and inconsistencies.
 As we work in with a pion condensate without electromagnetic interactions, it is natural to choose the neutral pion mass $m_\pio$ and the pion decay $f_\pi$, whose values can be found in \autoref{section: units}.
-In addition, we choose the mass of the neutral kaon, $m_{\Ko}$, to determine $m_S$.
-Now that $\Delta m = \Delta m_\text{EM} = 0$, the leading order kaon mass is $m_{K,0}^2 = m_{\Ko,0}^2 = m_{\Kpm,0}^2 = (\bar m + m_S)/2$.
-The NLO relationships that determin the bare parameters are~\autocite{gasserChiralPerturbationTheory1985}
+As we assume $\Delta m = 0$ and no electromagnetic interaction, the charged and neutral kaon masses are equal. \todo[]{Gjelder dette kunn på tree-level?}
+We, therefore, define $m_{K,0}^2 := (\bar m + m_S)/2$, and choose the neutral kaon mass as the last physical constant.
+The NLO relationships that determine the bare parameters are~\autocite{gasserChiralPerturbationTheory1985}
 %
 \begin{align}
+    \nonumber
     m_\pi^2 
     =&\, 
     m_{\pi,0}^2
-    \left[
+    \Bigg[
         1
         +
         \left(
@@ -448,7 +449,8 @@ The NLO relationships that determin the bare parameters are~\autocite{gasserChir
             +
             \frac{1}{2(4\pi)^2}
             \ln\frac{m_{\pi,0}^2}{M^2}
-        \right)\frac{m_{\pi,0}^2}{f^2}
+        \right)\frac{m_{\pi,0}^2}{f^2}\\ 
+        & \quad \quad \quad \quad
         +
         \left(
             24L_6^r - 12L_4^r
@@ -456,7 +458,7 @@ The NLO relationships that determin the bare parameters are~\autocite{gasserChir
             \frac{1}{6(4\pi)^2}
             \ln\frac{m_{\eta,0}^2}{M^2}
         \right)\frac{m_{\eta,0}^2}{f^2}
-    \right] \\
+    \Bigg] \\
     m_{K}
     =&\,
     m_{K,0}^2
@@ -488,19 +490,20 @@ The NLO relationships that determin the bare parameters are~\autocite{gasserChir
 \end{align}
 %
 These three equations allow us to determine $\bar m$, $m_S$ and $f$ to next-to-leading order.
-The solutions for this set of equations are shown in \autoref{table: nlo values}.
+The numerical results are shown in \autoref{table: nlo values}.
 
 \begin{table}[!htb]
     \centering
-    \caption{The leading order and next-to-leading order values for the bare masses and decay constant. Theses values are for $\Delta m = 0$.}
+    \caption{The leading order and next-to-leading order values for the bare masses and decay constant. These values are for $\Delta m = 0$.}
     \label{table: nlo values}
     \begin{tabular}{c c c c}
         \hline \hline
-        quantity & LO[ MeV] & NLO [MeV] & NLO/LO \\
+        Bare constant & LO [MeV] & NLO [MeV] & NLO/LO \\
         \hline
         $f$ & 92.07 & 78.55 & 0.853\\
         $\bar m$ & 134.98 & 135.53 & 1.004 \\
-        $m_S$ & 664.17 & 743.48 & 1.119
+        $m_S$ & 664.17 & 743.48 & 1.119 \\
+        \hline
     \end{tabular}
 \end{table}
 
@@ -508,9 +511,34 @@ The solutions for this set of equations are shown in \autoref{table: nlo values}
 The next-to-leading order relation between $\alpha$ and $\mu_I$ is given by, as explained in \autoref{appendix: consisten expansion},
 %
 \begin{equation}
-    \pdv{\Eff(\mu_I, \alpha)}{\alpha} \Bigg|_{\alpha = \alpha_\text{NLO}} = 0.
+    \left[\pdv*{\Eff_\text{NLO}(\mu_I, \alpha)}{\alpha} \right]_{\alpha = \alpha_\text{NLO}} = 0.
 \end{equation}
 %
-The result is compared to the leading order result in (Fig)
 
+The result is compared to the leading order result in \autoref{fig: nlo quantitites}, together with the derived thermodynamic quantities $n_I$, $p$ and $u$.
+The LO and NLO results for $\alpha$ are very close.
+The NLO results for the thermodynamic quantities are close to the LO results for values of $\mu_I$ close to $m_\pi$, however, the results start to deviate as $\mu_I$ increases.
+This is to be expected, as we are expanding perturbatively in particle energies, and thus also chemical momentum.
+Only as long as $\mu_I$ is smalled compared to $4 \pi f \approx 7.31 \, m_\pi$ can we expect perturbative series to converge. \todo[]{Si hvorfor det er $4 \pi f$?}
+These results indicate that, at least for $\mu_I< 2\,m_\pi$, \chpt\, converges quickly.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.51\textwidth]{../scripts/figurer/pion_nlo_alpha.pdf}
+    \includegraphics[width=.48\textwidth]{../scripts/figurer/pion_nlo_nI_945.pdf}
+    \includegraphics[width=.49\textwidth]{../scripts/figurer/pion_nlo_p_945.pdf}
+    \includegraphics[width=.49\textwidth]{../scripts/figurer/pion_nlo_u_945.pdf}
+    \caption{The next-to-leading order results of various thermodynamic quantities, compared to the leading order results. The characteristic quantities are $p_0 = u_0 = m_\pi n_0 = f_\pi^2 m_\pi^2$, and $\mu_I$ is given in units of $m_\pi$.}
+    \label{fig: nlo quantitites}
+\end{figure}
+
+The next-to-leading order equation of state is shown in \autoref{fig: nlo eos}, where it is compared to the leading order result.
+The NLO equation of state is less stiff than the LO equation of state, and they deviate more as the pressure increases.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.75\textwidth]{../scripts/figurer/pion_eos_nlo.pdf}
+    \caption{The NLO equation of state compared to the LO results. The characteristic quantitites are $u_0 = p_0 = m_\pi^2 f_\pi^2$.}
+    \label{fig: nlo eos}
+\end{figure}
 

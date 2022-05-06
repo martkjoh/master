@@ -6,6 +6,7 @@ import sys
 sys.path.append(sys.path[0] + "/..")
 from constants import f_pi, m_S, m_pi, Dm, m_Kpm, Dm_EM, Lr as Lr_num
 from nlo_const import get_nlo_const
+from chpt_eos import alpha_0
 
 # Everything is done in units of m_pi
 m, mrho, mS, f = sp.symbols("m, m_rho, m_S, f")
@@ -61,15 +62,6 @@ def get_E(m1_sq, m2_sq, m12, p=p):
 Epim_sq, Epip_sq = get_E(m1_sq, m2_sq, m12)
 EKm_sq, EKp_sq = get_E(m4_sq, m4_sq, m45)
 EK0bar_sq, EK0_sq = get_E(m6_sq, m6_sq, m67)
-
-
-# first approx to alpha as a function of mu_I, analytical result
-def alpha_0(mu):
-    mu = np.atleast_1d(mu).astype(float)
-    morethan_m = mu**2 > np.ones_like(mu)
-    a = np.zeros_like(mu)
-    a[morethan_m] = np.arccos((1/mu[morethan_m]**2))
-    return a
 
 
 
