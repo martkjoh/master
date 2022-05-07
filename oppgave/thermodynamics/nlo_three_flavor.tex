@@ -7,7 +7,7 @@ Contributions of the first type are the one-loop effects from the Lagrangian of 
 We must include all these contributions to be able to renormalize the results.
 When calculating loop integrals, the results will diverge, and they must be regularized and renormalized.
 As laid out in \autoref{section: chiral perturbation theory}, the power counting scheme ensures that all terms in $\Ell_{2n}$ scales as $t^{2n}$ when the momenta $p$ are scaled as  $p \rightarrow t p$.\footnote{
-    Remember that we scale pion mass $\bar m = B_0(m_u + m_d)$ as $t^2$, and the chemical potential and fundamental charge as $t$.
+    Remember that we scale pion mass $\bar m^2 = B_0(m_u + m_d)$ as $t^2$, and the chemical potential and fundamental charge as $t$.
     }
 The tree-level free energy from $\Ell_{2n}$ is thus of order $p^{2n}$.
 The $m$-loop correction to the tree level result is then suppressed by $p^{2m}$~\autocite{gasserChiralPerturbationTheory1984,weinbergPhenomenologicalLagrangians1979}.
@@ -18,21 +18,21 @@ This expansion in both loops and chiral dimension, which is used to evaluate all
 
 \subsection{One-loop contribution}
 
-We now calculate the one-loop contribution to the free energy to leading order.
-The loop integrals will diverge, and we must therefore regularize the integrals.
-We will use dimensional regularization, in which the integral is generalized to $d$ dimensions, and employ the $\overline{\mathrm{MS}}$-scheme.
+We now calculate the one-loop contribution to the free energy due to $\Ell_2$, following the procedure used in~\autocite{adhikariTwoflavorChiralPerturbation2019,martinariaTwoflavorChiralPerturbation2020,adhikariQuarkPionAxial2021}.
+The loop integrals will diverge, and we must therefore regularize them.
+As discussed in \autoref{section: nlo chpt}, will use dimensional regularization, in which the integral is generalized to $d$ dimensions, and employ the $\overline{\mathrm{MS}}$-scheme.
 From the formula for the effective potential, \autoref{effective potential}, we have that the one loop-contribution to one-loop order is 
 %
 \begin{equation}
     \Eff^{(1)}
     =
     - \frac{i}{V T} \frac{1}{2}
-    \Tr{\ln\left( - D_{ab}^{-1}\right)}.
+    \Tr{\ln\left( - D_{ab}^{-1}\right)},
 \end{equation}
 %
-Where $D_{ab}^{-1}$ is the inverse propagator.
-In \autoref{subsection: pion-condensed phase}, we found the inverse propagator to be on a block-diagonal form.
-The trace is then a sum of the trace of each block.
+where $D_{ab}^{-1}$ is the inverse propagator.
+In \autoref{subsection: pion-condensed phase}, we found the inverse propagator to be in a block-diagonal form.
+The trace is then a sum of the trace of each block,
 %
 \begin{align}
     \nonumber
@@ -47,7 +47,7 @@ The trace is then a sum of the trace of each block.
 \end{align}
 %
 The trace, in this case, is not only a sum over the matrix-indices of the propagator, but is an operator trace, as discussed in \autoref{section:free scalar field}.
-Writing the trace on integral form, the contributions from the neutral pion and the eta particle are
+Writing the trace in integral form, the contributions from the neutral pion and the eta particle are
 %
 \begin{align}
     \Eff_{\pi^0}^{(1)}
@@ -65,7 +65,7 @@ As shown in \autoref{section: integral}, we may rewrite integrals of this form,
 %
 We see that the result is what we would expect physically; the total energy is the integral of each mode's energy.
 This also agrees with the result from \autoref{appendix: thermal field theory} in the zero-temperature limit $\beta \rightarrow \infty$.
-With the integral on this form, we can regularize and evaluate it as described in  \autoref{section:free scalar field}, which gives
+With the integral in this form, we can regularize and evaluate it as described in  \autoref{section:free scalar field}, which gives
 %
 \begin{equation}
     \label{Free energy pi 0}
@@ -83,9 +83,9 @@ With the integral on this form, we can regularize and evaluate it as described i
     + \mathcal{O}(\epsilon).
 \end{equation}
 %
-Here, $d = 3 - 2\epsilon$, and $\mu$ is the renormalization scale, a parameter with mass-dimension 1, introduced to ensure the action integral remains dimensionless during dimensional regularization. The scale $\tilde \mu$ is a related to $\mu$ as described in \autoref{definition mu tilde MS bar}.
+Here, $d = 3 - 2\epsilon$, and $\mu$ is the renormalization scale, a parameter with mass-dimension 1, introduced to ensure the action integral remains dimensionless during dimensional regularization. The scale $\tilde \mu$ is related to $\mu$ as described in \autoref{definition mu tilde MS bar}.
 
-Using the identity $\ln\{\det(A)\} = \Tr{\ln(A)}$, and spectrum we found in \autoref{subsection: pion-condensed phase}, we can write the charged pion contribution as
+Using the identity $\ln\{\det(A)\} = \Tr{\ln(A)}$, and the spectrum we found in \autoref{subsection: pion-condensed phase}, we can write the charged pion contribution as
 %
 \begin{equation}
     \Eff_{\pi^\pm}^{(1)}
@@ -172,22 +172,11 @@ The most obvious choice for $f$ is
 However, this introduces a new problem.
 $f$ has the same UV behavior as $E_{\pi^+} + E_{\pi^-}$, but the last term diverges in the IR, that is, for low $|\vv p|$.
 This can be amended by introducing a mass term.
-Let
-%
-\begin{equation}
-    |\vv p|^{-3} 
-    = 
-    \left(\frac{1}{\sqrt{|\vv p|^2}}\right)^3 
-    \longrightarrow 
-    \left(\frac{1}{\sqrt{|\vv p|^2 + m^2}}\right)^3.
-\end{equation}
-%
-For $|\vv p|^2 \rightarrow \infty$, this is asymptotic to $|\vv p|^{-3}$, so it retains its UV behavior.
-However, for $|\vv p| \rightarrow 0$, it now approaches $m^{-3}$, so the IR-divergence is gone.
-The cost of this technique is that we have introduced an arbitrary mass parameter.
-Any final result must thus be independent of the value of $m$ to be acceptable.
+If we substitute $|\vv p|^2 \rightarrow |\vv p|^2 + m^2$, the function retains its UV behavior.
+However, for $|\vv p| \rightarrow 0$, it remains finite, so the IR-divergence is gone.
+As $f$ is both added and subtracted, any final result will be independent of the value of $m$.
 
-We will instead regularize the integral by defining $E_i = \sqrt{|\vv{p}|^2 + \tilde m_i^2}$, and $\tilde m_i^2 = m_i^2 + \frac{1}{4} m_{12}^2$.
+We can, however, tame the IR divergence without introducing any new mass parameter by defining $E_i = \sqrt{|\vv{p}|^2 + \tilde m_i^2}$, where $\tilde m_i^2 = m_i^2 + \frac{1}{4} m_{12}^2$.
 Then, we define $f(|\vv p|) = E_1 + E_2$, which differ from $E_{\pi^+} + E_{\pi^-}$ by $\Oh\left(|\vv p|^{-5}\right)$ and is well-behaved in the IR.
 This leads to a divergent integral of the same form as in the case of a free scalar, and we may again use the result from \autoref{section: regualting free energy}.
 With this, the divergent part of the free energy is
@@ -203,18 +192,18 @@ With this, the divergent part of the free energy is
     \left(
         \frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{\tilde m_2^2}
     \right) \tilde m_2^4
-    + \mathcal{O}(\epsilon).
+    + \mathcal{O}(\epsilon),
 \end{equation}
 %
-We then define the finite integral
+and the remaining finite part is
 %
 \begin{equation}
     \Eff^{(1)}_{\mathrm{fin}, \pipm}
     = 
-    \frac{1}{2} \int \frac{\dd^3 p}{{(2\pi)}^3} (E_{\pi^+} + E_{\pi^-} - E_1 - E_2),
+    \frac{1}{2} \int \frac{\dd^3 p}{{(2\pi)}^3} (E_{\pi^+} + E_{\pi^-} - E_1 - E_2).
 \end{equation}
-
-The charged kaon contribution is
+%
+Lastly, the charged kaon contribution is
 %
 \begin{equation}
     \Eff^{(1)}_{\Kpm}
@@ -230,7 +219,7 @@ The charged kaon contribution is
     \right\},
 \end{equation}
 %
-where we have used the original form of the determinant wich we found in \autoref{subsection: pion-condensed phase}.
+where we have used the original form of the determinant which we found in \autoref{subsection: pion-condensed phase}.
 To performe the integral, we will use the following rewritings
 %
 \begin{align}
@@ -302,7 +291,7 @@ where
 $
 \tilde m_{67}^2 = \frac{1}{2}(m_6^2 + m_7^2) + \frac{1}{4} m_{67}^2.
 $
-The leading-order, one-loop contribution to the free energy is
+In conclusion, the total leading-order, one-loop contribution to the free energy is
 %
 \begin{align}
     \label{one-loop free energy}
@@ -340,15 +329,12 @@ The leading-order, one-loop contribution to the free energy is
     + \Oh(\epsilon)
     + \Eff^{(1)}_{\pipm,\text{fin}}
 \end{align}
-%
-This contribution, however, is not finite as $\epsilon\rightarrow 0$.
-We must therefore include counter-terms from the higher-order Lagrangian.
 
 
 \subsection{Renormalization}
 
 
-The second-order, tree-level contribution is given by second-order the static Lagrangian,
+The second-order, tree-level contribution to free energy is given by the second-order static Lagrangian,
 %
 \begin{equation}
     \Eff^{(0)}_4 = - \Ell_4^{(0)},
@@ -421,16 +407,16 @@ Here, the mass terms are
     = \frac{1}{2}(\bar m^2 \cos \alpha + \Delta m^2 + m_S^2)
     + \frac{1}{4} \mu_I^2\sin^2\alpha
 \end{align}
-
+%
 Notice that divergent $1/\epsilon$-terms cancel exactly, and the total NLO contribution is therefore finite even as $\epsilon\rightarrow 0$, as expected.
 Furthermore, all dependence on the unphysical parameter $\mu$ has vanished, and only the renormalized coupling constants and the mass $M$ at which they are defined remain.
 
- When evaluating the free energy and quantities derived from it, wee need the NLO relationship between the bare constants that appear in the Lagrangian and the physical constants.
+ When evaluating the free energy and quantities derived from it, we need the NLO relationship between the bare constants that appear in the Lagrangian and the physical constants.
 For numerical results, we will consider $\Delta m = 0$.
 This is done in the QCD-lattice research and allows for easier comparison with those results~\autocite{brandtNewClassCompact2018}.
 Furthermore, we expect this to have marginal effects on our results, as $\Delta m$ do not affect the results until NLO.
 After setting $\Delta m = 0$, we are left with three independent bare constants, $\bar m$, $m_S$, and $f$.
-We must therefore use physical values of three constants, as more would lead to an overdetermined system of equations and inconsistencies.
+We must therefore use physical values of three constants, as more would lead to an overdetermined system of equations.
 As we work in with a pion condensate without electromagnetic interactions, it is natural to choose the neutral pion mass $m_\pio$ and the pion decay $f_\pi$, whose values can be found in \autoref{section: units}.
 As we assume $\Delta m = 0$ and no electromagnetic interaction, the charged and neutral kaon masses are equal. \todo[]{Gjelder dette kunn på tree-level?}
 We, therefore, define $m_{K,0}^2 := (\bar m + m_S)/2$, and choose the neutral kaon mass as the last physical constant.
@@ -508,7 +494,7 @@ The numerical results are shown in \autoref{table: nlo values}.
 \end{table}
 
 
-The next-to-leading order relation between $\alpha$ and $\mu_I$ is given by, as explained in \autoref{appendix: consisten expansion},
+The next-to-leading order relation between $\alpha$ and $\mu_I$ is given by, as discussed in \autoref{appendix: consisten expansion},
 %
 \begin{equation}
     \left[\pdv*{\Eff_\text{NLO}(\mu_I, \alpha)}{\alpha} \right]_{\alpha = \alpha_\text{NLO}} = 0.
@@ -519,8 +505,10 @@ The result is compared to the leading order result in \autoref{fig: nlo quantiti
 The LO and NLO results for $\alpha$ are very close.
 The NLO results for the thermodynamic quantities are close to the LO results for values of $\mu_I$ close to $m_\pi$, however, the results start to deviate as $\mu_I$ increases.
 This is to be expected, as we are expanding perturbatively in particle energies, and thus also chemical momentum.
-Only as long as $\mu_I$ is smalled compared to $4 \pi f \approx 7.31 \, m_\pi$ can we expect perturbative series to converge. \todo[]{Si hvorfor det er $4 \pi f$?}
+Only as long as $\mu_I$ is smalled compared to $4 \pi f \approx 7.31 \, m_\pi$ can we expect perturbative series to converge. \todo[]{hvorfor det er $4 \pi f$?}
 These results indicate that, at least for $\mu_I< 2\,m_\pi$, \chpt\, converges quickly.
+The next-to-leading order equation of state is shown in \autoref{fig: nlo eos}, where it is compared to the leading order result.
+The NLO equation of state is less stiff than the LO equation of state, and they deviate more as the pressure increases.
 
 \begin{figure}[!htb]
     \centering
@@ -532,8 +520,6 @@ These results indicate that, at least for $\mu_I< 2\,m_\pi$, \chpt\, converges q
     \label{fig: nlo quantitites}
 \end{figure}
 
-The next-to-leading order equation of state is shown in \autoref{fig: nlo eos}, where it is compared to the leading order result.
-The NLO equation of state is less stiff than the LO equation of state, and they deviate more as the pressure increases.
 
 \begin{figure}
     \centering

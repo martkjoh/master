@@ -1,8 +1,14 @@
-In this chapter, we will use the results from \chpt\ to calculate the thermodynamic properties of our system, such as pressure and energy density, and study the phase diagram of \chpt.
-We follow the procedure used in~\autocite{adhikariTwoflavorChiralPerturbation2019,martinariaTwoflavorChiralPerturbation2020}.
+In \autoref{chapter: chpt} have now built up machinery to do calculations in chiral perturbation theory in the case of a non-zero isospin chemical potential $\mu_I$.
+Our ultimate goal is to model pion stars, in which condensed pions form a gravitationally bound astrophysical object.
+As we saw in \autoref{section: TOV equation}, we need the equation of state, $u = u(p)$, for this.
+
+In this chapter, we will use the results from \chpt\ to calculate the thermodynamic properties of our system, such as pressure and energy density, which allows us to deduce the equation of state of pion condensate.
+We will study how the inclusion of electromagnetic interactions, charged leptons and neutrinos, and higher-order calculations affect these properties, and we will study the phase diagram of \chpt.
 
 \section{Free energy in a homogenous system}
-In our case, we are working with a homogenous system, in which we may write the free energy as $F = V\Eff$, where $\Eff$ is the \emph{free energy density}.
+
+The key to the thermodynamic behavior of our system is free energy, $F$.
+In our case, we are working with a homogenous system, in which we may write the free energy as $F = V\Eff$, where $\Eff$ is the free energy density.
 We use the grand canonical ensemble, so this is the grand canonical free energy, also called the grand canonical potential.
 It is related to the partition function of statistical mechanics, $\mathcal{Z}$, by
 %
@@ -24,17 +30,17 @@ As we found in \autoref{1PI effective action}, this equals the effective potenti
 In \autoref{section: effective action}, we found an explicit formula for this to one-loop order, \autoref{effective potential}.
 In \autoref{appendix: consisten expansion}, we show how to expand free energy density and other thermodynamic quantities in a self-consistent way.
 
-We are after the equation of state, which the free energy density will give us access to.
+We are after the equation of state, to which the free energy density will give us access.
 The free energy is defined as
 %
 \begin{equation}
     \label{thermodynamic free energy}
-    F(T, V, \mu_I) = U - TS - {\sum}_i \mu_i Q_i, 
+    F(T, V, \mu_i) = U - TS - {\sum}_i \mu_i Q_i, 
     \quad \dd 
     F = - S \dd T - p \dd V - {\sum}_i Q_i \dd \mu_i.
 \end{equation}
 %
-Here, $U$ is the energy and $S$ the entropy.
+Here, $U$ is the energy and $S$ is the entropy.
 $Q_i$ are conserved charges, in our case the isospin and strangeness charge, and $\mu_i$ their corresponding chemical potentials.
 We work with $T = 0$.
 From \autoref{thermodynamic free energy}, the pressure is then given by

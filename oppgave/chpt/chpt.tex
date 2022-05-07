@@ -17,7 +17,7 @@ We are working in the low-energy limit, so it is natural to expand in pion momen
 As we saw in \autoref{seciton: ccwz construction}, the terms in the Lagrangian will be made up of combinations of the terms $e_\mu$ and $d_\mu$ of the Maurer-Cartan form, $i\Sigma \partial_\mu \Sigma = e_\mu + d_\mu$.
 Therefore, all terms in the effective Lagrangian will be proportional to a certain number of derivatives of the Goldston bosons, which Lorentz invariance demands to be even.
 
-Consider the matrix element $\mathcal M$ for a given Feynman diagram with external pion lines with momenta $q_n$, where both the energies and momenta are less than or equal to some energy scale $Q$.
+Consider the matrix element $\mathcal M$ for a given Feynman diagram with external pion lines with momenta $q$, where both the energies and momenta are less than or equal to some energy scale $Q$.
 If we scale $Q\rightarrow tQ$, and consequently also the external momenta $q \rightarrow tq$, momentum conservation at each vertex ensures that each internal momentum $p$ of the diagram scales as $p \rightarrow tp$.
 Assume this diagram is made up of $V_i$ copies of the vertex $i$, which contain $d_i$ derivatives.
 Each of these vertices scale as $t^{d_i}$.
@@ -54,7 +54,7 @@ We therefore expand the effective Lagrangian as
 where $\Ell_{2n}$ contains $2n$ derivatives.
 This is equivalent to scaling the space-time coordinates as $x^\mu \rightarrow tx^\mu$, and expanding the Lagrangian in powers of $t$.
 
-We must also allow for the fact that pions have non-zero mass and that there is a finite isospin chemical potential.
+We must also allow for the fact that pions have non-zero mass, interact in a symmetry-breaking way with the electromagnetic field, and the possibility of finite external currents.
 This is all implemented by external currents, which we also have to assume are small.
 Any external pions are on-shell, so the pion mass $m_\pi$ must be less than the energy scale $Q$.
 As we will see, this corresponds to scaling the quark masses as $m_q \rightarrow t^2 m_q$.
@@ -182,7 +182,8 @@ By making a local $G$-transformation and enforcing gauge-invariance, we find tha
 \begin{align}
     r_\mu &\rightarrow U_R (r_\mu + i\partial_\mu) U_R^\dagger, \\
     l_\mu &\rightarrow U_L (l_\mu + i\partial_\mu) U_L^\dagger, \\
-    \chi &\rightarrow U_R \chi {U_L}^\dagger.
+    \chi &\rightarrow U_R \chi {U_L}^\dagger, \\
+    \chi^\dagger &\rightarrow U_L \chi^\dagger {U_R}^\dagger.
 \end{align}
 %
 As in Yang-Mills theory, we can now create field strength tensors of the gauge fields, to build more gauge-invariant terms.
@@ -196,6 +197,7 @@ We define
     = \partial_\mu l_\nu - \partial_\nu l_\mu - i[l_\mu, l_\nu].
 \end{equation}
 %
+\todo[inline]{Include transformation properties of field strength tensors.}
 Including dynamical fields, such as the photon field $\mathcal A_\mu$, is slightly more complicated.
 Quantum electrodynamics, or QED, is a gauge theory with a $\Lie{U}{1}_\text{EM}$ gauge group, where the covariant derivative acing on quarks is
 %
@@ -230,21 +232,24 @@ This is
 \end{equation} 
 %
 where $r'_\mu = r_\mu + eQ\mathcal{A}_\mu$ and $l'_\mu = l_\mu + eQ\mathcal{A}_\mu$.
-We do not strictly \emph{need} to include the electromagnetic field in the gauge derivative, we could just build $G$ invariant terms of $eQ$, $\mathcal A_\mu$ and $\Sigma$, however this is the most economical way to achieve this.
+We do not strictly \emph{need} to include the electromagnetic field in the gauge derivative, we could just build $G$ invariant terms of $eQ$, $\mathcal A_\mu$ and $\Sigma$, however, this is the most economical way to achieve this.
 
 
 Lastly, we must include terms from quantum electrodynamics involving only the photon field, which are
 %
 \begin{equation}
-    \Ell^0_\text{QED}[\mathcal A] 
+    \Ell_\text{QED}[\mathcal A] 
     = -\frac{1}{4} F^{\mu \nu}F_{\mu \nu}, \quad
-    F_{\mu \nu} = 2 \partial_{[\mu}\mathcal A_{\nu]}.
+    F_{\mu \nu} = \partial_{\mu}\mathcal A_{\nu} - \partial_{\nu}\mathcal A_{\mu}.
 \end{equation}
 %
+Furthermore, the covariant derivative is extended to include the photon field in addition to the gluon field.
 The full Lagrangian is then
 %
 \begin{equation}
-    \Ell_\text{QCD}[q, \bar q, A,\mathcal A, j] = \Ell_\text{QCD}^0[q, \bar q, A] + \Ell^0_\text{QED}[\mathcal A] + \Ell_\text{ext}[\mathcal A, j].
+    \Ell_\text{QCD}[q, \bar q, A,\mathcal A, j] 
+    = \Ell_\text{QCD}^0[q, \bar q, A, \mathcal A] 
+    + \Ell_\text{QED}[\mathcal A] + \Ell_\text{ext}[q, \bar q, j].
 \end{equation}
 %
 We now define the effective Lagrangian of $\chpt$, $\Ell_\text{eff}$ as
@@ -256,7 +261,11 @@ We now define the effective Lagrangian of $\chpt$, $\Ell_\text{eff}$ as
     \int \D q \D \bar q \D A \D \mathcal A\,
     \exp{i\int \dd^4 x \Ell_\text{QCD}[q, \bar q, A, \mathcal A, j] }
     = 
-    \int \D \pi \D \mathcal A\,
+    \int \D \varphi \D \mathcal A\,
     \exp{i\int \dd^4 x \Ell_\text{eff}[\varphi, \mathcal{A}, j] }.
 \end{equation}
+%
+We know the symmetries of $\Ell_\text{QCD}$, and we have found constituent terms of $\Ell_\text{eff}$ and their transformation properties under these symmetries.
+Weinberg's ``theorem'' now tells us that we can construct $\Ell_\text{eff}$ by including all terms that obey the symmetry principles of $\Ell_\text{QCD}$, and with chiral dimension, we have a way of ordering them in a series expansion.
+This is all we need to start doing calculations.
 

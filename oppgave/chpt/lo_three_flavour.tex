@@ -1,8 +1,10 @@
 \section{Three-flavor \chpt\ to leading order}
 \label{section: three-flavor chpt to leading order}
 
-
-Using the building blocks from last section, we can build the leading order Lagrangian, which is~\autocite{eckerRoleResonancesChiral1989,gasserChiralPerturbationTheory1984,gasserChiralPerturbationTheory1985,schererIntroductionChiralPerturbation2002}
+We will begin by considering the leading order Lagrangian, which chiral dimension $D=2$.
+However, we will not include the $\text{QED}$ Lagrangian, as we will not consider electromagnetic interaction beyond leading order.
+In this case, the dynamics of the photon will not contribute.
+With this, the leading order Lagrangian is~\autocite{eckerRoleResonancesChiral1989,gasserChiralPerturbationTheory1984,gasserChiralPerturbationTheory1985,schererIntroductionChiralPerturbation2002}
 %
 \begin{equation}
     \label{leading order three-flavor Lagrangian}
@@ -119,13 +121,13 @@ The full relationship between the $\varphi_a$-fields  and the observed pseudosca
     =
     \begin{pmatrix}
         \varphi_3 + \frac{1}{\sqrt{3}} \varphi_8 & \varphi_1 - i \varphi_2 & \varphi_4 - i \varphi_5 \\
-        \varphi_1 + i \varphi_2 & \varphi_3 + \frac{1}{\sqrt{3}} \varphi_8 & \varphi_6 - i \varphi_7  \\
-        \varphi_4 - i \varphi_5 & \varphi_6 - i \varphi_7  & \frac{2}{\sqrt{3}} \varphi_8
+        \varphi_1 + i \varphi_2 & - \varphi_3 + \frac{1}{\sqrt{3}} \varphi_8 & \varphi_6 - i \varphi_7  \\
+        \varphi_4 + i \varphi_5 & \varphi_6 + i \varphi_7  & - \frac{2}{\sqrt{3}} \varphi_8
     \end{pmatrix}
     =
     \begin{pmatrix}
-        \pi_0 + \frac{1}{\sqrt{3}}\eta & \sqrt{2}\pi^+ & \sqrt{2}K^+ \\
-        \sqrt{2}\pi^- & -\pi_0 + \frac{1}{\sqrt{3}}\eta & \sqrt{2}K^0 \\
+        \pi^0 + \frac{1}{\sqrt{3}}\eta & \sqrt{2}\pi^+ & \sqrt{2}K^+ \\
+        \sqrt{2}\pi^- & -\pi^0 + \frac{1}{\sqrt{3}}\eta & \sqrt{2}K^0 \\
         \sqrt{2}K^- & \sqrt{2}\bar K^0  & - \frac{2}{\sqrt 3} \eta
     \end{pmatrix}.
 \end{equation}
@@ -144,7 +146,7 @@ The covariant derivative is then
     v_\mu = \mu \delta^0_\mu.
 \end{equation}
 %
-The chemical potential matrix $\mu$ has three independent degrees of freedom for each quark, an is of the form
+The chemical potential matrix $\mu$ has three independent degrees freedom, one for each quark, and is
 %
 \begin{equation}
     \mu = 
@@ -220,8 +222,10 @@ We will study the different condensates and the transition between them in \auto
 \subsection{The pion-condensed phase}
 \label{subsection: pion-condensed phase}
 
-
-Similar to what we found for the two-flavor case in \autoref{section: two-flavor chpt to leading order}, the ground states of the different condensates are parameterized as
+The new ground state $\Sigma_\alpha$ is a rotation of the vacuum state $\Sigma_0 = \one$ by $U_A = A_\alpha^i$.
+To parameterize excitations from this new field, we must then rotate the excitations $U(x)$ accordingly.
+The procedure is shown in detail for the two-flavor case in \autoref{section: two-flavor chpt to leading order}.
+This new parametrization is
 %
 \begin{equation}
     \Sigma(x) = A^i_\alpha U(x) \Sigma_0 U(x) A^i_\alpha, \quad
@@ -230,7 +234,7 @@ Similar to what we found for the two-flavor case in \autoref{section: two-flavor
 \end{equation}
 %
 where $i = 2, 5, 7$ depending on which phase we are in.
-We start working in the pion-condensed phase, so $i = 2$, and assume $\mu_I > 0$ and $e = 0$.
+We begin the analysis of the pion-condensed phase, so $i = 2$, and assume $\mu_I > 0$ and $e = 0$.
 Inserting this into \autoref{leading order three-flavor Lagrangian}, and expanding up to and including $\Oh\left((\pi/f)^2\right)$, we get
 %
 \begin{align}
@@ -301,7 +305,7 @@ Here, $m_{ab} = -m_{ba}$, and terms not defined above are zero.
 These terms mean that the basis $\varphi_a$ does not correspond to mass eigenstates.
 This is to be expected, as they are not eigenstates of isospin nor strangeness.
 
-At $\mu_S = \mu_I = 0$ and $\alpha = 0$, we obtain the well-known, tree-level masses of the pseudoscalar masses~\autocite{eckerChiralPerturbationTheory1995},
+At $\mu_S = \mu_I = 0$ and $\alpha = 0$, we obtain the well-known, tree-level masses of the pseudoscalar mesons~\autocite{eckerChiralPerturbationTheory1995},
 %
 \begin{align}
     \label{leading order pion mass mu=0}
@@ -324,12 +328,7 @@ At $\mu_S = \mu_I = 0$ and $\alpha = 0$, we obtain the well-known, tree-level ma
 %
 To leading order, these are the physical masses of the pions, charged kaons, neutral kaons, and the $\eta$-particle.
 The values used in this thesis are given in \autoref{section: units}.
-Similarly, the $f$-constant is, to leading order, given by
-%
-\begin{equation}
-    f = f_\pi.
-\end{equation}
-
+Similarly, the $f$-constant is, to leading order, given by $f = f_\pi$.
 
 To find the physical masses in the pion-condensed phase, we must analyze the propagator and the spectrum of the theory.
 We follow~\autocite{adhikariTwoflavorChiralPerturbation2019,adhikariQuarkPionAxial2021}.
@@ -430,7 +429,7 @@ Writing the four-momentum as $p^\mu = (p_0, \vv p)$, these zeros are
 \endgroup
 %
 The masses of the particles are given by the energy at $\vv p = 0$.
-For $\alpha = 0$, which we will later show this is valid for low $\mu$'s, we get a Zeeman-like splitting of the energies of the pions,
+For $\alpha = 0$, which we will later show is valid for low $\mu$'s, we get a Zeeman-like splitting of the energies of the pions,
 %
 \begin{equation}
     E_0 =\sqrt{|\vv p|^2 + \bar m^2}, \quad
@@ -439,9 +438,9 @@ For $\alpha = 0$, which we will later show this is valid for low $\mu$'s, we get
 %
 The kaons have a similar splitting, only due to the kaon chemical potentials $\mu_\Kpm$ and $\mu_\Ko$ instead.
 The masses of the various mesons are shown in \autoref{fig: leading order masses mesons}.
-These results use the relationship between $\mu_I$ and $\alpha$, which we derive in next chapter.
+These results use the relationship between $\mu_I$ and $\alpha$, which we derive in the next chapter.
 In the lower plot, we see the Zeeman splitting of the pion masses, which persists until the mass of the positive pion vanishes.
-As we explore further in next chapter, this happens as the exact isospin symmetry $\Lie{U}{1}_{I_3} \subset \Lie{SU}{3}_V $ is broken spontaneously by the pion condensate, and $\pi^+$ is the corresponding Goldstone boson.
+As we explore further in the next chapter, this happens as the exact isospin symmetry $\Lie{U}{1}_{I_3} \subset \Lie{SU}{3}_V $ is broken spontaneously by the pion condensate, and $\pi^+$ is the corresponding Goldstone boson.
 On the top, we see that the kaons also get this Zeeman splitting in the vacuum phase.
 %
 \begin{figure}

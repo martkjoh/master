@@ -3,8 +3,14 @@
 
 
 To construct the next-to-leading order Lagrangian, one follows the same approach of combining the building blocks we found in \autoref{chapter: chpt} into locally $\Lie{SU}{3}_R\times\Lie{SU}{3}_L$-invariant terms.
+However, a naïve approach will lead to redundant terms in the Lagrangian which, on the face of it might seem independent, but are, in fact, equivalent to linear combinations of other terms.
+Such terms may be eliminated by reparametrization and the use of the equation of motion, as shown for two-flavors in \autoref{appendix: rewriting terms}.
+Furthermore, trace relations allow for different, but equivalent forms of the Lagrangian.
+In \autoref{subsection:rewriting NLO Lagrangian}, we show how two different choices of next-to-leading order, two-flavor Lagrangians are equivalent.
+Although the naïve identification of invariant terms is the same for $N_f = 2$ and $N_f=3$, such trace relations mean that there are fewer independent terms in the two-flavor case~\autocite{schererIntroductionChiralPerturbation2002}.
+
 We do not need to include terms with the field strength tensors $f_{\mu\nu}^{(r)}$ and $f_{\mu\nu}^{(l)}$, as in our case, they will vanish.
-We will not consider electromagnetic interactions.
+Furthermore, we will not consider electromagnetic interactions to higher orders, and therefore will not consider terms including the fundamental charge $e$.
 With this, the NLO Lagrangian is~\autocite{gasserChiralPerturbationTheory1985}
 %
 \begin{align}
@@ -28,10 +34,17 @@ With this, the NLO Lagrangian is~\autocite{gasserChiralPerturbationTheory1985}
     + H_2 \Tr{\chi \chi^\dagger}.
 \end{align}
 %
-Here, $L_i$ and $H_i$ are coupling constants called low energy constants (LEO).
-The static Lagrangian in the pion-condensed phase is
+Here, $L_i$ and $H_i$ are coupling constants.
+As discussed, these are needed to parametrize all possible effective Lagrangians.
+As long as we are unable to solve low-energy QCD, they must be measured experimentally.
+The $L_i$'s are called \emph{low-energy constants}.
+The $H_i$'s only couple to external fields, and thus have no physical significance, but they are needed for renormalization~\autocite{gasserChiralPerturbationTheory1985}
+
+The pion-condensed phase is still parametrized as described in \autoref{subsection: pion-condensed phase}.
+We obtained the next-to-leading order static Lagrangian by substituting the vacuum-parametrization, $\Sigma^\pipm_\alpha$, into \autoref{NLO Lagrangian three flavor}, which yields
 %
 \begin{align}
+    \label{bare static nlo lagrangian}
     \nonumber
     \Ell_4
     = {}&
@@ -46,8 +59,10 @@ The static Lagrangian in the pion-condensed phase is
 %
 All the terms in the NLO Lagrangian up to and including $\Oh((\pi/f)^2)$, calculated using CAS-software, are shown in \autoref{section: symbolic calculations}.
 
-$L_i$ and $H_i$  are bare coupling constants, which are unobservable, but they are related to the observable renormalized coupling constants.
-The renormalized coupling constants in the $\overline{\mathrm{MS}}$-scheme, as explained in \autoref{section:free scalar field}, are related to the bare couplings through
+$L_i$ and $H_i$  are bare coupling constants, which are unobservable, but they are related to the observable renormalized coupling constants $L_i^r$ and $H_i^r$.
+We will perform renormalization by using dimensional regularization, in which the divergent integrals are generalized to $d$-dimensions, and the $\overline{\mathrm{MS}}$-scheme.
+This is discussed in more detail in \autoref{section:free scalar field}.
+In this case, the bare and renormalized constants are related by
 %
 \begin{align}
     L_i 
@@ -62,7 +77,8 @@ The renormalized coupling constants in the $\overline{\mathrm{MS}}$-scheme, as e
     \left(\frac{1}{\epsilon} + 1 \right) \Delta_i .
 \end{align}
 %
-Here, $\Gamma_i$ and $\Delta_i$ are numerical constants which are used to match the divergences.
+Here, $d = 3 - 2\epsilon$ and $\mu$ is a parameter of mass-dimension one, which is introduced so that the action integral remains dimensionless in dimensional regularization.
+The dimensionless constants $\Gamma_i$ and $\Delta_i$ are found by insisting that the divergent $1/\epsilon$-factors cancel, leaving a finite result.
 These have been calculated for $\mu_I = 0$~\autocite{gasserChiralPerturbationTheory1985}.
 They are independent of $\mu_I$, and we can therefore use them in this calculation.
 They are
@@ -102,7 +118,9 @@ Inserting the solutions back into the bare coupling constants, we get to the fir
     \left(\frac{1}{\epsilon} + 1 + \ln{\frac{\tilde \mu^2}{M^2}}\right) \Delta_i.
 \end{equation}
 %
-$L_i^r(M)$ and $H_i^r(M)$ are constants of integration and must be measured.
+We have introduced the dimensional constant $\tilde \mu$, related to $\mu$ by $\tilde \mu^2 = 4 \pi e^{-\gamma_E} \mu^2$ where $\gamma_E$ is the Euler-Mascheroni constant, to match up with the contribution from loop integrals.
+$L_i^r(M)$ and $H_i^r(M)$ are the constants of integration of the renromalization group equations.
+These must be measured at some energy $M$.
 This only applies if the numerical constants $\Gamma_i$/$\Delta_i$ are non-zero.
 If they are zero, then the coupling is not running, and the measured value can be applied at all energies.
 The values used in this text are given in \autoref{table: coupling constants}.
@@ -111,24 +129,25 @@ They are given at the $\rho$-meson mass, $m_\rho = 770\, \text{MeV}$.
 \begin{table}
     \centering
     \def\arraystretch{1.2}
-    \caption{The renormalized coupling constants, measured at $M = m_\rho$.}
+    \caption{The renormalized coupling constants of the next-to-leading order Lagrangian of three-flavor chiral perturbation theory, measured at the mass of the rho meson, $M = m_\rho$.}
     \label{table: coupling constants}
     \begin{tabular}{c c c}
         \hline \hline
         constant & value [$\times 10^{-3}$] & source \\
         \hline
-        $L_1^r(m_\rho)$ & $\phantom{-}1.0 \pm 0.1 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
-        $L_2^r(m_\rho)$ & $-1.6 \pm 0.2 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
-        $L_3^r(m_\rho)$ & $-3.8 \pm 0.3 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
-        $L_4^r(m_\rho)$ & $\phantom{-}0.0 \pm 0.3 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
-        $L_5^r(m_\rho)$ & $\phantom{-}1.2 \pm 0.1 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
-        $L_6^r(m_\rho)$ & $\phantom{-}0.0 \pm 0.4 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
-        $L_8^r(m_\rho)$ & $\phantom{-}0.5 \pm 0.2 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
-        $H_2^r(m_\rho)$ & $-3.4 \pm 1.5 $ & \autocite{jaminFlavoursymmetryBreakingQuark2002} 
+        $L_1^r(M)$ & $\phantom{-}1.0 \pm 0.1 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $L_2^r(M)$ & $-1.6 \pm 0.2 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $L_3^r(M)$ & $-3.8 \pm 0.3 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $L_4^r(M)$ & $\phantom{-}0.0 \pm 0.3 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $L_5^r(M)$ & $\phantom{-}1.2 \pm 0.1 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $L_6^r(M)$ & $\phantom{-}0.0 \pm 0.4 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $L_8^r(M)$ & $\phantom{-}0.5 \pm 0.2 $ & \autocite{bijnensMesonicLowEnergyConstants2014} \\
+        $H_2^r(M)$ & $-3.4 \pm 1.5 $ & \autocite{jaminFlavoursymmetryBreakingQuark2002}  \\
+        \hline
     \end{tabular}
 \end{table}
-%
-After inserting the renormalized coupling constants into the Lagrangian, it can be written
+
+After inserting the renormalized coupling constants into the Lagrangian \autoref{bare static nlo lagrangian},  we get
 %
 \begin{align}
     \label{nlo static lagrangian}
@@ -159,6 +178,7 @@ After inserting the renormalized coupling constants into the Lagrangian, it can 
         +\frac{13}{18} m_S^2
     \Bigg].
 \end{align}
-
-
+%
+With this Lagrangian, we can perform loop calculations and obtain next-to-leading order results from \chpt.
+We will now use the results from this chapter to calculate the thermodynamic properties of the pion-condensed phase in the next chapter.
 
