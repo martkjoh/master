@@ -231,7 +231,7 @@ def plot_nlo_quantities():
     label = ["$p", "$u", "${n_{I,}}"]
     y_label = ["$p/p_0$", "$u/u_0$", "$n_I/n_0$"]
     j = np.where(x>=1)[0][0]
-
+    plt.show()
     lo_func = [p, u, nI]
     lo = [np.concatenate([np.zeros_like(x[:j]), f(1/x[j:])]) for f in lo_func]
     ns = [945, -1]
@@ -578,6 +578,38 @@ def plot_nlo():
     plt.legend()
     fig.savefig("figurer/pion_star/mass_compare_order.pdf", bbox_inches="tight")
 
+
+def plot_phase():
+    F = lambda mu, a: -1/2 * (2*np.cos(a) + mu**2*np.sin(a)**2)
+    g = lambda mu, a: 1/2*(1 - mu**2)*a**2 + 1/24*(4*mu**2 - 1)*a**4
+    N = 30
+    a = np.linspace(-0.05, 0.8, N)
+    
+    fig, ax = plt.subplots(figsize=(12, 6))
+    F0 = F(0, 0)
+
+    F1,F2,F3 = F(0.9, a)-F0, F(1., a)-F0, F(1.1, a)-F0
+
+    i = np.argmin(F3)
+    d = .004
+    l = np.array([[0, d], [a[i], F3[i]+d]]).T
+ 
+    ax.plot(a, F1, "royalblue", label=r"$\mu_I<m_\pi$")
+    ax.plot(a, F2, "k--", label=r"$\mu_I=m_\pi$")
+    ax.plot(a, F3, "k", label=r"$\mu_I>m_\pi$")
+
+
+    ax.scatter(l[0], l[1], s=400)
+
+    ax.set_xlabel(r"$\alpha$")
+    ax.set_ylabel(r"$(\mathcal{F} - \mathcal{F}_0)/u_0$")
+
+    plt.tight_layout()
+    plt.legend()
+    plt.savefig("figurer/phase_transition.pdf")
+
+plot_phase()
+
 def test():
 
     fig, ax = plt.subplots(figsize=(16, 6))
@@ -636,10 +668,10 @@ def test():
 
 # plot_all()
 
-# plot_nlo_quantities()
+plot_nlo_quantities()
 # plot_eos_nlo()
 
 # plot_mass_radius("_nlo", rmax=False)
 # plot_nlo()
 
-test()
+# test()

@@ -83,7 +83,7 @@ def sim_neut(r=(np.log(pmin), 0), max_step=1e-3, info=False):
 
 
 
-def sim_light(max_step=1e-3, info=False): 
+def sim_light(max_step=1e-3, info=False):
     n=51
     pmins = [0.1, 0.015, 0.001]
     for pmin in pmins:

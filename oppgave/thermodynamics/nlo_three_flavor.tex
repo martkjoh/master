@@ -418,7 +418,7 @@ Furthermore, we expect this to have marginal effects on our results, as $\Delta 
 After setting $\Delta m = 0$, we are left with three independent bare constants, $\bar m$, $m_S$, and $f$.
 We must therefore use physical values of three constants, as more would lead to an overdetermined system of equations.
 As we work in with a pion condensate without electromagnetic interactions, it is natural to choose the neutral pion mass $m_\pio$ and the pion decay $f_\pi$, whose values can be found in \autoref{section: units}.
-As we assume $\Delta m = 0$ and no electromagnetic interaction, the charged and neutral kaon masses are equal. \todo[]{Gjelder dette kunn på tree-level?}
+As we assume $\Delta m = 0$ and no electromagnetic interaction, the charged and neutral kaon masses are equal.
 We, therefore, define $m_{K,0}^2 := (\bar m + m_S)/2$, and choose the neutral kaon mass as the last physical constant.
 The NLO relationships that determine the bare parameters are~\autocite{gasserChiralPerturbationTheory1985}
 %
@@ -503,6 +503,17 @@ The next-to-leading order relation between $\alpha$ and $\mu_I$ is given by, as 
 
 The result is compared to the leading order result in \autoref{fig: nlo quantitites}, together with the derived thermodynamic quantities $n_I$, $p$ and $u$.
 The LO and NLO results for $\alpha$ are very close.
+It has been shown analytically that the phase transition happens at $\mu_I=m_\pi$ also at next-to-leading order, at least in the two-flavor case~\autocite{adhikariTwoflavorChiralPerturbation2019}.
+This amounts to showing that the free energy has the form
+%
+\begin{equation}
+    \Eff_\text{NLO} = \const + \frac{1}{2} f_\pi^2 (\mu_I^2 - m_\pi^2)\alpha^2 + \Oh(\alpha^4),
+\end{equation}
+%
+We expect this to hold to all orders in perturbation theory.
+One cannot, however, expect no deviation numerically, as higher-order terms have been neglected.
+Such numerical deviations are observed, as we found $\mu_I^c \approx 1.001\,m_\pi$.
+
 The NLO results for the thermodynamic quantities are close to the LO results for values of $\mu_I$ close to $m_\pi$, however, the results start to deviate as $\mu_I$ increases.
 This is to be expected, as we are expanding perturbatively in particle energies, and thus also chemical momentum.
 Only as long as $\mu_I$ is smalled compared to $4 \pi f \approx 7.31 \, m_\pi$ can we expect perturbative series to converge. \todo[]{hvorfor det er $4 \pi f$?}

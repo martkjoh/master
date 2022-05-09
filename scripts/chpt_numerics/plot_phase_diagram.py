@@ -108,7 +108,7 @@ y7EM = np.linspace(0, fsolve(lambda y: m-v(-mpiEM, y), 1), N)
 
 
 
-fig, ax = plt.subplots(figsize=(6, 10))
+fig, ax = plt.subplots(figsize=(8, 10))
 
 
 ax.plot(x1, sol1, "k--")
@@ -128,8 +128,8 @@ ax.plot(-np.ones(N), -y7, "k")
 
 
 
-plt.text(-0.75, 0, "Vacuum")
-plt.text(-0.55, -0.3, "phase")
+plt.text(-0.55, 0, "Vacuum")
+plt.text(-0.35, -0.5, "phase")
 
 plt.text(1, 4, "$\\langle K^+\\rangle$")
 plt.text(-1.9, -4.6, "$\\langle K^-\\rangle$")
@@ -147,56 +147,59 @@ fig.savefig("figurer/phase_diagram.pdf", bbox_inches="tight")
 
 
 
-fig, ax = plt.subplots(figsize=(6, 10))
+def add_plot(ax):
+    ax.plot(x1, sol1, "k--")
+    ax.plot(x1, -sol1, "k--")
+    ax.plot(x2, sol2, "k--")
+    ax.plot(x2, -sol2, "k--")
+    ax.plot(sol3, y3, "k--")
+    ax.plot(sol3, -y3, "k--")
+    ax.plot(x4, sol4, "k")
+    ax.plot(x4, -sol4, "k")
+    ax.plot(x5, sol5, "k")
+    ax.plot(x5, -sol5, "k")
+    ax.plot(np.ones(N), y6, "k")
+    ax.plot(np.ones(N), -y6, "k")
+    ax.plot(-np.ones(N), y7, "k")
+    ax.plot(-np.ones(N), -y7, "k")
+
+    ax.plot(x1EM, sol1EM, "r--")
+    ax.plot(x1EM, -sol1EM, "r--")
+    ax.plot(x2EM, sol2EM, "r--")
+    ax.plot(x2EM, -sol2EM, "r--")
+    ax.plot(sol3EM, y3EM, "r--")
+    ax.plot(sol3EM, -y3EM, "r--")
+    ax.plot(x4EM, sol4EM, "r")
+    ax.plot(x4EM, -sol4EM, "r")
+    ax.plot(x5EM, sol5EM, "r")
+    ax.plot(x5EM, -sol5EM, "r")
+    ax.plot(mpiEM*np.ones(N), y6EM, "r")
+    ax.plot(mpiEM*np.ones(N), -y6EM, "r")
+    ax.plot(-mpiEM*np.ones(N), y7EM, "r")
+    ax.plot(-mpiEM*np.ones(N), -y7EM, "r")
 
 
-ax.plot(x1, sol1, "k--")
-ax.plot(x1, -sol1, "k--")
-ax.plot(x2, sol2, "k--")
-ax.plot(x2, -sol2, "k--")
-ax.plot(sol3, y3, "k--")
-ax.plot(sol3, -y3, "k--")
-ax.plot(x4, sol4, "k")
-ax.plot(x4, -sol4, "k")
-ax.plot(x5, sol5, "k")
-ax.plot(x5, -sol5, "k")
-ax.plot(np.ones(N), y6, "k")
-ax.plot(np.ones(N), -y6, "k")
-ax.plot(-np.ones(N), y7, "k")
-ax.plot(-np.ones(N), -y7, "k")
+fig = plt.figure(figsize=(12, 8))
+ax = fig.add_subplot(2, 2, (1, 3))
 
-ax.plot(x1EM, sol1EM, "r--")
-ax.plot(x1EM, -sol1EM, "r--")
-ax.plot(x2EM, sol2EM, "r--")
-ax.plot(x2EM, -sol2EM, "r--")
-ax.plot(sol3EM, y3EM, "r--")
-ax.plot(sol3EM, -y3EM, "r--")
-ax.plot(x4EM, sol4EM, "r")
-ax.plot(x4EM, -sol4EM, "r")
-ax.plot(x5EM, sol5EM, "r")
-ax.plot(x5EM, -sol5EM, "r")
-ax.plot(mpiEM*np.ones(N), y6EM, "r")
-ax.plot(mpiEM*np.ones(N), -y6EM, "r")
-ax.plot(-mpiEM*np.ones(N), y7EM, "r")
-ax.plot(-mpiEM*np.ones(N), -y7EM, "r")
 
+ax2 = fig.add_subplot(2, 2, 4)
+ax3 = fig.add_subplot(2, 2, 2)
+
+add_plot(ax)
+add_plot(ax2)
+add_plot(ax3)
 
 ax.set_xlim(-3, 3)
 ax.set_ylim(-5, 5)
 ax.set_xlabel("$\\mu_I / m_\pi$")
 ax.set_ylabel("$\\mu_S / m_\pi$")
 
+ax2.set_xlim(0.8, 1.6)
+ax2.set_ylim(3.1, 3.4)
 
+ax3.set_xlim(-0.2, 0.2)
+ax3.set_ylim(3.5, 3.8)
 
+plt.tight_layout()
 fig.savefig("figurer/phase_diagram_EM.pdf", bbox_inches="tight")
-
-ax.set_xlim(0.8, 1.6)
-ax.set_ylim(3.1, 3.4)
-fig.set_size_inches(6, 4.8)
-fig.savefig("figurer/phase_diagram_EM2.pdf", bbox_inches="tight")
-
-ax.set_xlim(-0.2, 0.2)
-ax.set_ylim(3.5, 3.8)
-fig.set_size_inches(6, 4.8)
-ax.set_xlabel("")
-fig.savefig("figurer/phase_diagram_EM3.pdf", bbox_inches="tight")
