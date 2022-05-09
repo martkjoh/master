@@ -27,6 +27,16 @@ def sim_nlo():
     np.save("pion_star/data/sols_nlo", sols)
 
 
+def sim_nlo_lattice():
+    u = get_u("pion_star/data/eos_nlolattice.npy")
+    max_step = 5e-4
+    n = 201
+    pcs = 10**np.linspace(-6, np.log10(30), n)
+    sols = integrate(u, pcs, max_step=max_step)
+    np.save("pion_star/data/sols_nlolattice", sols)
+
+
+
 def sim_non_rel():
     pcs = 10**np.linspace(-6, 6, n)
     u = u_nr
@@ -70,7 +80,7 @@ def sim_mu(r=(-12, 4), max_step=1e-1, info=False):
     np.save("pion_star/data/sols_mu", sols)
 
 
-pmin = 2*(1+m_e/m_pi) / (24*pi**2)
+pmin = (1+m_e/m_pi) / (12*pi**2)
 
 def sim_neut(r=(np.log(pmin), 0), max_step=1e-3, info=False):
     pcs = np.logspace(np.log10(pmin*1.01), np.log10(pmin*2) , 50)
@@ -82,12 +92,11 @@ def sim_neut(r=(np.log(pmin), 0), max_step=1e-3, info=False):
     np.save("pion_star/data/sols_neutrino", sols)
 
 
-
 def sim_light(max_step=1e-3, info=False):
-    n=51
-    pmins = [0.1, 0.015, 0.001]
+    n=101
+    pmins = [0.1, 10**(-1.5), (1+m_e/m_pi) / (12*pi**2), 10**(-2.5), 0.001]
     for pmin in pmins:
-        r=(np.log10(1.1*pmin), 1)
+        r=(np.log10(1.1*pmin), 2)
         pcs = np.logspace(*r, n)
         u = lambda p: 3*p
         sols = integrate(u, pcs, max_step=max_step, r_max=1e8, info=info, pmin=pmin, dense_output=False)
@@ -102,7 +111,9 @@ def sim_light(max_step=1e-3, info=False):
 
 # print("nlo")
 # sim_nlo()
- 
+# sim_nlo_lattice()
+
+
 # print("EM")
 # sim_EM()
 
@@ -110,8 +121,8 @@ def sim_light(max_step=1e-3, info=False):
 # sim_e(max_step=1e0)
 # sim_mu(max_step=1e-2)
 
-print("nu")
+# print("nu")
 sim_neut()
 
-sim_light()
+# sim_light()
 

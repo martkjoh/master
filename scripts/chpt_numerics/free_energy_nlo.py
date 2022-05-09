@@ -12,8 +12,6 @@ import sys
 if __name__=="__main__":
     sys.path.append(sys.path[0] + "/..")
 from integrate_tov import get_u
-from constants import m_pi, m_rho, Lr as Lr_num
-from nlo_const import get_nlo_const
 from spectrum import * 
 
 plt.rc("font", family="serif", size=20)
@@ -22,10 +20,21 @@ plt.rc("lines", lw=2)
 plt.rc("axes", grid=True)
 plt.rc("grid", linestyle="--", alpha=1)
 
-# m_pi = 131
-# m_K = 481
-# f_pi = 128/np.pi
-# m_S = sqrt(2*m_K**2 - m_pi**2)
+
+#### !!OBSOBS!! Changes the constants!!! 
+#### !! Should be false unles checkning with lattice
+lattice = False
+
+if lattice:
+    from constants_lattice import m_pi, m_rho, Lr as Lr_num
+else:
+    from constants import m_pi, m_rho, Lr as Lr_num
+
+from nlo_const import get_nlo_const
+
+name = ""
+if lattice: name+="lattice"
+
 
 u0 = (f_pi*m_pi)**2
 
@@ -41,7 +50,7 @@ def lo(x):
 
 def nlo(x):
     # substitute everything except a, muI
-    m_nlo, mS_nlo, f_nlo = get_nlo_const()
+    m_nlo, mS_nlo, f_nlo = get_nlo_const(lattice=lattice)
     # mS_nlo = sqrt(2*m_K**2- m_nlo**2)
     c = [m, dm, mS, f, mrho, muS]
     c_num = [m_nlo, 0, mS_nlo, f_nlo, m_rho, 0]
@@ -153,13 +162,14 @@ def gen_alpha(N=1000, r=(-8, np.log10(5.5))):
 
     alphas = np.array(alphas)
 
-    np.save("pion_star/data/nlo_mu_alpha", [mus, alphas])
+
+    np.save("pion_star/data/nlo_mu_alpha"+name, [mus, alphas])
     return mus, alphas
 
 
 def get_alpha_nlo():
     """ Create alpha_nlo(muI) with splines """
-    mus, alphas = np.load("pion_star/data/nlo_mu_alpha.npy")
+    mus, alphas = np.load("pion_star/data/nlo_mu_alpha"+name+".npy")
     mus = mus/m_pi
     mask = (alphas != 0)
     tck = splrep(mus[mask], alphas[mask], s=0, k=1)
@@ -187,34 +197,33 @@ def gen_nI():
     dF_fin_diff_muI = dF_fin.diff(muI)
     F_diff_muI = get_total_nlo(F1_diff_muI, dF_fin_diff_muI)
 
-    mus, alphas = np.load("pion_star/data/nlo_mu_alpha.npy")
+    mus, alphas = np.load("pion_star/data/nlo_mu_alpha"+name+".npy")
     nI = np.array([-F_diff_muI(mu, a)*m_pi for mu, a in zip(mus, alphas)])
-    np.save("pion_star/data/nlo_nI", nI)
+    np.save("pion_star/data/nlo_nI"+name, nI)
 
 
 def gen_p():
-    mus, alphas = np.load("pion_star/data/nlo_mu_alpha.npy")
+    mus, alphas = np.load("pion_star/data/nlo_mu_alpha"+name+".npy")
     F = get_total_nlo(F1, dF_fin)
     P = np.array([-F(mu, a) + F(0, 0) for mu, a in zip(mus, alphas)])
-    np.save("pion_star/data/nlo_p", P)
-
+    np.save("pion_star/data/nlo_p"+name, P)
 
 
 def gen_u():
-    mus, alphas = np.load("pion_star/data/nlo_mu_alpha.npy")
-    nI = np.load("pion_star/data/nlo_nI.npy")
-    P = np.load("pion_star/data/nlo_p.npy")
+    mus, alphas = np.load("pion_star/data/nlo_mu_alpha"+name+".npy")
+    nI = np.load("pion_star/data/nlo_nI"+name+".npy")
+    P = np.load("pion_star/data/nlo_p"+name+".npy")
     u = -P + mus/m_pi*nI
 
-    np.save("pion_star/data/nlo_u", u)
+    np.save("pion_star/data/nlo_u"+name, u)
 
 
 def gen_eos():
     N = 1000
-    mus, alphas = np.load("pion_star/data/nlo_mu_alpha.npy")
+    mus, alphas = np.load("pion_star/data/nlo_mu_alpha"+name+".npy")
     x = mus/m_pi
-    P = np.load("pion_star/data/nlo_p.npy")
-    u = np.load("pion_star/data/nlo_u.npy")
+    P = np.load("pion_star/data/nlo_p"+name+".npy")
+    u = np.load("pion_star/data/nlo_u"+name+".npy")
     
     # The transition do not happen exactly at m_pi, it only does so to
     # NLO. NNLO terms may contribute numrically. These filte out terms 
@@ -230,7 +239,7 @@ def gen_eos():
     assert np.sum(np.diff(P)>0) == len(P)-1
     assert np.sum(np.diff(u)>0) == len(u)-1
 
-    np.save("pion_star/data/eos_nlo", [x, P, u])
+    np.save("pion_star/data/eos_nlo"+name, [x, P, u])
 
 
 
@@ -240,4 +249,4 @@ if __name__=="__main__":
     gen_nI()
     gen_p()
     gen_u()
-    gen_eos() 
+    gen_eos()

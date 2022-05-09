@@ -155,10 +155,10 @@ def save_eos():
     np.save("pion_star/data/eos_neutrino", [x, plst, ulst])
 
 
-# plot_mu()
+plot_mu()
 
-# plot_eos()
-# plot_eos2()
+plot_eos()
+plot_eos2()
 
 save_eos()
 

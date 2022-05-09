@@ -8,7 +8,7 @@ from matplotlib import cm, colors, collections
 sys.path.append(sys.path[0] + "/..")
 from chpt_numerics.chpt_eos import u_nr, u_ur, p, u, nI
 from integrate_tov import get_u
-from constants import get_const_pion, m_pi
+from constants import get_const_pion, m_pi, m_e
 from chpt_numerics.chpt_eos import alpha_0
 
 from scipy.stats import linregress
@@ -250,6 +250,74 @@ def plot_nlo_quantities():
             fig.savefig("figurer/pion_nlo_"+name+"_"+str(n)+".pdf", bbox_inches="tight")
 
 
+
+def plot_nlo_quantities():
+    fig, ax = plt.subplots(figsize=(8, 5))
+    
+    mu, alpha = np.load("pion_star/data/nlo_mu_alpha.npy")
+    x = mu/m_pi
+    ax.plot(x, alpha_0(x), "k--", label="$\\alpha_\\mathrm{LO}$")
+    ax.plot(x, alpha, "r-.", label="$\\alpha_\\mathrm{NLO}$")
+
+    ax.set_xlabel("$\\mu_I / m_\pi$")
+    ax.set_ylabel("$\\alpha$")
+
+    ax.set_ylim(-0.08, np.pi/2*1.02)
+    ax.set_xlim(-0.1, 3)
+    
+    plt.legend()
+    fig.savefig("figurer/pion_nlo_alpha.pdf", bbox_inches="tight")
+
+    names = ["p", "u", "nI"]
+    label = ["$p", "$u", "${n_{I,}}"]
+    y_label = ["$p/p_0$", "$u/u_0$", "$n_I/n_0$"]
+    j = np.where(x>=1)[0][0]
+    plt.show()
+    lo_func = [p, u, nI]
+    lo = [np.concatenate([np.zeros_like(x[:j]), f(1/x[j:])]) for f in lo_func]
+    ns = [945, -1]
+    for n in ns:
+        for i, name in enumerate(names):
+            y = np.load("pion_star/data/nlo_"+name+".npy")
+            
+            fig, ax = plt.subplots(figsize=(8, 5))
+            ax.plot(x, lo[i], "k--", label=label[i]+"_\\mathrm{LO}$")
+            ax.plot(x, y, "r-.", label=label[i]+"_\\mathrm{NLO}$")
+            ax.set_ylim(-0.1, 1.05*y[n])
+            ax.set_xlim(-0.1, x[n])
+            ax.set_xlabel("$\\mu_I/m_\pi$")
+            ax.set_ylabel(y_label[i])
+            plt.legend()
+            fig.savefig("figurer/pion_nlo_"+name+"_"+str(n)+".pdf", bbox_inches="tight")
+
+
+
+def plot_nlo_quantities_lattice():
+    mu, alpha = np.load("pion_star/data/nlo_mu_alpha.npy")
+    x1 = mu/m_pi
+    mu, alpha = np.load("pion_star/data/nlo_mu_alphalattice.npy")
+    x2 = mu/131
+
+    
+    names = ["p", "u", "nI"]
+    label = ["$p", "$u", "${n_{I,}}"]
+    y_label = ["$p/p_0$", "$u/u_0$", "$n_I/n_0$"]
+    n=-1
+    for i, name in enumerate(names):
+        y = np.load("pion_star/data/nlo_"+name+".npy")
+        z = np.load("pion_star/data/nlo_"+name+"lattice.npy")
+        
+        fig, ax = plt.subplots(figsize=(8, 5))
+        ax.plot(x1, z, "k--", label=label[i]+"_\\mathrm{Lattice}$")
+        ax.plot(x2, y, "r-.", label=label[i]+"_\\mathrm{PDG}$")
+        ax.set_xlabel("$\\mu_I/m_\pi$")
+        ax.set_ylabel(y_label[i])
+        plt.legend()
+        fig.savefig("figurer/lattice_nlo_"+name+"_"+str(n)+".pdf", bbox_inches="tight")
+        plt.show()
+
+
+
 def plot_eos_nlo():
     fig, ax = plt.subplots(figsize=(10, 6))
     p = np.linspace(0, 5, 1000)
@@ -263,6 +331,21 @@ def plot_eos_nlo():
 
     ax.legend(loc="upper left")
     fig.savefig("figurer/pion_eos_nlo.pdf", bbox_inches="tight")
+
+def plot_eos_nlo_lattice():
+    fig, ax = plt.subplots(figsize=(10, 6))
+    p = np.linspace(0, 5, 1000)
+
+    u = get_u("pion_star/data/eos_nlolattice.npy")
+    ax.plot(p, u(p), "k--", label="$ u_{\\mathrm{lattice}}(p)$")
+    u = get_u("pion_star/data/eos_nlo.npy")
+    ax.plot(p, u(p), "r-.", label="$ u_\\mathrm{NLO}(p)$")
+    ax.set_xlabel("$p / p_0$")
+    ax.set_ylabel("$u / u_0$")
+
+    ax.legend(loc="upper left")
+    plt.show()
+    fig.savefig("figurer/lattice_pion_eos_nlo.pdf", bbox_inches="tight")
 
 
 def plot_eos_leptons():
@@ -397,6 +480,44 @@ def plot_mass_radius_compare_EM():
     plt.legend()
     
     fig.savefig("figurer/pion_star/mass_radius_pion_star_compare.pdf", bbox_inches="tight")
+
+
+def plot_mass_radius_lattie():
+    sols = load_sols()
+    N = len(sols)
+    sols = [sols, sols]
+    datas = [get_data(s) for s in sols]
+    fig, ax = plt.subplots(figsize=(16, 8))
+
+    labels = ["PDG", " Lattice"]
+    colors = ["tab:blue", "k"]
+    alpha = [1, 0.8]
+    style = ["-","--"]
+    marker = ["x", "*"]
+    lattice = [False, True]
+    for i, data in enumerate(datas):
+
+        if lattice[i]: from constants_lattice import get_const_pion
+        else: from constants import get_const_pion
+        u0, m0, r0 = get_const_pion()
+
+
+        R, M, pc = [np.array(d) for d in data]
+        x, y, z = R*r0, M*m0, log(pc)
+
+        ax.plot(x, y, label=labels[i], color=colors[i], ls=style[i], alpha=alpha[i])
+        j = np.argmax(M)
+        label ="$(M, R) = " \
+            + "(%.3f" %(M[j]*m0)\
+            + "\, M_\odot, %.3f" %(R[j]*r0) \
+            + "\, \mathrm{km})$ "
+        ax.plot(R[j]*r0, M[j]*m0, "k", marker=marker[i], ls="", ms=10, label=label)
+
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
+    plt.legend()
+    plt.show()
+    fig.savefig("figurer/pion_star/lattice_mass_radius_pion_star_compare.pdf", bbox_inches="tight")
     
 
 def plot_lepton_compare():
@@ -579,6 +700,44 @@ def plot_nlo():
     fig.savefig("figurer/pion_star/mass_compare_order.pdf", bbox_inches="tight")
 
 
+def plot_nlo_lattice():
+    fig, ax = plt.subplots(figsize=(16, 6))
+    sol1 = load_sols(name="_nlo")
+    sol2 = load_sols(name="_nlolattice")
+    sols = [
+        sol1,
+        sol2
+    ]
+    label = ["PDG", "Lattice"]
+    line = ["k--", "r-."]
+    lattice = [False, True]
+    for i, sol in enumerate(sols): 
+        if lattice[i]:
+            from constants_lattice import get_const_pion
+        else:
+            pass
+        from constants import get_const_pion
+        u0, m0, r0 = get_const_pion()
+
+        data = get_data(sol)
+        print(r0, m0)
+
+        R, M, pc = [np.array(d) for d in data]
+        imin = np.where(pc>1e-5)[0][0]
+        imax = np.where(pc>2.9e1)[0][0]
+        x, y, z = R*r0, M*m0, log(pc)
+        x, y, z = x[imin:imax], y[imin:imax], z[imin:imax]
+        ax.plot(x, y, line[i], label=label[i])
+
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
+    ax.set_title("$p_c/p_0 \\in [10^{-5}, 30]$")
+
+    plt.legend()
+    plt.show()
+    fig.savefig("figurer/pion_star/nlo_pdg_lattice_diff.pdf", bbox_inches="tight")
+
+
 def plot_phase():
     F = lambda mu, a: -1/2 * (2*np.cos(a) + mu**2*np.sin(a)**2)
     g = lambda mu, a: 1/2*(1 - mu**2)*a**2 + 1/24*(4*mu**2 - 1)*a**4
@@ -608,42 +767,43 @@ def plot_phase():
     plt.legend()
     plt.savefig("figurer/phase_transition.pdf")
 
-plot_phase()
 
 def test():
-
     fig, ax = plt.subplots(figsize=(16, 6))
 
-    # name = "data_brandt/MR_pilnu.txt"
-    # data = np.loadtxt(name, unpack=True)
-    # M, err_M, R, err_R, stable = data
-    # color="purple"
-    # label="$\\pi+\ell+\\nu_\\ell$"
-    # ax.fill_between(R, M-err_M, M+err_M, color=color, label=label, alpha=0.3)
-    # ax.fill_betweenx(M, R-err_R, R+err_R, color=color, alpha=0.3)
+    pmins = [0.1, 10**(-1.5), (1+m_e/m_pi) / (12*pi**2), 10**(-2.5), 0.001]
 
-    pmins = [0.1, 0.015, 0.001]
+    u0, m0, r0 = get_const_pion()
+
+
     names = ["_light_%.2e"%pmin for pmin in pmins]
-    names.append("_neutrino")
-    line = ["r", "b", "g", "k--"]
     for i, name in enumerate(names):
         sols = load_sols(name=name)
         N = len(sols)
         data = get_data(sols)
 
-        u0, m0, r0 = get_const_pion()
         R, M, pc = [np.array(d) for d in data]
         x, y, z = R*r0, M*m0, log(pc)
-        if i<3:label = "$p_\\mathrm{min}=%.1e$"%pmins[i]
-        else: label = "$\\pi\\ell\\nu_\\ell$"
-        ax.loglog(x, y, line[i], label=label)
+        color = cm.viridis(i/(len(names)+1))
+        label = "$p_\\mathrm{min}=%.1e$"%pmins[i]
+        ax.loglog(x, y, label=label, color=color)
+
+    sols = load_sols(name="_neutrino")
+    data = get_data(sols)
+
+    R, M, pc = [np.array(d) for d in data]
+    x, y, z = R*r0, M*m0, log(pc)
+    label = "$\\pi\\ell\\nu_\\ell$"
+    ax.loglog(x, y, "k--", label=label)
     
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
     plt.legend()
 
-    fig.savefig("figurer/pion_star/mass_radius_light.pdf", bbox_inches="tight")
+    # fig.savefig("figurer/pion_star/mass_radius_light.pdf", bbox_inches="tight")
+    plt.show()
 
+test()
 
 # TODO: fix these
 # plot_pressure_mass()
@@ -668,10 +828,20 @@ def test():
 
 # plot_all()
 
-plot_nlo_quantities()
+# plot_nlo_quantities()
 # plot_eos_nlo()
 
 # plot_mass_radius("_nlo", rmax=False)
 # plot_nlo()
 
 # test()
+
+# plot_phase()
+
+#### Plots using lattice constants
+
+# plot_nlo_quantities_lattice()
+# plot_eos_nlo_lattice()
+# plot_nlo_lattice()
+# plot_mass_radius_lattie()
+

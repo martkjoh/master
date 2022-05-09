@@ -4,12 +4,18 @@ from scipy.optimize import newton
 import sys
 
 sys.path.append(sys.path[0] + "/..")
-from constants import f_pi, m_pi, m_K0, m_rho, m_eta, m_S, Lr
 
-m_K = m_K0
-M = m_rho
 
-def get_nlo_const():
+def get_nlo_const(lattice=False):
+    if lattice: 
+        from constants_lattice import f_pi, m_pi, m_K0, m_rho, m_S, Lr
+    else:
+        from constants import f_pi, m_pi, m_K0, m_rho, m_S, Lr
+
+    m_K = m_K0
+    M = m_rho
+
+
     mpi0_sq = lambda m, mS, f: m**2
     mK0_sq = lambda m, mS, f: 1/2*(m**2 + mS**2)
     meta0_sq = lambda m, mS, f: 1/3*(m**2 + 2*mS**2)
@@ -65,5 +71,5 @@ def get_nlo_const():
     return m , mS, f
 
 
-
-get_nlo_const()
+if __name__=="__main__":
+    print(get_nlo_const())
