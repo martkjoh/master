@@ -230,7 +230,7 @@ def plot_nlo_quantities():
     label = ["$p", "$u", "${n_{I,}}"]
     y_label = ["$p/p_0$", "$u/u_0$", "$n_I/n_0$"]
     j = np.where(x>=1)[0][0]
-    plt.show()
+
     lo_func = [p, u, nI]
     lo = [np.concatenate([np.zeros_like(x[:j]), f(1/x[j:])]) for f in lo_func]
     ns = [945, -1]
@@ -271,7 +271,7 @@ def plot_nlo_quantities():
     label = ["$p", "$u", "${n_{I,}}"]
     y_label = ["$p/p_0$", "$u/u_0$", "$n_I/n_0$"]
     j = np.where(x>=1)[0][0]
-    plt.show()
+
     lo_func = [p, u, nI]
     lo = [np.concatenate([np.zeros_like(x[:j]), f(1/x[j:])]) for f in lo_func]
     ns = [945, -1]
@@ -313,7 +313,6 @@ def plot_nlo_quantities_lattice():
         ax.set_ylabel(y_label[i])
         plt.legend()
         fig.savefig("figurer/lattice_nlo_"+name+"_"+str(n)+".pdf", bbox_inches="tight")
-        plt.show()
 
 
 
@@ -343,7 +342,6 @@ def plot_eos_nlo_lattice():
     ax.set_ylabel("$u / u_0$")
 
     ax.legend(loc="upper left")
-    plt.show()
     fig.savefig("figurer/lattice_pion_eos_nlo.pdf", bbox_inches="tight")
 
 
@@ -387,6 +385,28 @@ def plot_all_eos():
     ax.legend()
     ax.set_ylim(-0.1, 2.6)
     fig.savefig("figurer/pion_star/pion_all_eos.pdf", bbox_inches="tight")
+
+
+def plot_neutrino_nlo_eos():
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    p = np.linspace(0, 5, 1000)
+
+
+    names = ["_neutrino", "_neutrino_nlo"]
+    labels = ["$\\pi\\ell\\nu_\\ell \, \\mathrm{LO}$", "$\\pi\\ell\\nu_\\ell  \, \\mathrm{NLO}$"]
+    lines = ["--", "-."]
+    colors = ["black", "red"]
+
+    for i, name in enumerate(names):
+        u = get_u("pion_star/data/eos"+name+".npy")
+        ax.plot(p, u(p), lines[i], color=colors[i], label=labels[i], lw=2, alpha=0.8)
+
+    ax.set_xlabel("$p / u_0$")
+    ax.set_ylabel("$u / u_0$")
+    ax.legend()
+
+    fig.savefig("figurer/pion_star/neutrino_nlo_eos.pdf", bbox_inches="tight")
 
 
 def plot_mu():
@@ -481,7 +501,7 @@ def plot_mass_radius_compare_EM():
     fig.savefig("figurer/pion_star/mass_radius_pion_star_compare.pdf", bbox_inches="tight")
 
 
-def plot_mass_radius_lattie():
+def plot_mass_radius_lattice():
     sols = load_sols()
     N = len(sols)
     sols = [sols, sols]
@@ -500,7 +520,6 @@ def plot_mass_radius_lattie():
         else: from constants import get_const_pion
         u0, m0, r0 = get_const_pion()
 
-
         R, M, pc = [np.array(d) for d in data]
         x, y, z = R*r0, M*m0, log(pc)
 
@@ -515,7 +534,6 @@ def plot_mass_radius_lattie():
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
     plt.legend()
-    plt.show()
     fig.savefig("figurer/pion_star/lattice_mass_radius_pion_star_compare.pdf", bbox_inches="tight")
     
 
@@ -647,7 +665,6 @@ def plot_neutrino(name = "_neutrino"):
     
     
 def plot_light():
-
     fig, ax = plt.subplots(figsize=(16, 6))
     pmins = [0.1, 0.01, 0.001]
     names = ["_light_%.2e"%pmin for pmin in pmins]
@@ -669,10 +686,10 @@ def plot_light():
     fig.savefig("figurer/pion_star/mass_radius_light.pdf", bbox_inches="tight")
 
 
-def plot_nlo():
+def plot_nlo(t=""):
     fig, ax = plt.subplots(figsize=(16, 6))
-    sol1 = load_sols()
-    sol2 = load_sols(name="_nlo")
+    sol1 = load_sols(name=t)
+    sol2 = load_sols(name=t+"_nlo")
     sols = [
         sol1,
         sol2
@@ -692,48 +709,9 @@ def plot_nlo():
 
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
-    ax.set_title("$p_c/p_0 \\in [10^{-5}, 30]$")
-
+    
     plt.legend()
-    fig.savefig("figurer/pion_star/mass_compare_order.pdf", bbox_inches="tight")
-
-
-def plot_nlo_lattice():
-    fig, ax = plt.subplots(figsize=(16, 6))
-    sol1 = load_sols(name="_nlo")
-    sol2 = load_sols(name="_nlolattice")
-    sols = [
-        sol1,
-        sol2
-    ]
-    label = ["PDG", "Lattice"]
-    line = ["k--", "r-."]
-    lattice = [False, True]
-    for i, sol in enumerate(sols): 
-        if lattice[i]:
-            from constants_lattice import get_const_pion
-        else:
-            pass
-        from constants import get_const_pion
-        u0, m0, r0 = get_const_pion()
-
-        data = get_data(sol)
-        print(r0, m0)
-
-        R, M, pc = [np.array(d) for d in data]
-        imin = np.where(pc>1e-5)[0][0]
-        imax = np.where(pc>2.9e1)[0][0]
-        x, y, z = R*r0, M*m0, log(pc)
-        x, y, z = x[imin:imax], y[imin:imax], z[imin:imax]
-        ax.plot(x, y, line[i], label=label[i])
-
-    ax.set_xlabel("$R [\\mathrm{km}]$")
-    ax.set_ylabel("$M / M_\odot$")
-    ax.set_title("$p_c/p_0 \\in [10^{-5}, 30]$")
-
-    plt.legend()
-    plt.show()
-    fig.savefig("figurer/pion_star/nlo_pdg_lattice_diff.pdf", bbox_inches="tight")
+    fig.savefig("figurer/pion_star/mass_compare_order"+t+".pdf", bbox_inches="tight")
 
 
 def plot_phase():
@@ -874,44 +852,47 @@ def plot_max():
     fig.savefig("figurer/pion_star/max_pressure_mass.pdf", bbox_inches="tight")
 
 
+if __name__=="__main__":
+    plot_pressure_mass()
+    plot_pressure_mass(name="_EM")
 
-# plot_pressure_mass()
-# plot_pressure_mass(name="_EM")
+    plot_mass_radius()
+    plot_mass_radius_compare()
+    plot_mass_radius(name="_EM")
+    plot_mass_radius_compare_EM()
 
-# plot_mass_radius()
-# plot_mass_radius_compare()
-# plot_mass_radius(name="_EM")
-# plot_mass_radius_compare_EM()
+    plot_eos()
+    plot_mu()
+    plot_eos_EM()
+    plot_u_p()
 
-# plot_eos()
-# plot_mu()
-# plot_eos_EM()
-# plot_u_p()
+    plot_lepton()
+    plot_lepton(name="_mu")
+    plot_lepton_compare()
 
-# plot_lepton()
-# plot_lepton(name="_mu")
-# plot_lepton_compare()
+    plot_all_eos()
+    plot_neutrino()
+    plot_neutrino_nlo_eos()
 
-# plot_all_eos()
-# plot_neutrino()
+    plot_all()
 
-# plot_all()
+    plot_nlo_quantities()
+    plot_eos_nlo()
 
-# plot_nlo_quantities()
-# plot_eos_nlo()
+    plot_mass_radius("_nlo", rmax=False)
+    plot_nlo()
+    plot_nlo("_neutrino")
 
-# plot_mass_radius("_nlo", rmax=False)
-# plot_nlo()
+    plot_light()
+    plot_max()
+    plot_phase()
 
-# plot_light()
+    ### Plots using lattice constants
 
-# plot_phase()
+    plot_nlo_quantities_lattice()
+    plot_eos_nlo_lattice()
+    plot_nlo_lattice()
 
-#### Plots using lattice constants
 
-# plot_nlo_quantities_lattice()
-# plot_eos_nlo_lattice()
-# plot_nlo_lattice()
-# plot_mass_radius_lattie()
 
-plot_max()
+    # plot_mass_radius_lattie()

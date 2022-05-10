@@ -23,19 +23,14 @@ plt.rc("grid", linestyle="--", alpha=1)
 
 #### !!OBSOBS!! Changes the constants!!! 
 #### !! Should be false unles checkning with lattice
-lattice = False
+lattice = True
 
 if lattice:
     from constants_lattice import m_pi, m_rho, Lr as Lr_num
+    name = "lattice"
 else:
     from constants import m_pi, m_rho, Lr as Lr_num
-
-from nlo_const import get_nlo_const
-
-name = ""
-if lattice: name+="lattice"
-
-
+    name = ""
 u0 = (f_pi*m_pi)**2
 
 def lo(x):
@@ -177,7 +172,7 @@ def get_alpha_nlo():
 
     def alpha(mu):
         """mu = mu / m_pi"""
-        assert np.all(mu<=mus[-1]),"a-value outside interpolation area, a=%.3e"%mus[-1]
+        assert np.all(mu<=mus[-1]),"mu-value outside interpolation area, a=%.3e"%mus[-1]
         t = type(mu)
         mu = np.atleast_1d(mu)
         mask = mu>mu_min
@@ -218,6 +213,7 @@ def gen_u():
     np.save("pion_star/data/nlo_u"+name, u)
 
 
+
 def gen_eos():
     N = 1000
     mus, alphas = np.load("pion_star/data/nlo_mu_alpha"+name+".npy")
@@ -242,10 +238,41 @@ def gen_eos():
     np.save("pion_star/data/eos_nlo"+name, [x, P, u])
 
 
+### Create vectorized spline of u(mu), p(mu)
+
+def get_func_of_mu(fname, l):
+    """ Create f(muI, alpha(mu)) with splines """
+    mus, alphas = np.load("pion_star/data/nlo_mu_alpha"+l+".npy")
+    f = np.load("pion_star/data/nlo_"+fname+l+".npy")
+    mus = mus/m_pi
+    mask = (alphas != 0)
+    tck = splrep(mus[mask], f[mask], s=0, k=1)
+    mu_min = np.min(mus[mask])
+
+    def f(mu):
+        """mu = mu / m_pi"""
+        assert np.all(mu<=mus[-1]),"mu-value outside interpolation area, mu=%.3e"%mus[-1]
+        t = type(mu)
+        mu = np.atleast_1d(mu)
+        mask = mu>mu_min
+        val = np.zeros_like(mu)
+        if not len(val[mask])==0:
+            val[mask] = splev(mu[mask], tck)
+        if t!=np.ndarray: val=t(val)
+        return  val
+
+    return f
+
+ 
+def get_p_u(l):
+    p = get_func_of_mu("p", l)
+    u = get_func_of_mu("u", l)
+    return p, u
+
 
 
 if __name__=="__main__":
-    # gen_alpha()
+    gen_alpha()
     gen_nI()
     gen_p()
     gen_u()

@@ -7,10 +7,8 @@ sys.path.append(sys.path[0] + "/..")
 
 
 def get_nlo_const(lattice=False):
-    if lattice: 
-        from constants_lattice import f_pi, m_pi, m_K0, m_rho, m_S, Lr
-    else:
-        from constants import f_pi, m_pi, m_K0, m_rho, m_S, Lr
+    if lattice: from constants_lattice import f_pi, m_pi, m_K0, m_rho, m_S, Lr
+    else: from constants import f_pi, m_pi, m_K0, m_rho, m_S, Lr
 
     m_K = m_K0
     M = m_rho
@@ -51,11 +49,6 @@ def get_nlo_const(lattice=False):
             + (16*Lr[4] - C * ln(mK0_sq(m, mS, f)/M**2)) * mK0_sq(m, mS, f)/f**2
     )
 
-    # m_pi = 131
-    # m_K = 481
-    # f_pi = 128/np.sqrt(2)
-    # m_S = np.sqrt(2*m_K**2 - m_pi**2)
-
     m0 = m_pi
     mS0 = m_S
     f0 = f_pi
@@ -73,3 +66,4 @@ def get_nlo_const(lattice=False):
 
 if __name__=="__main__":
     print(get_nlo_const())
+    print(get_nlo_const(True))

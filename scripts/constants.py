@@ -36,7 +36,9 @@ C2 = 3 / (32*pi**2) * m_rho**2*f_rho**2 * ln(f_rho**2 /(f_rho**2 - f_pi**2))
 
 Dm_EM = sqrt(2 * e**2/f_pi**2 * C)
 Dm = sqrt(m_K0**2 - (m_Kpm**2 - Dm_EM**2))
-m_S = sqrt((3*m_eta**2 - m_pi**2)/2)
+# m_S = sqrt((3*m_eta**2 - m_pi**2)/2)
+m_S = sqrt(2*m_K0**2 - m_pi**2)
+
 
 D = Dm_EM**2 / m_pi**2
 

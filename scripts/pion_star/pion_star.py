@@ -17,6 +17,7 @@ def sim():
     max_step = 5e-4
     sols = integrate(u, pcs, max_step=max_step, dense_output=True)
     np.save("pion_star/data/sols", sols)
+    np.save("pion_star/data/solslattice", sols) # same sols, different units for lo
 
 
 def sim_nlo():
@@ -81,16 +82,35 @@ def sim_mu(r=(-12, 4), max_step=1e-1, info=False):
     np.save("pion_star/data/sols_mu", sols)
 
 
-pmin = (1+m_e/m_pi) / (12*pi**2)
 
-def sim_neut(r=(np.log(pmin), 0), max_step=1e-3, info=False):
+def get_n_const(lattice=False):
+    if lattice:
+        from constants_lattice import f_pi, m_pi
+        l = "lattice"
+    else:
+        from constants import get_const_lepton, f_pi, m_pi
+        l = ""
+
+    pmin = (1+m_e/m_pi) / (12*pi**2)
+    
     pcs = np.logspace(np.log10(pmin*1.01), np.log10(pmin*2) , 50)
     pcs = np.concatenate([pcs, np.logspace(np.log10(2*pmin), np.log10(pmin*5) , 50)])
-    pcs = np.concatenate([pcs, np.logspace(np.log10(5*pmin), 2.1, 101)])
+    pcs = np.concatenate([pcs, np.logspace(np.log10(5*pmin), 2., 101)])
+    return pcs, pmin, l
 
-    u = get_u("pion_star/data/eos_neutrino.npy")
+def sim_neut(max_step=1e-3, info=False, lattice=False):
+    pcs, pmin, l = get_n_const(lattice)
+    u = get_u("pion_star/data/eos_neutrino"+l+".npy")
     sols = integrate(u, pcs, max_step=max_step, r_max=1e8, info=info, pmin=pmin, dense_output=False)
-    np.save("pion_star/data/sols_neutrino", sols)
+    np.save("pion_star/data/sols_neutrino"+l, sols)
+
+
+def sim_neut_nlo(max_step=1e-3, info=False, lattice=False):
+    pcs, pmin, l = get_n_const(lattice)
+    u = get_u("pion_star/data/eos_neutrino_nlo"+l+".npy")
+    sols = integrate(u, pcs, max_step=max_step, r_max=1e8, info=info, pmin=pmin, dense_output=False)
+    np.save("pion_star/data/sols_neutrino_nlo"+l, sols)
+
 
 
 def sim_light(max_step=1e-3, info=False):
@@ -138,7 +158,10 @@ def sim_max_pure():
 
 # print("nu")
 # sim_neut()
+sim_neut_nlo()
+sim_neut(lattice=True)
+sim_neut_nlo(lattice=True)
 
-sim_light()
+# sim_light()
 
 # sim_max_pure()

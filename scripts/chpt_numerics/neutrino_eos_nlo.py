@@ -5,9 +5,9 @@ from matplotlib import pyplot as plt
 import sys
 
 sys.path.append(sys.path[0] + "/..")
+from constants import get_const_lepton, f_pi, m_e, m_mu, m_pi
 from integrate_tov import get_u
-
-# Use lattice constants?
+from chpt_numerics.free_energy_nlo import get_p_u
 
 lattice = True
 if lattice:
@@ -85,8 +85,7 @@ pnu = lambda x: xnu(x)**4 / (24 * pi**2)
 unu = lambda x: xnu(x)**4 / (8 * pi**2)
 
 # x = mu_I
-p_pi = lambda  x: 1/2 * (xi(x) - 1/xi(x))**2
-u_pi = lambda x: 1/2 * (2 + xi(x)**2 - 3/xi(x)**2)
+p_pi, u_pi = get_p_u(l)
 
 
 pe = lambda x: ue0/u0*pl(x_e(x))
@@ -98,61 +97,23 @@ p = lambda x: p_pi(x) + pe(x) + pmu(x) + 2*pnu(x)
 u = lambda x: u_pi(x) + ue(x) + umu(x) + 2*unu(x)
 
 
-def plot_mu():
-    N = 1000
-    x = np.linspace(1, 1.1, N)
-    y = x_e(x)
-
-    fig, ax = plt.subplots(figsize=(9, 5)) 
-    ax.plot(x, y, label="$\mu_e(\mu_I)$")
-    ax.plot(x, mu_e(x), "k--", label="$\mu_e'(\mu_I)$")
-
-    ax.set_xlabel("$\\mu_I/m_\\pi$")
-    ax.set_ylabel("$\mu_e/m_e$")
-
-
-    dy = a* np.diff(y)/np.diff(x)
-    ax2 = plt.twinx(ax)
-    dmu = "$\\frac{\\mathrm{d} \\mu_e}{\\mathrm{d} \\mu_I}$"
-    ax2.plot(x[:-1]+np.diff(x), dy, "k-.", lw=1, label=dmu)
-    ax2.set_ylim(-2.05, 45)
-    ax2.grid(False)
-    dmu = "${\\mathrm{d} \\mu_e}/{\\mathrm{d} \\mu_I}$"
-    ax2.set_ylabel(dmu)
-
-    fig.legend(loc=(0.65, 0.4))
-    
-    fig.savefig("figurer/neutrino_mu.pdf", bbox_inches="tight")
-
 
 pmin = 2*(1+m_e/m_pi) / (24*pi**2)
 def plot_eos():
-    x = np.linspace(0, 2.2, 1000)
+    x = np.linspace(0, 6.5, 1000)
     fig, ax = plt.subplots(figsize=(8, 5))
     ax.plot(p(x), 3*p(x), "k--", label="$u = 3 p$")
     ax.plot(p(x), u(x), label="$u(p)$")
     ax.set_xlabel("$p/u_{0}$")
     ax.set_ylabel("$u/u_{0}$")
     plt.legend()
+    plt.show()
 
-    fig.savefig("figurer/neutrino_eos.pdf", bbox_inches="tight")
-
-
-def plot_eos2():
-    x = np.linspace(0, 1.01, 1000)
-    fig, ax = plt.subplots(figsize=(8, 5))
-    ax.plot(p(x), 3*p(x), "k--", label="$u = 3 p$")
-    ax.plot(p(x), u(x), label="$u(p)$")
-    ax.plot(pmin, 3*pmin, "kx", label="$p_\\mathrm{min}$")
-    plt.legend()
-    ax.set_xlabel("$p/u_{0}$")
-    ax.set_ylabel("$u/u_{0}$")
-
-    fig.savefig("figurer/neutrino_eos2.pdf", bbox_inches="tight")
+    fig.savefig("figurer/neutrino_nlo_eos.pdf", bbox_inches="tight")
     
 
 def save_eos():
-    x = np.concatenate([np.linspace(0, 1, 100), 1+np.logspace(-14, 2 , 1000)])
+    x = np.concatenate([np.linspace(0, 1, 100), 1+np.logspace(-14, np.log10(5.5), 1000)])
     ulst = u(x)
     plst = p(x)
     
@@ -161,13 +122,10 @@ def save_eos():
     assert len(np.unique(ulst)) == len(ulst)
     assert np.sum(np.diff(plst)<0) == 0
     assert np.sum(np.diff(ulst)<0) == 0
-    np.save("pion_star/data/eos_neutrino"+l, [x, plst, ulst])
+    np.save("pion_star/data/eos_neutrino_nlo"+l, [x, plst, ulst])
 
 
-# plot_mu()
 
 # plot_eos()
-# plot_eos2()
-
 save_eos()
 

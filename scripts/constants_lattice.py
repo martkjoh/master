@@ -50,7 +50,13 @@ def get_const_pion():
     return u0, m0, r0
 
 
+def get_const_lepton(m_l):
+    u0 = f_pi**2*m_pi**2
+    ul0 = m_l**4 / (8*pi**2)
+    A = 8 / 3 * ul0/m_l * 1/(u0/m_pi)
+    return u0, ul0, A
+
+
 if __name__=="__main__":
     pass
-
     print(f_pi)
