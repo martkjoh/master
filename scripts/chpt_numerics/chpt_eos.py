@@ -51,7 +51,7 @@ u_ur = lambda p: p
 
 pEM = lambda x, D: 1/2 * (1/x**2 +  x**2/(1 - D*x**2) - 2 - D)
 uEM = lambda x, D: 1/2 * (
-    1/x**2 - x**2*(3 - D*x**2)/(1 - D*x**2)**2 + 2+D
+    1/x**2 + 2+D - x**2*(3 - D*x**2)/(1 - D*x**2)**2 
     )
 
 
@@ -59,7 +59,6 @@ def gen_eos_list_EM():
     r = (-4.4 , 10)
     y = np.logspace(*r, N-1, dtype=np.longdouble()) 
     y = np.concatenate([[0.,], y])
-
 
     x = 1 / sqrt(1 + D + y**2)
 

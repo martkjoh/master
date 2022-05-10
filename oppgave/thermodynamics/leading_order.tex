@@ -50,6 +50,7 @@ In this new phase, the solution is
     \cos \alpha = \frac{\bar m^2}{\mu_I^2}.
 \end{align}
 %
+\todo[inline]{dont use x}
 We introduce a dimensionless variable $x^2 = \cos\alpha = \bar m^2 / \mu_I^2$.
 This variable has the domain $[0, 1]$, and $\cos \alpha = x^2$ implies that $\sin^2 \alpha = 1 - x^4$.
 Substituting the dimensionless variable into the free energy density, we get 
@@ -130,12 +131,11 @@ From \autoref{static Lagrangian three-flavor EM}, the free energy density, inclu
 %
 \begin{equation}
     \Eff =
-    - \frac{1}{2} f^2
-    \left(
-        \mu_I^2 \sin^2\alpha + 2 \bar m^2\cos\alpha 
-        + \Delta m_\text{EM}^2\cos^2\alpha
-        - \frac{1}{3}\Delta m_\text{EM}^2 + m_S^2
-    \right).
+    -\frac{1}{2} f^2
+    \left[
+        (\mu_I^2 - \Delta m_\text{EM}^2)\sin^2\alpha + 2 \bar m^2\cos\alpha 
+        + \frac{2}{3}\Delta m_\text{EM}^2 + m_S^2
+    \right].
 \end{equation}
 %
 Free energy minimization now gives

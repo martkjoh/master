@@ -127,7 +127,7 @@ def plot_mu():
 
 pmin = 2*(1+m_e/m_pi) / (24*pi**2)
 def plot_eos():
-    x = np.linspace(0, 2.2, 1000)
+    x = np.linspace(0, 3, 1000)
     fig, ax = plt.subplots(figsize=(8, 5))
     ax.plot(p(x), 3*p(x), "k--", label="$u = 3 p$")
     ax.plot(p(x), u(x), label="$u(p)$")
@@ -166,8 +166,8 @@ def save_eos():
 
 # plot_mu()
 
-# plot_eos()
-# plot_eos2()
+plot_eos()
+plot_eos2()
 
-save_eos()
+# save_eos()
 
