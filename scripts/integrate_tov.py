@@ -60,7 +60,8 @@ def integrate(
     r_max=1e3, 
     newtonian_limit=False, 
     info=False, 
-    pmin=0.
+    pmin=0.,
+    progress=True
     ):
     """ Integrate TOV for a list of central pressures pcs"""
 
@@ -93,8 +94,11 @@ def integrate(
     if type(max_step)==float:
         max_step = np.ones_like(pcs)*max_step
 
+    bar = lambda x: x
+    if progress: bar = lambda x: tqdm(x)
+    
     sols = [None for _ in pcs] # empty list to keep solutions
-    for i, pc in enumerate(tqdm(pcs)):
+    for i, pc in enumerate(bar(pcs)):
         s = max_step[i]
         sol = solve_ivp(
             f, 

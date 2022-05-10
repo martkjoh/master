@@ -20,7 +20,7 @@ def load_data(name=""):
     return data
 
 
-def find_p_u_c(name):
+def find_p_u_c(name, prnt=False):
     u_path = "pion_star/data/eos"+name+".npy"
     u = get_u(u_path)
 
@@ -28,10 +28,13 @@ def find_p_u_c(name):
     j = np.argmax(data[1])
     pc_max = data[2][j]
     uc_max = u(pc_max)
-
-    print("R = ", data[0][j]*r0)
-    print(("u_c"+name).ljust(15)+"="+("%.3e"%uc_max).rjust(11))
-    print(("p_c"+name).ljust(15)+"="+("%.3e"%pc_max).rjust(11))
+    R =  data[0][j]*r0
+    
+    if prnt:
+        print("R = ", R)
+        print(("u_c"+name).ljust(15)+"="+("%.3e"%uc_max).rjust(11))
+        print(("p_c"+name).ljust(15)+"="+("%.3e"%pc_max).rjust(11))
+    return R, uc_max, pc_max, j
 
 def find_mu(name):
     path = "pion_star/data/eos"+name+".npy"
@@ -48,6 +51,7 @@ def find_mu(name):
 
 names = ["" ,"_nlo","_EM","_e","_mu","_neutrino"]
 
-for name in names:
-    find_p_u_c(name)
-    find_mu(name)
+if __name__=="__main__":
+    for name in names:
+        find_p_u_c(name, prnt=True)
+        find_mu(name)

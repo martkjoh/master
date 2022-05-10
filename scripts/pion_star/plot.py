@@ -21,9 +21,15 @@ plt.rc("grid", linestyle="--", alpha=1)
 
 u0, m0, r0 = get_const_pion()
 
+# linetypes
+dashdotdot = (0, (6, 1, 1, 1, 1, 1))
+dashdashdot = (0, (6, 1, 6, 1, 1, 1))
 
 def load_sols(name=""):
     return np.load("pion_star/data/sols"+name+".npy", allow_pickle=True)
+
+def load_max(name=""):
+    return np.load("pion_star/data/max"+name+".npy", allow_pickle=True)[None][0]
 
 
 def get_data(sols):
@@ -35,50 +41,43 @@ def get_data(sols):
     return data
 
 
-# TODO: Fix for new data-structure
 def plot_pressure_mass(name=""):
     all_sols = load_sols(name)
     sols = all_sols[30:180:8]
     N = len(sols)
     
     fig, ax = plt.subplots(2, figsize=(14, 10), sharex=True)
-    [a.grid(linestyle="--", alpha=1, lw=0.4) for a in ax]
-    p0s = []
+    pcs = []
     for i, s in enumerate(sols):
-        p, m = s["f"]
-        r = s.t
-        R, M, p0 = s["R"], s["M"], s["pc"]
-        p0s.append(p0)
+        f = s["f"]
+        R, M, pc = s["R"], s["M"], s["pc"]
+        pcs.append(pc)
 
-        c = cm.viridis(i/N)
+        c = cm.viridis(i/(N+1))
+        r = np.linspace(0, R, 200)
 
-        ax[0].plot(r/R, p/p0, color=c, alpha=0.6)
-        ax[1].plot(r/R, m/M, lw=2,  color=c, alpha=0.6)
+        ax[0].plot(r/R, f(r)[0]/pc, color=c, alpha=0.6)
+        ax[1].plot(r/R, f(r)[1]/M, lw=2,  color=c, alpha=0.6)
 
-    M = [s.y[1][-1] for s in all_sols]
-    i = np.argmax(M)
-    m = all_sols[i].y[1] / M[i]
-    p = all_sols[i].y[0]
-    p = p / p[0]
-    r = all_sols[i].t
-    r = r/r[-1]
-    ax[0].plot(r, p, "--k", lw=2)
-    ax[1].plot(r, m, "--k", lw=2, label="$M_\\mathrm{max}$") 
+    i = np.argmax(np.array([s["M"] for s in all_sols]))
+    M, R, pc = [all_sols[i][s] for s in ["M", "R", "pc"]]
+    r = np.linspace(0, R)
+    f = all_sols[i]["f"]
+    p, m = f(r)
+
+    ax[0].plot(r/R, p/pc, "--k", lw=2)
+    ax[1].plot(r/R, m/M, "--k", lw=2, label="$M_\\mathrm{max}$") 
 
     ax[0].set_ylabel("$p/p_c$")
     ax[1].set_ylabel("$m/M$")
     ax[1].set_xlabel("$r / R$")
+    fig.legend(bbox_to_anchor=(0.73, 0.87))
 
-    c = np.arange(1, 5 + 1)
 
-    norm = colors.Normalize(vmin=log(p0s[0]), vmax=log(p0s[-1]))
+    norm = colors.Normalize(vmin=log(pcs[0]), vmax=log(pcs[-1]))
     cmap = cm.ScalarMappable(norm=norm, cmap=cm.viridis)
-    cmap.set_array([])
-
     cb = fig.colorbar(cmap, ax=ax, location="right")
     cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
-
-    fig.legend(bbox_to_anchor=(0.73, 0.87))
 
     fig.savefig("figurer/pion_star/pressure_mass_pion_star"+name+".pdf", bbox_inches="tight")
 
@@ -553,21 +552,20 @@ def plot_lepton_compare():
 
 
 def plot_all():
-    sols1 = load_sols()
+    sols1 = load_sols(name="_nlo")
     sols2 = load_sols(name="_e")
     sols3 = load_sols(name="_mu")
     sols4 = load_sols(name="_neutrino")
-    N = len(sols1)
     sols = [sols1, sols2, sols3, sols4]
     datas = [get_data(s) for s in sols]
 
     u0, m0, r0 = get_const_pion()
 
-    fig, ax = plt.subplots(figsize=(16, 10))
-    lines = ["-", "--", "-.", ":"]
-    # colors = ["blue", "green", "r", "purple"]
-    colors = ["blue", "green", "orange", "black"]
-    labels = ["\\pi", "\\pi+e", "\\pi+\\mu", "\\pi+\\ell+\\nu_\\ell"]
+    fig, ax = plt.subplots(figsize=(16, 8))
+    lines = [dashdotdot, "--", "-.", "-"]
+    N = len(datas)
+    colors = [cm.winter(i/(N-1)) for i in range(N)]
+    labels = ["\\pi\,\\mathrm{NLO}", "\\pi e", "\\pi\\mu", "\\pi\\ell\\nu_\\ell"]
     for i, data in enumerate(datas):
         R, M, pc = [np.array(d) for d in data] 
         ax.plot(R*r0, M*m0, ls=lines[i], color=colors[i], label="$"+labels[i]+"$", lw=3, alpha=0.65)
@@ -578,7 +576,7 @@ def plot_all():
     ax.set_yscale("log")
 
     Rs = np.linspace(0, 8e4, 100)
-    ax.set_ylim(3e-2, 1e3)
+    ax.set_ylim(3e-2, 3e2)
     ax.plot(Rs, 4 / 9 * Rs, "k--", label="$M = \\frac{4}{9} R$")
     ax.legend(loc="lower right")
 
@@ -768,13 +766,12 @@ def plot_phase():
     plt.savefig("figurer/phase_transition.pdf")
 
 
-def test():
+def plot_light_log():
     fig, ax = plt.subplots(figsize=(16, 6))
 
     pmins = [0.1, 10**(-1.5), (1+m_e/m_pi) / (12*pi**2), 10**(-2.5), 0.001]
 
     u0, m0, r0 = get_const_pion()
-
 
     names = ["_light_%.2e"%pmin for pmin in pmins]
     for i, name in enumerate(names):
@@ -799,13 +796,85 @@ def test():
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
     plt.legend()
+    fig.savefig("figurer/pion_star/mass_radius_light_log.pdf", bbox_inches="tight")
 
-    # fig.savefig("figurer/pion_star/mass_radius_light.pdf", bbox_inches="tight")
-    plt.show()
 
-test()
+def plot_light():
+    fig, ax = plt.subplots(figsize=(16, 6))
 
-# TODO: fix these
+    pmins = [0.1, 10**(-1.5), (1+m_e/m_pi) / (12*pi**2), 10**(-2.5), 0.001]
+
+    u0, m0, r0 = get_const_pion()
+
+    x = 2
+    b = np.log10(pmins[0]*1.6)
+    a = np.log10(pmins[-1]*1.1)
+    d = b - a
+
+    names = ["_light_%.2e"%pmin for pmin in pmins]
+    for i, name in enumerate(names):
+        sols = load_sols(name=name)
+        N = len(sols)
+        data = get_data(sols)
+
+        R, M, pc = [np.array(d) for d in data]
+        x, y, z = R*r0, M*m0, log(pc)
+        color = cm.viridis( (np.log10(pmins[i]) - a) / (b - a) )
+        label = "$p_\\mathrm{min}=%.1e$"%pmins[i]
+        ax.plot(x, y, color=color)
+
+    sols = load_sols(name="_neutrino")
+    data = get_data(sols)
+
+    R, M, pc = [np.array(d) for d in data]
+    x, y, z = R*r0, M*m0, log(pc)
+    label = "$\\pi\\ell\\nu_\\ell$"
+    ax.plot(x, y, "k--", label=label)
+    
+    ax.set_xlabel("$R [\\mathrm{km}]$")
+    ax.set_ylabel("$M / M_\odot$")
+    plt.legend()
+     
+    norm = colors.Normalize(vmin=a, vmax=b)
+    cmap = cm.ScalarMappable(norm=norm, cmap=cm.viridis)
+    cb = fig.colorbar(cmap, ax=ax, location="right")
+    cb.set_label( label="$\log_{10} [p_\\mathrm{min} / p_0] $", labelpad=25, rotation=270)
+
+    fig.savefig("figurer/pion_star/mass_radius_light.pdf", bbox_inches="tight")
+
+
+
+def plot_max():
+    names = ["", "_nlo", "_EM", "_e", "_mu", "_neutrino"]
+    labels = ["$\\pi\,\mathrm{LO}$", "$\\pi\,\mathrm{NLO}$", "$\\pi\,\mathrm{EM}$", "$\\pi e$", "$\\pi \\mu$", "$\\pi \\ell\\nu_\\ell$"]
+
+    names = ["_nlo", "_e", "_mu", "_neutrino"]
+    labels = ["$\\pi\,\mathrm{NLO}$", "$\\pi e$", "$\\pi \\mu$", "$\\pi \\ell\\nu_\\ell$"]
+
+    N = len(names)
+    sols = [load_max(name) for name in names]
+    colors = [cm.winter(i/(N-1)) for i in range(N)]
+    ls = [dashdotdot, "-", "--", "-."]
+    fig, ax = plt.subplots(2, 1, figsize=(14, 12), sharex=True)
+    for i, name in enumerate(names):
+        s = sols[i]
+        f = s["f"]
+        R, M, pc = s["R"], s["M"], s["pc"]
+        r = np.linspace(0, R, 200)
+        p, m = f(r)
+
+        ax[1].plot(r/R, p/pc, color=colors[i], ls=ls[i], label=labels[i])
+        ax[0].plot(r/R, m/M, color=colors[i], ls=ls[i], label=labels[i])
+
+    ax[0].legend()
+    ax[1].set_ylabel("$p/p_c$")
+    ax[0].set_ylabel("$m/M$")
+    ax[1].set_xlabel("$r/R$")
+
+    fig.savefig("figurer/pion_star/max_pressure_mass.pdf", bbox_inches="tight")
+
+
+
 # plot_pressure_mass()
 # plot_pressure_mass(name="_EM")
 
@@ -834,7 +903,7 @@ test()
 # plot_mass_radius("_nlo", rmax=False)
 # plot_nlo()
 
-# test()
+# plot_light()
 
 # plot_phase()
 
@@ -845,3 +914,4 @@ test()
 # plot_nlo_lattice()
 # plot_mass_radius_lattie()
 
+plot_max()
