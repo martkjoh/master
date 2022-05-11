@@ -817,7 +817,7 @@ def plot_light():
 
 
 def plot_light_nogrid():
-    fig, ax = plt.subplots(figsize=(16, 6))
+    fig, ax = plt.subplots(figsize=(8, 14))
 
     p0 = (1+m_e/m_pi) / (12*pi**2)
     pmins = np.logspace( np.log10(p0/3), np.log10(p0*3), 5 )
@@ -839,7 +839,7 @@ def plot_light_nogrid():
         x, y, z = R*r0, M*m0, log(pc)
         color = cm.viridis( (np.log10(pmins[i]) - a) / (b - a) )
         label = "$p_\\mathrm{min}=%.1e$"%pmins[i]
-        ax.plot(x[1:], y[1:], color=color)
+        ax.plot(y[1:], x[1:], color=color)
 
     ax.set_axis_off()
 
@@ -890,9 +890,9 @@ if __name__=="__main__":
     # plot_neutrino()
     # plot_neutrino_nlo_eos()
 
-    plot_all() 
-    plot_all_eos()
-    plot_max()
+    # plot_all() 
+    # plot_all_eos()
+    # plot_max()
 
     # plot_nlo_quantities()
     # plot_eos_nlo()
@@ -902,7 +902,7 @@ if __name__=="__main__":
     # plot_nlo("_neutrino")
 
     # plot_light()
-    # plot_light_nogrid()
+    plot_light_nogrid()
     # plot_light_log()
     # plot_phase()
 
