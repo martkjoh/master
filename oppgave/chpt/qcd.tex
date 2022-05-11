@@ -184,7 +184,7 @@ However, when we include the fact that the masses of the quarks are different, w
 Other external currents, chemical potentials, and electromagnetic interactions also break the symmetry.
 
 Lastly, the symmetry is broken spontaneously by the ground state quark condensate, $\braket{\bar q q} \neq 0$.
-In the chiral limit, one can show that the scalar bilinear for all three quarks $u$, $d$, and $s$ must be equal, and we define $\braket{\bar q q} = {\sum}_f \braket{\bar q_f q_f}$~\autocite{schererIntroductionChiralPerturbation2002}.
+In the chiral limit, one can show that the scalar bilinear for all three quarks $u$, $d$, and $s$ must be equal, and we define $\braket{\bar q q} = \braket{\bar uu} = \braket{\bar dd} = \braket{\bar ss}$~\autocite{schererIntroductionChiralPerturbation2002}.
 The scalar quark operator is not invariant under $\Lie{SU}{N_f}_A$, and as discussed in \autoref{section: symmetry and goldstone's theorem}, this leads to the spontaneous symmetry breaking pattern.
 %
 \begin{equation}
@@ -198,16 +198,16 @@ We will take this symmetry breaking as an axiom and use it to construct \chpt.
 The scalar quark condensate is quantified by the constant $B_0$ via the relation
 %
 \begin{equation}
-    \ex{\bar q q} = - f_\pi B_0.
+    \ex{\bar q q} = - f_\pi^2 B_0.
 \end{equation}
 %
-Here, $f_\pi$ is the pion decay constant.
-With the spontaneous symmetry breaking of the quark condensate, we get the resulting Goldstone bosons $\varphi_a$.
-The pion decay constant is defined by the overlap between the axial vector current $A_\alpha^\mu$ acting on the single-particle momentum eigenstates of the Goldstone bosons and the vacuum.
-By Lorentz invariance, this matrix element can be written as
+With the spontaneous symmetry breaking of the quark condensate, we get the resulting Goldstone bosons $\varphi_\alpha$.
+The pion decay constant $f_\pi$ is defined by the matrix element of current corresponding to the broken symmetry, $A_\alpha^\mu$ between the vacuum $\ket{0}$ and Goldstone boson momentum states, $\ket{\varphi_a(p)}$.
+One can show that this element, by Lorentz covariance, must have the form\autocite{schererIntroductionChiralPerturbation2002,schwartzQuantumFieldTheory2013}
 %
 \begin{equation}
-    \braket{0| \text{T} A^\mu_a (x) | \varphi_b(p)} = i p_\mu f_\pi \delta_{ab} e^{i p_\mu x^\mu}.
+    \braket{0| A^\mu_\alpha (x) | \varphi_\beta(p)} 
+    = i  f_\pi \delta_{\alpha\beta}  \, p^\mu e^{i p_\mu x^\mu}.
 \end{equation}
 %
 We are now ready to construct \chpt.

@@ -452,7 +452,6 @@ def plot_u_p():
 
     ax[0].plot(y, p(x1), label="$p(\\mu_I)$")
     ax[1].plot(y, u(x1), label="$u(\\mu_I)$")
-    print(p(x1)- pEM(x2, D))
 
     ax[0].plot(y, pEM(x2, D), "k--", label="$p_{\\mathrm{EM}}(\\mu_I)$")
     ax[1].plot(y, uEM(x2, D), "k--", label="$u_{\\mathrm{EM}}(\\mu_I)$")
@@ -465,7 +464,6 @@ def plot_u_p():
 
     fig.savefig("figurer/pion_star/pion_up.pdf", bbox_inches="tight")
 
-plot_u_p()
 
 def plot_mass_radius_compare_EM():
     sols1 = load_sols()
@@ -778,13 +776,15 @@ def plot_light_log():
 def plot_light():
     fig, ax = plt.subplots(figsize=(16, 6))
 
-    pmins = [0.1, 10**(-1.5), (1+m_e/m_pi) / (12*pi**2), 10**(-2.5), 0.001]
+
+    p0 = (1+m_e/m_pi) / (12*pi**2)
+    pmins = np.logspace( np.log10(p0/3), np.log10(p0*3), 5 )
 
     u0, m0, r0 = get_const_pion()
 
     x = 2
-    b = np.log10(pmins[0]*1.6)
-    a = np.log10(pmins[-1]*1.1)
+    b = np.log10(pmins[0]*.8)
+    a = np.log10(pmins[-1]*1.2)
     d = b - a
 
     names = ["_light_%.2e"%pmin for pmin in pmins]
@@ -817,6 +817,36 @@ def plot_light():
     cb.set_label( label="$\log_{10} [p_\\mathrm{min} / p_0] $", labelpad=25, rotation=270)
 
     fig.savefig("figurer/pion_star/mass_radius_light.pdf", bbox_inches="tight")
+
+
+def plot_light_nogrid():
+    fig, ax = plt.subplots(figsize=(16, 6))
+
+    p0 = (1+m_e/m_pi) / (12*pi**2)
+    pmins = np.logspace( np.log10(p0/3), np.log10(p0*3), 5 )
+
+    u0, m0, r0 = get_const_pion()
+
+    x = 2
+    b = np.log10(pmins[0]*.8)
+    a = np.log10(pmins[-1]*1.2)
+    d = b - a
+
+    names = ["_light_%.2e"%pmin for pmin in pmins]
+    for i, name in enumerate(names):
+        sols = load_sols(name=name)
+        N = len(sols)
+        data = get_data(sols)
+
+        R, M, pc = [np.array(d) for d in data]
+        x, y, z = R*r0, M*m0, log(pc)
+        color = cm.viridis( (np.log10(pmins[i]) - a) / (b - a) )
+        label = "$p_\\mathrm{min}=%.1e$"%pmins[i]
+        ax.plot(x[1:], y[1:], color=color)
+
+    ax.set_axis_off()
+
+    fig.savefig("figurer/pion_star/mass_radius_light_nogrid.pdf", bbox_inches="tight")
 
 
 
@@ -862,7 +892,7 @@ if __name__=="__main__":
     # plot_eos()
     # plot_mu()
     # plot_eos_EM()
-    plot_u_p()
+    # plot_u_p()
 
     # plot_lepton()
     # plot_lepton(name="_mu")
@@ -881,7 +911,9 @@ if __name__=="__main__":
     # plot_nlo()
     # plot_nlo("_neutrino")
 
-    # plot_light()
+    plot_light()
+    plot_light_nogrid()
+    # plot_light_log()
     # plot_max()
     # plot_phase()
 
@@ -890,3 +922,4 @@ if __name__=="__main__":
     # plot_nlo_quantities_lattice()
     # plot_eos_nlo_lattice()
     # plot_nlo_lattice()
+    # plot_u_p()

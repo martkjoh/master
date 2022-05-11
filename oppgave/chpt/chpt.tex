@@ -54,14 +54,24 @@ We therefore expand the effective Lagrangian as
 where $\Ell_{2n}$ contains $2n$ derivatives.
 This is equivalent to scaling the space-time coordinates as $x^\mu \rightarrow tx^\mu$, and expanding the Lagrangian in powers of $t$.
 
-We must also allow for the fact that pions have non-zero mass, interact in a symmetry-breaking way with the electromagnetic field, and the possibility of finite external currents.
-This is all implemented by external currents, which we also have to assume are small.
+We must also allow for the fact that pions have non-zero mass, interact in a symmetry-breaking way with the electromagnetic field, and the possibility of external currents.
+We showed in \autoref{section: effective field theories} that this can be done using the technique of spurion fields, in which symmetry-breaking terms are treated as external fields with their own transformation rules.
+These fields, too, must be given chiral dimensions.
 Any external pions are on-shell, so the pion mass $m_\pi$ must be less than the energy scale $Q$.
 As we will see, this corresponds to scaling the quark masses as $m_q \rightarrow t^2 m_q$.
 Similarly, $\mu_I$ must also be less than $Q$, which means that we scale it as $\mu_I\rightarrow t \mu_I$.
 We include electromagnetic interaction by scaling the fundamental electric charge $e$ as $e\rightarrow te$~\autocite{urechVirtualPhotonsChiral1995}.
 Following these rules, each term in the effective Lagrangian will have a well-defined chiral dimension $D$, ensuring a consistent series expansion.
 The term $\Ell_{D}$ then contain all allowed terms that scale as $t^D$~\autocite{schererIntroductionChiralPerturbation2002,weinbergPhenomenologicalLagrangians1979,weinbergQuantumTheoryFields1996}.
+
+The chiral dimension gives a formal power series to expand the Lagrangian, and as we will show later, ensures that we can perform renormalization order-by-order.
+However, for perturbation theory to be of any use, we need the series to converge.
+For the series to converge, external momentum $q$ or in our case chemical potential $\mu_I$ must be small \emph{compared to some energy scale}.
+Couplings between the Goldstone bosons will be accompanied by a factor $1/f^2$, where $f$ is the \emph{bare} pion decay constant.
+To leading order, $f = f_\pi$.
+As will see, convergence is therefore dependent on if $\mu_I / 4 \pi f_\pi$ is smaller than one~\autocite{weinbergQuantumTheoryFields1996}.
+The $4\pi$-factor shows up due to Fourier integrals over loop diagrams and will be important in giving chiral perturbation theory a larger domain of applicability, as it allows us to explore the phase outside the vacuum phase.
+
 
 
 \subsection{*Non-linear realization}

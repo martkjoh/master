@@ -115,7 +115,10 @@ def sim_neut_nlo(max_step=1e-3, info=False, lattice=False):
 
 def sim_light(max_step=1e-3, info=False):
     n=201
-    pmins = [0.1, 10**(-1.5), (1+m_e/m_pi) / (12*pi**2), 10**(-2.5), 0.001]
+    # pmins = [0.1, 10**(-1.5), (1+m_e/m_pi) / (12*pi**2), 10**(-2.5), 0.001]
+    p0 = (1+m_e/m_pi) / (12*pi**2)
+    pmins = np.logspace( np.log10(p0/3), np.log10(p0*3), 5 )
+
     for pmin in pmins:
         pcs = np.logspace(np.log10(pmin*1.01), np.log10(pmin*2) , 50)
         pcs = np.concatenate([pcs, np.logspace(np.log10(2*pmin), np.log10(pmin*5) , 50)])
@@ -158,10 +161,10 @@ def sim_max_pure():
 
 # print("nu")
 # sim_neut()
-sim_neut_nlo()
-sim_neut(lattice=True)
-sim_neut_nlo(lattice=True)
+# sim_neut_nlo()
+# sim_neut(lattice=True)
+# sim_neut_nlo(lattice=True)
 
-# sim_light()
+sim_light()
 
 # sim_max_pure()

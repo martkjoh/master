@@ -118,7 +118,7 @@ if __name__=="__main__":
     # _, _, A = get_const_lepton(m_mu)
     # print("%.4e" % A)
 
-    print(get_R_mu())
+    # print(get_R_mu())
 
     # print(Dm)
     
@@ -130,5 +130,5 @@ if __name__=="__main__":
     # print(( hbar * c / (2* G * m_pi**2) )**(3 / 2) * m_pi / M0)
 
     # print(Dm**4/m_K0**4)
-    print(4*pi*78.55/m_pi)
+    print(4*pi*f_pi/m_pi)
 
