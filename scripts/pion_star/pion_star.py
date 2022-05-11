@@ -142,13 +142,13 @@ def sim_max_pure():
 
 
 # print("pure")
-# sim()
+sim()
 # sim_non_rel()
 # sim_newt()
 # sim_newt_non_rel()
 
 # print("nlo")
-# sim_nlo()
+sim_nlo()
 # sim_nlo_lattice()
 
 
@@ -156,15 +156,15 @@ def sim_max_pure():
 # sim_EM()
 
 # print("l")
-# sim_e(max_step=1e0)
-# sim_mu(max_step=1e-2)
+sim_e(max_step=1e0)
+sim_mu(max_step=1e-2)
 
 # print("nu")
-# sim_neut()
-# sim_neut_nlo()
+sim_neut()
+sim_neut_nlo()
 # sim_neut(lattice=True)
 # sim_neut_nlo(lattice=True)
 
-sim_light()
+# sim_light()
 
 # sim_max_pure()

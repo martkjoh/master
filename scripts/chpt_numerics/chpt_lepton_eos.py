@@ -154,7 +154,7 @@ def plt_tot(m_l=m_e, name="e"):
 
 def gen_eos_list(r, N, m_l=m_e, name="e"):
     x = 1 + np.logspace(*r, N-1, dtype=np.longdouble())
-    x = np.concatenate([[1], x])
+    x = np.concatenate([[1.], x])
 
     f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_l)
 

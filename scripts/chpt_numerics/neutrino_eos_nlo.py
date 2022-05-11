@@ -9,7 +9,7 @@ from constants import get_const_lepton, f_pi, m_e, m_mu, m_pi
 from integrate_tov import get_u
 from chpt_numerics.free_energy_nlo import get_p_u
 
-lattice = True
+lattice = False
 if lattice:
     from constants_lattice import get_const_lepton, f_pi, m_e, m_mu, m_pi
     l = "lattice"

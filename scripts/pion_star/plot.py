@@ -25,6 +25,11 @@ u0, m0, r0 = get_const_pion()
 dashdotdot = (0, (6, 1, 1, 1, 1, 1))
 dashdashdot = (0, (6, 1, 6, 1, 1, 1))
 
+names_all = ["", "_e", "_mu", "_neutrino"]
+labels_all = ["$\\pi$", "$\\pi e$", "$\\pi\\mu$", "$\\pi\\ell\\nu_\\ell$"]
+lines_all = ["-", "-.", dashdotdot, "--"]
+colors_all = ["tab:blue", "green", "red", "black"]
+
 def load_sols(name=""):
     return np.load("pion_star/data/sols"+name+".npy", allow_pickle=True)
 
@@ -367,23 +372,14 @@ def plot_eos_leptons():
 
 def plot_all_eos():
     fig, ax = plt.subplots(figsize=(12, 6))
-
-    p = np.linspace(0, 0.8, 1000)
-
-    names = ["", "_e", "_mu", "_neutrino"]
-    labels = ["$\\pi$", "$\\pi+e$", "$\\pi+\\mu$", "$\\pi+\\ell+\\nu_\\ell$"]
-    lines = ["-", "-.", "--", ":"]
-    # colors = ["tab:blue", "green", "red", "black"]
-    colors = ["blue", "green", "orange", "black"]
-
-    for i, name in enumerate(names):
+    p = np.linspace(0, 1.6, 1000)
+    for i, name in enumerate(names_all):
         u = get_u("pion_star/data/eos"+name+".npy")
-        ax.plot(p, [u(p0) for p0 in p], lines[i], color=colors[i], label=labels[i], lw=2, alpha=0.8)
+        ax.plot(p, [u(p0) for p0 in p], ls=lines_all[i], color=colors_all[i], label=labels_all[i], lw=2)
 
     ax.set_xlabel("$p / u_0$")
     ax.set_ylabel("$u / u_0$")
     ax.legend()
-    ax.set_ylim(-0.1, 2.6)
     fig.savefig("figurer/pion_star/pion_all_eos.pdf", bbox_inches="tight")
 
 
@@ -458,7 +454,7 @@ def plot_u_p():
  
     [a.legend() for a in ax]
 
-    [a.set_xlabel("$(\\mu_I - \\mu_I^c)/\\bar m$") for a in ax]
+    [a.set_xlabel("$(\\mu_I - \\mu_I^c)/ m_\\pi$") for a in ax]
     ax[0].set_ylabel("$p/p_0$")
     ax[1].set_ylabel("$u/u_0$")
 
@@ -566,23 +562,15 @@ def plot_lepton_compare():
 
 
 def plot_all():
-    sols1 = load_sols(name="_nlo")
-    sols2 = load_sols(name="_e")
-    sols3 = load_sols(name="_mu")
-    sols4 = load_sols(name="_neutrino")
-    sols = [sols1, sols2, sols3, sols4]
+    sols = [load_sols(name=name) for name in names_all]
     datas = [get_data(s) for s in sols]
 
     u0, m0, r0 = get_const_pion()
 
     fig, ax = plt.subplots(figsize=(16, 8))
-    lines = [dashdotdot, "--", "-.", "-"]
-    N = len(datas)
-    colors = [cm.winter(i/(N-1)) for i in range(N)]
-    labels = ["\\pi\,\\mathrm{NLO}", "\\pi e", "\\pi\\mu", "\\pi\\ell\\nu_\\ell"]
     for i, data in enumerate(datas):
         R, M, pc = [np.array(d) for d in data] 
-        ax.plot(R*r0, M*m0, ls=lines[i], color=colors[i], label="$"+labels[i]+"$", lw=3, alpha=0.65)
+        ax.plot(R*r0, M*m0, ls=lines_all[i], color=colors_all[i], label=labels_all[i], lw=3, alpha=0.65)
     
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
@@ -591,7 +579,7 @@ def plot_all():
 
     Rs = np.linspace(0, 8e4, 100)
     ax.set_ylim(3e-2, 3e2)
-    ax.plot(Rs, 4 / 9 * Rs, "k--", label="$M = \\frac{4}{9} R$")
+    ax.plot(Rs, 4 / 9 * Rs, "k:", label="$M = \\frac{4}{9} R$")
     ax.legend(loc="lower right")
 
     fig.savefig("figurer/pion_star/mass_radius_all.pdf", bbox_inches="tight")
@@ -691,8 +679,9 @@ def plot_nlo(t=""):
         sol2
     ]
     u0, m0, r0 = get_const_pion()
-    label = ["LO", "NLO"]
+    labels = ["LO", "NLO"]
     line = ["k--", "r-."]
+    marker = ["x", "*"]
     for i, sol in enumerate(sols):
         data = get_data(sol)
 
@@ -701,7 +690,15 @@ def plot_nlo(t=""):
         imax = np.where(pc>2.9e1)[0][0]
         x, y, z = R*r0, M*m0, log(pc)
         x, y, z = x[imin:imax], y[imin:imax], z[imin:imax]
-        ax.plot(x, y, line[i], label=label[i])
+        ax.plot(x, y, line[i], label=labels[i])
+
+        j = np.argmax(M)
+        label ="$(M, R) = " \
+            + "(%.3f" %(M[j]*m0)\
+            + "\, M_\odot, %.3f" %(R[j]*r0) \
+            + "\, \mathrm{km})$ "
+        ax.plot(R[j]*r0, M[j]*m0, "k", marker=marker[i], ls="", ms=10, label=label)
+
 
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
@@ -851,26 +848,17 @@ def plot_light_nogrid():
 
 
 def plot_max():
-    names = ["", "_nlo", "_EM", "_e", "_mu", "_neutrino"]
-    labels = ["$\\pi\,\mathrm{LO}$", "$\\pi\,\mathrm{NLO}$", "$\\pi\,\mathrm{EM}$", "$\\pi e$", "$\\pi \\mu$", "$\\pi \\ell\\nu_\\ell$"]
-
-    names = ["_nlo", "_e", "_mu", "_neutrino"]
-    labels = ["$\\pi\,\mathrm{NLO}$", "$\\pi e$", "$\\pi \\mu$", "$\\pi \\ell\\nu_\\ell$"]
-
-    N = len(names)
-    sols = [load_max(name) for name in names]
-    colors = [cm.winter(i/(N-1)) for i in range(N)]
-    ls = [dashdotdot, "-", "--", "-."]
+    sols = [load_max(name) for name in names_all]
     fig, ax = plt.subplots(2, 1, figsize=(14, 12), sharex=True)
-    for i, name in enumerate(names):
+    for i, name in enumerate(names_all):
         s = sols[i]
         f = s["f"]
         R, M, pc = s["R"], s["M"], s["pc"]
         r = np.linspace(0, R, 200)
         p, m = f(r)
 
-        ax[1].plot(r/R, p/pc, color=colors[i], ls=ls[i], label=labels[i])
-        ax[0].plot(r/R, m/M, color=colors[i], ls=ls[i], label=labels[i])
+        ax[1].plot(r/R, p/pc, color=colors_all[i], ls=lines_all[i], label=labels_all[i])
+        ax[0].plot(r/R, m/M, color=colors_all[i], ls=lines_all[i], label=labels_all[i])
 
     ax[0].legend()
     ax[1].set_ylabel("$p/p_c$")
@@ -881,6 +869,7 @@ def plot_max():
 
 
 if __name__=="__main__":
+
     # plot_pressure_mass()
     # plot_pressure_mass(name="_EM")
 
@@ -898,11 +887,12 @@ if __name__=="__main__":
     # plot_lepton(name="_mu")
     # plot_lepton_compare()
 
-    # plot_all_eos()
     # plot_neutrino()
     # plot_neutrino_nlo_eos()
 
-    # plot_all()
+    plot_all() 
+    plot_all_eos()
+    plot_max()
 
     # plot_nlo_quantities()
     # plot_eos_nlo()
@@ -911,15 +901,13 @@ if __name__=="__main__":
     # plot_nlo()
     # plot_nlo("_neutrino")
 
-    plot_light()
-    plot_light_nogrid()
+    # plot_light()
+    # plot_light_nogrid()
     # plot_light_log()
-    # plot_max()
     # plot_phase()
 
     # ### Plots using lattice constants
 
     # plot_nlo_quantities_lattice()
     # plot_eos_nlo_lattice()
-    # plot_nlo_lattice()
     # plot_u_p()

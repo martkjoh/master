@@ -29,12 +29,18 @@ def find_p_u_c(name, prnt=False):
     pc_max = data[2][j]
     uc_max = u(pc_max)
     R =  data[0][j]*r0
+    M =  data[1][j]*m0
     
     if prnt:
-        print("R = ", R)
-        print(("u_c"+name).ljust(15)+"="+("%.3e"%uc_max).rjust(11))
-        print(("p_c"+name).ljust(15)+"="+("%.3e"%pc_max).rjust(11))
+        print()
+        print("pion"+name)
+        print("M".ljust(15)+"="+("%.3e"%M).rjust(11))
+        print("R".ljust(15)+"="+("%.3e"%R).rjust(11))
+        print("u_c".ljust(15)+"="+("%.3e"%uc_max).rjust(11))
+        print("p_c".ljust(15)+"="+("%.3e"%pc_max).rjust(11))
     return R, uc_max, pc_max, j
+
+
 
 def find_mu(name):
     path = "pion_star/data/eos"+name+".npy"
@@ -46,10 +52,10 @@ def find_mu(name):
     if mu[2]-mu[1]<0:Exception("reverse mu alert!!!")
     tck = splrep(p, mu, s=0, k=1)
     muc_max = splev(pc_max, tck)
-    print(("mu_c"+name).ljust(15)+"="+ ("%.3e"%(muc_max-1.)).rjust(11))
+    print(("mu_c").ljust(15)+"="+ ("%.3e"%(muc_max-1.)).rjust(11))
 
 
-names = ["" ,"_nlo","_EM","_e","_mu","_neutrino"]
+names = ["" ,"_nlo","_EM","_e","_mu","_neutrino","_neutrino_nlo"]
 
 if __name__=="__main__":
     for name in names:

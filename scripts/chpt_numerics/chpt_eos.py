@@ -1,6 +1,7 @@
 import numpy as np
 from numpy import pi, sqrt
 import sys
+import matplotlib.pyplot as plt
 
 sys.path.append(sys.path[0] + "/..")
 from constants import D
@@ -24,11 +25,11 @@ nI = lambda x: (1/x**2 - x**2)*x
 
 
 def gen_eos_list():
-    r = (-8, 10)
-    y = np.logspace(*r, N-1, dtype=np.longdouble()) 
-    y = np.concatenate([[0.,], y])
+    r = (-8, 8)
+    y = 1+np.logspace(*r, N-1, dtype=np.longdouble()) 
+    y = np.concatenate([[1.,], y])
 
-    x = 1 / np.sqrt(1 + y**2)
+    x = 1 / y
 
     ulst = u(x)
     plst = p(x)
@@ -56,11 +57,11 @@ uEM = lambda x, D: 1/2 * (
 
 
 def gen_eos_list_EM():
-    r = (-4.4 , 10)
-    y = np.logspace(*r, N-1, dtype=np.longdouble()) 
-    y = np.concatenate([[0.,], y])
+    r = (-8, 8)
+    y = sqrt(1+D)+np.logspace(*r, N-1, dtype=np.longdouble()) 
+    y = np.concatenate([[sqrt(1+D),], y])
 
-    x = 1 / sqrt(1 + D + y**2)
+    x = 1 / y
 
     ulst = uEM(x, D)
     plst = pEM(x, D)

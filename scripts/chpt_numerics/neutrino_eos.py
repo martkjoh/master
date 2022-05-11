@@ -9,7 +9,7 @@ from integrate_tov import get_u
 
 # Use lattice constants?
 
-lattice = True
+lattice = False
 if lattice:
     from constants_lattice import get_const_lepton, f_pi, m_e, m_mu, m_pi
     l = "lattice"

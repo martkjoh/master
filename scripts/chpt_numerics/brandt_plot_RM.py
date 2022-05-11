@@ -1,6 +1,8 @@
 import numpy as np
 import sys
 from matplotlib import pyplot as plt
+from matplotlib import cm
+from matplotlib.patches import Ellipse
 from numpy import sqrt
 
 sys.path.append(sys.path[0] + "/..")
@@ -39,30 +41,39 @@ def load_data(name=""):
     return data
 
 
+def fill_ellipses(ax, x, y, dx, dy, color,zorder):
+    for i in range(len(x)):
+        xi, yi = x[i], y[i]
+        a, b = 2*dx[i], 2*dy[i]
+        e = Ellipse((xi, yi), width=a, height=b,zorder=zorder)
+        ax.add_artist(e)
+        e.set_clip_box(ax.bbox)
+        e.set_facecolor(color)
+
 def compare_all():
 
-    fig, ax = plt.subplots(figsize=(16, 10)) 
+    fig, ax = plt.subplots(figsize=(16, 8)) 
 
     names = ["data_brandt/data_p.txt", "data_brandt/data_pe.txt", "data_brandt/data_pm.txt"]
-    colors = ["skyblue", "lightsalmon", "mediumseagreen"]
-    colors = ["blue", "green", "orange"]
+    colors= ["cornflowerblue", "mediumseagreen", "indianred", "plum"]
+    N = 4
+    alpha = 1.
     labels = ["$\\pi$", "$\\pi e$", "$\\pi \\mu$"]
 
 
     for i, name in enumerate(names):
         data = np.loadtxt(name, skiprows=1, unpack=True)
         M, R, err_M, err_R = get_MR(data)
-
-        ax.fill_between(R, M-err_M, M+err_M, color=colors[i], label=labels[i], alpha=0.3)
-        ax.fill_betweenx(M, R-err_R, R+err_R, color=colors[i], alpha=0.3)
+        fill_ellipses(ax, R, M, err_R, err_M, colors[i], zorder=i)
+        ax.plot(R, M, color=colors[i], label=labels[i], zorder=i, lw=3)
 
     name = "data_brandt/MR_pilnu.txt"
     data = np.loadtxt(name, unpack=True)
     M, err_M, R, err_R, stable = data
-    color="purple"
-    label="$\\pi\ell\\nu_\\ell$"
-    ax.fill_between(R, M-err_M, M+err_M, color=color, label=label, alpha=0.3)
-    ax.fill_betweenx(M, R-err_R, R+err_R, color=color, alpha=0.3)
+    label="$\\pi\\ell\\nu_\\ell$"
+    fill_ellipses(ax, R, M, err_R, err_M, colors[-1], 4)
+    ax.plot(R, M, color=colors[-1], label=label, lw=3)
+
 
 
     names = ["_nlo", "_e", "_mu", "_neutrino_nlo"]
@@ -72,15 +83,17 @@ def compare_all():
         data = load_data(name)
         R = data[0]
         M = data[1]
-        ax.plot(R, M, "k--")
+        ax.plot(R, M, "k--", lw=2)
 
     ax.set_xscale("log")
     ax.set_yscale("log")
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
+    ax.set_ylim(10**(-.9), 10**(2.5))
     ax.legend()
 
     fig.savefig("figurer/pion_star/mass_radius_brandt_all.pdf", bbox_inches="tight")
+    # plt.show()
 
 
 def plot_compare_lattice(t=""):
@@ -93,8 +106,8 @@ def plot_compare_lattice(t=""):
         data = np.loadtxt("data_brandt/MR_pilnu.txt", unpack=True)
         M, err_M, R, err_R, stable = data
 
-    ax.fill_between(R, M-err_M, M+err_M, color="blue", label="Brandt et.al.", alpha=0.3)
-    ax.fill_betweenx(M, R-err_R, R+err_R, color="blue", alpha=0.3)
+    fill_ellipses(ax, R, M, err_R, err_M, "lightblue", 1)
+    ax.plot(R, M, color="lightblue", label="Brandt et.al.",lw=5)
 
     names = [t, t+"_nlo", t+"lattice", t+"_nlo"+"lattice"]
     sols = [load_sols(name) for name in names]
@@ -124,9 +137,33 @@ def plot_compare_lattice(t=""):
     plt.legend()
     fig.savefig("figurer/pion_star/lattice_const_compare"+t+".pdf", bbox_inches="tight")
 
+def brandt_neutrino():
+    fig, ax = plt.subplots(figsize=(16, 8))
+    name = "data_brandt/MR_pilnu.txt"
+    data = np.loadtxt(name, unpack=True)
+    M, err_M, R, err_R, stable = data
+    
+    alpha=1.
+    label="$\\pi\ell\\nu_\\ell$"
+
+    for i in range(len(R)):
+        x, y = (R[i], M[i])
+        a, b = (2*err_R[i], 2*err_M[i])
+        e = Ellipse((x, y), width=a, height=b)
+        ax.add_artist(e)
+        e.set_clip_box(ax.bbox)
+        e.set_alpha(alpha)
+        e.set_facecolor(color)
+
+    ax.set_xlim(25, 225)
+    ax.set_ylim(0, 30)
+    plt.show()
+
+
+# brandt_neutrino()
 
 compare_all()
 
-plot_compare_lattice()
-plot_compare_lattice(t="_neutrino")
+# plot_compare_lattice()
+# plot_compare_lattice(t="_neutrino")
 
