@@ -45,6 +45,7 @@ D = Dm_EM**2 / m_pi**2
 f_pi_SI = f_pi*MeV
 m_pi_SI = m_pi*MeV/c**2
 m_pipm_SI = m_pipm*MeV/c**2
+m_e_SI = m_e*MeV/c**2
 
 # nlo coupling constants
 Lr = np.array([
@@ -125,10 +126,20 @@ if __name__=="__main__":
     # print(Δ)
 
     # max_radius_pion_star()
-    # print(sqrt(3/4)*pi)
+    # u0 = f_pi**2*m_pi**2
+    # pmin = u0* (m_pi/f_pi)**2*(1+m_e/m_pi)**4 / (12*pi**2)
+
+    # a = sqrt(u0/pmin)
+    # print(a*55)
+    # print(a*90)
+
+
+    # print(M2/M1)
 
     # print(( hbar * c / (2* G * m_pi**2) )**(3 / 2) * m_pi / M0)
 
+    print(m_pi*f_pi/(131*90.5))
+
     # print(Dm**4/m_K0**4)
-    print(4*pi*f_pi/m_pi)
+    # print(4*pi*f_pi/m_pi)
 

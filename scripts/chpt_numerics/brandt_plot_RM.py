@@ -58,7 +58,7 @@ def compare_all():
     colors= ["cornflowerblue", "mediumseagreen", "indianred", "plum"]
     N = 4
     alpha = 1.
-    labels = ["$\\pi$", "$\\pi e$", "$\\pi \\mu$"]
+    labels = ["$\\pi\,\\text{NLO}$", "$\\pi e$", "$\\pi \\mu$"]
 
 
     for i, name in enumerate(names):
@@ -70,7 +70,7 @@ def compare_all():
     name = "data_brandt/MR_pilnu.txt"
     data = np.loadtxt(name, unpack=True)
     M, err_M, R, err_R, stable = data
-    label="$\\pi\\ell\\nu_\\ell$"
+    label="$\\pi\\ell\\nu_\\ell\,\\text{NLO}$"
     fill_ellipses(ax, R, M, err_R, err_M, colors[-1], 4)
     ax.plot(R, M, color=colors[-1], label=label, lw=3)
 
@@ -83,7 +83,7 @@ def compare_all():
         data = load_data(name)
         R = data[0]
         M = data[1]
-        ax.plot(R, M, "k--", lw=2)
+        ax.plot(R, M, "k--", lw=2, zorder=5)
 
     ax.set_xscale("log")
     ax.set_yscale("log")
@@ -136,6 +136,7 @@ def plot_compare_lattice(t=""):
     
     plt.legend()
     fig.savefig("figurer/pion_star/lattice_const_compare"+t+".pdf", bbox_inches="tight")
+
 
 def brandt_neutrino():
     fig, ax = plt.subplots(figsize=(16, 8))

@@ -522,9 +522,12 @@ These results indicate that, at least for $\mu_I< 2\,m_\pi$, \chpt\, converges q
 The NLO equation of state is shown in \autoref{fig: nlo eos}, where it is compared to the leading order result.
 The NLO equation of state is less stiff than the LO equation of state, and they deviate more as the pressure increases.
 
-With the NLO results for $u_\pi$ and $p_\pi$ as functions of $\mu_I$, we can obtain the NLO results for the $\pi\ell\nu_\ell$-system by using these results in the total pressure and energy density, \autoref{total energy and pres sure neutrino}.
-The NLO and LO results are compared in \autoref{fig: eos pi ell nu}.
+With the NLO results for $u_\pi$ and $p_\pi$ as functions of $\mu_I$, we can obtain the NLO results for the $\pi\ell\nu_\ell$-system by using these results in the total pressure and energy density, \autoref{total energy and pressure neutrino}.
+The NLO and LO results are compared in \autoref{fig: eos pi ell nu} for two different domains.
 As the neutrino contribution to the pressure dominates, the change to the equation of state is minimal.
+It is still well approximated by $u = 3p$.
+At the top, we see that the NLO equation of state is ever so slightly stiffer for low pressures, while at the bottom we see that the relationship reverses for higher pressures.
+Finally, we compare the different equations of state in \autoref{fig: all eos}.
 
 \begin{figure}[!htb]
     \centering
@@ -547,6 +550,19 @@ As the neutrino contribution to the pressure dominates, the change to the equati
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=.75\textwidth]{../scripts/figurer/pion_star/neutrino_nlo_eos.pdf}
-    \caption{The NLO and LO equation of state for the $\pi \ell \nu_\ell$ system are compared. Energy density and pressure are normalized to their characteristic quantities, $p_0 = u_0 = f_\pi^2m_\pi^2$.}
+    \caption{The NLO and LO equation of state for the $\pi \ell \nu_\ell$ system are compared for two different regimes. Energy density and pressure are normalized to their characteristic quantities, $p_0 = u_0 = f_\pi^2m_\pi^2$.}
     \label{fig: eos pi ell nu}
-\end{figure}  
+\end{figure}
+
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.95\textwidth]{../scripts/figurer/pion_star/pion_all_eos.pdf}
+    \caption{
+        The equation of state of pion condensate alone, and including other particles.
+        Both the pressure and the energy density are normalized to $u_0 = f_\pi^2 m_\pi^2$.
+    }
+    \label{fig: all eos}
+\end{figure}
+

@@ -103,7 +103,7 @@ def plot_mu():
     x = np.linspace(1, 1.1, N)
     y = x_e(x)
 
-    fig, ax = plt.subplots(figsize=(9, 5)) 
+    fig, ax = plt.subplots(figsize=(10, 4)) 
     ax.plot(x, y, label="$\mu_e(\mu_I)$")
     ax.plot(x, mu_e(x), "k--", label="$\mu_e'(\mu_I)$")
 
@@ -128,7 +128,7 @@ def plot_mu():
 pmin = 2*(1+m_e/m_pi) / (24*pi**2)
 def plot_eos():
     x = np.linspace(0, 3, 1000)
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=(10, 5))
     ax.plot(p(x), 3*p(x), "k--", label="$u = 3 p$")
     ax.plot(p(x), u(x), label="$u(p)$")
     ax.set_xlabel("$p/u_{0}$")
@@ -140,7 +140,7 @@ def plot_eos():
 
 def plot_eos2():
     x = np.linspace(0, 1.01, 1000)
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=(10, 5))
     ax.plot(p(x), 3*p(x), "k--", label="$u = 3 p$")
     ax.plot(p(x), u(x), label="$u(p)$")
     ax.plot(pmin, 3*pmin, "kx", label="$p_\\mathrm{min}$")
@@ -164,7 +164,7 @@ def save_eos():
     np.save("pion_star/data/eos_neutrino"+l, [x, plst, ulst])
 
 
-# plot_mu()
+plot_mu()
 
 plot_eos()
 plot_eos2()

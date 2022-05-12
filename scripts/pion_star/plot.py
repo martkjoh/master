@@ -8,7 +8,7 @@ from matplotlib import cm, colors, collections
 sys.path.append(sys.path[0] + "/..")
 from chpt_numerics.chpt_eos import u_nr, u_ur, p, u, nI
 from integrate_tov import get_u
-from constants import get_const_pion, m_pi, m_e
+from constants import get_const_pion, m_pi, m_e, f_pi
 from chpt_numerics.chpt_eos import alpha_0
 
 from scipy.stats import linregress
@@ -25,10 +25,12 @@ u0, m0, r0 = get_const_pion()
 dashdotdot = (0, (6, 1, 1, 1, 1, 1))
 dashdashdot = (0, (6, 1, 6, 1, 1, 1))
 
-names_all = ["", "_e", "_mu", "_neutrino"]
-labels_all = ["$\\pi$", "$\\pi e$", "$\\pi\\mu$", "$\\pi\\ell\\nu_\\ell$"]
+names_all = ["_nlo", "_e", "_mu", "_neutrino_nlo"]
+labels_all = ["$\\pi\,\\mathrm{NLO}$", "$\\pi e$", "$\\pi\\mu$", "$\\pi\\ell\\nu_\\ell\,\\mathrm{NLO}$"]
 lines_all = ["-", "-.", dashdotdot, "--"]
 colors_all = ["tab:blue", "green", "red", "black"]
+
+pnu = lambda m_pi, f_pi, m_e: (m_pi/f_pi)**2 * (1 + m_e/m_pi)**2 / (12*pi**2)
 
 def load_sols(name=""):
     return np.load("pion_star/data/sols"+name+".npy", allow_pickle=True)
@@ -210,7 +212,7 @@ def plot_eos():
         ax[i].set_ylabel("$u / u_0$")
 
     ax[0].legend(loc="upper left")
-
+    
     fig.savefig("figurer/pion_star/pion_eos.pdf", bbox_inches="tight")
 
 
@@ -293,7 +295,7 @@ def plot_nlo_quantities():
             ax.set_ylabel(y_label[i])
             plt.legend()
             fig.savefig("figurer/pion_nlo_"+name+"_"+str(n)+".pdf", bbox_inches="tight")
-
+    plt.show()
 
 
 def plot_nlo_quantities_lattice():
@@ -334,6 +336,7 @@ def plot_eos_nlo():
 
     ax.legend(loc="upper left")
     fig.savefig("figurer/pion_eos_nlo.pdf", bbox_inches="tight")
+
 
 def plot_eos_nlo_lattice():
     fig, ax = plt.subplots(figsize=(10, 6))
@@ -384,7 +387,7 @@ def plot_all_eos():
 
 
 def plot_neutrino_nlo_eos():
-    fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(2, figsize=(12, 12))
 
     p = np.linspace(0, 5, 1000)
 
@@ -393,14 +396,16 @@ def plot_neutrino_nlo_eos():
     labels = ["$\\pi\\ell\\nu_\\ell \, \\mathrm{LO}$", "$\\pi\\ell\\nu_\\ell  \, \\mathrm{NLO}$"]
     lines = ["--", "-."]
     colors = ["black", "red"]
-
-    for i, name in enumerate(names):
-        u = get_u("pion_star/data/eos"+name+".npy")
-        ax.plot(p, u(p), lines[i], color=colors[i], label=labels[i], lw=2, alpha=0.8)
-
-    ax.set_xlabel("$p / u_0$")
-    ax.set_ylabel("$u / u_0$")
-    ax.legend()
+    for j in range(2):
+        ax[j].plot(p, 3*p, ":", label="$u = 3p$")
+        for i, name in enumerate(names):
+            u = get_u("pion_star/data/eos"+name+".npy")
+            ax[j].plot(p, u(p), lines[i], color=colors[i], label=labels[i], lw=2)
+        ax[j].set_xlabel("$p / u_0$")
+        ax[j].set_ylabel("$u / u_0$")
+    ax[0].set_xlim(0, .15)
+    ax[0].set_ylim(0, .15*3)
+    ax[0].legend()
 
     fig.savefig("figurer/pion_star/neutrino_nlo_eos.pdf", bbox_inches="tight")
 
@@ -740,7 +745,8 @@ def plot_phase():
 def plot_light_log():
     fig, ax = plt.subplots(figsize=(16, 6))
 
-    pmins = [0.1, 10**(-1.5), (1+m_e/m_pi) / (12*pi**2), 10**(-2.5), 0.001]
+    p0 = pnu(m_pi, f_pi, m_e)
+    pmins = np.logspace( np.log10(p0/3), np.log10(p0*3), 5 )
 
     u0, m0, r0 = get_const_pion()
 
@@ -773,8 +779,7 @@ def plot_light_log():
 def plot_light():
     fig, ax = plt.subplots(figsize=(16, 6))
 
-
-    p0 = (1+m_e/m_pi) / (12*pi**2)
+    p0 = pnu(m_pi, f_pi, m_e)
     pmins = np.logspace( np.log10(p0/3), np.log10(p0*3), 5 )
 
     u0, m0, r0 = get_const_pion()
@@ -819,7 +824,7 @@ def plot_light():
 def plot_light_nogrid():
     fig, ax = plt.subplots(figsize=(8, 14))
 
-    p0 = (1+m_e/m_pi) / (12*pi**2)
+    p0 = pnu(m_pi, f_pi, m_e)
     pmins = np.logspace( np.log10(p0/3), np.log10(p0*3), 5 )
 
     u0, m0, r0 = get_const_pion()
@@ -869,6 +874,8 @@ def plot_max():
 
 
 if __name__=="__main__":
+    pass
+
 
     # plot_pressure_mass()
     # plot_pressure_mass(name="_EM")
@@ -887,12 +894,12 @@ if __name__=="__main__":
     # plot_lepton(name="_mu")
     # plot_lepton_compare()
 
-    # plot_neutrino()
-    # plot_neutrino_nlo_eos()
+    plot_neutrino()
+    plot_neutrino_nlo_eos()
 
-    # plot_all() 
     # plot_all_eos()
     # plot_max()
+    # plot_all()
 
     # plot_nlo_quantities()
     # plot_eos_nlo()
@@ -902,7 +909,7 @@ if __name__=="__main__":
     # plot_nlo("_neutrino")
 
     # plot_light()
-    plot_light_nogrid()
+    # plot_light_nogrid()
     # plot_light_log()
     # plot_phase()
 

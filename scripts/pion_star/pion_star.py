@@ -3,10 +3,11 @@ import sys
 from numpy import pi
 from tqdm import tqdm
 # from chpt_lepton_eos import u
+
 sys.path.append(sys.path[0] + "/..")
 from chpt_numerics.chpt_eos import u_nr
 from integrate_tov import get_u, integrate
-from constants import m_e, m_pi
+from constants import m_e, m_pi, f_pi
 from chpt_numerics.make_table import find_p_u_c
 
 n = 201
@@ -83,15 +84,17 @@ def sim_mu(r=(-12, 4), max_step=1e-1, info=False):
 
 
 
+pnu = lambda m_pi, f_pi, m_e: (m_pi/f_pi)**2 * (1 + m_e/m_pi)**2 / (12*pi**2)
+
 def get_n_const(lattice=False):
     if lattice:
-        from constants_lattice import f_pi, m_pi
+        from constants_lattice import f_pi, m_pi, m_e
         l = "lattice"
     else:
-        from constants import get_const_lepton, f_pi, m_pi
+        from constants import get_const_lepton, f_pi, m_pi, m_e
         l = ""
+    pmin = pnu(m_pi, f_pi, m_e)
 
-    pmin = (1+m_e/m_pi) / (12*pi**2)
     
     pcs = np.logspace(np.log10(pmin*1.01), np.log10(pmin*2) , 50)
     pcs = np.concatenate([pcs, np.logspace(np.log10(2*pmin), np.log10(pmin*5) , 50)])
@@ -116,7 +119,7 @@ def sim_neut_nlo(max_step=1e-3, info=False, lattice=False):
 def sim_light(max_step=1e-3, info=False):
     n=201
     # pmins = [0.1, 10**(-1.5), (1+m_e/m_pi) / (12*pi**2), 10**(-2.5), 0.001]
-    p0 = (1+m_e/m_pi) / (12*pi**2)
+    p0 = pnu(m_pi, f_pi, m_e)
     pmins = np.logspace( np.log10(p0/3), np.log10(p0*3), 5 )
 
     for pmin in pmins:
@@ -130,9 +133,9 @@ def sim_light(max_step=1e-3, info=False):
 
 
 def sim_max_pure():
-    names = ["", "_nlo", "_EM", "_e", "_mu", "_neutrino"]
-    max_steps = [1e-3, 1e-3, 1e-3, 1e-1, 1e-1, 1e-3]
-    pmins = [1e-40, 1e-40, 1e-40, 1e-40, 1e-40, (1+m_e/m_pi) / (12*pi**2)]
+    names = ["", "_nlo", "_EM", "_e", "_mu", "_neutrino", "_neutrino_nlo"]
+    max_steps = [1e-3, 1e-3, 1e-3, 1e-1, 1e-1, 1e-3, 1e-3]
+    pmins = [1e-40, 1e-40, 1e-40, 1e-40, 1e-40, pnu(m_pi, f_pi, m_e), pnu(m_pi, f_pi, m_e)]
     for i, name in enumerate(tqdm(names)):
         R, uc_max, pc_max, j = find_p_u_c(name)
         u = get_u("pion_star/data/eos"+name+".npy")
@@ -141,30 +144,31 @@ def sim_max_pure():
 
 
 
-# print("pure")
-sim()
-# sim_non_rel()
-# sim_newt()
-# sim_newt_non_rel()
+if __name__=="__main__":
+    # print("pure")
+    # sim()
+    # sim_non_rel()
+    # sim_newt()
+    # sim_newt_non_rel()
 
-# print("nlo")
-sim_nlo()
-# sim_nlo_lattice()
+    # print("nlo")
+    # sim_nlo()
+    # sim_nlo_lattice()
 
 
-# print("EM")
-# sim_EM()
+    # print("EM")
+    # sim_EM()
 
-# print("l")
-sim_e(max_step=1e0)
-sim_mu(max_step=1e-2)
+    # print("l")
+    # sim_e(max_step=1e0)
+    # sim_mu(max_step=1e-2)
 
-# print("nu")
-sim_neut()
-sim_neut_nlo()
-# sim_neut(lattice=True)
-# sim_neut_nlo(lattice=True)
+    # print("nu")
+    # sim_neut()
+    # sim_neut_nlo()
+    # sim_neut(lattice=True)
+    # sim_neut_nlo(lattice=True)
 
-# sim_light()
+    # sim_light()
 
-# sim_max_pure()
+    sim_max_pure()

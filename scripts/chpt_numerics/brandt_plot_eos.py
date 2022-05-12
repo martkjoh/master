@@ -6,7 +6,7 @@ from matplotlib.patches import Ellipse
 from numpy import sqrt
 
 sys.path.append(sys.path[0] + "/..")
-from constants import m_pi, f_pi
+from constants_lattice import m_pi, f_pi
 from integrate_tov import get_u
 
 plt.rc("font", family="serif", size=20)
