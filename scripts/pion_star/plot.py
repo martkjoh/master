@@ -101,7 +101,7 @@ def plot_mass_radius_compare():
     assert N == len(sols2); assert N ==len(sols3)
     datas = [get_data(s) for s in sols]
         
-    fig, ax = plt.subplots(figsize=(16, 8))
+    fig, ax = plt.subplots(figsize=(14, 6))
 
     linestyles = ["-", "-.", "--", ":"]
     labels = [
@@ -389,7 +389,7 @@ def plot_all_eos():
 def plot_neutrino_nlo_eos():
     fig, ax = plt.subplots(2, figsize=(12, 12))
 
-    p = np.linspace(0, 5, 1000)
+    p = np.linspace(0, 10, 1000)
 
 
     names = ["_neutrino", "_neutrino_nlo"]
@@ -472,7 +472,7 @@ def plot_mass_radius_compare_EM():
     N = len(sols1)
     sols = [sols1, sols2]
     datas = [get_data(s) for s in sols]
-    fig, ax = plt.subplots(figsize=(16, 8))
+    fig, ax = plt.subplots(figsize=(14, 6))
 
     labels = ["Only strong interactions", "EM interactions"]
     colors = ["tab:blue", "k"]
@@ -785,9 +785,9 @@ def plot_light():
     u0, m0, r0 = get_const_pion()
 
     x = 2
-    b = np.log10(pmins[0]*.8)
-    a = np.log10(pmins[-1]*1.2)
-    d = b - a
+    a = np.log10(pmins[0]) - .1
+    b = np.log10(pmins[-1]) + .08
+    d = b-a
 
     names = ["_light_%.2e"%pmin for pmin in pmins]
     for i, name in enumerate(names):
@@ -830,9 +830,9 @@ def plot_light_nogrid():
     u0, m0, r0 = get_const_pion()
 
     x = 2
-    b = np.log10(pmins[0]*.8)
-    a = np.log10(pmins[-1]*1.2)
-    d = b - a
+    a = np.log10(pmins[0]) - .1
+    b = np.log10(pmins[-1]) + .08
+    d = b-a
 
     names = ["_light_%.2e"%pmin for pmin in pmins]
     for i, name in enumerate(names):
@@ -844,7 +844,7 @@ def plot_light_nogrid():
         x, y, z = R*r0, M*m0, log(pc)
         color = cm.viridis( (np.log10(pmins[i]) - a) / (b - a) )
         label = "$p_\\mathrm{min}=%.1e$"%pmins[i]
-        ax.plot(y[1:], x[1:], color=color)
+        ax.plot(y, x, color=color)
 
     ax.set_axis_off()
 
@@ -894,8 +894,8 @@ if __name__=="__main__":
     # plot_lepton(name="_mu")
     # plot_lepton_compare()
 
-    plot_neutrino()
-    plot_neutrino_nlo_eos()
+    # plot_neutrino()
+    # plot_neutrino_nlo_eos()
 
     # plot_all_eos()
     # plot_max()
@@ -908,7 +908,7 @@ if __name__=="__main__":
     # plot_nlo()
     # plot_nlo("_neutrino")
 
-    # plot_light()
+    plot_light()
     # plot_light_nogrid()
     # plot_light_log()
     # plot_phase()

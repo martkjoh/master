@@ -52,6 +52,14 @@ def mu_e(x):
     _, ue0, Ae = get_const_lepton(m_e)
     return sqrt(1 + 1/Ae**(2/3) * ( xi(x)*(1-1/xi(x)**4) )**(2/3))
 
+def x_nue(x):
+    mask = x<1
+    amask = np.logical_not(mask)
+    mu = np.empty_like(x)
+    mu[mask] = x[mask]
+    mu[amask] = mu_e(x[amask])
+
+
 def x_e(x_I):
     x_e0 = mu_e(x_I)
 
@@ -124,11 +132,12 @@ def plot_mu():
     
     fig.savefig("figurer/neutrino_mu.pdf", bbox_inches="tight")
 
+fs = (8, 6)
 
 pmin = 2*(1+m_e/m_pi) / (24*pi**2)
 def plot_eos():
     x = np.linspace(0, 3, 1000)
-    fig, ax = plt.subplots(figsize=(10, 5))
+    fig, ax = plt.subplots(figsize=fs)
     ax.plot(p(x), 3*p(x), "k--", label="$u = 3 p$")
     ax.plot(p(x), u(x), label="$u(p)$")
     ax.set_xlabel("$p/u_{0}$")
@@ -140,7 +149,7 @@ def plot_eos():
 
 def plot_eos2():
     x = np.linspace(0, 1.01, 1000)
-    fig, ax = plt.subplots(figsize=(10, 5))
+    fig, ax = plt.subplots(figsize=fs)
     ax.plot(p(x), 3*p(x), "k--", label="$u = 3 p$")
     ax.plot(p(x), u(x), label="$u(p)$")
     ax.plot(pmin, 3*pmin, "kx", label="$p_\\mathrm{min}$")
@@ -164,10 +173,63 @@ def save_eos():
     np.save("pion_star/data/eos_neutrino"+l, [x, plst, ulst])
 
 
-plot_mu()
+def contributions():
+    u_l = lambda x: ue(x) + umu(x)
+    u_nu = lambda x:  2*unu(x)
+    p_l = lambda x: pe(x) + pmu(x)
+    p_nu = lambda x:  2*pnu(x)
+
+
+    x1 = np.linspace(0, 1, 100)
+    x2 = 1+np.logspace(-14, -2, 1000)
+    x3 = 1+np.logspace(-14, 0, 1000)
+
+    fig, ax = plt.subplots(2, 3, figsize=(20, 10))
+
+    ax[0, 0].plot(x1, u_pi(x1), "tab:blue", label="$\\pi$")
+    ax[0, 0].plot(x1, u_l(x1), "k--", label="$\\ell$")
+    ax[0, 0].plot(x1, u_nu(x1), "r-.", label="$\\nu_\\ell$")
+    ax[1, 0].plot(x1, p_pi(x1), "tab:blue", label="$\\pi$")
+    ax[1, 0].plot(x1, p_l(x1), "k--", label="$\\ell$")
+    ax[1, 0].plot(x1, p_nu(x1), "r-.", label="$\\nu_\\ell$")
+
+    ax[0, 1].plot(x2-1, u_pi(x2), "tab:blue", label="$\\pi$")
+    ax[0, 1].plot(x2-1, u_l(x2), "k--", label="$\\ell$")
+    ax[0, 1].plot(x2-1, u_nu(x2), "r-.", label="$\\nu_\\ell$")
+    ax[1, 1].plot(x2-1, p_pi(x2), "tab:blue", label="$\\pi$")
+    ax[1, 1].plot(x2-1, p_l(x2), "k--", label="$\\ell$")
+    ax[1, 1].plot(x2-1, p_nu(x2), "r-.", label="$\\nu_\\ell$")
+
+    ax[0, 2].plot(x3, u_pi(x3), "tab:blue", label="$\\pi$")
+    ax[0, 2].plot(x3, u_l(x3), "k--", label="$\\ell$")
+    ax[0, 2].plot(x3, u_nu(x3), "r-.", label="$\\nu_\\ell$")
+    ax[1, 2].plot(x3, p_pi(x3), "tab:blue", label="$\\pi$")
+    ax[1, 2].plot(x3, p_l(x3), "k--", label="$\\ell$")
+    ax[1, 2].plot(x3, p_nu(x3), "r-.", label="$\\nu_\\ell$")
+
+    ax[0, 0].legend()
+    ax[0, 0].set_ylabel("$u/u_0$")
+    ax[1, 0].set_ylabel("$p/p_0$")
+    ax[1, 0].set_xlabel("$\\mu_I/m_\\pi$")
+    ax[1, 1].set_xlabel("$\\mu_I/m_\\pi-1$")
+    ax[1, 2].set_xlabel("$\\mu_I/m_\\pi$")
+
+    for i in range(2):
+        for j in range(3):
+            ax[i,j].ticklabel_format(style="scientific", scilimits=(-2, 2))
+
+
+    # plt.tight_layout()
+    fig.savefig("figurer/neutrino_contributions.pdf", bbox_inches="tight")
+
+
+# plot_mu()
 
 plot_eos()
 plot_eos2()
+
+contributions()
+
 
 # save_eos()
 
