@@ -567,6 +567,132 @@ Using $f^2 = f_\pi^2 + \Oh(p^2)$, $m_{p,0}^2 = m_p^2(1 + \Oh(p^2))$ for $p = \pi
     \right]
 \end{align}
 
+\section{Thermodynamics using x}
+
+We introduce a dimensionless variable $x^2 = \cos\alpha = \bar m^2 / \mu_I^2$.
+This variable has the domain $[0, 1]$, and $\cos \alpha = x^2$ implies that $\sin^2 \alpha = 1 - x^4$.
+Substituting the dimensionless variable into the free energy density, we get 
+%
+\begin{equation}
+    \Eff = - \frac{u_0}{2} \left( x^2 + \frac{1}{x^2} \right) +\const
+\end{equation}
+%
+We have introduced the characteristic energy density $u_0 = \bar m^2 f^2$.
+This process of minimizing free energy for a given $\mu_I$ is illustrated in \autoref{fig: free energy surface}.
+
+
+
+As we found in the last section, the pressure is given by negative the free energy density. 
+We normalized the pressure to $\mu_I = \bar m$, or $x = 1$, and choose $p_0 = u_0$, so the dimensionless pressure is
+%
+\begin{equation}
+    \label{pressure leading order chpt}
+    \tilde p = -\frac{1}{p_0} \left(\Eff - \Eff_{x=1}\right) 
+    % = \frac{1}{2} \left( x^2 + \frac{1}{x^2} - 2 \right).
+    = \frac{1}{2} \left(x - \frac{1}{x}\right)^2.
+\end{equation}
+%
+The charge density corresponding to a chemical potential is given by minus the derivative of the free energy with respect to that chemical potential. 
+We must, however, not assume any dependence of $\alpha$ on $\mu_I$ when taking this derivative.
+The isospin density is
+%
+\begin{equation}
+    \label{isospin density}
+    n_I = -\pdv{\Eff}{\mu_I} = f^2 \mu_I \sin^2 \alpha 
+    = 
+    \frac{u_0}{\mu_I} \left(\frac{1}{x^2} - x^2\right),
+\end{equation}
+%
+while the strangeness is zero.
+With this, the dimensionless energy density at $T = 0$ is
+%
+\begin{equation}
+    \label{energy density leading order chpt}
+    \tilde u = - \tilde p + \frac{\mu_I n_I}{u_0}
+    = \frac{1}{2} \left( 2 + \frac{1}{x^2} - 3 x^2\right).
+\end{equation}
+%
+The ratio of pressure to energy density is
+%
+\begin{equation} 
+    \label{pressure energy ratio leading order chpt}
+    \frac{p}{u} = \frac{1- x^2}{1+3x^2},
+\end{equation}
+%
+which matches earlier results~\autocite{sonQCDFiniteIsospin2001}.
+In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$ and thus $x \rightarrow 0$, we get $p / u = 1$, or $u_\text{ur} = p$.
+The non-relativistic limit is $\mu_I^2 = m_\pi^2(1 + \epsilon)$ and thus $x^{-2} = 1 + \epsilon$, $\epsilon \ll 1$.
+With this we get $\tilde p = \epsilon^2 / 2 $, and $\tilde u = 2\epsilon$, so the equation of state is $\tilde u_\text{nr} = \sqrt 8 \sqrt{\tilde p}$.
+The isospin density, and thus the pion number density, is $n_I = 2 \frac{u_0}{\bar m} \epsilon$, and we can therefore write the energy density in this limit as $u = \bar m n_I + \Oh(\epsilon^2)$.
+The energy density is thus dominated by the rest mass as $\epsilon \rightarrow 0$, as we expect from the non-relativistic limit.
+\autoref{fig: equation of state pions} shows the equation of state in two different regimes and compares it with the ultrarelativistic and non-relativistic limits.
+
+\subsection{EM}
+
+Free energy minimization now gives
+%
+\begin{equation}
+    \frac{1}{u_0}\pdv{\Eff}{\alpha}
+    = 
+    \left[ \left( \frac{1}{x^2} - \Delta \right) \cos \alpha - 1\right] \sin \alpha = 0.
+\end{equation}
+%
+Here, $x$ is defined as before, and we introduced the new quantity $\Delta = \Delta m_{\text{EM}}^2 / \bar m^2= 0.06916$.
+We see that the phase transition is raised, the critical chemical potential is now $\mu_I^c = \bar m \sqrt{1 + \Delta}$, the mass of the charged pions.
+Below this value, $\alpha = 0$ remains the only solution.
+In the pion condensate phase, the solution is
+%
+\begin{equation}
+    \cos \alpha = \frac{\bar m^2}{\mu_I^2 - \Delta m_\text{EM}^2}
+    = \frac{1}{\frac{1}{x^2} -  \Delta}.
+\end{equation}
+%
+This reduces to our old solution for $\Delta = 0$, as it should.
+With the same procedure as in the last section, we get the pressure and energy density
+%
+\begin{align}
+    \label{pressure with em interaction}
+    \tilde p_\text{EM}
+    & = \frac{1}{2} 
+    \left(
+        \frac{1}{x^2} - \Delta
+        + \frac{x^2}{1 - x^2 \Delta} 
+        - 2 
+    \right), \\
+    % & = \frac{1}{2} 
+    % \left(
+    %     \sqrt{\frac{1}{x^2} - \Delta}
+    %     -\frac{1}{\sqrt{\frac{1}{x^2} - \Delta}} 
+    % \right)^2, \\
+    \tilde u_\text{EM}
+    &= \frac{1}{2} 
+    \left(
+        \frac{1}{x^2} 
+        - x^2 \frac{3 - x^2 \Delta }{(1 - x^2 \Delta)^2}
+        + 2 + \Delta
+    \right).
+\end{align}
+%
+The ratio between pressure and energy is now
+%
+\begin{equation}
+    \frac{p_\text{EM}}{u_\text{EM}} 
+    = 
+    \frac{
+        1 - (2\Delta + 1)x^2 + \Delta(\Delta + 1)x^4
+        }{
+        1 + 3x^2 - \Delta (\Delta +1)x^4
+        }.
+\end{equation}
+%
+In the limit $\Delta = 0$, these results reduce to those we found in the last section.
+In the ultra-relativistic limit, that is, for  $x \ll 1$, the behavior is the same as before, and we again approach $p = u$.
+As the mass of the charged pions have changed, the non-relativistic limit is now obtained by substituting $x^{-2} = 1 + \Delta + \epsilon$, for $\epsilon \ll 1$.
+To first order in $\epsilon$ we get $\tilde p = \epsilon / 2$, which is the same as before.
+However, the energy density limit is perturbed by the inclusion of electromagnetism and is now $\tilde u = 2(1 + \Delta) \epsilon$.
+The non-relativistic equation of state is thus still a polytrope of the form $\tilde p = K \tilde u^2$, however the constant is now $K^{-1} = 8 (1+\Delta)^2$.
+
+
 
 
 \end{document}

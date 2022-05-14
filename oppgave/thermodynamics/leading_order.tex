@@ -1,18 +1,10 @@
 \section{Leading order analysis}
 \label{section: thermodynamics leading order}
 
+We begin by computing the thermodynamic properties to leading order.
+This will give an accurate first approximation, which we can verify by next-to-leading order results later.
+In this section and the two next, we will substitute the physical masses, such as $m_\pi$, for the tree-level masses \autoref{leading order pion mass mu=0}, \autoref{leading order charged kaon mass mu=0}, \autoref{leading order neutral kaon mass mu=0}, and \autoref{leading order eta mass mu=0}, as they agree to leading order.
 
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.9\textwidth]{../scripts/figurer/free_energy_surface.pdf}
-    \caption{
-        The surface is the free energy as a function of $\alpha$ and $\mu_I$.
-        The black dashed lines illustrate the value of $\alpha$ which minimizes the free energy for a given value of $\mu_I$.
-    }
-    \label{fig: free energy surface}
-\end{figure}
-
-\todo[inline]{Være konsekvent: bruk kun fysiske eller bare masser/konstanter}
 
 \subsection{Pure pion condensate}
 \label{subsection: pure pion condensate}
@@ -26,10 +18,10 @@ We thus get the leading order contribution to the free energy density from \auto
     \label{free energy pion condensate}
     \Eff 
     = 
-    - \frac{1}{2} f^2
+    - \frac{1}{2} f_\pi^2
     \left(
         \mu_I^2 \sin^2\alpha
-        + 2\bar m^2 \cos\alpha
+        + 2m_\pi^2 \cos\alpha
         + m_S^2
     \right).
 \end{equation}
@@ -37,41 +29,50 @@ We thus get the leading order contribution to the free energy density from \auto
 The parameter $\alpha$ is determined by minimizing $\Eff$ for a given value of $\mu_I$,
 %
 \begin{equation}
-    \pdv{\Eff}{\alpha} = f^2 \left(\bar m^2 - \mu_I^2 \cos \alpha\right) \sin\alpha = 0.
+    \pdv{\Eff}{\alpha} = f_\pi^2 \left(m_\pi^2 - \mu_I^2 \cos \alpha\right) \sin\alpha = 0.
 \end{equation}
 %
 This gives an explicit formula for $\alpha$ in terms of $\mu_I$.
-As long as the chemical potential is lower than the critical value $\mu_I^c = \bar m$, the only solution to this equation is $\alpha = 0$.
+As long as the chemical potential is lower than the critical value $\mu_I^c = m_\pi$, the only solution to this equation is $\alpha = 0$.
 As the chemical potential reaches this critical value, the system undergoes a phase transition from the vacuum phase to the \emph{pion condensate} phase.
 In this new phase, the solution is
 %
 \begin{align}
     \label{alpha as function of mu lowest order}
-    \cos \alpha = \frac{\bar m^2}{\mu_I^2}.
+    \cos \alpha = \frac{m_\pi^2}{\mu_I^2}.
 \end{align}
 %
-\todo[inline]{dont use x}
-We introduce a dimensionless variable $x^2 = \cos\alpha = \bar m^2 / \mu_I^2$.
-This variable has the domain $[0, 1]$, and $\cos \alpha = x^2$ implies that $\sin^2 \alpha = 1 - x^4$.
-Substituting the dimensionless variable into the free energy density, we get 
+Substituting this back into the free energy, we get
 %
 \begin{equation}
-    \Eff = - \frac{u_0}{2} \left( x^2 + \frac{1}{x^2} \right) +\const
+    \Eff 
+    % = - \frac{u_0}{2} \left( x^2 + \frac{1}{x^2} \right) +\const
+    = - \frac{u_0}{2} \left( \frac{m_\pi^2}{\mu_I^2} + \frac{\mu_I^2}{m_\pi^2}\right) +\const
 \end{equation}
 %
-We have introduced the characteristic energy density $u_0 = \bar m^2 f^2$.
+We have introduced the characteristic energy density $u_0 = m_\pi^2 f_\pi^2$.
 This process of minimizing free energy for a given $\mu_I$ is illustrated in \autoref{fig: free energy surface}.
 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../scripts/figurer/free_energy_surface.pdf}
+    \caption{
+        The surface is the free energy as a function of $\alpha$ and $\mu_I$.
+        The black dashed lines illustrate the value of $\alpha$ which minimizes the free energy for a given value of $\mu_I$.
+    }
+    \label{fig: free energy surface}
+\end{figure}
 
 
 As we found in the last section, the pressure is given by negative the free energy density. 
-We normalized the pressure to $\mu_I = \bar m$, or $x = 1$, and choose $p_0 = u_0$, so the dimensionless pressure is
+We normalized the pressure to $\mu_I = m_\pi$, and choose $p_0 = u_0$, so the dimensionless pressure is
 %
 \begin{equation}
     \label{pressure leading order chpt}
-    \tilde p = -\frac{1}{p_0} \left(\Eff - \Eff_{x=1}\right) 
+    \tilde p = -\frac{1}{p_0} \left(\Eff - \Eff_{\mu_I=m_\pi}\right) 
     % = \frac{1}{2} \left( x^2 + \frac{1}{x^2} - 2 \right).
-    = \frac{1}{2} \left(x - \frac{1}{x}\right)^2.
+    % = \frac{1}{2} \left(x - \frac{1}{x}\right)^2.
+    = \frac{1}{2} \left(\frac{\mu_I}{m_\pi} - \frac{m_\pi}{\mu_I}\right)^2.
 \end{equation}
 %
 The charge density corresponding to a chemical potential is given by minus the derivative of the free energy with respect to that chemical potential. 
@@ -80,9 +81,9 @@ The isospin density is
 %
 \begin{equation}
     \label{isospin density}
-    n_I = -\pdv{\Eff}{\mu_I} = f^2 \mu_I \sin^2 \alpha 
+    n_I = -\pdv{\Eff}{\mu_I} = f_\pi^2 \mu_I \sin^2 \alpha 
     = 
-    \frac{u_0}{\mu_I} \left(\frac{1}{x^2} - x^2\right),
+    \frac{u_0}{\mu_I} \left(\frac{\mu_I^2}{m_\pi^2} - \frac{m_\pi^2}{\mu_I^2}\right),
 \end{equation}
 %
 while the strangeness is zero.
@@ -91,21 +92,21 @@ With this, the dimensionless energy density at $T = 0$ is
 \begin{equation}
     \label{energy density leading order chpt}
     \tilde u = - \tilde p + \frac{\mu_I n_I}{u_0}
-    = \frac{1}{2} \left( 2 + \frac{1}{x^2} - 3 x^2\right).
+    = \frac{1}{2} \left(\frac{\mu_I^2}{m_\pi^2} + 2 - 3\frac{m_\pi^2}{\mu_I^2}\right).
 \end{equation}
 %
 The ratio of pressure to energy density is
 %
 \begin{equation} 
     \label{pressure energy ratio leading order chpt}
-    \frac{p}{u} = \frac{1- x^2}{1+3x^2},
+    \frac{p}{u} = \frac{\frac{\mu_I^2}{m_\pi^2} - 1}{\frac{\mu_I^2}{m_\pi^2}+3},
 \end{equation}
 %
 which matches earlier results~\autocite{sonQCDFiniteIsospin2001}.
-In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$ and thus $x \rightarrow 0$, we get $p / u = 1$, or $u_\text{ur} = p$.
-The non-relativistic limit is $\mu_I^2 = m_\pi^2(1 + \epsilon)$ and thus $x^{-2} = 1 + \epsilon$, $\epsilon \ll 1$.
+In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$, we get $p / u = 1$, or $u_\text{ur} = p$.
+The non-relativistic limit is $\mu_I^2 = m_\pi^2(1 + \epsilon)$, $\epsilon \ll 1$.
 With this we get $\tilde p = \epsilon^2 / 2 $, and $\tilde u = 2\epsilon$, so the equation of state is $\tilde u_\text{nr} = \sqrt 8 \sqrt{\tilde p}$.
-The isospin density, and thus the pion number density, is $n_I = 2 \frac{u_0}{\bar m} \epsilon$, and we can therefore write the energy density in this limit as $u = \bar m n_I + \Oh(\epsilon^2)$.
+The isospin density, and thus the pion number density, is $n_I = 2 \frac{u_0}{\bar m} \epsilon$, and we can therefore write the energy density in this limit as $u = m _\pi n_I + \Oh(\epsilon^2)$.
 The energy density is thus dominated by the rest mass as $\epsilon \rightarrow 0$, as we expect from the non-relativistic limit.
 \autoref{fig: equation of state pions} shows the equation of state in two different regimes and compares it with the ultrarelativistic and non-relativistic limits.
 
@@ -131,9 +132,9 @@ From \autoref{static Lagrangian three-flavor EM}, the free energy density, inclu
 %
 \begin{equation}
     \Eff =
-    -\frac{1}{2} f^2
+    -\frac{1}{2} f_\pi^2
     \left[
-        (\mu_I^2 - \Delta m_\text{EM}^2)\sin^2\alpha + 2 \bar m^2\cos\alpha 
+        (\mu_I^2 - \Delta m_\text{EM}^2)\sin^2\alpha + 2 m_\pi^2\cos\alpha 
         + \frac{2}{3}\Delta m_\text{EM}^2 + m_S^2
     \right].
 \end{equation}
@@ -143,7 +144,7 @@ Free energy minimization now gives
 \begin{equation}
     \frac{1}{u_0}\pdv{\Eff}{\alpha}
     = 
-    \left[ \left( \frac{1}{x^2} - \Delta \right) \cos \alpha - 1\right] \sin \alpha = 0.
+    \left[ \left( \frac{\mu_I^2}{m_\pi^2} - \Delta \right) \cos \alpha - 1\right] \sin \alpha = 0.
 \end{equation}
 %
 Here, $x$ is defined as before, and we introduced the new quantity $\Delta = \Delta m_{\text{EM}}^2 / \bar m^2= 0.06916$.
@@ -152,8 +153,9 @@ Below this value, $\alpha = 0$ remains the only solution.
 In the pion condensate phase, the solution is
 %
 \begin{equation}
-    \cos \alpha = \frac{\bar m^2}{\mu_I^2 - \Delta m_\text{EM}^2}
-    = \frac{1}{\frac{1}{x^2} -  \Delta}.
+    \cos \alpha 
+    % = \frac{\bar m^2}{\mu_I^2 - \Delta m_\text{EM}^2}
+    = \frac{1}{\frac{\mu_I^2}{m_\pi^2} -  \Delta}.
 \end{equation}
 %
 This reduces to our old solution for $\Delta = 0$, as it should.
@@ -164,9 +166,8 @@ With the same procedure as in the last section, we get the pressure and energy d
     \tilde p_\text{EM}
     & = \frac{1}{2} 
     \left(
-        \frac{1}{x^2} - \Delta
-        + \frac{x^2}{1 - x^2 \Delta} 
-        - 2 
+        \frac{\mu_I^2}{m_\pi^2} - 2 - \Delta
+        + \frac{1}{\frac{\mu_I^2}{m_\pi^2}  - \Delta} 
     \right), \\
     % & = \frac{1}{2} 
     % \left(
@@ -176,9 +177,8 @@ With the same procedure as in the last section, we get the pressure and energy d
     \tilde u_\text{EM}
     &= \frac{1}{2} 
     \left(
-        \frac{1}{x^2} 
-        - x^2 \frac{3 - x^2 \Delta }{(1 - x^2 \Delta)^2}
-        + 2 + \Delta
+        \frac{\mu_I^2}{m_\pi^2}+ 2 + \Delta
+        - \frac{3\frac{\mu_I^2}{m_\pi^2} - \Delta }{\left(\frac{\mu_I^2}{m_\pi^2} - \Delta\right)^2}
     \right).
 \end{align}
 %
@@ -188,15 +188,15 @@ The ratio between pressure and energy is now
     \frac{p_\text{EM}}{u_\text{EM}} 
     = 
     \frac{
-        1 - (2\Delta + 1)x^2 + \Delta(\Delta + 1)x^4
+        \frac{\mu_I^4}{m_\pi^4} - (2\Delta + 1)\frac{\mu_I^2}{m_\pi^2} + \Delta(\Delta + 1)
         }{
-        1 + 3x^2 - \Delta (\Delta +1)x^4
+        \frac{\mu_I^4}{m_\pi^4} + 3\frac{\mu_I^2}{m_\pi^2} - \Delta (\Delta +1)
         }.
 \end{equation}
 %
 In the limit $\Delta = 0$, these results reduce to those we found in the last section.
-In the ultra-relativistic limit, that is, for  $x \ll 1$, the behavior is the same as before, and we again approach $p = u$.
-As the mass of the charged pions have changed, the non-relativistic limit is now obtained by substituting $x^{-2} = 1 + \Delta + \epsilon$, for $\epsilon \ll 1$.
+In the ultra-relativistic limit, the behavior is the same as before, and we again approach $p = u$.
+As the mass of the charged pions have changed, the non-relativistic limit is now obtained by substituting ${\mu_I^2}/{m_\pi^2} = 1 + \Delta + \epsilon$, for $\epsilon \ll 1$.
 To first order in $\epsilon$ we get $\tilde p = \epsilon / 2$, which is the same as before.
 However, the energy density limit is perturbed by the inclusion of electromagnetism and is now $\tilde u = 2(1 + \Delta) \epsilon$.
 The non-relativistic equation of state is thus still a polytrope of the form $\tilde p = K \tilde u^2$, however the constant is now $K^{-1} = 8 (1+\Delta)^2$.
@@ -206,7 +206,7 @@ The non-relativistic equation of state is thus still a polytrope of the form $\t
     \centering
     \includegraphics[width=0.95\textwidth]{../scripts/figurer/pion_star/pion_up.pdf}
     \caption{
-        Left: The pressure, normalized to $p_0$, as a function of the chemical potential above the critical value, normalized to $\bar m$.
+        Left: The pressure, normalized to $p_0$, as a function of the chemical potential above the critical value, normalized to $m_\pi$.
         Right: The energy density, normalized to $u_0$, also as a function of the chemical potential.
         Results with electromagnetic interaction are shown as dashed lines.
         The $y$-axis corresponds to different absolute values of isospin-chemical potential, as the critical value of the chemical is changed by the inclusion of electromagnetic interactions. See main text for details.
@@ -279,13 +279,12 @@ If $b_0<0$, we must expand the free energy further and might get a first-order p
 We now apply this theory to the pion condensate by Taylor expanding the free energy for a pure pion-condensate,  \autoref{free energy pion condensate}, around the point $\alpha = 0$
 %
 \begin{equation}
-    \Eff = \Eff(\mu_I = 0) + \frac{1}{2}f^2 (\bar m^2 - \mu_I^2) \alpha^2 
-    + \frac{1}{24}f^2 (4 \mu_I^2 - \bar m^2) \alpha^4 + \Oh(\alpha^6).
+    \Eff = \Eff(\mu_I = 0) + \frac{1}{2}f_\pi^2 (m_\pi^2 - \mu_I^2) \alpha^2 
+    + \frac{1}{24}f_\pi^2 (4 \mu_I^2 - m_\pi^2) \alpha^4 + \Oh(\alpha^6).
 \end{equation}
 %
-This fullfils the asummptions made earlier, with $x = \mu_I^2$, $a_0 = f^2/2$, $b_0 = f^2 \bar m^2/8 $, and $x^c = \bar m^2$.
-The phase transition from the vacuum phase, where $\alpha = 0$, into the pion-condensed phase, where $\alpha \neq 1$, thus a second-order phase transition.
-We found that the tree-level pion mass is $m_\pi = \bar m$, and we can therefore conclude that the transition happens at $\mu_I = m_\pi$, to leading order.
+This fullfils the asummptions made earlier, with $x = \mu_I^2$, $a_0 = f_\pi^2/2$, $b_0 = f_\pi^2 m_\pi^2/8 $, and $x^c = m_\pi^2$.
+The phase transition from the vacuum phase, where $\alpha = 0$, into the pion-condensed phase, where $\alpha \neq 1$, thus a second-order phase transition, and it happens at $\mu_I = m_\pi$, to leading order.
 The change in the shape of the free energy is illustrated in \autoref{fig: phase transition}.
 
 As discussed in \autoref{subsection: chiral symmetry}, the full Lagrangian has an approximate $\Lie{SU}{3}_V\times\Lie{SU}{3}_A$-symmetry.
@@ -325,9 +324,9 @@ Using \autoref{pressure leading order chpt}, and the similar expression in the k
 %
 \begin{equation}
     p 
-    = \frac{1}{2} f^2 m_\Kpm^2 \left( \frac{\mu_\Kpm}{m_\Kpm} - \frac{m_\Kpm}{\mu_\Kpm} \right)^2
+    = \frac{1}{2} f_\pi^2 m_\Kpm^2 \left( \frac{\mu_\Kpm}{m_\Kpm} - \frac{m_\Kpm}{\mu_\Kpm} \right)^2
     =
-    \frac{1}{2} f^2m_\pi^2  \left( \frac{\mu_I}{m_\pi} - \frac{m_\pi}{\mu_I} \right)^2.
+    \frac{1}{2} f_\pi^2m_\pi^2  \left( \frac{\mu_I}{m_\pi} - \frac{m_\pi}{\mu_I} \right)^2.
 \end{equation}
 %
 Solving for $\mu_\Kpm$, we get
@@ -342,9 +341,9 @@ This point, $(\mu_I, \mu_S) = (m_\pi, m_\Kpm - m_\pi/2)$, satisfies \autoref{tra
 Similarly, the line between the charged and neutral kaon condensed phase is defined by
 %
 \begin{equation}
-    \frac{1}{2} f^2 m_\Kpm^2 \left( \frac{\mu_\Kpm}{m_\Kpm} - \frac{m_\Kpm}{\mu_\Kpm} \right)^2
+    \frac{1}{2} f_\pi^2 m_\Kpm^2 \left( \frac{\mu_\Kpm}{m_\Kpm} - \frac{m_\Kpm}{\mu_\Kpm} \right)^2
     =
-    \frac{1}{2} f^2 m_\Ko^2 \left( \frac{\mu_\Ko}{m_\Ko} - \frac{m_\Ko}{\mu_\Ko} \right)^2.
+    \frac{1}{2} f_\pi^2 m_\Ko^2 \left( \frac{\mu_\Ko}{m_\Ko} - \frac{m_\Ko}{\mu_\Ko} \right)^2.
 \end{equation}
 %
 The solution is

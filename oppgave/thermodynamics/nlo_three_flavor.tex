@@ -411,13 +411,13 @@ Here, the mass terms are
 Notice that divergent $1/\epsilon$-terms cancel exactly, and the total NLO contribution is therefore finite even as $\epsilon\rightarrow 0$, as expected.
 Furthermore, all dependence on the unphysical parameter $\mu$ has vanished, and only the renormalized coupling constants and the mass $M$ at which they are defined remain.
 
- When evaluating the free energy and quantities derived from it, we need the NLO relationship between the bare constants that appear in the Lagrangian and the physical constants.
+ When evaluating the free energy and quantities derived from it, we need the NLO relationship between the bare parameters that appear in the Lagrangian and the experimental values.
 For numerical results, we will consider $\Delta m = 0$.
 This is done in the QCD-lattice research and allows for easier comparison with those results~\autocite{brandtNewClassCompact2018}.
-Furthermore, we expect this to have marginal effects on our results, as $\Delta m$ do not affect the results until NLO.
-After setting $\Delta m = 0$, we are left with three independent bare constants, $\bar m$, $m_S$, and $f$.
+Furthermore, we expect this to have marginal effects on our results, as $\Delta m$ does not affect the results until NLO.
+After setting $\Delta m = 0$, we are left with three independent bare parameters, $\bar m$, $m_S$, and $f$.
 We must therefore use physical values of three constants, as more would lead to an overdetermined system of equations.
-As we work in with a pion condensate without electromagnetic interactions, it is natural to choose the neutral pion mass $m_\pio$ and the pion decay $f_\pi$, whose values can be found in \autoref{section: units}.
+As we work with a pion condensate without electromagnetic interactions, it is natural to choose the neutral pion mass $m_\pio$ and the pion decay $f_\pi$, whose values can be found in \autoref{section: units}.
 As we assume $\Delta m = 0$ and no electromagnetic interaction, the charged and neutral kaon masses are equal.
 We, therefore, define $m_{K,0}^2 := (\bar m + m_S)/2$, and choose the neutral kaon mass as the last physical constant.
 The NLO relationships that determine the bare parameters are~\autocite{gasserChiralPerturbationTheory1985}
@@ -515,7 +515,7 @@ One cannot, however, expect no deviation numerically, as higher-order terms have
 Such numerical deviations are observed, as we found $\mu_I^c \approx 1.001\,m_\pi$.
 
 The NLO results for the thermodynamic quantities are close to the LO results for values of $\mu_I$ close to $m_\pi$, however, the results start to deviate as $\mu_I$ increases.
-This is to be expected, as we are expanding perturbatively in particle energies, and thus also chemical momentum.
+This is to be expected, as we are expanding perturbatively in particle energies, and thus also chemical potential.
 As discussed \autoref{subsection: Weinberg's power counting scheme}, we see that $4\pi f_\pi \approx 8.6 \,m_\pi$ is the energy scale that decides convergence.
 As $\mu_I$ approaches this point, the NLO corrections are no longer small.
 These results indicate that, at least for $\mu_I< 2\,m_\pi$, \chpt\, converges quickly.
