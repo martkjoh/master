@@ -56,18 +56,20 @@ for i, name in enumerate(names):
     fill_ellipses(ax, p, u, err_p, err_u, colors[i], i)
     ax.plot(p, u, color=colors[i], label=labels[i], zorder=i, lw=4)
 
-names=["", "_e", "_mu"]
+names=["", "_nlo", "_e", "_mu"]
+lss = ["--",  "-.", "--", "--"]
+labels = ["LO", "NLO", "", ""]
 p_max = 1
 u_max = 2.5
 # p_max = 0.0004
 # u_max = 0.004
 
-for name in names:
+for i, name in enumerate(names):
     u_path = "pion_star/data/eos"+name+".npy"
     u = get_u(u_path)
     p = np.linspace(0, p_max, 1000)
     u = np.array([u(p0) for p0 in p])
-    ax.plot(p, u, "k--", lw=3)
+    ax.plot(p, u, "k", lw=2.5, ls=lss[i], label=labels[i])
 
 
 ax.set_xlim(0, p_max)

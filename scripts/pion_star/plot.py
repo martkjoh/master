@@ -908,7 +908,7 @@ if __name__=="__main__":
     # plot_nlo()
     # plot_nlo("_neutrino")
 
-    plot_light()
+    # plot_light()
     # plot_light_nogrid()
     # plot_light_log()
     # plot_phase()
