@@ -31,9 +31,11 @@ Recently, a new form of compact stars has been proposed, called pion stars~\auto
 These stars are composed of a pion condensate.
 The pion particles are bosons, in contrast to electrons and neutrons, which are fermions.
 The pressure in pion stars must therefore be maintained by repulsive interactions, unlike in neutron stars and white dwarves, where it is due to the Pauli exclusion principle.
-In this thesis, we will develop chiral perturbation theory, a model for the dynamics of pions and the other pseudoscalar mesons, in order to investigate the properties of pion stars.
+In this thesis, we will develop chiral perturbation theory (\chpt), a model for the dynamics of pions and the other pseudoscalar mesons, in order to investigate the properties of pion stars.
 This involves a survey of the theoretical foundations and thermodynamic calculations.
-Pion stars are yet only a theoretical proposal, although if history is to be of any guidance, that does not mean there aren't valuable insights to be gained from researching them.
+Pion stars are, as yet, only a theoretical proposal.
+However, if history is to be of any guidance, that does not mean there aren't valuable insights to be gained from researching them.
+To that end, we need a theory of the matter that makes up such a star.
 
 
 
@@ -41,12 +43,34 @@ Pion stars are yet only a theoretical proposal, although if history is to be of 
 \section{The standard model, QCD, and effective theories}
 
 
-The standard model of particle physics is the totality of everything particle physicists are confident they understand concerning the fundamental building blocks of our universe.
-It is arguably the most successful scientific theory of all time and makes fantastically accurate predictions of the behavior of fundamental particles and
-in combination with general relativity, and Einstein's theory of gravity, it is, for now, our best answer to how the world works.
-The standard model is a quantum field theory (QFT) and describes both the elementary matter particles and the forces between them as excitations in underlying fields, which permeate all space-time.
-If we include the masses of neutrinos in the standard model, it has 26 free parameters~\autocite{kramerStandardModelParticle2017}.
-The particles of the standard model are illustrated in \autoref{fig: standard model}~\autocite{griffithsIntroductionElementaryParticles2008,schwartzQuantumFieldTheory2013}
+The Standard Model of particle physics is the totality of what particle physicists are confident they understand concerning the fundamental building blocks of our universe.
+It is arguably the most successful scientific theory of all time and makes fantastically accurate predictions of the behavior of fundamental particles.
+In combination with general relativity, Einstein's theory of gravity, it is our best answer to how the world works.
+The Standard Model is a quantum field theory (QFT) and describes both the elementary matter particles and the forces between them as excitations in quantum fields, which permeate all space-time.
+These fields and their dynamics are captured in the \emph{Lagrangian density}, or just Lagrangian, of the model.
+In decisively compact notation, this can be written
+%
+\begin{equation}
+    \Ell_\text{SM}
+    =
+    \bar \psi_i \slashed{ D }_{ij}  \psi_j
+    - \frac{1}{4} F_\alpha^{\mu\nu} F^\alpha_{\mu \nu}
+    - \left( 
+        \bar \psi_{L, i} \Phi Y_{ij} \psi_{R, j}
+        + \hc
+    \right)
+    + |D_{\mu} \Phi |^2 + \Ve(\Phi),
+\end{equation}
+%
+where $\psi_i$ are the matter fields, the forces interactions are encoded in $D$ and $F$, and $\Phi$ is the Higgs-field~\autocite{carrollWorldEverydayExperience2013,schwartzQuantumFieldTheory2013}.
+The particles of the Standard Model are illustrated in \autoref{fig: standard model}~\autocite{griffithsIntroductionElementaryParticles2008,schwartzQuantumFieldTheory2013}
+If we include the masses of neutrinos in the Standard Model, it has 26 free parameters~\autocite{kramerStandardModelParticle2017}.
+We should, in principle, be able to derive all of particle physics from the Standard Model together with these parameters, and from that subsequently chemistry and all other physical sciences.
+In practice, however, we must often resort to domain-specific models, which might be guided by the Standard Model, but ultimately are independent.
+However, unless you hope to supplant the Standard Model, no such model should violate it.
+The Standard Model obeys general constraints such as the conservation of energy and the speed of light as the ultimate speed limit.
+These constraints are powerful guiding lights as we seek to explore physics.
+
 
 
 \begin{figure}[!htb]
@@ -56,6 +80,162 @@ The particles of the standard model are illustrated in \autoref{fig: standard mo
     \label{fig: standard model}
 \end{figure}
 
+
+The part of the Standard Model which describes the interaction of quarks via the strong force, mediated by the gluons, is called \emph{quantum chromodynamics} (QCD).
+Quarks are the building blocks of the nuclear particles, protons and neutrons, and the nuclear force that binds together atoms is a result of QCD.
+A complete understanding of this theory is of great interest.
+However, the fact that the force mediated by gluons is so strong greatly limits our understanding.
+This is because our main technique for handling quantum field theories, perturbation theory, fails.
+In perturbation theory, we rely on interactions being weak.
+This is quantified by an expansion parameter, $\alpha$, to which the strength of each interaction is proportional.
+If $\alpha<1$, then each such interaction in a process will suppress it by a factor $\alpha$.
+The scattering of two particles is then calculated as a sum of all possible processes---combinations of interactions between the fields---that could lead to a scattering.
+Processes with more interactions will contribute less to the total sum, as each interaction suppresses the diagram by $\alpha$.
+Each process is illustrated by a Feynman diagram, in which particles come in from the left, interact via \emph{virtual particles}, then leave to the right.
+The process of electron-electron scattering in quantum electrodynamics (QED) is given by
+%
+\begin{equation}
+\begin{tikzpicture}[baseline=(c)]
+    \begin{feynman}
+        \vertex (a1) at (0, 0);
+        \vertex (b1) at (1, 0);
+        \vertex (c1) at (2, 0);
+        %
+        \vertex (a2) at (0, -1);
+        \vertex (b2) at (1, -1);
+        \vertex (c2) at (2, -1);
+        %
+        \vertex[left=0.1cm of a1] {$e^-$};
+        \vertex[right=0.1cm of c1] {$e^-$};        
+        \vertex[left=0.1cm of a2] {$e^-$};
+        \vertex[right=0.1cm of c2] {$e^-$};
+        %
+        \node [blob, color=black] (c) at (1, -.5);
+        %
+        \diagram*{
+            {[edges=fermion]
+            (a1) -- (c) -- (c1),
+            (a2) -- (c) -- (c2)},
+        };
+    \end{feynman}
+\end{tikzpicture}
+=
+\underbrace{
+ \begin{tikzpicture}[baseline=(c)]
+    \begin{feynman}
+        \vertex (a1) at (0, 0);
+        \vertex (c1) at (2, 0);
+        \vertex (a2) at (0, -1);
+        \vertex (c2) at (2, -1);
+        \vertex (x) at (1, -.2);
+        \vertex (c) at (1, -.5);
+        \vertex (y) at (1, -.8);
+        \diagram*{
+            {[edges=fermion]
+            (a1) -- (x) -- (c1),
+            (a2) -- (y) -- (c2)},
+            {[edges=photon]
+            (x) -- (y)}
+        };
+    \end{feynman}
+\end{tikzpicture}
++
+\begin{tikzpicture}[baseline=(c)]
+    \begin{feynman}
+        \vertex (a1) at (0, 0);
+        \vertex (c1) at (2, 0);
+        \vertex (a2) at (0, -1);
+        \vertex (c2) at (2, -1);
+        \vertex (x) at (1, -.2);
+        \vertex (c) at (1, -.5);
+        \vertex (y) at (1, -.8);
+        \diagram*{
+            {[edges=fermion]
+            (a1) -- (x) -- (c2),
+            (a2) -- (y) -- (c1)},
+            {[edges=photon]
+            (x) -- (y)}
+        };
+    \end{feynman}
+\end{tikzpicture}
+}_{\propto \alpha}
++
+\underbrace{\begin{tikzpicture}[baseline=(c)]
+    \begin{feynman}
+        \vertex (a1);
+        \vertex[right=1cm of a1] (b1);
+        \vertex[right=1cm of b1] (c1);
+        \vertex[right=1cm of c1] (d1);
+        \vertex[below=1cm of a1] (a2);
+        \vertex[left=0.1cm of a2] ;
+        \vertex[right=1cm of a2] (b2);
+        \vertex[right=1cm of b2] (c2);
+        \vertex[right=1cm of c2] (d2);
+        \vertex[below=0.2cm of b1] (x);
+        \vertex[below=0.5cm of b1] (c);
+        \vertex[below=0.8cm of b1] (y);
+        \vertex[below=0.2cm of c1] (x2);
+        \vertex[below=0.8cm of c1] (y2);
+        \diagram*{
+            {[edges=fermion]
+            (a1) -- (x) -- (x2) -- (d1),
+            (a2) -- (y) -- (y2) -- (d2)},
+            {[edges=photon]
+            (x) -- (y),
+            (x2) -- (y2)}
+        };
+    \end{feynman}
+\end{tikzpicture}
++
+\begin{tikzpicture}[baseline=(c)]
+    \begin{feynman}
+        \vertex (a1) at (0, 0);
+        \vertex (b1) at (.5, -.1);
+        \vertex (c1) at (1, -.2);
+        \vertex (d1) at (1.5, -.1);
+        \vertex (e1) at (2, 0);
+        \vertex (a2) at (0, -1);
+        \vertex (c2) at (1, -.8);
+        \vertex (e2) at (2, -1);
+        \vertex (c) at (0, -.5);
+        \diagram*{
+            {[edges=fermion]
+            (a1)--(c1)--(e1),
+            (a2)--(c2)--(e2)},
+            (b1) --[boson, quarter left] (d1),
+            (c1) --[boson] (c2)
+        };
+    \end{feynman}
+\end{tikzpicture}
+}_{\propto \alpha^2}
++ \dots
+\end{equation}
+%
+In electrodynamics, the expansion parameter is the fine structure constant, $\alpha = e^2/(4 \pi)$ where $e$ is the elementary electrical charge.
+In renormalized theories, such as QED, this parameter is dependent on the energy scale $Q$ the processes happen at.
+This is called the running of a parameter.
+At $Q = 0$, $ \alpha \approx 7 \times 10^{-3}$, and only a few orders in perturbation theory will therefore give highly precise and accurate results.
+\footnote{
+    The series expansion in terms of coupling constants is, strictly speaking, not a converging Taylor series, but rather an asymptotic series.
+    We can see this by considering the consequences of exchanging $\alpha$ for $-\alpha$.
+    Such a theory would be unstable like charges would attract.
+    This implies any expansion in $\alpha$ has a zero radius of converge~\autocite{dysonDivergencePerturbationTheory1952}.
+    We must therefore consider the sum of Feynman-diagrams as an asymptotic series, which yields a good approximation \emph{if terminated soon enough}~\autocite{floryHowLearnedStop2012}.
+}
+
+In QCD, we have no such luck.
+The equivalent of the fine-structure constant in QCD, $\alpha_s$, increases as the energy scale decreases, in contrast to $\alpha$.
+As a consequence, for $Q$ below around $1\,\text{GeV}$, perturbation theory breaks down.
+This includes everything but the most extreme situations in the universe.
+At such energy scales, quarks and gluons are bound together as \emph{hadrons}.
+Hadrons are divided into two classes, \emph{baryons} and \emph{mesons}.
+The nucleons---the neutron and the proton---are among the baryons.
+Roughly, these are made up of three quarks, while the mesons are made of two.
+The lightest meson, the pion, was predicted theoretically by Hideki Yukawa as the carrier of the nuclear force and discovered by Cecil Powell \emph{et. al.}~\autocite{griffithsIntroductionElementaryParticles2008}
+
+We are unable to directly and analytically describe QCD at low energies due to this breakdown of perturbation theory.
+There are numerical schemes, namely lattice QCD, which allow for calculations of low energy QCD. \todo[]{sign problem + cost}
+We will tackle the problem by using an \emph{effective field theory}, which describes the dynamics in terms of mesons instead of quarks and gluons.
 
 
 
