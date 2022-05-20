@@ -6,6 +6,8 @@
 }
 
 
+\section{Pion stars}
+
 Stars and planets have long been one of the main driving engines behind the developments of physics.
 A lot of early mathematics was developed to predict the seasons, the phases of the moon and to navigate using the stars.
 One of the most important confirmation of Newton's laws of motion and gravity was their prediction of Kepler's laws, the empirical observations of the orbits of planets around the Sun.
@@ -107,10 +109,10 @@ The process of electron-electron scattering in quantum electrodynamics (QED) is 
         %
         \vertex[left=0.1cm of a1] {$e^-$};
         \vertex[right=0.1cm of c1] {$e^-$};        
-        \vertex[left=0.1cm of a2] {$e^-$};
-        \vertex[right=0.1cm of c2] {$e^-$};
+        \vertex[left=0.1cm of a2] {$\mu^-$};
+        \vertex[right=0.1cm of c2] {$\mu^-$};
         %
-        \node [blob, color=black] (c) at (1, -.5);
+        \node [blob] (c) at (1, -.5);
         %
         \diagram*{
             {[edges=fermion]
@@ -120,7 +122,7 @@ The process of electron-electron scattering in quantum electrodynamics (QED) is 
     \end{feynman}
 \end{tikzpicture}
 =
-\underbrace{
+\underbrace{\, \,
  \begin{tikzpicture}[baseline=(c)]
     \begin{feynman}
         \vertex (a1) at (0, 0);
@@ -139,43 +141,21 @@ The process of electron-electron scattering in quantum electrodynamics (QED) is 
         };
     \end{feynman}
 \end{tikzpicture}
+\, \,
+}_{\propto \alpha}
 +
+\underbrace{ \, \,
 \begin{tikzpicture}[baseline=(c)]
     \begin{feynman}
         \vertex (a1) at (0, 0);
-        \vertex (c1) at (2, 0);
+        \vertex (d1) at (2.4, 0);
         \vertex (a2) at (0, -1);
-        \vertex (c2) at (2, -1);
-        \vertex (x) at (1, -.2);
-        \vertex (c) at (1, -.5);
-        \vertex (y) at (1, -.8);
-        \diagram*{
-            {[edges=fermion]
-            (a1) -- (x) -- (c2),
-            (a2) -- (y) -- (c1)},
-            {[edges=photon]
-            (x) -- (y)}
-        };
-    \end{feynman}
-\end{tikzpicture}
-}_{\propto \alpha}
-+
-\underbrace{\begin{tikzpicture}[baseline=(c)]
-    \begin{feynman}
-        \vertex (a1);
-        \vertex[right=1cm of a1] (b1);
-        \vertex[right=1cm of b1] (c1);
-        \vertex[right=1cm of c1] (d1);
-        \vertex[below=1cm of a1] (a2);
-        \vertex[left=0.1cm of a2] ;
-        \vertex[right=1cm of a2] (b2);
-        \vertex[right=1cm of b2] (c2);
-        \vertex[right=1cm of c2] (d2);
-        \vertex[below=0.2cm of b1] (x);
-        \vertex[below=0.5cm of b1] (c);
-        \vertex[below=0.8cm of b1] (y);
-        \vertex[below=0.2cm of c1] (x2);
-        \vertex[below=0.8cm of c1] (y2);
+        \vertex (d2) at (2.4, -1);
+        \vertex (x) at (.8, -.2);
+        \vertex (y) at (.8, -.8);
+        \vertex (x2) at (1.6, -.2);
+        \vertex (y2) at (1.6, -.8);
+        \vertex (c) at (.8, -.5);
         \diagram*{
             {[edges=fermion]
             (a1) -- (x) -- (x2) -- (d1),
@@ -183,6 +163,31 @@ The process of electron-electron scattering in quantum electrodynamics (QED) is 
             {[edges=photon]
             (x) -- (y),
             (x2) -- (y2)}
+        };
+    \end{feynman}
+\end{tikzpicture}
++
+\begin{tikzpicture}[baseline=(c)]
+    \begin{feynman}
+        \vertex (a1) at (0, 0);
+        \vertex (c1) at (2, 0);
+        \vertex (a2) at (0, -1);
+        \vertex (c2) at (2, -1);
+        \vertex (x) at (1, 0);
+        \vertex (l1) at (1, -.3);
+        \vertex (c) at (1, -.5);
+        \vertex (l2) at (1, -.7);
+        \vertex (y) at (1, -1);
+        \diagram*{
+            {[edges=fermion]
+            (a1) -- (x) -- (c1),
+            (a2) -- (y) -- (c2),
+            (l1) --[half left, looseness=1.8] (l2) --[half left, looseness=1.8] (l1),
+            },
+            {[edges=photon]
+            (x) -- (l1),
+            (l2) -- (y)
+            }
         };
     \end{feynman}
 \end{tikzpicture}
@@ -207,6 +212,7 @@ The process of electron-electron scattering in quantum electrodynamics (QED) is 
         };
     \end{feynman}
 \end{tikzpicture}
+\, \,
 }_{\propto \alpha^2}
 + \dots
 \end{equation}
@@ -231,11 +237,77 @@ At such energy scales, quarks and gluons are bound together as \emph{hadrons}.
 Hadrons are divided into two classes, \emph{baryons} and \emph{mesons}.
 The nucleons---the neutron and the proton---are among the baryons.
 Roughly, these are made up of three quarks, while the mesons are made of two.
-The lightest meson, the pion, was predicted theoretically by Hideki Yukawa as the carrier of the nuclear force and discovered by Cecil Powell \emph{et. al.}~\autocite{griffithsIntroductionElementaryParticles2008}
+The lightest meson, the pion, was predicted theoretically by Hideki Yukawa as the carrier of the nuclear force and later discovered by Cecil Powell \emph{et. al.}~\autocite{griffithsIntroductionElementaryParticles2008}
 
 We are unable to directly and analytically describe QCD at low energies due to this breakdown of perturbation theory.
 There are numerical schemes, namely lattice QCD, which allow for calculations of low energy QCD. \todo[]{sign problem + cost}
-We will tackle the problem by using an \emph{effective field theory}, which describes the dynamics in terms of mesons instead of quarks and gluons.
+We will tackle the problem by using an \emph{effective field theory}.
+When creating an effective field theory, we come to terms with the fact that we do not know all physics.
+Instead, we settle for a description of the most important parts.
+In modern physics, effective field theories have become a ubiquitous tool and are employed in both condensed matter physics and high-energy physics.
+In fact, it is now believed that the Standard model itself is an effective field theory, a low energy description of a more complete theory~\autocite{pencoIntroductionEffectiveField2020,weinbergDevelopmentEffectiveField2021}.
+The ``theorem'' Weinberg discusses in the opening quote of this chapter describes why effective field theories are such a powerful tool.
+In short, it states that quantum field theories alone contain very little information, and thus can model almost everything.
+If we write down the most general Lagrangian, then we have not made more than very basic assumptions~\autocite{weinbergPhenomenologicalLagrangians1979a}.
+This will be our guiding philosophy when constructing chiral perturbation theory, the effective theory of mesons.
+
+
+
+\section{The QCD phase diagram}
+
+Pion stars are made up of condensed pions.
+This is just one of the many phases of quantum chromodynamics.
+A phase diagram illustrates what phases a medium is under different circumstances.
+The phase diagram of QCD is rich and is an active area of research.
+Our understanding of this phase diagram is far from complete due to the difficulties of working with the strong force.
+\autoref{fig: phase diagram QCD} shows a rough sketch of our current understanding of the QCD phase diagram.
+The axes are temperature $T$, baryon chemical potential $\mu_B$, and isospin chemical potential $\mu_I$.
+The baryon and isospin chemical potentials quantify the abundance of quarks compared to  anti quarks and up quarks compared to down quarks, respectively.
+Close to $T = \mu_B = \mu_I = 0$, QCD is in the vacuum phase, where hadrons form a gas whose density and composition depend on the temperature and chemical potentials.
+Some of the first explorations of the phase transitions were done when it was CERN noticed that hadrons seem to approach a maximum temperature, the Hagedorn temperature of around $160\,\text{MeV}$ or $1.9\times 10^12 \, K$.
+A more modern understanding of this temperature is as a point of phase transition, in which the quark ceases to be bound together as hadrons and instead forms a soup of free particles called quark-gluon plasma
+This process is called deconfinement, and is a consequence of the weakening of the strong force for higher energies, called asymptotic freedom
+~\autocite{hagedornHadronicMatterBoiling1968}\autocite{cabibboExponentialHadronicSpectrum1975}.
+At zero isospin and barion chemical potential this transition, called a crossover, is smooth and characterized by a pseudo-critical temperature $T_{pc}$~\autocite{fukushimaPhaseDiagramDense2010}
+Recent lattice QCD results indicate $T_{pc}$ is around $160\, \text{MeV}$.
+Experimental observation of quark-gluon plasma was first reported by the Relativistic Heavy Ion Collider at Brookhaven National Laboratories in 2006~\autocite{adcoxFormationDensePartonic2005,backPHOBOSPerspectiveDiscoveries2005}.
+\todo[]{Har vi nyere data?}
+
+As the baryon chemical momentum increases, nucleons undergo a gass-liquid transition at low temperatures.
+This happens approximately at the nuclear mass, $\mu_I \approx m_N \approx 0.9 \, \text{GeV}$.
+As $\mu_B$ is turned up further, asymptotic freedom means that perturbative treatments again become available.
+Under such conditions, QCD enters a phase analogous to electrical superconductors called \emph{color superconductor}.
+Here, quarks at the surface of the Fermi sphere form Cooper pairs, as electrons do in the Bardeen-Cooper-Schrieffer (BCS) theory of electromagnetic superconductors.
+Furthermore, there is a color Meissner effect, in which gluons gain mass due to the Higgs mechanism, as the photon does in electromagnetic superconductors.
+The transition from the vacuum stater to the color superconducting state is not well understood.
+Here, the density is still too low for perturbative treatment and numerical lattice calculations are haunted by the \emph{sign problem}.
+QFT lattice methods discretize the fields on a finite lattice, representing space-time, then randomly sample configurations using the Metropolis-Hastings algorithm.
+This, however, relies on each configuration having a real, positive weight which allows for the inclusion of a minority of important configurations.
+For non-zero baryon chemical potential, this is not the case, and lattice methods therefore fail~\autocite{troyerComputationalComplexityFundamental2005}.
+
+This problem does not arise in the case of zero baryon chemical potential, but a non-zero isospin chemical potential.
+QCD lattice results, therefore, allow for an exploration of the behavior of QCD under non-zero $\mu_I$.
+\chpt\, predicts a second order phase transition from the vacuum phase to a pion-condensed phase at $\mu_I = m_\pi$~\autocite{sonQCDFiniteIsospin2001}.
+Early lattice calculations which agreed with these results~\autocite{kogutQuenchedLatticeQCD2002,kogutLatticeQCDFinite2002,kogutFiniteTemperatureTransition2004,sinclairSearchingElusiveCritical2006}, 
+which have been confiremed by subsequent studies~\autocite{brandtNewClassCompact2018,brandtQCDFiniteIsospin2018,brandtQCDPhaseDiagram2018,brandtReliabilityTaylorExpansions2019,brandtQCDPhaseDiagram2017}.
+The pion condensate is characterized by a non-zero condensate with an isospin charge.
+This phase is a Bose-Einstein (BEC) phase, in which a zero-momentum state is higly occupied by identical bosons.
+At asymptotically high $\mu_I$, it is conjectured that the BEC phase continuously transitions into a deconfined BSC state~\autocite{sonQCDFiniteIsospin2001a,sonQCDFiniteIsospin2001}.
+
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.85\textwidth]{figurer/phase_diagram2.pdf}
+    \caption{
+        A scetch of the QCD phase diagram based on (KILDER)
+        ~\autocite{fukushimaPhaseDiagramDense2010}\autocite{andronicHadronProductionUltrarelativistic2010}\autocite{baymHadronsQuarksNeutron2018}
+        }
+    \label{fig: phase diagram QCD}
+\end{figure}
+
+
+
 
 
 

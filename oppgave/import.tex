@@ -2,6 +2,19 @@
 
 \usepackage{tikz-cd}
 \usepackage[compat=1.0.0]{tikz-feynman}
+
+\tikzfeynmanset{ fermion/.style = {
+   decoration={
+     markings,
+     mark=at position 0.5
+          with {\arrow[xshift=.7mm]{latex[width=1mm,length=1mm]}}
+     },
+   postaction=decorate
+   }
+}
+
+
+
 % % math mode additions
 \usepackage{amsmath}
 \usepackage{amsfonts}
