@@ -41,9 +41,11 @@ labels = ["$\\pi$", "$\\pi e$", "$\\pi \\mu$"]
 
 def fill_ellipses(ax, x, y, dx, dy, color, zorder):
     for i in range(len(x)):
+        # if i%2!=0:
+        #     continue
         xi, yi = x[i], y[i]
         a, b = 2*dx[i], 2*dy[i]
-        e = Ellipse((xi, yi), width=a, height=b, zorder=zorder)
+        e = Ellipse((xi, yi), width=a, height=b, zorder=zorder, alpha=0.2)
         ax.add_artist(e)
         e.set_clip_box(ax.bbox)
         e.set_facecolor(color)
@@ -54,10 +56,10 @@ for i, name in enumerate(names):
     p, u, err_p, err_u = get_eos(eos)
 
     fill_ellipses(ax, p, u, err_p, err_u, colors[i], i)
-    ax.plot(p, u, color=colors[i], label=labels[i], zorder=i, lw=4)
+    ax.plot(0, 0, color=colors[i], label=labels[i], zorder=i, lw=2, alpha=0.5)
 
 names=["", "_nlo", "_e", "_mu"]
-lss = ["--",  "-.", "--", "--"]
+lss = ["-",  "-.", "-", "-"]
 labels = ["LO", "NLO", "", ""]
 p_max = 1
 u_max = 2.5
@@ -69,7 +71,7 @@ for i, name in enumerate(names):
     u = get_u(u_path)
     p = np.linspace(0, p_max, 1000)
     u = np.array([u(p0) for p0 in p])
-    ax.plot(p, u, "k", lw=2.5, ls=lss[i], label=labels[i])
+    ax.plot(p, u, "k", lw=1.5, ls=lss[i], label=labels[i])
 
 
 ax.set_xlim(0, p_max)

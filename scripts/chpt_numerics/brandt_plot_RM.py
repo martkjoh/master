@@ -3,11 +3,11 @@ import sys
 from matplotlib import pyplot as plt
 from matplotlib import cm
 from matplotlib.patches import Ellipse
-from numpy import sqrt
+from numpy import sqrt, pi
 
 sys.path.append(sys.path[0] + "/..")
 from integrate_tov import get_u 
-from constants import get_const_pion
+from constants import get_const_pion, m_pi, f_pi, m_e
 from pion_star.plot import load_sols, get_data
 
 
@@ -58,7 +58,7 @@ def compare_all():
     colors= ["cornflowerblue", "mediumseagreen", "indianred", "plum"]
     N = 4
     alpha = 1.
-    labels = ["$\\pi\,\\text{NLO}$", "$\\pi e$", "$\\pi \\mu$"]
+    labels = ["$\\pi\,\\mathrm{NLO}$", "$\\pi e$", "$\\pi \\mu$"]
 
 
     for i, name in enumerate(names):
@@ -70,7 +70,7 @@ def compare_all():
     name = "data_brandt/MR_pilnu.txt"
     data = np.loadtxt(name, unpack=True)
     M, err_M, R, err_R, stable = data
-    label="$\\pi\\ell\\nu_\\ell\,\\text{NLO}$"
+    label="$\\pi\\ell\\nu_\\ell\,\\mathrm{NLO}$"
     fill_ellipses(ax, R, M, err_R, err_M, colors[-1], 4)
     ax.plot(R, M, color=colors[-1], label=label, lw=3)
 
@@ -106,8 +106,20 @@ def plot_compare_lattice(t=""):
         data = np.loadtxt("data_brandt/MR_pilnu.txt", unpack=True)
         M, err_M, R, err_R, stable = data
 
+        from constants import get_const_pion
+        u0, m0, r0 = get_const_pion()
+
+
+        pmin = (m_pi/f_pi)**2 * (1 + m_e/m_pi)**2 / (12*pi**2)
+        name = "_light_%.2e"%pmin
+        u_path = "pion_star/data/sols"+name+".npy"
+        data = load_data(name)
+        R0 = np.array(data[0])
+        M0 = np.array(data[1])
+        ax.plot(R0, M0, "-.", color="gray", lw=4, label="$u=3p$", alpha=0.8, zorder=3)
+
     fill_ellipses(ax, R, M, err_R, err_M, "lightblue", 1)
-    ax.plot(R, M, color="lightblue", label="Brandt et.al.",lw=5)
+    ax.plot(R, M, color="lightblue", label="Brandt et.al.",lw=5, zorder=2)
 
     names = [t, t+"_nlo", t+"lattice", t+"_nlo"+"lattice"]
     sols = [load_sols(name) for name in names]
@@ -125,11 +137,11 @@ def plot_compare_lattice(t=""):
 
         R, M, pc = [np.array(d) for d in data]
         x, y, z = R*r0, M*m0, np.log10(pc)
-        ax.plot(x, y, line[i], label=labels[i])
+        ax.plot(x, y, line[i], label=labels[i], zorder=4)
 
         j = np.argmax(M)
         label ="$(M, R) = "+"(%.3f" %(M[j]*m0)+"\, M_\odot, %.3f" %(R[j]*r0)+"\, \mathrm{km})$ "
-        ax.plot(R[j]*r0, M[j]*m0, "k", marker=markers[i], ls="", ms=10, label=label)
+        ax.plot(R[j]*r0, M[j]*m0, "k", marker=markers[i], ls="", ms=10, label=label, zorder=5)
 
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
@@ -163,7 +175,7 @@ def brandt_neutrino():
 
 # brandt_neutrino()
 
-compare_all()
+# compare_all()
 
 # plot_compare_lattice()
 # plot_compare_lattice(t="_neutrino")

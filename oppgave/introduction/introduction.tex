@@ -27,7 +27,7 @@ Type Ia supernovae happen as white dwarves reach their upper mass limit, the Cha
 White dwarves, together with the even more dense \emph{neutron stars} collectively known as \emph{compact stars}.
 Neutron stars are left after the supernova explosions of massive stars~\autocite{prialnikIntroductionTheoryStellar2000}.
 They were first predicted solely on theoretical backgrounds, and later discovered in the form of pulsars, rotating neutron stars with frequencies below a tenth of a second which strong magnetic fields acting as particle accelerators~\autocite{prialnikIntroductionTheoryStellar2000},
-Compact stars are some of the most environments in our universe, and as such, they are excellent places for exotic physics to happen.
+Compact stars are some of the most extrem environments in our universe, and as such, they are excellent places for exotic physics to happen.
 
 Recently, a new form of compact stars has been proposed, called pion stars~\autocite{andersenBoseEinsteinCondensationPion2018,brandtNewClassCompact2018,carignanoScrutinizingPionCondensed2017}.
 These stars are composed of a pion condensate.
@@ -64,7 +64,7 @@ In decisively compact notation, this can be written
     + |D_{\mu} \Phi |^2 + \Ve(\Phi),
 \end{equation}
 %
-where $\psi_i$ are the matter fields, the forces interactions are encoded in $D$ and $F$, and $\Phi$ is the Higgs-field~\autocite{carrollWorldEverydayExperience2013,schwartzQuantumFieldTheory2013}.
+where $\psi_i$ are the different matter fields, the forces interactions are encoded in $D$ and $F$, and $\Phi$ is the Higgs-field~\autocite{carrollWorldEverydayExperience2013,schwartzQuantumFieldTheory2013}.
 The particles of the Standard Model are illustrated in \autoref{fig: standard model}~\autocite{griffithsIntroductionElementaryParticles2008,schwartzQuantumFieldTheory2013}
 If we include the masses of neutrinos in the Standard Model, it has 26 free parameters~\autocite{kramerStandardModelParticle2017}.
 We should, in principle, be able to derive all of particle physics from the Standard Model together with these parameters, and from that subsequently chemistry and all other physical sciences.
@@ -252,22 +252,52 @@ If we write down the most general Lagrangian, then we have not made more than ve
 This will be our guiding philosophy when constructing chiral perturbation theory, the effective theory of mesons.
 
 
+\section{Thermodynamics and the physics of compact stars}
+
+In the same way that we are lucky nature allows us high-energy effects and instead use an effective theory of low-energy interactions, statistical mechanics and thermodynamics allow us to describe composite systems containing a large number of degrees of freedom with only a few variables.
+Instead of perfectly describing all degrees of freedom and their interaction, we consider what a \emph{typical} system would look like.
+As long as the system is large enough and is in thermal equilibrium, which means that the system is in a stable state without flows of matter or energy and the thermodynamic variables are well-defined, then this gives an astonishingly effective and economical description of the system.
+There are several choices for free variables when describing a thermodynamic system.
+The temperature of a system, $T$, decides whether energy would flow to or from that system to a different system with a different temperature $T'$ if they are connected.
+In our description of pion stars, we will assume $T = 0$, as they are much denser than they are hot and thermal effects thus can be neglected as a first approximation.
+We work in the \emph{grand canonical ensambla}, in which we consider the system coupled to a source of \emph{conserved charges}, such as electrical charge, or particle number in non-relativistic physics.
+By adjusting the chemical potential, $\mu$, corresponding to a conserved charge, $Q$, we set how energetically favorably it is to add a new charge to the system, and thus the charge density of a typical system.
+
+In our case, all relevant thermodynamic variables are independent of the volume of the system, and chemical potential is thus the only free variable.
+It thus parameterizes the relationship between other variables, such as energy density $u$ and pressure $p$.
+This relationship, which can be stated implicitly on the form $f(p, u) = 0$ is called the \emph{equation of state} of the system.
+We will use the Tolman-Oppenheimer-Volkoff (TOV) equation to model pion stars.
+This is based on general relativity and describes a static ball of matter and energy in which the outward push of its internal pressure is balanced by gravity.
+The TOV equation needs the equation of the state of the substance it describes as an input.
+To model pion stars, then, we must calculate the equation of state of the pion condensed-phase of QCD.
+
+
 
 \section{The QCD phase diagram}
 
-Pion stars are made up of condensed pions.
-This is just one of the many phases of quantum chromodynamics.
-A phase diagram illustrates what phases a medium is under different circumstances.
-The phase diagram of QCD is rich and is an active area of research.
-Our understanding of this phase diagram is far from complete due to the difficulties of working with the strong force.
+A phase diagram illustrates the properties of a medium under different circumstances.
+The pion condensed phase is only one part of the rich phase diagram of QCD, an active are of research.
+Our understanding of it is far from complete due to the difficulties of working with the strong force.
 \autoref{fig: phase diagram QCD} shows a rough sketch of our current understanding of the QCD phase diagram.
 The axes are temperature $T$, baryon chemical potential $\mu_B$, and isospin chemical potential $\mu_I$.
 The baryon and isospin chemical potentials quantify the abundance of quarks compared to  anti quarks and up quarks compared to down quarks, respectively.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.85\textwidth]{figurer/phase_diagram2.pdf}
+    \caption{
+        A scetch of the QCD phase diagram based on
+        ~\autocite{fukushimaPhaseDiagramDense2010,andronicHadronProductionUltrarelativistic2010,baymHadronsQuarksNeutron2018}
+        }
+    \label{fig: phase diagram QCD}
+\end{figure}
+
+
 Close to $T = \mu_B = \mu_I = 0$, QCD is in the vacuum phase, where hadrons form a gas whose density and composition depend on the temperature and chemical potentials.
-Some of the first explorations of the phase transitions were done when it was CERN noticed that hadrons seem to approach a maximum temperature, the Hagedorn temperature of around $160\,\text{MeV}$ or $1.9\times 10^12 \, K$.
+The first explorations of the phase transitions were done when it was noticed at CERN that hadrons seem to have a maximum temperature, the Hagedorn temperature of around $160\,\text{MeV}$ or $1.9\times 10^12 \, K$.
 A more modern understanding of this temperature is as a point of phase transition, in which the quark ceases to be bound together as hadrons and instead forms a soup of free particles called quark-gluon plasma
 This process is called deconfinement, and is a consequence of the weakening of the strong force for higher energies, called asymptotic freedom
-~\autocite{hagedornHadronicMatterBoiling1968}\autocite{cabibboExponentialHadronicSpectrum1975}.
+~\autocite{hagedornHadronicMatterBoiling1968,cabibboExponentialHadronicSpectrum1975}.
 At zero isospin and barion chemical potential this transition, called a crossover, is smooth and characterized by a pseudo-critical temperature $T_{pc}$~\autocite{fukushimaPhaseDiagramDense2010}
 Recent lattice QCD results indicate $T_{pc}$ is around $160\, \text{MeV}$.
 Experimental observation of quark-gluon plasma was first reported by the Relativistic Heavy Ion Collider at Brookhaven National Laboratories in 2006~\autocite{adcoxFormationDensePartonic2005,backPHOBOSPerspectiveDiscoveries2005}.
@@ -296,92 +326,20 @@ At asymptotically high $\mu_I$, it is conjectured that the BEC phase continuousl
 
 
 
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=.85\textwidth]{figurer/phase_diagram2.pdf}
-    \caption{
-        A scetch of the QCD phase diagram based on (KILDER)
-        ~\autocite{fukushimaPhaseDiagramDense2010}\autocite{andronicHadronProductionUltrarelativistic2010}\autocite{baymHadronsQuarksNeutron2018}
-        }
-    \label{fig: phase diagram QCD}
-\end{figure}
+
+Mapping out the full phase diagram and nature of the critical points and the phase transitions of QCD is one of the most basic questions in physics---what happens to the most fundamental building blocks of matter if they are heated up or compressed?
+As such, it is an imperative of basic science to extend our knowledge on this subject, and to develop a wide array of methods of investigation to crosscheck results and how the assumptions made affect them.
+The dynamics of stars have always been a great inspiration and guidance for the development of physics.
+As the most extreme furnaces in the universe, they serve as an excellent, real-world test for our theoretical understanding of exotic states of matter.
+It is believed that the core of consists of deconfined quark matter, which could be in a color superconducting phase~\autocite{baymHadronsQuarksNeutron2018,alfordColorSuperconductivityDense2008}.
+\todo[inline]{skriv om muligheten for pionstjerner}
 
 
+\section{Outline fo theseis}
 
-
-
-
-\section{Units}
-\label{section: units}
-
-
-In this thesis, we employ \emph{natural units}, defined by
-%
-\begin{equation}
-    \hbar = c = k_B = 1,
-\end{equation}
-%
-where $\hbar$ is Planck's reduced constant, $c$ is the speed of light, and $k_B$ is Boltzmann's constant.
-Dimensionfull results are often given in $\text{MeV}$.
-Uncertainties are indicated when the precision is less than four significant figures. 
-However, the central value is always used in calculations.
-All values in this section are from the Particle Data Group~\cite{particledatagroupReviewParticlePhysics2020}.
-To obtain results in the SI-system, we use the following conversion factors, as given by
-%
-\begin{align}
-    \label{speed of ligh}
-    c       &= 2.998 \cdot 10^8     \, \text{m} \, \text{s}^{-1}, \\
-    \label{hbar}
-    \hbar   &= 1.055 \cdot 10^{-34} \, \text{J} \, \text{s}, \\
-    \label{Boltzmanns constat}
-    k_B     &= 1.380 \cdot 10^{-23} \, \text{J} \, \text K^{-1}, \\
-    \label{Newtons gravitational constant}
-    G       &= 6.674 \cdot 10^{-11} \, \text m^3 \, \text{kg}^{-1} \, \text s^{-2},
-\end{align}
-%
-where $G$ is Newton's gravitational constant.
-The conversion factor between $\text{MeV}$ and SI-units is
-%
-\begin{equation}
-    \label{electronvolt}
-    1 \, \text{MeV} = 1.60218\, \cdot 10^{-19} \, \text{J}. 
-\end{equation}
-%
-The fine structure constant and the elementary charge is
-%
-\begin{align}
-    \label{Fine structure constant}
-    \alpha &= 7.297 \cdot 10^{-3}, \\
-    \label{Elementary charge}
-    e &:= \sqrt{4 \pi \alpha} =  3.028\cdot 10^{-1}.
-\end{align}
-%
-In astronomical calculation, the solar mass is used, which is
-%
-\begin{equation}
-    \label{solar mass}
-    M_\odot = 1.988 \cdot 10^{30} \, \text{kg}.
-\end{equation}
-%
-The physical parameters we use are
-%
-\begingroup
-\allowdisplaybreaks % Make page break possbible
-\begin{align}
-    \label{pion decay constant}
-    f_\pi & =  92.1 \, \text{MeV}, \\
-    \label{pion mass}
-    m_\pio & = 134.98 \, \text{MeV}, \\
-    \label{charged pion mass}
-    m_{\pipm} &= 139.57 \, \text{MeV}, \\
-    m_{\Kpm} & = 493.68\,\text{MeV}, \\
-    m_{\Ko} & = 497.61\,\text{MeV}, \\
-    m_e &= 0.5110 \, \text{MeV}, \\
-    m_\mu &= 105.7 \, \text{MeV}, \\
-    \label{mass of neutron}
-    m_N &= 939.57 \, \text{MeV}.
-\end{align}
-\endgroup
-
-To make this thesis as self-contained as possible, we have included some parts from the earlier specialization project, with minor modifications.
+To make this thesis as self-contained as possible, we have included some parts from the earlier specialization project, with only minor modifications.
 These sections are marked with an asterisk in the table of content.
+
+This thesis aims to be on the (nivå?) of someone who has the background equivalent of a master's degree in a related part of physics, but without any specific knowledge of any of its subjects.
+The first part of this thesis surveys the theoretical background needed.
+\autoref{chapter: math} ummarises ...

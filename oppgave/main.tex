@@ -24,12 +24,15 @@
 % \addtocontents{toc}{Fields marked with ``*'' are included from the specialization thesis (cite) with minor modifications.}
 
 \begin{document}
+    \frontmatter
     \maketitle
     % \includepdf[fitpaper=true,pages=-,pagecommand={},width=\textwidth]{introduction/front_page.pdf}
 
-    \chapter*{Sammendrag}
+    \chapter{Preface}
+    \input{introduction/preface.tex}
+    \chapter{Sammendrag}
     \input{introduction/sammendrag.tex}
-    \chapter*{Abstract}
+    \chapter{Abstract}
     \input{introduction/abstract.tex}
 
 
@@ -40,6 +43,8 @@
    
     \setlength{\parindent}{0em}
     \setlength{\parskip}{0.8em}
+
+    \mainmatter
 
     \chapter{Introduction}
     \label{chapter: introduction}
@@ -89,6 +94,7 @@
     \appendix
 
     \chapter[Appendix A]{}
+    \input{appendix/units.tex}
     \input{appendix/algebra_bases.tex}
     \input{appendix/functional_derivatives.tex}
     \input{appendix/consistent_expansion.tex}

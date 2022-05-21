@@ -127,17 +127,17 @@ ax.plot(-np.ones(N), y7, "k")
 ax.plot(-np.ones(N), -y7, "k")
 
 
+ax.text(-0.55, 0, "Vacuum")
+ax.text(-0.35, -0.5, "phase")
+def add_text(ax):
+    ax.text(1, 4, "$\\langle K^+\\rangle$")
+    ax.text(-1.9, -4.6, "$\\langle K^-\\rangle$")
+    ax.text(1, -4.6, "$\\langle \\bar K^0\\rangle$")
+    ax.text(-1.9, 4, "$\\langle K^0\\rangle$")
+    ax.text(1.5, 0, "$\\langle \pi^+\\rangle$")
+    ax.text(-2.4, 0, "$\\langle \pi^-\\rangle$")
 
-plt.text(-0.55, 0, "Vacuum")
-plt.text(-0.35, -0.5, "phase")
-
-plt.text(1, 4, "$\\langle K^+\\rangle$")
-plt.text(-1.9, -4.6, "$\\langle K^-\\rangle$")
-plt.text(1, -4.6, "$\\langle \\bar K^0\\rangle$")
-plt.text(-1.9, 4, "$\\langle K^0\\rangle$")
-plt.text(1.5, 0, "$\\langle \pi^+\\rangle$")
-plt.text(-2.4, 0, "$\\langle \pi^-\\rangle$")
-
+add_text(ax)
 ax.set_xlim(-3, 3)
 ax.set_ylim(-5, 5)
 ax.set_xlabel("$\\mu_I / m_\pi$")
@@ -182,9 +182,21 @@ def add_plot(ax):
 fig = plt.figure(figsize=(12, 8))
 ax = fig.add_subplot(2, 2, (1, 3))
 
+ax.text(-0.7, 0, "Vacuum")
+ax.text(-0.5, -0.5, "phase")
+add_text(ax)
 
 ax2 = fig.add_subplot(2, 2, 4)
 ax3 = fig.add_subplot(2, 2, 2)
+
+ax2.text(0.82, 3.12, "Vacuum\n  phase", fontsize=14)
+ax2.text(0.95, 3.3, "$\\langle K^+\\rangle$")
+ax2.text(1.3, 3.15, "$\\langle \\pi^+\\rangle$")
+
+ax3.text(-0.08, 3.53, "Vacuum\n  phase")
+ax3.text(0.03, 3.7, "$\\langle K^+\\rangle$")
+ax3.text(-0.15, 3.7, "$\\langle \\bar K\\rangle$")
+
 
 add_plot(ax)
 add_plot(ax2)

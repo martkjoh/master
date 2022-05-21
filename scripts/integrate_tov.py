@@ -36,7 +36,7 @@ def dpdr_newt(u, r, y, args):
 def get_u(name):
     """ Get equation of state from list of samples """
     # Cubic spline, no smoothing
-    _, plst, ulst = np.load(name)
+    _, plst, ulst = np.load(name, allow_pickle=True)
     tck = splrep(plst, ulst, s=0, k=1)
 
     def u(p):
