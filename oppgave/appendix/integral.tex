@@ -1,5 +1,154 @@
-\section{Integral}
+\section{Integrals in dimensional regularization}
 \label{section: integral}
+
+
+When applying dimensional regularization, we will encounter integrals on the form
+%
+\begin{equation}
+    \label{def dimreg integral}
+    \Phi_n(m, d, \alpha) 
+    := \int_{\tilde \Omega} \frac{\dd^d p}{(2 \pi)^d} (k^2 + m^2)^{-\alpha},
+\end{equation}
+%
+We will use the formula for integration of spherically symmetric function in $d$-dimensions,
+%
+\begin{equation}
+    \int_{\R^d} \dd^d x \, f(r) 
+    = \frac{2 \pi^{d/2}}{\Gamma(d/2)} \int_\R \dd r \, r^{d-1}f(r),
+\end{equation}
+where $r = \sqrt{x_i x_i}$ is the radial distance, and $\Gamma$ is the Gamma function.
+The factor in the front of the integral is the solid angle.
+By extending this formula from integer-valued $d$ to real numbers, we get
+%
+\begin{equation}
+    \Phi_n
+    = \frac{2 \pi^{d/2} }{\Gamma(d/2)} \int_\R \dd p \, 
+    \frac{p^{d-1}}{(p^2 + m^2)^\alpha}
+    = \frac{m^{n-2\alpha}m^{d-n} }{(4 \pi)^{d / 2}\Gamma(d/2)} 
+    2 \int_\R \dd z \, \frac{z^{d - 1}}{(1 + z)^\alpha}, 
+\end{equation}
+%
+where we have made the change of variables $m z = k$.
+We make one more change of variable to the integral,
+%
+\begin{equation}
+    I = 2 \int_\R \dd z \, \frac{z^{d - 1}}{(1 + z)^\alpha}.
+\end{equation}
+%
+Let
+%
+\begin{equation}
+    z^2 = \frac{1}{s} - 1 \implies 2 z \dd z = - \frac{\dd s}{s^2}
+\end{equation}
+%
+Thus,
+%
+\begin{equation}
+    I = \int_0^a \dd s \, s^{\alpha - d/2 - 1} (1 - z)^{d/2 - 1}.
+\end{equation}
+%
+This is the beta function, which can be written in terms of Gamma functions~\autocite{peskinIntroductionQuantumField1995}
+%
+\begin{equation}
+    I = B\left(\alpha - \frac{d}{2}, \frac{d}{2}\right) 
+    = \frac{\Gamma\left(\alpha - \frac{d}{2}\right) \Gamma\left(\frac{d}{2}\right)}{\Gamma(\alpha)}.
+\end{equation}
+%
+Combining this gives
+%
+\begin{equation}
+    \label{result dimreg}
+    \Phi_n(m, d, \alpha) 
+    = \mu^{n-d} \frac{m^{n - 2\alpha}}{(4 \pi)^{d / 2}}
+    \frac{
+        \Gamma \left(\alpha - \frac{d}{2} \right) 
+    }
+    {\Gamma(\alpha)}
+    \left(\frac{m^2}{\mu^2}\right)^{(d-n)/2 }
+    .
+\end{equation}
+%
+In the last step, we have introduced a parameter $\mu$ with mass dimension 1, that is, $[\mu] = [m]$.
+This is done to be able to series expand around $d - n$ in a dimensionless variable. 
+This parameter is arbitrary, and all physical quantities should therefore be independent of it.
+
+
+
+\subsection{A special case}
+\label{subsection: free energy integral}
+
+A special case of this integral, which shows up in calculations of free energy, is 
+%
+\begin{equation}
+    \Eff = \int \frac{\dd^3 p}{(2 \pi)^3} \sqrt{\vv p^2 + m^2},
+\end{equation}
+%
+Which corresponds to $n=3$, $d = 3 - 2\epsilon$ and $\alpha = -1/2$, or $\Eff = \Phi_3(m, 3 - 2\epsilon, -1/2)$.
+Inserting this into \autoref{result dimreg}, we get
+%
+\begin{equation}
+    \Eff
+    =
+    \frac{m^4 \mu^{-2\epsilon}}{(4 \pi)^{d/2}\Gamma(-1/2)} \Gamma(-2 + \epsilon) \left(\frac{m^2}{\mu^2}\right)^{-\epsilon}
+    =
+    - \mu^{-2\epsilon} \frac{m^4}{(4 \pi)^{2}}
+    \left(\frac{m^2}{4 \pi \mu^2}\right)^{- \epsilon}
+    \frac{\Gamma(\epsilon)}{(\epsilon - 2)(\epsilon - 1)},
+\end{equation}
+%
+where we have used the defining property $\Gamma(z + 1) = z\Gamma(z)$ and $\Gamma(1/2) = \sqrt \pi$.
+Expanding around $\epsilon = 0$ gives
+%
+\begin{align}
+    \left(\frac{m^2}{4 \pi \mu^2}\right)^{- \epsilon}
+    &\sim 1 + \epsilon \ln\left(4 \pi \frac{\mu^2}{m^2}\right),\\
+    \Gamma(\epsilon) 
+    & \sim \frac{1}{\epsilon} - \gamma, \\
+    \frac{1}{(\epsilon - 2)(\epsilon - 1)}
+    &\sim \frac{1}{2}\left(1 + \frac{3}{2} \epsilon\right).
+\end{align}
+%
+The result is therefore
+%
+\begin{align}
+    \Eff =
+    - \mu^{-2\epsilon} \frac{1}{4}\frac{m^4}{(4 \pi)^2}
+    \left[
+        \frac{1}{\epsilon} 
+        - \gamma + \frac{3}{2}
+        + \ln\left(4 \pi \frac{\mu^2}{m^2}\right)
+    \right]
+    + \Oh(\epsilon).
+\end{align}
+%
+With this regulator, one can then add counter-terms to cancel the $\epsilon^{-1}$-divergence.
+The exact form of the counter-term is convention.
+One may also cancel the finite contribution due to the regulator.
+The minimal subtraction ($\mathrm{MS}$) scheme involves only subtracting the divergent term, as the name suggests.
+We will use the modified minimal subtraction, or $\overline{ \mathrm{MS}}$, scheme.
+In this scheme, one also removes the $-\gamma$ and $\ln(4 \pi)$ term, by defining a new mass scale $\tilde \mu$ by
+\begin{equation}
+    \label{definition mu tilde MS bar}
+    -\gamma + \ln\left(4\pi \frac{\mu^2}{m^2}\right) 
+    = \ln\left(4\pi e^{-\gamma} \frac{\mu^2}{m^2}\right) 
+    := \ln\left(\frac{\tilde\mu^2}{m^2}\right),
+\end{equation}
+The result is thus
+\begin{equation}
+    \Eff =
+    - \mu^{-2\epsilon} \frac{1}{4}\frac{m^4}{(4 \pi)^2}
+    \left(
+        \frac{1}{\epsilon} 
+        + \frac{3}{2}
+        + \ln \frac{\tilde\mu^2}{m^2}
+    \right)
+    + \Oh(\epsilon).
+\end{equation}
+
+
+
+\subsection{Rewriting a real-time integral}
+\label{subsection: rewriting integral}
 
 
 We seek to rewrite the integral
@@ -49,7 +198,7 @@ we get
     I = i \int \frac{\dd^3 p}{(2 \pi)^3} E.
 \end{equation}
 %
-When the energy is on the simple form $E^2 = \vv p^2 + m^2$, we can use the result from \autoref{section: regualting free energy}, 
+When the energy is on the simple form $E^2 = \vv p^2 + m^2$, we can use the result from \autoref{subsection: free energy integral}, 
 %
 \begin{equation}
     \label{dimreg integral}
@@ -58,4 +207,4 @@ When the energy is on the simple form $E^2 = \vv p^2 + m^2$, we can use the resu
     \left(\frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{m^2}\right), 
 \end{equation}
 %
-This integral is regulated using dimensional regularization, where $d = 3 - 2\epsilon $, and using the $\overline{\text{MS}} $-shceme, as described in \autoref{subsection: renormalization}.
+This integral is regulated using dimensional regularization, where $d = 3 - 2\epsilon $, and using the $\overline{\text{MS}} $-shceme, as described in \autoref{subsection: free energy integral}.

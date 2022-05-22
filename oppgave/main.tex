@@ -50,6 +50,9 @@
     \label{chapter: introduction}
     \input{introduction/introduction.tex}
 
+    \part{Theoretical background}
+    \label{part: theoretical background}
+
     \chapter{Mathematics}
     \label{chapter: math}
     \input{math/diff_geom.tex}
@@ -63,11 +66,14 @@
     \input{QFT/CCWZ_construction.tex}
     \input{QFT/effective_field_theory.tex}
 
-    \chapter{General relativity and the TOV equation}
+    \chapter{Gravity}
     \label{chapter: GR}
     \input{GR/GR.tex}
     \input{GR/TOV.tex}
     \input{GR/cold_fermi_star.tex}
+
+    \part{\chpt\, and the pion-condensed phase}
+    \label{part: chpt and the pion-condensed phase}
 
     \chapter{Chrial perturbation theory}
     \label{chapter: chpt}
@@ -83,6 +89,9 @@
     \input{thermodynamics/electric_charge_neutrality.tex}
     \input{thermodynamics/nlo_three_flavor.tex}
 
+    \part{Pion stars}
+    \label{part: pion stars}
+
     \chapter{Pion stars}
     \label{chapter: pion stars}
     \input{pion_star/pion_star.tex}
@@ -91,9 +100,11 @@
     \label{Chapter: cocnlusion and discussion}
     \input{introduction/conclusion.tex}
 
-    \appendix
-
+    \part*{Appendices}
+    \addcontentsline{toc}{part}{Appendices}
+    
     \chapter[Appendix A]{}
+    \label{appendix: A}
     \input{appendix/units.tex}
     \input{appendix/algebra_bases.tex}
     \input{appendix/functional_derivatives.tex}
@@ -101,16 +112,17 @@
     \input{appendix/integral}
 
     \chapter{*Two flavor results}
+    \label{appendix: two flavor results}
     \input{chpt/lo_two_flavor.tex}
     \input{chpt/nlo_two_flavour.tex}
     \input{appendix/rewriting_terms.tex}
     
-    \chapter{Thermal field theory}
+    \chapter{*Thermal field theory}
     \label{appendix: thermal field theory}
     \input{thermal_field_theory/imaginary_time.tex}
     \input{thermal_field_theory/free_scalar.tex}
-    \input{thermal_field_theory/regulate_free_energy.tex}
     \input{thermal_field_theory/thermal_sum.tex}
+    \input{thermal_field_theory/regulate_free_energy.tex}
     \input{thermal_field_theory/interacting_scalar.tex}
     \input{thermal_field_theory/fermions.tex}
     

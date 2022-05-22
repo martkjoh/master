@@ -1,4 +1,4 @@
-\section{Next-to-leading results}
+\section{Next-to-leading order results}
 \label{section: nlo thermodynamics}
 
 
@@ -10,7 +10,7 @@ As laid out in \autoref{section: chiral perturbation theory}, the power counting
     Remember that we scale pion mass $\bar m^2 = B_0(m_u + m_d)$ as $t^2$, and the chemical potential and fundamental charge as $t$.
     }
 The tree-level free energy from $\Ell_{2n}$ is thus of order $p^{2n}$.
-The $m$-loop correction to the tree level result is then suppressed by $p^{2m}$~\autocite{gasserChiralPerturbationTheory1984,weinbergPhenomenologicalLagrangians1979}.
+The $m$-loop correction to the tree level result is then suppressed by $p^{2m}$~\autocite{gasserChiralPerturbationTheory1984,weinbergPhenomenologicalLagrangians1979a}.
 Our one-loop calculation using $\Ell_2$ therefore contains divergences of order $p^{4}$. 
 Since $\Ell_4$ is, by construction, the most general possible Lagrangian at order $p^4$, it contains coupling constants that can be renormalized to absorb all these divergences.
 This expansion in both loops and chiral dimension, which is used to evaluate all physical quantities, is elaborated on in \autoref{appendix: consisten expansion},
@@ -56,16 +56,17 @@ Writing the trace in integral form, the contributions from the neutral pion and 
     = -i\frac{1}{2} \int \frac{\dd^4 p}{{(2\pi)}^4}\, \ln(-p^2 + m_8^2).
 \end{align}
 %
-As shown in \autoref{section: integral}, we may rewrite integrals of this form,
+As shown in \autoref{section: integral}, we may rewrite integrals of this form as
 %
 \begin{equation}
-    -i\frac{1}{2} \int \frac{\dd^4 p}{{(2\pi)}^4}\, \ln(-p_0^2 + E^2)
-    = \frac{1}{2} \int  \frac{\dd^3 p}{{(2\pi)}^3 } \, E.
+    -i\frac{1}{2} \int \frac{\dd^4 p}{{(2\pi)}^4}\, \ln(-p_0^2 + \vv p^2 + m^2)
+    = \frac{1}{2} \int  \frac{\dd^3 p}{{(2\pi)}^3 } \, \sqrt{\vv p^2 + m^2}.
 \end{equation}
 %
-We see that the result is what we would expect physically; the total energy is the integral of each mode's energy.
+We see that the result is what we would expect physically; the total energy is the integral of the energy of each mode.
 This also agrees with the result from \autoref{appendix: thermal field theory} in the zero-temperature limit $\beta \rightarrow \infty$.
-With the integral in this form, we can regularize and evaluate it as described in  \autoref{section:free scalar field}, which gives
+We discuss dimensional regularization and perform this integral in \autoref{section: integral}.
+The results are
 %
 \begin{equation}
     \label{Free energy pi 0}
@@ -178,7 +179,7 @@ As $f$ is both added and subtracted, any final result will be independent of the
 
 We can, however, tame the IR divergence without introducing any new mass parameter by defining $E_i = \sqrt{|\vv{p}|^2 + \tilde m_i^2}$, where $\tilde m_i^2 = m_i^2 + \frac{1}{4} m_{12}^2$.
 Then, we define $f(|\vv p|) = E_1 + E_2$, which differ from $E_{\pi^+} + E_{\pi^-}$ by $\Oh\left(|\vv p|^{-5}\right)$ and is well-behaved in the IR.
-This leads to a divergent integral of the same form as in the case of a free scalar, and we may again use the result from \autoref{section: regualting free energy}.
+This leads to a divergent integral of the same form as in the case of a free scalar, and we may again use the result from \autoref{section: integral}.
 With this, the divergent part of the free energy is
 %
 \begin{equation}
@@ -220,7 +221,7 @@ Lastly, the charged kaon contribution is
 \end{equation}
 %
 where we have used the original form of the determinant which we found in \autoref{subsection: pion-condensed phase}.
-To performe the integral, we will use the following rewritings
+To perform the integral, we will use the following rewritings
 %
 \begin{align}
     (-p^2 + m_4^2)(-p^2 + m_5^2) - p_0^2 m_{45}^2
