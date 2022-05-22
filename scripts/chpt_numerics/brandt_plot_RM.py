@@ -110,14 +110,6 @@ def plot_compare_lattice(t=""):
         u0, m0, r0 = get_const_pion()
 
 
-        pmin = (m_pi/f_pi)**2 * (1 + m_e/m_pi)**2 / (12*pi**2)
-        name = "_light_%.2e"%pmin
-        u_path = "pion_star/data/sols"+name+".npy"
-        data = load_data(name)
-        R0 = np.array(data[0])
-        M0 = np.array(data[1])
-        ax.plot(R0, M0, "-.", color="gray", lw=4, label="$u=3p$", alpha=0.8, zorder=3)
-
     fill_ellipses(ax, R, M, err_R, err_M, "lightblue", 1)
     ax.plot(R, M, color="lightblue", label="Brandt et.al.",lw=5, zorder=2)
 
@@ -175,7 +167,7 @@ def brandt_neutrino():
 
 # brandt_neutrino()
 
-# compare_all()
+compare_all()
 
 # plot_compare_lattice()
 # plot_compare_lattice(t="_neutrino")

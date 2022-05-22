@@ -1,9 +1,8 @@
 \section{Summary}
 
 
-In this thesis, we have investigated the high isospin ground state of QCD---the pion conde condensed phase---and modeled how it might form compact astronomical objects, pion stars.
+In this thesis, we have investigated the ground state of QCD for isospin chemical potential above the pion mass---the pion condensed phase---and modeled how it might form compact astronomical objects, pion stars.
 Pion stars were first proposed by \citeauthor{carignanoScrutinizingPionCondensed2017} in \autocite{carignanoScrutinizingPionCondensed2017} and investigated by \citeauthor{brandtNewClassCompact2018} in \autocite{brandtNewClassCompact2018}, in which they obtained the equations of states of the systems discussed in this text, using QCD lattice methods.
-Pion stars have, furthermore, been explored using the linear sigma model and the $1/N$-expansion by \citeauthor{andersenBoseEinsteinCondensationPion2018}~\autocite{andersenBoseEinsteinCondensationPion2018}.
 
 
 \subsection{Pion condensate}
@@ -17,9 +16,9 @@ These condensed phases are separated by first-order phase transitions.
 We calculated the effects of electromagnetic interactions on this phase diagram.
 
 Focusing on the pion-condensed phase, we found the equation of state to leading order, next-to-leading order, and including the effects of electromagnetism.
-Furtheremore, we found the equations of state of systems of a pion condensate together with charged leptons.
+Furthermore, we found the equations of state of systems of a pion condensate together with charged leptons.
 This creates a charge-neutral medium, which is more realistic as a basis for astronomical objects.
-Lastly, we included the effects of weak interactions and calculated the equation of state of the $\pi\ell\nu_\ell$-system in which the pion condensate, charged leptons and neutrinos are in chemical equillibrium to next-to-leading order.
+Lastly, we included the effects of weak interactions and calculated the equation of state of the $\pi\ell\nu_\ell$-system in which the pion condensate, charged leptons and neutrinos are in chemical equilibrium to next-to-leading order.
 
 
 \subsection{Pion stars}
@@ -27,12 +26,28 @@ Lastly, we included the effects of weak interactions and calculated the equation
 The equations of state for the various models of pion condensate were used, in conjunction with the TOV equation of general-relativistic hydrostatic equilibrium, to model gravitationally bound pion condensate, pion stars.
 We calculated the energy and pressure distribution of these pion stars, and thus obtained the mass-radius relations.
 The size and mass of pion stars vary greatly based on their composition, and so did whether the radius increases or decreases as its mass increase.
-Our results are in good agreement with earlier results~\autocite{andersenBoseEinsteinCondensationPion2018,brandtNewClassCompact2018}.
-
 We showed analytically that the limiting radius of the pion star of a pure pion condensate with only strong interactions is $R = 85.97\,\text{km}$, and becomes $R = 80.40\,\text{km}$ when including electromagnetic interactions.
 We further showed that the equation of state of the $\pi\ell\nu_\ell$-system is closely approximated by that of ultrarelativistic fermions or electromagnetic radiation, $u = 3p$, as the neutrino contribution to the equation of state dominates.
 The resulting mass-radius relation is therefore mostly defined by the pressure $p_\text{min}$ at the surface of the star, where the pion condensate vanishes and the neutrino atmosphere begins.
 
+
+\subsection{Comparison wite data}
+
+Large parts of the low-temperature QCD phase space are inaccessible for investigation from the first principles.
+The asymptotic freedom of QCD allows for some results at asymptotically high temperatures or densities, such as the color superconducting phase at high densities.
+However, due to the running of the strong coupling constant, perturbation theory breaks down below around $1 \text{GeV}$.
+Currently, the only method available for this regime is QCD lattice methods, numerical schemes which calculate the path integral on a discrete lattice using the Metropolis-Hastings algorithm.
+At finite baryon densities, this method fails due to the sign problem.
+The zero baryon number sector, however, can be and has been investigated with QCD lattice methods.
+This allows us to cross-check our effective theories, such as chiral perturbation theory. \todo[]{kilder}
+We compare our results with those of \citeauthor{brandtNewClassCompact2018}, in which they calculated the equation of state of the pion-condensed phase, as well as the resulting pion star mass-radius relations~\autocite{brandtNewClassCompact2018}.
+
+
+When comparing with the results for the pion star mass-radius relations, we have to take into account the fact that the pion mass is slightly different in the lattice QCD system.
+When calculating using these values, we find very good agreement in all cases.
+Here too, the agreement improves using the next-to-leading order results, in comparison with the leading order results.
+We do, however, expect the results using constants from the Particle Data Book~\autocite{particledatagroupReviewParticlePhysics2020} to be more accurate to real-world physics.\todo[]{Er dette litt vel frekt?}
+The good agreement between \chpt\, and QCD lattice methods increases our confidence to both methods, and as a consequence the confidence in our understanding of pion stars.
 
 
 \section{Outlook and further research}
@@ -44,10 +59,11 @@ We have made several approximations in the calculation of the equation of state 
 Improving on these calculations will yield more accurate results.
 Although we included the effects of electromagnetism in the pure pion condensate, we have not carried these effects over to the $\pi\ell\nu_\ell$-system.
 The next-to-leading order Lagrangian including electromagnetic effects has been derived~\autocite{urechVirtualPhotonsChiral1995}, which could in principle be used to calculate the NLO equation of state, although this might prove to be prohibitively difficult.
+\todo[]{Kan vi inkludere tree-level interaksjoner mellom pioner og elektroner?}
+As stated earlier,\todo[]{Gjør dette!} a fully consistent power counting entails, in the case of the leading order pion condensate, calculating electromagnetic effects in the lepton sector to include tree-level interaction effect, that is, effects to and including $\Oh(\alpha)$.
+In the case of the next-to-leading order pion condensate, we should include one-loop effects.
 A further improvement to the accuracy of the pion condensate calculation would be to take into account the effects due to $\Delta m \neq 0$.
 This leads to different masses for the charged and neutral kaons, as well as a mixing of the neutral pion and the $\eta$-particle.
-
-
 
 
 By themselves, pions are unstable particles.
@@ -64,8 +80,7 @@ These timescales are much smaller than that of astronomical objects, which immed
 However, these results are for the vacuum state.
 In the $\pi\ell\nu_\ell$-case the electrons and muons fill the Fermi-sphere up to their Fermi momentum, as we are considering $T = 0$, and the decay is thus Pauli-blocked.
 Even if the final decay-states are available, in the pion condensate they are suppressed by $\mu_I^{-3}$~\autocite{brandtNewClassCompact2018}. 
-(Er \autocite{mammarellaIntriguingAspectsMeson2015} uenig?)
-
+\todo[]{Er \autocite{mammarellaIntriguingAspectsMeson2015} uenig?}
 For a more complete understanding of pion stars, research into their temporal evolution is required.
 An investigation of the decay of the pion condensate is then necessary.
 The most realistic case, the $\pi\ell\nu_\ell$-system, has a neutrino atmosphere.
@@ -84,7 +99,6 @@ Due to the dominating contribution to the equation of state from the neutrinos, 
 \todo[]{inkludere isospin density i tabell?}
 The isospin chemical potential is just $0.02\,m_\pi$ above the pion condensation transition.
 \todo[]{er dette egt. den relevante parameteren for sammenligning med T?}
-This suggests that thermal effects could play an important role.
 Calculations of thermodynamic properties of the pion condensate at non-zero temperatures have shown using chiral perturbation theory have shown good agreement with lattice results~\autocite{adhikariCondensatesPressureTwoflavor2021}.
 This could allow for the modeling of pion stars at non-zero temperature, which is a more realistic model.
 \todo[]{hvordan ta med T!=0 i TOV?}
@@ -95,18 +109,19 @@ For any such object to form, a strong isospin asymmetry must be present.
 Such circumstances, as we saw in the section on electric neutrality, can arise due to lepton asymmetry through the weak interaction.
 It has been shown that high neutrino densities can cause the condensation of pions~\autocite{abukiPionCondensationDense2009}.
 The lepton asymmetry of the universe, the abundance of leptons over anti-leptons, is not well known.
-It has been shown that, within current limits, the trajectory of the early universe through the QCD phase diagram as it cooled and expanded might have entered the pion-condensed phases.
-If that were the case, pion stars might have formed and left observable traces in cosmological data~\autocite{vovchenkoPionCondensationEarly2021,wygasCosmicQCDEpoch2018}.
+It has been shown that, within current experimental limits, the trajectory of the early universe through the QCD phase diagram as it cooled and expanded might have entered the pion-condensed phase.
+If that is the case, pion stars might have formed and left observable traces in cosmological data such as the cosmological background gravitational radiation~\autocite{vovchenkoPionCondensationEarly2021,wygasCosmicQCDEpoch2018}.
 
 
 
 \section{Conclusion}
 
-The low-temperature regime of quantum chromodynamics remains an area of great importance where difficulties such as the breakdown of perturbative methods and the sign problem in QCD lattice methods mean that results from first principles are hard to come by.
-The $\mu_I-\mu_S$-plane of the phase diagram is one area where we can cross-check the validity of effective models with QCD lattice results.
-We calculated the equation of state of three-flavor \chpt\, in the pion-condensed phase, to leading order, next-to-leading order and including electromagnetic effects. 
-Our results are in good agreement with earlier QCD lattice results, thus strengthening the model.
-We employed our results to study the properties of pion stars.
-The analytical nature of our results gave us tools to better probe the physical causes of the properties of pion stars.
-We found the limiting mass of the pure pion condensate star and showed that the $\pi\ell\nu_\ell$-system is dominated by the neutrino contribution.
 
+In this thesis, we have presented the requisite theory for chiral perturbation theory and the chiral Lagrangian.
+We applied this to investigate the phase diagram in the $\mu_I-\mu_S$-plane, and how it is affected by electromagnetic interactions.
+Furthermore, we calculated the equation of state of three-flavor \chpt\, in the pion-condensed phase, to leading order, next-to-leading order, and including electromagnetic effects, as well as including charged leptons and neutrinos.
+With these results, we investigated the energy and pressure distribution and mass-radius relation of pion stars.
+The analytical nature of our results gave us tools to better probe the physical causes of these results.
+We found the limiting mass of the pure pion condensate star and showed that the $\pi\ell\nu_\ell$-system is dominated by the neutrino contribution.
+Our results are in good agreement with earlier QCD lattice results, both in the case of the equation of state and the pion star mass-radius relations.
+This agreement with first-principle results strengthens \chpt's position as a good effective field theory and gives us confidence in our early understanding of pion stars.
