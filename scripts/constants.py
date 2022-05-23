@@ -66,6 +66,7 @@ def get_const_fermi_gas():
     u0 = m_N**4 / (8 * pi**2) * (c**5 / hbar**3) 
     m0 = c**4 / sqrt(4*pi/3 * u0 * G**3) / M0
     r0 = G * m0*M0 / c**2 / 1e3 # (km)
+    print(m0*M0) 
     return u0, m0, r0
 
 def get_const_pion():
@@ -101,7 +102,7 @@ def get_R_mu():
 if __name__=="__main__":
     pass
 
-    # for const in get_const_fermi_gas(): print(const)
+    for const in get_const_fermi_gas(): print(const)
     # for const in get_const_pion(): print(const)
 
     # print("%.3e"%(C/(1e3)**4))
@@ -138,7 +139,7 @@ if __name__=="__main__":
 
     # print(( hbar * c / (2* G * m_pi**2) )**(3 / 2) * m_pi / M0)
 
-    print(m_pi*f_pi/(131*90.5))
+    # print(m_pi*f_pi/(131*90.5))
 
     # print(Dm**4/m_K0**4)
     # print(4*pi*f_pi/m_pi)
