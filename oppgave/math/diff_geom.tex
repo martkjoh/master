@@ -1,7 +1,3 @@
-We begin this thesis by giving a cursory overview of some of the mathematics we need for the constructions we will use later.
-This includes differential geometry, the generalization of $n$-dimensional calculus, and Lie theory, the mathematics of continuous symmetries
-
-
 \section{Differential geometry}
 \label{section: differential geometry}
 
@@ -10,25 +6,31 @@ General relativity, and a lot of quantum field theory, are formulated in the lan
 Differential geometry generalizes $n$-dimensional calculus to more general spaces than the usual $\R^n$, such as curved spacetime or the more abstract space of symmetries of a quantum field theory.
 This section is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,leeIntroductionSmoothManifolds2003d}.
 
-\subsection{Manifolds and coordinates}
-
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{figurer/coordinate_function.pdf}
-    \label{coordinate function}
-    \caption{The coordinate function $x$ maps a neighborhood $U$ in the manifold $\Em$ to a negiborhood $V$ in $\R^n$.}
+    \caption{
+        The coordinate function $x$ maps a neighborhood $U$ in the manifold $\Em$ to a neighborhood $V$ in $\R^n$.
+        }
+    \label{fig: coordinate function}
 \end{figure}
+
+
+
+\subsection{Manifolds and coordinates}
+
 
 The most important objects in differential geometry are \emph{smooth manifolds}.
 An $n$-dimensional manifold, $\Em$, is a set of points, locally homeomorphic to $\R^n$.
-That is, for all points $p \in \Em$, there exists a neighborhood $U$ around $p$, together with a corresponding set of continuous, bijective functions,
+That is, for all points $p \in \Em$, there exists a neighborhood $U$ around $p$, together with a corresponding set of continuous, bijective functions that map $U$ to a neighborhood $V$ in $\R^n$,
 %
 \begin{align}
     x: U \subseteq \Em & \longmapsto V \subseteq \R^n, \\
-    p & \longmapsto x^\mu(p).
+    p & \longmapsto x^\mu(p), \quad \mu \in \{0, \dots, n-1\}.
 \end{align}
 %
-We call $x(p) = (x^0(p), \dots, x^{n- 1}(p)) = x^\mu(p)$ a coordinate function of $\Em$.
+This is illustrated in \autoref{fig: coordinate function}.
+We call $x(p) = (x^0(p), \dots, x^{n- 1}(p))$ a coordinate function of $\Em$.
 The inverse of $x$, $x^{-1}$, obeys $x^{-1}(x(p)) = p$, for all $p \in U$.
 A smooth manifold is one in which the coordinate functions are infinitely differentiable.
 To define differentiability on manifolds, consider two coordinate functions, $x$, and $x'$.
@@ -36,16 +38,17 @@ The corresponding domains $U$ and $U'$ may or may not overlap.
 We then define the transition function, a function between subsets of $\R^n$ by mapping via $\Em$, as
 %
 \begin{align}
-    f_{x\rightarrow x'} = x' \circ x^{-1} : \R^n \mapsto \R^n.
+    f_{x\rightarrow x'} = x \circ {x'}^{-1} : \R^n \mapsto \R^n.
 \end{align}
 %
-The map is illustrated in \autoref{fig: transition map}.
-\footnote{To be rigorous, one has to restrict the domains and image of the coordinate function when combining them. This is illustrated in \autoref{fig: transition map}.}
+This map is illustrated in \autoref{fig: transition map}.\footnote{
+    To be rigorous, one has to restrict the domains and image of the coordinate function when combining them. This is illustrated in \autoref{fig: transition map}.
+    }
 A set of coordinate functions $\mathcal A = \{x_i\}$ whose domain cover $\Em$ is called an \emph{atlas} of $\Em$.
 If the transition function between all pairings of coordinate functions in the atlas is smooth---that is, infinitely differentiable---we call the atlas smooth.
 We then define a smooth manifold as the topological manifold $\Em$ together with a \emph{maximal} smooth atlas $\mathcal A$.
-A smooth atlas is maximal if no coordinate function can be added while the atlas remains smooth.\footnote{%
-    The maximal condition ensres that two equivalent atlases correspond to the same differentiable manifold. A single manifold can be combined with different maximal atlases of smooth coordinates or differentiable structures. A set of examples are \emph{exotic spheres}, smooth manifolds which are \emph{homeomorphic} to $\text S^n$, but not \emph{diffeomorphic}. 
+A smooth atlas is maximal if no coordinate function can be added while the atlas remains smooth.\footnote{
+    The maximal condition ensures that two equivalent atlases correspond to the same differentiable manifold. A single manifold can be combined with different maximal atlases of smooth coordinates or differentiable structures. A set of examples are \emph{exotic spheres}, smooth manifolds which are \emph{homeomorphic} to $\text S^n$, but not \emph{diffeomorphic}. 
     }
 %
 \begin{figure}[H]
@@ -59,7 +62,7 @@ A smooth atlas is maximal if no coordinate function can be added while the atlas
 \end{figure}
 
 Consider two $m$- and $n$-dimensional smooth manifolds $\Em$ and $\mathcal N$.
-Let $x$ denoted the coordinates on $\Em$, while $y$ denotes the coordinates on $\mathcal N$.
+Let $x$ denote the coordinates on $\Em$, while $y$ denotes the coordinates on $\mathcal N$.
 We can define smooth functions between these manifolds similarly to how we define smooth coordinates.
 Consider the function
 %
@@ -67,7 +70,7 @@ Consider the function
     F: \Em \longmapsto \mathcal N.
 \end{equation}
 %
-It is said to be smooth if, for all points $p \in M$, there is a set of local coordinates $x$ around $p$ and $y$ around $F(p)$ such that the map $\tilde F = y \circ F \circ x^{-1}$ is smooth.
+It is said to be smooth if, for all points $p \in\Em$, there is a set of local coordinates $x$ around $p$ and $y$ around $F(p)$ such that the map $\tilde F = y \circ F \circ x^{-1}$ is smooth.
 This map may be illustrated by a diagram,
 %
 \begin{equation}
@@ -83,7 +86,7 @@ This map may be illustrated by a diagram,
 We will not be careful with the distinction between $F$, the function between the abstract manifolds, and $\tilde F$, the function of their coordinates, but rather denote both by $F(x)$.
 We may take the partial derivative of such a function with respect to the coordinates $x$, $\pdv{F}/{x^\mu}$.
 However, this is dependent on our choice of coordinates, as a set of local coordinates can always be scaled arbitrarily.
-Any physical theory must be independent of our choice of coordinates, so our next task is to define the properties of a smooth manifold in a coordinate independent way.
+Any physical theory must be independent of our choice of coordinates, so our next task is to define the properties of a smooth manifold in a coordinate-independent way.
 
 
 \subsection{Vectors and tensors}
@@ -107,7 +110,19 @@ The directional derivative of $f$ at $p$, given by this curve $\gamma$, is then
 %
 The set of all such directional derivatives, $\odv{}/{\lambda}$ at $p$, form a vector space, $T_p \Em$, called the \emph{tangent space}.
 The tangent space is illustrated in \autoref{fig: tangent space}.
-The coordinates $x^\mu$ induce a basis of this vector space, namely partial derivatives with respect to the coordinate functions at $p$
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figurer/tangent space.pdf} 
+    \caption{
+        The tangent space $T_p \Em$, the shaded rectangle, is the sett of all directional derivatives at $p\in \Em$. A directional derivative is defined in terms of a curve that passes through $p$.
+        } 
+    \label{fig: tangent space}
+\end{figure} 
+
+
+The coordinates $x^\mu$ induce a basis of this vector space, namely partial derivatives with respect to the coordinate functions at $p$,
 %
 \begin{equation}
     e_\mu = \pdv{}{x^\mu} \bigg|_p = \partial_\mu|_p, \quad \mu \in \{0, ... n-1\}.
@@ -130,14 +145,6 @@ This directional derivative acts on functions $f : \Em \mapsto \R$ as
 \end{equation}
 %
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.7\textwidth]{figurer/tangent space.pdf} 
-    \caption{
-        (Kladd) The tangent space $T_p \Em$, the shaded rectangle, is the sett of all directional derivatives at $p\in \Em$. A directional derivative is defined in terms of a curve that passes through $p$.
-        } 
-    \label{fig: tangent space}
-\end{figure}
 
 
 
@@ -149,13 +156,13 @@ This is the \emph{differential} of $F$ at $p$,
     v & \longmapsto \dd F_p (v). 
 \end{align}
 %
-As $\dd F_p(v)$ is an element of $T_p \mathcal N$,   directional derivative on $\mathcal N$, defined as
+$\dd F_p(v)$ is an element of $T_p \mathcal N$, i.e., it is a directional derivative on $\mathcal N$.
+It is defined by how it acts on functions $g: \mathcal N \mapsto \R$,
 %
 \begin{equation}
     \dd F_p(v) (g) = v(g \circ F),
 \end{equation}
 %
-for functions $g : \mathcal N \mapsto \R$.
 It thus acts on functions on $\mathcal N$ by ``extending'' the derivative $v$.
 This is a linear map between vector spaces and may be written in component form by considering the differentials of the coordinate functions.
 Denote the coordinates of $\mathcal N$ by $y^\mu$, and $y^\mu \circ F = F^\mu$.
@@ -221,7 +228,7 @@ Given a vector space $V$, a general $(n, m)$ tensor $T$ is a multilinear map, wh
 %
 Multilinear means that $T$ is linear in each argument.
 The set of all such maps is the tensor product space $V\otimes V \otimes \dots \otimes V^* \otimes \dots$, a $\dim(V)^{n+m}$-dimensional vector space.
-If $\{e_\mu\}$ and $\{e^\mu\}$ are the basis for $V$ and $V^*$, then we can write the basis of this of the tensor product space as $ \{e_{\mu} \otimes\dots \otimes e^{\nu} \otimes \dots \}$.
+If $\{e_\mu\}$ and $\{e^\mu\}$ are the basis for $V$ and $V^*$, then we can write the basis of this of the tensor product space as $ \{e_{\mu} \otimes \dots \otimes e^{\nu} \otimes \dots \}$.
 The tensor can thus be written
 %
 \begin{equation}
@@ -256,6 +263,8 @@ We may now write
 \end{equation}
 
 
+
+
 \subsection{Geometry and the metric}
 \label{subsection: goemetry and the metric}
 
@@ -265,7 +274,7 @@ The metric is a symmetric, non-degenerate $(0, 2)$ tensor
     \dd s^2 = g_{\mu \nu} \, \dd x^\mu \otimes \dd x^\nu.
 \end{equation}
 %
-It defines the geometry of the manifold $\Em$, and is the main object of study in general relativity.
+It defines the geometry of the manifold $\Em$ and is the main object of study in general relativity.
 As it is invertible, we can define $g^{\mu \nu} = (g^{-1})_{\mu \nu}$, which is the components of a $(2, 0)$ tensor.
 We use this to raise and lower indices, as is done with the Minkowski metric $\eta_{\mu \nu}$ in special relativity.
 
@@ -299,7 +308,7 @@ Tangent vectors are also called \emph{contravariant} vectors, as their component
 For covectors, it is
 %
 \begin{equation}
-    \omega'_\mu = \pdv{x^\nu}{x'^\mu} \omega_\nu,
+    \omega'_\mu = \omega_\nu \pdv{x^\nu}{x'^\mu},
 \end{equation}
 %
 which is why covectors also are called \emph{covariant} vectors.
@@ -318,16 +327,15 @@ We further assume
     \item Kronecker delta gives zero: $\nabla_\mu \delta^\rho_\nu = 0$.
 \end{itemize}
 %
-With this, we can, in general, write the covariant derivative as~\autocite{carrollSpacetimeGeometryIntroduction2019}
+With this, we can, in general, write the covariant derivative for vectors and covectors as~\autocite{carrollSpacetimeGeometryIntroduction2019}
 %
 \begin{align}
     \label{covariant derivative diff geom}
     \nabla_\mu v^\nu &= \partial_\mu v^\nu + \Gamma^\mu_{\nu \rho} v^\rho, \\
     \label{covariant derivative diff geom covector}
-    \nabla_\mu \omega_\nu &= \partial_\mu \omega_\nu - \Gamma^\rho_{\mu \nu} \omega_\rho,
+    \nabla_\mu \omega_\nu &= \partial_\mu \omega_\nu - \Gamma^\rho_{\mu \nu} \omega_\rho.
 \end{align}
 %
-for vectors and covectors.
 $\Gamma^{\mu}_{\nu \rho}$ are called \emph{Christoffel symbols}.
 The generalization for higher-order tensors is straightforward, 
 %
@@ -349,7 +357,7 @@ With these, we can find an explicit formula of the Christoffel symbols in terms 
 \end{equation}
 %
 With the notion of a covariant derivative, we may also generalize \emph{parallel transport} to curved spaces.
-The notion of parallel transport of a vector in flat $\R^n$ is intuitive---given a line $x^\mu(\lambda)$, a vector $v^\mu$ at $x^\mu(\lambda_0)$ is parallel transported to $v'^\mu$ at $x^\mu(\lambda_1)$ if they ``point in the same direction''.
+The notion of parallel transport of a vector in flat $\R^n$ is intuitive---given a line $x^\mu(\lambda)$, a vector $v^\mu$ at $x^\mu(\lambda_0)$ is parallel transported to $v'^\mu$ at $x^\mu(\lambda_1)$ if you carry it along the line without ``turning it''.
 To make this more precise, a vector field $v^\mu$ is parallel transported along $x^\mu(\lambda)$ if $\odv{}{\lambda} v^\mu = \odv{x^\nu}{\lambda} \partial_\nu v^\mu$ = 0.
 We generalize this to curved spaces by replacing the partial derivative with a covariant derivative, and so the criterion for parallel transport is
 %
@@ -365,7 +373,7 @@ Using the definition of parallel transport \autoref{parallel transport criterion
 \begin{equation}
     \label{goedesic equation}
     \odv[2]{x^\mu}{\lambda} 
-    + \Gamma^\mu_{\rho \sigma} \odv{x^\rho}{\lambda} \odv{x^\rho}{\lambda}
+    + \Gamma^\mu_{\rho \sigma} \odv{x^\rho}{\lambda} \odv{x^\sigma}{\lambda}
     = 0.
 \end{equation}
 In a flat space, where the Christoffel symbols vanish, this reduces to the familiar criterion for straight lines, $\odv[2]{x^\mu}{\lambda} = 0$.
@@ -388,17 +396,6 @@ which in our case gives the explicit formula
     + \Gamma^{\rho}_{\mu \lambda} \Gamma^{\lambda}_{\nu \sigma}  
     - \Gamma^{\rho}_{\nu \lambda} \Gamma^{\lambda}_{\mu \sigma}.
 \end{equation}
-%
-Although the Christoffel symbols are not tensors, the Riemann tensor is due to its definition using covariant derivatives.
-We can therefore contract some of its indices to get other tensor quantities.
-We  efine the Ricci tensor and Ricci scalar as
-%
-\begin{align}
-    \label{Ricci tensor}
-    R_{\mu \nu} &= R^{\rho}{}_{\mu \rho \nu}, \\
-    \label{Ricci scalar}
-    R &= R^{\mu}{}_{\mu} = g^{\mu \nu} R_{\mu \nu}.
-\end{align}
 %
 This form gives us several useful identities, such as
 %
@@ -428,8 +425,20 @@ If we apply this on $\delta^{\mu}_{\nu}$, we get the differential Bianchi identi
     \nabla_{[\mu}R_{\nu \rho]\sigma \eta} = 0.
 \end{equation}
 %
+Although the Christoffel symbols are not tensors, the Riemann tensor is due to its definition using covariant derivatives.
+We can therefore contract some of its indices to get other tensor quantities.
+We  efine the Ricci tensor and Ricci scalar as
+%
+\begin{align}
+    \label{Ricci tensor}
+    R_{\mu \nu} &= R^{\rho}{}_{\mu \rho \nu}, \\
+    \label{Ricci scalar}
+    R &= R^{\mu}{}_{\mu} = g^{\mu \nu} R_{\mu \nu}.
+\end{align}
+
+
 To interpret the Riemann tensor, we define the parallel propagator $P$.
-A vector that is parallel transported along a curve parametrized by $\lambda$, so that $v^\mu(\lambda)$ obey the criterion of parallel transport \autoref{parallel transport criterion}, obey
+A vector that is parallel transported along a curve parametrized by $\lambda$ should then obey
 %
 \begin{equation}
     v^\mu(\lambda) = P^\mu{}_\nu(\lambda) v^\nu.
@@ -451,8 +460,8 @@ We may rewrite the equation as an integral equation,
 %
 where we denote $\odv{x^\mu}{\lambda} = V^\mu$.
 This allows us to solve the equation iteratively.
-If $\lambda \leq \epsilon \ll 1$, then we would expect this to converge, as long as the $g$ is well-behaved.
-In that case, we can start with the zeroth-order solution $P^{\mu}{}_\nu = \delta^\mu_\nu$, then iterate twice to obtain
+If $\lambda \leq \epsilon \ll 1$, we expect this to converge as long as the $g$ is well-behaved.
+Starting with the zeroth-order solution $P^{\mu}{}_\nu = \delta^\mu_\nu$ and iterating twice gives us
 %
 \begin{equation}
     \label{iterative paralell propagator}
@@ -466,27 +475,27 @@ In that case, we can start with the zeroth-order solution $P^{\mu}{}_\nu = \delt
     + \Oh(\epsilon^3).
 \end{equation}
 %
-With this, we will investigate how much a vector $v^\mu$ is changed by being parallel transported around in a small loop.
-This is illustrated in \autoref{fig: parallel transport in loop}.
-%
-\begin{figure}
+With this, we will investigate how much a vector $v^\mu$ is changed by being parallel transported around in a small loop, as illustrated in \autoref{fig: parallel transport in loop}.
+
+\begin{figure}{H}
     \centering
-    \includegraphics[width=0.7\textwidth]{figurer/parallel_transport.pdf}
+    \includegraphics[width=0.6\textwidth]{figurer/parallel_transport.pdf}
     \caption{A vector $v^\mu$ is parallel transported in a small, closed loop, defined by the coordinate functions $x^{\mu_1}$ and $x^{\mu_2}$.
     As a consequence of the curvature, it has changed by $\delta v^\mu$ by the time it arrives back at $A$.}
     \label{fig: parallel transport in loop}
 \end{figure}
-%
-A vector $v^\mu$, is parallel transported in a loop along the coordinate lines.
-These lines are where either of the coordinate functions $x^{\mu_1}$ or $x^{\mu_2}$ are equal to $0$ or $\epsilon$.
-Here, the indices $\mu_1$ and $\mu_2$ are not free, but identify the two coordinate functions which define this loop.
+
+
+We transport $v^\mu$ along the coordinate lines.
+These are lines where either of the coordinate functions $x^{\mu_1}$ or $x^{\mu_2}$ are equal to $0$ or $\epsilon$.
+Here, the indices $\mu_1$ and $\mu_2$ are not free but identify the two coordinate functions which define this loop.
 The line from $A$ to $B$, defined by $x^{\mu_1} = 0$, is parametrized by $x^\mu(\lambda) = \lambda \delta^\mu_{\mu_2}$, so $ V^\mu = \delta^\mu_{\mu_2} $.
 The Christoffel symbol along this line is
 %
 \begin{equation}
     \Gamma^{\mu}_{\nu \rho}(\lambda) 
     = \Gamma^{\mu}_{\nu \rho}|_A
-    + \lambda \partial_{\mu_2} \Gamma^{\mu}_{\nu \rho}|_A + \Oh(\lambda^2).
+    + \lambda \partial_{\mu_2} \Gamma^{\mu}_{\nu \rho}|_A + \Oh(\epsilon^2).
 \end{equation}
 %
 Inserting this into \autoref{iterative paralell propagator}, we get
@@ -518,7 +527,7 @@ Then, we get
     \Gamma^{\mu}_{\nu\rho}
     =
     \Gamma^{\mu}_{\nu \rho}|_A + \epsilon \partial_{\mu_2} \Gamma^{\mu}_{\nu \rho}|_A
-    + \lambda \partial_{\mu_1} \Gamma^{\mu}_{\nu \rho}|_A,
+    + \lambda \partial_{\mu_1} \Gamma^{\mu}_{\nu \rho}|_A + \Oh(\epsilon^2),
 \end{equation}
 %
 The parallel propagator from $B$ to $C$ is then
@@ -533,10 +542,11 @@ The parallel propagator from $B$ to $C$ is then
         \Gamma^\mu_{\sigma \mu_1}\Gamma^\sigma_{\nu \mu_1}|_A
         - \partial_{\mu_1} \Gamma^{\mu}_{\nu \mu_1}|_A
         - 2 \partial_{\mu_2} \Gamma^{\mu}_{\nu \mu_1}|_A
-    \right).
+    \right)
+    + \Oh(\epsilon^3),
 \end{equation}
 %
-The combined propagator from $A$ to $C$ is then, to second order in $\epsilon$, 
+Which gives the combined propagator from $A$ to $C$, to and including second order in $\epsilon$, as
 %
 \begin{align}
     \nonumber
@@ -632,22 +642,17 @@ In other words, the Riemann tensor encodes how a vector is transformed when para
 \subsection{Integration on manifolds}
 \label{subsection: integration on manifolds}
 
-The integral of a scalar function on a manifold is not a coordinate-independent notion, and we must introduce the notion of $n$-forms.
-A $n$-form is a antisymmetric $(0, n)$ tensor.
-The wedge product, $\wedge$ is a product which maps two $n$- and $m$-forms to a $n+m$-form, and is defined as
+The integral of a scalar function on a manifold is not a coordinate-independent notion.
+To obtain this, we must introduce $n$-forms.
+A $n$-form $\omega$ is an antisymmetric $(0, n)$ tensor.
+This means that it has coordinates which obey $\omega_{\mu_1 \dots \mu_n} = \omega_{[\mu_1 \dots \mu_n]}$.
+The $n$-forms are ubiquitous objects in mathematics and physics, one example is the electromagnetic field-strength tensor $F_{\mu \nu}$, and they allow for the definition of coordinate independent integration and derivation.
+The wedge product, $\wedge$ is a product that maps two $n$- and $m$-forms to an $n+m$-form, and is defined as
 %
 \begin{equation}
-    (A\wedge B)_{\mu_1\dots\mu_{n+m}} = \frac{(n + m)!}{n! m!} A_{[\mu_1\dots\mu_n}B_{\mu_{n+1}\dots\mu_{n+m}]},
+    (A\wedge B)_{\mu_1\dots\mu_{n+m}} = \frac{(n + m)!}{n! m!} A_{[\mu_1\dots\mu_n}B_{\mu_{n+1}\dots\mu_{n+m}]}.
 \end{equation}
 %
-A $n$-form $\omega$ may now be written as
-%
-\begin{equation}
-    \omega 
-    = \omega_{[\mu_1 \dots \mu_n]} \, \dd x^{\mu_1} \otimes \dots \otimes \dd x^{\mu_n}
-    = \omega_{\mu_1 \dots \mu_n} \, \dd x^{\mu_1} \wedge \dots \wedge \dd x^{\mu_n}.
-\end{equation}
-% 
 Furthermore, we define the exterior derivative, a map from $n$-forms to $n+1$-forms, defined by
 %
 \begin{equation}
@@ -677,7 +682,7 @@ We define $|g| = |\det(g_{\mu \nu })|$, which, by the transformation properties 
     \sqrt{|g'|} = \left| \det\left(\pdv{x'}{x} \right) \right| \sqrt{|g'|},
 \end{equation}
 %
-This means that we can use this to compensate for the transformation of $\dd^n x$, and get a volume form with a coordinate independent expression,
+This means we can use $|g|$ to compensate for the transformation of $\dd^n x$, and get a volume form with a coordinate independent definition,
 %
 \begin{equation}
     \dd V = \sqrt{|g|} \, \dd^n x = \sqrt{|g'|} \, \dd^n x'.

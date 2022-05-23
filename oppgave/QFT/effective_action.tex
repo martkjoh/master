@@ -16,14 +16,14 @@ The Legendre transformation of $W$ is then
 \begin{equation}
     \label{1PI effective action}
     \Gamma[\varphi_J]
-    = W[J] - \int \dd^4 x \, J(x) \varphi_J(x).
+    := W[J] - \int \dd^4 x \, J(x) \varphi_J(x).
 \end{equation}
 %
 Using the definition of $\varphi_J$, we have that
 \begin{equation}
     \label{effective equation of motion}
     \fdv{\Gamma[\varphi_J]}{\varphi_J(x)}
-    = \int \dd^4 y \, \fdv{J(y)}{\varphi_J(x)} \fdv{J(y)} W[J]
+    = \int \dd^4 y \, \fdv{J(y)}{\varphi_J(x)} \fdv{W[J]}{J(y)}
     - \int \dd^4 y \, \fdv{J(y)}{\varphi_J(x)} \varphi_J(y)
     - J(x)
     = - J(x).
@@ -83,10 +83,10 @@ Using the chain rule, together with \autoref{effective equation of motion}, we g
 \begin{align*}
     \label{Effective action inverse propagator}
     (-i)\int \dd^4 z \frac{\delta^2 W[J]}{\delta J(x) \delta J(z)} 
-    \frac{\delta^2 \Gamma[\varphi_J]}{\delta \varphi_J(z) \varphi_J(y)}
+    \fdv{ \Gamma[\varphi_J]}{\varphi_J(z),\varphi_J(y)}
     =
     (-i)\int \dd^4 z \frac{\delta \varphi_J[z]}{\delta J(x)}
-    \frac{\delta^2 \Gamma[\varphi_J]}{\delta \varphi_J(z) \varphi_J(y)}
+    \fdv{\Gamma[\varphi_J]}{\varphi_J(z),\varphi_J(y)}
     =
     (-i)\fdv{}{J(x)}  \fdv{\Gamma[\varphi_J]}{\varphi_J(y)}
     = i\delta(x - y).
@@ -136,7 +136,7 @@ where $VT$ is the volume of space-time.
 For a constant ground state, the effective potential will equal the energy of this state.
 To calculate the effective potential, we can expand the action around this state to calculate the effective action,
 by changing variables to $\varphi(x) = \varphi_0 + \eta(x)$.
-$\eta(x)$ now parametrizes fluctuations around the ground state, and has by assumption a vanishing expectation value.
+$\eta(x)$ now parametrizes fluctuations around the ground state and has by assumption a vanishing expectation value.
 The generating functional becomes
 %
 \begin{align}
@@ -166,10 +166,10 @@ indicates that the functional $S[\varphi]$ is differentiated with respect to $\v
 We define
 %
 \begin{align}
-    S_0[\eta] &:= 
+    S_0[\eta] &:= \frac{1}{2}
     \int \dd^4 x \dd^4 y \,\eta(x)\eta(y)\, 
     \fdv{S[\varphi_0]}{\varphi(x), \varphi(y)}, \\
-    S_I[\eta] &:=
+    S_I[\eta] &:= \frac{1}{6}
     \int \dd^4 x \dd^4 y \dd^4 z \,\eta(x)\eta(y)\eta(z)\, 
     \fdv{S[\varphi_0]}{\varphi(x),\varphi(y),\varphi(z)} + \dots,
 \end{align}
@@ -205,7 +205,7 @@ This leaves us with
     \int \dd^4 x \left(  \Ell[\varphi_0] + J \varphi_0  \right)
     -i \ln
     \left(
-        \int \D \eta\exp{i S_0[\eta] + i S_I[\eta]}
+        \int \D \eta\, \exp{i S_0[\eta] + i S_I[\eta]}
     \right).
 \end{equation}
 %
@@ -226,13 +226,13 @@ We can now use the definition of the 1PI effective action to obtain a formula fo
 \end{equation}
 %
 
-In \autoref{1PI effective action}, we showed that the 1PI effective action describes the whole quantum theory of the original action at the tree-level.
+In \autoref{1PI effective action}, we showed that the 1PI effective action describes the whole quantum theory of the original action at the tree level.
 This was done by inspecting a theory with an action proportional to $g^{-1}$.
 In this theory, Feynman diagrams with $L$ loops are proportional to $g^{L-1}$.
 We can use the same argument to expand the effective potential in loops.
 This is done by modifying the action $S[\varphi] \rightarrow g^{-1}S[\varphi]$, and then expand in power of $g$.
 The first term in the effective potential is modified by $\Ve \rightarrow g^{-1}\Ve$, which means that it is made up of tree-level terms.
-This is as expected, since the tree-level result corresponds to the classical result without any quantum corrections.
+This is as expected since the tree-level result corresponds to the classical result without any quantum corrections.
 The second term becomes
 %
 \begin{align*}
@@ -287,7 +287,7 @@ The first term is quadratic in $\eta$, and can therefore be evaluated as a gener
     + \const
 \end{align*}
 %
-We then use the identity $\ln\{\det M \}= \Tr{\ln M}$.
+We then use the identity $\ln\{\det(M)\}= \Tr{\ln(M)}$.
 After we remove the constant, this term is proportional to $g^0$, i.e., it is made up of one-loop terms.
 
 The last term can be evaluated by first expanding the exponential containing the $S_I$ term, then using $\ln(1 + x) = \sum_n \frac{1}{n}x^n$.
@@ -330,7 +330,7 @@ Each internal line is connected to two vertices, and each vertex is connected to
 The number of loops is therefore $L = I - V + 1 \geq (3/2 - 1)V + 1$.
 There is at leas one vertex, i.e. $L \geq 3/2$.
 This shows that the first logarithm contains \emph{all} one-loop contributions.
-The effective potential to one-loop order is therefore
+The effective potential at one-loop order is therefore
 %
 \begin{equation}
     \label{effective potential}

@@ -1,6 +1,6 @@
 \documentclass{minimal}
 
-\usepackage[compat=1.0.0]{tikz-feynman}
+\usepackage[compat=1.1.0]{tikz-feynman}
 
 
 \tikzfeynmanset{ fermion/.style = {
@@ -40,5 +40,17 @@
             };
         \end{feynman}
     \end{tikzpicture}
+\end{equation}
+\begin{equation}
+    \mathcal M =
+    \feynmandiagram[small, baseline=(a)]{
+        a [dot] --[fermion, out=130, in=230, min distance=2cm, looseness=1] a,
+        a --[fermion, out=50, in=310, min distance=2cm, looseness=2] a,
+    };
+    \feynmandiagram[small, baseline=(a), horizontal=a to b]{
+        a [dot] --[fermion, out=130, in=230, min distance=2cm, looseness=1] a,
+        a -- [fermion, quarter right] b [dot] -- [fermion, quarter right] a,
+        b --[fermion, out=50, in=310, min distance=2cm] b,
+    };
 \end{equation}
 \end{document}

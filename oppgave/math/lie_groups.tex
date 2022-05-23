@@ -1,7 +1,7 @@
 \section{Lie theory and the mathematics of symmetry}
 
-One application of differential geometry is in the field of Lie groups.
-The primary use case of these structures is to study the symmetries of manifolds, particularly those that represent physical systems.
+One application of differential geometry is in the theory of Lie groups.
+The primary use case of these groups is to study the symmetries of manifolds, particularly those that represent physical systems.
 Symmetries are a vital part of modern physics and will be used throughout this text.
 In this section, we will develop the tools that we need for this study.
 It is based on~\autocite{leeIntroductionSmoothManifolds2003d,peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
@@ -29,14 +29,14 @@ These can be written as
     \end{tabular}
 \end{equation}
 A Lie group is a manifold $G$ with a group structure.
-Elements $g_1, g_2 \in G$ can thus be combined by group multiplication and be mapped to their inverses.
+Elements $g_1, g_2 \in G$ can thus be combined by group multiplication and mapped to their inverses.
 We additionally require these maps to be smooth, which is equivalent to $(g_1, g_2) \rightarrow g_1 g_2^{-1}$ being smooth.
 
 As we will discuss in more detail in the next chapter, a symmetry transformation is a map between physical states which leaves the equations governing that system unchanged.
 Assume the field, or set of fields, $\varphi$ is governed by the equation $f(\varphi) = 0$.
 A symmetry transformation $\varphi \mapsto g \varphi$, where $g\varphi$ represents the action $g$ acting on $\varphi$, will then obey $f(g\varphi) = 0$.
 This is what makes groups the natural structures to describe symmetries.
-Assume $G$ is the set of all symmetries of a system or a subset of all symmetries closed under compositions, 
+Assume $G$ is the set of all symmetries of a system, or a subset of them closed under compositions, such that
 %
 \begin{equation}
     G = \setbuilder{g}{f(g\varphi) = 0}.
@@ -88,6 +88,8 @@ We will, in fact, mostly focus on the generators rather than the full transforma
 
 
 
+
+
 \subsection{Lie algebras}
 \label{subsection: lie algebras}
 
@@ -127,43 +129,43 @@ These are obey $f_{\alpha \beta}^\gamma = - f_{\beta \alpha}^\gamma$ and they fo
 %
 A algebra is called \emph{abelian} if $f^\alpha_{\beta\gamma} = 0$.
 Any abelian algebra is just a direct sum of $N$ of the Lie algebras of $\Lie{U}{1}$, $\lie{u}{1}$.
-A simple Lie algebra is a non-abelian algebra that does not contain any non-trivial \emph{ideals}, also called invariant sub-algebras~\footnote{
+A simple Lie algebra is a non-abelian algebra that does not contain any non-trivial \emph{ideals}, also called invariant sub-algebras\footnote{
     Some authors do not have the non-abelian criterion, then includes $\lie{u}{1}$ as simple.}
 An ideal $\mathfrak i \subset \mathfrak g$ is a set such that $[\mathfrak i, \mathfrak g] \subset \mathfrak i$.
 A semi-simple Lie algebra can be written as a direct sum of simple algebras.
 The total classification of simple Lie algebras was done by Cartan and Killing and involved four infinite families, the classical algebras such as $\lie{su}{N}$, and five exceptional algebras which do not fit into these families.
 There is a natural metric on Lie groups, called the Killing form, $B_{\alpha \beta} = - f^{\gamma}_{\alpha \eta}f^\eta_{\beta \gamma}$.
-This is non-degenerate if the algebra is simple, and additionally positive definite if it is compact.
+This is non-degenerate if the corresponding Lie algebra is semi-simple.
+Additionally, if the Lie group is compact, it is positive definite.
 In that case, one can choose a basis of the algebras so that the structure constants are \emph{totally antisymmetric}.
-This is trivially true for abelian groups, and as a consequence, the structure constants of a direct sum of compact, simple algebras and abelian algebras are totally antisymmetric.
-In that case, one can write $f^\alpha_{\beta \gamma} = f_{\alpha \beta \gamma}$
+This is trivially true for abelian groups, and as a consequence, the structure constants of a direct sum of compact, simple algebras and abelian algebras are totally antisymmetric, and we write $f^\alpha_{\beta \gamma} = f_{\alpha \beta \gamma}$
 ~\autocite{weinbergQuantumTheoryFields1996}.
 
 
 As with Lie groups, Lie algebras have representations.
 A representation of a Lie algebra $\mathfrak g$ is a homomorphism, i.e., a map that preserves the Lie bracket, from $\mathfrak g$ to the Lie algebra of linear maps on a vector space $V$, i.e., matrices, called $\lie{gl}{V}$.
 In $\lie{gl}{V}$, the Lie bracket is the matrix commutator.
-A representation is faithful if the homomorphism is an isomorphism.
+A representation is faithful if the homomorphism is injective.
 The most important representations are the fundamental and the adjoint.
-The fundamental representation is the smallest non-trivial representation, and in the case of the familiar groups such as $\lie{so}{N}$ and $\lie{su}{N}$, the fundamental representation is the defining one.
+The fundamental representation is the smallest faithful representation, and in the case of the familiar groups such as $\lie{so}{N}$ and $\lie{su}{N}$, the fundamental representation is the defining one.
 In the adjoint representation, the generators $T^A_\alpha$ are the structure constants, $(T^A_\alpha)^\beta_\gamma = -i f^\beta_{\alpha\gamma} $.
 For compact Lie algebras, i.e., the algebras of compact Lie groups, the representations are Hermitian.
-These can be written as direct sums of simple or abelian Lie groups and thus have fully antisymmetric structure constants.
+
 
 A subset of the original Lie group, $H \subset G$, closed under the group action, is called a subgroup.
 $H$ then has its own Lie algebra $\mathfrak{h}$, with a set of $m = \dim H$ generators, $t_a$, which is a subset of the original generators $T_\alpha$.
 We denote the remaining set of generators $x_i$, such that $t_a$ and $x_i$ together span $\mathfrak{g}$.
-Assume $G$ is compact.
+Assume $G$ is compact and its Lie algebra semi-simple.
 The commutators of $t_a$ must be closed, which means that we can write
 %
 \begin{align}
-    [t_a, t_b] &= i f_{ab}^{c} t_c,\\
-    [t_a, x_i] &= i f_{ai}^k x_k, \\
-    [x_i, x_j] &= i f_{ij}^k x_k + i f_{ij}^c t_c,
+    [t_a, t_b] &= i f_{abc} t_c,\\
+    [t_a, x_i] &= i f_{aik} x_k, \\
+    [x_i, x_j] &= i f_{ijk}x_k + i f_{ijc} t_c,
 \end{align}
 %
 where $abc$ runs over the generators of $\mathfrak h$, and $ijk$ runs over the rest.
-The second formula can be derived using the total anti-symmetry of the structure constants, which implies that $f_{ab}^k = 0 = -f_{ak}^b$.
+The second formula can be derived using the total anti-symmetry of the structure constants, which implies that $f_{abk} = 0 = -f_{akb}$.
 This is called a Cartan decomposition.
 One parameter subgroups are one special case of Lie subgroups.
 If a curve $\gamma(t)$ through $G$ obey
@@ -174,7 +176,7 @@ If a curve $\gamma(t)$ through $G$ obey
 %
 then all the points on this curve from a one parameter subgroup of $G$.
 This path is associated with a generator, 
-
+%
 \begin{equation}
     \odv{\gamma}{t} \Big|_{t=0} = i \eta_\alpha T_\alpha.
 \end{equation}

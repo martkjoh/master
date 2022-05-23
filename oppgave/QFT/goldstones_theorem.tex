@@ -32,18 +32,19 @@ We will consider internal, global transformations which act linearly on $\varphi
 For $N$ fields, $\varphi_i$, this can be written
 \begin{equation}
     \label{linear field transformation}
-    \varphi_i'(x) = \varphi_i(x) + \epsilon \, i V_{ij} \varphi_j(x).
+    \varphi_i'(x) = \varphi_i(x) + i \epsilon \, V_{ij} \varphi_j(x).
 \end{equation}
 %
 $V_{ij}$ is called the generator of the transformation.
-A symmetry transformation of the system is then a transformation in which the Lagrangian left is unchanged, or at most differ by a 4-divergence term.
+A symmetry transformation of the system is then a transformation in which the Lagrangian left is unchanged, or at most differs by a 4-divergence term.
 That is, a transformation $\varphi \rightarrow \varphi'$ is a symmetry if 
 \begin{equation}
     \Ell[\varphi'] = \Ell[\varphi] + \partial_\mu K^\mu[\varphi],
 \end{equation}
 %
 where $K^\mu[\varphi]$ is a functional of $\varphi$.\footnote{
-    Terms of the form $\partial_\mu K^\mu$ do not affect the physics, as variational principle $\delta S = 0$ do not vary the fields at infinity. Together with the divergence theorem, this means that such terms do not influence the equations of motion.}
+    Terms of the form $\partial_\mu K^\mu$ do not affect the physics, as the variational principle $\delta S = 0$ does not vary the fields at infinity. Together with the divergence theorem, this means that such terms do not influence the equations of motion.
+    }
 This is a requirement for symmetry in quantum field theory too.
 However, as physical quantities in quantum field theory are given not just by the action of a single state but the path integral, the integration measure $\D \varphi$ has to be invariant as well.
 If a classical symmetry fails due to the non-invariance of the integration measure, it is called an \emph{anomaly}.
@@ -92,13 +93,14 @@ This system is invariant under the rotation of the $N$ fields into each other,
 %
 The set of all such transformations forms the Lie group $\text{O}(N)$.
 Lie groups will be discussed in the next section.
-For $N = 2$, and $\mu^2, \lambda > 0$ we get the ubiquitous Mexican hat potential, as illustrated in \autoref{fig:Mexican hat}.
+For $N = 2$, and $\mu^2, \lambda > 0$ we get the ubiquitous Mexican hat potential, as illustrated in \autoref{fig: Mexican hat}.
 
 \begin{figure}[ht]
     \centering
+    \hspace*{1cm}
     \includegraphics[width=0.6\textwidth]{figurer/mexican_hat.pdf}
     \caption{The Mexican hat potential is the classical potential $\Ve$ for the $N=2 $ linear sigma model.}
-    \label{fig:Mexican hat}
+    \label{fig: Mexican hat}
 \end{figure}
 
 \subsection{Nöther's theorem}
@@ -169,7 +171,7 @@ The current flux through some spacelike surface $V$ defines a conserved charge. 
 \end{equation}
 %
 We can then use the divergence theorem.
-Assume $\partial V$ is the boundary of $V$, which has the space-like normal vector $k_i$, and that the current falls of quickly towards infinity.
+Assume $\partial V$ is the boundary of $V$, which has the space-like normal vector $k_i$, and that the current falls quickly towards infinity.
 Then, using $\partial_\mu j^\mu = 0 $,
 \begin{equation}
     \odv{Q}{t} 
@@ -187,7 +189,7 @@ A symmetry transformation will leave the governing equation of a theory unchange
 This, however, does not imply that physical states, such as the ground state, are invariant under this transformation.
 The $N = 2$ linear sigma model illustrates this.
 If we assume the ground state $\varphi_{0}$ is translationally invariant, then it is given by minimizing the effective potential, of which the classical potential, $\Ve$, is the leading order approximation.
-This potential is illustrated in \autoref{fig:Mexican hat}.
+This potential is illustrated in \autoref{fig: Mexican hat}.
 The ground state is therefore given by any of the values along the brim of the potential.
 If we, without loss of generality, choose $\varphi_0 = (0, v)$ as the ground state, then any rotation will change this state.
 We say that the symmetry has been \emph{spontaneously broken}.
@@ -234,8 +236,8 @@ With the assumption that the ground state is constant, we get
 \end{equation}
 %
 This is trivial for unbroken symmetries, as $t^a_{ij}\ex{\varphi_j}_0 = 0$ by definition.
-However, in the case of a broken symmetry, the second derivative of the effective potential must have an eigenvector $x^\ell_{ij} \ex{\varphi_j}_0$ with a zero eigenvalue for each broken generator.
-Here, $\ell$ label the set of generators, while $(ij)$ are the indices corresponding to field-components $\varphi_i$.
+However, in the case of broken symmetries, the second derivative of the effective potential must have an eigenvector $x^\ell_{ij} \ex{\varphi_j}_0$ with a zero eigenvalue for each broken generator.
+Here, $\ell$ labels the set of generators, while $(ij)$ are the indices corresponding to field-components $\varphi_i$.
 We found that the second derivative of the effective action is the inverse propagator,
 %
 \begin{equation}
@@ -252,7 +254,8 @@ Using this, we can write
 %
 Zeros of the inverse propagator correspond to the physical mass of particles.
 In Lorentz-invariant systems, each zero-eigenvalue vector corresponds to a massless particle, called a Goldstone boson.\footnote{
-    The particles are bosons due to the bosonic nature of the transformations, $g$. If the generators are Grassmann numbers, the resulting particles, called goldstinos, are fermions.}
+    The particles are bosons due to the bosonic nature of the transformations, $g$. If the generators are Grassmann numbers, the resulting particles, called goldstinos, are fermions.
+    }
 This means there are $n_G = \dim G -\dim H$ zero-mass modes.
 In general, the counting of massless modes is complicated and depends on the dispersion relation of the particles at low momenta.
 Systems with Goldstone bosons with quadratic dispersion relation, that is $E \propto |\vv p|^2$ when $\vv p \rightarrow 0$, often exhibit a lower number of massless modes.
@@ -264,14 +267,14 @@ This corresponds to two broken generators, yet the system exhibits only one mass
     \hspace*{2.5cm}
     \includegraphics[width=.6\linewidth]{figurer/mexican_hat_zoom.pdf}
     \caption{Excitations along the brim does not cost any energy, as the potential is flat, unlike excitations in the radial direction.}
-    \label{fig:Mexican hat zoom}
+    \label{fig: Mexican hat zoom}
 \end{figure}
 
 The linear sigma model gives an intuition for the Goldstone mode.
 In the case of $N = 2$, the symmetry of the Lagrangian are rotations in the plane.
 As the ground state is a point along the ``brim'' of the hat, this rotational symmetry is broken.
 However, any excitations in the angular direction do not cost any energy, which is indicative of a massless mode.
-This is illustrated in \autoref{fig:Mexican hat zoom}.
+This is illustrated in \autoref{fig: Mexican hat zoom}.
 In this example, the original symmetry group is one-dimensional, so there are no unbroken symmetries.
 Consider instead the $N=3$ linear sigma model, which has the three-dimensional symmetry group $\SO(3)$, rotations of the sphere.
 We see that the ground state is left invariant under a subgroup of the original symmetry transformations.
@@ -280,12 +283,12 @@ When the system chooses one single ground state, this symmetry is broken, but on
 The generator for rotations around the ground state leaves that point unchanged and is thus an unbroken symmetry.
 Any excitations in the direction of the broken symmetries do not cost energy, as it is in the ground state manifold.
 On the other hand, the unbroken symmetry does not correspond to an excitation.
-This is illustrated in \autoref{fig:ground state manifold}.
+This is illustrated in \autoref{fig: ground state manifold}.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=.35\linewidth]{figurer/SU(3).pdf}
     \caption{Excitations for the $N=3$ sigma model. Two of the symmetries are broken, while rotations around the ground state leaves the system unchanged.}
-    \label{fig:ground state manifold}
+    \label{fig: ground state manifold}
 \end{figure}
 

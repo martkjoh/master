@@ -11,7 +11,7 @@ As they describe the same physics, these two descriptions are related by
 %
 \begin{equation}
     Z = \int \D \varphi \, \exp{i\int \dd^4 x \, \Ell[\varphi]}
-    = \int \D \pi\, \exp{i\int \dd^4 x \, \left( \Ell_\text{eff}[\pi]\right)}.
+    = \int \D \pi\, \exp{i\int \dd^4 x \, \Ell_\text{eff}[\pi] }.
 \end{equation}
 %
 We say that the degrees of freedom not present in the effective description have been \emph{integrated out}.
@@ -35,21 +35,21 @@ Analyticity is an assumption about the poles of the $S$-matrix, and perturbative
 Cluster decomposition states that non-entangled processes far apart should be independent~\autocite{weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
 Such a ``most general possible Lagrangian'' will have the form
 \begin{equation}
-    \Ell_\text{eff}[\pi] = \sum_i \lambda_i \mathcal O_i,
+    \Ell_\text{eff}[\pi] = \sum_i \lambda_i \mathcal O_i[\pi],
 \end{equation}
-where $\mathcal O_i$ are local functions of the effective fields and their derivatives, and $\lambda_i$ are coupling constants.
+where $\mathcal O_i[\pi]$ are local functionals of the effective fields and their derivatives, and $\lambda_i$ are coupling constants.
 The coupling constants are free parameters, which parametrizes the most general $S$-matrix consistent with foundational assumptions and the underlying theory.
 A Lagrangian with an infinite amount of free parameters might seem useless.
 However, if we can find a consistent series expansion, then only a finite number of terms are needed to calculate quantities to any given order in perturbation theory.
 Furthermore, even though such a theory is called ``non-renormalizable''---renormalizing an arbitrary order in perturbation theory requires an arbitrary number of parameters---only a finite number of parameters are needed to renormalize any \emph{given} order.
-Non-renormalizable theories can thus perfectly well be renormalized.
+Non-renormalizable theories can thus perfectly well be renormalized~\autocite{schwartzQuantumFieldTheory2013}.
 
 In the last section, we showed that the Goldstone modes will always appear in the Lagrangian as the terms of the Mauer-Cartan form, $d_\mu$, and $e_\mu$.
 Thus, the approach to creating an effective theory of Goldstone bosons, such as chiral perturbation theory, is to write down the most general Lagrangian, consistent with the underlying symmetries, made up of these terms.
 Then, using Weinberg's power counting scheme, as we discuss in \autoref{subsection: Weinberg's power counting scheme}, we expand perturbatively in the Goldstone boson energies.
 This will give us a self-consistent description of the Goldstone bosons of the theory, the pseudoscalar mesons.
-The world is, of course, not only made up of pseudoscalar mesons.
-We also need to describe how these fields interact with other fields, or external sources.
+The world is, of course, not only made up of only pseudoscalar mesons.
+We also need to describe how these fields interact with other fields or external sources.
 Furthermore, the global $\Lie{SU}{N_f}\times\Lie{SU}{N_f}$ symmetry of QCD with $N_f$ quarks is only approximate, as we will explore further in \autoref{chapter: chpt}.
 We must extend the CCWZ construction to incorporate these effects, which we will do by introducing some new QFT tools in the next subsection.
 
@@ -226,7 +226,7 @@ $
 $
 where the prime indicates gauge transformed fields.
 As we argued in the subsection on the Dyson-Schwinger equations, we can change the integration variables inside the path integral without changing the result.
-Considering and infinitesimal transformation, and expanding to first order in $\theta$, we get
+Considering an infinitesimal transformation, and expanding to first order in $\theta$, we get
 %
 \begin{align}
     \nonumber
@@ -245,7 +245,7 @@ Considering and infinitesimal transformation, and expanding to first order in $\
 \end{align}
 %
 As the transformation, and thus $\theta_\alpha$, is arbitrary, the integrand must vanish.
-After integrating by parts, we are left with
+After partial integration, we are left with
 %
 \begin{equation}
     \Braket{
@@ -269,14 +269,14 @@ We can get a more general expression by writing this using the generating functi
 \end{equation}
 %
 If we evaluate this at $\eta = \bar \eta = v_\mu = 0$, we get the quantum conservation equation $\partial_\mu \Braket{J^\mu_\alpha} = 0$.
-From \autoref{generating equation ward identitites}, we can also get more general ward identities by taking functional derivatives with respect to the external sources.
+From \autoref{generating equation ward identitites}, we can also get more general Ward identities by taking functional derivatives with respect to the external sources.
 
 
-We have now seen how the Ward identities encode the global symmetries of the theory, and that they may be derived by transforming external source fields as gauge field to ensure the invariance of the action under the corresponding \emph{local} transformations.
+We have now seen how the Ward identities encode the global symmetries of the theory, and that they may be derived by transforming external source fields as gauge fields to ensure the invariance of the action under the corresponding \emph{local} transformations.
 This is the key insight behind the systematic development of chiral perturbation theory~\autocite{gasserChiralPerturbationTheory1984,gasserChiralPerturbationTheory1985,leutwylerFoundationsChiralPerturbation1994}.
 With the CCWZ construction, we can create the Lagrangian of Goldstone bosons alone, given only the symmetry breaking pattern $G \rightarrow G/H$.
-However, it does not tell us how external fields couples to them.
-With the constraint \autoref{local invariance with external fields as gauge fields}, however, we know that the new action must be invariant under \emph{local} $G$ transformations, given that we transform the external fields as gauge fields.
+However, it does not tell us how they are coupled to external fields.
+With the constraint \autoref{local invariance with external fields as gauge fields}, we know that the new action must be invariant under \emph{local} $G$ transformations, given that we transform the external fields as gauge fields.
 When including external fields, the new effective Lagrangian $\Ell_\text{eff}$ must therefore not only be invariant under global $G$ transformations but rather local $G$ transformations.
 If we modify the Mauer-Cartan form \autoref{Mauer-Cartan form} by introducing a covariant derivative,
 %
@@ -285,7 +285,7 @@ If we modify the Mauer-Cartan form \autoref{Mauer-Cartan form} by introducing a 
     \rightarrow i\Sigma(x)^{-1} \nabla_\mu \Sigma(x),
 \end{equation}
 %
-then all terms that were globally $G$-invariant become locally so.
+then all terms that were invariant under global $G$ become locally so.
 This is because, as in the case of covariant derivative in \autoref{subsection: goemetry and the metric}, the covariant derivative transforms as the object it acts on.
 In addition to new and modified terms due to the covariant derivative, we can now also combine the external currents and $\Sigma$ into $G$-invariant terms.
 This will allow us to take into account approximate symmetries as well.

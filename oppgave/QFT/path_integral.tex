@@ -1,6 +1,7 @@
 In this section, we survey some general properties of quantum field theory that are necessary for chiral perturbation theory.
-First, we introduce the path integral and the 1-particle irreducible effective action and the effective potential.
-We will derive Goldstone's theorem and present the CCWZ construction, which is the basis for \chpt.
+First, we introduce the path integral, the 1-particle irreducible effective action, and the effective potential.
+We will derive Goldstone's theorem and present the CCWZ construction, which is the basis for \chpt, and discuss how to construct effective field theories.
+
 
 
 
@@ -9,10 +10,11 @@ We will derive Goldstone's theorem and present the CCWZ construction, which is t
 
 This section is based on \autocite{peskinIntroductionQuantumField1995,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996,schwartzQuantumFieldTheory2013}
 
-In the path integral formalism, one evaluates quantum observable by integrating over the contributions of all possible configurations.
+In the path integral formalism, one evaluates quantum observable by integrating the contributions of all possible configurations.
 If the system has specified initial and final states, this amounts to all possible paths the system might evolve between these, hence the name.
 We assume the reader has some familiarity with this formalism. 
 However, if a refresher is needed, \autoref{section: imaginary-time formalism} contains a derivation of the closely related imaginary-time formalism and compares it with the path integral approach.
+A summary of functional calculus is given in \autoref{appendix: Functional derivatives}.
 
 In the path integral formalism, the vacuum-to-vacuum transition amplitude, i.e., the probability that that vacuum at $t = -\infty$ evolves to the vacuum at time $t = \infty$, is given by
 \begin{equation}
@@ -88,7 +90,7 @@ Using this form of the generating functional, \autoref{correlator from generatin
     \fdv{ W_0[J] }{J(x_{a(i)}),J(x_{b(i)})} \Big|_{J = 0}.
 \end{align*}
 %
-In the last line we have introduced the functions $a, \, b$, which define a way to pair up $n$ elements.
+In the last line, we have introduced the functions $a, \, b$, which define a way to pair $n$ elements.
 $\floor{\cdot}$ is the floor function.
 The domain of these functions are the integers between $1$ and $\floor{n/2}$, the image a subset of the integers between $1$ and $n$ of size $\floor{n/2}$.
 A valid pairing is a set $\{(a(1), b(1)), \dots (a(\floor{n/2}), b(\floor{n/2}))\}$, where all elements $a(i)$ and $b(j)$ are different, such that all integers up to and including $n$ are featured.
@@ -121,7 +123,7 @@ We can expand the exponential in power series, which means the expectation value
 The terms in this series are represented by Feynman diagrams, constructed using the Feynman rules, and can be read from the action.
 We will not further detail how the Feynman rules are derived.
 The Feynman rules for a free scalar field in thermal field theory are derived in \autoref{section: interacting scalar}, and the general procedure is found in any of the main sources for this section~\autocite{peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}
-The source terms gives rise to an additional vertex
+The source terms give rise to an additional vertex
 %
 \begin{equation}
     \feynmandiagram [horizontal=a to b]{
