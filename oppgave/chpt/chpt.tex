@@ -52,7 +52,7 @@ We therefore expand the effective Lagrangian as
 \end{equation}
 %
 where $\Ell_{2n}$ contains $2n$ derivatives.
-This is equivalent to scaling the space-time coordinates as $x^\mu \rightarrow tx^\mu$, and expanding the Lagrangian in powers of $t$.
+This is equivalent to scaling the space-time coordinates as $x^\mu \rightarrow tx^\mu$ and expanding the Lagrangian in powers of $t$.
 
 We must also allow for the fact that pions have non-zero mass, interact in a symmetry-breaking way with the electromagnetic field, and the possibility of external currents.
 We showed in \autoref{section: effective field theories} that this can be done using the technique of spurion fields, in which symmetry-breaking terms are treated as external fields with their own transformation rules.
@@ -101,7 +101,7 @@ We identify
 \end{equation}
 %
 This is our standard form for elements in $gH$.
-As we saw in \autoref{seciton: ccwz construction}, it therefore implicitly define transformation properties of the Goldstone bosons, which is given by the function $h(g, \xi)$.
+As we saw in \autoref{seciton: ccwz construction}, it therefore implicitly defines transformation properties of the Goldstone bosons, which is given by the function $h(g, \xi)$.
 For $\tilde g \in G$, we have
 %
 \begin{equation}
@@ -125,7 +125,6 @@ This gives simple transformation rules for $(U, U) \in H$ and $(U, U^\dagger) \i
 \end{align}
 %
 Due to how $G$ factors into two Lie groups, the constituents of the Mauer-Cartan form are 
-\todo[]{hvorfor?}
 %
 \begin{equation}
     d_\mu = i \Sigma(x)^\dagger \partial_\mu \Sigma(x),\quad
@@ -151,20 +150,22 @@ This leaves us with the single Lorentz invariant leading order term,
 \begin{equation}
     \Tr{d_\mu d^\mu} = \Tr{\partial_\mu \Sigma (\partial^\mu \Sigma)^\dagger},
 \end{equation}
-
-
-However, constructing the effective Lagrangian out of terms invariant under $G$ is too restrictive to get the most general effective action.
+%
+Constructing the effective Lagrangian out of terms invariant under $G$ is too restrictive to get the most general effective action, however.
 This only allows for an even number of $d_\mu$'s, and observed processes such as the decay of the neutral pion through $\pi^0 \rightarrow \gamma \gamma$ would not be possible~\cite{schererIntroductionChiralPerturbation2002}.
 This is because we have not allowed for terms that change the Lagrangian with a divergence term, as discussed in \autoref{section: symmetry and goldstone's theorem}.
 Terms of this type are called Wess-Zumino-Witten (WZW) terms~\cite{weinbergQuantumTheoryFields1996}.
 We will not consider these here, as they do not affect the thermodynamic quantities in question~\cite{adhikariTwoflavorChiralPerturbation2019}.
 
-\subsection{External currents}
 
+
+
+
+\subsection{External currents}
 
 As discussed in \autoref{section: effective field theories}, we can incorporate external currents and symmetry breaking terms by promoting the symmetry $G$ to a gauge symmetry, treating the external currents as gauge fields, and demanding gauge invariance of the effective Lagrangian.
 The external currents may couple to conserved currents, \autoref{conserved currents qcd}, or the other bilinears we can create out of quarks, $\bar q q$, $\bar q\gamma^5 q$, $\bar q T_\alpha q$, and $\bar q T_\alpha \gamma^5 q$.
-The Lagrangian of these external currens is
+The Lagrangian of these external currents is
 %
 \begin{align}
     \Ell_{\text{ext}}
@@ -187,7 +188,7 @@ We define
     \chi^\dagger = 2 B_0(s - ip).
 \end{equation}
 %
-By making a local $G$-transformation and enforcing gauge-invariance, we find that these transform as
+By making a local $G$-transformation and enforcing gauge invariance, we find that these transform as
 %
 \begin{align}
     r_\mu &\rightarrow U_R (r_\mu + i\partial_\mu) U_R^\dagger, \\
@@ -204,10 +205,15 @@ We define
     = 
     \partial_\mu r_\nu - \partial_\nu r_\mu - i[r_\mu, r_\nu], 
     \quad f_{\mu \nu}^{(l)} 
-    = \partial_\mu l_\nu - \partial_\nu l_\mu - i[l_\mu, l_\nu].
+    = \partial_\mu l_\nu - \partial_\nu l_\mu - i[l_\mu, l_\nu],
 \end{equation}
 %
-\todo[inline]{Include transformation properties of field strength tensors.}
+which transform as 
+%
+\begin{equation}
+    f^{r/l}_{\mu\nu} \rightarrow U_{R/L}  f^{r/l}_{\mu\nu}  U_{R/L}^\dagger.
+\end{equation}
+
 Including dynamical fields, such as the photon field $\mathcal A_\mu$, is slightly more complicated.
 Quantum electrodynamics, or QED, is a gauge theory with a $\Lie{U}{1}_\text{EM}$ gauge group, where the covariant derivative acing on quarks is
 %
@@ -276,6 +282,9 @@ We now define the effective Lagrangian of $\chpt$, $\Ell_\text{eff}$ as
 \end{equation}
 %
 We know the symmetries of $\Ell_\text{QCD}$, and we have found constituent terms of $\Ell_\text{eff}$ and their transformation properties under these symmetries.
-Weinberg's ``theorem'' now tells us that we can construct $\Ell_\text{eff}$ by including all terms that obey the symmetry principles of $\Ell_\text{QCD}$, and with chiral dimension, we have a way of ordering them in a series expansion.
+Weinberg's ``theorem'' now tells us that we can construct $\Ell_\text{eff}$ by including all terms that obey the symmetry principles of $\Ell_\text{QCD}$.
+In addition, the Lagrangian must be a scalar.
+We have not listed the transformation properties of the constituent terms under $C$ and $P$, however, these lay further restrictions on $\Ell_\text{eff}$.
+As all terms have a chiral dimension, we have a way of ordering them in a series expansion.
 This is all we need to start doing calculations.
 
