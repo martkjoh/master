@@ -21,7 +21,7 @@ Using the values for $f_\pi$ and $m_\pi$ as given in \autoref{section: units} an
 %
 We expect a pion star made up of a pure pion condensate to have dimensions of this order of magnitude, around one order of magnitude larger than the star made up of cold neutrons.
 However, when we introduce leptons there is not just one characteristic energy scale, and it becomes harder to anticipate the scale of the stars.
-\todo[inline]{Can we make a better argument by setting gravitational + internal energy equal 0?}
+
 
 
 In \autoref{section: thermodynamics leading order}, we found that the leading order, the non-relativistic limit of the equation of state of a pure pion-condensate, without electromagnetic interaction, is $\tilde p =8^{-1} \tilde u^2$.
@@ -138,8 +138,8 @@ In the non-relativistic, Newtonian limit, the stellar radius is independent of t
 
 
 
-\subsection{Including electromagnetic contributions}
 
+\subsection{Including electromagnetic contributions}
 
 As we found in \autoref{subsection: including electromagnetism lo eos}, the electromagnetic interaction of the pseudoscalar mesons contributes to the equation of state, even at leading order.
 \autoref{fig: pressure and energy with EM interaction} shows the pressure and energy density, normalized to their characteristic quantities, as a function of chemical potential above the critical value, normalized to $m_\pi$.
@@ -151,19 +151,6 @@ We see that the shape of the curve has not changed much from our earlier result.
 Both the maximum mass and radius are slightly smaller.
 As discussed in \autoref{section: cold fermi star}, we expect a stiffer equation of state to correspond to a more massive star, as happens in this case.
 The new result for maximum radius, $R = 80.40 \, \text{km}$, is in excellent agreement with our expectation, \autoref{maximum mass pion star with em interaction}.
-
-
-
-% \begin{figure}[!htb]
-%     \centering
-%     \includegraphics[width=0.8\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star_EM.pdf}
-%     \caption{
-%         The mass-radius relation of a pion star including electromagnetic interactions.
-%         The cross indicates the maximum mass configuration, and the dot the maximum radius configuration.
-%         The mass is in units of solar masses, the in kilometers.
-%         }
-%     \label{fig: mass-radius relation leading order pion star with em interaction}
-% \end{figure}
 
 
 \begin{figure}[H]
@@ -218,6 +205,7 @@ The maximum mass is now $18.6\, M_\odot $, and the corresponding maximum radius 
 
 
 
+
 \subsection{Neutrinos}
 
 As discussed in \autoref{subsection: neutrinos}, a more realistic charge-neutral pion condensate includes weak decay, in which case both electrons and muons will be present and in chemical equilibrium with their respective neutrinos.
@@ -234,7 +222,7 @@ This pressure is given by
 %
 In terms of the characteristic quantitites, the minimum pressure is $p_\text{min} = 1.84 \times 10^{-2} u_0$.
 A star with $u = 3p$ will not have a finite radius where the pressure vanishes.
-However, as the isospin density vanish as $p = p_\text{min}$, we define the stellar radius $R$ by $p(R) = p_\text{min}$.
+However, as the isospin density vanish at $p = p_\text{min}$, we define the stellar radius $R$ by $p(R) = p_\text{min}$.
 Such a star will therefore have an atmosphere of ultrarelativistic neutrinos.
 
 There is a $p+u$-term on the right-hand side of the TOV equation, \autoref{TOV}.
@@ -307,7 +295,7 @@ This relationship is still well approximated by a $u = 3p$ equation of state wit
 
 
 
-\section{Comparison and key values}
+\section{Key values and results}
 
 We have modeled pion stars using the equation of state of pion condensates including various effects such as electromagnetism, loop-corrections, charge neutrality and weak interactions.
 These various compositions create stars of wildly different sizes and masses.
@@ -318,8 +306,9 @@ We can explain this by considering that for all these systems, the only energy s
 This is true even for the $\pi\ell\nu_\ell$-system, as in this case the energy scale $p_\text{min}^{1/4}\propto m_\pi$.
 The $\pi e$-system, on the other hand, has a different, much lower energy scale, $m_e \approx 0.5 \text{MeV}$, which leads to a corresponding much larger radius and mass for the resulting star.
 
-We see that, for all the different stars, $\mu_I$ is well below the threshold $4\pi f_\pi$ for the validity of chiral perturbation theory.
-\todo[]{Er det andre energigrenser vi må være under? i.e. resonanser, nukleoner?}
+We see that, for all the different stars, $\mu_I$ is well below the threshold $4\pi f_\pi \approx 8.6 \, m_\pi$ for the convergence of chiral perturbation theory.
+The range of validity is somewhat smaller than this, as new degrees of freedom that we have not taken into account come into play.
+Lightest particle not in our model is the $\rho$-meson, with mass $m_\rho = 770 \, \text{MeV} \approx 5.7 \, m_\pi$, which is still well above the energies in our result.
 For the most realistic composition, the $\pi\ell\nu_\ell$-system, the isospin chemical potential at the center for the maximum mass star is around $0.02\,m_\pi$.
 This means that the pion condensate throughout this star, and all those with a lower central pressure, is only slightly above the point of phase transition.
 
@@ -328,8 +317,32 @@ We only include the next-to-leading order result for pure pion condensation and 
 This is a logarithmic plot, as both the masses and radii vary over several orders of magnitude.
 \autoref{fig: max pressure and mass} shows the mass and pressure distributions of the maximum mass configurations of the various stars.
 Among the mass distributions, the $\pi\ell\nu_\ell$-system stands out as the mass increases in a straight line, as opposed to the other distributions, which taper off towards the surface of the star.
-In the bottom plot, we see that the pressure of all the stars approaches $0$ as $r$ appproaches $R$ except for the $\pi\ell\nu_\ell$-system which approaches $p_\text{min}>0$.
+In the bottom plot, we see that the pressure of all the stars approaches $0$ as $r$ approaches $R$ except for the $\pi\ell\nu_\ell$-system which approaches $p_\text{min}>0$.
+All stars obey the necessary criterion for stability, as discussed in \autoref{subsection: upper bound and stability}, for the central pressure below that of the maximum mass star.
+Stability analysis done in \autocite{brandtNewClassCompact2018} shows that, as we expect, the stars are stable in this case.
 
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.85\textwidth]{../scripts/figurer/pion_star/mass_radius_all.pdf}
+    \caption{
+        The mass-radius relation of pion stars, including leptons to enforce charge neutrality, is compared with pion stars of only pions.
+        The radius is given in kilometers and the mass in units of solar masses.
+        }
+        \label{fig: mass-radius relation with leptons}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.85\textwidth]{../scripts/figurer/pion_star/max_pressure_mass.pdf}
+    \caption{
+        The pressure and mass of the maximum-mass configuration of pion stars of various configurations.
+        The mass, pressure, and radius are normalized to the star's stellar mass, central pressure and stellar radius.
+        }
+        \label{fig: max pressure and mass}
+\end{figure}
 
 \begin{table}[H]
     \centering
@@ -361,67 +374,18 @@ In the bottom plot, we see that the pressure of all the stars approaches $0$ as 
 
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.85\textwidth]{../scripts/figurer/pion_star/mass_radius_all.pdf}
-    \caption{
-        The mass-radius relation of pion stars, including leptons to enforce charge neutrality, is compared with pion stars of only pions.
-        The radius is given in kilometers and the mass in units of solar masses.
-        }
-        \label{fig: mass-radius relation with leptons}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.85\textwidth]{../scripts/figurer/pion_star/max_pressure_mass.pdf}
-    \caption{
-        The pressure and mass of the maximum-mass configuration of pion stars of various configurations.
-        The mass, pressure, and radius are normalized to the star's stellar mass, central pressure and stellar radius.
-        }
-        \label{fig: max pressure and mass}
-\end{figure}
-
-
-
 
 \section{Comparison with QCD-lattice results}
 
 
 In this section, we compare our results with earlier results obtained using lattice QCD methods.
-These are first-principle numerical methods which works directly with QCD without any assumption of symmetry breaking or the creation of an effective theory.
+These are first-principle numerical methods that use QCD directly without any assumption of symmetry breaking or the construction of an effective theory.
 The results of \citeauthor{brandtNewClassCompact2018} for the equation of state of the pion condensate and the system with pions and electrons or muons, presented in~\autocite{brandtNewClassCompact2018}, are shown and compared with our results in \autoref{fig: brandt eos}.
-There is a good agreement between their and our results.
-For $p<0.5$, the NLO results for the pion condensate are in excellent agreement, while the deviation increase somewhat above this.
 With these equations of state, they obtained the mass-radius relations of pion stars.
 We compare our results for the various mass-radius relations with theirs, including uncertainties, in \autoref{fig: brandt mass-radius}. 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.85\textwidth]{../scripts/figurer/brandt_eos.pdf}
-    \caption{
-        The equation of state of the pion condensate with and without charged leptons.
-        The results of \citeauthor{brandtNewClassCompact2018}~\autocite{brandtNewClassCompact2018}, in solid color incorporating uncertainty, are compared with the leading order results obtained in this text.
-        Both energy density and pressure are shown in units of $u_0 = f_\pi^2 m_\pi^2$.
-        The data was provided by the authors.
-    }
-    \label{fig: brandt eos}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=.85\textwidth]{../scripts/figurer/pion_star/mass_radius_brandt_all.pdf}
-    \caption{
-        The mass-radius relations for the various pion stars.
-        The results of \citeauthor{brandtNewClassCompact2018}~\citeauthor{brandtNewClassCompact2018}, solid color incorporating uncertainty, are compared with our LO results, dashed lines.
-        The radius is in units of $\text{km}$, while mass is in solar masses, $M_\odot$.
-        The data was provided by the authors.
-    }
-    \label{fig: brandt mass-radius}
-\end{figure}
-
 \citeauthor{brandtNewClassCompact2018} do not use the values of physical constants from the Particle Data Group (PDG) \autocite{particledatagroupReviewParticlePhysics2020}, as we have used in this thesis.
 Instead, they use the central values~\autocite{adhikariQuarkPionAxial2021}
-\todo[]{Vet vi hva de brukte for elektroner/muoner?}
 %
 \begin{align}
     m_\pi &= 131\,\text{MeV},\\
@@ -446,7 +410,7 @@ The dependence of the characteristic radius and mass on the energy density is
     r_0 \propto m_0 \propto \frac{1}{\sqrt{u_0}} = \frac{1}{m_\pi f_\pi}.
 \end{equation}
 %
-As a result, $r_0$ and $m_0$ shrink about $5\%$ if we use the constants from the QCD research instead of those from the PDG.
+As a result, $r_0$ and $m_0$ shrink about $5\%$ if we use the lattice constants instead of those from the PDG.
 When including other leptons and thus other mass scales or higher-order corrections, the exact effect of changing these constants becomes more complicated than a simple scaling, as there are more mass scales.
 However, the magnitude of the shift is similar.
 In \autoref{fig: different constants compare}, we compare both leading order and next-to-leading order results using both the constants from the PDG and those used by \citeauthor{brandtNewClassCompact2018}.
@@ -454,6 +418,42 @@ On the top are the results of the pure pion condensate and on the bottom the $\p
 These results are compared with the those of \citeauthor{brandtNewClassCompact2018} from \autocite{brandtNewClassCompact2018}.
 In all cases, we see that lowering constants results in larger and heavier stars.
 
+There is, in general, a good agreement between the results of \citeauthor{brandtNewClassCompact2018} and our results.
+In the case of the pure pion-condensate using lattice constants, we see that the next-to-leading order result is a significantly better fit than the leading order results, at least for $p<0.5 u_0$.
+This is within the region where we noted chiral perturbation theory seems to converge quickly.
+\todo[]{Include and write about $\pi\ell\nu_\ell$ eos}
+The different constants here do not affect the results significantly, as we compared normalized pressure and energy density.
+For the mass-radius relation of the pure pion star, we see that the next-to-leading order results using the constants from the lattice simulation are in very good agreement with the numerical results, and are a significant improvement over the leading order results.
+The fact that the results using the PDG constants become a less good fit from LO to NLO suggests that the lattice constants give a better comparison.
+In the case of the $\pi\ell\nu_\ell$-system, the results using lattice constants are the best fit.
+Here, the leading order results alone are in good agreement as the neutrino is dominating.
+There is a modest improvement in the agreement at the next-to-leading order.
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.85\textwidth]{../scripts/figurer/brandt_eos.pdf}
+    \caption{
+        The equation of state of the pion condensate with and without charged leptons.
+        The results of \citeauthor{brandtNewClassCompact2018}, in solid color incorporating uncertainty, are compared with the leading order results obtained in this text.
+        Both energy density and pressure are shown in units of $u_0 = f_\pi^2 m_\pi^2$.
+        The data was provided by the authors~\autocite{brandtNewClassCompact2018}.
+    }
+    \label{fig: brandt eos}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.85\textwidth]{../scripts/figurer/pion_star/mass_radius_brandt_all.pdf}
+    \caption{
+        The mass-radius relations for the various pion stars.
+        The results of \citeauthor{brandtNewClassCompact2018}, solid color incorporating uncertainty, are compared with our LO results, dashed lines.
+        The radius is in units of $\text{km}$, while mass is in solar masses, $M_\odot$.
+        The data was provided by the authors~\autocite{brandtNewClassCompact2018}.
+    }
+    \label{fig: brandt mass-radius}
+\end{figure}
 
 
 \begin{figure}[p]

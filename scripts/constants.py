@@ -102,7 +102,7 @@ def get_R_mu():
 if __name__=="__main__":
     pass
 
-    for const in get_const_fermi_gas(): print(const)
+    # for const in get_const_fermi_gas(): print(const)
     # for const in get_const_pion(): print(const)
 
     # print("%.3e"%(C/(1e3)**4))
@@ -143,4 +143,6 @@ if __name__=="__main__":
 
     # print(Dm**4/m_K0**4)
     # print(4*pi*f_pi/m_pi)
+
+    print(m_rho/m_pi)
 
