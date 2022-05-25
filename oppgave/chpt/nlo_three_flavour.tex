@@ -2,7 +2,7 @@
 \label{section: nlo chpt}
 
 
-To construct the next-to-leading order Lagrangian, one follows the same approach of combining the building blocks we found in \autoref{chapter: chpt} into locally $\Lie{SU}{3}_R\times\Lie{SU}{3}_L$-invariant terms.
+To construct the next-to-leading order Lagrangian, one follows the same approach of combining the building blocks we used in \autoref{section: chiral perturbation theory} into locally $\Lie{SU}{3}_R\times\Lie{SU}{3}_L$-invariant terms.
 However, a naïve approach will lead to redundant terms in the Lagrangian which, on the face of it might seem independent, but are, in fact, equivalent to linear combinations of other terms.
 Such terms may be eliminated by reparametrization and the use of the equation of motion, as shown for two-flavors in \autoref{appendix: rewriting terms}.
 Furthermore, trace relations allow for different, but equivalent forms of the Lagrangian.
@@ -18,7 +18,7 @@ With this, the NLO Lagrangian is~\autocite{gasserChiralPerturbationTheory1985}
     \nonumber
     \Ell_4 
     ={} &
-    L_1\Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger}
+    L_1\Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger}^2
     + L_2 \Tr{\nabla_\mu \Sigma \nabla_\nu \Sigma^\dagger} 
     \Tr{\nabla^\mu \Sigma \nabla^\nu \Sigma^\dagger}
     + L_3 \Tr{\left(\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger\right)^2} \\ \nonumber
@@ -59,9 +59,9 @@ We obtained the next-to-leading order static Lagrangian by substituting the vacu
 %
 All the terms in the NLO Lagrangian up to and including $\Oh((\pi/f)^2)$, calculated using CAS-software, are shown in \autoref{section: symbolic calculations}.
 
-$L_i$ and $H_i$  are bare coupling constants, which are unobservable, but they are related to the observable renormalized coupling constants $L_i^r$ and $H_i^r$.
+$L_i$ and $H_i$  are bare coupling constants, which are unobservable, but they are related to the renormalized coupling constants $L_i^r$ and $H_i^r$.
 We will perform renormalization by using dimensional regularization, in which the divergent integrals are generalized to $d$-dimensions, and the $\overline{\mathrm{MS}}$-scheme.
-This is discussed in more detail in \autoref{section:free scalar field}.
+This is discussed in more detail in \autoref{subsection: renormalization}.
 In this case, the bare and renormalized constants are related by
 %
 \begin{align}
@@ -123,8 +123,7 @@ $L_i^r(M)$ and $H_i^r(M)$ are the constants of integration of the renromalizatio
 These must be measured at some energy $M$.
 This only applies if the numerical constants $\Gamma_i$/$\Delta_i$ are non-zero.
 If they are zero, then the coupling is not running, and the measured value can be applied at all energies.
-The values used in this text are given in \autoref{table: coupling constants}.
-They are given at the $\rho$-meson mass, $m_\rho = 770\, \text{MeV}$.
+The values used in this text are given in \autoref{table: coupling constants}, at the $\rho$-meson mass, $m_\rho = 770\, \text{MeV}$.
 %
 \begin{table}
     \centering

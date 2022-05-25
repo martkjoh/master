@@ -3,16 +3,14 @@
 
 We begin by computing the thermodynamic properties to leading order.
 This will give an accurate first approximation, which we can verify by next-to-leading order results later.
-In this section and the two next, we will substitute the physical masses, such as $m_\pi$, for the tree-level masses \autoref{leading order pion mass mu=0}, \autoref{leading order charged kaon mass mu=0}, \autoref{leading order neutral kaon mass mu=0}, and \autoref{leading order eta mass mu=0}, as they agree to leading order.
-
+In this section and the two next, where we are working with leading order results only, we will not distinguish between the physical masses, such as $m_\pi$ and $m_\Kpm$, and the leading tree-level masses, such as $\bar m$ and $m_{\Kpm,0}$, as they agree to leading order.
 
 \subsection{Pure pion condensate}
 \label{subsection: pure pion condensate}
 
 
 The leading order contribution to free energy is given by the static Lagrangian, to first order in Weinberg's power counting scheme.
-We start by assuming $e = 0$, i.e., no electromagnetic interactions.
-We thus get the leading order contribution to the free energy density from \autoref{static three-flavor Lagrangian}, and it is
+We start by assuming $e = 0$, i.e., no electromagnetic interactions, which means the relevant static Lagrangian is given by \autoref{static three-flavor Lagrangian}, and the free energy density is therefore
 %
 \begin{equation}
     \label{free energy pion condensate}
@@ -34,7 +32,7 @@ The parameter $\alpha$ is determined by minimizing $\Eff$ for a given value of $
 %
 This gives an explicit formula for $\alpha$ in terms of $\mu_I$.
 As long as the chemical potential is lower than the critical value $\mu_I^c = m_\pi$, the only solution to this equation is $\alpha = 0$.
-As the chemical potential reaches this critical value, the system undergoes a phase transition from the vacuum phase to the \emph{pion condensate} phase.
+As the chemical potential reaches this critical value, the system undergoes a phase transition from the vacuum phase to the \emph{pion-condensed} phase.
 In this new phase, the solution is
 %
 \begin{align}
@@ -314,6 +312,7 @@ To compare the free energy between condensed phases.
 
 
 
+
 \subsection{Transition between phases}
 
 
@@ -366,7 +365,7 @@ We can expand this to first order in the difference in mass between the kaons, $
         \mu_\Ko^2 - m_\Ko^2 + \sqrt{(\mu_\Ko^2 + m_\Ko^2)^2 + 4\mu_\Ko^2 \Delta m^2}
     \right)\\
     &= \mu_\Ko \left(1 + \frac{\Delta m^2}{\mu_\Ko^2 + m_\Ko^2}\right)
-    + \Oh\left( \frac{\Delta m^4}{ (\mu_\Ko^2 + m_\Ko^2)^2} \right)
+    + \Oh\left( \frac{\Delta m^4}{ (\mu_\Ko^2 + m_\Ko^2)^2} \right).
 \end{align}
 %
 This is an excellent approximation, as $\Delta m^4 / 4 m_\Ko^4 \approx 4 \times 10^{-4}$.
@@ -472,7 +471,7 @@ The line between the kaon condensates is moved slightly closer to $\mu_I = 0$, a
         The phase diagram of \chpt\ in the $\mu_I-\mu_S$-plane.
         The black lines are results without the electromagnetic interactions, while red lines are results including them. 
         To the right, we have zoomed in on two of the triple points.
-        At the top is the intersection of the normal, neutral kaon condensed and charged kaon condensed phases, while at the bottom is the intersection of the normal, pion condensed, and charged kaon condensed phases.
+        At the top is the intersection of the vacuum, neutral kaon condensed and charged kaon condensed phases, while at the bottom is the intersection of the vacuum, pion condensed, and charged kaon condensed phases.
         }
     \label{fig: phase diagram EM}
 \end{figure}

@@ -1,23 +1,25 @@
 In \autoref{chapter: chpt} have now built up machinery to do calculations in chiral perturbation theory in the case of a non-zero isospin chemical potential $\mu_I$.
 Our ultimate goal is to model pion stars, in which condensed pions form a gravitationally bound astrophysical object.
 As we saw in \autoref{section: TOV equation}, we need the equation of state, $u = u(p)$, for this.
+In this chapter, we will use the results from \chpt\ to calculate the thermodynamic properties of our system, such as the phase diagram, pressure, and energy density.
+We will study how the inclusion of electromagnetic interactions, charged leptons and neutrinos, and higher-order calculations affect these properties.
 
-In this chapter, we will use the results from \chpt\ to calculate the thermodynamic properties of our system, such as pressure and energy density, which allows us to deduce the equation of state of pion condensate.
-We will study how the inclusion of electromagnetic interactions, charged leptons and neutrinos, and higher-order calculations affect these properties, and we will study the phase diagram of \chpt.
+
+
 
 \section{Free energy in a homogenous system}
 
 The key to the thermodynamic behavior of our system is free energy, $F$.
-In our case, we are working with a homogenous system, in which we may write the free energy as $F = V\Eff$, where $\Eff$ is the free energy density.
 We use the grand canonical ensemble, so this is the grand canonical free energy, also called the grand canonical potential.
+In our case, we are working with a homogenous system, in which we may write the free energy as $F = V\Eff$, where $\Eff$ is the free energy density.
 It is related to the partition function of statistical mechanics, $\mathcal{Z}$, by
 %
 \begin{equation}
     \Eff = - \frac{1}{V \beta} \ln \mathcal{Z}.
 \end{equation}
 %
-Here, $V$ is the volume, and $\beta = 1/T$ is inverse temperature.
-Using imaginary-time formalism for thermal field theory, described in \autoref{appendix: thermal field theory}, we find that the partition function is given by the path integral of the \emph{Euclidean} Lagrange density, as shown in equation \autoref{free scalar result 2}.
+Here, $V$ is the volume, and $\beta = 1/T$ is the inverse temperature.
+In \autoref{appendix: thermal field theory}, we show using the imaginary-time formalism for thermal field theory that the partition function is given by the path integral of the \emph{Euclidean} Lagrange density, as shown in equation \autoref{free scalar result 2}. 
 In the zero temperature limit  $\beta \rightarrow \infty$, the partition function is related to the generating functional $Z = Z[j]$, as described in \autoref{section: path integral}, by a Wick rotation.
 The free energy density at zero temperature is therefore
 %
@@ -28,10 +30,11 @@ The free energy density at zero temperature is therefore
 where $VT$ is the volume of space-time.
 As we found in \autoref{1PI effective action}, this equals the effective potential in the ground state.
 In \autoref{section: effective action}, we found an explicit formula for this to one-loop order, \autoref{effective potential}.
+This loop expansion must, as we will discuss later, be used in conjunction with the Weinberg power counting scheme. 
 In \autoref{appendix: consisten expansion}, we show how to expand free energy density and other thermodynamic quantities in a self-consistent way.
 
 We are after the equation of state, to which the free energy density will give us access.
-The free energy is defined as
+Thermodynamically, grand canonical free energy is defined as a Legendre transformation of the internal energy $U$,
 %
 \begin{equation}
     \label{thermodynamic free energy}
@@ -40,9 +43,8 @@ The free energy is defined as
     F = - S \dd T - p \dd V - {\sum}_i Q_i \dd \mu_i.
 \end{equation}
 %
-Here, $U$ is the energy and $S$ is the entropy.
-$Q_i$ are conserved charges, in our case the isospin and strangeness charge, and $\mu_i$ their corresponding chemical potentials.
-We work with $T = 0$.
+Here $S$ is the entropy, $Q_i$ are conserved charges, in our case the isospin and strangeness charge, and $\mu_i$ their corresponding chemical potentials.
+In this thesis, we will assume $T = 0$.
 From \autoref{thermodynamic free energy}, the pressure is then given by
 %
 \begin{equation}
@@ -63,5 +65,7 @@ From \autoref{thermodynamic free energy} we get the energy density, $u = U/V$, a
     \label{energy density form pressure and isospin}
     u(\mu_I) = -p(\mu_i) + {\sum }_i\mu_i n_i(\mu_i),
 \end{equation}
+%
+The equation of state, $u = u(p)$, is now implicitly defined through the parametrization by the chemical potential.
 
 

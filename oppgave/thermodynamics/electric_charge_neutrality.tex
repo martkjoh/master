@@ -11,11 +11,14 @@ In the case of $\mu_S = 0$, the charge density is
 \end{equation}
 %
 A realistic astrophysical object will not have a macroscopic electric charge.
-Therefore, we will model pion stars with the additional constraint of charge neutrality by including charged leptons, of muons or electrons, as free fermions.
-\todo[inline]{nevn at en egt. burde ta med en-loop effekter for å få helt konsekvent rekkeutvikling.}
+This is due to the long-ranged nature of the Coulomb force, which ensures that any macroscopically charged objects will neutralize each other, given that the total amount of charge is zero.
+Therefore, we will model pion stars with the additional constraint of charge neutrality by including charged leptons, muons or electrons, as free fermions.
 These leptons have an electric charge of $- e$.
-We may therefore use the results from \autoref{section: cold fermi star} and \autoref{section: fermions}.
-The electric charge density of the leptons is given $- e n_\ell$, where $n_\ell$ is the particle number, the lepton number.
+As we saw in \autoref{subsection: Weinberg's power counting scheme}, $e$ has a chiral dimension.
+Strictly speaking, then, we should include self-interactions in one-loop order for a consistent expansion scheme.
+However, as QED converges quickly this will be a very small correction and we will only include tree-level effects.
+We may therefore use the results from \autoref{section: cold fermi star}.
+The electric charge density of the leptons is given $- e n_\ell$, where $n_\ell$ is the particle number, in this case, the lepton number.
 In \autoref{Fermi gas particle density}, we found the expression
 %
 \begin{equation}
@@ -75,7 +78,7 @@ In this case, we can write the expression for $\mu_\ell(\mu_I)$ as an explicit f
 These relationships are illustrated in \autoref{fig: chemical potentials}.
 The plot on the left is the electron chemical potential as a function of isospin chemical potential, both normalized to the masses of their corresponding particles, while the muon chemical potential is on the right.
 We see that both lepton potentials are suppressed, relative to the isospin chemical potential, by the $A$ constant in \autoref{equation mu ell mu I}.
-The electron is much lighter than the pion, and therefore grows much faster than the muon chemical potential.
+The electron is much lighter than the pion and therefore grows much faster than the muon chemical potential.
 
 \begin{figure}[!htb]
     \centering
@@ -105,7 +108,7 @@ The lepton contribution to these, which we found in \autoref{Fermi gas energy de
     \left[(2x_f^3 - 3x_f) \sqrt{1 + x_f^2} + 3\arcsinh\left(x_f\right)\right].
 \end{align}
 %
-The contribution from the pion condensate is, as we found in \autoref{pressure leading order chpt} and \autoref{energy density leading order chpt},
+The contribution from the pion condensate is, as we found in \autoref{pressure leading order chpt} and \autoref{energy density leading order chpt}, is
 %
 \begin{align}
     p_\pi &= \frac{1}{2} u_0 \left( \frac{\mu_I}{m_\pi} - \frac{m_\pi}{\mu_I}\right)^2 \\
@@ -194,6 +197,7 @@ The full equation of state is compared to the non-relativistic limit in \autoref
 
 
 
+
 \subsection{Neutrinos}
 \label{subsection: neutrinos}
 
@@ -206,21 +210,15 @@ The leading order diagrams for the relevant interactions are
 %
 \begin{equation*}
     \feynmandiagram [horizontal=a to b]{
-        u [particle=$u$] 
-        -- [fermion] a -- [fermion]
-        d [particle=$\bar d$], 
+        u [particle=$u$]-- [fermion] a -- [fermion] d [particle=$\bar d$], 
         a -- [photon, edge label=$W^+ $] b,
-        ell [particle=$\ell^+$] -- [fermion] b -- [fermion]
-        nu [particle=$\nu_\ell$]
+        ell [particle=$\ell^+$] --[fermion] b --[fermion] nu [particle=$\nu_\ell$]
         };
     \quad\quad\quad\quad\quad\quad\quad
     \feynmandiagram [horizontal=a to b]{
-        u [particle=$\bar u$]
-        -- [anti fermion] a -- [anti fermion]
-        d [particle=$d$], 
+        d [particle=$d$] --[fermion] a --[fermion] u [particle=$\bar u$],
         a -- [photon, edge label=$W^-$] b,
-        ell [particle=$\ell^-$] -- [anti fermion] b -- [anti fermion]
-        nu [particle=$\bar \nu_\ell$]
+        nu [particle=$\bar \nu_\ell$] --[fermion] b --[fermion] ell [particle=$\ell^-$]
         };
 \end{equation*}
 %
@@ -239,8 +237,8 @@ This will result in effective interactions of the form
         \feynmandiagram [horizontal=a to b]{
             pi [particle=$\pi^-$] -- [fermion] a  [blob], 
             a -- [photon, edge label=$W^- $] b,
-            ell [particle=$\ell^-$] -- [anti fermion] b -- [anti fermion]
-            nu [particle=$\bar \nu_\ell$]
+            nu [particle=$\bar \nu_\ell$] --[fermion] b --[fermion] 
+            ell [particle=$\ell^-$]
             };
 \end{equation*}
 %
