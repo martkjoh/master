@@ -32,7 +32,7 @@ f_rho = 154
 
 # C = 1/2 * f_pi**2 / e**2 * Dm_EM**2
 C = f_pi**2/(2*e**2) * (m_pipm**2 - m_pi**2)
-C2 = 3 / (32*pi**2) * m_rho**2*f_rho**2 * ln(f_rho**2 /(f_rho**2 - f_pi**2))
+Curech = 3 / (32*pi**2) * m_rho**2*f_rho**2 * ln(f_rho**2 /(f_rho**2 - f_pi**2))
 
 Dm_EM = sqrt(2 * e**2/f_pi**2 * C)
 Dm = sqrt(m_K0**2 - (m_Kpm**2 - Dm_EM**2))
@@ -123,8 +123,6 @@ if __name__=="__main__":
     # print(get_R_mu())
 
     # print(Dm)
-    
-    # print(Δ)
 
     # max_radius_pion_star()
     # u0 = f_pi**2*m_pi**2
@@ -144,5 +142,14 @@ if __name__=="__main__":
     # print(Dm**4/m_K0**4)
     # print(4*pi*f_pi/m_pi)
 
-    print(m_rho/m_pi)
+    # print(m_rho/m_pi)
+
+    #####
+    # Electromagnetic constants 
+    ####
+
+    # print(Curech/1e3**4)
+    # print(C/(f_pi**2*m_pi**2))
+    # print(Dm_EM)
+    # print((sqrt(1+Dm_EM**2/m_Kpm**2)-1)*m_Kpm/m_pi)
 

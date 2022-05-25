@@ -68,11 +68,26 @@ x = var("x")
 var("f")
 
 
-p = vector([function("phi"+str(i), latex_name="\\varphi_"+str(i))(x) for i  in range(1, len(l)+1)])
+p = vector([
+	function("phi"+str(i), latex_name="\\varphi_"+str(i))(x) 
+	for i  in range(1, len(l)+1)
+])
 p_s = e * sum([l[i]*p[i] for i in range(len(l))])
 
-pvar = vector([var("phi"+str(i), latex_name="\\varphi_"+str(i)) for i  in range(1, len(l)+1)])
-dpvar = vector([var("dphi"+str(i), latex_name="\\partial_\\mu\\varphi_"+str(i)) for i  in range(1, len(l)+1)])
+pvar = vector([
+	var(
+		"phi"+str(i), 
+		latex_name="\\varphi_"+str(i),
+		domain="real"
+	) for i  in range(1, len(l)+1)
+])
+dpvar = vector([
+	var(
+		"dphi"+str(i), 
+		latex_name="\\partial_\\mu\\varphi_"+str(i), 
+		domain="real"
+	) for i  in range(1, len(l)+1)
+])
 
 
 
@@ -97,6 +112,7 @@ def sub(S, p, pvar):
 			for k in range(3):
 				S[j, k]=S[j, k].subs(p[i]==p0)
 
+
 def get_S(n, li, indx="mu"):
     if li==None: Ai = one
     else: Ai = A(li)
@@ -105,10 +121,9 @@ def get_S(n, li, indx="mu"):
     dS = diff(S, x)
     dSd = diff(Sd, x)
 
-                
     sub(S, p, pvar)
     sub(Sd, p, pvar)
-    dpvar = vector([var("dphi"+str(i)+indx, latex_name="\\partial_\\"+indx+"\\varphi_"+str(i)) for i  in range(1, len(l)+1)])
+
     sub(dS, diff(p, x), dpvar)
     sub(dSd, diff(p, x), dpvar)
 
