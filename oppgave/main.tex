@@ -20,15 +20,22 @@
     \maketitle
     % \includepdf[fitpaper=true,pages=-,pagecommand={},width=\textwidth]{introduction/front_page.pdf}
 
-    \chapter{Preface}
+    \chapter*{Preface}
+    \addcontentsline{toc}{section}{Preface}
     \input{introduction/preface.tex}
-    \chapter{Sammendrag}
+    \clearpage
+
+    \section*{Sammendrag}
+    \addcontentsline{toc}{section}{Sammendrag}
     \input{introduction/sammendrag.tex}
-    \chapter{Abstract}
+    \clearpage
+    
+    \section*{Abstract}
+    \addcontentsline{toc}{section}{Abstract}
     \input{introduction/abstract.tex}
 
 
-    \listoftodos
+    % \listoftodos
     \clearpage
     \setcounter{tocdepth}{1}
     \tableofcontents
@@ -88,10 +95,12 @@
     \label{chapter: pion stars}
     \input{pion_star/pion_star.tex}
 
-    \chapter{Conculding remarks}
+    \chapter{Concluding remarks}
     \label{Chapter: cocnlusion and discussion}
     \input{introduction/conclusion.tex}
 
+
+    \appendix
     \part*{Appendices}
     \addcontentsline{toc}{part}{Appendices}
     

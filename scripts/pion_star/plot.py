@@ -676,7 +676,7 @@ def plot_light():
 
 
 def plot_nlo(t=""):
-    fig, ax = plt.subplots(figsize=(16, 6))
+    fig, ax = plt.subplots(figsize=(12, 6))
     sol1 = load_sols(name=t)
     sol2 = load_sols(name=t+"_nlo")
     sols = [
@@ -905,8 +905,8 @@ if __name__=="__main__":
     # plot_eos_nlo()
 
     # plot_mass_radius("_nlo", rmax=False)
-    # plot_nlo()
-    # plot_nlo("_neutrino")
+    plot_nlo()
+    plot_nlo("_neutrino")
 
     # plot_light()
     # plot_light_nogrid()

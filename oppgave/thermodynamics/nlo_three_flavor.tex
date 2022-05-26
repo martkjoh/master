@@ -1,19 +1,17 @@
 \section{Next-to-leading order results}
 \label{section: nlo thermodynamics}
 
+In \autoref{section: nlo chpt}, we found the most general Lagrangian at next-to-leading order in Weinberg's power counting scheme, that is, of chiral dimension $D = 4$.
+The parameters in this Lagrangian contained divergences of the form $1 / \epsilon$.
+These are to counteract the divergences which now will appear, as we start to calculate the loop contributions to the free energy from the $D = 2$ Lagrangian.
+As we showed in \autoref{subsection: Weinberg's power counting scheme}, all term of chiral dimension $D$ scale as $t^D$ when the external momenta is scaled as $Q\rightarrow tQ$, chemical momentum as $\mu\rightarrow t\mu$, quark masses as $m_q\rightarrow t^2 m_q$ and electric charge as $e\rightarrow t e$.
+The tree-level contributions from $\Ell_D$ are thus of chiral dimension $D$.
+The $n$-level corrections to these results, however, will be suppressed by $p^{2n}$, and are therefore of chiral dimension $D+2n$.
+As such, they can be renormalized by the sum of the $n-1$-loop contributions of $\Ell_{D-2}$, $n-2$-loop contributions of $\Ell_{D-4}$ and so on.~\autocite{gasserChiralPerturbationTheory1984,weinbergPhenomenologicalLagrangians1979a}.
+This expansion in both loops and chiral dimension, which is used to evaluate all physical quantities, is elaborated on in \autoref{appendix: consisten expansion}.
+As a result, the next-to-leading order contribution consists of tree-level contributions for $\Ell_4$ and one-loop contribution from $\Ell_2$.
+In this section, we will calculate the NLO contribution to the free energy density using this technique.
 
-The next-to-leading order contributions to free energy are of two types.
-Contributions of the first type are the one-loop effects from the Lagrangian of the lowest chiral dimension $\Ell_2$, and the second type are tree-level effects from the next-to-leading order Lagrangian, $\Ell_4$.
-We must include all these contributions to be able to renormalize the results.
-When calculating loop integrals, the results will diverge, and they must be regularized and renormalized.
-As laid out in \autoref{section: chiral perturbation theory}, the power counting scheme ensures that all terms in $\Ell_{2n}$ scales as $t^{2n}$ when the momenta $p$ are scaled as  $p \rightarrow t p$.\footnote{
-    Remember that we scale pion mass $\bar m^2 = B_0(m_u + m_d)$ as $t^2$, and the chemical potential and fundamental charge as $t$.
-    }
-The tree-level free energy from $\Ell_{2n}$ is thus of order $p^{2n}$.
-The $m$-loop correction to the tree level result is then suppressed by $p^{2m}$~\autocite{gasserChiralPerturbationTheory1984,weinbergPhenomenologicalLagrangians1979a}.
-Our one-loop calculation using $\Ell_2$ therefore contains divergences of order $p^{4}$. 
-Since $\Ell_4$ is, by construction, the most general possible Lagrangian at order $p^4$, it contains coupling constants that can be renormalized to absorb all these divergences.
-This expansion in both loops and chiral dimension, which is used to evaluate all physical quantities, is elaborated on in \autoref{appendix: consisten expansion},
 
 
 \subsection{One-loop contribution}
@@ -280,7 +278,7 @@ The approach for the neutral kaon is the same, only with different masses.
 The result is
 %
 \begin{equation}
-    \Eff_\Kpm^{(1)}
+    \Eff_\Ko^{(1)}
     =
     - \frac{1}{2} \frac{ \mu^{-2 \epsilon}}{(4\pi)^2} 
     \left(
@@ -447,7 +445,7 @@ The NLO relationships that determine the bare parameters are~\autocite{gasserChi
             \frac{1}{6(4\pi)^2}
             \ln\frac{m_{\eta,0}^2}{M^2}
         \right)\frac{m_{\eta,0}^2}{f^2}
-    \Bigg] \\
+    \Bigg], \\
     m_{K}
     =&\,
     m_{K,0}^2
@@ -461,7 +459,7 @@ The NLO relationships that determine the bare parameters are~\autocite{gasserChi
             \ln\frac{m_{\eta,0}^2}{M^2}
         \right)
         \frac{m_{\eta,0}^2}{f^2}
-    \right]\\
+    \right],\\
     f_\pi^2
     =&\, f^2
     \left[
@@ -475,13 +473,13 @@ The NLO relationships that determine the bare parameters are~\autocite{gasserChi
             16 L_4^r
             - \frac{1}{(4\pi)^2} \ln\frac {m_{K,0}^2}{M^2}
         \right) \frac{m_{K,0}^2}{f^2}
-    \right]
+    \right].
 \end{align}
 %
 These three equations allow us to determine $\bar m$, $m_S$ and $f$ to next-to-leading order.
 The numerical results are shown in \autoref{table: nlo values}.
 
-\begin{table}[!htb]
+\begin{table}[H]
     \centering
     \caption{The leading order and next-to-leading order values for the bare masses and decay constant. These values are for $\Delta m = 0$.}
     \label{table: nlo values}
@@ -506,7 +504,7 @@ The next-to-leading order relation between $\alpha$ and $\mu_I$ is given by, as 
 
 The result is compared to the leading order result in \autoref{fig: nlo quantitites}, together with the derived thermodynamic quantities $n_I$, $p$ and $u$.
 The LO and NLO results for $\alpha$ are very close.
-It has been shown analytically that the phase transition happens at $\mu_I=m_\pi$ also at next-to-leading order, at least in the two-flavor case~\autocite{adhikariTwoflavorChiralPerturbation2019}.
+It has been shown analytically that the phase transition happens at $\mu_I=m_\pi$ also at next-to-leading order~\autocite{adhikariTwoflavorChiralPerturbation2019}.
 This amounts to showing that the free energy has the form
 %
 \begin{equation}
@@ -563,7 +561,7 @@ Finally, we compare the different equations of state in \autoref{fig: all eos}.
     \centering
     \includegraphics[width=.82\textwidth]{../scripts/figurer/pion_star/pion_all_eos.pdf}
     \caption{
-        The equation of state of pion condensate alone, and including other particles.
+        The equation of state of pion condensate alone, and including leptons.
         Both the pressure and the energy density are normalized to $u_0 = f_\pi^2 m_\pi^2$.
     }
     \label{fig: all eos}

@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="standard_model2.svg">
+   sodipodi:docname="standard_model.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,15 +25,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="260.34476"
-     inkscape:cy="707.5081"
+     inkscape:zoom="1.108872"
+     inkscape:cx="375.40525"
+     inkscape:cy="720.012"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1016"
-     inkscape:window-x="1920"
+     inkscape:window-width="1680"
+     inkscape:window-height="986"
+     inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
      inkscape:snap-grids="true"
@@ -466,7 +466,7 @@
     <circle
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.21428871;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path4844-64-2-98"
-       cx="155.5322"
+       cx="156.60583"
        cy="120.45322"
        r="9.9590349" />
     <g
@@ -491,7 +491,7 @@
            style="fill:#000000;stroke-width:0" /></g>    </g>
     <g
        id="g2840"
-       transform="translate(68.119121,-4.6977553)">
+       transform="translate(67.880515,-4.6977553)">
       <g
          word-spacing="normal"
          letter-spacing="normal"
@@ -555,7 +555,7 @@
            style="fill:#000000;stroke-width:0" /></g>    </g>
     <g
        id="g3148"
-       transform="matrix(0.8316437,0,0,0.8316437,79.555979,40.435258)">
+       transform="matrix(0.8316437,0,0,0.8316437,80.865803,40.67387)">
       <g
          word-spacing="normal"
          letter-spacing="normal"
@@ -576,58 +576,58 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:aakar;-inkscape-font-specification:aakar;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="50.32402"
-       y="53.687416"
+       x="50.085415"
+       y="52.732994"
        id="text3158"><tspan
          sodipodi:role="line"
          id="tspan3156"
-         x="50.32402"
-         y="53.687416"
+         x="50.085415"
+         y="52.732994"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:aakar;-inkscape-font-specification:aakar;stroke-width:0.26458332">Fermions</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:aakar;-inkscape-font-specification:aakar;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="142.94838"
-       y="53.804802"
+       x="142.70978"
+       y="52.85038"
        id="text3158-4"><tspan
          sodipodi:role="line"
          id="tspan3156-8"
-         x="142.94838"
-         y="53.804802"
+         x="142.70978"
+         y="52.85038"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;font-family:aakar;-inkscape-font-specification:aakar;stroke-width:0.26458332">Bosons</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:aakar;-inkscape-font-specification:aakar;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="33.040424"
-       y="61.365833"
+       y="62.643219"
        id="text3158-1"><tspan
          sodipodi:role="line"
          id="tspan3156-0"
          x="33.040424"
-         y="61.365833"
+         y="62.643219"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:aakar;-inkscape-font-specification:aakar;stroke-width:0.26458332">leptons</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:aakar;-inkscape-font-specification:aakar;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="86.38179"
-       y="61.579514"
+       y="62.772541"
        id="text3158-1-3"><tspan
          sodipodi:role="line"
          id="tspan3156-0-0"
          x="86.38179"
-         y="61.579514"
+         y="62.772541"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05555534px;font-family:aakar;-inkscape-font-specification:aakar;stroke-width:0.26458332">quarks</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:aakar;-inkscape-font-specification:aakar;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="4.2654324"
-       y="61.643715"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.58751345px;line-height:1.25;font-family:aakar;-inkscape-font-specification:aakar;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="2.5176928"
+       y="62.374214"
        id="text3206"><tspan
          sodipodi:role="line"
          id="tspan3204"
-         x="4.2654324"
-         y="61.643715"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:aakar;-inkscape-font-specification:aakar;stroke-width:0.26458332">gen</tspan></text>
+         x="2.5176928"
+         y="62.374214"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.88126993px;font-family:aakar;-inkscape-font-specification:aakar;stroke-width:0.26458332">gen.</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot3220"
@@ -640,7 +640,7 @@
            x="-20"
            y="262.51965"
            style="-inkscape-font-specification:aakar;font-family:aakar;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;" /></flowRegion><flowPara
-         id="flowPara3226"></flowPara></flowRoot>    <text
+         id="flowPara3226" /></flowRoot>    <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:aakar;-inkscape-font-specification:aakar;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="111.125"
@@ -650,7 +650,7 @@
          id="tspan3233"
          x="111.125"
          y="107.21391"
-         style="stroke-width:0.26458332"></tspan></text>
+         style="stroke-width:0.26458332" /></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:aakar;-inkscape-font-specification:aakar;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -661,7 +661,7 @@
          id="tspan3237"
          x="108.47916"
          y="107.21391"
-         style="stroke-width:0.26458332"></tspan></text>
+         style="stroke-width:0.26458332" /></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:aakar;-inkscape-font-specification:aakar;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -716,7 +716,7 @@
            height="220"
            x="0"
            y="252.51965" /></flowRegion><flowPara
-         id="flowPara3328"></flowPara></flowRoot>    <text
+         id="flowPara3328" /></flowRoot>    <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:1.25;font-family:aakar;-inkscape-font-specification:aakar;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="0"
@@ -726,16 +726,16 @@
          id="tspan3330"
          x="0"
          y="70.172249"
-         style="stroke-width:0.26458332"></tspan></text>
+         style="stroke-width:0.26458332" /></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 2.6458333,64.166657 119.0624967,10e-7"
+       style="fill:none;stroke:#000000;stroke-width:0.26458329px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -0.1059163,65.598293 121.8142463,10e-7"
        id="path3334"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 2.6458333,56.229157 190.4999967,10e-7"
+       d="m 0,56.229157 193.14583,10e-7"
        id="path3336"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
@@ -756,5 +756,29 @@
        d="M 68.791666,56.229157 V 135.60416"
        id="path3342"
        inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M -3.2927931e-7,135.60417 H 193.41042"
+       id="path3336-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 0,42.999999 193.14583,43"
+       id="path3336-6"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M -6.2633333e-6,42.999967 V 135.60391"
+       id="path3340-7"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 193.28637,43.000002 V 135.60417"
+       id="path3338-5"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
   </g>
 </svg>
