@@ -3,15 +3,17 @@
 \usepackage{tikz-cd}
 \usepackage[compat=1.0.0]{tikz-feynman}
 
-\tikzfeynmanset{ fermion/.style = {
+
+\tikzfeynmanset{ Fermion/.style = {
    decoration={
      markings,
      mark=at position 0.5
-          with {\arrow[xshift=.7mm]{latex[width=1mm,length=1mm]}}
+          with {\arrow[xshift=.7mm, scale=1.2]{latex}}
      },
    postaction=decorate
    }
 }
+
 
 
 

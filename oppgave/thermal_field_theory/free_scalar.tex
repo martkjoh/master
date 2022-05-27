@@ -5,12 +5,15 @@ The procedure for obtaining the thermal properties of an interacting scalar fiel
 One starts with a free theory, which can be solved exactly.
 Then an interaction term is added, which is accounted for perturbatively by using Feynman diagrams.
 The Euclidean Lagrangian for a free scalar gas is, after integrating by parts,
+%
 \begin{equation}
     \Ell_E = \frac{1}{2} \varphi(X) \left( -\partial_E^2 + m^2 \right) \varphi(X)
 \end{equation}
+%
 Here, $X = (\tau, \vec x)$ is the Euclidean coordinate resulting from the Wick-rotation as described in the last section.
 We have also introduced the Euclidean Laplace operator, $\partial_E^2 = \partial_\tau^2 + \nabla^2$.
 Following the procedure to obtain the thermal partition function yields
+%
 \begin{equation}
     Z = C \int_S \D \varphi(X) 
     \exp{
@@ -18,15 +21,17 @@ Following the procedure to obtain the thermal partition function yields
         \varphi(X) \left( -\partial_E^2 + m^2 \right) \varphi(X)
     }.
 \end{equation}
+%
 Here, $\Omega$ is the domain $[0, \beta] \times V$.
 We then insert the Fourier expansion of $\varphi$ and change the functional integration variable to the Fourier components.
 The integration measures are related by
 \begin{equation*}
-    \D \varphi(X) = \det(\frac{\delta \varphi(X)}{\delta \tilde \varphi(K)}) \D\tilde \varphi(K),
+    \D \varphi(X) = \det\left(\frac{\delta \varphi(X)}{\delta \tilde \varphi(K)}\right) \D\tilde \varphi(K),
 \end{equation*}
 where $K = (\omega_n, \vec k)$ is the Euclidean Fourier-space coordinate.
 The determinant factor which appears may be absorbed into the constant $C$, as the integration variables are related by a linear transform.
-The action becomes 
+The action becomes
+%
 \begin{align*}
     S & = - \int_\Omega \dd X\, \Ell_E 
     = - \frac{1}{2} V \beta \int_\Omega \dd X \int_{\tilde \Omega} \dd K \int_{\tilde \Omega} \dd K' \,
@@ -43,11 +48,12 @@ The action becomes
     \right)
     \tilde \varphi(K),
 \end{align*}
+%
 where $\omega_k^2 = \vec k^2 + m^2$.
 $\tilde \Omega$ is the reciprocal space corresponding to $\Omega$.
-We used the fact that $\varphi$ is real, which implies that $\tilde \varphi(-K) = \tilde \varphi(K)^*$, as well as the identity 
-% \autoref{thermal delta}.
+We used the fact that $\varphi$ is real, which implies that $\tilde \varphi(-K) = \tilde \varphi(K)^*$, as well as the identity \autoref{thermal delta}.
 This gives the partition function 
+%
 \begin{equation}
     Z = C \int_{\tilde S} \D \tilde \varphi(K) 
     \exp{
@@ -55,7 +61,9 @@ This gives the partition function
         \tilde \varphi(K)^* \left[\beta^2 (\omega_n^2+ \omega_k^2)\right] \tilde \varphi(K)
     },
 \end{equation}
+%
 Going back to before the continuum limit, this integral can be written as a product of Gaussian integrals and may therefore be evaluated
+%
 \begin{align*}
     Z = C \prod_{n=-\infty}^\infty \prod_{k \in \tilde V}
     \left(
@@ -70,15 +78,17 @@ Going back to before the continuum limit, this integral can be written as a prod
     C \prod_{n=-\infty}^\infty \prod_{k \in \tilde V} 
     \sqrt{\frac{2 \pi}{\beta^2 (\omega_n^2 + \omega_k^2)}}.
 \end{align*}
+%
 The partition function is related to free energy $F$ through
+%
 \begin{equation}
     \label{result free scalar 1}
     \frac{F}{T V}= - \frac{\ln(Z)}{V} = \frac{1}{2} \int_{\tilde \Omega} \dd K \ln[\beta^2(\omega_n^2 + \omega_k^2)] + \frac{F_0}{TV},
 \end{equation}
+%
 where $F_0$ is a constant.
 
-A faster and more formal way to get to this result is to compare the partition function to the multidimensional version of the Gaussian integral~
-% \cite{Kapusta:finiteTemp, Peskin:IntroQFT}.
+A faster and more formal way to get to this result is to compare the partition function to the multidimensional version of the Gaussian integral~\autocite{kapustaFiniteTemperatureFieldTheory2006,peskinIntroductionQuantumField1995}.
 The partition function has the form 
 \begin{equation*}
     I_n = \int_{\R^n} \dd^n x\, \exp{- \frac{1}{2} \langle x, D_0^{-1} x\rangle },
@@ -89,13 +99,15 @@ By diagonalizing $D_0^{-1}$, we get the result
     I_n = \sqrt{\frac{(2 \pi)^n}{\det(D_0^{-1})}}.
 \end{equation*}
 We may then use the identity
+%
 \begin{equation}
     \label{lndettrln}
-    \det(D_0^{-1}) = \prod_i \lambda_i = \exp{\Tr[\ln(D_0^{-1})]},
+    \det(D_0^{-1}) = \prod_i \lambda_i = \exp{\text{Tr}[\ln(D_0^{-1})]},
 \end{equation}
+%
 where $\lambda_i$ are the eigenvalues of $D_0^{-1}$.
 The trace in this context is defined by the vector space $D_0^{-1}$ acts on.
-For given an orthonormal basis $x_n$, such that $\langle x_n, x_n'\rangle = \delta_{nn'}$ the trace can be evaluated as $\Tr{D_0^{-1}} = \sum_n \langle x_n, D_0^{-1} x_n \rangle$.
+For given an orthonormal basis $x_n$, such that $\langle x_n, x_{n'}\rangle = \delta_{nn'}$ the trace can be evaluated as $\Tr{D_0^{-1}} = \sum_n \langle x_n, D_0^{-1} x_n \rangle$.
 Identifying 
 \begin{equation*}
     \langle x, D_0^{-1} x\rangle = \int_\Omega \dd X \varphi(X)\left(-\partial_E^2+m^2\right)\varphi(X),
@@ -117,7 +129,7 @@ This is found by diagonalizing the operator,
     \tilde \varphi(K)^* [\beta^2(\omega_k^2 +\omega_n^2)] \tilde \varphi(K),
 \end{equation*}
 leaving us with the same result as we obtained in 
-% \autoref{result free scalar 1},
+\autoref{result free scalar 1},
 \begin{equation*}
     \beta F 
     = \frac{1}{2} \Tr{\ln(-\partial_E^2 + m^2)} 

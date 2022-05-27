@@ -10,14 +10,14 @@ When evaluating thermal integral, we will often encounter sums of the form
 \end{equation}
 %
 where the sum is over either the bosonic Matsubara frequencies $\omega_n = 2n \pi / \beta,\, n \in \mathbb{Z}$, or the fermionic ones, $\omega_n = (2n + 1) \pi /\beta ,\, n \in \mathbb{Z}$.
-$\mu \in \R$ is a chemical potential.
-$g$ may be a function of $\beta$, but we assume it is independent of $\omega$.
+Furthermore, $\mu \in \R$ is chemical potential, and$g$ may be a function of $\beta$, but we assume it is independent of $\omega$.
 Thus, the factor $\beta^2$ could strictly be dropped, but it is kept to make the argument within the logarithm dimensionless.
 We define the function
 %
 \begin{equation}
     \label{i func}
-    i(\omega, \mu) = \frac{1}{\omega} \odv{\omega} j(\omega, \mu) 
+    i(\omega, \mu) 
+    = \frac{1}{\omega} \odv{}{\omega} j(\omega, \mu) 
     = \frac{1}{\beta} \sum_{\omega_n} \frac{1}{(\omega_n + i\mu)^2 + \omega^2}. 
 \end{equation}
 
@@ -39,7 +39,8 @@ This function obeys
 We can expand it around the Bose Matsubara frequencies on the imaginary line:
 %
 \begin{equation}
-    i n_B[i (\omega_n + \epsilon)] = \frac{i}{e^{i\beta \epsilon + 2 \pi i n} - 1}
+    i n_B[i (\omega_n + \epsilon)] 
+    = \frac{i}{e^{i\beta \epsilon + 2 \pi i n} - 1}
     = i [i\beta \epsilon + \Oh{(\epsilon)} ]^{-1} \sim  \frac{1}{\epsilon \beta}.
 \end{equation}
 %
@@ -146,7 +147,7 @@ we get the final form of \autoref{j func}
 \end{equation}
 %
 The extra $\omega$-independent term $g'(\beta)$ is an integration constant.
-We see there are temperature dependent terms, one due to the particle and one due to the anti-particle, and one due to the antiparticle, as they have opposite chemical potentials.
+We see there are temperature-dependent terms, one due to the particle and one due to the anti-particle and one due to the antiparticle, with opposite signs in front of chemical potentials.
 
 We now consider the sum over fermionic frequencies, which we for clarity denote $\tilde \omega_n$ in this chapter.
 The procedure, in this case, is the same, except that we have to use a function with poles at the fermionic Matsubara frequencies.

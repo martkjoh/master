@@ -1,18 +1,21 @@
 \section{*Interacting scalar}
 \label{section: interacting scalar}
 
+
 We now study a scalar field with a $\lambda \varphi^4$ interaction term.
 We write the Lagrangian in the form
+%
 \begin{equation*}
     \Ell = \Ell^{(0)} + \Ell^{(I)}, \quad 
     \Ell^{(0)} = 
     \frac{1}{2} \partial_\mu \varphi \partial^\mu \varphi - m^2 \varphi^2 , \quad
-    \Ell^{(I)} = - \frac{\lambda}{4!} \varphi^4
+    \Ell^{(I)} = - \frac{\lambda}{4!} \varphi^4.
 \end{equation*}
 %
-$\Ell^{(I)}$ is called the interaction term, and makes it impossible to exactly solve for the partition function.
+$\Ell^{(I)}$ is called the interaction term and makes it impossible to exactly solve for the partition function.
 Instead, we turn to perturbation theory.
 The canonical partition function in this theory is
+%
 \begin{equation}
     Z = \Tr{e^{- \beta \hat H}}
     = \int_S \D \varphi \, \exp{
@@ -24,6 +27,7 @@ The canonical partition function in this theory is
 Here, $S_0$ and $S_I$ denote the Euclidean action due to the free and interacting Lagrangian, respectively.
 The domain of integration $S$ is again periodic field configurations $\varphi(\beta, \vec x) = \varphi(0, \vec x)$.
 We may write the free energy as
+%
 \begin{equation*}
     - \beta F = \ln
     \left[
@@ -35,54 +39,62 @@ We may write the free energy as
 %
 where $Z_0$ is the partition function of the free theory.
 The correction to the partition function is thus given by
+%
 \begin{equation}
     Z_I = \sum_{n=0}^\infty \frac{(-1)^n}{n!} \ex{{S_I}^n}_0,
 \end{equation}
 %
 where
+%
 \begin{equation}
     \ex{A}_0 = \frac{
         \int_S \D \varphi \, A \, e^{-S_0} }
     {\int_S \D \varphi \, e^{-S_0}}.
 \end{equation}
 %
-
 To evaluate expectation values of the form $\ex{\varphi(X_1) ... }_0$, we introduce the partition function with a source term
+%
 \begin{align}
     Z[J] = \int_S \D \varphi \, \exp{
         - \frac{1}{2} \int_\Omega \dd X \, \varphi (-\partial_E^2 + m^2) \varphi
         + \int_\Omega \dd X \, J \varphi
     }.
 \end{align}
-
+%
 Thermal propagators are the generalization of the time-ordered two-point functions $\ex{T\{\varphi(x) \varphi(y) \}}$ of the vacuum formalism.
 For some differential operator $D^{-1}$, the thermal propagator is defined as
+%
 \begin{equation}
     D^{-1} D(X, Y) = \beta \delta(X - Y).
 \end{equation}
 %
 The Fourier transformed propagator is, assuming $D(X, Y) = D(X-Y, 0)$,
+%
 \begin{align}
     \nonumber
     \tilde D(K, K') 
     & = \frac{1}{V \beta^3} \int_{\Omega} \dd X \dd Y \, 
-    D(X, Y) \exp(- i [X\cdot K + Y\cdot K']) \\ \nonumber
+    D(X, Y) \exp{- i [X\cdot K + Y\cdot K']} \\ \nonumber
     & = \frac{1}{V \beta^3} \int_{\Omega} \dd X' \dd Y' \, D(X', 0) 
-    \exp(- i [X'\cdot \frac{1}{2} (K - K') + Y\cdot (K + K')]) \\
+    \exp{- i [X'\cdot \frac{1}{2} (K - K') + Y \cdot (K + K')] } \\
     & = \frac{1}{V \beta^2} \tilde D(K) \delta(K + K'),
 \end{align}
 where
+%
 \begin{equation}
     \tilde D(K) = \int \dd X e^{iK\cdot X} D(X, 0).
 \end{equation}
 %
 We write the thermal propagator of the free field as $D_0(X, Y)$.
 With this, we may complete the square,
+%
 \begin{align}
-    Z[J] = Z[0]\exp{\frac{1}{2} \int_{\Omega} \dd X \dd Y J(X) D_0(X, Y) J(Y)}
-    = Z[0] \exp(W[J]).
+    Z[J] = Z[0]
+    \exp{\frac{1}{2} \int_{\Omega} \dd X \dd Y J(X) D_0(X, Y) J(Y)}
+    = Z[0] \exp{W[J]}.
 \end{align}
 We can now write
+%
 \begin{equation}
     \ex{\varphi(X)\varphi(Y)}_0 
     = \frac{1}{Z[0]}
@@ -91,15 +103,16 @@ We can now write
     = D_0(X, Y).
 \end{equation}
 %
-This generalizes to higher order expectation values,
+This generalizes to higher-order expectation values,
+%
 \begin{equation}
     \ex{\varphi(X_i) \dots \varphi(X_n)}_0
     = \frac{1}{Z[0]} \left(\prod_{i=1}^n \frac{\delta}{\delta J(X_i)}\right) 
     Z[J] \Big|_{J=0},
 \end{equation}
 %
-
 Using Wick's theorem, as described in \autoref{section: path integral}, the expectation values we are evaluating can be written
+%
 \begin{align*}
     \ex{{S_I}^m}_0 & 
     = \left(- \frac{\lambda }{4!}\right)^m 
@@ -117,6 +130,7 @@ where $X_i$ for $i>m$ is defined to equal $X_j$, where $j = i \mod m$.
 More simpliy,  $X_{m + i} = X_i$.
 The functions $a,\,b$ represents a possible pairing, as described in \autoref{section: path integral}.
 Inserting the Fourier expansions of the field gives
+%
 \begin{align*}
     & \ex{{S_I}^m}_0 \\
     &\quad 
@@ -127,7 +141,7 @@ Inserting the Fourier expansions of the field gives
     \ex{\varphi(K_{a(1)}) \varphi(K_{b(1)})}_0
     \dots
     \ex{\varphi(K_{a(2m)}) \varphi(K_{b(2m)})}_0     
-    \exp(i {\sum}_{i=1}^{m} X_i \cdot K_i)\\ 
+    \exp{i {\sum}_{i=1}^{m} X_i \cdot K_i}\\ 
     & \quad  
     = \left(-\frac{\lambda }{4!}\right)^m 
     \frac{(V \beta)^{2m} \beta^m}{(V \beta^2)^{2m}}
@@ -147,6 +161,7 @@ Inserting the Fourier expansions of the field gives
 %
 Here we have used that $V \beta^2 \tilde D_0(K, P) = \tilde D_0(K) \delta(P + K)$, where $\tilde D_0(K)$ is the thermal propagator for the free field.
 In this case, it is
+%
 \begin{equation}
     \tilde D_0(K) = \tilde D_0(\omega_n,
      \vec k) = \frac{1}{\omega_k^2 + \omega_n^2}.
@@ -156,25 +171,41 @@ This expectation value can be represented graphically using Feynman diagrams.
 The thermal $\lambda \varphi^2$-theory gets the prescription
 %
 \begin{align}
-    %https://www.aidansean.com/feynman/
-    \includegraphics[width=0.20\textwidth, valign=c]{figurer/feynman-diagram/vertex.pdf}
+    \feynmandiagram[small, horizontal=a to b, baseline=(c)]{
+        a --[fermion, edge label'=$K_1$] c[dot] --[anti fermion,edge label=$K_4$] d, 
+        b--[fermion, edge label=$K_2$]c--[anti fermion, edge label'=$K_3$]e,
+    };
     & = -\lambda \beta
     \delta \left({\sum}_i K_i \right), \\ \nonumber \\
-    \includegraphics[width=0.2\textwidth, valign=c]{figurer/feynman-diagram/propagator.pdf}
+    \feynmandiagram[horizontal=a to b, baseline=(a)]{a --[fermion, label=$K$] b};
     & = \frac{1}{\beta} D_0(K).
 \end{align}
 %
-Lastly, one has to integrate over internal momenta and divide by the symmetry factor of the diagram $s$, which is described in detail in~
-% \cite{Peskin:IntroQFT}.
-
+Lastly, one has to integrate over internal momenta and divide by the symmetry factor of the diagram $s$, which is described in detail in~\autocite{peskinIntroductionQuantumField1995}.
+%
 Calculating $\ex{{S_I}^n}_0$ boils down to the sum of all possible Feynman diagrams with $n$ vertices.
 The first example is 
+%
 \begin{align}
     \ex{S_I}_0 =
-    \frac{1}{8} \includegraphics[width=0.20\textwidth, valign=c]{figurer/feynman-diagram/buble.pdf}.
+    \frac{1}{8}
+    \begin{tikzpicture}[baseline=(c)]
+    \begin{feynman}
+        \vertex (a) at (0, 0);
+        \vertex (b) at (1, 0);
+        \vertex (c) at (2, 0);
+        \filldraw[black] (b) circle (1pt);
+        \diagram*{
+            {[edges=fermion]
+            (a)--[half right, looseness=1.7] (b)--[half right, looseness=1.7](a),
+            (b)--[half right, looseness=1.7] (c)--[half right, looseness=1.7](b),
+        }};
+    \end{feynman}
+    \end{tikzpicture}.
 \end{align}
-
+%
 In \autoref{section: path integral}, we saw that the sum of all vacuum diagrams is the exponential of the sum of all \emph{connected} diagrams, so the free energy of the interacting theory is given by
+%
 \begin{equation}
     - \beta F = \ln Z_0 + \Sigma(\mathrm{all\,\, connected\,\, diagrams}).
 \end{equation}

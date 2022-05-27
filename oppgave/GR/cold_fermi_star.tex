@@ -273,17 +273,6 @@ As in the case of an incompressible fluid, the pressure follows a half bell-shap
 The black dashed line corresponds to the solution with the maximum mass, which will discuss shortly.
 We see that the pressure and mass curves change most drastically when the central pressure is higher than that corresponding to the most massive star.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{../scripts/figurer/pressure_mass.pdf}
-    \caption{
-        Top: The pressure normalized to central value, as a function of radius, normalized to the stellar radius.
-        Bottom: The mass normalized to the total mass, as a function of radius, normalized to the stellar radius. 
-        This is plotted for several different values of central pressure, which is indicated by the color scheme.
-        }
-    \label{fig: pressure and mass as a function of radius}
-\end{figure}
-
 In \autoref{fig: mass radius relationship fermi gas}, we see the relationship between the mass and radius of the star.
 This line is parametrized by the base-10 logarithm of the central pressure, $p(0)$, normalized by $p_0 = u_0$.
 The cross marks the maximum mass, $M_\mathrm{max} = 0.711 \, M_\odot$, which corresponds to a radius of $R = 9.20 \, \mathrm{km}$.
@@ -295,7 +284,6 @@ However, the two results of Oppenheimer and Volkoff furthest away differ signifi
 The black dashed line is the absolute mass-radius constraint, \autoref{mass radius constraint}, and any stable configuration must be on the right side of this line.
 As we predicted from looking at the non-relativistic equation of state, the mass decreases with the star's radius, at least for stars with low central pressure.
 
-
 In \autoref{fig: mass radius relationship comparison}, we compare the mass-radius relationship obtained from the full theory with results from approximations.
 The lowest line is obtained by using both the full TOV equation and the exact equation of state.
 The next line above is obtained using the non-relativistic equation of state together with the full TOV equation.
@@ -303,16 +291,28 @@ The second uppermost line is obtained from the exact equation of state and the N
 The uppermost line uses both the Newtonian approximation to the TOV equation and the non-relativistic approximation for the equation of state.
 This last line corresponds to a polytrope in Newtonian gravity, as we studied in \autoref{subsection: Newtonian limit and polytropes}.
 Unlike the other systems, it does not seem to have an upper limit for the mass, as expected.
+\vfill
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=\textwidth]{../scripts/figurer/pressure_mass.pdf}
+    \caption{
+        Top: The pressure normalized to central value, as a function of radius, normalized to the stellar radius.
+        Bottom: The mass normalized to the total mass, as a function of radius, normalized to the stellar radius. 
+        This is plotted for several different values of central pressure, which is indicated by the color scheme.
+        }
+    \label{fig: pressure and mass as a function of radius}
+\end{figure}
 
 
-\begin{figure}[H]
+\begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_neutron.pdf}
     \caption{The mass-radius relationship of a star made of a cold gas of neutrons. The line is parametrized by the central pressure $p_c$. The corss indicate the maximum mass solution. The blue circles are results form the 1939 paper of Oppenheimer and Volkoff~\autocite{oppenheimerMassiveNeutronCores1939}.}
     \label{fig: mass radius relationship fermi gas}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_comparison.pdf}
     \caption{The mass-radius relationship of a cold gas of neutrons. The lowest line is obtained from the TOV equation and full equation of state. The middle line is from the TOV equation and the non-relativistic equation of state. The upper line is obtained from the Newtonian approximation of the TOV equation and the non-relativistic equation of state.}

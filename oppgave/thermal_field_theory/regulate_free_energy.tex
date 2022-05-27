@@ -14,7 +14,8 @@ Noticing that the integral is spherically symmetric, we may write the two contri
 %
 \begin{equation}
     \Eff_0 = \frac{1}{2} \frac{1}{2 \pi^2}\int_{\R} \dd k \, k^2 \sqrt{k^2 + m^2}, \quad
-    \Eff_T = \frac{T^4}{2 \pi^2}\int_\R \dd x \, x^2  \ln(1 - e^{-\sqrt{x^2 + (m/T)^2}}), 
+    \Eff_T = \frac{T^4}{2 \pi^2}\int_\R \dd x \, x^2  
+    \ln\left(1 - \exp{-\sqrt{x^2 + (m/T)^2}}\right), 
 \end{equation}
 %
 The temperature-independent part, $\Eff_0$, is divergent, and we must impose a regulator and then add counter-terms.
@@ -22,7 +23,7 @@ $\Eff_T$, however, is convergent.
 To see this, we use the series expansion $\ln(1 + \epsilon) \sim \epsilon + \Oh{\epsilon}$ to find the leading part of the integrand for large $k$'s, 
 %
 \begin{equation}
-    x^2 \ln(1 - e^{-\sqrt{x^2 + (\beta m)^2}}) \sim - x^2 e^{-x}, 
+    x^2 \ln\left(1 - \exp{-\sqrt{x^2 + (\beta m)^2}}\right) \sim - x^2 e^{-x}, 
 \end{equation}
 %
 which is exponentially suppressed, making the integral convergent.
@@ -63,12 +64,13 @@ This integral is calculated in \autoref{subsection: free energy integral}, with 
         + \frac{3}{2}
         + \ln \frac{\tilde\mu^2}{m^2}
     \right)
-    + \Oh{\epsilon}.
+    + \Oh(\epsilon).
 \end{equation}
 %
 As detailed in \autoref{section: integral}, this result uses the $\overline{\text{MS}}$-scheme.
 Now that we have applied a regulator, we can handle the divergence in a well-defined way.
 When $\epsilon \neq 0$, we can subtract terms that are proportional to $\epsilon^{-1}$, and be left with a term that is finite in the limit $\epsilon \rightarrow 0$.
+
 Consider an arbitrary Lagrangian, 
 %
 \begin{equation}
@@ -113,15 +115,14 @@ We therefore write
     \right],
 \end{align*}
 %
-where we have introduced the dimensionfull parameter $\mu$ to ensure that $\lambda_n$ has the correct mass dimension, so that the action integral stays dimensionless.
+where we have introduced the dimensionful parameter $\mu$ to ensure that $\lambda_n$ has the correct mass dimension so that the action integral stays dimensionless.
 The functions $a_m$ are then determined to each order in perturbation theory by calculating Feynman diagrams.
 As $\mu$ again is arbitrary, $\lambda_4'$ should not depend on this parameter.
 In this case, we chose the same renormalization scale as we did when regulating the one-loop integral.
 This is only for our own convenience.
-This means that if we change $\mu \rightarrow \mu'$, then $\lambda_i^r$ and $a_m$ must adjust to compensate and keep $\lambda_n$ constant~
-\cite{t_hoft_dim_reg}.
+This means that if we change $\mu \rightarrow \mu'$, then $\lambda_i^r$ and $a_m$ must adjust to compensate and keep $\lambda_n$ constant~\autocite{thooftDimensionalRegularizationRenormalization1973}.
 
-The vacuum energy term absorbs the divergence in the one loop contribution to the free energy density.
+The vacuum energy term absorbs the divergence in the one-loop contribution to the free energy density.
 It is
 %
 \begin{equation}
@@ -136,7 +137,7 @@ Using the expansion in terms of the renormalized coupling, we have,
 \end{equation}
 %
 where $d = 4 - 2\epsilon$.
-After adding \autoref{scalar field static term} to the Lagrangian of the free scalar, the temperature independent free energy density becomes
+After adding \autoref{scalar field static term} to the Lagrangian of the free scalar, the temperature-independent free energy density becomes
 %
 \begin{equation}
     \Eff_0 \sim - \mu^{-2 \epsilon}  \frac{1}{4} \frac{m^4}{(4 \pi)^2}  
@@ -159,6 +160,6 @@ The free energy is now
     \frac{T^4}{2\pi^2} \int \dd x \, x^2 \ln\left(1 - \exp{-\sqrt{x^2 + \beta^2 m^2}}\right).
 \end{equation}
 %
-Notice that all choices we have made up until now, such as defining $\lambda_4 = m^4 \lambda_4'$ and using the same renormalization scale $\mu$, has no impact on this result.
+Notice that all choices we have made up until now, such as defining $\lambda_4 = m^4 \lambda_4'$ and using the same renormalization scale $\mu$, have no impact on this result.
 Different choices would force us to define $\lambda_4^r$ and $a_4$ differently.
 

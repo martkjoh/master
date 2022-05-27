@@ -1,17 +1,17 @@
 \documentclass{minimal}
 
-\usepackage[compat=1.1.0]{tikz-feynman}
+\usepackage[compat=1.0.0]{tikz-feynman}
 
 
-\tikzfeynmanset{ fermion/.style = {
-   decoration={
-     markings,
-     mark=at position 0.5
-          with {\arrow[xshift=.7mm]{latex[width=1mm,length=1mm]}}
-     },
-   postaction=decorate
-   }
-}
+% \tikzfeynmanset{ fermion/.style = {
+%    decoration={
+%      markings,
+%      mark=at position 0.5
+%           with {\arrow[scale=1.2]{latex}}
+%      },
+%    postaction=decorate
+%    }
+% }
 
 \begin{document}
 \begin{equation}
@@ -53,4 +53,48 @@
         b --[fermion, out=50, in=310, min distance=2cm] b,
     };
 \end{equation}
+
+\begin{equation}
+    \feynmandiagram[small, horizontal=a to c]{
+        a --[quarter left] b 
+          --[quarter left] c 
+          --[quarter left] d 
+          --[quarter left] a,
+        % a --[quarter left] b2 --[quarter left] c2 --[quarter left] d2 --[quarter left] a,
+    };
+    \feynmandiagram [horizontal=a to c] {
+    a -- [red!0!blue, fermion, quarter left] b
+      -- [red!33!blue, fermion, quarter left] c
+      -- [red!66!blue, fermion, quarter left] d
+        -- [red!100!blue, fermion, quarter left] a,
+};
+\end{equation}
+
+
+\vspace{5cm}
+\hspace{5cm}
+aa
+\begin{equation}
+    \begin{tikzpicture}[baseline=(c)]
+        \begin{feynman}
+            \vertex (a) at (0, 0);
+            \vertex (b) at (1, 0);
+            \vertex (c) at (2, 0);
+            \filldraw[black] (b) circle (1pt);
+            \diagram*{
+                {[edges=fermion]
+                (a)--[half right, looseness=1.7] (b)--[half right, looseness=1.7](a),
+                (b)--[half right, looseness=1.7] (c)--[half right, looseness=1.7](b),
+            }};
+        \end{feynman}
+    \end{tikzpicture}
+\end{equation}
+
+% \feynmandiagram[horizontal=a to b, baseline=(c)]{
+%     a --[fermion, half right, looseness=1.7] b[dot] --[fermion, half right, looseness=1.7] a,
+%     b --[fermion, half right, looseness=1.7] c --[fermion, half right, looseness=1.7] b,
+%     };
+
+
+
 \end{document}

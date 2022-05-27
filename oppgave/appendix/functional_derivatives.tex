@@ -20,6 +20,7 @@ Although this section is written with a single scalar-valued function $\varphi$,
 
 
 
+
 \subsection{Functional derivative}
 
 The functional derivative is base on an arbitrary \emph{variation} $\eta$ of the function $\varphi$.
@@ -236,9 +237,9 @@ Thus,
     \delta \sqrt{|g|}  
     =
     \frac{1}{2}
-    \frac{1}{\sqrt{|g|}} \frac{\det(g^\mu{}_{\nu})}{|\det(g^\mu{}_{\nu})|} 
-    \delta \det(g^\mu{}_{\nu})
-    = -\frac{1}{2}\sqrt{|g|} g^{\mu \nu} \delta g_{\mu \nu},
+    \frac{1}{\sqrt{|g|}} \frac{g}{|g|} 
+    \delta g
+    = -\frac{1}{2}\sqrt{|g|} g^{\mu \nu} \delta g_{\mu\nu}
 \end{align}
 %
 where we used
@@ -277,7 +278,7 @@ With the Lagrangian in \autoref{Lagrangian curved spacetime}, we get
     \right).
 \end{equation}
 %
-We recognize the $(\mu, \nu )= (0, 0)$-component as negative half the Hamiltonian density, which supports the definition of the definition of the stress-energy tensor \autoref{definition stress energy densor}.~\autocite{carrollSpacetimeGeometryIntroduction2019}
+We recognize the $(\mu, \nu )= (0, 0)$-component as negative half the Hamiltonian density, which supports the definition of the definition of the stress-energy tensor \autoref{definition stress energy densor}~\autocite{carrollSpacetimeGeometryIntroduction2019}.
  
 
 

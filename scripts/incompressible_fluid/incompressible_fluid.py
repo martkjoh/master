@@ -26,7 +26,7 @@ def rel():
     k = np.linspace(k0, k1, N)
 
 
-    fig, ax = plt.subplots(figsize=(12, 8))
+    fig, ax = plt.subplots(figsize=(12, 6))
 
     ax.set_xlabel("$r / r_0$")
     ax.set_ylabel("$p / p_0$")
@@ -49,7 +49,7 @@ def newt():
     k = np.linspace(k0, k1, N)
 
 
-    fig, ax = plt.subplots(figsize=(12, 8))
+    fig, ax = plt.subplots(figsize=(12, 6))
 
     ax.set_xlabel("$r / r_0$")
     ax.set_ylabel("$p / p_0$")

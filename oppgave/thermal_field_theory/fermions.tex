@@ -1,48 +1,64 @@
 \section{*Fermions}
 \label{section: fermions}
 
-\todo[inline]{fix: intro til grassmantall, utled path integral}
 
-The anti-periodic nature of fermion-fields, as mentioned in \autoref{section: imaginary-time formalism}, can be determined by studying the properties of the thermal Greens function.
+The derivation of the fermionic path integral is similar to the scalar one, but with some slight but important differences.
+If $\psi$ and $\bar \psi$ are fermionic spinor fields, relevant relations are~\autocite{laineBasicsThermalField2016}
+%
+\begin{align}
+    \one 
+    &=
+    \int \D \psi \D \bar \psi \,
+    \exp{- \int \dd X \, \bar \psi \psi}
+    \ket{\psi} \bra{\psi} \\
+    \braket{\bar \psi | \psi } 
+    &= \exp{\int \dd X\, \bar \psi \psi}\\
+    Z 
+    &= \Tr{\hat \rho} 
+    = \int \D \psi \D \bar \psi\,
+    \exp{- \int \dd X \, \bar \psi \psi} \braket{- \psi | e^{i\beta \hat H} | \psi},
+\end{align}
+%
+The anti-periodic nature of fermion-fields, as mentioned in \autoref{section: imaginary-time formalism}, is due to these differences.
+We can verify them by studying the properties of the thermal Greens function.
 The thermal Greens function may be written 
-\begin{equation*}
-    D(X_1, X_2) = D(\vec x, \vec y, \tau_1, \tau_2) 
-    = \bra{\Omega} e^{-\beta \hat H} \T{ \hat \varphi(X_1) \hat \varphi(X_2) } \ket{\Omega}.
-\end{equation*}
-$\T{...}$ is time-ordering operator, defined as
-\begin{equation*}
-    \T{\varphi(\tau_1)\varphi(\tau_2)}
-    = \theta(\tau_1 - \tau_2) \varphi(\tau_1)\varphi(\tau_2)
-    + \nu \theta(\tau_2 - \tau_1) \varphi(\tau_2)\varphi(\tau_1),
-\end{equation*}
-where $\nu = \pm 1$ for bosons and fermions respectively, and $\theta(\tau)$ is the Heaviside step function.
-In the same way that $i \hat H$ generates the time translation of a quantum field operator through $\hat\varphi(x) = \hat\varphi(t, \vec x) = e^{it\hat H} \hat \varphi(0, \vec x) e^{-it\hat H} $, the imaginary-time formalism implies the relation
 \begin{equation}
+    D(X_1, X_2) = D(\vec x, \vec y, \tau_1, \tau_2) 
+    = \Tr{e^{-\beta H} \psi(\tau_1, \vec x)\psi(\tau_2, \vec y) }.
+\end{equation}
+In the same way that $i \hat H$ generates the time translation of a quantum field operator through 
+$
+\hat\varphi(x) = \hat\varphi(t, \vec x) = e^{it\hat H} \hat \varphi(0, \vec x) e^{-it\hat H} 
+$, 
+the imaginary-time formalism implies the relation
+$
     \hat\varphi(X) = \hat\varphi(\tau, \vec x) 
     = e^{\tau\hat H} \hat \varphi(0, \vec x) e^{-\tau \hat H}.
-\end{equation}
+$
 Using $\one = e^{\tau \hat H} e^{-\tau \hat H}$ and the cyclic property of the trace, we show that, assuming $\beta>\tau>0$,
 \begin{align*}
     D(\vec x, \vec y, \tau, 0)
-    & = \bra{\Omega}e^{-\beta \hat H} \T{\varphi(\tau, \vec x) \varphi(0, \vec y)}\ket{\Omega} \\
-    & = \frac{1}{Z} \Tr{
+    % = \bra{\Omega}e^{-\beta \hat H} \T{\varphi(\tau, \vec x) \varphi(0, \vec y)}\ket{\Omega} 
+    &= \frac{1}{Z} \Tr{
         e^{-\beta \hat H} \varphi(\tau, \vec x) \varphi(0, \vec y)
     } \\
-    & = \frac{1}{Z} \Tr{
-        \varphi(0, \vec y) e^{-\beta \hat H} \varphi(\tau, \vec x)
-    } \\
+    % & = \frac{1}{Z} \Tr{
+    %     \varphi(0, \vec y) e^{-\beta \hat H} \varphi(\tau, \vec x)
+    % } \\
     & = \frac{1}{Z} \Tr{
         e^{-\beta \hat H} e^{\beta \hat H} \varphi(0, \vec y) 
         e^{-\beta \hat H} \varphi(\tau, \vec x)
     } \\
     & = \frac{1}{Z} \Tr{
         e^{-\beta \hat H} \varphi(\vec y, \beta) \varphi(\tau, \vec x)
-    } \\
-    & = \nu \bra{\Omega}        
-    e^{-\beta \hat H} \T{ \varphi(\tau, \vec x) \varphi( \beta, \vec y) }
-    \ket{\Omega}.
+    } 
+    = \nu D (\vec x, \vec y, \tau, 0)
+    % = \nu \bra{\Omega}        
+    % e^{-\beta \hat H} \T{ \varphi(\tau, \vec x) \varphi( \beta, \vec y) }
+    % \ket{\Omega}.
 \end{align*}
-This implies that $\varphi(0, x) = \nu \varphi(\beta, \varphi)$, which shows that bosons are periodic in time, as stated earlier, while fermions are anti-periodic.
+This implies that $\varphi(0, x) = \nu \varphi(\beta, \varphi)$, where $\nu = \pm 1$ for bosons and fermions respectively, which shows that bosons are periodic in time, as stated earlier, while fermions are anti-periodic.
+
 
 The Lagrangian density of a free fermion is
 \begin{equation}
@@ -52,21 +68,6 @@ This Lagrangian is invariant under the transformation $\psi \rightarrow e^{-i \a
 \begin{equation}
     j^\mu = \pdv{\Ell}{(\partial_\mu \psi)} \delta \psi=  \bar \psi \gamma^\mu \psi.
 \end{equation}
-The corresponding conserved charge is 
-\begin{equation}
-    Q = \int_V \dd^3 x\, j^0 = \int_V \dd^3 x \, \bar \psi \gamma^0 \psi.
-\end{equation}
-We can now use our earlier result for the thermal partition function, \autoref{Thermal partition function}, only with the substitution $\He \rightarrow \He - \mu \bar \psi \gamma^0 \psi$, and integrate over anti-periodic $\psi$'s:
-\begin{equation*}
-    Z = \Tr{e^{-\beta(\hat H - \mu \hat Q)}}
-    = \prod_{a b}\int \D \psi_a\D \pi_b \exp{
-        \int_{\Omega} \dd X \, 
-        \left(
-            i\dot \psi \pi - \He(\psi, \pi) + \mu \bar \psi \gamma^0 \psi
-        \right)
-    },
-\end{equation*}
-where $a, b$ are the spinor indices.
 The canonical momentum corresponding to $\psi$ is
 \begin{equation}
     \pi = \pdv{\Ell}{(\partial_0 \psi)} = i \bar \psi \gamma^0,
@@ -76,83 +77,91 @@ and the Hamiltonian density is
     \He = \pi \dot\psi - \Ell
     = \bar \psi (-i\gamma^i\partial_i + m) \psi
 \end{equation}
+%
+In the grand canocical ensamble, we substitute $\He \rightarrow \He - \mu \bar \psi \gamma^0 \psi$, which gives the euclidian Lagrangian
 which gives
+%
 \begin{equation}
     \Ell_E = 
-    - i \pi \dot\psi + \He(\psi, \pi) - \mu \bar \psi \gamma^0 \psi
+    - \pi \dot\psi + \He(\psi, \pi) - \mu \bar \psi \gamma^0 \psi
     = \bar\psi[\gamma^0 (\partial_\tau - \mu) - i\gamma^i \partial_i + m] \psi,
 \end{equation}
-By using the Grassman-version of the Gaussian integral formula, the partition function can be written
+
+With this, the partition function is
+%
 \begin{align*}
-    Z & = \prod_{a b}\int \D \psi_a\D \bar \psi_b 
+    Z & = \int \D \psi \D \bar \psi
     \exp{
         - \int_\Omega \dd X \, \bar \psi
         \left[
-            \tilde\gamma_0(\partial_\tau -\mu) -  i \gamma^i \partial_i + m
+            \gamma_0(\partial_\tau -\mu) -  i \gamma^i \partial_i + m
         \right]
         \psi
     }\\
-    & = C \prod_{a b}\int \D \tilde \psi_a\D \tilde {\bar \psi}_b 
-    \exp{
-        - \int_{\tilde \Omega} \dd K \, \tilde {\bar \psi}
-        \left[
-            i \tilde\gamma_0(\omega_n + i\mu) + i \gamma_i p_i + m
-        \right]
-        \tilde \psi
-    } \\
-    & = C \prod_{a b}\int \D \tilde \psi_a\D \tilde {\bar \psi}_b 
+    % & = C \int \D \tilde \psi\D \tilde {\bar \psi}\,
+    % \exp{
+    %     - \int_{\tilde \Omega} \dd K \, \tilde {\bar \psi}
+    %     \left[
+    %         i \gamma_0(\omega_n + i\mu) + i \gamma_i p_i + m
+    %     \right]
+    %     \tilde \psi
+    % } \\
+    & = C \int \D \tilde \psi \D \tilde {\bar \psi} \,
     e^{- \langle \tilde {\bar \psi}, D^{-1} \tilde \psi\rangle} 
     = \det(D^{-1}).
 \end{align*}
 In the second line, we have inserted the Fourier expansion of the field, as defined in \autoref{section: imaginary-time formalism}, and changed variable of integration, as we did for the scalar field.
+We then used the Grassmann version of the Gaussian integral,~\autocite{schwartzQuantumFieldTheory2013}
+%
+\begin{equation}
+    \int \dd \bar \theta_i \dd \theta_i \exp{- \theta_i A_{ij}\theta_j} = \det(A).
+\end{equation}
+%
 The linear operator in this case is 
 \begin{equation}
     D^{-1} = i \gamma^0 (-i\partial_\tau + i\mu) - (- i \gamma^i) \partial_i + m
     = 
-    \beta [i \tilde \gamma_a p_a + m ].
+    \beta [i \tilde \gamma_a k_a + m ].
 \end{equation}
 This equality must be understood as an equality between linear operators, which are represented in different bases.
-We introduced the notation $p_a = (\omega_n + i \mu, p_i)$ and use the Euclidean gamma matrices, as defined in 
-% \autoref{section: algebra bases}.
-\todo{include gamma + pauli matrices}
+We introduced the notation $k_a = (\omega_n + i \mu, k_i)$ and use the Euclidean gamma matrices $\tilde \gamma_i$, as defined in \autoref{subsection: Pauli matrices}.
 We use the fact that
-\todo{Hva skjer med beta?}
 %
 \begin{equation*}
-    \det(i\tilde\gamma_a p_a + m)
+    \det(i\tilde\gamma_a k_a + m)
     = \det(\gamma^5 \gamma^5)
-    \det(i\tilde\gamma_a p_a + m)
-    = \det[\gamma^5 (i\tilde\gamma_a p_a + m) \gamma^5]
-    = \det(-i\tilde\gamma_a p_a + m),
+    \det(i\tilde\gamma_a k_a + m)
+    = \det[\gamma^5 (i\tilde\gamma_a k_a + m) \gamma^5]
+    = \det(-i\tilde\gamma_a k_a + m),
 \end{equation*}
 %
-Let $\tilde D^{-1} = \beta[-i\tilde\gamma_a p_a + m]$, which means we can write
+Let $\tilde D^{-1} = \beta[-i\tilde\gamma_a k_a + m]$, which means we can write
 %
 \begin{equation}
     Z = \sqrt{\det(D^{-1})\det(\tilde D^{-1})} = \sqrt{\det(D^{-1}\tilde D^{-1})} 
-    = \det[\one \beta^2(p_a p_a + m^2)]^{1/2},
+    = \det[\one \beta^2(k_a k_a + m^2)]^{1/2},
 \end{equation}
 %
-where we have used the anti-commutation rule for the Euclidean gamma-matrices, $\{\gamma_a, \gamma_b\} = 2 \delta_{ab}$.
+where we have used the anti-commutation rule for the Euclidean gamma-matrices, $\{\tilde \gamma_a, \tilde  \gamma_b\} = 2 \delta_{ab}$.
 It is important to keep in mind that the determinant here refers to linear operators on the space of spinor functions.
-Thus \todo{Vær konsekvent på bruk av k og p}
+Thus
 %
 \begin{align}
     \nonumber
     \ln(Z) 
-    & = \ln\left\{\det[\one\beta^2(p_a p_a + m^2)]^{1/2}\right\}
-    = \frac{1}{2} \Tr{\ln[\one\beta^2(p_a p_a + m^2)]} \\
+    & = \ln\left\{\det[\one\beta^2(k_a k_a + m^2)]^{1/2}\right\}
+    = \frac{1}{2} \Tr{\ln[\one\beta^2(k_a k_a + m^2)]} \\
     & =  2 \int_{\tilde \Omega} \dd K \,  \ln\{ \beta^2[(\omega_n + i\mu)^2 + \omega_k^2]\}.
 \end{align}
 %
 In the last step, we used the fact that the matrix within the logarithm is diagonal.
-The matrix-part of the trace is trivial therefore trivial.
+The matrix part of the trace is trivial and therefore trivial.
 Using the fermionic version of the thermal sum from \autoref{section: thermal sum} gives the answer
 %
 \begin{equation}
     \label{free energy fermions}
     \Eff 
-    = -\frac{2}{\beta} \int\frac{\dd^3 p}{(2\pi)^3} \, 
+    = -\frac{2}{\beta} \int\frac{\dd^3 k}{(2\pi)^3} \, 
     \left[
         \beta \omega_k
         + \ln\left(1 + e^{-\beta(\omega_k-\mu)}\right)
