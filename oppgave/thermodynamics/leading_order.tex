@@ -3,7 +3,9 @@
 
 We begin by computing the thermodynamic properties to leading order.
 This will give an accurate first approximation, which we can verify by next-to-leading order results later.
-In this section and the two next, where we are working with leading order results only, we will not distinguish between the physical masses, such as $m_\pi$ and $m_\Kpm$, and the leading tree-level masses, such as $\bar m$ and $m_{\Kpm,0}$, as they agree to leading order.
+In \autoref{section: thermodynamics leading order}, \autoref{section: phase transition}, and \autoref{section: charge neturality}, all results are leading order, and we will therefore write the physical masses instead of the bare masses when convinient, i.e., $m_\pi$ instead of $m_{\pi^0, 0} = \bar m$ or $m_{\Kpm}$ instead of $m_{\Kpm,0}$.
+
+
 
 \subsection{Pure pion condensate}
 \label{subsection: pure pion condensate}
@@ -146,7 +148,7 @@ Free energy minimization now gives
 \end{equation}
 %
 Here, $x$ is defined as before, and we introduced the new quantity $\Delta = \Delta m_{\text{EM}}^2 / \bar m^2= 0.06916$.
-We see that the phase transition is raised, the critical chemical potential is now $\mu_I^c = \bar m \sqrt{1 + \Delta}$, the mass of the charged pions.
+We see that the phase transition is raised, the critical chemical potential is now $\mu_I^c = m_\pi \sqrt{1 + \Delta}$, the mass of the charged pions.
 Below this value, $\alpha = 0$ remains the only solution.
 In the pion condensate phase, the solution is
 %
@@ -162,11 +164,18 @@ With the same procedure as in the last section, we get the pressure and energy d
 \begin{align}
     \label{pressure with em interaction}
     \tilde p_\text{EM}
-    & = \frac{1}{2} 
+    & = \frac{1}{2} \frac{\mu_I^2 - \Delta m_\text{EM}^2}{m_\pi^2}
     \left(
-        \frac{\mu_I^2}{m_\pi^2} - 2 - \Delta
-        + \frac{1}{\frac{\mu_I^2}{m_\pi^2}  - \Delta} 
-    \right), \\
+        1-  \frac{m_\pi^2}{ \mu_I^2 - \Delta m_\text{EM}^2 }
+    \right)^2, \\
+    \tilde n_{I,\text{EM}} & =
+    \frac{\mu_I}{m_\pi}
+    \left[  1 - \frac{m_\pi^4}{(\mu_I^2 - \Delta m_\text{EM}^2)^2} \right],\\
+    % & = \frac{1}{2} 
+    % \left(
+    %     \frac{\mu_I^2}{m_\pi^2} - 2 - \Delta
+    %     + \frac{1}{\frac{\mu_I^2}{m_\pi^2}  - \Delta} 
+    % \right), \\
     % & = \frac{1}{2} 
     % \left(
     %     \sqrt{\frac{1}{x^2} - \Delta}
@@ -174,10 +183,11 @@ With the same procedure as in the last section, we get the pressure and energy d
     % \right)^2, \\
     \tilde u_\text{EM}
     &= \frac{1}{2} 
-    \left(
-        \frac{\mu_I^2}{m_\pi^2}+ 2 + \Delta
-        - \frac{3\frac{\mu_I^2}{m_\pi^2} - \Delta }{\left(\frac{\mu_I^2}{m_\pi^2} - \Delta\right)^2}
-    \right).
+    \left[
+        \frac{\mu_I^2+\Delta m_\text{EM}^2}{m_\pi^2}+ 2
+        - m_\pi^2 \frac{3 {\mu_I^2} - \Delta m_\text{EM}^2}
+        {\left( \mu_I^2- \Delta m_\text{EM}^2\right)^2}
+    \right].
 \end{align}
 %
 The ratio between pressure and energy is now
@@ -186,9 +196,9 @@ The ratio between pressure and energy is now
     \frac{p_\text{EM}}{u_\text{EM}} 
     = 
     \frac{
-        \frac{\mu_I^4}{m_\pi^4} - (2\Delta + 1)\frac{\mu_I^2}{m_\pi^2} + \Delta(\Delta + 1)
+        {\mu_I^4} - (2\Delta + 1) {\mu_I^2}{m_\pi^2} + \Delta(\Delta + 1)m_\pi^4
         }{
-        \frac{\mu_I^4}{m_\pi^4} + 3\frac{\mu_I^2}{m_\pi^2} - \Delta (\Delta +1)
+        {\mu_I^4} + 3 {\mu_I^2}{m_\pi^2} - \Delta (\Delta +1) m_\pi^4
         }.
 \end{equation}
 %
@@ -230,6 +240,7 @@ The non-relativistic equation of state is thus still a polytrope of the form $\t
 
 
 \section{Phase transitions}
+\label{section: phase transition}
 
 
 To study the phase transition from the vacuum phase, at $\mu_I < m_\pi$, to the condensed phase, we apply Landau theory~\autocite{peskinIntroductionQuantumField1995}.
@@ -424,13 +435,13 @@ This indicates that the transitions between condensates are of \emph{first order
 We can describe the effect of electromagnetic interactions on the pressure, as obtained \autoref{subsection: including electromagnetism lo eos}, by modifying the isospin chemical potential by $\mu^2_I \rightarrow \mu^2_I - \Delta m_\text{EM}^2$.
 From the structure of the Lagrangian \autoref{static Lagrangian three-flavor EM kaon}, the same will happen in the case of the charged kaon, only the change will be $\mu^2_\Kpm \rightarrow \mu^2_\Kpm - \Delta m_\text{EM}^2$, while from \autoref{static Lagrangian neutral kaon} we see that the results will be unchanged by electromagnetic interactions.
 We define the effective chemical potential by ${\mu'}^2 = \mu^2 - \Delta m_\text{EM}^2$.
-The transitions between the vacuum phase and the condensed phase will now be $\mu'_I = \bar m$ and $\mu_\Kpm' = m_\Kpm$, while the line between these condensed phases is now
+The transitions between the vacuum phase and the condensed phase will now be $\mu'_I = m_\pi$ and $\mu_\Kpm' = m_{\Kpm,0}$, while the line between these condensed phases is now
 %
 \begin{equation}
     m_\Kpm^2
     \left(
-         \frac{{\mu_\Kpm'}}{m_\Kpm}
-         - \frac{m_\Kpm}{{\mu_\Kpm'}} 
+         \frac{{\mu_\Kpm'}}{m_{\Kpm,0}}
+         - \frac{m_{\Kpm,0}}{{\mu_\Kpm'}} 
         \right)^2
     =
     m_\pi^2  
@@ -446,14 +457,14 @@ The line between the kaon condensates is thus given by
 \begin{equation}
     m_\Kpm^2
     \left(
-         \frac{{\mu_\Kpm'}}{m_\Kpm}
-         - \frac{m_\Kpm}{{\mu_\Kpm'}^2} 
+         \frac{{\mu_\Kpm'}}{m_{\Kpm,0}}
+         - \frac{m_{\Kpm, 0}}{{\mu_\Kpm'}} 
         \right)^2
     =
     m_\Ko^2  
     \left( 
         \frac{{\mu_\Ko}}{m_\Ko}
-        - \frac{m_\Ko}{{\mu_\Ko}^2}  
+        - \frac{m_\Ko}{{\mu_\Ko}}
     \right)^2.
 \end{equation}
 %

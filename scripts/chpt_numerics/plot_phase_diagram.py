@@ -17,7 +17,7 @@ from constants import Dm, Dm_EM, m_pi, m_K0
 
 D = Dm/m_pi
 m = m_K0/m_pi
-mpm = sqrt(m**2 - D**2)
+mKpm = sqrt(m**2 - D**2)
 DEM = Dm_EM/m_pi
 mpiEM = sqrt(1 + DEM**2)
 print(DEM**2)
@@ -35,7 +35,7 @@ w = lambda x : x
 
 # pi / Kpm
 x1 = np.linspace(1, 3, N)
-eq1 = lambda x, y : -u(x,y) + (w(x)**2 - 1 + sqrt((w(x)**2 - 1)**2 + 4*w(x)**2*mpm**2 )) / (2*w(x))
+eq1 = lambda x, y : -u(x,y) + (w(x)**2 - 1 + sqrt((w(x)**2 - 1)**2 + 4*w(x)**2*mKpm**2 )) / (2*w(x))
 sol1 = fsolve(lambda y: eq1(x1, y), np.ones(N))
 
 # pi / K0
@@ -44,14 +44,14 @@ eq2 = lambda x, y : v(x,y) + (w(x)**2 - 1 + sqrt( (w(x)**2 - 1)**2 + 4*w(x)**2*m
 sol2 = fsolve(lambda y: eq2(x2, y), np.ones(N))
 
 # Kpm/K0
-y3 = np.linspace(sqrt(m*mpm), 5, N)
+y3 = np.linspace(sqrt(m*mKpm), 5, N)
 eq3 = lambda x, y : -u(x,y) + (v(x,y)**2 - m**2 + sqrt( (v(x,y)**2 + m**2)**2 - 4*v(x,y)**2*D**2 )) / (2*v(x, y))
 sol3 = fsolve(lambda x: eq3(x, y3), np.ones(N))
 
 # Kpm
-a = mpm - m
+a = mKpm - m
 x4 = np.linspace(a, 1, N)
-eq4 = lambda x, y : mpm-u(x,y)
+eq4 = lambda x, y : mKpm-u(x,y)
 sol4 = fsolve(lambda y: eq4(x4, y), np.ones(N))
 
 # K0
@@ -60,7 +60,7 @@ eq5 = lambda x, y : m-v(x,y)
 sol5 = fsolve(lambda y: eq5(x5, y), np.ones(N))
 
 # pi+
-y6 = np.linspace(0, fsolve(lambda y: mpm-u(1, y), 1), N)
+y6 = np.linspace(0, fsolve(lambda y: mKpm-u(1, y), 1), N)
 
 # pi-
 y7 = np.linspace(0, fsolve(lambda y: m-u(1, y), 1), N)
@@ -76,7 +76,7 @@ wEM = lambda x : sqrt(x**2 - DEM**2)
 
 # pi / Kpm
 x1EM = np.linspace(mpiEM, 3, N)
-eq1EM = lambda x, y : -uEM(x,y) + (wEM(x)**2 - 1 + sqrt((wEM(x)**2 - 1)**2 + 4*wEM(x)**2*mpm**2 )) / (2*wEM(x))
+eq1EM = lambda x, y : -uEM(x,y) + (wEM(x)**2 - 1 + sqrt((wEM(x)**2 - 1)**2 + 4*wEM(x)**2*mKpm**2 )) / (2*wEM(x))
 sol1EM = fsolve(lambda y: eq1EM(x1EM, y), np.ones(N))
 
 # pi / K0
@@ -85,14 +85,14 @@ eq2EM = lambda x, y : -v(x,y) + (wEM(x)**2 - 1 + sqrt( (wEM(x)**2 - 1)**2 + 4*wE
 sol2EM = fsolve(lambda y: eq2EM(x2EM, y), np.ones(N))
 
 # Kpm/K0
-y3EM = np.linspace(sqrt(m*sqrt(mpm**2 + DEM**2)), 5, N)
+y3EM = np.linspace(sqrt(m*sqrt(mKpm**2 + DEM**2)), 5, N)
 eq3EM = lambda x, y : -uEM(x,y) + (v(x,y)**2 - m**2 + sqrt( (v(x,y)**2 + m**2)**2 - 4*v(x,y)**2*D**2 )) / (2*v(x, y))
 sol3EM = fsolve(lambda x: eq3EM(x, y3EM), np.ones(N))
 
 # Kpm
-a = sqrt(mpm**2 + DEM**2) - m
+a = sqrt(mKpm**2 + DEM**2) - m
 x4EM = np.linspace(a, mpiEM, N)
-eq4EM = lambda x, y : mpm-uEM(x,y)
+eq4EM = lambda x, y : mKpm-uEM(x,y)
 sol4EM = fsolve(lambda y: eq4EM(x4EM, y), np.ones(N))
 
 # K0
@@ -101,7 +101,7 @@ eq5EM = lambda x, y : m-v(x,y)
 sol5EM = fsolve(lambda y: eq5EM(x5EM, y), np.ones(N))
 
 # pi+
-y6EM = np.linspace(0, fsolve(lambda y: mpm-uEM(mpiEM, y), 1), N)
+y6EM = np.linspace(0, fsolve(lambda y: mKpm-uEM(mpiEM, y), 1), N)
 
 # pi-
 y7EM = np.linspace(0, fsolve(lambda y: m-v(-mpiEM, y), 1), N)
