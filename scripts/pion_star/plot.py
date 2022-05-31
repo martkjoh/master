@@ -257,7 +257,7 @@ def plot_nlo_quantities():
 
 
 def plot_nlo_quantities2():
-    fig, ax = plt.subplots(2, 2, figsize=(16, 10), sharex=True)
+    fig, ax = plt.subplots(2, 2, figsize=(14, 8), sharex=True)
     
     mu, alpha = np.load("pion_star/data/nlo_mu_alpha.npy")
     x = mu/m_pi
@@ -938,13 +938,13 @@ if __name__=="__main__":
     # plot_all()
 
     # plot_nlo_quantities()
-    # plot_nlo_quantities2()
+    plot_nlo_quantities2()
 
     # plot_eos_nlo()
 
     # plot_mass_radius("_nlo", rmax=False)
     # plot_nlo()
-    plot_nlo("_neutrino")
+    # plot_nlo("_neutrino")
 
     # plot_light()
     # plot_light_nogrid()

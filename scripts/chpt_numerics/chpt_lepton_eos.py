@@ -64,7 +64,7 @@ N = 400
 
 def plot_mus(m_l=m_e, name="e"):
     x = 1+np.linspace(0, 2, N)
-    fig, ax = plt.subplots(figsize=(7, 5))
+    fig, ax = plt.subplots(figsize=(6, 4))
 
     f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_l)
     ax.plot(x, f_l(x), "k")
@@ -193,7 +193,7 @@ def plot_all(r, N, name="nr", fs=(7, 4)):
 
 
 def plot_all_log(r, N):
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=(10, 6))
     x = 1 + np.logspace(*r, N-1)
 
     f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_e)
@@ -260,7 +260,7 @@ plot_mus(m_l=m_e, name="e")
 r = (-5, -2)
 plot_all(r, N, name="nr")
 r = (-3, 0.2)
-plot_all(r, N, name="I", fs=(12, 5))
+plot_all(r, N, name="I", fs=(14, 6))
 r = (-2, 2)
 plot_all(r, N, name="ur")
 

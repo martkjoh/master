@@ -9,6 +9,7 @@ For this model, we use results derived in \autoref{section: fermions}.
 
 
 
+
 \subsection{Thermodynamics and the equation of state}
 
 The total energy $U$ is related to the grand canonical free energy $F$ by a Legendre transformation,
@@ -209,7 +210,7 @@ As discussed earlier, the non-relativistic limit corresponds to $k_3 \ll 1$, if 
 We see that $x_f \rightarrow 0$ corresponds to the latter case.
 By including only the leading order term, we can eliminate the Fermi momentum and write the equation of state in the non-relativistic limit as $u_{\mathrm{nr}} = k p^\frac{3}{5}$ where $k = 8/3 \cdot (15/8)^{3/5}$.
 The non-relativistic approximation of the cold fermions is thus a polytrope with $\gamma = \frac{5}{3}$.
-As we see from \autoref{fig: mass radius relation polytropes}, this is within the range where the mass decreases with the size of the star.
+As we see from \autoref{fig: mass-radius relation polytropes}, this is within the range where the mass decreases with the size of the star.
 
 In the ultrarelativistic limit, where $p_f \gg m$, the leading order contributions to the pressure and energy density are
 %
@@ -273,18 +274,18 @@ As in the case of an incompressible fluid, the pressure follows a half bell-shap
 The black dashed line corresponds to the solution with the maximum mass, which will discuss shortly.
 We see that the pressure and mass curves change most drastically when the central pressure is higher than that corresponding to the most massive star.
 
-In \autoref{fig: mass radius relationship fermi gas}, we see the relationship between the mass and radius of the star.
+In \autoref{fig: mass-radius relationship fermi gas}, we see the relationship between the mass and radius of the star.
 This line is parametrized by the base-10 logarithm of the central pressure, $p(0)$, normalized by $p_0 = u_0$.
 The cross marks the maximum mass, $M_\mathrm{max} = 0.711 \, M_\odot$, which corresponds to a radius of $R = 9.20 \, \mathrm{km}$.
 This matches the results obtained by Oppenheimer and Volkoff~\cite{oppenheimerMassiveNeutronCores1939}, $M_\mathrm{max} = 0.71$.
 In their 1939 paper, Oppenheimer and Volkoff computed five data points in the mass-radius plane.
-The results are marked by blue circles in \autoref{fig: mass radius relationship fermi gas}.
+The results are marked by blue circles in \autoref{fig: mass-radius relationship fermi gas}.
 We find good agreement between the three points closest to the maximum value and our results.
 However, the two results of Oppenheimer and Volkoff furthest away differ significantly from our results.
-The black dashed line is the absolute mass-radius constraint, \autoref{mass radius constraint}, and any stable configuration must be on the right side of this line.
+The black dashed line is the absolute mass-radius constraint, \autoref{mass-radius constraint}, and any stable configuration must be on the right side of this line.
 As we predicted from looking at the non-relativistic equation of state, the mass decreases with the star's radius, at least for stars with low central pressure.
 
-In \autoref{fig: mass radius relationship comparison}, we compare the mass-radius relationship obtained from the full theory with results from approximations.
+In \autoref{fig: mass-radius relationship comparison}, we compare the mass-radius relationship obtained from the full theory with results from approximations.
 The lowest line is obtained by using both the full TOV equation and the exact equation of state.
 The next line above is obtained using the non-relativistic equation of state together with the full TOV equation.
 The second uppermost line is obtained from the exact equation of state and the Newtonian approximation for the TOV equation.
@@ -304,22 +305,24 @@ Unlike the other systems, it does not seem to have an upper limit for the mass, 
     \label{fig: pressure and mass as a function of radius}
 \end{figure}
 
+\clearpage
 
 \begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_neutron.pdf}
     \caption{The mass-radius relationship of a star made of a cold gas of neutrons. The line is parametrized by the central pressure $p_c$. The corss indicate the maximum mass solution. The blue circles are results form the 1939 paper of Oppenheimer and Volkoff~\autocite{oppenheimerMassiveNeutronCores1939}.}
-    \label{fig: mass radius relationship fermi gas}
+    \label{fig: mass-radius relationship fermi gas}
 \end{figure}
 
 \begin{figure}[p]
     \centering
     \includegraphics[width=\textwidth]{../scripts/figurer/mass_radius_comparison.pdf}
     \caption{The mass-radius relationship of a cold gas of neutrons. The lowest line is obtained from the TOV equation and full equation of state. The middle line is from the TOV equation and the non-relativistic equation of state. The upper line is obtained from the Newtonian approximation of the TOV equation and the non-relativistic equation of state.}
-    \label{fig: mass radius relationship comparison}
+    \label{fig: mass-radius relationship comparison}
 \end{figure}
 
 \FloatBarrier
+
 
 
 
@@ -360,12 +363,12 @@ This is intuitive; the TOV equation describes the balancing of forces from press
 
 Solutions to the TOV equation are systems in hydrostatic equilibrium.
 However, as a pen perfectly balances on its edge, equilibrium does not imply stability.
-When perturbed, a stable system returns to its equilibrium position as a marble at the bottom of a bowl.
+When perturbed, a stable system returns to its equilibrium position like a marble at the bottom of a bowl.
 On the other hand, an unstable system will amplify perturbations, leading to a collapse or an explosion.
 We can make an intuitive argument for which configurations for a given family of stars are stable.
 We will again assume that the equation of state, on a microscopic level, obeys Le Chatelier's principle in the form $\odv{p}/{n} > 0$.
 We can see that this holds for all the cases we are considering.
-A star in equilibrium will find itself on the line parametrized by its central pressure, such as \autoref{fig: mass radius relationship fermi gas}.
+A star in equilibrium will find itself on the line parametrized by its central pressure, such as \autoref{fig: mass-radius relationship fermi gas}.
 In this case, a perturbation reducing the radius of the star will increase the central pressure as the particle density increases.
 This is illustrated in \autoref{fig: fermi stability}.
 A star in equilibrium at point A can be compressed to an out-of-equilibrium configuration, point B.
@@ -401,7 +404,7 @@ Here, $\xi_n$ are normal modes with frequencies $\omega_n$, $n \in \{0, 1, ...\}
 The equation for the eigenmodes was first obtained by Chandrasekhar~\autocite{chandrasekharDynamicalInstabilityGaseous1964}, and can be written in the form of a Sturm-Liouville theory equation,
 %
 \begin{equation}
-    \left[     \odv{}{r} \left( \Pi \odv{}{r}  \right) + Q + \omega_n W \right] \xi_n
+    \left[\odv{}{r} \left( \Pi \odv{}{r}  \right) + Q + \omega_n W \right] \xi_n
     = 0,
 \end{equation}
 %
@@ -420,4 +423,4 @@ and this will \emph{only} happen at critical points~\autocite{thorneGeneralRelat
 This is equivaent to the criterion $\odv{M}/{p_c} = 0$ as long as $\odv{p}/{u}$ is finite.
 Whether the change is from a stable mode to an unstable one is dependent on whether the curve turns clockwise (a mode becomes stable) or counterclockwise (a node becomes unstable)~\autocite{thorneGeneralRelativisticTheoryStellar1968}.
 We know that very low-pressure, cold fermions are stable, which means that configuration with a radius larger than the maximum mas $0.71 \, M_\odot$ will be stable.
-As illustrated in \autoref{fig: mass radius relationship fermi gas}, the curve then turns counterclockwise, and a new mode is made unstable each half turn.
+As illustrated in \autoref{fig: mass-radius relationship fermi gas}, the curve then turns counterclockwise, and a new mode is made unstable each half turn.

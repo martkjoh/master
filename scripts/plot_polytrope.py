@@ -32,7 +32,7 @@ norm = 1/np.nanmax(R, axis=1)
 R = R *norm[:, None]
 
 
-fig, ax = plt.subplots(2, 1, figsize=(10, 13))
+fig, ax = plt.subplots(2, 1, figsize=(14, 13))
 
 colors = [cm.plasma(i/(n)) for i in range(n)]
 
@@ -59,7 +59,7 @@ for i in range(n-1):
 ax[0].plot(2.5, 0.3, "x", ms=10, mew=4, color=colors[-1], label=labels[-1])
 ax[0].annotate("", xy=(2.5 + 0.4, 0.3), xytext=(2.5+0.05, 0.3), arrowprops=dict(arrowstyle="->"))
 # ax[0].text(2.5-0.3, -0.3, "$(\gamma=\infty,\,\\beta=\\frac{1}{3})$")
-ax[0].set_ylim(-1.4, 3.9)
+ax[0].set_ylim(-1.4, 4.4)
 ax[0].set_xlim(-0.04, 3)
 
 
