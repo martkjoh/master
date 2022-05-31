@@ -64,14 +64,13 @@ N = 400
 
 def plot_mus(m_l=m_e, name="e"):
     x = 1+np.linspace(0, 2, N)
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(7, 5))
 
     f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_l)
     ax.plot(x, f_l(x), "k")
     ax.set_xlabel("$\\mu_I/m_\\pi$")
     ax.set_ylabel("$\mu_"+name+"/m_"+name+"$")
 
-    ax.set_title("$\\quad A =" +sci(A)+"$")
     name = name.replace("\\", "")
 
     fig.savefig("figurer/charge_neutrality/chemical_potential_"+name+".pdf", bbox_inches="tight")
@@ -170,7 +169,7 @@ def gen_eos_list(r, N, m_l=m_e, name="e"):
     np.save("pion_star/data/eos_"+name, [x, plst, ulst])
 
 
-def plot_all(r, N, name="nr", fs=(8, 5)):
+def plot_all(r, N, name="nr", fs=(7, 4)):
     fig, ax = plt.subplots(figsize=fs)
     x = 1 + np.logspace(*r, N-1)
 
@@ -188,13 +187,13 @@ def plot_all(r, N, name="nr", fs=(8, 5)):
     ax.set_xlabel("$p/u_0$")
     ax.set_ylabel("$u/u_0$")
 
-    ax.legend()
+    if name=="I":ax.legend()
     ax.ticklabel_format(style="scientific", scilimits=(-2, 2))
     fig.savefig("figurer/charge_neutrality/eos_"+name+".pdf", bbox_inches="tight")
 
 
 def plot_all_log(r, N):
-    fig, ax = plt.subplots(figsize=(15, 6))
+    fig, ax = plt.subplots(figsize=(8, 5))
     x = 1 + np.logspace(*r, N-1)
 
     f_l, p, u, pl_lim, ul_lim, A, ul0 = get_l(m_e)
@@ -216,7 +215,7 @@ def plot_all_log(r, N):
 
     ax.plot(pe, ue, lw=3, alpha=0.8, label="$\\pi + e$")
     ax.plot(pmu, umu, lw=3, alpha=0.8, label="$\\pi + \\mu$")
-    ax.plot(pe_lim, ue_lim, "k--", label="$u_\\mathrm{nr}(p)$")
+    ax.plot(pe_lim, ue_lim, "k--", label="$u_\\mathrm{NR}(p)$")
     ax.plot(pmu_lim, umu_lim, "k--")
 
     ax.set_xlabel("$p/u_0$")
@@ -261,7 +260,7 @@ plot_mus(m_l=m_e, name="e")
 r = (-5, -2)
 plot_all(r, N, name="nr")
 r = (-3, 0.2)
-plot_all(r, N, name="I", fs=(18,7))
+plot_all(r, N, name="I", fs=(12, 5))
 r = (-2, 2)
 plot_all(r, N, name="ur")
 

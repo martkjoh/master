@@ -256,6 +256,42 @@ def plot_nlo_quantities():
             fig.savefig("figurer/pion_nlo_"+name+"_"+str(n)+".pdf", bbox_inches="tight")
 
 
+def plot_nlo_quantities2():
+    fig, ax = plt.subplots(2, 2, figsize=(16, 10), sharex=True)
+    
+    mu, alpha = np.load("pion_star/data/nlo_mu_alpha.npy")
+    x = mu/m_pi
+    ax[0, 0].plot(x, alpha_0(x), "k--", label="$\\alpha_\\mathrm{LO}$")
+    ax[0, 0].plot(x, alpha, "r-.", label="$\\alpha_\\mathrm{NLO}$")
+    ax[0, 0].set_ylabel("$\\alpha$")
+    ax[0, 0].set_ylim(-0.08, np.pi/2*1.02)
+    ax[0, 0].set_xlim(-0.1, 3)
+    ax[0, 0].legend()
+    ax[1, 0].set_xlabel("$\\mu_I / m_\pi$")
+    ax[1, 1].set_xlabel("$\\mu_I / m_\pi$")
+    names = ["p", "u", "nI"]
+    label = ["$p", "$u", "${n_{I,}}"]
+    y_label = ["$p/p_0$", "$u/u_0$", "$n_I/n_0$"]
+    j = np.where(x>=1)[0][0]
+
+    lo_func = [p, u, nI]
+    lo = [np.concatenate([np.zeros_like(x[:j]), f(1/x[j:])]) for f in lo_func]
+    ns = [945, -1]
+    for n in ns:
+        for i, name in enumerate(names):
+            y = np.load("pion_star/data/nlo_"+name+".npy")
+            
+            ax[(i+1)%2, (i+1)//2].plot(x, lo[i], "k--", label=label[i]+"_\\mathrm{LO}$")
+            ax[(i+1)%2, (i+1)//2].plot(x, y, "r-.", label=label[i]+"_\\mathrm{NLO}$")
+            ax[(i+1)%2, (i+1)//2].set_ylim(-0.1, 1.05*y[n])
+            ax[(i+1)%2, (i+1)//2].set_xlim(-0.1, x[n])
+            # ax[(i+1)%2, (i+1)//2].set_xlabel("$\\mu_I/m_\pi$")
+            ax[(i+1)%2, (i+1)//2].set_ylabel(y_label[i])
+            ax[(i+1)%2, (i+1)//2].legend()
+        plt.tight_layout()
+        fig.savefig("figurer/pion_nlo_"+str(n)+".pdf", bbox_inches="tight")
+
+
 
 def plot_nlo_quantities():
     fig, ax = plt.subplots(figsize=(8, 5))
@@ -324,7 +360,7 @@ def plot_nlo_quantities_lattice():
 
 
 def plot_eos_nlo():
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(12, 6))
     p = np.linspace(0, 5, 1000)
 
     u = get_u("pion_star/data/eos.npy")
@@ -718,13 +754,13 @@ def plot_phase():
     N = 30
     a = np.linspace(-0.05, 0.8, N)
     
-    fig, ax = plt.subplots(figsize=(12, 6))
+    fig, ax = plt.subplots(figsize=(10, 5))
     F0 = F(0, 0)
 
     F1,F2,F3 = F(0.9, a)-F0, F(1., a)-F0, F(1.1, a)-F0
 
     i = np.argmin(F3)
-    d = .004
+    d = .005
     l = np.array([[0, d], [a[i], F3[i]+d]]).T
  
     ax.plot(a, F1, "royalblue", label=r"$\mu_I<m_\pi$")
@@ -902,10 +938,12 @@ if __name__=="__main__":
     # plot_all()
 
     # plot_nlo_quantities()
+    # plot_nlo_quantities2()
+
     # plot_eos_nlo()
 
     # plot_mass_radius("_nlo", rmax=False)
-    plot_nlo()
+    # plot_nlo()
     plot_nlo("_neutrino")
 
     # plot_light()

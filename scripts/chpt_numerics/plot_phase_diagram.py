@@ -108,7 +108,7 @@ y7EM = np.linspace(0, fsolve(lambda y: m-v(-mpiEM, y), 1), N)
 
 
 
-fig, ax = plt.subplots(figsize=(8, 10))
+fig, ax = plt.subplots(figsize=(6, 7))
 
 
 ax.plot(x1, sol1, "k--")
@@ -127,8 +127,7 @@ ax.plot(-np.ones(N), y7, "k")
 ax.plot(-np.ones(N), -y7, "k")
 
 
-ax.text(-0.55, 0, "Vacuum")
-ax.text(-0.35, -0.5, "phase")
+ax.text(-0.75, -.50, "Vacuum\n  phase")
 def add_text(ax):
     ax.text(1, 4, "$\\langle K^+\\rangle$")
     ax.text(-1.9, -4.6, "$\\langle K^-\\rangle$")
@@ -179,23 +178,22 @@ def add_plot(ax):
     ax.plot(-mpiEM*np.ones(N), -y7EM, "r")
 
 
-fig = plt.figure(figsize=(12, 8))
+fig = plt.figure(figsize=(11, 7))
 ax = fig.add_subplot(2, 2, (1, 3))
 
-ax.text(-0.7, 0, "Vacuum")
-ax.text(-0.5, -0.5, "phase")
+ax.text(-0.8, -.40, "Vacuum\n  phase")
 add_text(ax)
 
 ax2 = fig.add_subplot(2, 2, 4)
 ax3 = fig.add_subplot(2, 2, 2)
 
-ax2.text(0.82, 3.12, "Vacuum\n  phase", fontsize=14)
-ax2.text(0.95, 3.3, "$\\langle K^+\\rangle$")
-ax2.text(1.3, 3.15, "$\\langle \\pi^+\\rangle$")
+ax2.text(0.75, 3.05, "Vacuum\n  phase")
+ax2.text(0.95, 3.22, "$\\langle K^+\\rangle$")
+ax2.text(1.15, 3.05, "$\\langle \\pi^+\\rangle$")
 
-ax3.text(-0.08, 3.53, "Vacuum\n  phase")
-ax3.text(0.03, 3.7, "$\\langle K^+\\rangle$")
-ax3.text(-0.15, 3.7, "$\\langle \\bar K\\rangle$")
+ax3.text(-0.1, 3.53, "Vacuum\n  phase")
+ax3.text(0.1, 3.7, "$\\langle K^+\\rangle$")
+ax3.text(-0.2, 3.7, "$\\langle \\bar K\\rangle$")
 
 
 add_plot(ax)
@@ -207,10 +205,10 @@ ax.set_ylim(-5, 5)
 ax.set_xlabel("$\\mu_I / m_\pi$")
 ax.set_ylabel("$\\mu_S / m_\pi$")
 
-ax2.set_xlim(0.8, 1.6)
-ax2.set_ylim(3.1, 3.4)
+ax2.set_xlim(0.7, 1.3)
+ax2.set_ylim(3., 3.3)
 
-ax3.set_xlim(-0.2, 0.2)
+ax3.set_xlim(-0.3, 0.3)
 ax3.set_ylim(3.5, 3.8)
 
 plt.tight_layout()

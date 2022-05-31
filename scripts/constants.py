@@ -46,6 +46,7 @@ f_pi_SI = f_pi*MeV
 m_pi_SI = m_pi*MeV/c**2
 m_pipm_SI = m_pipm*MeV/c**2
 m_e_SI = m_e*MeV/c**2
+Dm_EM_SI = Dm_EM*MeV/c**2
 
 # nlo coupling constants
 Lr = np.array([
@@ -152,4 +153,6 @@ if __name__=="__main__":
     # print(C/(f_pi**2*m_pi**2))
     # print(Dm_EM)
     # print((sqrt(1+Dm_EM**2/m_Kpm**2)-1)*m_Kpm/m_pi)
+
+    print(pi / sqrt(2*pi*G*(8*(m_pi_SI**2)*f_pi_SI**2)/(c**3*hbar**3))/1e3 * 1 / (1 + Dm_EM**2/m_pi**2) ) 
 

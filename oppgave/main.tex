@@ -1,4 +1,4 @@
-\documentclass{book}
+\documentclass[10pt, a4paper]{book}
 
 \input{import.tex}
 \input{newcommands.tex}
@@ -16,11 +16,11 @@
 
 
 \begin{document}
-    \frontmatter
     \maketitle
-    % \includepdf[fitpaper=true,pages=-,pagecommand={},width=\textwidth]{introduction/front_page.pdf}
-
+    \frontmatter
+    
     \chapter*{Preface}
+    \setcounter{page}{1}
     \addcontentsline{toc}{section}{Preface}
     \input{introduction/preface.tex}
     \clearpage
@@ -35,7 +35,7 @@
     \input{introduction/abstract.tex}
 
 
-    % \listoftodos
+    \listoftodos
     \clearpage
     \setcounter{tocdepth}{1}
     \tableofcontents
@@ -133,6 +133,7 @@
     \cleardoublepage
     \phantomsection
     \addcontentsline{toc}{chapter}{Bibliography}
+    \todo[inline]{Check bibliography!!}
     \printbibliography
 
 \end{document}

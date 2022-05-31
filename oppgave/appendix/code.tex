@@ -57,18 +57,23 @@ For the Newtonian approximation to the TOV equation, we get
 
  
 
+
 \section{Spherically symmetric metric}
+
 The calculations in \autoref{chapter: GR} were done using a CAS system.
 The code is written in Python in a Jupyter notebook.
-The full \texttt{.ipynb} file with executable code is available in the repository, at \url{https://github.com/martkjoh/master/blob/main/scripts/TOV.ipynb}
+The full \texttt{.ipynb} file with executable code is available in the repository, at \url{https://github.com/martkjoh/master/blob/main/scripts/TOV/TOV.ipynb}
 Below is some of the code, which illustrates the main functions and the outputs.
 
 \includepdf[pages=-,pagecommand={},width=1.3\textwidth]{../scripts/TOV/TOV.pdf}
+
+
+
 
 \section{Symbolic calculations in \chpt}
 \label{section: symbolic calculations}
 
 Symbolic calculations in \chpt, such as the expansion of the Lagrangian in $\varphi$, were done using the open-source, Python-based case SageMath\footnote{\url{https://www.sagemath.org/}}, and jupyter notebook\footnote{\url{https://jupyter.org/}}.
-Below are all the terms that contribute to the next-to-leading order Lagrangian attached.
+The calculations consisted of expanding the Lagrangian in a series of $\varphi_a/f$.
+The calculations presented in this thesis, in addition to expansions of $\Ell_4$ to second order, can be found in the online repository, at \url{https://github.com/martkjoh/master/tree/main/power_expansion}.
 
-\includepdf[pages=-,pagecommand={},width=1.15\textwidth]{appendix/nlo_three_flavor_higher_order.pdf}

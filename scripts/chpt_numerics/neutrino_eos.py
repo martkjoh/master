@@ -18,7 +18,7 @@ else:
     l = ""
 
 
-plt.rc("font", family="serif", size=20)
+plt.rc("font", family="serif", size=21)
 plt.rc("mathtext", fontset="cm")
 plt.rc("lines", lw=2)
 plt.rc("axes", grid=True)
@@ -132,7 +132,7 @@ def plot_mu():
     
     fig.savefig("figurer/neutrino_mu.pdf", bbox_inches="tight")
 
-fs = (8, 6)
+fs = (8, 5)
 
 pmin = 2*(1+m_e/m_pi) / (24*pi**2)
 def plot_eos():
@@ -184,7 +184,7 @@ def contributions():
     x2 = 1+np.logspace(-14, -2, 1000)
     x3 = 1+np.logspace(-14, 0, 1000)
 
-    fig, ax = plt.subplots(2, 3, figsize=(20, 10))
+    fig, ax = plt.subplots(2, 3, figsize=(16, 8), sharex="col")
 
     ax[0, 0].plot(x1, u_pi(x1), "tab:blue", label="$\\pi$")
     ax[0, 0].plot(x1, u_l(x1), "k--", label="$\\ell$")
@@ -213,13 +213,15 @@ def contributions():
     ax[1, 0].set_xlabel("$\\mu_I/m_\\pi$")
     ax[1, 1].set_xlabel("$\\mu_I/m_\\pi-1$")
     ax[1, 2].set_xlabel("$\\mu_I/m_\\pi$")
+    ax[0, 0].set_xlim(0, 1)
+    ax[0, 1].set_xlim(0, 0.01)
+    ax[0, 2].set_xlim(1, 2)
 
     for i in range(2):
         for j in range(3):
             ax[i,j].ticklabel_format(style="scientific", scilimits=(-2, 2))
 
-
-    # plt.tight_layout()
+    # plt.tight_layout(j)
     fig.savefig("figurer/neutrino_contributions.pdf", bbox_inches="tight")
 
 
@@ -228,7 +230,7 @@ def contributions():
 plot_eos()
 plot_eos2()
 
-contributions()
+# contributions()
 
 
 # save_eos()
