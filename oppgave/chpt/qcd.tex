@@ -1,4 +1,4 @@
-In this chapter, we will take the theory in \autoref{chapter: QFT} and apply it to the specific case of quantum chromodynamics to derive \emph{chiral perturbation theory}.
+In this chapter, we will take the theory in \autoref{chapter: QFT} and apply it to the specific case of quantum chromodynamics to derive \emph{chiral perturbation theory} (\chpt).
 Chiral perturbation theory is an effective description in which the \emph{pseudoscalar mesons}, such as the pions, are the degrees of freedom.
 They are pseudo-Goldstone bosons due to the spontaneous breaking of the QCD vacuum and allow for a perturbative description of the strong force even at low energies.
 We begin with a description of quantum chromodynamics.
@@ -49,7 +49,7 @@ Assume this covariant derivative has the form
 where $A_\mu^{cc'}(x)$ is a new, dynamic field.
 This is similar to what we did in differential geometry, \autoref{covariant derivative diff geom}.
 We will suppress the $c$-indices for cleaner notation.
-By enforcing the transformation rule $D_\mu A_\nu \rightarrow U D_\mu A_\nu$, we can deduce the transformation properties of the gauge field, 
+By enforcing the transformation rule $D_\mu \psi \rightarrow U D_\mu \psi$, we can deduce the transformation properties of the gauge field, 
 %
 \begin{equation}
     \label{Gauge transformation gauge field}
@@ -101,7 +101,7 @@ We have suppressed color and flavor indices, which are summed over, and $\bar q 
 The gauge group of the strong force is $\Lie{SU}{3}_c$ with the coupling constant $g$, and the corresponding covariant derivative is
 %
 \begin{equation}
-    D_\mu q_f =  (\delta_{cc'} \partial_\mu - i g A_\mu^{cc'}) q_{c'f},
+    (D_\mu q)_{cf} =  (\delta_{cc'} \partial_\mu - i g A_\mu^{cc'}) q_{c'f},
 \end{equation}
 %
 We employ the Feynman slash-notation, where $\slashed D = \gamma^\mu D_\mu$, and $\gamma^\mu$ are the Dirac matrices, as described in \autoref{section: algebra bases}.
@@ -128,7 +128,7 @@ As good projection operators, they obey
     P_R + P_L = 0, \quad P_R P_L = P_L P_R = 0, \quad P_I^2 = P_I, \, I=R, L.
 \end{equation}
 %
-By the properties of $\gamma^5$ and $\bar q = q^\dagger\gamma^0$, these operators project out the opposite chirality of $q$ and $q$,
+By the properties of $\gamma^5$ and $\bar q = q^\dagger\gamma^0$, these operators project out the opposite chirality of $q$ and $\bar q$,
 %
 \begin{equation}
     P_I q = q_I, \quad \bar q  P_I  = q_{\bar I},\quad
@@ -159,9 +159,9 @@ The currents corresponding to these transformations are
 %
 \begin{equation}
     \label{conserved currents qcd}
-    J_V^\mu = \bar q_R \gamma^\mu q_R, \quad
+    J_V^\mu = \bar q \gamma^\mu q, \quad
     V^\mu_\alpha =  \bar q T_\alpha \gamma^\mu q, \quad
-    J_A^\mu = \bar q_L \gamma^\mu \gamma^5 q_L, \quad
+    J_A^\mu = \bar q \gamma^\mu \gamma^5 q, \quad
     A^\mu_\alpha = \bar q T_\alpha \gamma^\mu \gamma^5 q.
 \end{equation}
 %
@@ -172,7 +172,7 @@ As mentioned in \autoref{section: symmetry and goldstone's theorem}, in a quantu
 This is encoded in the Schwinger-Dyson equation~\autocite{schwartzQuantumFieldTheory2013}
 %
 \begin{equation}
-    \partial_\mu \ex{J_A^\mu} = -\frac{e^2}{(4 \pi)^2} \ex{\varepsilon^{\mu \nu \rho \sigma}F_{\mu \nu} F_{\rho \sigma}},
+    \partial_\mu \ex{J_A^\mu} = -\frac{e^2}{(4 \pi)^2} \ex{\varepsilon^{\mu \nu \rho \sigma}F_{\mu \nu} F_{\rho \sigma}}.
 \end{equation}
 %
 The remaining symmetry is $\Lie{U}{1}_V \times \Lie{SU}{N_f}_V \times \Lie{SU}{N_f}_A$.
@@ -202,7 +202,7 @@ The scalar quark condensate is quantified by the constant $B_0$ via the relation
 %
 With the spontaneous symmetry breaking of the quark condensate, we get the resulting Goldstone bosons $\varphi_\alpha$.
 The pion decay constant $f_\pi$ is defined by the matrix element of current corresponding to the broken symmetry, $A_\alpha^\mu$ between the vacuum $\ket{0}$ and Goldstone boson momentum states, $\ket{\varphi_a(p)}$.
-One can show that this element, by Lorentz covariance, must have the form\autocite{schererIntroductionChiralPerturbation2002,schwartzQuantumFieldTheory2013}
+One can show that this element, by Lorentz covariance, must have the form~\autocite{schererIntroductionChiralPerturbation2002,schwartzQuantumFieldTheory2013}
 %
 \begin{equation}
     \braket{0| A^\mu_\alpha (x) | \varphi_\beta(p)} 

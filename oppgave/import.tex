@@ -1,7 +1,7 @@
 \usepackage[left=2.5cm, right=2.5cm, top=2cm, bottom=2cm]{geometry}
 
 \usepackage{tikz-cd}
-\usepackage[compat=1.0.0]{tikz-feynman}
+\usepackage[compat=1.1.0]{tikz-feynman}
 
 
 \tikzfeynmanset{ Fermion/.style = {
@@ -13,8 +13,6 @@
    postaction=decorate
    }
 }
-
-
 
 
 % % math mode additions
@@ -45,6 +43,8 @@
 
 % in-document references
 \usepackage{hyperref}
+% This should have always been used...
+\usepackage[capitalize]{cleveref}
 
 % Nice table of contents
 \usepackage{tocloft}
@@ -60,11 +60,8 @@
 
 \usepackage{titlepic}
 \usepackage[prependcaption,textsize=footnotesize]{todonotes}
-% \usepackage{xpatch}
 
 \usepackage{setspace}
-
-% \usepackage{placeins}
 
 % Quote in introduction
 \usepackage{epigraph} 

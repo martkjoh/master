@@ -5,7 +5,7 @@
 To construct the next-to-leading order Lagrangian, one follows the same approach of combining the building blocks we used in \autoref{section: chiral perturbation theory} into locally $\Lie{SU}{3}_R\times\Lie{SU}{3}_L$-invariant terms.
 However, a naïve approach will lead to redundant terms in the Lagrangian which, on the face of it might seem independent, but are, in fact, equivalent to linear combinations of other terms.
 Such terms may be eliminated by reparametrization and the use of the equation of motion, as shown for two-flavors in \autoref{appendix: rewriting terms}.
-Furthermore, trace relations allow for different, but equivalent forms of the Lagrangian.
+Furthermore, trace relations allow for different but equivalent forms of the Lagrangian.
 In \autoref{subsection:rewriting NLO Lagrangian}, we show how two different choices of next-to-leading order, two-flavor Lagrangians are equivalent.
 Although the naïve identification of invariant terms is the same for $N_f = 2$ and $N_f=3$, such trace relations mean that there are fewer independent terms in the two-flavor case~\autocite{schererIntroductionChiralPerturbation2002}.
 
@@ -27,21 +27,21 @@ With this, the NLO Lagrangian is~\autocite{gasserChiralPerturbationTheory1985}
     + L_5 \Tr{
         \nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger 
         \left(\chi \Sigma^\dagger + \Sigma \chi^\dagger\right)
-    }\\
+    }\\\nonumber
     &+ L_6 \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}^2 
      + L_7 \Tr{\chi \Sigma^\dagger - \Sigma \chi^\dagger}^2
-    + L_8 \Tr{ \left(\chi^\dagger \Sigma \right)^2 + \left(\chi \Sigma^\dagger \right)^2}
-    + H_2 \Tr{\chi \chi^\dagger}.
+    + L_8 \Tr{ \left(\chi^\dagger \Sigma \right)^2 + \left(\chi \Sigma^\dagger \right)^2}\\
+    &+ H_2 \Tr{\chi \chi^\dagger}.
 \end{align}
 %
 Here, $L_i$ and $H_i$ are coupling constants.
 As discussed, these are needed to parametrize all possible effective Lagrangians.
 As long as we are unable to solve low-energy QCD, they must be measured experimentally.
 The $L_i$'s are called \emph{low-energy constants}.
-The $H_i$'s only couple to external fields, and thus have no physical significance, but they are needed for renormalization~\autocite{gasserChiralPerturbationTheory1985}
+The $H_i$'s only couple to external fields, but they are needed for renormalization~\autocite{gasserChiralPerturbationTheory1985}.
 
 The pion-condensed phase is still parametrized as described in \autoref{subsection: pion-condensed phase}.
-We obtained the next-to-leading order static Lagrangian by substituting the vacuum-parametrization, $\Sigma^\pipm_\alpha$, into \autoref{NLO Lagrangian three flavor}, which yields
+We obtained the next-to-leading order static Lagrangian by substituting the vacuum-parametrization $\Sigma^\pipm_\alpha$ into \autoref{NLO Lagrangian three flavor}, which yields
 %
 \begin{align}
     \label{bare static nlo lagrangian}
@@ -57,7 +57,8 @@ We obtained the next-to-leading order static Lagrangian by substituting the vacu
     + H_2 \left(2\bar m^4 + 2\Delta m^4 + m_S^4 \right).
 \end{align}
 %
-All the terms in the NLO Lagrangian up to and including $\Oh((\pi/f)^2)$, calculated using CAS-software, are shown in \autoref{section: symbolic calculations}.
+These results, as well as some earlier calculations, were calculated using CAS software.
+This is discussed in \autoref{section: symbolic calculations}, where a link to an online repository with the code used is available.
 
 $L_i$ and $H_i$  are bare coupling constants, which are unobservable, but they are related to the renormalized coupling constants $L_i^r$ and $H_i^r$.
 We will perform renormalization by using dimensional regularization, in which the divergent integrals are generalized to $d$-dimensions, and the $\overline{\mathrm{MS}}$-scheme.
@@ -65,6 +66,7 @@ This is discussed in more detail in \autoref{subsection: renormalization}.
 In this case, the bare and renormalized constants are related by
 %
 \begin{align}
+    \label{bare coupling constants}
     L_i 
     & = 
     L_i^r 
@@ -102,7 +104,7 @@ From this we obtain the renormalization group equations for the running coupling
     = - \frac{ \mu^{-2\epsilon}}{(4 \pi)^2} \Delta_i + \mathcal{O}(\epsilon).
 \end{equation}
 %
-Inserting the solutions back into the bare coupling constants, we get to the first order in $\epsilon$
+Inserting the solutions back into the bare coupling constants, \autoref{bare coupling constants} yields, to $\Oh(\epsilon)$,
 %
 \begin{equation}
     L_i
@@ -119,6 +121,7 @@ Inserting the solutions back into the bare coupling constants, we get to the fir
 \end{equation}
 %
 We have introduced the dimensional constant $\tilde \mu$, related to $\mu$ by $\tilde \mu^2 = 4 \pi e^{-\gamma_E} \mu^2$ where $\gamma_E$ is the Euler-Mascheroni constant, to match up with the contribution from loop integrals.
+This is the ``modified'' of ``modified minimal subtraction'', $\overline{\text{MS}}$, as discussed in \autoref{subsection: renormalization}.
 $L_i^r(M)$ and $H_i^r(M)$ are the constants of integration of the renromalization group equations.
 These must be measured at some energy $M$.
 This only applies if the numerical constants $\Gamma_i$/$\Delta_i$ are non-zero.

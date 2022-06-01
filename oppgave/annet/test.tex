@@ -1,7 +1,9 @@
 \documentclass{minimal}
 
-\usepackage[compat=1.0.0]{tikz-feynman}
+\usepackage[compat=1.1.0]{tikz-feynman}
 
+\usepackage{hyperref}
+\usepackage[capitalize]{cleveref}
 
 % \tikzfeynmanset{ fermion/.style = {
 %    decoration={
@@ -15,6 +17,7 @@
 
 \begin{document}
 \begin{equation}
+    \label{exchange}
 \mathcal{M} =
     \begin{tikzpicture}[baseline=(c)]
         \begin{feynman}
@@ -41,7 +44,11 @@
         \end{feynman}
     \end{tikzpicture}
 \end{equation}
+
+
+
 \begin{equation}
+    \label{vacuum loop}
     \mathcal M =
     \feynmandiagram[small, baseline=(a)]{
         a [dot] --[fermion, out=130, in=230, min distance=2cm, looseness=1] a,
@@ -55,6 +62,7 @@
 \end{equation}
 
 \begin{equation}
+    \label{funckyyy}
     \feynmandiagram[small, horizontal=a to c]{
         a --[quarter left] b 
           --[quarter left] c 
@@ -75,6 +83,7 @@
 \hspace{5cm}
 aa
 \begin{equation}
+    \label{boop dee boop}
     \begin{tikzpicture}[baseline=(c)]
         \begin{feynman}
             \vertex (a) at (0, 0);
@@ -89,12 +98,25 @@ aa
         \end{feynman}
     \end{tikzpicture}
 \end{equation}
+\begin{equation}
+    \label{eq 1}
+    F = ma
+\end{equation}
+\begin{equation}
+    \label{eq 2}
+    E = mc^2
+\end{equation}
+\begin{equation}
+    \label{eq 3}
+    a^2+b^2 = c^2
+\end{equation}
 
 % \feynmandiagram[horizontal=a to b, baseline=(c)]{
 %     a --[fermion, half right, looseness=1.7] b[dot] --[fermion, half right, looseness=1.7] a,
 %     b --[fermion, half right, looseness=1.7] c --[fermion, half right, looseness=1.7] b,
 %     };
 
+Mine diagram er \cref{exchange,boop dee boop,funckyyy,vacuum loop,eq 2,eq 3}.
 
 
 \end{document}

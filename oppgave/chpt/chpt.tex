@@ -51,7 +51,7 @@ We therefore expand the effective Lagrangian as
     \Ell_\text{eff} = \Ell_2 + \Ell_4 + ...,
 \end{equation}
 %
-where $\Ell_{2n}$ contains $2n$ derivatives.
+where $\Ell_{D}$ contains $D$ derivatives.
 This is equivalent to scaling the space-time coordinates as $x^\mu \rightarrow tx^\mu$ and expanding the Lagrangian in powers of $t$.
 
 We must also allow for the fact that pions have non-zero mass, interact in a symmetry-breaking way with the electromagnetic field, and the possibility of external currents.
@@ -79,7 +79,7 @@ The $4\pi$-factor shows up due to Fourier integrals over loop diagrams and will 
 To construct the Lagrangian of chiral perturbation theory, we start with the Lagrangian of massless QCD,
 %
 \begin{equation}
-    \Ell^0_\text{QCD} = i \bar q \slashed D q - \frac{1}{4} G^\alpha_{\mu \nu} G_\alpha^{\mu \nu}
+    \Ell^0_\text{QCD} = i \bar q \slashed D q - \frac{1}{4} G^\alpha_{\mu \nu} G_\alpha^{\mu \nu}.
 \end{equation}
 %
 As discussed in last section, this Lagrangian is invariant under the full symmetry group $G = \Lie{SU}{N_f}_R \times \Lie{SU}{N_f}_L$, but the system undergoes spontaneous symmetry breaking to the smaller group $H = \Lie{SU}{N_f}_V$.
@@ -108,7 +108,7 @@ For $\tilde g \in G$, we have
     \tilde g (1, \Sigma)
     = (\tilde U_L, \tilde U_R) (1, U_R {U_L}^\dagger)
     = (1, \tilde U_R (U_R {U_L}^\dagger) \tilde {U_L}^\dagger) (\tilde U_L, \tilde U_L)
-    = (1, \tilde U_R \Sigma \tilde U_L) \tilde h.
+    = (1, \tilde U_R \Sigma \tilde U_L^\dagger) \tilde h.
 \end{equation}
 %
 This gives the transformation rule
@@ -211,7 +211,7 @@ We define
 which transform as 
 %
 \begin{equation}
-    f^{r/l}_{\mu\nu} \rightarrow U_{R/L}  f^{r/l}_{\mu\nu}  U_{R/L}^\dagger.
+    f^{(r/l)}_{\mu\nu} \rightarrow U_{R/L}  f^{(r/l)}_{\mu\nu}  U_{R/L}^\dagger.
 \end{equation}
 
 Including dynamical fields, such as the photon field $\mathcal A_\mu$, is slightly more complicated.

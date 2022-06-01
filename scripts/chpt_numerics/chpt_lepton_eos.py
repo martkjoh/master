@@ -213,8 +213,8 @@ def plot_all_log(r, N):
     pmu_lim = a*pl_lim(y)
     umu_lim =  u_pi_lim(y) + a*ul_lim(y)
 
-    ax.plot(pe, ue, lw=3, alpha=0.8, label="$\\pi + e$")
-    ax.plot(pmu, umu, lw=3, alpha=0.8, label="$\\pi + \\mu$")
+    ax.plot(pe, ue, lw=3, alpha=0.8, label="$\\pi e$")
+    ax.plot(pmu, umu, lw=3, alpha=0.8, label="$\\pi\\mu$")
     ax.plot(pe_lim, ue_lim, "k--", label="$u_\\mathrm{NR}(p)$")
     ax.plot(pmu_lim, umu_lim, "k--")
 

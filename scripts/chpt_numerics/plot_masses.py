@@ -82,9 +82,9 @@ def plot_meson_em_masses():
     ax[0].plot(mu_list, mK0bar(muS_n, mu_list, alpha_list), "r-.",  label="$\\bar K^0$")
     ax[0].plot(mu_list, meta(muS_n, mu_list, alpha_list), "-", color="tab:blue", label="$\\eta$")
 
-    ax[1].set_xlabel("$\\mu_I/m_{\\pi^0}$")
-    ax[0].set_ylabel("$m/m_{\\pi^0}$")
-    ax[1].set_ylabel("$m/m_{\\pi^0}$")
+    ax[1].set_xlabel("$\\mu_I/m_{\\pi}$")
+    ax[0].set_ylabel("$m/m_{\\pi}$")
+    ax[1].set_ylabel("$m/m_{\\pi}$")
 
     ax[0].legend()
     ax[1].legend()
