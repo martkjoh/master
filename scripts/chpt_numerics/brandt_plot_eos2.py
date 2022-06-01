@@ -16,8 +16,8 @@ plt.rc("axes", grid=True)
 plt.rc("grid", linestyle="--", alpha=1)
 
 
-
 a = (f_pi**2/m_pi**2)**(-1)
+b=1
 
 def get_eos(data):
     p = data[0]*a
@@ -25,24 +25,19 @@ def get_eos(data):
     u = data[3]*a
     err_u = sqrt(data[4]**2 + data[5]**2)*a
 
-
     return p, u, err_p, err_u
 
-
-fig, ax = plt.subplots(figsize=(14, 6))
-
 names = ["data_brandt/EOS_p.txt", "data_brandt/EOS_pe.txt", "data_brandt/EOS_pm.txt", "data_brandt/EoS_piellnu.txt"]
-colors= ["cornflowerblue", "mediumseagreen", "indianred", "purple"]
-N = 4
-# colors = [cm.winter(1-(i+1/2)/(N)) for i in range(N)]
+N = len(names)
+colors = [cm.cool(1-(i+1/2)/(N)) for i in range(N)]
 alpha=.4
 labels = ["$\\pi$", "$\\pi e$", "$\\pi \\mu$", "$\\pi \\ell \\nu$"]
-
-
+names2=["", "_e", "_mu", "_neutrino"]
+nlo = [1, 0, 0, 1]
 
 def fill_ellipses(ax, x, y, dx, dy, color, zorder):
     for i in range(len(x)):
-        if i%2!=0:
+        if i%4!=0:
             continue
         xi, yi = x[i], y[i]
         a, b = 2*dx[i], 2*dy[i]
@@ -52,36 +47,41 @@ def fill_ellipses(ax, x, y, dx, dy, color, zorder):
         e.set_facecolor(color)
 
 
+color = "blue"
+
 for i, name in enumerate(names):
+    # if i<3: continue
     eos = np.loadtxt(name, skiprows=1, unpack=True)
     if i == 3:
-        p, u, err_p, err_u = [eos[1]*a, eos[3]*a, eos[2]*a, eos[4]*a]
+        p, u, err_p, err_u = eos[1]*a, eos[3]*a, eos[2]*a, eos[4]*a
+        mask = p!=0
+        p, u, err_p, err_u = p[mask], u[mask], err_p[mask], err_u[mask]
     else:
         p, u, err_p, err_u = get_eos(eos)
 
-    fill_ellipses(ax, p, u, err_p, err_u, colors[i], i)
-    ax.plot(0, 0, color=colors[i], label=labels[i], zorder=i, lw=2, alpha=0.7)
+    fig, ax = plt.subplots(figsize=(7, 4))
 
-names=["", "_nlo", "_e", "_mu", "_neutrino", "_neutrino_nlo"]
-lss = ["-",  "-.", "-", "-",  "-", "-."]
-labels = ["LO", "NLO", "", "", "", ""]
-p_max = 1
-u_max = 2.5
+    ax.plot(p, u, zorder=0, color=color, label=labels[i], lw=2.5, alpha=0.3)
+    fill_ellipses(ax, p, u, err_p, err_u, color, 1)
 
-
-for i, name in enumerate(names):
-    u_path = "pion_star/data/eos"+name+".npy"
+    u_path = "pion_star/data/eos"+names2[i]+".npy"
     u = get_u(u_path)
-    p = np.linspace(0, p_max, 1000)
-    u = np.array([u(p0) for p0 in p])
-    ax.plot(p, u, "k", lw=2, ls=lss[i], label=labels[i])
+    p = np.linspace(0, np.max(p), 1000)
 
+    ax.plot(p, u(p), "k--", lw=1.5, label="LO")
+    if nlo[i]:
+        u = get_u(u_path.split(".")[0]+"_nlo.npy")
+        p = np.linspace(0, np.max(p), 1000)
+        ax.plot(p, u(p), "k-.", lw=1.5, label="NLO")
+    if i==3:
+        ax.plot(p, 3*p, ":", color="tab:blue", lw=2, label="$u=3p$")
+        ax.set_xlim(0, 5)
+        ax.set_ylim(0, 15)
 
-ax.set_xlim(0, p_max)
-ax.set_ylim(0, u_max)
-ax.set_xlabel("$p/u_0$")
-ax.set_ylabel("$u/u_0$")
-ax.legend()
+    ax.set_xlabel("$p/u_0$")
+    ax.set_ylabel("$u/u_0$")
+    ax.legend()
 
-fig.savefig("figurer/brandt_eos_all.pdf", bbox_inches="tight")
-# plt.show()
+    # plt.show()
+    fig.savefig("figurer/brandt_eos"+names2[i]+".pdf", bbox_inches="tight")
+

@@ -75,7 +75,6 @@ def compare_all():
     ax.plot(R, M, color=colors[-1], label=label, lw=3)
 
 
-
     names = ["_nlo", "_e", "_mu", "_neutrino_nlo"]
     u0, m0, r0 = get_const_pion()
 
@@ -108,6 +107,15 @@ def plot_compare_lattice(t=""):
 
         from constants import get_const_pion
         u0, m0, r0 = get_const_pion()
+
+
+        pmin = (m_pi/f_pi)**2 * (1 + m_e/m_pi)**2 / (12*pi**2)
+        name = "_light_%.2e"%pmin
+        u_path = "pion_star/data/sols"+name+".npy"
+        data = load_data(name)
+        R0 = np.array(data[0])
+        M0 = np.array(data[1])
+        ax.plot(R0, M0, ls=(0, (4, 1, 1, 1, 1, 1)), color="black", lw=3, label="$u=3p$", alpha=0.6, zorder=3)
 
 
     fill_ellipses(ax, R, M, err_R, err_M, "lightblue", 1)
@@ -167,8 +175,8 @@ def brandt_neutrino():
 
 # brandt_neutrino()
 
-compare_all()
+# compare_all()
 
 # plot_compare_lattice()
-# plot_compare_lattice(t="_neutrino")
+plot_compare_lattice(t="_neutrino")
 

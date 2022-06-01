@@ -22,7 +22,6 @@ m_mu = 105.7
 
 # pion decay constant
 f_pi = 128/sqrt(2)
-print(f_pi)
 m_S = sqrt(2*m_K0**2 - m_pi**2)
 
 
