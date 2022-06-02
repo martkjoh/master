@@ -11,11 +11,12 @@ In this section, we show first the derivation of the equations of motion, then u
 
 We derive the equations of motion for the leading order Lagrangian using the principle of least action.
 Choosing the parametrization $\Sigma = \exp{i \pi_a \tau_a}$, a variation $\pi_a \rightarrow \pi_a + \delta \pi_a$ results in a variation in $\Sigma$, $\delta \Sigma = i \tau_a \delta \pi_a \Sigma $.
-The variation of the leading order action,
-\begin{equation}
+The variation of the leading order action
+$
     S_2 = \int_\Omega \dd^4x \, \Ell_2,
-\end{equation}
+$
 when varying $\pi_a$ is 
+%
 \begin{align*}
     \delta S = \int_\Omega \dd x \, \frac{f^2}{4}
     \Tr{
@@ -24,7 +25,9 @@ when varying $\pi_a$ is
         + \chi \delta \Sigma^\dagger + \delta \Sigma \chi^\dagger
     }.
 \end{align*}
+%
 Using the properties of the covariant derivative to do partial integratio as well as $\delta(\Sigma \Sigma^\dagger) = (\delta\Sigma)\Sigma^\dagger + \Sigma (\delta \Sigma)^\dagger = 0$, the variation of the action can be written
+%
 \begin{align*}
     \delta S 
     & = \frac{f^2}{4} \int_\Omega \dd x\, 
@@ -55,8 +58,9 @@ Using the properties of the covariant derivative to do partial integratio as wel
         + \Sigma \chi^\dagger
     \right]
     } 
-    \delta \pi_a = 0.
+    \delta \pi_a.
 \end{align*}
+%
 %
 As the variation is arbitrary, the equations of motion to leading order is
 %
@@ -105,8 +109,9 @@ the most general transformation to second order in Weinberg's power counting sch
     \right].
 \end{equation}
 %
-$\alpha_1$ and $\alpha_2$ are arbitrary real numbers. As \autoref{S reparametrization} is second order, $\Delta \Ell$ is fourth order in Weinberg's power counting scheme.
+$\alpha_1$ and $\alpha_2$ are arbitrary real numbers. As \autoref{S reparametrization} is second-order, $\Delta \Ell$ is fourth-order in Weinberg's power counting scheme.
 Inserting this gives
+%
 %
 \begin{align*}
     \Ell_2\left[e^{i S_2}\Sigma '\right]
@@ -117,8 +122,9 @@ Inserting this gives
     i \frac{f^2}{4}
     \Tr{[\nabla_\mu (S_2\Sigma')][\nabla^\mu\Sigma']^\dagger 
     -  [\nabla_\mu\Sigma'][\nabla^\mu (\Sigma'^\dagger  S_2) ]}
-    - i \frac{f^2}{4} \Tr{\chi \Sigma'^\dagger S_2 - S_2 \Sigma' \chi^\dagger}
+    - i \frac{f^2}{4} \Tr{\chi \Sigma'^\dagger S_2 - S_2 \Sigma' \chi^\dagger}.
 \end{align*}
+%
 %
 Using the properties of the covariant derivative, we may use the product rule and partial integration to write the difference between the two Lagrangians to fourth-order as
 %
@@ -138,14 +144,14 @@ Using the properties of the covariant derivative, we may use the product rule an
 \end{align}
 %
 Any term that can be written in the form of \autoref{Delta reparametrization} for arbitrary $\alpha_1, \alpha_2 \in \R$ is redundant, as we argued earlier, and may therefore be discarded.
-$\Delta \Ell_2$ is of fourth order, and it can thus be used to remove terms from $\Ell_4$ or higher order.
+$\Delta \Ell_2$ is of fourth-order, and it can thus be used to remove terms from $\Ell_4$ or higher order.
 
 
 
-\subsection{Rewriting NLO Lagrangian}
+\section{*Rewriting NLO Lagrangian}
 \label{subsection:rewriting NLO Lagrangian}
 
-The NLO Lagrangian used in this text is given in \autoref{NLO Lagrangian}, and is
+The NLO Lagrangian used in this Appendix is given in \autoref{NLO Lagrangian} and is
 %
 \begin{align}
     \notag
@@ -172,6 +178,7 @@ The NLO Lagrangian used in this text is given in \autoref{NLO Lagrangian}, and i
 %
 We can rewrite it to match the one used in~\autocite{adhikariTwoflavorChiralPerturbation2019,martinariaTwoflavorChiralPerturbation2020}, starting with
 %
+%
 \begin{align*}
     & \frac{h_1 - h_3 - l_4}{16}
     \left(
@@ -186,7 +193,9 @@ We can rewrite it to match the one used in~\autocite{adhikariTwoflavorChiralPert
         - 2 \Tr{(\chi \Sigma^\dagger)^2} -2 \Tr{(\Sigma \chi^\dagger)^2}
     \right).
 \end{align*}
+%
 Using $\Tr{A^2} = \Tr{A}^2 - \det(A)\Tr{\one}$, we get
+%
 \begin{align*}
     &= - \frac{h_1 - h_3 - l_4}{16}
     \left(
@@ -202,6 +211,7 @@ Using $\Tr{A^2} = \Tr{A}^2 - \det(A)\Tr{\one}$, we get
         - 4 \det(\Sigma\chi^\dagger)
     \right).
 \end{align*}
+%
 %
 Furthermore, as $\det(\Sigma)= 1$, 
 % and $\chi = a_i \tau_i$, we have $\Tr{\chi \chi^\dagger} = a_i a_i^*$, $\det(\chi) + \det(\chi^\dagger) = a_i a_i + a_i^* a_i^*$

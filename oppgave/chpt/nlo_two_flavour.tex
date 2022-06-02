@@ -1,6 +1,6 @@
 \section{*Next-to-leading order Lagrangian}
 
-Constructing the next-to-leading order (NLO) Lagrangian is now a business of combining the building blocks we found in \autoref{section: chiral perturbation theory}. 
+Constructing the next-to-leading order (NLO) Lagrangian is a business of combining the building blocks we found in \autoref{section: chiral perturbation theory} into locally $\Lie{SU}{(N_f)}$ invariant terms
 We must include all terms that obey all symmetries and that are fourth-order in Weinberg's power counting scheme and remove possible redundant terms, as discussed in \autoref{appendix: rewriting terms}.
 We will quote the result from \cite{schererIntroductionChiralPerturbation2002},
 %
@@ -177,7 +177,8 @@ Combining these results gives all the terms in $\Ell_4$, to $\Oh{\left((\pi/f)^3
     %%%%%%%
     \notag
     & \Tr{\nabla_\mu \Sigma (\nabla^\mu \Sigma)^\dagger} 
-    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger } \\\label{l4}
+    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger } \\
+    \notag
     & \quad =
     4\bar m^2
     \Bigg\{
@@ -192,10 +193,11 @@ Combining these results gives all the terms in $\Ell_4$, to $\Oh{\left((\pi/f)^3
             \right)
         \right]\\\notag
         & \quad + \mu_I{}^2
-        \left[
+        \Bigg[
             2\cos{\alpha}\sin^2{\alpha} 
             - 2 \frac{\pi_1}{f} \sin{\alpha}
-            \left(2 - 3\sin^2{\alpha}\right)
+            \left(2 - 3\sin^2{\alpha}\right) \\
+            &\quad\quad\quad\quad 
             + \frac{1}{f^2}
             \left(                
                 \pi_1^2[2 - 9 \sin^2{\alpha}]
@@ -203,8 +205,8 @@ Combining these results gives all the terms in $\Ell_4$, to $\Oh{\left((\pi/f)^3
                 - 3\pi_3^2\sin^2{\alpha}
             \right)
             \cos{\alpha}
-        \right]
-    \Bigg\}, \\
+        \Bigg]
+    \Bigg\}, \label{l4}\\
     %%%%%%%
     % l_3 %
     %%%%%%%
@@ -250,7 +252,7 @@ Combining these results gives all the terms in $\Ell_4$, to $\Oh{\left((\pi/f)^3
 
 \endgroup
 
-The different terms of the NLO Lagrangian is
+The different terms of the NLO Lagrangian are
 \begingroup
 \allowdisplaybreaks 
 %

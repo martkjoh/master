@@ -56,12 +56,11 @@ def plot_norm_pressure_mass():
     M = [s["M"] for s in all_sols]
     pc = [s["pc"] for s in all_sols]
     i = np.argmax(M)
-    m = lambda r: all_sols[i]["f"](r)[1] / M[i]
+    m = lambda r: all_sols[i]["f"](r)[1]
     p = lambda r: all_sols[i]["f"](r)[0] / pc[i]
     r = np.linspace(0, all_sols[i]["R"], 100)
-    r = r/r[-1]
-    ax[0].plot(r, p(r), "--k", lw=2)
-    ax[1].plot(r, m(r), "--k", lw=2, label="$M_\\mathrm{max}$")
+    ax[0].plot(r/r[-1], p(r)/p(0), "k--", lw=2)
+    ax[1].plot(r/r[-1], m(r)/m(r)[-1], "k--", lw=2, label="$M_\\mathrm{max}$")
 
 
     ax[0].set_ylabel("$p/p_c$")
@@ -106,7 +105,7 @@ def plot_mass_surface():
         )
     fig.colorbar(surf)
     
-    plt.show()
+    # plt.show()
 
 
 def plot_mass_radius(name="neutron"):
@@ -169,12 +168,12 @@ def plot_mass_radius_compare():
         
     fig, ax = plt.subplots(figsize=(16, 8))
 
-    linestyles = ["-", "-.", "--", ":"]
+    linestyles = ["-", "-.", "--", (0, (6, 1, 1, 1, 1, 1))]
     labels = [
         "Full EOS + TOV",
-        "Non-relativistic EOS + TOV",
-        "Full EOS + Newtonian gravity",
-        "Non-relativistic EOS + Newtonian gravity"
+        "Non-rel. EOS + TOV",
+        "Full EOS + Newt. gravity",
+        "Non-rel. EOS + Newt. gravity"
         ]
 
     for i, data in enumerate(datas):
@@ -204,7 +203,9 @@ def plot_mass_radius_compare():
     ax.set_ylim(0, 1.8)
     ax.set_xlim(0, 45)
 
-    plt.legend(prop={'size': 14})
+    plt.legend(
+        prop={'size': 18}
+    )
     fig.savefig("figurer/mass_radius_comparison.pdf", bbox_inches="tight")
     
 
@@ -265,9 +266,9 @@ def plot_mass_of_pc():
 
 
 plot_norm_pressure_mass()
-plot_mass_radius()
-plot_mass_radius_compare()
-plot_eos()
-plot_mass_of_pc()
+# plot_mass_radius()
+# plot_mass_radius_compare()
+# plot_eos()
+# plot_mass_of_pc()
 
-plot_mass_surface()
+# plot_mass_surface()

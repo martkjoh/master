@@ -12,7 +12,7 @@ We will be often be dealing with functionals of the form
 \end{equation}
 %
 Here, $\Ell[\varphi](x)$, the Lagrangian density, is a functional which takes in a function $\varphi$, and returns a real number $\Ell[\varphi](x)$ \emph{for each point} $x \in \Em$.
-$\Ell$ thus return a real-valued function, not just a number.
+$\Ell$ thus returns a real-valued function, not just a number.
 $\Em$ is the manifold, in our case space-time, of which both $\varphi(x)$ and $\Ell[\varphi](x)$ are functions.
 The function $\varphi$ can, in general, take on the value of a scalar, complex number, spinor, vector, etc\dots, while $\Ell[\varphi](x)$ must be a scalar-valued function.
 This strongly constraints the form of any Lagrangian and is an essential tool in constructing quantum field theories.
@@ -24,7 +24,7 @@ Although this section is written with a single scalar-valued function $\varphi$,
 \subsection{Functional derivative}
 
 The functional derivative is base on an arbitrary \emph{variation} $\eta$ of the function $\varphi$.
-The variation $\eta$, often written $\delta \varphi$ is an arbitrary function only constrained to vanish \emph{quickly enough} at the boundary $\partial \Em$.\footnote{%
+The variation $\eta$, often written $\delta \varphi$, is an arbitrary function only constrained to vanish \emph{quickly enough} at the boundary $\partial \Em$.\footnote{%
 The condition of ``quickly enough'' is to ensure that we can integrate by parts and ignore the boundary condition, which we will do without remorse.
 }
 The variation of the functional $S$ is defined as
@@ -86,7 +86,7 @@ Higher functional derivatives are defined in terms of higher-order variations,
     \delta^m_\eta S[\varphi]
     = \odv{}{\epsilon} \delta^{m-1}_\eta S[\varphi + \epsilon \eta]|_{\epsilon=0}
     = \int_\Em 
-    \left(\prod_{i=1}^m \dd^n\, x_i \eta(x_i)\right) 
+    \left(\prod_{i=1}^m \dd^n x_i \, \eta(x_i)\right) 
     \frac{\delta^m S[\varphi]}{\delta \varphi(x_1)...\delta\varphi(x_m)}.
 \end{equation}
 %
@@ -97,7 +97,7 @@ With this, we can write the functional Taylor expansion,
     = S[\varphi_0]
     + \int_\Em \dd^n x \, \varphi(x) \fdv{S[\varphi_0]}{\varphi(x)}
     + \frac{1}{2} \int_\Em \dd^n x \dd^n y \, \varphi(x) \varphi(y) \fdv{S[\varphi_0]}{\varphi(x), \varphi(y)}
-    +\dots
+    +\dots.
 \end{equation}
 %
 Here, the notation $\fdv{S[\varphi_0]}{\varphi}$ indicate that $S[\varphi]$ is first differentiated with respect to $\varphi$, then evaluated at $\varphi = \varphi_0$~\autocite{peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013}.
@@ -110,7 +110,7 @@ Here, the notation $\fdv{S[\varphi_0]}{\varphi}$ indicate that $S[\varphi]$ is f
 The Lagrangian may also be written as a scalar function of the field-values at $x$, $\varphi(x)$, as well as its derivatives, $\partial_\mu \varphi(x)$, for example
 %
 \begin{equation}
-    \Ell(\varphi, \partial_\mu \varphi) = \frac{1}{2} \partial_\mu \varphi \partial^\mu\varphi - \frac{1}{2} m^2 \varphi^2 - \frac{1}{4!}\lambda \varphi^4+ \dots
+    \Ell(\varphi, \partial_\mu \varphi) = \frac{1}{2} \partial_\mu \varphi \partial^\mu\varphi - \frac{1}{2} m^2 \varphi^2 - \frac{1}{4!}\lambda \varphi^4+ \dots.
 \end{equation}
 %
 We have omitted the evaluation at $x$ for the brevity of notation.
@@ -228,29 +228,28 @@ For a matrix $M$, then, we can write
             +\dots)
     + \Oh(\epsilon^2)]\\
    & 
-   = 1 + M^{\mu}{}_{\mu}  + \mathcal{O}(\epsilon^2)
+   = 1 + M^{\mu}{}_{\mu}  + \mathcal{O}(\epsilon^2).
 \end{align}
 %
-Thus,
+Using 
+%
+\begin{equation}
+    \det(g^\mu{}_\nu + \epsilon \eta^\mu{}_\nu)
+    =\det(g^\mu{}_\rho[\delta^\rho_\nu + \epsilon g^{\rho\lambda} \eta_{\lambda\nu}])
+    = \det(g^\mu{}_\rho) (1  + \epsilon g^{\nu\lambda} \eta_{\lambda\nu}),
+\end{equation}
+we then get
 %
 \begin{align}
     \delta \sqrt{|g|}  
     =
     \frac{1}{2}
     \frac{1}{\sqrt{|g|}} \frac{g}{|g|} 
-    \delta g
+    \delta \det(g)
     = -\frac{1}{2}\sqrt{|g|} g^{\mu \nu} \delta g_{\mu\nu}
 \end{align}
 %
-where we used
-%
-\begin{equation}
-    \det(g^\mu{}_\nu + \epsilon \eta^\mu{}_\nu)
-    =\det(g^\mu{}_\rho[\delta^\rho_\nu + \epsilon g^{\rho\lambda} \eta_{\lambda\nu}])
-    = \det(g^\mu{}_\rho) (1  + \epsilon g^{\nu\lambda} \eta_{\lambda\nu}).
-\end{equation}
-%
-The minus sign is included as the determinant of a Lorentzian metric is negative. 
+The minus sign is due to the determinant of a Lorentzian metric being negative. 
 Assuming the Lagrangian only depends on the metric directly, and not its derivatives, the variation of the action is
 %
 \begin{equation}
@@ -325,28 +324,28 @@ As $\delta \Gamma = \Gamma - \Gamma'$, it is a tensor, and we may write
         - \nabla_{\nu}\delta \Gamma^\rho_{\mu \sigma}
      = \nabla_\eta \left(g^\eta{}_{\mu} \delta\Gamma^\rho_{\nu \sigma} 
         - g^\eta{}_{\nu} \delta\Gamma^\rho_{\mu \sigma} \right) 
-    = \nabla_\eta (K^\rho{}_{\sigma \mu \nu})^\eta,
+    := \nabla_\eta K^{\rho\eta}{}_{\mu \rho \nu},
 \end{align*}
 %
 where $K$ is a tensorial quantity, which vanishes at the boundary of our spacetime.
 Using the generalized divergence theorem, \autoref{generalized divergence theorem}, we see the contribution to the action from this quantity vanish.
-The contribution comes from an integral over $g^{\mu \nu} \delta R_{\mu \nu} = g^{\mu \nu} \delta R^{\rho}{}_{\mu \rho \nu} = g^{\mu \nu} \nabla_\eta (K^\rho{}_{\mu \rho \nu})^\eta$
-Using metric compatibility, we can exchange the covariant derivative and the metric, and we have $g^{\mu \nu} \delta R_{\mu \nu} = \nabla_\eta [g^{\mu \nu}K^{\eta \rho}{}_{\mu \rho \nu}]$.
+The contribution comes from an integral over $g^{\mu \nu} \delta R_{\mu \nu} = g^{\mu \nu} \delta R^{\rho}{}_{\mu \rho \nu} = g^{\mu \nu} \nabla_\eta K^{\rho\eta}{}_{\mu \rho \nu}$
+Using metric compatibility, we can exchange the covariant derivative and the metric, and we have $g^{\mu \nu} \delta R_{\mu \nu} = \nabla_\eta [g^{\mu \nu}K^{\rho \eta}{}_{\mu \rho \nu}]$.
 The contribution to the action therefore becomes
 %
 \begin{equation}
     \int_\Em \dd^4 x \, \sqrt{|g|} g^{\mu \nu} \delta R_{\mu \nu} 
-    = \int_\Em \dd^4 x \, \sqrt{|g|} \nabla_\eta [g^{\mu \nu}K^{\eta \rho}{}_{\mu \rho \nu}]
-    = \int_{\partial \Em} \dd^3 y \, \sqrt{|\gamma|} n_\eta [g^{\mu \nu}K^{\eta \rho}{}_{\mu \rho \nu}] = 0,
+    = \int_\Em \dd^4 x \, \sqrt{|g|} \nabla_\eta K^{\eta \rho \mu}{}_{\rho \mu}
+    = \int_{\partial \Em} \dd^3 y \, \sqrt{|\gamma|} n_\eta K^{\eta \rho \mu}{}_{\rho \mu} = 0,
 \end{equation}
 where we used the fact that $\delta g_{\mu \nu}$, and thus $K$, vanish at $\partial \Em$, and the generalized form of the divergence theorem, \autoref{generalized divergence theorem}.
-The variation of the action is therefore|
+The variation of the action is therefore
 %
 \begin{equation}
     \delta S_{\text{EH}} = k \int_\Em \dd^n x \sqrt{|g|} \left[R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu}\right] \delta g^{\mu \nu},
 \end{equation}
 %
-and by the definition of the functional derivative,~\autocite{carrollSpacetimeGeometryIntroduction2019}
+and by the definition of the functional derivative,
 %
 \begin{equation}
     \label{functional derivatie einstein-hilber action}

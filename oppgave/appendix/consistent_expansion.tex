@@ -5,7 +5,7 @@ As with all other quantities, we calculate using \chpt, the free energy density 
 We write
 %
 \begin{equation}
-    \Eff = \Eff^{(0)}_2 + \Eff^{(1)}_2 + \Eff^{(2)}_2 + \Eff^{(0)}_4,\dots
+    \Eff = \Eff^{(0)}_2 + \Eff^{(1)}_2 + \Eff^{(2)}_2 + \Eff^{(0)}_4 \dots,
 \end{equation}
 %
 where $\Eff^{(n)}_D$ is the $n$-loop contribution from the Lagrangian with chiral dimension $D$, $\Ell_D$.
@@ -19,7 +19,7 @@ Using both these scalings, the expansion of the free energy becomes
 %
 \begin{equation}
     \Eff = t^2 g^{-1} \Eff_2^{(0)} + t^2 \Eff_2^{(1)} + t^4 g^{-1} \Eff_4^{(0)}
-    + ...
+    + \dots .
 \end{equation}
 %
 We consider terms where $k = L + n$ has the same value to be of same order.
@@ -37,7 +37,7 @@ then scale $t \rightarrow \sqrt{s} \, t$ and $g \rightarrow s g$, where $s$ is s
 All expansions are now done in this new parameter $s$.
 The free energy expansion is
 \begin{equation}
-    \Eff = s^{-1}\sum_{k = 0}^\infty \tilde \Eff_k \, s^{k}.
+    \Eff = \sum_{k = 0}^\infty \tilde \Eff_k \, s^{k-1}.
 \end{equation}
 %
 As argued earlier, $\alpha$ must minimize the free energy and therefore satisfy
@@ -47,12 +47,11 @@ As argued earlier, $\alpha$ must minimize the free energy and therefore satisfy
 \end{equation}
 %
 to all orders.
-We expand this solution in $s$,
-\begin{equation}
-    \alpha = \alpha_0 + \alpha_1 s + \dots.
-\end{equation}
-%
-Combining this, we get
+Inserting the expansion in of the solution to this equation, 
+$
+\alpha = \alpha_0 + \alpha_1 s + \dots,
+$
+into the expansion of $\Eff$, we get
 %
 \begin{align}
     \nonumber
@@ -73,7 +72,7 @@ Combining this, we get
     \left[
         \tilde \Eff_0'(\alpha_0)
         +
-        (\alpha' - \alpha_0)
+        \alpha_1 s
         \tilde \Eff_0''(\alpha_0)
         +
         \Oh(s^2)
@@ -99,14 +98,14 @@ Combining this, we get
 %
 Here, the prime indicates partial derivatives with respect to $\alpha$.
 The equality in \autoref{minimizing free energy expansion} has to hold term for term.
-After setting $s = g = t = 1$, we get
+The leading order relation is
 %
 \begin{align*}
-    \pdv{\tilde \Eff_0}{\alpha}\bigg|_{\alpha=\alpha_0} = 0, \quad
-    \tilde \Eff_0 = \Eff_2^{(0)},
+    \tilde \Eff_0'(\alpha_0) = 0, \quad
+    \tilde \Eff_0 = \Eff_2^{(0)}.
 \end{align*}
 %
-which is what we have used as the leading-order result. 
+This is what we have used as the leading-order result. 
 The first correction is on this result is
 %
 \begin{equation}
@@ -116,7 +115,6 @@ The first correction is on this result is
     \tilde \Eff_1 = \Eff_{4}^{(0)} + \Eff_{2}^{(1)}.
 \end{equation}
 %
-
 The next to leading order results for the free energy and $\alpha$ are
 %
 \begin{equation}
@@ -133,8 +131,7 @@ We have that
 \end{equation}
 %
 where the excluded terms are beyond next-to-leading order.
-Using \autoref{NLO correction alpha}, we see that this vanishes to next-to-leading order.
-We therefore use the criterion
+Using \autoref{NLO correction alpha}, we see that this vanishes and we, therefore, use the criterion
 %
 \begin{equation}
     \label{alpha nlo method 2}
@@ -151,7 +148,7 @@ We then expand in $s$,
     f(\alpha) = f_0(\alpha) + s f_1(\alpha) + s^2 f_2(\alpha) + \dots
 \end{equation}
 %
-When Taylor expanding around the leading order result for $\alpha$, we get
+Taylor expanding around the leading order result for $\alpha$, we get
 %
 \begin{align*}
     f(\alpha) 

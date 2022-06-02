@@ -1,12 +1,15 @@
+In this appendix, we give a short summary of some of the results from the specialization project on which this thesis builds.
+The specialization project focused on the thermodynamics of \chpt\, but included only two flavors, i.e., quark types.
+In addition, we give examples of some derivations which is readily generalized to three flavors.
+
+
 \section{*Two-flavour \chpt\ to leading order}
 \label{section: two-flavor chpt to leading order}
 
 
-\subsection{Leading order Lagrangian}
-\label{section: leading order}
-
 In this section, we will assume $N_f = 2$, which means the generators are $T_a = \frac{1}{2} \tau_a$, where $\tau_a$ are the Pauli Matrices, as described in \autoref{section: algebra bases}.
 The leading order Lagrangian in Winberg's power counting scheme, with $e = 0$, is
+%
 %
 \begin{equation}
     \label{leading order two-flavor chpt Lagrangian}
@@ -15,14 +18,32 @@ The leading order Lagrangian in Winberg's power counting scheme, with $e = 0$, i
     + \frac{1}{4} f^2 \Tr{\chi^\dagger \Sigma + \Sigma^\dagger \chi}.
 \end{equation}
 %
-The external source currents are
+The covariant derivative is
+%
 \begin{align}
     \nabla_\mu \Sigma &= \partial_\mu \Sigma - i [v_\mu, \Sigma],
-    \quad v_\mu = \frac{1}{2} \mu_I \delta_\mu^0 \tau_3.
+    \quad v_\mu = \frac{1}{2} \mu_I \delta_\mu^0 \tau_3,
 \end{align}
+%
+and we have defined 
+%
+\begin{equation}
+    \chi = 2 B_0 
+    \begin{pmatrix}
+        m_u & 0\\
+        0 & m_d
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        \bar m - \Delta m & 0\\
+        0 & \bar m + \Delta m
+    \end{pmatrix}.
+\end{equation}
+%
 To incorporate a finite isospin density, we must parametrize the Goldstone manifold differently than in the vacuum.
 We follow the analysis in~\autocite{adhikariTwoflavorChiralPerturbation2019}.
 We assume the ground state is independent of space, $\pi_a(x) = \pi_a^0$, and write it as
+%
 \begin{equation}
     \Sigma_\alpha 
     :=
@@ -32,35 +53,40 @@ We assume the ground state is independent of space, $\pi_a(x) = \pi_a^0$, and wr
 \end{equation}
 %
 where
+%
 \begin{equation}
     \alpha = \frac{1}{f} \sqrt{\pi^0_a \pi^0_a}, \quad
     n_a = \frac{\pi^0_a}{\sqrt{\pi^0_a \pi^0_a}}.
 \end{equation}
 %
 With this, the covariant derivative is $\nabla_\mu \Sigma_\alpha = - iv^a_\mu [\tau_a, \Sigma_\alpha]$, and the two terms in the first order Lagrangian are
+%
 \begin{align}
     \Tr{\nabla_\mu \Sigma_\alpha  (\nabla^\mu \Sigma_\alpha)^\dagger}
     & = 2 \mu_I^2 (n_1^2 + n_2^2) \sin^2 \alpha, \quad
-    \Tr{\chi^\dagger \Sigma_\alpha + \Sigma_\alpha^\dagger \chi}
+    \Tr{\chi^\dagger \Sigma_\alpha + {\Sigma_\alpha}^\dagger \chi}
     = 4 \bar m^2 \cos \alpha.
 \end{align}
+%
 %
 We see that, to first order, all results are independent of $\Delta m$.
 To find the new ground state, we minimize the Hamiltonian density.
 With the assumption that the fields are constant, the first order Hamiltonian density is
+%
 \begin{equation}
     \He_2 = - \Ell_2 = 
     - f^2 
     \left[
         \bar m^2 \cos\alpha 
         + \frac{1}{2} \mu_I^2 (n_1^2 + n_2^2 ) \sin^2 \alpha
-    \right]
+    \right].
 \end{equation}
 %
 For $\mu_I = 0$, this is independent of $n_a$, and minimized by $\alpha = 0$.
 Now, as $n_i n_i = 1$, we have that $n_1^2 + n_2^2 = 1 - n_3^2$.
 This means that, for $\mu_I \neq 0$, the energy is minimized by $n_3 = 0$.
 We can write $n_1 = \cos \phi$, $n_2 = \sin \phi$, for some real number $\phi$, which gives the ground state
+%
 \begin{equation}
     \Sigma_\alpha 
     = \one \cos \alpha  + i ( \tau_1 \cos \phi + \tau_2 \sin \phi) \sin \alpha .
@@ -72,16 +98,18 @@ With this, the new ground state is
 %
 \begin{equation}
     \label{general groundstate}
-    \Sigma_\alpha = \exp{i \alpha \tau_1}
+    \Sigma_\alpha = \exp{i \alpha \tau_1}.
 \end{equation}
 %
 Any exited state is a transformation of the ground state by $\Lie{SU}{2}_A$.
 For $\mu_I = 0$, this corresponds to 
+%
 \begin{equation}
     \Sigma(x) = U_R(x) \Sigma_0 U_L^\dagger(x) = U(x) \Sigma_0 U(x).
 \end{equation}
 %
 where
+%
 \begin{equation}
     U(x) = \exp{i \frac{\tau_a\pi_a(x)}{2f}}.
 \end{equation}
@@ -89,32 +117,39 @@ where
 We see that this recovers the parametrization vacuum parametrization.
 For $\mu_I \neq 0$, the ground state may be shifted, and so $U(x)$ must be too.
 The groundstate transforms as
+%
 \begin{equation}
     \Sigma_0 \rightarrow \Sigma_\alpha 
     = \hat U_L \Sigma_0 \hat U_R^\dagger = A_\alpha \Sigma_0 A_\alpha.
 \end{equation}
 %
 where
+%
 \begin{equation}
     A_\alpha : = \exp{i \frac{1}{2} \alpha \tau_1} 
     = \cos \frac{\alpha}{2} + i \tau_1 \sin\frac{\alpha}{2}.
 \end{equation}
 %
 This induces the following transformations for the fluctuations,
+%
 \begin{align}
     U_L & \rightarrow \hat U_L U_L \hat U_L^\dagger = A_\alpha U_L A_\alpha^\dagger, \\
     U_R & \rightarrow \hat U_R U_R \hat U_R^\dagger = A_\alpha^\dagger U_R A_\alpha.
 \end{align}
 %
-The new parametrization is thus
+%
+The new parameterization is thus
+%
 \begin{align}
     \label{sigma}
         \Sigma(x) = A_\alpha [U(x) \Sigma_0 U(x)] A_\alpha.
 \end{align}
 %
+%
 With this, we can expand the first order Lagrangian, \autoref{leading order two-flavor chpt Lagrangian}, in powers of $\pi/f$
 We will use this expansion to calculate the free energy density.
 Expanding $\Sigma$ to $\Oh \left((\pi/f)^5\right)$, we get
+%
 \begin{align}
     \Sigma =
      \left(
@@ -134,8 +169,10 @@ Expanding $\Sigma$ to $\Oh \left((\pi/f)^5\right)$, we get
     \label{expansion of sigma}
 \end{align}
 %
+%
 
 The kinetic term in the \chpt\, Lagrangian is
+%
 \begin{equation}
     \nabla_\mu \Sigma (\nabla^\mu \Sigma)^\dagger 
     = \partial_\mu \Sigma \partial^\mu \Sigma^\dagger 
@@ -145,6 +182,7 @@ The kinetic term in the \chpt\, Lagrangian is
 \end{equation}
 %
 Using \autoref{expansion of sigma} we find the expansion of the constitutive parts of the kinetic term to be
+%
 \begin{align}
     \notag
     \partial_\mu \Sigma 
@@ -190,7 +228,9 @@ Using \autoref{expansion of sigma} we find the expansion of the constitutive par
     i \tau_a,
 \end{align}
 %
+%
 and
+%
 \begin{align}
     % \notag
     [v_\mu,\Sigma]
@@ -221,7 +261,9 @@ and
     \label{sigma commutator}
 \end{align}
 %
+%
 Combining \autoref{Sigma derivative} and \autoref{sigma commutator} gives the following terms
+%
 \begin{align}
     % Term 1
     & \Tr{\partial_\mu \Sigma \partial^\mu \Sigma^\dagger}
@@ -277,11 +319,12 @@ Combining \autoref{Sigma derivative} and \autoref{sigma commutator} gives the fo
         + \frac{2 \pi_1 \pi_a \pi_a}{3 f^3} \sin{\alpha}
         + \frac{(\pi_a \pi_a)^2}{6 f^4}\cos{\alpha}
     \right), 
-    \end{align}
-    %
+\end{align}
+%
 where $k_{ab} =\delta_{a1} \delta_{b1} \cos{2\alpha}  + \delta_{a2}\delta_{b2}\cos^2{\alpha} - \delta_{a3}\delta_{b3} \sin^2{\alpha}$.
 Notice that the mass term is independent of the difference in quark masses, $\Delta m$.
 If we write the Lagrangian \autoref{leading order two-flavor chpt Lagrangian} as $\Ell_2 = \Ell_2^{(0)} + \Ell_2^{(1)} + \Ell_2^{(2)} +...$, where $\Ell_2^{(n)}$ contains all terms of order $(\pi/f)^n$, then the result of the series expansion is
+%
 \begin{align}
 %%%%%%%%%%%%%%%%%%
 %% zeroth-order %%

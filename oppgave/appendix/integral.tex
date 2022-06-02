@@ -1,4 +1,4 @@
-\section{Integrals in dimensional regularization}
+\section{*Integrals in dimensional regularization}
 \label{section: integral}
 
 
@@ -7,7 +7,7 @@ When applying dimensional regularization, we will encounter integrals on the for
 \begin{equation}
     \label{def dimreg integral}
     \Phi_n(m, d, \alpha) 
-    := \int_{\tilde \Omega} \frac{\dd^d p}{(2 \pi)^d} (p^2 + m^2)^{-\alpha}.
+    := \int_{\R^d} \frac{\dd^d p}{(2 \pi)^d} (p^2 + m^2)^{-\alpha}.
 \end{equation}
 %
 We will use the formula for integration of spherically symmetric function in $d$-dimensions,
@@ -16,7 +16,8 @@ We will use the formula for integration of spherically symmetric function in $d$
     \int_{\R^d} \dd^d x \, f(r) 
     = \frac{2 \pi^{d/2}}{\Gamma(d/2)} \int_\R \dd r \, r^{d-1}f(r),
 \end{equation}
-where $r = \sqrt{x_i x_i}$ is the radial distance, and $\Gamma$ is the Gamma function.
+%
+where $r = \sqrt{x_i x_i}$ is the radial distance and $\Gamma$ is the Gamma function.
 The factor in the front of the integral is the solid angle.
 By extending this formula from integer-valued $d$ to real numbers, we get
 %
@@ -204,7 +205,7 @@ When the energy is on the simple form $E^2 = \vv p^2 + m^2$, we can use the resu
     \label{dimreg integral}
     \frac{1}{2} \mu^{-2\epsilon}  \int \frac{\dd^d p}{(2 \pi)^d} \sqrt{\vv p^2 + m^2}
     = \frac{1}{2} \frac{\mu^{-2\epsilon}}{(4 \pi)^2} 
-    \left(\frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{m^2}\right), 
+    \left(\frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{m^2}\right).
 \end{equation}
 %
-This integral is regulated using dimensional regularization, where $d = 3 - 2\epsilon $, and using the $\overline{\text{MS}} $-shceme, as described in \autoref{subsection: free energy integral}.
+This integral is regulated using dimensional regularization, where $d = 3 - 2\epsilon $, and the $\overline{\text{MS}} $-shceme, as described in \autoref{subsection: free energy integral}.
