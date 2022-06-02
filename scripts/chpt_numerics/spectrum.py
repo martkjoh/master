@@ -18,10 +18,6 @@ muS = sp.symbols("mu_S")
 dm = sp.symbols("Delta_m")
 p = sp.symbols("p", real=True)
 
-# Insert leading order values for constants, in units of u_0
-lo = lambda x: x.subs(m, 1.).subs(f, 1.).subs(mS, m_S/m_pi).subs(dm, Dm/m_pi)
-num_lo = lambda x: lambdify((muI, a), lo(x), "numpy")
-
 
 # Mass-parameters
 m1_sq = m**2 * cos(a) - muI**2 * cos(a)**2
@@ -90,7 +86,6 @@ def alpha_EM(mu):
     morethan_m = mu**2 > (1+D)*np.ones_like(mu)
     a = np.zeros_like(mu)
     x = 1/ (mu[morethan_m]**2 - D)
-    a[morethan_m] = arccos(x)
+    a[morethan_m] = np.arccos(x)
     return a
-
 

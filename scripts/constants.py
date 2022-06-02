@@ -2,6 +2,16 @@ import numpy as np
 from numpy import sqrt, pi, log as ln
 
 
+lattice = False
+if lattice:
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    print("!!!!OBSOBSOBSOBSOBSOBSOBSOBS!!!!")
+    print("!!  Lattice constants are on  !!")
+    print("!!      is this right?        !!")
+    print("!!!!OBSOBSOBSOBSOBSOBSOBSOBS!!!!")
+    print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
+
 c = 2.998e8
 G = 6.674e-11
 hbar = 1.055e-34
@@ -67,7 +77,6 @@ def get_const_fermi_gas():
     u0 = m_N**4 / (8 * pi**2) * (c**5 / hbar**3) 
     m0 = c**4 / sqrt(4*pi/3 * u0 * G**3) / M0
     r0 = G * m0*M0 / c**2 / 1e3 # (km)
-    print(m0*M0) 
     return u0, m0, r0
 
 def get_const_pion():

@@ -13,7 +13,7 @@ pcs = 10**np.linspace(log_pmin, log_pmax, N)
 
 def sim():
     u = get_u("fermi_gas_star/data/eos.npy")
-    sols = integrate(u, pcs)
+    sols = integrate(u, pcs, dense_output=True)
     np.save("fermi_gas_star/data/sols_neutron", sols)
 
 def sim_non_rel():
@@ -38,10 +38,10 @@ def sim_newt_non_rel():
 if __name__ == "__main__":
     # Run to generate all data
 
-    # sim()
-    # sim_non_rel()
-    # sim_newt() 
-    # sim_newt_non_rel()
+    sim()
+    sim_non_rel()
+    sim_newt() 
+    sim_newt_non_rel()
 
     # smol
     sols = np.load("fermi_gas_star/data/sols_neutron.npy", allow_pickle=True)

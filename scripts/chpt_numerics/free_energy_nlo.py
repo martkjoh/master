@@ -13,6 +13,7 @@ if __name__=="__main__":
     sys.path.append(sys.path[0] + "/..")
 from integrate_tov import get_u
 from spectrum import * 
+from constants import lattice
 
 plt.rc("font", family="serif", size=20)
 plt.rc("mathtext", fontset="cm")
@@ -21,10 +22,6 @@ plt.rc("axes", grid=True)
 plt.rc("grid", linestyle="--", alpha=1)
 
 
-#### !!OBSOBS!! Changes the constants!!! 
-#### !! Should be false unles checkning with lattice
-lattice = False
-
 if lattice:
     from constants_lattice import m_pi, m_rho, Lr as Lr_num
     name = "lattice"
@@ -32,6 +29,7 @@ else:
     from constants import m_pi, m_rho, Lr as Lr_num
     name = ""
 u0 = (f_pi*m_pi)**2
+
 
 def lo(x):
     # substitute everything except a, muI

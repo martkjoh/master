@@ -166,9 +166,9 @@ if __name__=="__main__":
     # print("nu")
     # sim_neut()
     # sim_neut_nlo()
-    # sim_neut(lattice=True)
-    # sim_neut_nlo(lattice=True)
+    sim_neut(lattice=True)
+    sim_neut_nlo(lattice=True)
 
-    # sim_light()
+    sim_light()
 
     sim_max_pure()

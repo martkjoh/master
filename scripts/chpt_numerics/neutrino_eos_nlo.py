@@ -5,11 +5,10 @@ from matplotlib import pyplot as plt
 import sys
 
 sys.path.append(sys.path[0] + "/..")
-from constants import get_const_lepton, f_pi, m_e, m_mu, m_pi
+from constants import get_const_lepton, f_pi, m_e, m_mu, m_pi, lattice
 from integrate_tov import get_u
 from chpt_numerics.free_energy_nlo import get_p_u
 
-lattice = False
 if lattice:
     from constants_lattice import get_const_lepton, f_pi, m_e, m_mu, m_pi
     l = "lattice"
@@ -100,16 +99,15 @@ u = lambda x: u_pi(x) + ue(x) + umu(x) + 2*unu(x)
 
 pmin = 2*(1+m_e/m_pi) / (24*pi**2)
 def plot_eos():
-    x = np.linspace(0, 6.5, 1000)
+    x = np.linspace(0, 6.3, 1000)
     fig, ax = plt.subplots(figsize=(8, 5))
     ax.plot(p(x), 3*p(x), "k--", label="$u = 3 p$")
     ax.plot(p(x), u(x), label="$u(p)$")
     ax.set_xlabel("$p/u_{0}$")
     ax.set_ylabel("$u/u_{0}$")
     plt.legend()
-    plt.show()
 
-    fig.savefig("figurer/neutrino_nlo_eos.pdf", bbox_inches="tight")
+    fig.savefig("figurer/neutrino_nlo_eos"+l+".pdf", bbox_inches="tight")
     
 
 def save_eos():

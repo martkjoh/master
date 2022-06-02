@@ -6,6 +6,9 @@ import sys
 
 sys.path.append(sys.path[0] + "/..")
 from spectrum import *
+# from chpt_eos import alpha_0
+# from constants import f_pi, m_S, m_pi, Dm, m_Kpm, Dm_EM, Lr as Lr_num
+
 
 
 plt.rc("font", family="serif", size=20)
@@ -19,25 +22,24 @@ l = lambda E : lambdify((p, muS, muI, a), lo(E), "numpy")
 
 # Vacuum/pion-condensed masses
 
-mpi0 = lambda muS, muI, a : sqrt(l(E0_sq)(0, muS, muI, a))
-mpip = lambda muS, muI, a : sqrt(l(Epip_sq)(0, muS, muI, a+0j))
-mpim = lambda muS, muI, a : sqrt(l(Epim_sq)(0, muS, muI, a))
-mKp = lambda muS, muI, a : sqrt(l(EKp_sq)(0, muS, muI, a+0j))
-mKm = lambda muS, muI, a : sqrt(l(EKm_sq)(0, muS, muI, a+0j))
-mK0 = lambda muS, muI, a : sqrt(l(EK0_sq)(0, muS, muI, a+0j))
-mK0bar = lambda muS, muI, a : sqrt(l(EK0bar_sq)(0, muS, muI, a+0j))
-meta = lambda muS, muI, a : sqrt(l(Eeta_sq)(0, muS, muI, a+0j))
+mpi0 = lambda muS, muI, a : np.sqrt(l(E0_sq)(0, muS, muI, a))
+mpip = lambda muS, muI, a : np.sqrt(l(Epip_sq)(0, muS, muI, a+0j))
+mpim = lambda muS, muI, a : np.sqrt(l(Epim_sq)(0, muS, muI, a))
+mKp = lambda muS, muI, a : np.sqrt(l(EKp_sq)(0, muS, muI, a+0j))
+mKm = lambda muS, muI, a : np.sqrt(l(EKm_sq)(0, muS, muI, a+0j))
+mK0 = lambda muS, muI, a : np.sqrt(l(EK0_sq)(0, muS, muI, a+0j))
+mK0bar = lambda muS, muI, a : np.sqrt(l(EK0bar_sq)(0, muS, muI, a+0j))
+meta = lambda muS, muI, a : np.sqrt(l(Eeta_sq)(0, muS, muI, a+0j))
 
 # EM-masses
 
-mpi0EM = lambda muS, muI, a : sqrt(l(E0_sq_EM)(0, muS, muI, a))
-mpipEM = lambda muS, muI, a : sqrt(l(Epip_sq_EM)(0, muS, muI, a+0j))
-mpimEM = lambda muS, muI, a : sqrt(l(Epim_sq_EM)(0, muS, muI, a))
-
-mKpEM = lambda muS, muI, a : sqrt(l(EKp_sq_EM)(0, muS, muI, a+0j))
-mKmEM = lambda muS, muI, a : sqrt(l(EKm_sq_EM)(0, muS, muI, a+0j))
-mK0EM = lambda muS, muI, a : sqrt(l(EK0_sq_EM)(0, muS, muI, a+0j))
-mK0barEM = lambda muS, muI, a : sqrt(l(EK0bar_sq_EM)(0, muS, muI, a+0j))
+mpi0EM = lambda muS, muI, a : np.sqrt(l(E0_sq_EM)(0, muS, muI, a))
+mpipEM = lambda muS, muI, a : np.sqrt(l(Epip_sq_EM)(0, muS, muI, a+0j))
+mpimEM = lambda muS, muI, a : np.sqrt(l(Epim_sq_EM)(0, muS, muI, a))
+mKpEM = lambda muS, muI, a : np.sqrt(l(EKp_sq_EM)(0, muS, muI, a+0j))
+mKmEM = lambda muS, muI, a : np.sqrt(l(EKm_sq_EM)(0, muS, muI, a+0j))
+mK0EM = lambda muS, muI, a : np.sqrt(l(EK0_sq_EM)(0, muS, muI, a+0j))
+mK0barEM = lambda muS, muI, a : np.sqrt(l(EK0bar_sq_EM)(0, muS, muI, a+0j))
 
 
 def plot_meson_masses():
@@ -96,7 +98,7 @@ def plot_charged_kaon_masses2():
     fig, ax = plt.subplots(figsize=(12, 5))
     muI_n = 0.5
     a = alpha_0(muI_n)
-    mKpm = sqrt( (m_pi**2 + m_S**2 - Dm**2)/2 )/m_pi
+    mKpm = np.sqrt( (m_pi**2 + m_S**2 - Dm**2)/2 )/m_pi
     muS = np.linspace(0, mKpm, 500)
     b = mKpm- 1/2*muI_n
     ax.plot([b, b], [0, 10], "-k", alpha=0.4)
@@ -116,7 +118,7 @@ def plot_charged_kaon_masses2():
     fig.savefig("figurer/masses_kaons2.pdf", bbox_inches="tight")
 
 
-plot_meson_masses() 
+plot_meson_masses()
 plot_charged_kaon_masses2()
 plot_meson_em_masses()
 

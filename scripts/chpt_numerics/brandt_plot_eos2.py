@@ -53,7 +53,7 @@ for i, name in enumerate(names):
     eos = np.loadtxt(name, skiprows=1, unpack=True)
     if i == 3:
         p, u, err_p, err_u = eos[1]*a, eos[3]*a, eos[2]*a, eos[4]*a
-        mask = p!=0-
+        mask = p!=0
         p, u, err_p, err_u = p[mask], u[mask], err_p[mask], err_u[mask]
     else:
         p, u, err_p, err_u = get_eos(eos)

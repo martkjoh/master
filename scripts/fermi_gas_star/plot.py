@@ -25,38 +25,43 @@ plt.rc("grid", linestyle="--", alpha=1)
 def load_sols(name="neutron"):
     return np.load("fermi_gas_star/data/sols_"+name+".npy", allow_pickle=True)
 
+def get_data(sols):
+    data = [[], [], []]
+    for s in sols:
+        data[0].append(s["R"])
+        data[1].append(s["M"])
+        data[2].append(s["pc"])
+    return data
+
  
 def plot_norm_pressure_mass():
     all_sols = load_sols()
     sols = all_sols[40:160:8]
     N = len(sols)
-     
     
     fig, ax = plt.subplots(2, figsize=(14, 10), sharex=True)
     [a.grid(linestyle="--", alpha=1, lw=0.4) for a in ax]
-    p0s = []
+    pcs = []
     for i, s in enumerate(sols):
-        p, m = s.y
-        r = s.t
-        R = r[-1]
-        M = m[-1]
-        p0 = p[0]
-        p0s.append(p0)
+        f = s["f"]
+        R, M, pc = s["R"], s["M"], s["pc"]
+        pcs.append(pc)
 
         c = cm.viridis(i/N)
-
-        ax[0].plot(r/R, p/p0, color=c, alpha=0.6)
+        r = np.linspace(0, R, 1000)
+        p, m = f(r)
+        ax[0].plot(r/R, p/pc, color=c, alpha=0.6)
         ax[1].plot(r/R, m/M, lw=2,  color=c, alpha=0.6)
 
-    M = [s.y[1][-1] for s in all_sols]
+    M = [s["M"] for s in all_sols]
+    pc = [s["pc"] for s in all_sols]
     i = np.argmax(M)
-    m = all_sols[i].y[1] / M[i]
-    p = all_sols[i].y[0]
-    p = p / p[0]
-    r = all_sols[i].t
+    m = lambda r: all_sols[i]["f"](r)[1] / M[i]
+    p = lambda r: all_sols[i]["f"](r)[0] / pc[i]
+    r = np.linspace(0, all_sols[i]["R"], 100)
     r = r/r[-1]
-    ax[0].plot(r, p, "--k", lw=2)
-    ax[1].plot(r, m, "--k", lw=2, label="$M_\\mathrm{max}$")
+    ax[0].plot(r, p(r), "--k", lw=2)
+    ax[1].plot(r, m(r), "--k", lw=2, label="$M_\\mathrm{max}$")
 
 
     ax[0].set_ylabel("$p/p_c$")
@@ -65,7 +70,7 @@ def plot_norm_pressure_mass():
 
     c = np.arange(1, 5 + 1)
 
-    norm = colors.Normalize(vmin=log(p0s[0]), vmax=log(p0s[-1]))
+    norm = colors.Normalize(vmin=log(pcs[0]), vmax=log(pcs[-1]))
     cmap = cm.ScalarMappable(norm=norm, cmap=cm.viridis)
     cmap.set_array([])
 
@@ -84,9 +89,9 @@ def plot_mass_surface():
     r = np.linspace(0, 1, 100)
     R = []
     for i, s in enumerate(sols):
-
-        R.append(s.t[-1])
-        m.append(s.sol(R[i] * r)[1])  
+        R.append(s["R"])
+        f = s["f"]
+        m.append(f(R[i] * r)[1])  
 
 
     m = np.array(m)
@@ -107,11 +112,8 @@ def plot_mass_surface():
 def plot_mass_radius(name="neutron"):
     sols = load_sols()
     N = len(sols)
-    data = [[], [], []]
-    for i, s in enumerate(sols):
-        data[0].append(s.t[-1])
-        data[1].append(s.y[1][-1])
-        data[2].append(s.y[0][0])
+    data = get_data(sols)
+
     R, M, p0 = [np.array(d) for d in data]
 
     fig, ax = plt.subplots(figsize=(16, 8))
@@ -163,12 +165,7 @@ def plot_mass_radius_compare():
 
     N = len(sols1)
     assert N == len(sols2); assert N ==len(sols3)
-    datas = [[[], [], []] for _ in sols]
-    for j, solsi in enumerate(sols):
-        for i, s in enumerate(solsi):
-            datas[j][0].append(s.t[-1])
-            datas[j][1].append(s.y[1][-1])
-            datas[j][2].append(s.y[0][0])
+    datas = [get_data(s) for s in sols]
         
     fig, ax = plt.subplots(figsize=(16, 8))
 
@@ -235,13 +232,9 @@ def plot_mass_of_pc():
     sols = load_sols()
     N = len(sols)    
 
-    data = [[None, None] for _ in range(N)]
-
-    for i, s in enumerate(sols):
-        data[i][0] = s.y[1][-1]
-        data[i][1] = s.y[0][0]
+    data = get_data(sols)
     data = np.array(data)
-    M, pc = data.T
+    _, M, pc = data
     y, x = M*m0, pc
     
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -271,10 +264,10 @@ def plot_mass_of_pc():
 
 
 
-# plot_norm_pressure_mass()
+plot_norm_pressure_mass()
 plot_mass_radius()
-# plot_mass_radius_compare()
-# plot_eos()
-# plot_mass_of_pc()
+plot_mass_radius_compare()
+plot_eos()
+plot_mass_of_pc()
 
-# plot_mass_surface()
+plot_mass_surface()

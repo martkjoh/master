@@ -5,11 +5,16 @@ import sys
 
 sys.path.append(sys.path[0] + "/..")
 from spectrum import *
+from free_energy_nlo import F_0_2
+from constants import m_S, m_pi, f_pi
 
 plt.rc("font", family="serif", size=16)
 plt.rc("mathtext", fontset="cm")
 plt.rc("lines", lw=2)
 plt.rc("axes", grid=True)
+
+lo = lambda x: x.subs(m, m_pi).subs(f, f_pi).subs(mS, m_S)
+num_lo = lambda x: lambdify((muI, a), lo(x), "numpy")
 
 
 def plot_free_energy_surface():
@@ -18,18 +23,18 @@ def plot_free_energy_surface():
     N = 30
     d = 0.6
     alpha = np.linspace(-d, np.pi + d, N)
-    mu = np.linspace(0, 2.5, N)
-    a_lo_list = alpha_0(mu)
+    mu = np.linspace(0, 2.5, N)*m_pi
+    a_lo_list = alpha_0(mu/m_pi)
     MU, A = np.meshgrid(mu, alpha)
     F = num_lo(F_0_2)
 
     FLO = F(MU, A)
 
-    ax.plot(mu, a_lo_list, F(mu, a_lo_list)+0.01, "k--", zorder=10)
-    ax.plot(mu, a_lo_list, np.min(FLO), "k--")
+    ax.plot(mu[:-1]/m_pi, a_lo_list[:-1], F(mu, a_lo_list)[:-1]+0.04, "k--", zorder=10)
+    ax.plot(mu/m_pi, a_lo_list, np.min(FLO)+0.1, "k--")
  
-    surf = ax.plot_surface(MU, A, FLO, cmap="viridis", alpha=0.7)
-    surf = ax.plot_wireframe(MU, A, FLO, color="black", lw=0.15, alpha=0.6)
+    surf = ax.plot_surface(MU/m_pi, A, FLO, cmap="viridis", alpha=0.7)
+    surf = ax.plot_wireframe(MU/m_pi, A, FLO, color="black", lw=0.15, alpha=0.6)
 
     ax.azim=-35
     ax.elev=25
@@ -55,9 +60,9 @@ def plot_free_energy_surface():
     )
 
 
-    ax.set_zticks(np.arange(-15, -11, 1.))
+    ax.set_zticks(np.arange(-16, -11, 1.))
+    ax.set_zlim(-16.1,-11.9)
     plt.savefig("figurer/free_energy_surface.pdf", **save_opt)
-
 
 
 def plot_free_energy_surface_wo_axis():
@@ -66,16 +71,20 @@ def plot_free_energy_surface_wo_axis():
     N = 30
     d = 0.6
     alpha = np.linspace(-d, np.pi + d, N)
-    mu = np.linspace(0, 2.5, N)
-    a_lo_list = alpha_0(mu)
+    mu = np.linspace(0, 2.5, N)*m_pi
+    a_lo_list = alpha_0(mu/m_pi)
     MU, A = np.meshgrid(mu, alpha)
     F = num_lo(F_0_2)
 
     FLO = F(MU, A)
 
-    ax.plot(mu, a_lo_list, F(mu, a_lo_list)+0.01, "k--", lw=2, alpha=1, zorder=10)
-    surf = ax.plot_surface(MU, A, FLO, cmap="viridis", alpha=0.7)
-    surf = ax.plot_wireframe(MU, A, FLO, color="black", lw=0.2)
+ 
+    surf = ax.plot_surface(MU/m_pi, A, FLO, cmap="viridis", alpha=0.7)
+    surf = ax.plot_wireframe(MU/m_pi, A, FLO, color="black", lw=0.15, alpha=0.6)
+
+
+    ax.plot(mu/m_pi, a_lo_list, F(mu, a_lo_list)+0.01, "k--", lw=2, alpha=1, zorder=10)
+
 
     ax.azim=-35
     ax.elev=25
@@ -97,7 +106,7 @@ def plot_free_energy_surface_wo_axis():
 
     ax.set_xlim([0,2.5])
     ax.set_ylim([-0.5,4])
-    ax.set_zlim([-14.75,-11.65])
+    ax.set_zlim([-16.,-12.2])
 
     fig.savefig("figurer/free_energy_surface_wo_axis.pdf", **save_opt)
 

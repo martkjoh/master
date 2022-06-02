@@ -331,7 +331,7 @@ def plot_nlo_quantities():
             ax.set_ylabel(y_label[i])
             plt.legend()
             fig.savefig("figurer/pion_nlo_"+name+"_"+str(n)+".pdf", bbox_inches="tight")
-    plt.show()
+
 
 
 def plot_nlo_quantities_lattice():
@@ -912,47 +912,46 @@ def plot_max():
 if __name__=="__main__":
     pass
 
+    plot_pressure_mass()
+    plot_pressure_mass(name="_EM")
 
-    # plot_pressure_mass()
-    # plot_pressure_mass(name="_EM")
+    plot_mass_radius()
+    plot_mass_radius_compare()
+    plot_mass_radius(name="_EM")
+    plot_mass_radius_compare_EM()
 
-    # plot_mass_radius()
-    # plot_mass_radius_compare()
-    # plot_mass_radius(name="_EM")
-    # plot_mass_radius_compare_EM()
+    plot_eos()
+    plot_mu()
+    plot_eos_EM()
+    plot_u_p()
 
-    # plot_eos()
-    # plot_mu()
-    # plot_eos_EM()
-    # plot_u_p()
+    plot_lepton()
+    plot_lepton(name="_mu")
+    plot_lepton_compare()
 
-    # plot_lepton()
-    # plot_lepton(name="_mu")
-    # plot_lepton_compare()
+    plot_neutrino()
+    plot_neutrino_nlo_eos()
 
-    # plot_neutrino()
-    # plot_neutrino_nlo_eos()
+    plot_all_eos()
+    plot_max()
+    plot_all()
 
-    # plot_all_eos()
-    # plot_max()
-    # plot_all()
+    plot_nlo_quantities()
+    plot_nlo_quantities2()
 
-    # plot_nlo_quantities()
-    # plot_nlo_quantities2()
+    plot_eos_nlo()
 
-    # plot_eos_nlo()
+    plot_mass_radius("_nlo", rmax=False)
+    plot_nlo()
+    plot_nlo("_neutrino")
 
-    # plot_mass_radius("_nlo", rmax=False)
-    # plot_nlo()
-    # plot_nlo("_neutrino")
+    plot_light()
+    plot_light_nogrid()
+    plot_light_log()
+    plot_phase()
 
-    # plot_light()
-    # plot_light_nogrid()
-    # plot_light_log()
-    # plot_phase()
+    ### Plots using lattice constants
 
-    # ### Plots using lattice constants
-
-    # plot_nlo_quantities_lattice()
-    # plot_eos_nlo_lattice()
-    # plot_u_p()
+    plot_nlo_quantities_lattice()
+    plot_eos_nlo_lattice()
+    plot_u_p()

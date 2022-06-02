@@ -6,10 +6,9 @@ import sys
 
 sys.path.append(sys.path[0] + "/..")
 from integrate_tov import get_u
-
+from constants import lattice
 # Use lattice constants?
 
-lattice = False
 if lattice:
     from constants_lattice import get_const_lepton, f_pi, m_e, m_mu, m_pi
     l = "lattice"
@@ -225,13 +224,13 @@ def contributions():
     fig.savefig("figurer/neutrino_contributions.pdf", bbox_inches="tight")
 
 
-# plot_mu()
+plot_mu()
 
 plot_eos()
 plot_eos2()
 
-# contributions()
+contributions()
 
 
-# save_eos()
+save_eos()
 

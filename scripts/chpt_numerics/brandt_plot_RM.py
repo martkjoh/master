@@ -92,7 +92,6 @@ def compare_all():
     ax.legend()
 
     fig.savefig("figurer/pion_star/mass_radius_brandt_all.pdf", bbox_inches="tight")
-    # plt.show()
 
 
 def plot_compare_lattice(t=""):
@@ -150,33 +149,8 @@ def plot_compare_lattice(t=""):
     fig.savefig("figurer/pion_star/lattice_const_compare"+t+".pdf", bbox_inches="tight")
 
 
-def brandt_neutrino():
-    fig, ax = plt.subplots(figsize=(16, 8))
-    name = "data_brandt/MR_pilnu.txt"
-    data = np.loadtxt(name, unpack=True)
-    M, err_M, R, err_R, stable = data
-    
-    alpha=1.
-    label="$\\pi\ell\\nu_\\ell$"
+compare_all()
 
-    for i in range(len(R)):
-        x, y = (R[i], M[i])
-        a, b = (2*err_R[i], 2*err_M[i])
-        e = Ellipse((x, y), width=a, height=b)
-        ax.add_artist(e)
-        e.set_clip_box(ax.bbox)
-        e.set_alpha(alpha)
-        e.set_facecolor(color)
-
-    ax.set_xlim(25, 225)
-    ax.set_ylim(0, 30)
-    plt.show()
-
-
-# brandt_neutrino()
-
-# compare_all()
-
-# plot_compare_lattice()
+plot_compare_lattice()
 plot_compare_lattice(t="_neutrino")
 
