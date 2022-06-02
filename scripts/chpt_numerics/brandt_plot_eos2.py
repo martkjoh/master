@@ -37,11 +37,10 @@ nlo = [1, 0, 0, 1]
 
 def fill_ellipses(ax, x, y, dx, dy, color, zorder):
     for i in range(len(x)):
-        if i%4!=0:
-            continue
+        if i%1!=0: continue
         xi, yi = x[i], y[i]
         a, b = 2*dx[i], 2*dy[i]
-        e = Ellipse((xi, yi), width=a, height=b, zorder=zorder, alpha=0.2)
+        e = Ellipse((xi, yi), width=a, height=b, zorder=zorder)
         ax.add_artist(e)
         e.set_clip_box(ax.bbox)
         e.set_facecolor(color)
@@ -54,27 +53,29 @@ for i, name in enumerate(names):
     eos = np.loadtxt(name, skiprows=1, unpack=True)
     if i == 3:
         p, u, err_p, err_u = eos[1]*a, eos[3]*a, eos[2]*a, eos[4]*a
-        mask = p!=0
+        mask = p!=0-
         p, u, err_p, err_u = p[mask], u[mask], err_p[mask], err_u[mask]
     else:
         p, u, err_p, err_u = get_eos(eos)
 
     fig, ax = plt.subplots(figsize=(7, 4))
 
-    ax.plot(p, u, zorder=0, color=color, label=labels[i], lw=2.5, alpha=0.3)
+    color = "lightblue"
+    ax.plot(p, u, zorder=0, color=color, label=labels[i], lw=2.5)
     fill_ellipses(ax, p, u, err_p, err_u, color, 1)
 
     u_path = "pion_star/data/eos"+names2[i]+".npy"
     u = get_u(u_path)
     p = np.linspace(0, np.max(p), 1000)
 
-    ax.plot(p, u(p), "k--", lw=1.5, label="LO")
+    lw = 2
+    ax.plot(p, u(p), "k--", lw=lw, label="LO")
     if nlo[i]:
         u = get_u(u_path.split(".")[0]+"_nlo.npy")
         p = np.linspace(0, np.max(p), 1000)
-        ax.plot(p, u(p), "k-.", lw=1.5, label="NLO")
+        ax.plot(p, u(p), "k-.", lw=lw, label="NLO")
     if i==3:
-        ax.plot(p, 3*p, ":", color="tab:blue", lw=2, label="$u=3p$")
+        ax.plot(p, 3*p, ":", color="red", lw=lw, label="$u=3p$")
         ax.set_xlim(0, 5)
         ax.set_ylim(0, 15)
 

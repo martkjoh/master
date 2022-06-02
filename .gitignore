@@ -4,3 +4,4 @@
 *.npy
 .vscode/
 *.insyncdl
+cysignals_crash_logs/
