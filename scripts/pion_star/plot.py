@@ -778,39 +778,6 @@ def plot_phase():
     plt.savefig("figurer/phase_transition.pdf")
 
 
-def plot_light_log():
-    fig, ax = plt.subplots(figsize=(16, 6))
-
-    p0 = pnu(m_pi, f_pi, m_e)
-    pmins = np.logspace( np.log10(p0/3), np.log10(p0*3), 5 )
-
-    u0, m0, r0 = get_const_pion()
-
-    names = ["_light_%.2e"%pmin for pmin in pmins]
-    for i, name in enumerate(names):
-        sols = load_sols(name=name)
-        N = len(sols)
-        data = get_data(sols)
-
-        R, M, pc = [np.array(d) for d in data]
-        x, y, z = R*r0, M*m0, log(pc)
-        color = cm.viridis(i/(len(names)+1))
-        label = "$p_\\mathrm{min}=%.1e$"%pmins[i]
-        ax.loglog(x, y, label=label, color=color)
-
-    sols = load_sols(name="_neutrino")
-    data = get_data(sols)
-
-    R, M, pc = [np.array(d) for d in data]
-    x, y, z = R*r0, M*m0, log(pc)
-    label = "$\\pi\\ell\\nu_\\ell$"
-    ax.loglog(x, y, "k--", label=label)
-    
-    ax.set_xlabel("$R [\\mathrm{km}]$")
-    ax.set_ylabel("$M / M_\odot$")
-    plt.legend()
-    fig.savefig("figurer/pion_star/mass_radius_light_log.pdf", bbox_inches="tight")
-
 
 def plot_light():
     fig, ax = plt.subplots(figsize=(16, 6))
@@ -947,7 +914,6 @@ if __name__=="__main__":
 
     plot_light()
     plot_light_nogrid()
-    plot_light_log()
     plot_phase()
 
     ### Plots using lattice constants

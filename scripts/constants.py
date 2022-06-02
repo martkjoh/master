@@ -13,40 +13,40 @@ if lattice:
 
 
 c = 2.998e8
-G = 6.674e-11
 hbar = 1.055e-34
+kB = 1.380e-23
+G = 6.674e-11
+
+MeV = 1.60218e-19*1e6
+
 alpha = 7.297e-3
 e = sqrt(4*pi*alpha)
 
 M0 = 1.988 * 10**30
-MeV = 1.60218e-19*1e6
 
-# Nuclear mass
-m_N = 939.57*MeV/c**2
+# pion decay constant
+f_pi = 130.2/sqrt(2) # = 92.07
 
-# pion mass
+# Masses
 m_pi = 134.98
 m_pipm = 139.57
-m_K0 = 497.61
 m_Kpm = 493.68
+m_K0 = 497.61
 m_eta = 547.86
-m_rho = 770
 
 m_e = 0.5110
 m_mu = 105.7
 
-# pion decay constant
-f_pi = 130.2/sqrt(2)
+m_N = 939.57*MeV/c**2
+
+m_rho = 770
 f_rho = 154
 
-
-# C = 1/2 * f_pi**2 / e**2 * Dm_EM**2
 C = f_pi**2/(2*e**2) * (m_pipm**2 - m_pi**2)
 Curech = 3 / (32*pi**2) * m_rho**2*f_rho**2 * ln(f_rho**2 /(f_rho**2 - f_pi**2))
 
 Dm_EM = sqrt(2 * e**2/f_pi**2 * C)
 Dm = sqrt(m_K0**2 - (m_Kpm**2 - Dm_EM**2))
-# m_S = sqrt((3*m_eta**2 - m_pi**2)/2)
 m_S = sqrt(2*m_K0**2 - m_pi**2)
 
 
@@ -163,5 +163,5 @@ if __name__=="__main__":
     # print(Dm_EM)
     # print((sqrt(1+Dm_EM**2/m_Kpm**2)-1)*m_Kpm/m_pi)
 
-    print(pi / sqrt(2*pi*G*(8*(m_pi_SI**2)*f_pi_SI**2)/(c**3*hbar**3))/1e3 * 1 / (1 + Dm_EM**2/m_pi**2) ) 
+    # print(pi / sqrt(2*pi*G*(8*(m_pi_SI**2)*f_pi_SI**2)/(c**3*hbar**3))/1e3 * 1 / (1 + Dm_EM**2/m_pi**2) ) 
 
