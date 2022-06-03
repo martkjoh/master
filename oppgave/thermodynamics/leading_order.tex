@@ -163,6 +163,8 @@ In the pion condensate phase, the solution is
 This reduces to our old solution for $\Delta = 0$, as it should.
 With the same procedure as in the last section, we get the pressure and energy density
 %
+\begingroup
+\allowdisplaybreaks
 \begin{align}
     \label{pressure with em interaction}
     \tilde p_\text{EM}
@@ -191,6 +193,7 @@ With the same procedure as in the last section, we get the pressure and energy d
         {\left( \mu_I^2- \Delta m_\text{EM}^2\right)^2}
     \right].
 \end{align}
+\endgroup
 %
 The ratio between pressure and energy is now
 %
@@ -214,12 +217,11 @@ The non-relativistic equation of state is thus still a polytrope of the form $\t
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.95\textwidth]{../scripts/figurer/pion_star/pion_up.pdf}
+    \includegraphics[width=0.9\textwidth]{../scripts/figurer/pion_star/pion_up.pdf}
     \caption{
-        Left: The pressure, normalized to $p_0$, as a function of the chemical potential above the critical value, normalized to $m_{\pi}$.
-        Right: The energy density, normalized to $u_0$, also as a function of the chemical potential.
-        Results with electromagnetic interaction are shown as dashed lines.
-        The $y$-axis corresponds to different absolute values of isospin-chemical potential, as the critical value of the chemical is changed by the inclusion of electromagnetic interactions. See main text for details.
+        Left: The pressure as a function of the chemical potential above the critical value.
+        Right: The energy density also as a function of the chemical potential.
+        Results with electromagnetic interaction are shown as dashed lines, $u$,$p$ and $\mu_I$ are normalized to $u_0$, $p_0$ and $m_\pi$, respectively.
         }
         \label{fig: pressure and energy with EM interaction}
 \end{figure}
@@ -228,7 +230,7 @@ The non-relativistic equation of state is thus still a polytrope of the form $\t
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.65\textwidth]{../scripts/figurer/pion_star/pion_eos_EM.pdf}
+    \includegraphics[width=0.62\textwidth]{../scripts/figurer/pion_star/pion_eos_EM.pdf}
     \caption{
         The equation of state in the pion condensate phase. 
         Results with electromagnetic interactions are shown as dashed lines.
@@ -416,12 +418,12 @@ In the pion phase, the isospin and strangeness densities are
 %
 In the charged kaon condensed phase, they are
 %
-\begin{equation}
-    n_I = - \pdv{\Eff}{\mu_I} 
+\begin{align}
+    n_I &= - \pdv{\Eff}{\mu_I} 
     = \frac{1}{2} \pdv{\Eff}{\mu_\Kpm}
-    = \frac{1}{2} f^2_\pi \mu_\Kpm \left( 1 - \frac{m_{\Kpm,0}^4}{\mu_\Kpm^4} \right), \quad
-    n_S = - \pdv{\Eff}{\mu_S} = f^2 \mu_\Kpm  \left( 1 - \frac{m_{\Kpm,0}^4}{\mu_\Kpm^4} \right).
-\end{equation}
+    = \frac{1}{2} f^2_\pi \mu_\Kpm \left( 1 - \frac{m_{\Kpm,0}^4}{\mu_\Kpm^4} \right), \\
+    n_S &= - \pdv{\Eff}{\mu_S} = f^2 \mu_\Kpm  \left( 1 - \frac{m_{\Kpm,0}^4}{\mu_\Kpm^4} \right).
+\end{align}
 %
 At the line of phase transition, $\mu_\Kpm > m_{\Kpm,0}$.
 The strangeness density thus jumps discontinuously to a non-zero value.

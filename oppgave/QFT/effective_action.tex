@@ -82,9 +82,9 @@ Using the chain rule, together with \autoref{effective equation of motion}, we g
 %
 \begin{align*}
     \label{Effective action inverse propagator}
-    (-i)\int \dd^4 z \frac{\delta^2 W[J]}{\delta J(x) \delta J(z)} 
-    \fdv{ \Gamma[\varphi_J]}{\varphi_J(z),\varphi_J(y)}
-    =
+    (-i)&\int \dd^4 z \frac{\delta^2 W[J]}{\delta J(x) \delta J(z)} 
+    \fdv{ \Gamma[\varphi_J]}{\varphi_J(z),\varphi_J(y)}\\
+    &=
     (-i)\int \dd^4 z \frac{\delta \varphi_J[z]}{\delta J(x)}
     \fdv{\Gamma[\varphi_J]}{\varphi_J(z),\varphi_J(y)}
     =
@@ -178,13 +178,13 @@ where the dots indicate higher derivatives.
 When we insert this expansion into the generating functional $Z[J]$ we get
 %
 \begin{align}
-    &Z[J] = \int \D \eta \,
-    \exp{
-        i \int \dd^4 x \left(  \Ell[\varphi_0] + J \varphi_0  \right)
-        +i \int \dd^4x \, \eta(x) \, 
-        \left(  \fdv{S[\varphi_0]}{\varphi(x)} + J(x) \right)
-        + i S_0[\eta] + i S_I[\eta]
-    }.
+    \nonumber
+    Z[J] = \int \D \eta \,
+    \text{exp}\Bigg\{
+        &i \int \dd^4 x \left(  \Ell[\varphi_0] + J \varphi_0  \right)\\
+        &+i \int \dd^4x \, \eta(x) \, 
+        \left(  \fdv{S[\varphi_0]}{\varphi(x)} + J(x) \right)+ i S_0[\eta] + i S_I[\eta]
+    \Bigg\}.
 \end{align}
 %
 The first term is constant with respect to $\eta$ and may be taken outside the path integral.
@@ -245,8 +245,8 @@ The second term becomes
     \ln
     \left(
         \int \D \eta \, e^{i g^{-1}S_0 + i g^{-1} S_I}
-    \right)
-    = 
+    \right)\\
+    & = 
     \ln\left(
         \int \D \eta \, e^{i g^{-1}S_0}
     \right)

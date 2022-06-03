@@ -4,29 +4,28 @@ Constructing the next-to-leading order (NLO) Lagrangian is a business of combini
 We must include all terms that obey all symmetries and that are fourth-order in Weinberg's power counting scheme and remove possible redundant terms, as discussed in \autoref{appendix: rewriting terms}.
 We will quote the result from \cite{schererIntroductionChiralPerturbation2002},
 %
-\begin{align}
-    \notag
+\begin{flalign}
+    \label{NLO Lagrangian}
     \Ell_4 
     & = 
     \frac{l_1}{4}\Tr{\nabla_\mu \Sigma (\nabla^\mu \Sigma)^\dagger}^2
     + \frac{l_2}{4} \Tr{\nabla_\mu \Sigma (\nabla_\nu \Sigma)^\dagger} 
     \Tr{\nabla^\mu \Sigma (\nabla^\nu \Sigma)^\dagger} 
-    +
-    \frac{l_3 + l_4}{16} \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}^2
-    \\ \notag
-    &
+    &\\ \notag&\quad
+    + \frac{l_3 + l_4}{16} \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}^2
     + \frac{l_4}{8}\Tr{\nabla_\mu \Sigma (\nabla^\mu \Sigma)^\dagger} \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
+    &\\\notag&\quad
     - \frac{l_7}{16} \Tr{\chi \Sigma^\dagger - \Sigma \chi^\dagger}^2
-    + \frac{h_1 + h_3 - l_4}{4} \Tr{\chi \chi^\dagger} \\
-    & +
-    \frac{h_1 - h_3 - l_4}{16}
+    + \frac{h_1 + h_3 - l_4}{4} \Tr{\chi \chi^\dagger} 
+    &\\ &\quad\nonumber
+    + \frac{h_1 - h_3 - l_4}{16}
     \left[
         \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}^2
         + \Tr{\chi \Sigma^\dagger - \Sigma \chi^\dagger}^2
         -2 \Tr{\left(\chi \Sigma^\dagger\right)^2 + \left( \Sigma \chi^\dagger\right)^2}
-    \right]
-    \label{NLO Lagrangian}.
-\end{align}
+    \right].
+    &
+\end{flalign}
 %
 We have ignored terms containing the field strength tensors for external fields, as they vanish in our case.
 The parameters $l_i$ and $h_i$ are called low energy constants, or LEO.
@@ -44,8 +43,9 @@ To obtain $\Ell_4$ to $\Oh{\left((\pi/f)^3\right)}$, we use the result from \aut
     %%%%%%%%%%%%%
     -i \Tr{\partial_\mu \Sigma [v_\nu, \Sigma^\dagger] - \hc}
     & = 
-    \frac{2\mu_I\pi_2}{f}(\delta_\mu^0\partial_\nu + \delta_\nu^0\partial_\mu)\sin{\alpha} + 
-    \frac{2\mu_I}{f^2}
+    \frac{2\mu_I\pi_2}{f}(\delta_\mu^0\partial_\nu + \delta_\nu^0\partial_\mu)\sin{\alpha} 
+    \\ & \quad
+    + \frac{2\mu_I}{f^2}
     [
         \pi_1 (\delta_\mu^0\partial_\nu + \delta_\nu^0\partial_\mu)\pi_2 
         - \pi_2 (\delta_\mu^0\partial_\nu + \delta_\nu^0\partial_\mu)\pi_1
@@ -79,7 +79,7 @@ Inserting $\chi= 2 B_0 m = \bar m^2 \one + \Delta m^2 \tau_3$ gives
             \sin{\alpha}
         \right]
     \\
-    &
+    &\quad
     + 2\Delta m^2
     \left[
         \left(
@@ -126,18 +126,20 @@ Combining these results gives all the terms in $\Ell_4$, to $\Oh{\left((\pi/f)^3
     \Tr{\partial_\mu \Sigma \partial^\mu \Sigma ^\dagger
     - i \left( \partial_\mu \Sigma [v^\mu,\Sigma^\dagger] - \hc \right)
     - [v_\mu, \Sigma][v^\mu,\Sigma^\dagger]
-    }^2 \\\notag
-    &\quad  =
+    }^2 
+    \\\notag &\quad  =
     \frac{8 \mu_I^2}{f^2} 
     (\partial_\mu \pi_a \partial^\mu \pi_a + 2 \partial_\mu \pi_2 \partial^\mu \pi_2)
-    \sin^2{\alpha} \\\notag
-    &\quad  + 16 \mu_I^3 \left[
+    \sin^2{\alpha} 
+    \\ &\quad \quad \notag
+    + 16 \mu_I^3 \left[
         \frac{\partial_0 \pi_2}{f}
             \sin^3{\alpha}
         + \frac{1}{f^2} \left(3 \pi_1 \partial_0 \pi_2 - \pi_2 \partial_0 \pi_1\right)
             \cos{\alpha} \sin^2{\alpha}
-    \right] \\ \label{l1}
-    & \quad + 4 \mu_I^4 
+    \right] 
+    \\ \label{l1}& \quad \quad
+    + 4 \mu_I^4 
     \left\{
         \sin^4{\alpha}
         + 2 \sin^2{\alpha}
@@ -155,14 +157,16 @@ Combining these results gives all the terms in $\Ell_4$, to $\Oh{\left((\pi/f)^3
     & \quad = \frac{4 \mu_I{}^2}{f^2}
     \left(
         \partial_0 \pi_a\partial_0 \pi_a + \partial_0 \pi_2\partial_0 \pi_2 + \partial_\mu \pi_2\partial^\mu \pi_2
-    \right) \sin^2{\alpha} \\\notag
-    &\quad  + 16 \mu_I^3 \left[
+    \right) \sin^2{\alpha} 
+    \\\notag &\quad\quad  
+    + 16 \mu_I^3 \left[
         \frac{\partial_0 \pi_2}{f}\
             \sin^3{\alpha}
         + \frac{1}{f^2} \left(3 \pi_1 \partial_0 \pi_2 - \pi_2 \partial_0 \pi_1\right)
         \cos{\alpha} \sin^2{\alpha}
-    \right] \\\label{l2}
-    & \quad + 4 \mu_I^4 
+    \right] 
+    \\ \label{l2}& \quad\quad 
+    + 4 \mu_I^4 
     \left\{
         \sin^4{\alpha}
         + 2 \sin^2{\alpha}
@@ -177,9 +181,8 @@ Combining these results gives all the terms in $\Ell_4$, to $\Oh{\left((\pi/f)^3
     %%%%%%%
     \notag
     & \Tr{\nabla_\mu \Sigma (\nabla^\mu \Sigma)^\dagger} 
-    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger } \\
-    \notag
-    & \quad =
+    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger } 
+    \\\notag & \quad =
     4\bar m^2
     \Bigg\{
         2 \frac{\partial_\mu \pi_a \partial^\mu \pi_a}{f^2} \cos{\alpha}
@@ -191,13 +194,13 @@ Combining these results gives all the terms in $\Ell_4$, to $\Oh{\left((\pi/f)^3
                 \pi_1 \partial_0 \pi_2 \cos{2\alpha}
                 - \pi_2 \partial_0 \pi_1\cos^2{\alpha}
             \right)
-        \right]\\\notag
-        & \quad + \mu_I{}^2
+        \right]
+        \\\notag& \quad \quad + \mu_I{}^2
         \Bigg[
             2\cos{\alpha}\sin^2{\alpha} 
             - 2 \frac{\pi_1}{f} \sin{\alpha}
-            \left(2 - 3\sin^2{\alpha}\right) \\
-            &\quad\quad\quad\quad 
+            \left(2 - 3\sin^2{\alpha}\right) 
+            \\ &\quad\quad
             + \frac{1}{f^2}
             \left(                
                 \pi_1^2[2 - 9 \sin^2{\alpha}]
@@ -257,6 +260,7 @@ The different terms of the NLO Lagrangian are
 \allowdisplaybreaks 
 %
 \begin{align}
+    \notag
     \Ell_4^{(0)} & =
     %
     %
@@ -265,6 +269,7 @@ The different terms of the NLO Lagrangian are
     %
     (l_1 + l_2)\mu_I^4 \sin^4{\alpha}
     + (l_3 + l_4)\bar m^2 \cos^2{\alpha}
+    \\ &\quad
     + l_4 \bar m \mu_I{}^2 \cos{\alpha} \sin^2{\alpha}
     + (h_1 - l_4)\bar m^4
     + h_3 \Delta m^4,
@@ -290,8 +295,7 @@ The different terms of the NLO Lagrangian are
     \bar m^4
     \pi_1 \sin{2\alpha}
     %%%%%%%% 
-    \\ \label{NLO-L1}
-    & 
+    \\ \label{NLO-L1} & \quad
     +
     \bar m^2
     \frac{l_4}{f}
@@ -318,6 +322,7 @@ The different terms of the NLO Lagrangian are
         + 2 \partial_0 \pi_2 \partial_0 \pi_2    
     )
         \sin^2{\alpha}
+        \\ \nonumber&\quad 
     + \mu_I{}^2 
     \frac{ l_2}{f^2}
     % term 7 pi^2
@@ -327,8 +332,8 @@ The different terms of the NLO Lagrangian are
         + 2\partial_0 \pi_2 \partial_0 \pi_2
     \right) 
     \sin^2{\alpha}
-    \\ \nonumber
-    & + 
+    \\ \nonumber& \quad
+    + 
     2 \frac{l_1 + l_2}{f^2}
     \left[
         % term 3 pi^2
@@ -340,13 +345,14 @@ The different terms of the NLO Lagrangian are
             \left(k_{ab} + 2\delta_{a1}\delta_{a2}\cos^2{\alpha} \right)
     \right]\sin^2{\alpha}
     % 
-    \\ \nonumber
-    & +
+    \\ \nonumber&\quad 
+    +
     \frac{l_3 + l_4}{f^2}
     \bar m^2
     % term 14 pi^2
     \left(\pi_1^2 \sin^2{\alpha} - \pi_a \pi_a \cos^2{\alpha}\right)
-    +  \frac{l_4}{f^2}
+    \\ \nonumber&\quad 
+    + \frac{l_4}{f^2}
     \bar m^2
     \bigg[
     % term 15 pi^2
@@ -357,8 +363,7 @@ The different terms of the NLO Lagrangian are
         \pi_1 \partial_0 \pi_2 \cos{2\alpha}
         - \pi_2 \partial_0 \pi_1\cos^2{\alpha}
     \right)
-    \\
-    & %\hspace{55 pt}
+    \\ & \quad %\hspace{55 pt} 
     +\frac{1}{2} \mu_I{}^2
     % term 20 pi^2
     \left(                

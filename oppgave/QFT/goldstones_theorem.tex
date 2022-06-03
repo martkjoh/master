@@ -61,10 +61,10 @@ Using the infinitesimal version of the transformation, we may write
 \begin{align}
     \nonumber
     Z[J]
-    = \int \D \varphi \, \exp{i S[\varphi] + i \int \dd^4 x \,J_i(x) \varphi_i(x)} 
-    = \int \D \varphi' \, \exp{i S[\varphi'] + i \int \dd^4 x \, J_i(x) \varphi'_i(x)}
+    &= \int \D \varphi \, \exp{i S[\varphi] + i \int \dd^4 x \,J_i(x) \varphi_i(x)} \\\nonumber
+    &= \int \D \varphi' \, \exp{i S[\varphi'] + i \int \dd^4 x \, J_i(x) \varphi'_i(x)}
     \\
-    = Z[J] + i \epsilon \int \dd^4 x \, J_i(x) \int \D \varphi \, [V_{ij} \varphi_j(x)]  e^{i S[\varphi]},
+    &= Z[J] + i \epsilon \int \dd^4 x \, J_i(x) \int \D \varphi \, [V_{ij} \varphi_j(x)]  e^{i S[\varphi]},
 \end{align}
 %
 Using \autoref{effective equation of motion}, we can write this as
@@ -150,7 +150,7 @@ we can rewrite
 \begin{equation}
     \delta \Ell = \left( \partial_\mu \pdv{\Ell}{(\partial_\mu \varphi_i)} \right) \delta \varphi_i
     + \pdv{\Ell}{(\partial_\mu \varphi_i)} (\partial_\mu \delta \varphi_i)
-    = \partial_\mu \left(\pdv{\Ell}{(\partial_\mu \varphi_i)} \delta \varphi_i\right)
+    = \partial_\mu \left(\pdv{\Ell}{(\partial_\mu \varphi_i)} \delta \varphi_i\right).
 \end{equation}
 %
 If we define the current

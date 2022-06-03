@@ -110,7 +110,7 @@ def plot_mu():
     x = np.linspace(1, 1.1, N)
     y = x_e(x)
 
-    fig, ax = plt.subplots(figsize=(10, 4)) 
+    fig, ax = plt.subplots(figsize=(10, 6)) 
     ax.plot(x, y, label="$\mu_e(\mu_I)$")
     ax.plot(x, mu_e(x), "k--", label="$\mu_e'(\mu_I)$")
 

@@ -20,18 +20,19 @@ With this, the NLO Lagrangian is~\autocite{gasserChiralPerturbationTheory1985}
     ={} &
     L_1\Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger}^2
     + L_2 \Tr{\nabla_\mu \Sigma \nabla_\nu \Sigma^\dagger} 
-    \Tr{\nabla^\mu \Sigma \nabla^\nu \Sigma^\dagger}
-    + L_3 \Tr{\left(\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger\right)^2} \\ \nonumber
-    & + L_4 \Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger} 
-    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
-    + L_5 \Tr{
+    \Tr{\nabla^\mu \Sigma \nabla^\nu \Sigma^\dagger}\\ \nonumber
+    & + L_3 \Tr{\left(\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger\right)^2} 
+    + L_4 \Tr{\nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger} 
+    \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}\\ \nonumber
+    & + L_5 \Tr{
         \nabla_\mu \Sigma \nabla^\mu \Sigma^\dagger 
         \left(\chi \Sigma^\dagger + \Sigma \chi^\dagger\right)
-    }\\\nonumber
-    &+ L_6 \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}^2 
-     + L_7 \Tr{\chi \Sigma^\dagger - \Sigma \chi^\dagger}^2
-    + L_8 \Tr{ \left(\chi^\dagger \Sigma \right)^2 + \left(\chi \Sigma^\dagger \right)^2}\\
-    &+ H_2 \Tr{\chi \chi^\dagger}.
+    }
+    + L_6 \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}^2
+    \\ & 
+    + L_7 \Tr{\chi \Sigma^\dagger - \Sigma \chi^\dagger}^2 
+    + L_8 \Tr{ \left(\chi^\dagger \Sigma \right)^2 + \left(\chi \Sigma^\dagger \right)^2}
+    + H_2 \Tr{\chi \chi^\dagger}.
 \end{align}
 %
 Here, $L_i$ and $H_i$ are coupling constants.
@@ -50,9 +51,10 @@ We obtained the next-to-leading order static Lagrangian by substituting the vacu
     = {}&
     2(2L_1 + 2L_2 + L_3) \mu_I^4 \sin^4\alpha
     + 4  L_4 \left( 2 \bar m^2 \cos\alpha + m_S^2 \right) \mu_I^2\sin^2\alpha
+    \\ \nonumber & 
     + 4 L_5 \bar m^2 \mu_I^2 \cos\alpha \sin^2 \alpha 
-    \\ & 
     + 4 L_6 (2\bar m^2\cos\alpha + m_S^2)^2
+    \\ & 
     + 2 L_8 \left(2 \bar m^4 \cos2\alpha + 2 \Delta m^4 + m_S^4\right)
     + H_2 \left(2\bar m^4 + 2\Delta m^4 + m_S^4 \right).
 \end{align}
@@ -68,13 +70,11 @@ In this case, the bare and renormalized constants are related by
 \begin{align}
     \label{bare coupling constants}
     L_i 
-    & = 
-    L_i^r 
-    -
-    \frac{1}{2} \frac{\mu^{-2\epsilon}} {(4 \pi)^2}
-    \left(\frac{1}{\epsilon} + 1 \right) \Gamma_i, \quad
-    H_i = 
-    H_i^r
+    & = L_i^r 
+    - \frac{1}{2} \frac{\mu^{-2\epsilon}} {(4 \pi)^2}
+    \left(\frac{1}{\epsilon} + 1 \right) \Gamma_i, \\
+    H_i 
+    & = H_i^r
     -  \frac{1}{2}  \frac{\mu^{-2\epsilon}}{(4 \pi)^2} 
     \left(\frac{1}{\epsilon} + 1 \right) \Delta_i .
 \end{align}
@@ -85,13 +85,13 @@ These have been calculated for $\mu_I = 0$~\autocite{gasserChiralPerturbationThe
 They are independent of $\mu_I$, and we can therefore use them in this calculation.
 They are
 \begin{equation}
-    \Gamma_1 = \frac{3}{32}, \quad
-    \Gamma_2 = \frac{3}{16}, \quad
-    \Gamma_3 = 0, \quad
-    \Gamma_4 = \frac{1}{8}, \quad
-    \Gamma_5 = \frac{3}{8}, \quad
-    \Gamma_6 = \frac{11}{144}, \quad
-    \Gamma_8 = \frac{5}{48}, \quad
+    \Gamma_1 = \frac{3}{32}, \,\,
+    \Gamma_2 = \frac{3}{16}, \,\,
+    \Gamma_3 = 0, \,\,
+    \Gamma_4 = \frac{1}{8}, \,\,
+    \Gamma_5 = \frac{3}{8}, \,\,
+    \Gamma_6 = \frac{11}{144}, \,\,
+    \Gamma_8 = \frac{5}{48}, \,\,
     \Delta_2 = \frac{5}{24}.
 \end{equation}
 %
@@ -106,19 +106,19 @@ From this we obtain the renormalization group equations for the running coupling
 %
 Inserting the solutions back into the bare coupling constants, \autoref{bare coupling constants} yields, to $\Oh(\epsilon)$,
 %
-\begin{equation}
+\begin{align}
     L_i
-    = 
+    &= 
     L_i^r(M)
     - \frac{1}{2} \frac{\mu^{-2\epsilon}} {(4 \pi)^2}
     \left(\frac{1}{\epsilon} + 1 + \ln{\frac{\tilde \mu^2}{M^2}}\right) \Gamma_i,
-    \quad
+    \\
     H_i
-    = 
+    &= 
     H_i^r (M)
     - \frac{1}{2} \frac{\mu^{-2\epsilon}} {(4 \pi)^2}
     \left(\frac{1}{\epsilon} + 1 + \ln{\frac{\tilde \mu^2}{M^2}}\right) \Delta_i.
-\end{equation}
+\end{align}
 %
 We have introduced the dimensional constant $\tilde \mu$, related to $\mu$ by $\tilde \mu^2 = 4 \pi e^{-\gamma_E} \mu^2$ where $\gamma_E$ is the Euler-Mascheroni constant, to match up with the contribution from loop integrals.
 This is the ``modified'' of ``modified minimal subtraction'', $\overline{\text{MS}}$, as discussed in \autoref{subsection: renormalization}.
@@ -158,22 +158,23 @@ After inserting the renormalized coupling constants into the Lagrangian \autoref
     = {}&
     2(2L_1^r + 2L_2^r + L_3^r) \mu_I^4 \sin^4\alpha
     + 4  L_4^r \left( 2 \bar m^2 \cos\alpha + m_S^2 \right) \mu_I^2\sin^2\alpha
-    + 4 L_5^r (\bar m^2 \cos\alpha) (\mu_I^2  \sin^2 \alpha )
     \\ \nonumber
     & 
+    + 4 L_5^r (\bar m^2 \cos\alpha) (\mu_I^2  \sin^2 \alpha )
     + 4 L_6^r (2\bar m^2\cos\alpha + m_S^2)^2
+    \\ \nonumber &
     + 2 L_8^r \left(2 \bar m^4 \cos2\alpha + 2 \Delta m^4 + m_S^4\right)
     + H_2^r \left(2\bar m^4 + 2\Delta m^4 + m_S^4 \right)
-    \\ \nonumber
-    &
+    \\ \nonumber &
     - \frac{1}{2}\frac{\mu^{-2\epsilon}}{(4\pi)^2}
     \left( \frac{1}{\epsilon} + 1 + \ln\frac{\tilde \mu^2}{M^2} \right)
+    \\\nonumber
+    & \times
     \Bigg[
         \frac{37}{15} (\bar m^2 \cos\alpha)^2
         +\frac{5}{2} (\bar m^2 \cos\alpha)(\mu_I^2\sin^2\alpha)
         +\frac{9}{8} (\mu_I^2\sin^2\alpha)^2 \\
-        &
-        \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+        & \quad
         +\frac{11}{9} (\bar m^2 \cos\alpha)m_S^2
         +\frac{1}{2} (\mu_I^2\sin^2\alpha)m_S^2
         +\frac{5}{6} \Delta m^4

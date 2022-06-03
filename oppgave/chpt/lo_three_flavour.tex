@@ -118,6 +118,7 @@ This shows the relationship between our fields $\varphi_a$, and the observed, ch
 The full relationship between the $\varphi_a$-fields  and the observed pseudoscalar mesons is~\autocite{schererIntroductionChiralPerturbation2002}
 %
 \begin{equation}
+    \nonumber
     \varphi_a \lambda_a
     =
     \begin{pmatrix}
@@ -149,8 +150,9 @@ The covariant derivative is then
 %
 The chemical potential matrix $\mu$ has three independent degrees of freedom, one for each quark, and is
 %
-\begin{equation}
-    \mu = 
+\begin{align}
+    \nonumber
+    \mu &= 
     \begin{pmatrix}
         \mu_u & 0 & 0 \\
         0 & \mu_d & 0 \\
@@ -161,11 +163,11 @@ The chemical potential matrix $\mu$ has three independent degrees of freedom, on
         \frac{1}{3}\mu_B + \frac{1}{2}\mu_I & 0 & 0 \\
         0 & \frac{1}{3}\mu_B - \frac{1}{2}\mu_I & 0 \\
         0 & 0 & \frac{1}{3}\mu_B - \mu_S
-    \end{pmatrix}
-    = \frac{1}{3}(\mu_B - \mu_S) \one 
+    \end{pmatrix}\\
+    &= \frac{1}{3}(\mu_B - \mu_S) \one 
     + \frac{1}{2} \mu_I \lambda_3
     + \frac{1}{\sqrt{3}}\mu_S\lambda_8,
-\end{equation}
+\end{align}
 %
 where we have defined $\mu_B = \frac{3}{2}(\mu_u + \mu_d)$, $\mu_I = \mu_u - \mu_d $ and $\mu_S = \frac{1}{2}(\mu_u + \mu_d)-\mu_s$.
 Here, $\mu_u$, $\mu_d$, and $\mu_s$ are the up, down, and strange quark chemical potentials, while $\mu_B$, $\mu_I$, and $\mu_S$ are the baryon number, isospin, and strangeness chemical potentials.
@@ -784,7 +786,7 @@ The masses, as functions of the isospin chemical potential, are illustrated in \
 
 
 
-\begin{figure}[H]
+\begin{figure}[p]
     \centering
     \includegraphics[width=0.8\textwidth]{../scripts/figurer/masses_mesons_EM.pdf}
     \caption{

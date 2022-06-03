@@ -17,11 +17,13 @@ However, if a refresher is needed, \autoref{section: imaginary-time formalism} c
 A summary of functional calculus is given in \autoref{appendix: Functional derivatives}.
 
 In the path integral formalism, the vacuum-to-vacuum transition amplitude, i.e., the probability that that vacuum at $t = -\infty$ evolves to the vacuum at time $t = \infty$, is given by
-\begin{equation}
-    Z = \lim_{T\rightarrow \infty} \braket{\Omega, T/2|-T/2, \Omega}
-    = \lim_{T\rightarrow \infty} \Braket{\Omega| e^{-iHT} |\Omega}
-    = \int \D \pi \D \varphi \, \exp{ i \int \dd^4 x \, \left(\pi \dot \varphi - \He[\pi, \varphi]\right) },
-\end{equation}
+%
+\begin{align}
+    \nonumber
+    Z &= \lim_{T\rightarrow \infty} \braket{\Omega, T/2|-T/2, \Omega}\\\nonumber
+    &= \lim_{T\rightarrow \infty} \Braket{\Omega| e^{-iHT} |\Omega}\\\nonumber
+    &= \int \D \pi \D \varphi \, \exp{ i \int \dd^4 x \, \left(\pi \dot \varphi - \He[\pi, \varphi]\right) },
+\end{align}
 %
 where $\ket{\Omega}$ is the vacuum state.
 The  $\varphi$ are the fields of the theory, and $\pi$ their canonical momenta. We will work as if $\varphi$ are a bosonic field. 
@@ -75,16 +77,16 @@ where $D_0$ is the propagator of the free theory.
 Using this form of the generating functional, \autoref{correlator from generating functional} becomes
 %
 \begin{align*}
-    & \frac{1}{Z[0]}  (-i)^n\fdv{}{J(x_1)} ... \fdv{}{J(x_n)} Z_0[J]  \Big|_{J = 0}
-    = (-i)^n \fdv{}{J(x_1)} ... \fdv{}{J(x_n)} e^{i W_0[J]} \Big|_{J = 0}\\
-    & = (-i)^{n} \fdv{}{J(x_1)} ... \fdv{}{J(x_{n-1})} \left(i \fdv{W_0[J]}{ J(x_{n}) } \right) e^{i W_0[J]} \Big|_{J = 0}\\
-    & = (-i)^{n}\fdv{}{J(x_1)} ... \fdv{}{J(x_{n-2})}
+    & \frac{1}{Z[0]}  (-i)^n\fdv{}{J(x_1)} \dots \fdv{}{J(x_n)} Z_0[J]  \Big|_{J = 0}
+    = (-i)^n \fdv{}{J(x_1)} \dots \fdv{}{J(x_n)} e^{i W_0[J]} \Big|_{J = 0}\\
+    & = (-i)^{n} \fdv{}{J(x_1)} \dots \fdv{}{J(x_{n-1})} \left(i \fdv{W_0[J]}{ J(x_{n}) } \right) e^{i W_0[J]} \Big|_{J = 0}\\
+    & = (-i)^{n}\fdv{}{J(x_1)} \dots \fdv{}{J(x_{n-2})}
     \left(
         i\fdv{ W_0[J] }{ J(x_{n-1}), J(x_{n}) }
         + i^2 \fdv{W_0[J]}{J(x_{n-1})} \fdv{W_0[J]}{J(x_{n})}
     \right) 
-    e^{i W_0[J]} \Big|_{J = 0}
-    = \dots \\
+    e^{i W_0[J]} \Big|_{J = 0}\\
+    &= \dots \\
     &= 
     (- i )^{\floor{n/2}}\sum_{{(a, b)}} \prod_{i=1}^{\floor{n/2}}
     \fdv{ W_0[J] }{J(x_{a(i)}),J(x_{b(i)})} \Big|_{J = 0}.

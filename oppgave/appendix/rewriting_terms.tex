@@ -122,6 +122,7 @@ Inserting this gives
     i \frac{f^2}{4}
     \Tr{[\nabla_\mu (S_2\Sigma')][\nabla^\mu\Sigma']^\dagger 
     -  [\nabla_\mu\Sigma'][\nabla^\mu (\Sigma'^\dagger  S_2) ]}
+    \\ & \quad
     - i \frac{f^2}{4} \Tr{\chi \Sigma'^\dagger S_2 - S_2 \Sigma' \chi^\dagger}.
 \end{align*}
 %
@@ -162,12 +163,12 @@ The NLO Lagrangian used in this Appendix is given in \autoref{NLO Lagrangian} an
     \Tr{\nabla^\mu \Sigma (\nabla^\nu \Sigma)^\dagger} 
     +
     \frac{l_3 + l_4}{16} \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}^2
-    \\ \notag
-    &
+    \\ \notag&\quad
     + \frac{l_4}{8}\Tr{\nabla_\mu \Sigma (\nabla^\mu \Sigma)^\dagger} \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
     - \frac{l_7}{16} \Tr{\chi \Sigma^\dagger - \Sigma \chi^\dagger}^2
-    + \frac{h_1 + h_3 - l_4}{4} \Tr{\chi \chi^\dagger} \\
-    & +
+    + \frac{h_1 + h_3 - l_4}{4} \Tr{\chi \chi^\dagger} 
+    \\\notag&\quad 
+    +
     \frac{h_1 - h_3 - l_4}{16}
     \left[
         \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}^2
@@ -187,11 +188,12 @@ We can rewrite it to match the one used in~\autocite{adhikariTwoflavorChiralPert
     \right) \\
     & = 
     \frac{h_1 - h_3 - l_4}{16}
-    \left(
+    \bigg(
         \Tr{\chi \Sigma^\dagger}^2 - 2\Tr{\chi \Sigma^\dagger}\Tr{\Sigma \chi^\dagger}
         + \Tr{\Sigma \chi^\dagger}^2
+        \\ & \quad\quad\quad\quad\quad\quad\quad\quad
         - 2 \Tr{(\chi \Sigma^\dagger)^2} -2 \Tr{(\Sigma \chi^\dagger)^2}
-    \right).
+    \bigg).
 \end{align*}
 %
 Using $\Tr{A^2} = \Tr{A}^2 - \det(A)\Tr{\one}$, we get
@@ -225,12 +227,12 @@ Furthermore, as $\det(\Sigma)= 1$,
     \Tr{\nabla^\mu \Sigma (\nabla^\nu \Sigma)^\dagger} 
     +
     \frac{l_3 + l_4 }{16} \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}^2
-    \\\notag
-    &
+    \\\notag&\quad
     + \frac{l_4}{8}\Tr{\nabla_\mu \Sigma (\nabla^\mu \Sigma)^\dagger} \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
     - \frac{l_7}{16} \Tr{\chi \Sigma^\dagger - \Sigma \chi^\dagger}^2
-    + \frac{h_1 + h_3 -l_4}{4} \Tr{\chi \chi^\dagger} \\
-    & +\frac{h_1 - h_3 - l_4}{4} (\det{\chi} + \det{\chi^\dagger}).
+    + \frac{h_1 + h_3 -l_4}{4} \Tr{\chi \chi^\dagger} 
+    \\\notag& \quad
+    +\frac{h_1 - h_3 - l_4}{4} (\det{\chi} + \det{\chi^\dagger}).
 \end{align}
  %
 For real $\chi$, we have $\Tr{\chi \chi^\dagger} = \det(\chi) + \det(\chi^\dagger)$, and we can define $h_1' = h_1 - l_4$ to get
@@ -244,8 +246,7 @@ For real $\chi$, we have $\Tr{\chi \chi^\dagger} = \det(\chi) + \det(\chi^\dagge
     \Tr{\nabla^\mu \Sigma (\nabla^\nu \Sigma)^\dagger} 
     +
     \frac{l_3 + l_4 }{16} \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}^2
-    \\
-    &
+    \\\notag&\quad
     + \frac{l_4}{8}\Tr{\nabla_\mu \Sigma (\nabla^\mu \Sigma)^\dagger} \Tr{\chi \Sigma^\dagger + \Sigma \chi^\dagger}
     - \frac{l_7}{16} \Tr{\chi \Sigma^\dagger - \Sigma \chi^\dagger}^2
     + \frac{h_1'}{2} \Tr{\chi \chi^\dagger}.

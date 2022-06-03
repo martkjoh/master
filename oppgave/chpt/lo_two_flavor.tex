@@ -151,14 +151,15 @@ We will use this expansion to calculate the free energy density.
 Expanding $\Sigma$ to $\Oh \left((\pi/f)^5\right)$, we get
 %
 \begin{align}
-    \Sigma =
+    \nonumber
+    \Sigma &=
      \left(
         1 
         - \frac{\pi_a^2}{2f^2}
         + \frac{\pi_a^2\pi_b^2}{24f^4}
     \right)
-    (\cos{\alpha} + i \tau_1 \sin{\alpha})
-    +
+    (\cos{\alpha} + i \tau_1 \sin{\alpha})\\
+    &\quad+
     \left(
         \frac{\pi_a}{f} 
         - \frac{\pi_b^2\pi_a}{6f^3} 
@@ -173,20 +174,20 @@ Expanding $\Sigma$ to $\Oh \left((\pi/f)^5\right)$, we get
 
 The kinetic term in the \chpt\, Lagrangian is
 %
-\begin{equation}
+\begin{align}
     \nabla_\mu \Sigma (\nabla^\mu \Sigma)^\dagger 
     = \partial_\mu \Sigma \partial^\mu \Sigma^\dagger 
     - i \left(\partial_\mu \Sigma [v^\mu, \Sigma^\dagger] - \hc \right)
     - [v_\mu,\Sigma][v_\mu, \Sigma^\dagger].
     \label{kinetic term}
-\end{equation}
+\end{align}
 %
 Using \autoref{expansion of sigma} we find the expansion of the constitutive parts of the kinetic term to be
 %
 \begin{align}
     \notag
     \partial_\mu \Sigma 
-    = &
+   & = 
     \left[
         \left(
             \frac{-1}{f^2}
@@ -203,7 +204,7 @@ Using \autoref{expansion of sigma} we find the expansion of the constitutive par
         \sin{\alpha}
     \right]
     \\ \notag 
-    - &
+    & \quad -
     \left[
         \left(
             \frac{-1}{f^2}
@@ -218,8 +219,9 @@ Using \autoref{expansion of sigma} we find the expansion of the constitutive par
         \right)
         2 \sin^2{\frac{\alpha}{2}}
     \right]
-    i \tau_1 \\ \label{Sigma derivative}
-    +& 
+    i \tau_1 
+    \\ \label{Sigma derivative}
+    & \quad  + 
     \left(
         \frac{\partial_\mu \pi_a}{f} 
         - \frac{\pi_b^2 \partial_\mu\pi_a 
@@ -231,12 +233,14 @@ Using \autoref{expansion of sigma} we find the expansion of the constitutive par
 %
 and
 %
+\begingroup
+\allowdisplaybreaks
 \begin{align}
-    % \notag
+    \notag
     [v_\mu,\Sigma]
-    & =
+    =
     -\mu_I \delta^0_\mu
-    \left\{
+    \Bigg\{&
         \left[
         \left(
             1 
@@ -250,17 +254,17 @@ and
             - \frac{\pi_b^2\pi_1}{6f^3} 
         \right) \cos{\alpha}
         \right]
-         \tau_2
-        -
+        \tau_2\\
+        &-
         \left(
             \frac{\pi_2}{f} 
             - \frac{\pi_b^2\pi_2}{6f^3} 
         \right)
         \tau_1
-    \right\}.
+    \Bigg\}.
     \label{sigma commutator}
 \end{align}
-%
+\endgroup
 %
 Combining \autoref{Sigma derivative} and \autoref{sigma commutator} gives the following terms
 %
@@ -277,12 +281,14 @@ Combining \autoref{Sigma derivative} and \autoref{sigma commutator} gives the fo
     % Term 2
     \nonumber
     -i  &\Tr{\partial^\mu\Sigma[v_\mu,\Sigma^\dagger] - \hc}
+    \\\nonumber & \quad\quad\quad\quad
     =
     4 \mu_I \frac{\partial_0\pi_2}{f}
     + 8 \mu_I \frac{\pi_3}{3f^3}\sin{\alpha}(
         \pi_2 \partial_0 \pi_3 - \pi_3 \partial_0 \pi_2
         ) \sin{\alpha}
-    \\ & \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad
+    \\ & \quad \quad \quad \quad
+    \quad
     +
     \left(
         \frac{4\mu_I}{f^2} \cos{\alpha}
@@ -291,7 +297,9 @@ Combining \autoref{Sigma derivative} and \autoref{sigma commutator} gives the fo
     \right) 
     (\pi_1\partial_0 \pi_2 - \pi_2 \partial_0 \pi_1), \\
     % Term 3
+    \nonumber
     - & \Tr{[v_\mu,\Sigma][v^\mu,\Sigma^\dagger]}
+    \\\nonumber & \quad\quad\quad\quad
     = \mu_I{}^2
     \bigg[
         2 \sin^2{\alpha}
@@ -309,16 +317,19 @@ Combining \autoref{Sigma derivative} and \autoref{sigma commutator} gives the fo
     \bigg], 
     \\
     % Mass Term
+    \hspace{-1.5cm}
     & \Tr{\chi^\dagger \Sigma + \Sigma^\dagger\chi}
+    \\ \nonumber & \quad\quad\quad\quad
     = 
     \bar m^2 
-    \left(
+    \Bigg(
         4 \cos{\alpha} 
         - \frac{4 \pi_1}{f} \sin{\alpha} 
         - \frac{2 \pi_a \pi_a}{f^2} \cos{\alpha}
+        % \\ & \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
         + \frac{2 \pi_1 \pi_a \pi_a}{3 f^3} \sin{\alpha}
         + \frac{(\pi_a \pi_a)^2}{6 f^4}\cos{\alpha}
-    \right), 
+    \Bigg), 
 \end{align}
 %
 where $k_{ab} =\delta_{a1} \delta_{b1} \cos{2\alpha}  + \delta_{a2}\delta_{b2}\cos^2{\alpha} - \delta_{a3}\delta_{b3} \sin^2{\alpha}$.
@@ -370,7 +381,7 @@ If we write the Lagrangian \autoref{leading order two-flavor chpt Lagrangian} as
 & =
     \frac{\pi_a\pi_a \pi_1}{6f}
     (\bar m^2 \sin{\alpha}-2\mu_I{}^2 \sin{2\alpha})\\ \label{L3}
-    &
+    &\quad
     -
     \frac{2 \mu_I}{3 f}
     \left[
@@ -395,8 +406,7 @@ If we write the Lagrangian \autoref{leading order two-flavor chpt Lagrangian} as
         - (\pi_a \partial_\mu \pi_a)(\pi_b \partial^\mu \pi_b )
     \right]
 }
-\\
-&
+\\ &\quad
 - \frac{\mu_I \pi_a\pi_a}{3f^2}
 \left[
     \left(\pi_1\partial_0 \pi_2 - \pi_2 \partial_0 \pi_1\right)

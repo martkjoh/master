@@ -100,12 +100,12 @@ If we have a Lagrangian on the form $\Ell = - \frac{1}{2}\varphi(\partial^2 + m^
 %
 \begin{align*}
     (\partial^2_x + m^2)\braket{\varphi(x)\varphi(x_1)\dots \varphi(x_n)}
-    = - \Braket{\Ve'[\varphi](x)\varphi(x_1)\dots\varphi(x_n)} 
-    -i \sum_i\delta(x - x_i)
-    \Braket{\varphi(x_1)\dots \widehat {\varphi(x_{i})} \dots \varphi(x_n)},
+    &= - \Braket{\Ve'[\varphi](x)\varphi(x_1)\dots\varphi(x_n)} \\
+    &\phantom{=} -i \sum_i\delta(x - x_i)
+    \Braket{\varphi(x_1)\dots  {\varphi(x_{i-1})}{\varphi(x_{i+1})} \dots \varphi(x_n)}.
 \end{align*}
 %
-where the hat denotes that the field is \emph{omitted}.
+% where the hat denotes that the field is \emph{omitted}.
 If $n = 1$ and $\Ve = 0$, we get the defining relation for the free Greens function,
 %
 \begin{equation}
