@@ -22,72 +22,84 @@ If $\psi$ and $\bar \psi$ are fermionic spinor fields, relevant relations are~\a
 The anti-periodic nature of fermion-fields, as mentioned in \autoref{section: imaginary-time formalism}, is due to these differences.
 We can verify them by studying the properties of the thermal Greens function.
 The thermal Greens function may be written 
+%
 \begin{equation}
     D(X_1, X_2) = D(\vec x, \vec y, \tau_1, \tau_2) 
-    = \Tr{e^{-\beta H} \psi(\tau_1, \vec x)\psi(\tau_2, \vec y) }.
+    = \Tr{e^{-\beta H} \text T_\tau [ \psi(\tau_1, \vec x) \bar \psi(\tau_2, \vec y) ] }.
 \end{equation}
+%
+Here, $\text T_\tau$  is the imaginary-time-ordering operator, which sorts fields just as the regular time-ordering operator, only with respect to $\tau$ instead of $t$.
 In the same way that $i \hat H$ generates the time translation of a quantum field operator through 
 $
-\hat\varphi(x) = \hat\varphi(t, \vec x) = e^{it\hat H} \hat \varphi(0, \vec x) e^{-it\hat H} 
+\hat\psi(x) = \hat\psi(t, \vec x) = e^{it\hat H} \hat \psi(0, \vec x) e^{-it\hat H} 
 $, 
 the imaginary-time formalism implies the relation
 $
-    \hat\varphi(X) = \hat\varphi(\tau, \vec x) 
-    = e^{\tau\hat H} \hat \varphi(0, \vec x) e^{-\tau \hat H}.
+    \hat\psi(X) = \hat\psi(\tau, \vec x) 
+    = e^{\tau\hat H} \hat \psi(0, \vec x) e^{-\tau \hat H}.
 $
 Using $\one = e^{\tau \hat H} e^{-\tau \hat H}$ and the cyclic property of the trace, we show that, assuming $\beta>\tau>0$,
 \begin{align*}
     D(\vec x, \vec y, \tau, 0)
-    % = \bra{\Omega}e^{-\beta \hat H} \T{\varphi(\tau, \vec x) \varphi(0, \vec y)}\ket{\Omega} 
+    % = \bra{\Omega}e^{-\beta \hat H} \T{\psi(\tau, \vec x) \psi(0, \vec y)}\ket{\Omega} 
     &= \frac{1}{Z} \Tr{
-        e^{-\beta \hat H} \varphi(\tau, \vec x) \varphi(0, \vec y)
+        e^{-\beta \hat H} \text T_\tau [ \psi(\tau, \vec x) \bar \psi(0, \vec y) ]
     } \\
     % & = \frac{1}{Z} \Tr{
-    %     \varphi(0, \vec y) e^{-\beta \hat H} \varphi(\tau, \vec x)
+    %     \psi(0, \vec y) e^{-\beta \hat H} \psi(\tau, \vec x)
     % } \\
     & = \frac{1}{Z} \Tr{
-        e^{-\beta \hat H} e^{\beta \hat H} \varphi(0, \vec y) 
-        e^{-\beta \hat H} \varphi(\tau, \vec x)
+        \text T_\tau[
+        e^{-\beta \hat H} e^{\beta \hat H} \bar \psi(0, \vec y) 
+        e^{-\beta \hat H} \psi(\tau, \vec x)
+        ]
     } \\
     & = \frac{1}{Z} \Tr{
-        e^{-\beta \hat H} \varphi(\vec y, \beta) \varphi(\tau, \vec x)
+        e^{-\beta \hat H} \text T_\tau [ \psi(\vec y, \beta) \bar \psi(\tau, \vec x)]
     } 
-    = \nu D (\vec x, \vec y, \tau, 0)
+    = \nu D (\vec x, \vec y, \tau, \beta)
     % = \nu \bra{\Omega}        
-    % e^{-\beta \hat H} \T{ \varphi(\tau, \vec x) \varphi( \beta, \vec y) }
+    % e^{-\beta \hat H} \T{ \psi(\tau, \vec x) \psi( \beta, \vec y) }
     % \ket{\Omega}.
 \end{align*}
-This implies that $\varphi(0, x) = \nu \varphi(\beta, \varphi)$, where $\nu = \pm 1$ for bosons and fermions respectively, which shows that bosons are periodic in time, as stated earlier, while fermions are anti-periodic.
+This implies that $\psi(0, x) = \nu \psi(\beta, \psi)$, where $\nu = \pm 1$ for bosons and fermions respectively, which shows that bosons are periodic in time, as stated earlier, while fermions are anti-periodic.
 
 
-The Lagrangian density of a free fermion is
+The Lagrangian density of a free Dirac fermion is
+%
 \begin{equation}
     \Ell = \bar \psi \left( i \slashed{\partial} - m \right) \psi.
 \end{equation}
+%
 This Lagrangian is invariant under the transformation $\psi \rightarrow e^{-i \alpha} \psi$, which by Nöther's theorem results in a conserved current
+%
 \begin{equation}
     j^\mu = \pdv{\Ell}{(\partial_\mu \psi)} \delta \psi=  \bar \psi \gamma^\mu \psi.
 \end{equation}
+%
 The canonical momentum corresponding to $\psi$ is
+%
 \begin{equation}
     \pi = \pdv{\Ell}{(\partial_0 \psi)} = i \bar \psi \gamma^0,
 \end{equation}
+%
 and the Hamiltonian density is 
+%
 \begin{equation}
     \He = \pi \dot\psi - \Ell
     = \bar \psi (-i\gamma^i\partial_i + m) \psi
 \end{equation}
 %
-In the grand canocical ensamble, we substitute $\He \rightarrow \He - \mu \bar \psi \gamma^0 \psi$, which gives the euclidian Lagrangian
-which gives
+In the grand canonical ensemble, we substitute $\He \rightarrow \He - \mu \bar \psi \gamma^0 \psi$.
+The Euclidian Lagrangian is then
 %
 \begin{equation}
     \Ell_E = 
     - \pi \dot\psi + \He(\psi, \pi) - \mu \bar \psi \gamma^0 \psi
     = \bar\psi[\gamma^0 (\partial_\tau - \mu) - i\gamma^i \partial_i + m] \psi,
 \end{equation}
-
-With this, the partition function is
+%
+The partition function for this system is then~\autocite{laineBasicsThermalField2016}
 %
 \begin{align*}
     Z & = \int \D \psi \D \bar \psi
@@ -106,12 +118,12 @@ With this, the partition function is
     %     \right]
     %     \tilde \psi
     % } \\
-    & = C \int \D \tilde \psi \D \tilde {\bar \psi} \,
-    e^{- \langle \tilde {\bar \psi}, D^{-1} \tilde \psi\rangle} 
-    = \det(D^{-1}).
+    & = C \int \D \psi \D {\bar \psi} \,
+    e^{- \langle  {\bar \psi}, D^{-1} \psi\rangle} 
+    = C \det(D^{-1}).
 \end{align*}
 In the second line, we have inserted the Fourier expansion of the field, as defined in \autoref{section: imaginary-time formalism}, and changed variable of integration, as we did for the scalar field.
-We then used the Grassmann version of the Gaussian integral,~\autocite{schwartzQuantumFieldTheory2013}
+We then used the Grassmann version of the Gaussian integral~\autocite{schwartzQuantumFieldTheory2013},
 %
 \begin{equation}
     \int \dd \bar \theta_i \dd \theta_i \exp{- \theta_i A_{ij}\theta_j} = \det(A).
@@ -144,18 +156,18 @@ Let $\tilde D^{-1} = \beta[-i\tilde\gamma_a k_a + m]$, which means we can write
 %
 where we have used the anti-commutation rule for the Euclidean gamma-matrices, $\{\tilde \gamma_a, \tilde  \gamma_b\} = 2 \delta_{ab}$.
 It is important to keep in mind that the determinant here refers to linear operators on the space of spinor functions.
-Thus
+Thus,
 %
 \begin{align}
     \nonumber
     \ln(Z) 
     & = \ln\left\{\det[\one\beta^2(k_a k_a + m^2)]^{1/2}\right\}
     = \frac{1}{2} \Tr{\ln[\one\beta^2(k_a k_a + m^2)]} \\
-    & =  2 \int_{\tilde \Omega} \dd K \,  \ln\{ \beta^2[(\omega_n + i\mu)^2 + \omega_k^2]\}.
+    & =  2 V \int_{\tilde \Omega} \dd K \,  \ln\{ \beta^2[(\omega_n + i\mu)^2 + \omega_k^2]\}.
 \end{align}
 %
 In the last step, we used the fact that the matrix within the logarithm is diagonal.
-The matrix part of the trace is trivial and therefore trivial.
+The matrix part of the trace is therefore trivial.
 Using the fermionic version of the thermal sum from \autoref{section: thermal sum} gives the answer
 %
 \begin{equation}

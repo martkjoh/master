@@ -1,6 +1,7 @@
 \subsection{Low-temperature limit}
 
-Using the result from \autoref{section: thermal sum} on the result for the free energy density of the free scalar field, \autoref{free scalar result 2}, we get
+Using the result from \autoref{section: thermal sum} and the result for the free energy density of the free scalar field, \autoref{free scalar result 2}, we get an expression for the free energy density, $\Eff = F/V$, 
+%
 \begin{equation}
     \label{free scalar free enrgy}
     \Eff = \frac{\ln(Z)}{\beta V}
@@ -9,18 +10,19 @@ Using the result from \autoref{section: thermal sum} on the result for the free 
         \omega_k + \frac{2}{\beta }\ln(1 - e^{-\beta\omega_k})
     \right].
 \end{equation}
-The free energy density thus has two contributions from parts; the first part is dependent on temperature, and the other part is a temperature-independent vacuum contribution.
+%
+The free energy density thus has two contributions from two parts; the first part is dependent on temperature, and the other part is a temperature-independent vacuum contribution.
 Noticing that the integral is spherically symmetric, we may write the two contributions as
 %
 \begin{equation}
     \Eff_0 = \frac{1}{2} \frac{1}{2 \pi^2}\int_{\R} \dd k \, k^2 \sqrt{k^2 + m^2}, \quad
     \Eff_T = \frac{T^4}{2 \pi^2}\int_\R \dd x \, x^2  
-    \ln\left(1 - \exp{-\sqrt{x^2 + (m/T)^2}}\right), 
+    \ln\left(1 - \exp{-\sqrt{x^2 + (m/T)^2}}\right).
 \end{equation}
 %
 The temperature-independent part, $\Eff_0$, is divergent, and we must impose a regulator and then add counter-terms.
 $\Eff_T$, however, is convergent. 
-To see this, we use the series expansion $\ln(1 + \epsilon) \sim \epsilon + \Oh{\epsilon}$ to find the leading part of the integrand for large $k$'s, 
+To see this, we use the series expansion $\ln(1 + \epsilon) \sim \epsilon + \Oh(\epsilon)$ to find the leading part of the integrand for large $k$'s, 
 %
 \begin{equation}
     x^2 \ln\left(1 - \exp{-\sqrt{x^2 + (\beta m)^2}}\right) \sim - x^2 e^{-x}, 
@@ -71,6 +73,7 @@ As detailed in \autoref{section: integral}, this result uses the $\overline{\tex
 Now that we have applied a regulator, we can handle the divergence in a well-defined way.
 When $\epsilon \neq 0$, we can subtract terms that are proportional to $\epsilon^{-1}$, and be left with a term that is finite in the limit $\epsilon \rightarrow 0$.
 
+We can subtract the divergences by performing \emph{renormalization}.
 Consider an arbitrary Lagrangian, 
 %
 \begin{equation}
@@ -97,7 +100,7 @@ We must then have
     \implies D_n := [\lambda_n] &= d - k_n \frac{d - 2}{2} - l_n \frac{d}{2}.
 \end{align}
 %
-From this formula, we recover that $[\lambda_0] = 0$, and if $\mathcal O_1 = \varphi^2$, then $[\lambda_1] = 2$, which we recognize as the mass term squared.
+From this formula, we recover that $[\lambda_0] = 0$, and if $\mathcal O_1 = \varphi^2$, then $[\lambda_1] = 2$, which we recognize as the mass squared term.
 The mass dimensions of these coupling constants are independent of $d$.
 However, the coupling constant for the interaction term
 \begin{equation}
@@ -115,7 +118,7 @@ We therefore write
     \right],
 \end{align*}
 %
-where we have introduced the dimensionful parameter $\mu$ to ensure that $\lambda_n$ has the correct mass dimension so that the action integral stays dimensionless.
+where we have introduced the dimensionful parameter $\mu$ to ensure that $\lambda_n$ has the correct mass dimension for the action integral to stay dimensionless.
 The functions $a_m$ are then determined to each order in perturbation theory by calculating Feynman diagrams.
 As $\mu$ again is arbitrary, $\lambda_4'$ should not depend on this parameter.
 In this case, we chose the same renormalization scale as we did when regulating the one-loop integral.
@@ -161,5 +164,5 @@ The free energy is now
 \end{equation}
 %
 Notice that all choices we have made up until now, such as defining $\lambda_4 = m^4 \lambda_4'$ and using the same renormalization scale $\mu$, have no impact on this result.
-Different choices would force us to define $\lambda_4^r$ and $a_4$ differently.
+Different choices would force us to define $\lambda_4^r$ and $a_4$ differently, leaving us with the same result.
 

@@ -138,7 +138,7 @@ def plot_mass_radius_compare():
     ax.set_xlim(30, 100)
     ax.set_ylim(0, 15)
 
-    plt.legend()
+    plt.legend(loc="lower left")
     fig.savefig("figurer/pion_star/mass_radius_comparison.pdf", bbox_inches="tight")
 
 
@@ -880,10 +880,10 @@ def plot_max():
 if __name__=="__main__":
     pass
 
-    plot_pressure_mass()
-    plot_pressure_mass(name="_EM")
+    # plot_pressure_mass()
+    # plot_pressure_mass(name="_EM")
 
-    plot_mass_radius()
+    # plot_mass_radius()
     plot_mass_radius_compare()
     # plot_mass_radius(name="_EM")
     # plot_mass_radius_compare_EM()

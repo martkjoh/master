@@ -1,6 +1,8 @@
+This appendix is based on~\autocite{kapustaFiniteTemperatureFieldTheory2006,laineBasicsThermalField2016,andersenIntroductionStatisticalMechanics2012}.
+
 In this appendix, we will give a brief overview of the basics of thermal field theory using imaginary-time formalism.
 We will derive the relevant scalar path integral, discuss the operator determinant and regularization, derive the Feynman rules for a $\varphi^4$-theory and discuss the fermionic theory.
-This appendix is based on~\autocite{kapustaFiniteTemperatureFieldTheory2006,laineBasicsThermalField2016}.
+The theory laid out in this appendix is referenced throughout the thesis.
 
 
 
@@ -8,7 +10,7 @@ This appendix is based on~\autocite{kapustaFiniteTemperatureFieldTheory2006,lain
 \label{section: statistical mechanics}
 
 In classical mechanics, a thermal system at temperature $T = 1 / \beta$ is described as an ensemble state, which have a probability $P_n$ of being in state $n$, with energy $E_n$.
-In the canonical ensemble, the probability is proportional to $e^{-\beta E_n}$.
+In the canonical ensemble, the probability is proportional to $e^{-\beta E_n}$, so $P_n = C e^{-\beta E_n}$.
 The expectation value of some quantity $A$, with value $A_n$ in the state $n$, is
 %
 \begin{equation*}
@@ -21,7 +23,7 @@ $Z$ is called the partition function. In quantum mechanics, an ensemble configur
 \begin{equation*}
     \hat \rho = \sum_n P_n \ket{n}\bra{n},
 \end{equation*}
-where $\ket{n}$ is some basis for the relevant Hilbert space. Assuming $\ket{n}$ are energy eigenvectors, i.e., $\hat H \ket{n} = E_n \ket{n}$, the density operator for the canonical ensemble, where $P_n = Ce^{-\beta E_n}$, is
+where $\ket{n}$ is some basis for the relevant Hilbert space. Assuming $\ket{n}$ are energy eigenvectors, i.e., $\hat H \ket{n} = E_n \ket{n}$, the density operator for the canonical ensemble is
 %
 \begin{equation*}
     \hat \rho 
@@ -52,7 +54,11 @@ This leads to the partition function
     Z = \Tr{e^{-\beta(\hat H - \mu_i \hat Q_i)}}.
 \end{equation}
 %
-
+The free energy in the grand canonical ensemble, also called grand potential, is
+%
+\begin{equation}
+    F = -\frac{1}{\beta} \ln(Z).
+\end{equation}
 
 
 \section{*Imaginary-time formalism}
@@ -76,8 +82,8 @@ These field operators have time-independent eigenvectors, $\ket{\varphi}$ and $\
     \hat \pi(\vec x) \ket{\pi} = \pi(\vec x) \ket{\pi}.
 \end{equation}
 %
-In analogy with regular quantum mechanics, they obey the relations
-\footnote{Some authors write $\D\pi/2 \pi$. This extra factor $2\pi$ is a convention that we leave out for notational clarity.}
+In analogy with regular quantum mechanics, they obey the relations\footnote{
+    Some authors write $\D\pi/2 \pi$. This extra factor $2\pi$ is a convention that we leave out for notational clarity.}
 %
 \begin{gather}
     \label{functional completness}
@@ -125,7 +131,7 @@ By inserting the completeness relations \autoref{functional completness} $N$ tim
         \int \D \varphi_n (\vec x) \int \D \pi_n(\vec x)
     \right) 
     \prod_{n=1}^N  \braket{\varphi_n}{\pi_n}
-    \inner{\pi_n}{e^{- \epsilon \hat H}}{\varphi_{n+1}} \braket{\varphi_{1}}{\varphi_{N+1}},
+    \inner{\pi_n}{e^{- \epsilon \hat H}}{\varphi_{n+1}} \braket{\varphi_{1} | \varphi_{N+1}},
 \end{align*}
 %
 where $\epsilon = \beta / N$. The last term ensures that $\varphi_1 = \varphi_{N+1}$.
@@ -152,12 +158,12 @@ By series expanding $e^{-\epsilon \hat H}$ and exploiting this relationship, the
     }.
 \end{align*}
 %
-We denote $\varphi_n(\vec x) = \varphi(\tau_n, \vec x) $, $\tau \in [0, \beta]$ and likewise with $\pi_n(\vec x)$. 
+We denote $\varphi_n(\vec x) = \varphi(\tau_n, \vec x) $, $\tau_n = n \epsilon \in [0, \beta]$ and likewise with $\pi_n(\vec x)$. 
 In the limit $N \rightarrow \infty$, the expression for the partition function becomes
 %
 \begin{flalign}
     \label{Thermal partition function}
-    Z = \int_S \D \varphi(\tau, \vec x) \D \pi(\tau, \vec x) \,
+    Z = \int_S \D \varphi(\tau, \vec x) \int \D \pi(\tau, \vec x) \,
     \exp{
         - \int_0^\beta \dd \tau \int_V \dd \vec x \, 
         \left(
@@ -171,19 +177,21 @@ where $S$ is the set of field configurations $\varphi$ such that $\varphi(\beta,
 With a Hamiltonian density of the form $\He = \frac{1}{2} \pi^2 + \frac{1}{2} (\nabla \varphi)^2 + \Ve(\varphi)$, we can evaluate the integral over the canonical momentum $\pi$ by discretizing $\pi(\tau_n, \vec x_m) = \pi_{n,m}$,
 %
 \begin{align*}
-    & \int \D \pi \exp{-  \int_0^\beta\dd \tau \int_V \dd^3x 
+    & \int \D \pi\, \exp{-  \int_0^\beta\dd \tau \int_V \dd^3x 
     \left(
         \frac{1}{2} \pi^2 - i \pi \dot \varphi 
-    \right)} \\
-    & = \lim_{M,N \rightarrow \infty} \int \left(\prod_{m, n = 1}^{M, N} \frac{\dd \pi_{m, n}}{2 \pi}\right)
+    \right)} 
+    \\ &\quad 
+    = \lim_{M,N \rightarrow \infty} \int \left(\prod_{m, n = 1}^{M, N} \frac{\dd \pi_{m, n}}{2 \pi}\right)
     \exp{
         - \sum_{m, n} \frac{V\beta}{MN}
         \left[
             \frac{1}{2}  (\pi_{m, n} - i \dot \varphi_{m, n})^2
             + \frac{1}{2} \dot \varphi_{m, n}^2
         \right]
-    } \\
-    & = \lim_{M,N \rightarrow \infty} \left( \frac{M N }{2 \pi V \beta} \right)^{MN/2}
+    } 
+    \\ &\quad 
+    = \lim_{M,N \rightarrow \infty} \left( \frac{M N }{2 \pi V \beta} \right)^{MN/2}
     \exp{- \int_0^\beta\dd \tau \int_V \dd^3x \, \frac{1}{2}\dot \varphi^2},
 \end{align*}
 %
@@ -191,7 +199,7 @@ where $\dot \varphi_{m, n} = (\varphi_{m, n+1} - \varphi_{m, n})/\epsilon$.
 The partition function is then, 
 %
 \begin{equation}
-    Z = C \int \D \varphi
+    Z = C \int \D \varphi\,
     \exp{
         - \int_0^\beta \dd \tau \int_V \dd^3 x
         \left[
@@ -207,15 +215,14 @@ In the last line, we exploited the fact that the variable of integration $\pi_{n
 \begin{equation*}
     \int_{-\infty}^{\infty} \dd x \, e^{-a x^2/2} = \sqrt{\frac{2 \pi}{a}}.
 \end{equation*}
-
-
+%
 The partition function resulting from this procedure may also be obtained by starting with the ground state path integral
 %
 \begin{equation*}
     Z_g
-    =\int \D\varphi\D\pi
+    =\int \D\varphi\D\pi\,
     \exp{i \int_{\Omega'} \dd^4 x \, \left(\pi\dot\varphi - \He[\varphi, \pi]\right)}
-    = C' \int \D \varphi(x)
+    = C' \int \D \varphi\,
     \exp{i \int_{\Omega'} \dd^4 x \, \Ell[\varphi, \partial_\mu \varphi]},
 \end{equation*}
 and follow a formal procedure.
@@ -228,7 +235,7 @@ $\Ell_E(\tau, \vec x) = -\Ell(-i \tau, \vec x)$, as well as the name ``imaginary
 The result is the same partition function as before,
 %
 \begin{align}
-    Z & = C \int_S \D \varphi \int \D \pi
+    Z & = C \int_S \D \varphi \int \D \pi\,
     \exp{
         - \int_0^\beta \dd \tau \int_V \dd^3x \, 
         \left[
@@ -237,7 +244,7 @@ The result is the same partition function as before,
         \right]
     } \nonumber \\ \label{free scalar result 2}
     & =
-    C' \int_S \D \varphi
+    C' \int_S \D \varphi\,
     \exp{- \int_0^\beta \dd \tau \int_V \dd^3x \, \Ell_E(\varphi, \pi)}.
 \end{align}
 %
@@ -254,8 +261,8 @@ The dot product is $X\cdot K = \omega_n \tau + \vec k \cdot \vec x$.
 In the limit $V\rightarrow \infty$, we follow the prescription
 %
 \begin{equation*}
-    \frac{1}{V} \sum_{\vec p \in \tilde V} \rightarrow \int_{\R^3} 
-    \frac{\dd^3 p}{(2 \pi)^3}.
+    \frac{1}{V} \sum_{\vec k \in \tilde V} \rightarrow \int_{\R^3} 
+    \frac{\dd^3 k}{(2 \pi)^3}.
 \end{equation*}
 The sum over all degrees of freedom, and the corresponding integrals for the thermodynamic limit are
 %
@@ -264,7 +271,7 @@ The sum over all degrees of freedom, and the corresponding integrals for the the
     & \xrightarrow{N,M\rightarrow \infty} \int_{0}^\beta \dd \tau \int_{\R^3} \dd^3 x
     = \int_\Omega \dd X, \\
      \frac{1}{V} \sum_{n=-\infty}^\infty \sum_{\vec k \in \tilde V}
-    & \xrightarrow{V \rightarrow \infty} \sum_{n=-\infty}^\infty \int_{R^3} \frac{\dd^3 p}{(2 \pi)^3}
+    & \xrightarrow{V \rightarrow \infty} \sum_{n=-\infty}^\infty \int_{R^3} \frac{\dd^3 k}{(2 \pi)^3}
     = \int_{\tilde \Omega} \dd K.
 \end{align*}
 %
@@ -278,7 +285,7 @@ For bosons, the Fourier expansion is
     \sqrt{V \beta} \int_{\tilde \Omega} \dd K \,  \tilde \varphi(K) e^{i X\cdot K}
     =
     \sqrt{\frac{\beta}{V}} \sum_{n=-\infty}^\infty \sum_{\vec k \in \tilde V}
-    \tilde \varphi_n(\vec p)\, \exp{i(\omega_n \tau + \vec x \cdot \vec k)}, \\
+    \tilde \varphi_n(\vec k)\, \exp{i(\omega_n \tau + \vec x \cdot \vec k)}, \\
     \tilde \varphi(K)
     = &
     \sqrt{\frac{1}{V \beta^3}} \int_{\tilde \Omega} \dd X \,  \tilde \varphi(X) e^{ - i X\cdot K},

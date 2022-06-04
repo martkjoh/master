@@ -136,17 +136,17 @@ Inserting the Fourier expansions of the field gives
     &\quad 
     = \left(-\frac{\lambda }{4!}\right)^m 
     \int_{\Omega} \dd X_1 \dots \dd X_m
-    (V \beta)^2 \int_{\tilde \Omega} \dd K_1 \dots \dd K_{2m} \sum_{\{a, b\}} \\
-    & \quad \quad \quad \quad\quad \quad \quad
-    \ex{\varphi(K_{a(1)}) \varphi(K_{b(1)})}_0
+    (V \beta)^2 \int_{\tilde \Omega} \dd K_1 \dots \dd K_{2m} \sum_{\{a, b\}}
+    \exp{i {\sum}_{i=1}^{m} X_i \cdot K_i}
+    \\ & \quad \quad \quad \quad\quad \quad \quad \quad
+    \times \ex{\varphi(K_{a(1)}) \varphi(K_{b(1)})}_0
     \dots
     \ex{\varphi(K_{a(2m)}) \varphi(K_{b(2m)})}_0     
-    \exp{i {\sum}_{i=1}^{m} X_i \cdot K_i}\\ 
-    & \quad  
+    \\ & \quad  
     = \left(-\frac{\lambda }{4!}\right)^m 
     \frac{(V \beta)^{2m} \beta^m}{(V \beta^2)^{2m}}
     \int_{\tilde \Omega} \dd K_1 ... \dd K_{2m} \sum_{\{a, b\}}
-    \prod_{i=1}^m \delta\left(X_i \cdot {\sum}_{j=0}^3 K_{i + jm}\right) \\
+    \prod_{i=1}^m \delta\left({\sum}_{j=0}^3 K_{i + jm}\right) \\
     & \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad
     \times \tilde D(K_{a(1)}) \delta(K_{a(1)} + K_{b(1)}) \dots 
     \tilde D(K_{a(2m)}) \delta(K_{a(2m)} + K_{b(2m)})
@@ -155,7 +155,7 @@ Inserting the Fourier expansions of the field gives
     = \left(-\frac{\lambda \beta}{4!}\right)^m 
     \prod_{i=1}^{2m} \int_{\tilde \Omega} 
     \left( \dd K_i \frac{1}{\beta} \tilde D(K_i)  \right) 
-    \prod_{i=1}^m \delta\left(X_i \cdot {\sum}_{j=0}^3 K_{i + jm}\right)
+    \prod_{i=1}^m \delta\left({\sum}_{j=0}^3 K_{i + jm}\right)
     \sum_{\{a, b\}} 
     \prod_{n=1}^{2m}\delta(K_{a(k)} + K_{b(k)}).
 \end{align*}
@@ -178,7 +178,7 @@ The thermal $\lambda \varphi^2$-theory gets the prescription
     };
     & = -\lambda \beta
     \delta \left({\sum}_i K_i \right), \\ \nonumber \\
-    \feynmandiagram[horizontal=a to b, baseline=(a)]{a --[fermion, label=$K$] b};
+    \feynmandiagram[horizontal=a to b, baseline=(a)]{a --[fermion, edge label=$K$] b};
     & = \frac{1}{\beta} D_0(K).
 \end{align}
 %
