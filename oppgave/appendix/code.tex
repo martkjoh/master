@@ -1,6 +1,6 @@
 \label{appendix: code} 
  
-All code is available at: \url{https://github.com/martkjoh/master}.
+All code used in this thesis, as well as the \LaTeX\. code, figures used and more is available at the online repository \url{https://github.com/martkjoh/master}.
 
 
 \section{Integrating the TOV equations}
@@ -8,9 +8,9 @@ All code is available at: \url{https://github.com/martkjoh/master}.
 For numerical integration of the TOV equations, we use SciPy's \texttt{integrate.solve\_ivp}.\footnote{
     Reference available here: \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html}.
     }
-Equations of state are evaluated either as explicit functions if a closed-form is available or as an interpolating function is created using a cubic spline without smoothing.
+Equations of state are evaluated either as explicit functions if a closed-form is available or as an interpolating function is created using a spline without smoothing.
 All code is written using dimensionless variables, and setting $k_1 = k_2 = k_3$.
-The TOV equation is then \autoref{TOV dimensionless}
+The continuity equation and the TOV equation then read, from \autoref{mass relation dimensionless} and \autoref{TOV dimensionless},
 %
 \begin{align}
     \odv{\tilde m}{\tilde r} 
@@ -21,7 +21,7 @@ The TOV equation is then \autoref{TOV dimensionless}
     \left(1 - \frac{2 \tilde m}{\tilde r}\right)^{-1}.
 \end{align}
 %
-As $r \rightarrow 0$, parts of the TOV equation \autoref{TOV dimensionless} approach a $0/0$-limit, and we must make use of an approximation for numeric evaluation.
+As $r \rightarrow 0$, parts of the TOV equation approach a $0/0$-limit, and we must make use of an approximation for numeric evaluation.
 The Taylor-expansion of the mass function around $\tilde r = 0$ is
 %
 \begin{equation}
@@ -60,18 +60,16 @@ For the Newtonian approximation to the TOV equation, we get
 \section{Symbolic calculations in \chpt}
 \label{section: symbolic calculations}
 
-Symbolic calculations in \chpt, such as the expansion of the Lagrangian in $\varphi$, were done using the open-source, Python-based case SageMath\footnote{\url{https://www.sagemath.org/}}, and jupyter notebook\footnote{\url{https://jupyter.org/}}.
-The calculations consisted of expanding the Lagrangian in a series of $\varphi_a/f$.
+Symbolic calculations in \chpt, such as the expansion of the Lagrangian in powers of $\varphi/f$, were done using the open-source, Python-based CAS software SageMath\footnote{\url{https://www.sagemath.org/}}, and Jupyter notebooks.\footnote{\url{https://jupyter.org/}}
 The calculations presented in this thesis, in addition to expansions of $\Ell_4$ to second order, can be found in the online repository, at \url{https://github.com/martkjoh/master/tree/main/power_expansion}.
 
 
 
 \section{Spherically symmetric metric}
 
-The calculations in \autoref{chapter: GR} were done using a CAS system.
-The code is written in Python in a Jupyter notebook.
-The full \texttt{.ipynb} file with executable code is available in the repository, at \url{https://github.com/martkjoh/master/blob/main/scripts/TOV/TOV.ipynb}
-Below is some of the code, which illustrates the main functions and the outputs.
+The calculations in \autoref{chapter: GR} were done using the pure Python CAS system SymPy,\footnote{\url{https://www.sympy.org}} in combination with a Jupyter notebook.
+The full \texttt{.ipynb} file with executable code is available in the online repository, at \url{https://github.com/martkjoh/master/blob/main/scripts/TOV/TOV.ipynb}.
+Below is some of the code, which illustrates the main functions and their outputs.
 
 \includepdf[pages=-,pagecommand={},width=1.3\textwidth]{../scripts/TOV/TOV.pdf}
 

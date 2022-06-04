@@ -118,7 +118,7 @@ Using Wick's theorem, as described in \autoref{section: path integral}, the expe
     = \left(- \frac{\lambda }{4!}\right)^m 
     \int_{\Omega} \dd X_1 \dots \dd X_m
     \ex{\varphi^4(X_1) \dots \varphi^4(X_m)}_0 \\ 
-    & \quad
+    & 
     = \left(- \frac{\lambda }{4!}\right)^m 
     \int_{\Omega} \dd X_1 \dots \dd X_m \sum_{\{a, b\}}
     \ex{\varphi(X_{a(1)}) \varphi(X_{b(1)})}_0
@@ -145,11 +145,12 @@ Inserting the Fourier expansions of the field gives
     & \quad  
     = \left(-\frac{\lambda }{4!}\right)^m 
     \frac{(V \beta)^{2m} \beta^m}{(V \beta^2)^{2m}}
-    \int_{\tilde \Omega} \dd K_1 ... \dd K_{2m} \sum_{\{a, b\}} \\
-    & \quad \quad \quad \quad \quad \quad \quad \quad \quad
-    \tilde D(K_{a(1)}) \delta(K_{a(1)} + K_{b(1)}) \dots 
-    \tilde D(K_{a(2m)}) \delta(K_{a(2m)} + K_{b(2m)})
+    \int_{\tilde \Omega} \dd K_1 ... \dd K_{2m} \sum_{\{a, b\}}
     \prod_{i=1}^m \delta\left(X_i \cdot {\sum}_{j=0}^3 K_{i + jm}\right) \\
+    & \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad
+    \times \tilde D(K_{a(1)}) \delta(K_{a(1)} + K_{b(1)}) \dots 
+    \tilde D(K_{a(2m)}) \delta(K_{a(2m)} + K_{b(2m)})
+     \\
     & \quad 
     = \left(-\frac{\lambda \beta}{4!}\right)^m 
     \prod_{i=1}^{2m} \int_{\tilde \Omega} 

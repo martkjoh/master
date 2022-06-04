@@ -118,8 +118,8 @@ By inserting the completeness relations \autoref{functional completness} $N$ tim
 %
 \begin{align*}
     Z& 
-    = \int \D\varphi(\vec x) \, \inner{\varphi}{e^{- \beta \hat H}}{\varphi}
-    = 
+    = \int \D\varphi(\vec x) \, \inner{\varphi}{e^{- \beta \hat H}}{\varphi}\\
+    &= 
     \prod_{n=1}^N
     \left(
         \int \D \varphi_n (\vec x) \int \D \pi_n(\vec x)
@@ -140,10 +140,12 @@ By series expanding $e^{-\epsilon \hat H}$ and exploiting this relationship, the
 \begin{align*}
     Z = 
     \prod_{n=1}^N  
+    &
     \left(
         \int \D \varphi_n (\vec x) \int \D \pi_n(\vec x)
     \right)
-    \exp{-\epsilon \sum_{n=1}^N \int_V \dd^3x \,
+    \\ &
+    \times \exp{-\epsilon \sum_{n=1}^N \int_V \dd^3x \,
     \left(
         \He[\varphi_n(\vec x), \pi_n(\vec x)] - i \pi_n(\vec x) \frac{\varphi_n(\vec x) - \varphi_{n+1}(\vec x)}{\epsilon}
     \right)
@@ -153,18 +155,17 @@ By series expanding $e^{-\epsilon \hat H}$ and exploiting this relationship, the
 We denote $\varphi_n(\vec x) = \varphi(\tau_n, \vec x) $, $\tau \in [0, \beta]$ and likewise with $\pi_n(\vec x)$. 
 In the limit $N \rightarrow \infty$, the expression for the partition function becomes
 %
-\begin{align}
+\begin{flalign}
     \label{Thermal partition function}
-    Z = \int_S \D \varphi(\tau, \vec x)
-    \int \D \pi(\tau, \vec x)
+    Z = \int_S \D \varphi(\tau, \vec x) \D \pi(\tau, \vec x) \,
     \exp{
         - \int_0^\beta \dd \tau \int_V \dd \vec x \, 
-        \left\{
+        \left(
             \He[\varphi(\tau, \vec x), \pi(\tau, \vec x)]
             - i \pi(\tau, \vec x) \dot \varphi(\tau, \vec x)
-        \right\}
+        \right)
         },
-\end{align}
+\end{flalign}
 %
 where $S$ is the set of field configurations $\varphi$ such that $\varphi(\beta, \vec x) = \varphi(0, \vec x)$.
 With a Hamiltonian density of the form $\He = \frac{1}{2} \pi^2 + \frac{1}{2} (\nabla \varphi)^2 + \Ve(\varphi)$, we can evaluate the integral over the canonical momentum $\pi$ by discretizing $\pi(\tau_n, \vec x_m) = \pi_{n,m}$,

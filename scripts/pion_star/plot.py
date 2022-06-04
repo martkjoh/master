@@ -101,15 +101,16 @@ def plot_mass_radius_compare():
     assert N == len(sols2); assert N ==len(sols3)
     datas = [get_data(s) for s in sols]
         
-    fig, ax = plt.subplots(figsize=(14, 6))
+    fig, ax = plt.subplots(figsize=(16, 8))
 
-    linestyles = ["-", "-.", "--", ":"]
+    linestyles = ["-", "-.", "--", (0, (6, 1, 1, 1, 1, 1))]
     labels = [
         "Full EOS + TOV",
-        "Non-relativistic EOS + TOV",
-        "Full EOS + Newtonian gravity",
-        "Non-relativistic EOS + Newtonian gravity"
+        "Non-rel. EOS + TOV",
+        "Full EOS + Newt. gravity",
+        "Non-rel. EOS + Newt. gravity"
         ]
+
 
     for i, data in enumerate(datas):
         R, M, p0 = [np.array(d) for d in data]
@@ -137,7 +138,7 @@ def plot_mass_radius_compare():
     ax.set_xlim(30, 100)
     ax.set_ylim(0, 15)
 
-    plt.legend(prop={'size': 14}, loc=2)
+    plt.legend()
     fig.savefig("figurer/pion_star/mass_radius_comparison.pdf", bbox_inches="tight")
 
 
@@ -508,7 +509,7 @@ def plot_mass_radius_compare_EM():
     N = len(sols1)
     sols = [sols1, sols2]
     datas = [get_data(s) for s in sols]
-    fig, ax = plt.subplots(figsize=(14, 6))
+    fig, ax = plt.subplots(figsize=(16, 8))
 
     labels = ["Only strong interactions", "EM interactions"]
     colors = ["tab:blue", "k"]
@@ -884,40 +885,40 @@ if __name__=="__main__":
 
     plot_mass_radius()
     plot_mass_radius_compare()
-    plot_mass_radius(name="_EM")
-    plot_mass_radius_compare_EM()
+    # plot_mass_radius(name="_EM")
+    # plot_mass_radius_compare_EM()
 
-    plot_eos()
-    plot_mu()
-    plot_eos_EM()
-    plot_u_p()
+    # plot_eos()
+    # plot_mu()
+    # plot_eos_EM()
+    # plot_u_p()
 
-    plot_lepton()
-    plot_lepton(name="_mu")
-    plot_lepton_compare()
+    # plot_lepton()
+    # plot_lepton(name="_mu")
+    # plot_lepton_compare()
 
-    plot_neutrino()
-    plot_neutrino_nlo_eos()
+    # plot_neutrino()
+    # plot_neutrino_nlo_eos()
 
-    plot_all_eos()
-    plot_max()
-    plot_all()
+    # plot_all_eos()
+    # plot_max()
+    # plot_all()
 
-    plot_nlo_quantities()
-    plot_nlo_quantities2()
+    # plot_nlo_quantities()
+    # plot_nlo_quantities2()
 
-    plot_eos_nlo()
+    # plot_eos_nlo()
 
-    plot_mass_radius("_nlo", rmax=False)
-    plot_nlo()
-    plot_nlo("_neutrino")
+    # plot_mass_radius("_nlo", rmax=False)
+    # plot_nlo()
+    # plot_nlo("_neutrino")
 
-    plot_light()
-    plot_light_nogrid()
-    plot_phase()
+    # plot_light()
+    # plot_light_nogrid()
+    # plot_phase()
 
-    ### Plots using lattice constants
+    # ### Plots using lattice constants
 
-    plot_nlo_quantities_lattice()
-    plot_eos_nlo_lattice()
-    plot_u_p()
+    # plot_nlo_quantities_lattice()
+    # plot_eos_nlo_lattice()
+    # plot_u_p()

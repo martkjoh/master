@@ -302,6 +302,8 @@ The variation of the Ricci scalar is
 We can write the variation of the Ricci scalar, and thus the Riemann curvature tensor, in terms of variations in Christoffel symbols, $\delta \Gamma^{\rho}_{\mu \nu}$ using the explicit formula for a symmetric, metric-compatible covariant derivative, \autoref{riemann tensor in terms of christoffel symbols}.
 As $\delta \Gamma = \Gamma - \Gamma'$, it is a tensor, and we may write
 %
+\begingroup
+\allowdisplaybreaks
 \begin{align*}
     \delta R^\rho{}_{\sigma \mu \nu} 
     & = \delta(
@@ -317,7 +319,8 @@ As $\delta \Gamma = \Gamma - \Gamma'$, it is a tensor, and we may write
             \partial_{\nu} \delta \Gamma^\rho_{\mu \sigma} 
             + \Gamma^\rho_{\lambda \nu}\delta \Gamma^\lambda_{\mu \sigma}
             - \Gamma^\lambda_{\nu \sigma} \delta \Gamma^\rho_{\lambda \mu} 
-        \right) 
+        \right)
+        \\ & \quad
         + (\Gamma^{\lambda}_{\mu\nu}\delta\Gamma^\rho_{\lambda \sigma} 
         - \Gamma^{\lambda}_{\mu\nu}\delta\Gamma^\rho_{\lambda \sigma}) \\
     & = \nabla_{\mu}\delta \Gamma^\rho_{\nu \sigma} 
@@ -326,6 +329,7 @@ As $\delta \Gamma = \Gamma - \Gamma'$, it is a tensor, and we may write
         - g^\eta{}_{\nu} \delta\Gamma^\rho_{\mu \sigma} \right) 
     := \nabla_\eta K^{\rho\eta}{}_{\mu \rho \nu},
 \end{align*}
+\endgroup
 %
 where $K$ is a tensorial quantity, which vanishes at the boundary of our spacetime.
 Using the generalized divergence theorem, \autoref{generalized divergence theorem}, we see the contribution to the action from this quantity vanish.

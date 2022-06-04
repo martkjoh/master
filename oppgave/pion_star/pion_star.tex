@@ -1,7 +1,10 @@
 As we found in \autoref{section: TOV equation}, the Tolman-Oppenheimer-Volkoff equation, \autoref{TOV}, determines the pressure as a function of the radius of a star given the equation of state and the central pressure.
 From \autoref{chapter: thermodynamics}, we have various equations of state for the pion condensate.
 In this chapter, we will apply these results to study pion stars, bosonic stars composed of a gravitationally bound pion condensate.
-
+As these results are analytical, as opposed to earlier numerical results, we can derive limits. 
+Separate the contributions to equations of state from various sources.
+This will allow us a more informed discussion on the physical properties of pion stars.
+At the end, we will compare our results with earlier studies done on pion stars.
 
 
 \section{Units and limiting radius}
@@ -102,8 +105,10 @@ We see that the largest radius in our results, corresponding to  $p_c = 10^{-6} 
 In the non-relativistic, Newtonian limit, the stellar radius is independent of the mass, as we found in our earlier analysis.
 
 
-\begin{figure}[H]
+
+\begin{figure}[h]
     \centering
+    \vspace*{4cm}
     \includegraphics[width=.85\textwidth]{../scripts/figurer/pion_star/pressure_mass_pion_star.pdf}
     \caption{
     Top: The pressure normalized to the central pressure.
@@ -114,7 +119,7 @@ In the non-relativistic, Newtonian limit, the stellar radius is independent of t
     \label{fig: pressure and mass for pion star}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[p]
     \centering
     \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star.pdf}
     \caption{
@@ -126,7 +131,7 @@ In the non-relativistic, Newtonian limit, the stellar radius is independent of t
         \label{fig: mass-radius relation pion star}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[p]
     \centering
     \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_comparison.pdf}
     \caption{
@@ -137,6 +142,7 @@ In the non-relativistic, Newtonian limit, the stellar radius is independent of t
 
 
 
+\FloatBarrier
 
 \subsection{Including electromagnetic contributions}
 
@@ -145,6 +151,7 @@ As we found in \autoref{subsection: including electromagnetism lo eos}, the elec
 \autoref{fig: eos chpt em interaction} shows the equation of state.
 The results with and without electromagnetic results are compared.
 We see that the inclusion of electromagnetic contributions results in a less stiff equation of state; a given pressure corresponds to a higher energy density when including electromagnetic interactions.
+
 \autoref{fig: mass-radius relation comparison} shows the mass-radius reaction of the pion star when the electromagnetic interaction is taken into account and compares it with our earlier result.
 We see that the shape of the curve has not changed much from the earlier result. 
 Both the maximum mass and radius are slightly smaller.
@@ -152,9 +159,10 @@ As discussed in \autoref{section: cold fermi star}, we expect a stiffer equation
 The new result for maximum radius, $R = 80.40 \, \text{km}$, is in excellent agreement with our expectation, \autoref{maximum mass pion star with em interaction}.
 
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
-    \includegraphics[width=0.75\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star_compare.pdf}
+    \vspace*{3cm}
+    \includegraphics[width=0.85\textwidth]{../scripts/figurer/pion_star/mass_radius_pion_star_compare.pdf}
     \caption{
         The mass-radius relation of pion stars with and without the effects of electromagnetism.
         The mass is in units of solar masses, the radius in kilometers.
@@ -163,7 +171,7 @@ The new result for maximum radius, $R = 80.40 \, \text{km}$, is in excellent agr
         \label{fig: mass-radius relation comparison}
 \end{figure} 
 
-
+\clearpage
 
 
 \subsection{Charge neutral stars}
@@ -450,7 +458,9 @@ There is a modest improvement in the agreement at the next-to-leading order.
 \begin{figure}[p]
     \centering
     \includegraphics[width=.95\textwidth]{../scripts/figurer/pion_star/lattice_const_compare.pdf}
+
     \vspace{1cm}
+
     \includegraphics[width=.95\textwidth]{../scripts/figurer/pion_star/lattice_const_compare_neutrino.pdf}
     \caption{
         The mass-radius relations, using the constants from the PDG \autocite{particledatagroupReviewParticlePhysics2020} or as used in lattice QCD calculations \autocite{brandtNewClassCompact2018}.
