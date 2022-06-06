@@ -1,11 +1,3 @@
-\section{Differential geometry}
-\label{section: differential geometry}
-
-
-General relativity, and a lot of quantum field theory, are formulated in the language of \emph{differential geometry}.
-Differential geometry generalizes $n$-dimensional calculus to more general spaces than the usual $\R^n$, such as curved spacetime or the more abstract space of symmetries of a quantum field theory.
-This section is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,leeIntroductionSmoothManifolds2003d}.
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{figurer/coordinate_function.pdf}
@@ -17,9 +9,15 @@ This section is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,leeI
 
 
 
-\subsection{Manifolds and coordinates}
+\section{Differential geometry}
+\label{section: differential geometry}
 
 
+This section is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,leeIntroductionSmoothManifolds2003d}.
+
+
+General relativity, and a lot of quantum field theory, are formulated in the language of \emph{differential geometry}.
+Differential geometry generalizes $n$-dimensional calculus to more general spaces than the usual $\R^n$, such as curved spacetime or the more abstract space of symmetries of a quantum field theory.
 The most important objects in differential geometry are \emph{smooth manifolds}.
 An $n$-dimensional manifold, $\Em$, is a set of points, locally homeomorphic to $\R^n$.
 That is, for all points $p \in \Em$, there exists a neighborhood $U$ around $p$, together with a corresponding set of continuous, bijective functions that map $U$ to a neighborhood $V$ in $\R^n$,
@@ -38,7 +36,7 @@ The corresponding domains $U$ and $U'$ may or may not overlap.
 We then define the transition function, a function between subsets of $\R^n$ by mapping via $\Em$, as
 %
 \begin{align}
-    f_{x\rightarrow x'} = x \circ {x'}^{-1} : \R^n \mapsto \R^n.
+    f_{x'\rightarrow x} = x \circ {x'}^{-1} : \R^n \mapsto \R^n.
 \end{align}
 %
 This map is illustrated in \autoref{fig: transition map}.\footnote{

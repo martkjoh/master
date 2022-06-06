@@ -101,14 +101,14 @@ def plot_mass_radius_compare():
     assert N == len(sols2); assert N ==len(sols3)
     datas = [get_data(s) for s in sols]
         
-    fig, ax = plt.subplots(figsize=(16, 8))
+    fig, ax = plt.subplots(figsize=(12, 10))
 
     linestyles = ["-", "-.", "--", (0, (6, 1, 1, 1, 1, 1))]
     labels = [
-        "Full EOS + TOV",
+        "Full EoS + TOV",
         "Non-rel. EOS + TOV",
-        "Full EOS + Newt. gravity",
-        "Non-rel. EOS + Newt. gravity"
+        "Full EoS + Newt. gravity",
+        "Non-rel. EoS + Newt. gravity"
         ]
 
 
@@ -130,15 +130,15 @@ def plot_mass_radius_compare():
         lc.set_array(z[::m])
         line = ax.add_collection(lc)
 
-    cb = fig.colorbar(line)
-    cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
+    cb = fig.colorbar(line, location="top")
+    cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=10)
 
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
-    ax.set_xlim(30, 100)
-    ax.set_ylim(0, 15)
+    ax.set_xlim(30, 95)
+    ax.set_ylim(0, 18)
 
-    plt.legend(loc="lower left")
+    plt.legend(loc="upper left", fontsize=18)
     fig.savefig("figurer/pion_star/mass_radius_comparison.pdf", bbox_inches="tight")
 
 
@@ -509,7 +509,7 @@ def plot_mass_radius_compare_EM():
     N = len(sols1)
     sols = [sols1, sols2]
     datas = [get_data(s) for s in sols]
-    fig, ax = plt.subplots(figsize=(16, 8))
+    fig, ax = plt.subplots(figsize=(12, 8))
 
     labels = ["Only strong interactions", "EM interactions"]
     colors = ["tab:blue", "k"]
@@ -886,7 +886,7 @@ if __name__=="__main__":
     # plot_mass_radius()
     plot_mass_radius_compare()
     # plot_mass_radius(name="_EM")
-    # plot_mass_radius_compare_EM()
+    plot_mass_radius_compare_EM()
 
     # plot_eos()
     # plot_mu()

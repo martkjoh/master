@@ -95,7 +95,7 @@ def compare_all():
 
 
 def plot_compare_lattice(t=""):
-    fig, ax = plt.subplots(figsize=(18, 10))
+    fig, ax = plt.subplots(figsize=(12, 8))
 
     if t=="":
         data = np.loadtxt("data_brandt/data_p.txt", skiprows=1, unpack=True)
@@ -144,13 +144,14 @@ def plot_compare_lattice(t=""):
 
     ax.set_xlabel("$R [\\mathrm{km}]$")
     ax.set_ylabel("$M / M_\odot$")
+    ax.set_ylim(-2, 24.5)
     
     plt.legend()
     fig.savefig("figurer/pion_star/lattice_const_compare"+t+".pdf", bbox_inches="tight")
 
 
-compare_all()
+# compare_all()
 
-plot_compare_lattice()
+# plot_compare_lattice()
 plot_compare_lattice(t="_neutrino")
 
