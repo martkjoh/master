@@ -80,7 +80,7 @@ The solution is simply
 \end{equation}
 %
 In flat spacetime, we would have no qualms simply calling this the mass contained within a radius $r$.
-However, as discussed in \autoref{section: differential geometry}, the volume element of a curved geometry is $\dd V = \dd^n x \sqrt{|g|}$.
+However, as discussed in \autoref{section: differential geometry}, the volume element of a curved geometry is $\dd V = \sqrt{|g|} \dd^n x$.
 In this case, we are interested in the mass contained in a 3-volume, and the volume form is therefore given by the metric restricted by $\dd t = 0$.
 Using \autoref{spherically symmetric metric}, $\sqrt{|g|} = e^{\beta} r^2 \sin \theta$, the total mass-energy contents of the star is 
 %
@@ -180,7 +180,7 @@ This justifies our choice of $m(r)$ as gravitational mass.
 As discussed earlier, the quantity $M$ in the Schwarzschild solution maps corresponds to Newtonian gravitational mass in the weak-field limit.
 
 
-In addition to the dynamics of spacetime, we to know the thermodynamic properties of the matter that make up our star.
+In addition to the dynamics of spacetime, we need to know the thermodynamic properties of the matter that make up our star.
 The relationship between the pressure and energy density of a substance is called the \emph{equation of state}, or EOS, and has the form
 \begin{equation}
     \label{EOS}
@@ -202,8 +202,8 @@ Inserting this into \autoref{first law of thermodynamics}, we get
 %
 \begin{equation}
     \label{firs law of thermodynamics fluid}
-    \dd\left(\frac{u}{n}\right) = - p \dd \left(\frac{1}{n}\right).
-    % \frac{\dd u}{p + u} = \frac{\dd n}{n}.
+    % \dd\left(\frac{u}{n}\right) = - p \dd \left(\frac{1}{n}\right).
+    \frac{\dd u}{p + u} = \frac{\dd n}{n}.
 \end{equation}
 
 To summarize, we have three unknown functions, $u(r)$, $p(r)$, and $m(r)$.
@@ -461,7 +461,7 @@ If we expand the solution \autoref{pressure afo r incompressible} in powers of $
 \end{equation}
 %
 This is the Newtonian limit.
-As a cross-check, we see that this solution obeys the equation of hydrostatic equillibrium in this limit, \autoref{Newtonian limit TOV}, as $\tilde u = 1$ and $k_2 = k_1 = 1$.
+As a cross-check, we see that this solution obeys the equation of hydrostatic equillibrium in this limit, \autoref{Newtonian limit TOV}, as $\tilde u = 1$ and $k_2 = k_3 = 1$.
 This is the general solution for an incompressible fluid in Newtonian gravity.
 This solution does not have any upper limit for $k_1$; the limit $M/R < 4 / 9$ is a purely relativistic phenomenon.
 In \autoref{fig: pressure incompressible fluid newtonian}, the Newtonian approximation is compared to the full, relativistic solution.

@@ -21,7 +21,7 @@ Formulating this as an equation, with $\vv r$ as the vector from the object with
 %
 Here, $G$ is Newton's gravitation constant, and $\hat r = \vv r / r$.
 The vector $\vv r$ is a purely spatial three-vector, as space is separated from time in the Newtonian picture.
-The law of gravitation, together with Newton's second law of motion,
+The law of gravitation, together with Newton's second law of motion
 %
 \begin{equation}
     \label{Newton's second law}
@@ -73,12 +73,14 @@ This rule states that laws written in an inertial frame in a coordinate-independ
 In an inertial frame, the Crisoffel-symbols vanish, so $\nabla_\mu = \partial_\mu$.
 We can thus write any laws containing partial derivatives in a coordinate impenitent way by exchanging them for covariant derivatives.
 To generalize Newton's second law \autoref{Newton's second law}, we must first make it relativistic by introducing a 4-force, $F^\mu = \odv{}{\tau} p^\mu $, where $p^\mu$ is the 4-momentum.
-Newton's second law then becomes, using \autoref{goedesic equation},
+Newton's second law then becomes, using \autoref{goedesic equation},~\autocite{hartleGravityIntroductionEinstein2021}
 %
 \begin{equation}
     \label{covariant version of second law}
     \sum_i F_i^\mu 
-    = \odv[2]{x^\mu}{\lambda} + \Gamma^\mu_{\nu \rho} \odv{x^\nu}{\lambda} \odv{x^\rho}{\lambda}.
+    = m \left(
+        \odv[2]{x^\mu}{\tau} + \Gamma^\mu_{\nu \rho} \odv{x^\nu}{\tau} \odv{x^\rho}{\tau}
+    \right).
 \end{equation}
 %
 In the absence of any external forces, objects will follow geodesics in spacetime.
@@ -118,7 +120,7 @@ The functional derivative of the Einstein-Hilbert action is evaluated in \autore
 %
 \begin{equation}
     \label{Einstein field equations}
-    R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu} = \kappa T_{\mu \nu},
+    R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu} = \kappa T_{\mu \nu}.
 \end{equation}
 %
 The left-hand side of the Einstein field equations is called the Einstein tensor, $G_{\mu \nu} = R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu}$. This tensor obeys the identity

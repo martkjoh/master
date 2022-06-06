@@ -276,7 +276,7 @@ We see that the pressure and mass curves change most drastically when the centra
 
 In \autoref{fig: mass-radius relationship fermi gas}, we see the relationship between the mass and radius of the star.
 This line is parametrized by the base-10 logarithm of the central pressure, $p(0)$, normalized by $p_0 = u_0$.
-The cross marks the maximum mass, $M_\mathrm{max} = 0.711 \, M_\odot$, which corresponds to a radius of $R = 9.20 \, \mathrm{km}$.
+The cross marks the maximum mass, $M_\mathrm{max} = 0.711 \, M_\odot$, which corresponds to a radius of $R = 9.27 \, \mathrm{km}$.
 This matches the results obtained by Oppenheimer and Volkoff~\cite{oppenheimerMassiveNeutronCores1939}, $M_\mathrm{max} = 0.71$.
 In their 1939 paper, Oppenheimer and Volkoff computed five data points in the mass-radius plane.
 The results are marked by blue circles in \autoref{fig: mass-radius relationship fermi gas}.
@@ -291,7 +291,7 @@ The next line above is obtained using the non-relativistic equation of state tog
 The second uppermost line is obtained from the exact equation of state and the Newtonian approximation for the TOV equation.
 The uppermost line uses both the Newtonian approximation to the TOV equation and the non-relativistic approximation for the equation of state.
 This last line corresponds to a polytrope in Newtonian gravity, as we studied in \autoref{subsection: Newtonian limit and polytropes}.
-Unlike the other systems, it does not seem to have an upper limit for the mass, as expected.
+Unlike the other systems, it does not seem to have an upper limit for the mass.
 
 
 \begin{figure}[h]
@@ -335,7 +335,7 @@ This leads to the possibility of an \emph{absolute maximum} mass for a given equ
 In the case of a non-interacting neutron, we found the limit to be $0.71 \, M_\odot$, in agreement with Oppenheimer and Volkoff~\autocite{oppenheimerMassiveNeutronCores1939}.
 To obtain a more general upper limit for the mass of neutron stars or other compact stars in, one has to account for more general equations of state.
 To constrain the equation of state, we assume firstly that $\odv{p}/{u} \geq 0$.
-To justify this, take the non-relativisitc case, $u = n$, in which case the assumption is equivalent to $\odv{p}/{n} \geq 0$.
+To justify this, take the non-relativisitc case, $u \propto n$, in which case the assumption is equivalent to $\odv{p}/{n} \geq 0$.
 This says that an increase in particle density, for example, due to compression, will result in a rise in pressure.
 This is an instance of Le Chatelier's principle: nature will counteract any change forced upon it.
 If we perturb a perfect fluid, then in its stationary frame we have $n = n_0 + \delta n$, $v^\mu = (1, \delta v^i)$, $p = p_0 + \delta p$ and $u = u_0 + \delta u$.
@@ -362,7 +362,7 @@ This is intuitive; the TOV equation describes the balancing of forces from press
 
 
 Solutions to the TOV equation are systems in hydrostatic equilibrium.
-However, as a pen perfectly balances on its edge, equilibrium does not imply stability.
+However, as a with pen perfectly balances on its edge, equilibrium does not imply stability.
 When perturbed, a stable system returns to its equilibrium position like a marble at the bottom of a bowl.
 On the other hand, an unstable system will amplify perturbations, leading to a collapse or an explosion.
 We can make an intuitive argument for which configurations for a given family of stars are stable.
@@ -413,7 +413,7 @@ These quantities are thus given by a solution to the equilibrium problem~\cite{g
 Stability is encoded in the sign of the square of the frequencies.
 For $\omega_n^2>0$, the mode will remain oscillatory, while if $\omega_n^2<0$, it will grow exponentially.
 Thus, if the system has \emph{any} modes such that $\omega_n^2<0$, it is unstable.
-One mode $\omega_n$ will change stability at a critical point on the $M-R$ curve, where
+One mode $\omega_n$ can change stability at a critical point on the $M-R$ curve, where
 %
 \begin{equation}
     \odv{M}{u_c} = 0,
