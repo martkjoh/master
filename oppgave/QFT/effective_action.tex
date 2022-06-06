@@ -47,7 +47,9 @@ The generating functional in this new theory is
 The free propagator in this theory will be proportional to $g$, as it is given by the inverse of the equation of motion for the free theory.
 All vertices in this theory, on the other hand, will be proportional to $g^{-1}$, as they are given by the higher-order terms in the action $g^{-1}\Gamma$.
 This means that a diagram with $V$ vertices and $I$ internal lines is proportional to $g^{I-V}$.
-Regardless of what the Feynman-diagrams in this theory are, the number of loops of a connected diagram is\footnote{This is a consequence of the Euler characteristic $\chi = V - E + F$.}
+Regardless of what the Feynman-diagrams in this theory are, the number of loops of a connected diagram is\footnote{
+    This is a consequence of the Euler characteristic $\chi = V - E + F$, a topological invariant of graphs.}
+%
 \begin{equation}
     \label{Number of loops}
     L = I - V + 1.
@@ -92,7 +94,7 @@ Using the chain rule, together with \autoref{effective equation of motion}, we g
     = i\delta(x - y).
 \end{align*}
 %
-This is exactly the definition of the inverse propagator,
+This is exactly the definition of the inverse propagator, which means
 %
 \begin{equation}
     \fdv{\Gamma[\varphi_J]}{\varphi_J(x),\varphi_J(y)} = D^{-1}(x, y).
@@ -101,7 +103,6 @@ This is exactly the definition of the inverse propagator,
 The inverse propagator is the sum of all one-particle-irreducible (1PI) diagrams, with two external vertices.
 More generally, $\Gamma$ is the generating functional for 1PI diagrams, which is why it is called the 1PI effective action.
 
-$\Gamma$ may be viewed as an effective action as defined in the introduction.
 We define $\eta$ as the fluctuations around the expectation value of the field, $\varphi(x) = \varphi_J(x) + \eta(x)$, and use this to change variables of integration in the path integral.
 The expectation value $\varphi_J$ is constant with respect to the integral, so 
 \begin{equation}
@@ -306,25 +307,20 @@ Using
 we can write
 %
 \begin{align}
-    & \ln
-    \left[
-        \frac{
-            \int \D \eta \, 
-            e^{ig^{-1}S_I}e^{ig^{-1}S_0}
-        }{
-            \int \D \varphi \, 
-            e^{ig^{-1}S_0}
-        }
-    \right]
+    \frac{
+        \int \D \eta \, 
+        e^{ig^{-1}S_I}e^{ig^{-1}S_0}
+    }{
+        \int \D \eta \, 
+        e^{ig^{-1}S_0}
+    }
     = 
-    \ln 
-    \left(
-        \sum_{n = 0}^\infty \frac{1}{n!}
-        \ex{(ig^{-1}S_I)^n}_0
-    \right).
+    \sum_{n = 0}^\infty \frac{1}{n!}
+    \ex{(ig^{-1}S_I)^n}_0.
 \end{align}
 %
-We recognize this as the sum of all connected Feynman diagrams, with Feynman rules from the interaction term $S_I$.
+We recognize this as the sum of all Feynman diagrams, with Feynman rules from the interaction term $S_I$.
+The logarithm of this is then the sum of all connected Feynman diagrams.
 We know that $S_I$ is made up of terms that are third power or higher in the fields.
 Each internal line is connected to two vertices, and each vertex is connected to at least three internal lines, i.e., $I \geq 3/2 V$.
 The number of loops is therefore $L = I - V + 1 \geq (3/2 - 1)V + 1$.

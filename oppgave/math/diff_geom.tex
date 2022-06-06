@@ -1,10 +1,3 @@
-\section{Differential geometry}
-\label{section: differential geometry}
-
-
-General relativity, and a lot of quantum field theory, are formulated in the language of \emph{differential geometry}.
-Differential geometry generalizes $n$-dimensional calculus to more general spaces than the usual $\R^n$, such as curved spacetime or the more abstract space of symmetries of a quantum field theory.
-This section is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,leeIntroductionSmoothManifolds2003d}.
 
 \begin{figure}[H]
     \centering
@@ -17,9 +10,15 @@ This section is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,leeI
 
 
 
-\subsection{Manifolds and coordinates}
+\section{Differential geometry}
+\label{section: differential geometry}
 
 
+This section is based on~\autocite{carrollSpacetimeGeometryIntroduction2019,leeIntroductionSmoothManifolds2003d}.
+
+
+General relativity, and a lot of quantum field theory, are formulated in the language of \emph{differential geometry}.
+Differential geometry generalizes $n$-dimensional calculus to more general spaces than the usual $\R^n$, such as curved spacetime or the more abstract space of symmetries of a quantum field theory.
 The most important objects in differential geometry are \emph{smooth manifolds}.
 An $n$-dimensional manifold, $\Em$, is a set of points, locally homeomorphic to $\R^n$.
 That is, for all points $p \in \Em$, there exists a neighborhood $U$ around $p$, together with a corresponding set of continuous, bijective functions that map $U$ to a neighborhood $V$ in $\R^n$,
@@ -38,7 +37,7 @@ The corresponding domains $U$ and $U'$ may or may not overlap.
 We then define the transition function, a function between subsets of $\R^n$ by mapping via $\Em$, as
 %
 \begin{align}
-    f_{x\rightarrow x'} = x \circ {x'}^{-1} : \R^n \mapsto \R^n.
+    f_{x'\rightarrow x} = x \circ {x'}^{-1} : \R^n \mapsto \R^n.
 \end{align}
 %
 This map is illustrated in \autoref{fig: transition map}.\footnote{
@@ -55,8 +54,8 @@ A smooth atlas is maximal if no coordinate function can be added while the atlas
     \centering
     \includegraphics[width=0.6\textwidth]{figurer/transition_map.pdf}
     \caption{
-        The transition map $f_{x'\rightarrow x}$ between two coordinate functions, $x$ and $x'$, maps between the images of these function, via the manifold $\Em$. 
-        The function's domain and image are restricted to a (possibly empty) subset of the images of $x$ and $x'$. This is illustrated by the shaded regions in $V$ and $V'$. 
+        The transition map $f_{x'\rightarrow x}$ between two coordinate functions, $x'$ and $x$, maps between the images of these function, via the manifold $\Em$. 
+        The function's domain and image are restricted to a (possibly empty) subset of the images of $x'$ and $x$. This is illustrated by the shaded regions in $V'$ and $V$. 
         }
     \label{fig: transition map}
 \end{figure}
@@ -190,7 +189,7 @@ In the case of a real valued function, $f: \Em \mapsto \R$, and $g : \R \mapsto 
 \end{equation}
 %
 $\dd f$ is thus a map from $T_p \Em$ to $T_{f(p)}\R$, which is isomorphic to $\R$.
-The $g$ be the identity function, so that $\odv{g}/{y} = 1$.
+Let $g$ be the identity function, so that $\odv{g}/{y} = 1$.
 Then, the differential of a scalar function, also called a 1-form, is a map from vectors $v$ to real numbers,
 %
 \begin{equation}
@@ -237,7 +236,7 @@ The tensor can thus be written
     T^{\mu \nu\dots}{}_{\rho\dots} = T(e^\mu, e^\nu, \dots; e_\rho, \dots).
 \end{equation}
 % 
-We often what to decopose a tensor down into its symmetric and antisymmetric parts.
+We often want to decompose a tensor down into its symmetric and antisymmetric parts.
 To do this, we introduce the symmetrization of a tensor $T$, 
 %
 \begin{equation}
@@ -281,8 +280,7 @@ We use this to raise and lower indices, as is done with the Minkowski metric $\e
 Up until now, we have only considered the tangent space $T_p \Em$ at a point $p$ and the corresponding tensor-product spaces.
 We are, however, more interested in \emph{fields} of vectors, covectors, or tensors.
 For each point $p \in \Em$, a tensor field $T$ ``picks out'' a tensor $T(p)$ from each tensor product space corresponding to the tangent space at $p$, $T_p \Em$.
-We will use a vector field to illustrate.
-This vector field can be written as
+A vector field can be written as
 %
 \begin{equation}
     v(p) = v^\mu(p) \partial_\mu |_p. 
@@ -304,7 +302,7 @@ This gives us the transformation rules for the components of vectors,
     v'^\mu = \pdv{x'^\mu}{x^\nu} v^\nu.
 \end{equation}
 %
-Tangent vectors are also called \emph{contravariant} vectors, as their components transform contra to basis vectors.
+Tangent vectors are also called \emph{contravariant} vectors, as their components transform contra to the basis vectors.
 For covectors, it is
 %
 \begin{equation}
@@ -314,8 +312,7 @@ For covectors, it is
 which is why covectors also are called \emph{covariant} vectors.
 
 The gradient of a scalar function $f$, $\dd f = \partial_\mu f \dd x^\mu$, is a coordinate-independent derivative, as $\partial_\mu f$ follows the transformation law for covectors.
-We define the covariant derivative, $\nabla$, as a map from $(n, m)$ tensor fields to $(n, m+1)$ tensor fields.
-When considering a scalar as a $(0, 0)$ tensor, we see that this generalizes the scalar derivative.
+To generalize this, we define the covariant derivative, $\nabla$, as a map from $(n, m)$ tensor fields to $(n, m+1)$ tensor fields, as $f\rightarrow\dd f$ maps a $(0,0)$ tensor, a scaalar, to a $(0,1)$- tensor
 The components of a covariant derivative, $\nabla_\rho T^{\mu_1\dots}{}_{\nu_1, \dots}$, must follow the tensor transformation law. 
 However, this is not strong enough to uniquely define $\nabla$.
 We further assume
@@ -349,14 +346,14 @@ The generalization for higher-order tensors is straightforward,
 %
 This is still not enough to uniquely determine the covariant derivative.
 We will furthermore assume $\Gamma^{\lambda}_{\mu \nu} = \Gamma^{\lambda}_{\nu \mu}$ and $\nabla_\mu g_{\nu \rho} = 0$.
-With these, we can find an explicit formula of the Christoffel symbols in terms of the metric,
+With these assumptions, we find an explicit formula of the Christoffel symbols in terms of the metric,
 %
 \begin{equation}
     \label{christoffel symbols from metric}
     \Gamma^\rho_{\mu \nu} = \frac{1}{2} g^{\rho \sigma} (\partial_\mu g_{\nu \sigma} - \partial_\sigma g_{\mu \nu} + \partial_{\nu}g_{\sigma \mu}).
 \end{equation}
 %
-With the notion of a covariant derivative, we may also generalize \emph{parallel transport} to curved spaces.
+Using the notion of a covariant derivative, we may also generalize \emph{parallel transport} to curved spaces.
 The notion of parallel transport of a vector in flat $\R^n$ is intuitive---given a line $x^\mu(\lambda)$, a vector $v^\mu$ at $x^\mu(\lambda_0)$ is parallel transported to $v'^\mu$ at $x^\mu(\lambda_1)$ if you carry it along the line without ``turning it''.
 To make this more precise, a vector field $v^\mu$ is parallel transported along $x^\mu(\lambda)$ if $\odv{}{\lambda} v^\mu = \odv{x^\nu}{\lambda} \partial_\nu v^\mu$ = 0.
 We generalize this to curved spaces by replacing the partial derivative with a covariant derivative, and so the criterion for parallel transport is
@@ -386,7 +383,7 @@ It is defined by
     [\nabla_\mu, \nabla_\nu] v^\rho = R^{\rho}{}_{\sigma \mu \nu} v^\sigma,
 \end{equation}
 %
-which in our case gives the explicit formula
+which, in our case, gives the explicit formula
 %
 \begin{equation}
     \label{riemann tensor in terms of christoffel symbols}
@@ -397,7 +394,7 @@ which in our case gives the explicit formula
     - \Gamma^{\rho}_{\nu \lambda} \Gamma^{\lambda}_{\mu \sigma}.
 \end{equation}
 %
-This form gives us several useful identities, such as
+This form of the Riemann tensor allows us to derive several useful identities, such as
 %
 \begin{equation}
     R_{\rho \sigma \mu \nu} 
@@ -409,7 +406,7 @@ This form gives us several useful identities, such as
     R_{\mu \nu \rho \sigma }.
 \end{equation}
 %
-Using the Jacobi identity of the commutator, we have
+In addition, the properties of the commutator imply the Jacobi identity,
 %
 \begin{equation}
     \label{Jacobi identity differential geometry}
@@ -425,8 +422,8 @@ If we apply this on $\delta^{\mu}_{\nu}$, we get the differential Bianchi identi
     \nabla_{[\mu}R_{\nu \rho]\sigma \eta} = 0.
 \end{equation}
 %
-Although the Christoffel symbols are not tensors, the Riemann tensor is due to its definition using covariant derivatives.
-We can therefore contract some of its indices to get other tensor quantities.
+Although the Christoffel symbols are not tensors, the Riemann tensor is, due to its definition using covariant derivatives.
+We can therefore contract some of its indices to get other tensorial quantities.
 We define the Ricci tensor and Ricci scalar as
 %
 \begin{align}
@@ -438,7 +435,8 @@ We define the Ricci tensor and Ricci scalar as
 
 
 To interpret the Riemann tensor, we define the parallel propagator $P$.
-A vector that is parallel transported along a curve parametrized by $\lambda$ should then obey
+We want this object to take a vector at one point and parallel transport it to another point.
+A vector that is transported along a curve parametrized by $\lambda$ should then obey
 %
 \begin{equation}
     v^\mu(\lambda) = P^\mu{}_\nu(\lambda) v^\nu.
@@ -451,7 +449,7 @@ Inserting this into the equation for parallel transport, \autoref{parallel trans
 \end{equation}
 %
 This has the same form as the definition of the unitary time-evolution operator in quantum mechanics, and we could therefore write down a solution involving an exponential and a path ordering operator, $\mathcal P$, analogous to the time ordering operator from quantum mechanics.
-We may rewrite the equation as an integral equation,
+We may rewrite the equation on an integral form,
 %
 \begin{equation}
     P^\mu{}_\nu(\lambda) = \delta^\mu_\nu 
@@ -489,6 +487,7 @@ With this, we will investigate how much a vector $v^\mu$ is changed by being par
 We transport $v^\mu$ along the coordinate lines.
 These are lines where either of the coordinate functions $x^{\mu_1}$ or $x^{\mu_2}$ are equal to $0$ or $\epsilon$.
 Here, the indices $\mu_1$ and $\mu_2$ are not free but identify the two coordinate functions which define this loop.
+They will therefore break summation rules; such indices may appear only on one side of an equation.
 The line from $A$ to $B$, defined by $x^{\mu_1} = 0$, is parametrized by $x^\mu(\lambda) = \lambda \delta^\mu_{\mu_2}$, so $ V^\mu = \delta^\mu_{\mu_2} $.
 The Christoffel symbol along this line is
 %
@@ -648,8 +647,9 @@ The integral of a scalar function on a manifold is not a coordinate-independent 
 To obtain this, we must introduce $n$-forms.
 A $n$-form $\omega$ is an antisymmetric $(0, n)$ tensor.
 This means that it has coordinates which obey $\omega_{\mu_1 \dots \mu_n} = \omega_{[\mu_1 \dots \mu_n]}$.
-The $n$-forms are ubiquitous objects in mathematics and physics, one example is the electromagnetic field-strength tensor $F_{\mu \nu}$, and they allow for the definition of coordinate independent integration and derivation.
-The wedge product, $\wedge$ is a product that maps two $n$- and $m$-forms to an $n+m$-form, and is defined as
+The $n$-forms are ubiquitous objects in mathematics and physics, one example is the electromagnetic field-strength tensor $F_{\mu \nu}$, and they allow for the definitions of coordinate independent integration and derivation.
+We will define two important maps between $n$-forms.
+The wedge product, $\wedge$, is a product that maps two $n$- and $m$-forms to an $n+m$-form, and is defined as
 %
 \begin{equation}
     (A\wedge B)_{\mu_1\dots\mu_{n+m}} = \frac{(n + m)!}{n! m!} A_{[\mu_1\dots\mu_n}B_{\mu_{n+1}\dots\mu_{n+m}]}.
@@ -666,19 +666,21 @@ To that end, we define
 %
 \begin{equation}
     \dd^n x := \dd x^0 \wedge \dots \wedge \dd x^{n-1}
-    = \frac{1}{n!} \varepsilon_{\mu_1 \dots \mu_n}  
-    \dd x^{\mu_1} \wedge \dots \wedge \dd x^{\mu_n},
+    = \varepsilon_{\mu_1 \dots \mu_n}  
+    = \dd x^{\mu_1} \otimes \dots \otimes \dd x^{\mu_n},
 \end{equation}
 %
-Where $\varepsilon_{\mu_1 \dots \mu_n}$ is the Levi-Civita symbol.
-Given a different set of coordinates, $x'^\mu$, these are related by
+where $\varepsilon_{\mu_1 \dots \mu_n}$ is the Levi-Civita symbol.
+Given a new set of coordinates, $x'^\mu$, we may similarly define a new $n$-form, $\dd^n x'$.
+These two $n$-forms are related by.
 %
 \begin{equation}
     \dd^n x = \det\left( \pdv{x}{x'} \right) \, \dd^n x',
 \end{equation}
 %
 where we have used the relation $\varepsilon_{\mu_1 \dots \mu_n}  \det(A) = \varepsilon_{\nu_1 \dots \nu_n} A^{\nu_1}{}_{\mu_1} \dots A^{\nu_n}{}_{\mu_n}$.  
-We define $|g| = |\det(g_{\mu \nu })|$, which, by the transformation properties of tensors, transforms as
+We define $|g| = |\det(g_{\mu \nu })|$, where $|\cdot|$ denote the absolute value.
+By the transformation properties of tensors, this transforms as
 %
 \begin{equation}
     \sqrt{|g'|} = \left| \det\left(\pdv{x'}{x} \right) \right| \sqrt{|g'|},
@@ -694,19 +696,19 @@ With this, we can integrate scalars in a well-defined way by mapping them to a c
 We define the integral of a scalar function $f$ on a manifold $\Em$ with a metric $g$ as
 %
 \begin{equation}
-    I = \int_\Em \dd V \, f =  \int_{\Em} \dd^n x \, \sqrt{|g(x)|} \, f(x).  
+    I[f] = \int_\Em \dd V \, f =  \int_{\Em} \dd^n x \, \sqrt{|g(x)|} \, f(x).  
 \end{equation}
 
 
 Stoke's theorem generalizes the fundamental theorem of calculus and the divergence theorem to manifolds.
 Let $\Em$ be a differential manifold of dimension $n$, with the boundary $\partial \Em$.
-Stoke's theorem says that, for an $n-1$-form $\omega$,
+Stoke's theorem says that an $n-1$-form $\omega$ and its exterior derivative $\dd \omega$ are related by
 %
 \begin{equation}
     \int_\Em \dd \omega = \int_{\partial \Em}  \omega. 
 \end{equation}
-
-Stoke's theorem then implies a generalized divergence theorem.
+%
+This theorem implies a generalized divergence theorem.
 The boundary of $\Em$ is a $n-1$ manifold dimensional, and a metric $g$ on $\Em$ will induce a new metric $\gamma$ on $\partial \Em$.
 This metric corresponds to the restriction of $g$ to $\partial \Em$.
 Furthermore, there will be a vector field $n^\mu$ of normalized vectors orthogonal to all elements of $T \partial \Em$.

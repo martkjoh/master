@@ -94,7 +94,6 @@ This system is invariant under the rotation of the $N$ fields into each other,
 \end{equation}
 %
 The set of all such transformations forms the Lie group $\text{O}(N)$.
-Lie groups will be discussed in the next section.
 For $N = 2$, and $\mu^2, \lambda > 0$ we get the ubiquitous Mexican hat potential, as illustrated in \autoref{fig: Mexican hat}.
 
 \begin{figure}[ht]
@@ -105,29 +104,39 @@ For $N = 2$, and $\mu^2, \lambda > 0$ we get the ubiquitous Mexican hat potentia
     \label{fig: Mexican hat}
 \end{figure}
 
+
+
+
+
+
 \subsection{Nöther's theorem}
 \label{subsection: nothers theorem}
 
 One of the most profound consequences of symmetry in physics is the appearance of conserved quantities.
 Assume we have a set of fields $\varphi_i$. Nöther's theorem tells us that if the Lagrangian $\Ell[\varphi_i]$ has a continuous symmetry, then there is a corresponding conserved current~\autocite{carrollSpacetimeGeometryIntroduction2019,peskinIntroductionQuantumField1995}.
 Consider an infinitesimal transformation,
+%
 \begin{equation}
     \varphi_i(x) \longrightarrow \varphi_i'(x)
-    = \varphi_i(x) + \delta \varphi_i(x),.
+    = \varphi_i(x) + \delta \varphi_i(x).
 \end{equation}
 %
 Applying this transformation to the Lagrangian will in general change its form,
+%
 \begin{equation}
     \Ell[\varphi] \rightarrow \Ell[\varphi']
     = \Ell[\varphi] + \delta \Ell.
 \end{equation}
 %
 We assume this transformation is a symmetry, i.e.,
-\begin{equation*}
+%
+\begin{equation}
+    \label{eq 1}
     \delta \Ell = \partial_\mu K^\mu.
-\end{equation*}
+\end{equation}
 %
 By considering the Lagrangian as a function of the field and its derivatives, $\Ell = \Ell(\varphi_i, \partial_\mu \varphi_i)$, we can write the difference term as a Taylor expansion around $(\varphi_i, \partial_\mu \varphi_i)$,
+%
 \begin{align}
     \delta \Ell
     = \pdv{\Ell}{\varphi_i} \delta \varphi_i
@@ -135,7 +144,8 @@ By considering the Lagrangian as a function of the field and its derivatives, $\
 \end{align}
 %
 where $\delta (\partial_\mu \varphi_i) = \partial_\mu \varphi_i' - \partial_\mu \varphi_i$.
-By the linearlity of the derivative,
+By the linearity of the derivative,
+%
 \begin{equation}
     \delta (\partial_\mu \varphi_i)
     = \partial_\mu \varphi_i' - \partial_\mu \varphi_i
@@ -144,46 +154,60 @@ By the linearlity of the derivative,
 \end{equation}
 %
 With this, and the Euler-Lagrange equations
+%
 \begin{equation}
-    \partial_\mu \pdv{\Ell}{(\partial_\mu \varphi)} - \pdv{\Ell}{\varphi_i} = 0,
+    \partial_\mu \pdv{\Ell}{(\partial_\mu \varphi_i)} - \pdv{\Ell}{\varphi_i} = 0,
 \end{equation}
 %
 we can rewrite
+%
 \begin{equation}
+    \label{eq 2}
     \delta \Ell = \left( \partial_\mu \pdv{\Ell}{(\partial_\mu \varphi_i)} \right) \delta \varphi_i
     + \pdv{\Ell}{(\partial_\mu \varphi_i)} (\partial_\mu \delta \varphi_i)
     = \partial_\mu \left(\pdv{\Ell}{(\partial_\mu \varphi_i)} \delta \varphi_i\right).
 \end{equation}
 %
 If we define the current
+%
 \begin{equation}
-    j^\mu = \pdv{\Ell}{(\partial_\mu \varphi_i)} \delta \varphi_i(x) - K^\mu,
+    J^\mu = \pdv{\Ell}{(\partial_\mu \varphi_i)} \delta \varphi_i(x) - K^\mu,
 \end{equation}
 %
-then 
+then combining \autoref{eq 1} and \autoref{eq 2} gives
+%
 \begin{equation}
-    \partial_\mu j^\mu = \delta \Ell - \delta \Ell = 0.
+    \label{Nothers theorem}
+    \partial_\mu J^\mu = 0.
 \end{equation}
 %
 This is Nöther's theorem; a continuous symmetry implies the existence of a conserved current.
 
 The current flux through some spacelike surface $V$ defines a conserved charge. The surface of constant time in some reference frame has the normal vector $n_\mu = (1, 0, 0, 0)$, so the charge is
+%
 \begin{equation}
-    Q = \int_V \dd^4 x \, n_\mu j^\mu = \int_V \dd^3 x \, j^0.
+    Q = \int_V \dd^4 x \, n_\mu J^\mu = \int_V \dd^3 x \, J^0.
 \end{equation}
 %
 We can then use the divergence theorem.
 Assume $\partial V$ is the boundary of $V$, which has the space-like normal vector $k_i$, and that the current falls quickly towards infinity.
-Then, using $\partial_\mu j^\mu = 0 $,
+Then, using $\partial_\mu J^\mu = 0 $,
 \begin{equation}
     \odv{Q}{t} 
-    = \int_V \dd^3 \, \partial_0 j^0
-    = - \int_V \dd^3 x \, \partial_i j^i 
-    = - \int_{\partial V} \dd^2 x\, k_i j^i 
+    = \int_V \dd^3 \, \partial_0 J^0
+    = - \int_V \dd^3 x \, \partial_i J^i 
+    = - \int_{\partial V} \dd^2 x\, k_i J^i 
     = 0,
 \end{equation}
 %
 proving that the charge is conserved over time.
+These results, however, rely on the equations of motion.
+This is generally valid in classical mechanics.
+However, in quantum mechanics, the path integral is over \emph{all} paths, not just those that are on-shell, and we can therefore not assume the equations of motion vanish.
+We will later derive the quantum version of the conservation law \autoref{Nothers theorem}.
+
+
+
 
 \subsection{Goldstone's theorem}
 
@@ -199,22 +223,26 @@ We say that the symmetry has been \emph{spontaneously broken}.
 To explore this in a general context, assume a theory of $N$ real scalar fields $\varphi_i$ are invariant under the actions of some Lie group, $G$.
 A symmetry $g \in G$ is broken if the vacuum expectation value of the original fields and the transformed fields differ.
 That is, if
+%
 \begin{equation}
     \ex{\varphi}_0 \neq \ex{\varphi'}_0 = \ex{g \varphi}_0
 \end{equation}
 %
 We can now exploit what we learned about Lie groups to write the infinitesimal transformation as
+%
 \begin{equation}
     \ex{\varphi'}_0 = \ex{\varphi}_0 + i \epsilon \eta_\alpha T_\alpha \ex{\varphi}_0.
 \end{equation}
 %
 Let $x_i$ be the set of generators corresponding to broken symmetries, i.e.,
+%
 \begin{equation}
     x_i \ex{\varphi}_0 \neq 0.
 \end{equation}
 %
 These are called the \emph{broken generators}.
 The remaining set of generators $t_a$, which obey
+%
 \begin{equation}
     t_a \ex{\varphi}_0 = 0,
 \end{equation}
@@ -222,17 +250,20 @@ The remaining set of generators $t_a$, which obey
 are called unbroken, and generate a subgroup $H \subset G$ as the set of symmetry transformations of the vacuum is a group.
 
 In \autoref{effective action symmetry requirement} we found that, if $V$ is the generator of some symmetry, then the effective action obeys
+%
 \begin{equation}
-    \int \dd^4 x\, \fdv{\Gamma[\varphi_J]}{\varphi_i} V_{ij} \ex{\varphi_j}_0 = 0,
+    \int \dd^4 x\, \fdv{\Gamma[\varphi_J]}{\varphi_i} V_{ij} \ex{\varphi_j}_0 = 0.
 \end{equation}
 %
 We now differentiate this expression with respect to $\varphi_k(y)$, which gives
+%
 \begin{equation}
     \int \dd^4 x \, \fdv{\Gamma[\varphi_0]}{\varphi_k(y), \varphi_i(x)}
     V_{ij} \ex{\varphi_j}_0 = 0.
 \end{equation}
 %
 With the assumption that the ground state is constant, we get 
+%
 \begin{equation}
     \pdv{\Veff}{\varphi_k, \varphi_i} \, V_{i j} \ex{\varphi_j}_0 = 0.
 \end{equation}

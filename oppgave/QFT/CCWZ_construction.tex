@@ -7,19 +7,23 @@ As Goldstone bosons are massless, they play a crucial role in low-energy dynamic
 To best describe this limit, we seek a parametrization of the theory in which they are the degrees of freedom.
 This can be done using the CCWZ construction, named after Callan, Coleman, Wess, and Zumino.
 
-\subsection{Parametrizing the Goldstone manifold}
 
+
+
+
+\subsection{Parametrizing the Goldstone manifold}
 
 We saw that the Goldstone bosons correspond to excitations within the vacuum manifold.
 The vacuum manifold corresponds to points in field space $\varphi$ that can be reached from the vacuum $\varphi_0$ with a transformation $g \in G$.
 Assume this group acts linearly on the fields.
 This means that we can write such excitations as
+%
 \begin{equation}
     \varphi_i = (\tilde\Sigma \varphi_0)_{i} = \tilde \Sigma_{ij} (\varphi_0)_j, 
-    \quad \tilde \Sigma = \tilde \Sigma(\eta) = \exp{i \eta_\alpha T_\alpha}
+    \quad \tilde \Sigma = \tilde \Sigma(\eta) = \exp{i \eta_\alpha T_\alpha}.
 \end{equation}
 %
-We will drop the indices for the sake of compact notation.
+We will drop the indices $(i, j)$ for the sake of compact notation.
 $\tilde \Sigma$ is thus a function from the parameter space, $\eta_\alpha \in \R^n$, to $G$,
 \begin{align}
     \tilde \Sigma: \R^n \longmapsto G.
@@ -29,6 +33,7 @@ We then get field configurations by making the parameters dependent on space-tim
 We will for now assume $\eta_\alpha$ is constant.
 This parametrization is highly redundant.
 Two elements $\tilde\Sigma$ and $\tilde\Sigma'$, related by
+%
 \begin{equation}
     \tilde \Sigma' = \tilde\Sigma e^{i \theta_a t_a}
 \end{equation}
@@ -44,6 +49,7 @@ To remove the redundancy in the parametrization, we need to choose one represent
 
 By the inverse function theorem, any mapping between manifolds $f: \Em \mapsto \mathcal{N}$ that has a non-degenerate differential, that is an invertible Jacobian, at a point $p \in \Em$, is invertible in a neighborhood of $p$.
 If we write
+%
 \begin{equation}
     \tilde \Sigma(\xi, \theta) = \exp{i \xi_i x_i} \exp{i \theta_a t_a},
 \end{equation}
@@ -54,11 +60,13 @@ This means that, in a neighborhood $U \subset G$ of the identity, each element $
 Furthermore, two elements $\tilde \Sigma'$ and $\tilde \Sigma$ related by $\tilde \Sigma' = \tilde \Sigma h$, $h \in H$ have the same $\xi$-arguments.
 We see that $\xi_i$ parametrize $G/H$, in the neighborhood of the identity.
 We therefore demand that $\tilde \Sigma$ always appear in the standard form
+%
 \begin{equation}
     \Sigma(\xi) = \tilde \Sigma(\xi, 0) = \exp{i \xi_i x_i}.
 \end{equation}
 %
 The field $\varphi(x)$ can therefore be written as
+%
 \begin{equation}
     \varphi(x) = \Sigma(x) \varphi_0 = \exp{i \xi_i(x) x_i} \varphi_0,
 \end{equation}
@@ -67,22 +75,25 @@ and $\xi_i(x)$ can be associated with the Goldstone bosons.
 
 In the linear sigma model, the original $\Olie(N)$ symmetry is broken down to $\Olie(N-1)$, which transforms the remaining $N-1$ fields with vanishing expectation values into each other.
 However, $\Olie(N)$ consists of two disconnected subsets, those matrices with determinant 1 and those with determinant -1.
-There is no continuous path that takes an element of $\Olie(N)$ with determinant of $-1$ to an element with determinant 1.\footnote{A simple proof of this is the fact that the determinant is a continuous function, while any path $\det M(t)$ such that $\det M(1) = -1,\, \det M(0) = 1$ must make a discontinuous jump.}
+There is no continuous path that takes an element of $\Olie(N)$ with determinant $-1$ to an element with determinant 1.\footnote{
+    A simple proof of this is the fact that the determinant is a continuous function, while any path $\det M(t)$ such that $\det M(1) = -1,\, \det M(0) = 1$ must make a discontinuous jump.}
 The set of symmetries that are connected to the identity is
+%
 \begin{eqnarray}
     G = SO(N) = \setbuilder{M \in \Olie(N)}{ \det M = 1}.
 \end{eqnarray}
+%
 If we choose $\varphi_0 = (0, 0, ..., v)$, then it is apparent that the ground state is invariant under the rotations of the $N-1$ first fields, so the unbroken symmetry is  $H = \SO(N-1)$.
 The Goldstone manifold is $G/H = \SO(N) / \SO(N-1)$.
 
-Consider the case of $N = 3$, which is illustrated in \autoref{fig:ground state manifold}.
+Consider the case of $N = 3$, which is illustrated in \autoref{fig: ground state manifold}.
 $G$ is the rotations of the sphere, while $H$ is rotations around $\varphi_0$, $\SO(2)$.
 The Goldstone manifold consists of the rotations of $\varphi_0$ to other points of the sphere, i.e. $G/H = \SO(3)/\SO(2) = S^2$, the 2-sphere.
 This is not a Lie group, as translating $\varphi$ in a closed path around the sphere may result in a rotation around the z-axis.
 This is illustrated in \autoref{fig:Curvature of SO(3)}
 
 
-To check that $\xi_i$, in fact, are the Goldstone modes, we study the way they appear in the Lagrangian.
+To check that $\xi_i$ are the Goldstone modes, we study the way they appear in the Lagrangian.
 As they are massless, no mass term of the form $M_{ij} \xi_i \xi_j$ should appear.
 The original Lagrangian $\Ell[\varphi]$ was invariant under global transformations $\varphi(x) \mapsto g \varphi(x)$.
 However, any terms that only depend on $\varphi(x)$, and not its derivatives, will also be invariant under a \emph{local} transformation, $\varphi(x) \mapsto g(x)\varphi(x)$.
@@ -113,6 +124,7 @@ This is a $\mathfrak g$-valued function, which means that it can be written as
 \end{align}
 %
 where $d_{ij}$ and $e_{ai}$ are as-of-yet unknown real valued functions of $\xi$~\autocite{watanabeEffectiveLagrangianNonrelativistic2014,weinbergQuantumTheoryFields1996}.
+
 
 
 

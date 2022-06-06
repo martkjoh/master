@@ -1,10 +1,11 @@
 \section{Lie theory and the mathematics of symmetry}
 
+This section is based on~\autocite{leeIntroductionSmoothManifolds2003d,peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
+
 One application of differential geometry is in the theory of Lie groups.
 The primary use case of these groups is to study the symmetries of manifolds, particularly those that represent physical systems.
 Symmetries are a vital part of modern physics and will be used throughout this text.
 In this section, we will develop the tools that we need for this study.
-It is based on~\autocite{leeIntroductionSmoothManifolds2003d,peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
 
 
 \subsection{Lie groups}
@@ -36,7 +37,7 @@ As we will discuss in more detail in the next chapter, a symmetry transformation
 Assume the field, or set of fields, $\varphi$ is governed by the equation $f(\varphi) = 0$.
 A symmetry transformation $\varphi \mapsto g \varphi$, where $g\varphi$ represents the action $g$ acting on $\varphi$, will then obey $f(g\varphi) = 0$.
 This is what makes groups the natural structures to describe symmetries.
-Assume $G$ is the set of all symmetries of a system, or a subset of them closed under compositions, such that
+Assume $G$ is the set of all symmetries of a system, or a subset of them closed under compositions
 %
 \begin{equation}
     G = \setbuilder{g}{f(g\varphi) = 0}.
@@ -44,7 +45,7 @@ Assume $G$ is the set of all symmetries of a system, or a subset of them closed 
 %
 The group $G$ might act on $\varphi$ linearly, so $(g\varphi)_i = g_{ij}\varphi_j$, or in a more complicated manner.
 A linear realization of a Lie group is called a \emph{representation}.
-In this case, the group multiplication is composition, i.e., performing transformations in succession.
+In any case, the group multiplication is composition, i.e., performing transformations in succession.
 This map is closed, as the composite of two symmetry transformations is another symmetry transformation.
 The identity map is a symmetry transformation, and composition is associative.
 This means that invertible symmetry transformations form a group, and for continuous sets, this group is a Lie group.
@@ -118,7 +119,7 @@ The space $V$ is then $T_\one G$ with the basis $T_\alpha$, and we can define th
 \end{align}
 %
 where $f_{\alpha \beta}^\gamma$ are the structure constants of the algebra.
-These are obey $f_{\alpha \beta}^\gamma = - f_{\beta \alpha}^\gamma$ and they follow their own version of the Jacobi identity,
+These obey $f_{\alpha \beta}^\gamma = - f_{\beta \alpha}^\gamma$ and they follow their own version of the Jacobi identity,
 %
 \begin{equation}
     \label{jacobi identity}
@@ -127,10 +128,10 @@ These are obey $f_{\alpha \beta}^\gamma = - f_{\beta \alpha}^\gamma$ and they fo
     + f_{\gamma \alpha}^\mu f_{\beta \mu}^\nu = 0.
 \end{equation}
 %
-A algebra is called \emph{abelian} if $f^\alpha_{\beta\gamma} = 0$.
+An algebra is called \emph{abelian} if $f^\alpha_{\beta\gamma} = 0$.
 Any abelian algebra is just a direct sum of $N$ of the Lie algebras of $\Lie{U}{1}$, $\lie{u}{1}$.
-A simple Lie algebra is a non-abelian algebra that does not contain any non-trivial \emph{ideals}, also called invariant sub-algebras\footnote{
-    Some authors do not have the non-abelian criterion, then includes $\lie{u}{1}$ as simple.}
+A simple Lie algebra is a non-abelian algebra that does not contain any non-trivial \emph{ideals}, also called invariant sub-algebras.\footnote{
+    Some authors do not have the non-abelian criterion and includes $\lie{u}{1}$ as simple.}
 An ideal $\mathfrak i \subset \mathfrak g$ is a set such that $[\mathfrak i, \mathfrak g] \subset \mathfrak i$.
 A semi-simple Lie algebra can be written as a direct sum of simple algebras.
 The total classification of simple Lie algebras was done by Cartan and Killing and involved four infinite families, the classical algebras such as $\lie{su}{N}$, and five exceptional algebras which do not fit into these families.
