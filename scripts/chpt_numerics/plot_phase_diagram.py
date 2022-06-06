@@ -211,5 +211,5 @@ ax2.set_ylim(3., 3.3)
 ax3.set_xlim(-0.3, 0.3)
 ax3.set_ylim(3.5, 3.8)
 
-plt.tight_layout()
+
 fig.savefig("figurer/phase_diagram_EM.pdf", bbox_inches="tight")

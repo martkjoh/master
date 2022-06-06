@@ -1,6 +1,6 @@
 This thesis is the concluding work of a 5-year Master of Science (``Sivilingeniør'') degree in Applied Physics (``Teknisk Fysikk'') at the Norwegian University of Science and Technology (NTNU), under the supervision of Professor Jens Oluf Andersen.
 It is the result of 20 weeks of work in the spring of 2022 and builds on work done in the specialization project (``Prosjektoppgave'') in the autumn of 2021.
-The topic of the thesis is the thermodynamic properties of the pion-condensed phase of quantum chromodynamics, which is investigated using three-flavor chiral perturbation theory, and its applications to the study of pion stars.
+The topic of the thesis is the thermodynamic properties of the pion-condensed phase of quantum chromodynamics, which is investigated using three-flavor chiral perturbation theory, and the application of these results to the study of pion stars.
 
 \subsection*{Conventions}
 
@@ -8,28 +8,32 @@ In this thesis, we employ \emph{natural units}, defined by $\hbar = c = k_B = 1$
 Here, $\hbar$ is Planck's reduced constant, $c$ is the speed of light, and $k_B$ is Boltzmann's constant.
 Dimensionful results are given in $\text{MeV}$ or SI units and, unless otherwise stated, computed using the values given in \autoref{section: units}.
 We use the ``mostly minus'' convention for the metric, in which $g_{\mu \nu} = \text{diag}(1, -1, -1, -1)$.
-We employ Einstein's summation convation in which repeated indices are summed over, $a_i b_i = {\sum}_i a_i b_i = a_1 b_1 +  a_2 b_2 +\dots$.
+Unless otherwise stated, we employ Einstein's summation convation in which repeated indices are summed over, $a_i b_i = {\sum}_i a_i b_i = a_1 b_1 +  a_2 b_2 +\dots$.
 Spacetime indices are denoted by $\mu$, $\nu$, $\rho$, $\eta$, or $\lambda$ and should only be written once as a sub- and superscript, $a_\mu b^\mu = a^\mu b_\mu = g_{\mu\nu}a^\mu b^\nu$.
 The placement of other indices does not have any importance and is only chosen for readability.
- \todo[]{note to grader, (*)}
+
+
+\subsection*{Note to the grader}
+
+To make this thesis as self-contained as possible, and to ensure notation and definitions are clearly explained, parts of the specialization project have been included with only minor modifications.
+These parts should not be part of evaluating this thesis.
+They are marked with an asterisk (*) in their titles and in the table of contents.
+The parts are \autoref{appendix: two flavor results} and \autoref{appendix: thermal field theory}; \autoref{section: path integral} to \autoref{seciton: ccwz construction} and \autoref{appendix: consisten expansion};\autoref{section:gaussian integrals}; \autoref{subsection: Weinberg's power counting scheme} and \autoref{subsection: non-linear realization}.
+In addition, \autoref{chapter: introduction}, \autoref{section:qcd}, \autoref{section: nlo thermodynamics} are partially based on the specialization project, but contains substantial new work.
+
 
 \subsection*{Acknowledgements}
 
 
-% Supervision, guidance and patience with bad writing of Jens Oluf Andersen
-% Brandt et. al. for providing their data
-% Family in Bø for always supporting, friends in Trondheim for discussion and help forgetting when needed(?)
-% Martin for his thesis (?)
-
 This thesis would never have been without all the help I have received, for which I am truly grateful.
 I want to thank my advisor, Jens Oluf Andersen, for his patience and mentorship.
-The guidance, hints and questions I have received have been invaluable, but perhaps most important is the direction for how to write. 
-I thank B. Brandt, G. Endr\H{o}di, and S. Schmalzbauer for providing their lattice data for the equation of state as well as the mass-radius relation of pion stars, and for useful discussion.
-Furthermore, I thank Martin Mojahed, in absentia, as his excellent master's thesis was a great help both as theoretical background and as a guide on how to write a thesis.
+The guidance, hints and comments I have received have been invaluable, and without all the red pen ink spilled on older versions of this thesis it would have been far less coherent.
+I thank B. Brandt, G. Endr\H{o}di, and S. Schmalzbauer for providing their lattice data, and for helpful discussion.
+I thank Martin Mojahed, \emph{in absentia}, as his excellent master's thesis was a great help both as theoretical background and as a guide on how to write a thesis.
 Lastly, I want to thank my family back home in Bø, as well as my friends here in Trondheim and in for all their time and support.
 
 
-\vspace{2cm}
+\vspace{1.4cm}
 
 {
     \noindent
