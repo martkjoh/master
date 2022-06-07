@@ -16,11 +16,10 @@
 
 
 \begin{document}
-    % \maketitle
+    \listoftodos
     \frontmatter
     
     \chapter*{Preface}
-    % \setcounter{page}{1}
     \addcontentsline{toc}{section}{Preface}
     \input{introduction/preface.tex}
     \clearpage
@@ -35,7 +34,6 @@
     \input{introduction/abstract.tex}
 
 
-    % \listoftodos
     \cleardoublepage
 
     \setcounter{tocdepth}{1}
@@ -138,5 +136,10 @@
     \phantomsection
     \addcontentsline{toc}{chapter}{Bibliography}
     \printbibliography
+
+    \addtocontents{toc}{
+        \vspace*{\fill}
+        \noindent Note: sections with (*) are adapted from the specialization project with only minor changes.
+    }
 
 \end{document}

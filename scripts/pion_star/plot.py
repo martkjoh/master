@@ -755,13 +755,13 @@ def plot_phase():
     N = 30
     a = np.linspace(-0.05, 0.8, N)
     
-    fig, ax = plt.subplots(figsize=(10, 5))
+    fig, ax = plt.subplots(figsize=(12, 6))
     F0 = F(0, 0)
 
     F1,F2,F3 = F(0.9, a)-F0, F(1., a)-F0, F(1.1, a)-F0
 
     i = np.argmin(F3)
-    d = .005
+    d = .004
     l = np.array([[0, d], [a[i], F3[i]+d]]).T
  
     ax.plot(a, F1, "royalblue", label=r"$\mu_I<m_\pi$")
@@ -775,8 +775,9 @@ def plot_phase():
     ax.set_ylabel(r"$(\mathcal{F} - \mathcal{F}_0)/u_0$")
 
     plt.tight_layout()
-    plt.legend()
-    plt.savefig("figurer/phase_transition.pdf")
+    plt.legend(
+)
+    plt.savefig("figurer/phase_transition.pdf", bbox_inches="tight")
 
 
 
@@ -884,7 +885,7 @@ if __name__=="__main__":
     # plot_pressure_mass(name="_EM")
 
     # plot_mass_radius()
-    plot_mass_radius_compare()
+    # plot_mass_radius_compare()
     # plot_mass_radius(name="_EM")
     # plot_mass_radius_compare_EM()
 
@@ -915,7 +916,7 @@ if __name__=="__main__":
 
     # plot_light()
     # plot_light_nogrid()
-    # plot_phase()
+    plot_phase()
 
     # ### Plots using lattice constants
 

@@ -3,9 +3,9 @@
 
 We begin by computing the thermodynamic properties to leading order.
 This will give an accurate first approximation, which we can verify by next-to-leading order results later.
-As we start to calculate terms to next-to-leading order, we must be careful distinguishing between bare constants, such as $m_{\pi,0} = \bar m$ and $f$, and the physical constants, such as $m_\pi$ and $f_\pi$.
+As we start to calculate terms to next-to-leading order, we must be careful distinguishing between bare constants, such as $m_{\pi,0} = \bar m$ and $f$, and the physical (or empirical) constants, such as $m_\pi$ and $f_\pi$.
 The value of bare constants defined at a given order, such as $m_{\pi,0} = m_\pi$ at leading order, but are modified at higher orders.
-We will always use bare constants in expressions for example the Lagrangian or the energy density, but use physical constants to define units, such as $u_0 = f_\pi^2 m_\pi^2$, or when stating relationships that hold to all orders
+We will always use bare constants in expressions of, for example, the Lagrangian or the energy density, but use physical constants to define units, such as $u_0 = f_\pi^2 m_\pi^2$, or when stating relationships that hold to all orders
 
 
 
@@ -60,21 +60,21 @@ This process of minimizing free energy for a given $\mu_I$ is illustrated in \au
     \includegraphics[width=0.85\textwidth]{../scripts/figurer/free_energy_surface.pdf}
     \caption{
         The surface is the free energy as a function of $\alpha$ and $\mu_I$.
-        The black dashed lines illustrate the value of $\alpha$ which minimizes the free energy for a given value of $\mu_I$.
+        The black dashed line illustrates the value of $\alpha$ which minimizes the free energy for a given value of $\mu_I$.
     }
     \label{fig: free energy surface}
 \end{figure}
 
 
 As we found in the last section, the pressure is given by negative the free energy density. 
-We normalized the pressure to $\mu_I = m_{\pi}$, and choose $p_0 = u_0$, so the dimensionless pressure is
+We normalized the pressure to $\mu_I = m_{\pi}$, and choose $p_0 = u_0$, so the pressure is
 %
 \begin{equation}
     \label{pressure leading order chpt}
-    \tilde p = -\frac{1}{p_0} \left(\Eff - \Eff_{\mu_I=m_{\pi,0}}\right) 
-    % = \frac{1}{2} \left( x^2 + \frac{1}{x^2} - 2 \right).
-    % = \frac{1}{2} \left(x - \frac{1}{x}\right)^2.
-    = \frac{1}{2} \left(\frac{\mu_I}{m_{\pi,0}} - \frac{m_{\pi,0}}{\mu_I}\right)^2.
+    p = - \left(\Eff - \Eff_{\mu_I=m_{\pi,0}}\right) 
+    % = \frac{1}{2} \left(\frac{\mu_I}{m_{\pi,0}} - \frac{m_{\pi,0}}{\mu_I}\right)^2.
+    = u_0  \frac{1}{2} \frac{\mu_I^2}{m_{\pi,0}^2}
+    \left(1 - \frac{m_{\pi,0}^2}{\mu_I^2}\right)^2.
 \end{equation}
 %
 The charge density corresponding to a chemical potential is given by minus the derivative of the free energy with respect to that chemical potential. 
@@ -84,17 +84,21 @@ The isospin density is
 \begin{equation}
     \label{isospin density}
     n_I = -\pdv{\Eff}{\mu_I} = f^2 \mu_I \sin^2 \alpha 
-    = 
-    \frac{u_0}{\mu_I} \left(\frac{\mu_I^2}{m_{\pi,0}^2} - \frac{m_{\pi,0}^2}{\mu_I^2}\right),
+    % = \frac{u_0}{\mu_I} \left(\frac{\mu_I^2}{m_{\pi,0}^2} - \frac{m_{\pi,0}^2}{\mu_I^2}\right),
+    = n_0 \frac{\mu_I}{m_{\pi,0}}    \left(1 - \frac{m_{\pi,0}^4}{\mu_I^4}\right).
 \end{equation}
 %
-while the strangeness is zero.
-With this, the dimensionless energy density at $T = 0$ is
+\todo[]{check these agian!}
+where $n_0 = u_0/m_\pi = m_\pi f_\pi^2$, while the strangeness is zero.
+With this, the energy density at $T = 0$ is
 %
 \begin{equation}
     \label{energy density leading order chpt}
-    \tilde u = - \tilde p + \frac{\mu_I n_I}{u_0}
-    = \frac{1}{2} \left(\frac{\mu_I^2}{m_{\pi,0}^2} + 2 - 3\frac{m_{\pi,0}^2}{\mu_I^2}\right).
+    u = - p + \mu_I n_I
+    % = \frac{1}{2} \left(\frac{\mu_I^2}{m_{\pi,0}^2} + 2 - 3\frac{m_{\pi,0}^2}{\mu_I^2}\right).
+    =  u_0 \frac{1}{2} \frac{\mu_I^2}{m_{\pi,0}^2}
+    \left(1 - \frac{m_{\pi,0}^2}{\mu_I^2}\right)
+    \left(1 + 3 \frac{m_{\pi,0}^2}{\mu_I^2}\right).
 \end{equation}
 %
 The ratio of pressure to energy density is
@@ -105,9 +109,9 @@ The ratio of pressure to energy density is
 \end{equation}
 %
 which matches earlier results~\autocite{sonQCDFiniteIsospin2001}.
-In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$, we get $p / u = 1$, or $u_\text{ur} = p$.
+In the ultrarelativistic limit, where $\mu_I \rightarrow \infty$, we get $p / u = 1$, or $u_\text{UR} = p$.
 The non-relativistic limit is $\mu_I^2 = m_{\pi,0}^2(1 + \epsilon)$, $\epsilon \ll 1$.
-With this we get $\tilde p = \epsilon^2 / 2 $, and $\tilde u = 2\epsilon$, so the equation of state is $\tilde u_\text{nr} = \sqrt 8 \sqrt{\tilde p}$.
+With this we get $\tilde p = \epsilon^2 / 2 $, and $\tilde u = 2\epsilon$, so the equation of state is $\tilde u_\text{NR} = \sqrt 8 \sqrt{\tilde p}$.
 The isospin density, and thus the pion number density, is $n_I = 2 ({u_0}/{m_{\pi,0}}) \epsilon$, and we can therefore write the energy density in this limit as $u = m_{\pi,0} n_I + \Oh(\epsilon^2)$.
 The energy density is thus dominated by the rest mass as $\epsilon \rightarrow 0$, as we expect from the non-relativistic limit.
 \autoref{fig: equation of state pions} shows the equation of state in two different regimes and compares it with the ultrarelativistic and non-relativistic limits.
@@ -161,7 +165,7 @@ In the pion condensate phase, the solution is
 \end{equation}
 %
 This reduces to our old solution for $\Delta = 0$, as it should.
-With the same procedure as in the last section, we get the pressure and energy density
+With the same procedure as in the last section, we get
 %
 \begingroup
 \allowdisplaybreaks
@@ -221,7 +225,7 @@ The non-relativistic equation of state is thus still a polytrope of the form $\t
     \caption{
         Left: The pressure as a function of the chemical potential above the critical value.
         Right: The energy density also as a function of the chemical potential.
-        Results with electromagnetic interaction are shown as dashed lines, $u$,$p$ and $\mu_I$ are normalized to $u_0$, $p_0$ and $m_\pi$, respectively.
+        Results with electromagnetic interaction are shown as dashed lines, $u$,$ p$ and $\mu_I$ are normalized to $u_0$, $p_0$ and $m_\pi$, respectively.
         }
         \label{fig: pressure and energy with EM interaction}
 \end{figure}
@@ -265,7 +269,7 @@ The order parameter is then given by minimizing the free energy, and must theref
 %
 We assume $b$ does not vanish close to the phase transition.
 Assuming $b > 0$, the value of $\alpha$ depends on the sign of $a$.
-If $a>0$, the only solution is $\alpha = 0$, while for $a<0$ a new solution become available.
+If $a>0$, the only solution is $\alpha = 0$, while for $a<0$ a new solution becomes available.
 The criterion of phase transition is therefore $a(x) = 0$, and we may write $a(x) = -a_0(x - x_c) + \Oh((x - x_c)^2)$ where $a_0 > 0$ and $b(\mu) = b_0 + \Oh(x - x_c)$ where $b_0>0$ close to $x = x_c$. 
 The new solution in the $\alpha \neq 0$ phase is
 %
@@ -289,10 +293,10 @@ If $b_0<0$, we must expand the free energy further and might get a first-order p
     \label{fig: phase transition}
 \end{figure}
 
-We now apply this theory to the pion condensate by Taylor expanding the free energy for a pure pion-condensate,  \autoref{free energy pion condensate}, around the point $\alpha = 0$
+We now apply this theory to the pion condensate by Taylor expanding the free energy for a pure pion-condensate,  \autoref{free energy pion condensate}, around the point $\alpha = 0$,
 %
 \begin{equation}
-    \Eff = \Eff(\mu_I = 0) + \frac{1}{2}f^2 (m_{\pi,0}^2 - \mu_I^2) \alpha^2 
+    \Eff = \Eff(\mu_I = 0) - \frac{1}{2}f^2 (\mu_I^2 - m_{\pi,0}^2) \alpha^2 
     + \frac{1}{24}f^2 (4 \mu_I^2 - m_{\pi,0}^2) \alpha^4 + \Oh(\alpha^6).
 \end{equation}
 %
@@ -323,7 +327,7 @@ A similar treatment will show that $\lambda_ Q$ and $\lambda_K$ are broken in th
 We defined the order parameter as $\alpha = \sqrt{\pi_a\pi_a} / f$.
 This thus indicates a condensation of pseudoscalar mesons, although which depend on the ground state.
 This analysis, however, only says if we are in the vacuum phase or a condensed phase. 
-To compare the free energy between condensed phases.
+To find which condensate we are in, we must compare the free energy between condensed phases.
 
 
 
@@ -374,18 +378,19 @@ The solution is
 % %
 \begin{align}
     \nonumber
-    2 \mu_\Kpm 
-    &= \frac{1}{\mu_\Ko}
+    \mu_\Kpm 
+    &= \frac{1}{2 \mu_\Ko}
     \left(
         \mu_\Ko^2 - m_{\Ko,0}^2  + \sqrt{(\mu_\Ko^2 - m_{\Ko,0}^2)^2 + 4\mu_\Ko^2m_{\Kpm,0}^2}
     \right).
-    % \mu_\Kpm
+    % \\
     % &= \frac{1}{\mu_\Ko} 
     % \left(
     %     \mu_\Ko^2 - m_{\Ko,0}^2 + \sqrt{(\mu_\Ko^2 + m_{\Ko,0}^2)^2 + 4\mu_\Ko^2 \Delta m^2}
     % \right)
     \\
-    &= \mu_\Ko \left(1 + \frac{\Delta m^2}{\mu_\Ko^2 + m_{\Ko,0}^2}\right)
+    &= \mu_\Ko 
+    \left(1 - \frac{\Delta m^2}{\mu_\Ko^2 + m_{\Ko,0}^2}\right)
     + \Oh\left( \frac{\Delta m^4}{ (\mu_\Ko^2 + m_{\Ko,0}^2)^2} \right).
 \end{align}
 %
