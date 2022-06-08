@@ -181,17 +181,17 @@ def add_plot(ax):
 fig = plt.figure(figsize=(10, 7))
 ax = fig.add_subplot(2, 2, (1, 3))
 
-ax.text(-.95 , -.40, "Vacuum\n  phase")
+ax.text(-.9 , -.40, "Normal\n phase")
 add_text(ax)
 
 ax2 = fig.add_subplot(2, 2, 4)
 ax3 = fig.add_subplot(2, 2, 2)
 
-ax2.text(0.75, 3.05, "Vacuum\n  phase")
+ax2.text(0.75, 3.05, "Normal\n phase")
 ax2.text(0.95, 3.22, "$\\langle K^+\\rangle$")
 ax2.text(1.15, 3.05, "$\\langle \\pi^+\\rangle$")
 
-ax3.text(-0.12, 3.52, "Vacuum\n  phase")
+ax3.text(-0.12, 3.52, "Normal\n phase")
 ax3.text(0.08, 3.7, "$\\langle K^+\\rangle$")
 ax3.text(-0.2, 3.7, "$\\langle \\bar K\\rangle$")
 
