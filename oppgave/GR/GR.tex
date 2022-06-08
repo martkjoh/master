@@ -73,7 +73,7 @@ This rule states that laws written in an inertial frame in a coordinate-independ
 In an inertial frame, the Crisoffel-symbols vanish, so $\nabla_\mu = \partial_\mu$.
 We can thus write any laws containing partial derivatives in a coordinate impenitent way by exchanging them for covariant derivatives.
 To generalize Newton's second law \autoref{Newton's second law}, we must first make it relativistic by introducing a 4-force, $F^\mu = \odv{}{\tau} p^\mu $, where $p^\mu$ is the 4-momentum.
-Newton's second law then becomes, using \autoref{goedesic equation},~\autocite{hartleGravityIntroductionEinstein2021}
+When applying the minimal coupling rule, Newton's second law then becomes \autoref{goedesic equation},~\autocite{hartleGravityIntroductionEinstein2021}
 %
 \begin{equation}
     \label{covariant version of second law}
@@ -278,7 +278,7 @@ From \autoref{thetatheta component ricci tensor}, we get
 which may be restated as
 %
 \begin{equation}
-    \odv{}{r} \left(r e^{2 \alpha}\right) = 1,
+    \odv{}{r} \left(r e^{2 \alpha}\right) = 1.
 \end{equation}
 %
 This equation has the solution
@@ -288,7 +288,7 @@ This equation has the solution
 \end{equation}
 %
 where $R_s$, the Schwarzschild radius, is a constant.
-With this, we should obtain Newtonian law of gravity with a small perturbation, $g_{\mu \nu} = \eta_{\mu \nu} + h_{\mu \nu}$, and at slow speeds, $\odv*{x^i}{\tau} \ll \odv*{t}{\tau}$.
+With this, we should obtain Newton's law of gravity with a small perturbation, $g_{\mu \nu} = \eta_{\mu \nu} + h_{\mu \nu}$, and at slow speeds, $\odv*{x^i}{\tau} \ll \odv*{t}{\tau}$.
 Inserting this into the geodesic equation \autoref{covariant version of second law} with $F_i = 0$, using $\partial_0 g_{\mu \nu} = 0$ and expanding to leading order, we get
 %
 \begin{equation}
@@ -298,7 +298,7 @@ Inserting this into the geodesic equation \autoref{covariant version of second l
 We now obtain Newtonian gravity, as formulated in \autoref{acceleration from Newtonian gravitational potential}, if we identify $h_{00} = 1 -  e^{2\alpha} = - 2 \Phi_g$.
 The Schwarzschild radius is thus $R_s = 2 G M$, and we see that this solution corresponds to a point-mass $M$ located at $\vv r = 0$.
 We will extend our discussion to finite densities in the next section.
-Inserting or results into the metric, we get the Schwarzschild metric
+Inserting our results into the metric, we get the Schwarzschild metric
 %
 \begin{equation}
     \label{Schwarzchild metric}

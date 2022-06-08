@@ -147,10 +147,12 @@ This gives the result
 \begin{align}
     \label{complex gauss 1D}
     \nonumber
-    \int_\R \dd x \, \exp{i \frac{1}{2}(a + i\epsilon) x^2} 
-    = \int_{\sqrt{i}\R} \dd x \, \exp{i\frac{1}{2} ax^2} 
-    &= \sqrt{i} \int_\R \dd y\, \exp{-\frac{1}{2} (-a) y^2}
-    \\ &= \sqrt{\frac{2 \pi i}{(-a)}}
+    \int_\R \dd x \, \exp{i \frac{1}{2}(a + i\epsilon) x^2}
+    & = \int_{\sqrt{i}\R} \dd x \, \exp{i\frac{1}{2} ax^2} 
+    \\ \nonumber &
+    = \sqrt{i} \int_\R \dd y\, \exp{-\frac{1}{2} (-a) y^2}
+    \\ &
+    = \sqrt{\frac{2 \pi i}{(-a)}},
 \end{align}
 %
 where we have made the change of variable $y = (1+i)/\sqrt{2} x = \sqrt{i} x$.
@@ -168,34 +170,37 @@ We may also generalize \autoref{complex gauss 1D},
     \int_{\R^n} \dd^n x \, \exp{i\frac{1}{2} x_n( A_{nm} + i \epsilon \delta_{nm}) x_m } =\sqrt{\frac{(2 \pi i )^n}{\det(-A)}}.
 \end{align}
 %
-The final generalization is to functional integrals,
+The final generalization is to functional integrals.
+If $A(x, x')$ is a linear operator, then
 %
 \begin{align}
     \nonumber
-    \int \D \varphi \, \exp{- \frac{1}{2} \int \dd x \, \varphi(x) A \varphi(x) }
+    \int \D \varphi \, \exp{- \frac{1}{2} \int \dd x \dd x' \, \varphi(x) A(x, x') \varphi(x') }
     &= C \det(A)^{-1/2} ,\\
-    \int \D \varphi \, \exp{i\frac{1}{2} \int \dd x \, \varphi(x) A \varphi(x) }
-    &= C \det(-A)^{-1/2}.
+    \int \D \varphi \, \exp{i\frac{1}{2} \int \dd x \dd x'\, \varphi(x) A(x, x') \varphi(x') }
+    &= C' \det(-A)^{-1/2}.
 \end{align}
-%I
-$C$ is here a divergent constant, but will either fall away as we are only looking at the logarithm of $I_\infty$ and are able to throw away additive constants, or ratios between quantities which are both multiplied by $C$.
+%
+$C$ and $C'$ are divergent constants but will either fall away as we are only looking at the logarithm of $I_\infty$ and can throw away additive constants, or ratios between quantities that are both multiplied by $C$ or $C*$.
 
 The Gaussian integral can be used for the stationary phase approximation.
-In one dimension, it is
+By Taylor expanding around a stationary point $x_0$, we may approximate 
 %
 \begin{equation}
     \int \dd x \, \exp{i \alpha f(x)} 
-    \approx \sqrt{\frac{2 \pi }{f''(x_0)}}\exp{ f(x_0)}, 
-    \, \alpha\rightarrow \infty,
+    \sim \sqrt{\frac{2 \pi }{\alpha f''(x_0)}}\exp{ \alpha f(x_0)}, 
+    \quad \alpha\rightarrow \infty,
 \end{equation}
 %
 where the point $x_0$ is defined by $ f'(x_0) = 0$. 
 The functional generalization of this is
 %
 \begin{equation}
-    \int \D \varphi \exp{i S[\varphi]}
-    \approx 
-    C \det\left(- \frac{\delta^2 S[\varphi_0]}{\delta \varphi^2}\right)
+    \int \D \varphi \, \exp{i \alpha S[\varphi]}
+    \sim
+    C \det\left(
+        - \frac{1}{\alpha} \frac{\delta^2 S[\varphi_0]}{\delta \varphi^2}
+        \right)^{-1/2}
     \exp{i \alpha S[\varphi_0]  },
 \end{equation}
 %
@@ -245,7 +250,8 @@ by Taylor expanding the Lagrangian density as a function of $\varphi$ and its de
     \right) + \Oh(\epsilon^2).
 \end{equation}
 %
-Inserting this into \autoref{variation of action} and partially integrating the last term allows us to write the variation in the form \autoref{definition functional derivative}, and the functional derivative is
+Inserting this into \autoref{variation of action} and partially integrating the last term allows us to write the variation on the form \autoref{definition functional derivative}.
+The functional derivative is
 %
 \begin{equation}
     \fdv{S}{\varphi} = \pdv{\Ell}{\varphi} - \partial_\mu \pdv{\Ell}{(\partial_\mu \varphi)}.
@@ -282,7 +288,7 @@ Our example Lagrangian from last section now takes the form
     \Ell(g_{\mu \nu}, \varphi, \nabla_\mu \varphi) = \frac{1}{2} g^{\mu \nu} \nabla_\mu \varphi \nabla_\nu \varphi - \frac{1}{2}m^2 \varphi^2 - \frac{1}{4!}\lambda \varphi^4 \dots,
 \end{equation}
 %
-where partial derivatives are substituted with covariant derivatives.
+where partial derivatives are substituted with covariant derivatives following the minimal coupling rule.
 We define the functional derivative as
 %
 \begin{equation}
@@ -303,8 +309,7 @@ assuming $\Ell$ only depends on $g$ and not its derivatives, we get
     \right]
 \end{equation}
 %
-The variation of the $\sqrt{|g|}$-factor can be evaluated using
-Using the Levi-Civita symbol $\varepsilon_{\mu_1 \dots \mu_n}$.
+The variation of the $\sqrt{|g|}$-factor can be evaluated using the Levi-Civita symbol $\varepsilon_{\mu_1 \dots \mu_n}$.
 The determinant of a $n \times n$-matrix may be written as
 %
 \begin{equation}
@@ -343,14 +348,14 @@ Using
     =\det(g^\mu{}_\rho[\delta^\rho_\nu + \epsilon g^{\rho\lambda} \eta_{\lambda\nu}])
     = \det(g^\mu{}_\rho) (1  + \epsilon g^{\nu\lambda} \eta_{\lambda\nu}),
 \end{equation}
-we then get
+we get
 %
 \begin{align}
     \delta \sqrt{|g|}  
     =
     \frac{1}{2}
     \frac{1}{\sqrt{|g|}} \frac{g}{|g|} 
-    \delta \det(g)
+    \delta \det(g^\mu{}_\nu)
     = -\frac{1}{2}\sqrt{|g|} g^{\mu \nu} \delta g_{\mu\nu}
 \end{align}
 %
@@ -378,7 +383,7 @@ With the Lagrangian in \autoref{Lagrangian curved spacetime}, we get
     =
     - \frac{1}{2}
     \left(
-        \frac{1}{2} \nabla_\mu \varphi \nabla_\nu \varphi + \frac{1}{2}m^2 \varphi^2 + \dots
+        \frac{1}{2} \nabla_\mu \varphi \nabla_\nu \varphi + \frac{1}{2} m^2 \varphi^2 g_{\mu \nu} + \dots
     \right).
 \end{equation}
 %
@@ -395,7 +400,7 @@ As the Ricci tensor is dependent on both the derivative and second derivative of
 %
 \begin{equation}
     \delta S_{\text{EH}} = k \int_{\Em} \dd^n x \, \sqrt{|g|}
-    \left( \delta R - \frac{1}{2} g_{\mu \nu} R \delta g^{\mu \nu} \right).
+    \left( \delta R - \frac{1}{2} g_{\mu \nu} \delta g^{\mu \nu}  R  \right).
 \end{equation}
 %
 The variation of the Ricci scalar is
@@ -460,5 +465,5 @@ and by the definition of the functional derivative,
     \label{functional derivatie einstein-hilber action}
     \fdv{S_{\text{EH}}}{g^{\mu \nu}} 
     =
-    k(R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu}).
+    k\left(R_{\mu \nu} - \frac{1}{2} R g_{\mu \nu}\right).
 \end{equation}

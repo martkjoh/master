@@ -1,12 +1,12 @@
 \label{appendix: code} 
  
-All code used in this thesis, as well as the \LaTeX\. code, figures used and more is available at the online repository \url{https://github.com/martkjoh/master}.
+All code used in this thesis, as well as the \LaTeX\, code, figures used, and more is open source and available at the online repository \url{https://github.com/martkjoh/master}.
 
 
 \section{Integrating the TOV equations}
 
 For numerical integration of the TOV equations, we use SciPy's \texttt{integrate.solve\_ivp}.\footnote{
-    Reference available here: \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html}.
+    Reference available at: \url{https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html}.
     }
 Equations of state are evaluated either as explicit functions if a closed-form is available or as an interpolating function is created using a spline without smoothing.
 All code is written using dimensionless variables, and setting $k_1 = k_2 = k_3$.
@@ -45,7 +45,7 @@ We get an approximation of the TOV equation for $\tilde r \ll 1$ by substituting
     \odv{\tilde p}{\tilde r}
     \sim - \tilde r \, \left(\tilde p + \tilde u\right)
     \left( 3 \tilde p + \tilde u_0  \right)
-    \left(1 - 2 \tilde u_0 \tilde r^2\right)^{-1}, \quad r\rightarrow 0
+    \left(1 - 2 \tilde u_0 \tilde r^2\right)^{-1}, \quad r\rightarrow 0.
 \end{equation}
 %
 For the Newtonian approximation to the TOV equation, we get
@@ -60,7 +60,7 @@ For the Newtonian approximation to the TOV equation, we get
 \section{Symbolic calculations in \chpt}
 \label{section: symbolic calculations}
 
-Symbolic calculations in \chpt, such as the expansion of the Lagrangian in powers of $\varphi/f$, were done using the open-source, Python-based CAS software SageMath\footnote{\url{https://www.sagemath.org/}}, and Jupyter notebooks.\footnote{\url{https://jupyter.org/}}
+Symbolic calculations in \chpt, such as the expansion of the Lagrangian in powers of $\varphi/f$, were done using the open-source, Python-based CAS software SageMath,\footnote{\url{https://www.sagemath.org/}} and Jupyter notebooks.\footnote{\url{https://jupyter.org/}}
 The calculations presented in this thesis, in addition to expansions of $\Ell_4$ to second order, can be found in the online repository, at \url{https://github.com/martkjoh/master/tree/main/power_expansion}.
 
 

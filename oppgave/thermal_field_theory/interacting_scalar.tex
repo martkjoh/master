@@ -5,12 +5,12 @@
 We now study a scalar field with a $\lambda \varphi^4$ interaction term.
 We write the Lagrangian in the form
 %
-\begin{equation*}
+\begin{equation}
     \Ell = \Ell^{(0)} + \Ell^{(I)}, \quad 
     \Ell^{(0)} = 
     \frac{1}{2} \partial_\mu \varphi \partial^\mu \varphi - m^2 \varphi^2 , \quad
     \Ell^{(I)} = - \frac{\lambda}{4!} \varphi^4.
-\end{equation*}
+\end{equation}
 %
 $\Ell^{(I)}$ is called the interaction term and makes it impossible to exactly solve for the partition function.
 Instead, we turn to perturbation theory.
@@ -28,14 +28,14 @@ Here, $S_0$ and $S_I$ denote the Euclidean action due to the free and interactin
 The domain of integration $S$ is again periodic field configurations $\varphi(\beta, \vec x) = \varphi(0, \vec x)$.
 We may write the free energy as
 %
-\begin{equation*}
+\begin{equation}
     - \beta F = \ln
     \left[
         \int_S \D \varphi \, e^{-S_0} \sum_n \frac{1}{n!} {(-S_I)}^n
     \right]
     = \ln Z_0 
     + \ln Z_I ,
-\end{equation*}
+\end{equation}
 %
 where $Z_0$ is the partition function of the free theory.
 The correction to the partition function is thus given by
@@ -132,7 +132,7 @@ The functions $a,\,b$ represents a possible pairing, as described in \autoref{se
 Inserting the Fourier expansions of the field gives
 %
 \begin{align*}
-    & \ex{{S_I}^m}_0 \\
+    \ex{{S_I}^m}_0
     &\quad 
     = \left(-\frac{\lambda }{4!}\right)^m 
     \int_{\Omega} \dd X_1 \dots \dd X_m
@@ -142,7 +142,7 @@ Inserting the Fourier expansions of the field gives
     \times \ex{\varphi(K_{a(1)}) \varphi(K_{b(1)})}_0
     \dots
     \ex{\varphi(K_{a(2m)}) \varphi(K_{b(2m)})}_0     
-    \\ & \quad  
+    \\ \\ & \quad  
     = \left(-\frac{\lambda }{4!}\right)^m 
     \frac{(V \beta)^{2m} \beta^m}{(V \beta^2)^{2m}}
     \int_{\tilde \Omega} \dd K_1 ... \dd K_{2m} \sum_{\{a, b\}}
@@ -150,8 +150,7 @@ Inserting the Fourier expansions of the field gives
     & \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad \quad
     \times \tilde D(K_{a(1)}) \delta(K_{a(1)} + K_{b(1)}) \dots 
     \tilde D(K_{a(2m)}) \delta(K_{a(2m)} + K_{b(2m)})
-     \\
-    & \quad 
+    \\ \\ & \quad 
     = \left(-\frac{\lambda \beta}{4!}\right)^m 
     \prod_{i=1}^{2m} \int_{\tilde \Omega} 
     \left( \dd K_i \frac{1}{\beta} \tilde D(K_i)  \right) 
@@ -164,8 +163,7 @@ Here we have used that $V \beta^2 \tilde D_0(K, P) = \tilde D_0(K) \delta(P + K)
 In this case, it is
 %
 \begin{equation}
-    \tilde D_0(K) = \tilde D_0(\omega_n,
-     \vec k) = \frac{1}{\omega_k^2 + \omega_n^2}.
+    \tilde D_0(K) = \tilde D_0(\omega_n, \vec k) = \frac{1}{\omega_k^2 + \omega_n^2}.
 \end{equation}
 %
 This expectation value can be represented graphically using Feynman diagrams.
@@ -189,12 +187,12 @@ The first example is
 %
 \begin{align}
     \ex{S_I}_0 =
-    \frac{1}{8}
+    \frac{1}{8}\,
     \begin{tikzpicture}[baseline=(c)]
     \begin{feynman}
         \vertex (a) at (0, 0);
-        \vertex (b) at (1, 0);
-        \vertex (c) at (2, 0);
+        \vertex (b) at (1.5, 0);
+        \vertex (c) at (3, 0);
         \filldraw[black] (b) circle (1pt);
         \diagram*{
             {[edges=fermion]
@@ -205,9 +203,12 @@ The first example is
     \end{tikzpicture}.
 \end{align}
 %
-In \autoref{section: path integral}, we saw that the sum of all vacuum diagrams is the exponential of the sum of all \emph{connected} diagrams, so the free energy of the interacting theory is given by
+In \autoref{section: path integral}, we saw that the sum of all vacuum diagrams is the exponential of the sum of all \emph{connected} diagrams.
+If we include a rule of dividing diagrams by factor $\beta V$, then the free energy density of the interacting theory is given by
 %
 \begin{equation}
-    - \beta F = \ln Z_0 + \Sigma(\mathrm{all\,\, connected\,\, diagrams}).
+    \Eff 
+    = - \frac{\ln Z_0}{V\beta} 
+    + \sum  \left( \mathrm{all\,\, connected\,\, diagrams}\right).
 \end{equation}
 %

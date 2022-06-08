@@ -29,7 +29,7 @@ By extending this formula from integer-valued $d$ to real numbers, we get
     2 \int_\R \dd z \, \frac{z^{d - 1}}{(1 + z)^\alpha}, 
 \end{equation}
 %
-where we have made the change of variables $m z = k$.
+where we have made the change of variables $m z = p$.
 We make one more change of variable to the integral,
 %
 \begin{equation}
@@ -81,7 +81,7 @@ This parameter is arbitrary, and all physical quantities should therefore be ind
 A special case of this integral, which shows up in calculations of free energy, is 
 %
 \begin{equation}
-    \Eff = \int \frac{\dd^3 p}{(2 \pi)^3} \sqrt{\vv p^2 + m^2},
+    \Eff = \int \frac{\dd^3 p}{(2 \pi)^3} \sqrt{\vv p^2 + m^2}.
 \end{equation}
 %
 Which corresponds to $n=3$, $d = 3 - 2\epsilon$ and $\alpha = -1/2$, or $\Eff = \Phi_3(m, 3 - 2\epsilon, -1/2)$.
@@ -137,7 +137,7 @@ In this scheme, one also removes the $-\gamma$ and $\ln(4 \pi)$ term, by definin
 The result is thus
 \begin{equation}
     \Eff =
-    - \mu^{-2\epsilon} \frac{1}{4}\frac{m^4}{(4 \pi)^2}
+    - \mu^{-2\epsilon} \frac{1}{1}\frac{m^4}{(4 \pi)^2}
     \left(
         \frac{1}{\epsilon} 
         + \frac{3}{2}
@@ -187,10 +187,10 @@ The derivative of the Gamma function is $\Gamma'(\alpha) = \psi(\alpha)\Gamma(\a
 Using
 %
 \begin{align}
+    \frac{\Gamma(\alpha - \frac{1}{2}) }{\Gamma(\alpha)}\Big|_{\alpha=0} = 0, \quad
     \pdv{}{\alpha} & \frac{\Gamma(\alpha - \frac{1}{2}) }{\Gamma(\alpha)} \Big|_{\alpha=0}
     = \Gamma\left(\alpha - \frac{1}{2}\right) \frac{\psi(\alpha - \frac{1}{2}) - \psi(\alpha)}{\Gamma(\alpha)} \Big|_{\alpha=0}
-    = \sqrt{4 \pi}, \\
-    & \frac{\Gamma(\alpha - \frac{1}{2}) }{\Gamma(\alpha)}\Big|_{\alpha=0} = 0,
+    = \sqrt{4 \pi},
 \end{align}
 %
 we get
@@ -200,12 +200,3 @@ we get
 \end{equation}
 %
 When the energy is on the simple form $E^2 = \vv p^2 + m^2$, we can use the result from \autoref{subsection: free energy integral}, 
-%
-\begin{equation}
-    \label{dimreg integral}
-    \frac{1}{2} \mu^{-2\epsilon}  \int \frac{\dd^d p}{(2 \pi)^d} \sqrt{\vv p^2 + m^2}
-    = \frac{1}{2} \frac{\mu^{-2\epsilon}}{(4 \pi)^2} 
-    \left(\frac{1}{\epsilon} + \frac{3}{2} + \ln \frac{\tilde \mu^2}{m^2}\right).
-\end{equation}
-%
-This integral is regulated using dimensional regularization, where $d = 3 - 2\epsilon $, and the $\overline{\text{MS}} $-shceme, as described in \autoref{subsection: free energy integral}.

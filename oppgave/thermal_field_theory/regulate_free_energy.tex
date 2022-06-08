@@ -89,7 +89,7 @@ In $d$ dimensions, the action integral is
 %
 The action has mass dimension $0$.
 This means that all terms $\lambda_n \mathcal O_n$ must have mass dimension $d$, as $[\dd^d x] = -d$.
-We are free to choose the coupling constant corresponding to $\mathcal O_0 = \partial_\mu \varphi \partial^\mu \varphi$ to be of mass dimension 0, and therefore set $\lambda_0 = 1/2$ to get canonical normalization.
+We are free to choose the coupling constant corresponding to $\mathcal O_0 = \partial_\mu \varphi \partial^\mu \varphi$ to be of mass dimension 0, and set $\lambda_0 = 1/2$ to get canonical normalization.
 This allows us to deduce the dimensionality of $\varphi$.
 As $[\partial_\mu] = 1$, we have that $[\varphi] = (d-2)/2$.
 Assume $\mathcal O_n$ consists of $k_n$ factors of $\varphi$, and $l_n$ factors of $\partial_\mu \varphi$.
@@ -111,12 +111,12 @@ Our goal now is to exchange the bare coupling constants $\lambda_n$ with renorma
 We can always define the renormalized coupling constants as dimensionless, i.e., $[\lambda_n^r] = 0$, by measuring them in units of a mass scale.
 We therefore write 
 %
-\begin{align*}
+\begin{align}
     \lambda_n = \mu^{4 - D_n}
     \left[
         \lambda_n^r + \sum_{m=1} \frac{a_m(\lambda_n^r)}{(d - 4)^{m}}
     \right],
-\end{align*}
+\end{align}
 %
 where we have introduced the dimensionful parameter $\mu$ to ensure that $\lambda_n$ has the correct mass dimension for the action integral to stay dimensionless.
 The functions $a_m$ are then determined to each order in perturbation theory by calculating Feynman diagrams.
@@ -130,7 +130,7 @@ It is
 %
 \begin{equation}
     \label{scalar field static term}
-    \lambda_4 \mathcal{O}_4 = \lambda_4 = m^4 \lambda_4'.
+    \lambda_4 \mathcal{O}_4 = \lambda_4 := m^4 \lambda_4'.
 \end{equation}
 %
 Using the expansion in terms of the renormalized coupling, we have, 

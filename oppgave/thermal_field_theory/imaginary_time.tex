@@ -13,24 +13,24 @@ In classical mechanics, a thermal system at temperature $T = 1 / \beta$ is descr
 In the canonical ensemble, the probability is proportional to $e^{-\beta E_n}$, so $P_n = C e^{-\beta E_n}$.
 The expectation value of some quantity $A$, with value $A_n$ in the state $n$, is
 %
-\begin{equation*}
+\begin{equation}
     \ex{A} 
     = \sum_n A_n P_n = \frac{1}{Z} \sum_n A_n e^{- \beta E_n}, \quad 
     Z  = \sum_n e^{-\beta A_n}.
-\end{equation*}
+\end{equation}
 $Z$ is called the partition function. In quantum mechanics, an ensemble configuration is described by a non-pure density operator,
 %
-\begin{equation*}
+\begin{equation}
     \hat \rho = \sum_n P_n \ket{n}\bra{n},
-\end{equation*}
+\end{equation}
 where $\ket{n}$ is some basis for the relevant Hilbert space. Assuming $\ket{n}$ are energy eigenvectors, i.e., $\hat H \ket{n} = E_n \ket{n}$, the density operator for the canonical ensemble is
 %
-\begin{equation*}
+\begin{equation}
     \hat \rho 
     = \sum_n C e^{-\beta E_n} \ket{n}\bra{n} 
     = C e^{-\beta \hat H} \sum_n \ket{n}\bra{n} 
     = C e^{-\beta \hat H}.
-\end{equation*}
+\end{equation}
 The expectation value in the ensemble state of a quantity corresponding to the operator $\hat A$ is given by
 %
 \begin{align}
@@ -114,25 +114,27 @@ Given a functional $\mathcal{F}[f]$, it is defined by the relation
 %
 The Hamiltonian is the limit of a sum of Hamiltonians $\hat H_m$ for each point $\vec x_m$
 %
-\begin{equation*}
+\begin{equation}
     \hat H
     = \lim_{M \rightarrow \infty} \sum_{m=1}^M 
     \frac{V}{M} \hat H_m(\{\hat \varphi_m\}, \{\hat \pi_m\}).
-\end{equation*}
+\end{equation}
 $H_m$ may depend on the local degrees of freedom $\hat \varphi_m, \, \hat \pi_m$ as well as those at neighboring points.
 By inserting the completeness relations \autoref{functional completness} $N$ times into the definition of the partition function, it may be written as
 %
-\begin{align*}
-    Z& 
-    = \int \D\varphi(\vec x) \, \inner{\varphi}{e^{- \beta \hat H}}{\varphi}\\
-    &= 
+\begin{align}
+    \nonumber
+    Z
+    &  = \int \D\varphi(\vec x) \, \inner{\varphi}{e^{- \beta \hat H}}{\varphi}
+    \\ & 
+    = 
     \prod_{n=1}^N
     \left(
         \int \D \varphi_n (\vec x) \int \D \pi_n(\vec x)
     \right) 
     \prod_{n=1}^N  \braket{\varphi_n}{\pi_n}
     \inner{\pi_n}{e^{- \epsilon \hat H}}{\varphi_{n+1}} \braket{\varphi_{1} | \varphi_{N+1}},
-\end{align*}
+\end{align}
 %
 where $\epsilon = \beta / N$. The last term ensures that $\varphi_1 = \varphi_{N+1}$.
 Bosons such as the scalar field $\varphi$, follow the periodic boundary condition $\varphi(0, \vec x) = \varphi(\beta, \vec x)$.
@@ -143,7 +145,8 @@ This relationship does not, however, hold for more general functions of the fiel
 In that case, one has to be more careful about the ordering of the operators, for example, by using \emph{Weyl ordering}~\cite{peskinIntroductionQuantumField1995}.
 By series expanding $e^{-\epsilon \hat H}$ and exploiting this relationship, the partition function can be written as, to second order in $\epsilon$,
 %
-\begin{align*}
+\begin{align}
+    \nonumber
     Z = 
     \prod_{n=1}^N  
     &
@@ -156,14 +159,17 @@ By series expanding $e^{-\epsilon \hat H}$ and exploiting this relationship, the
         \He[\varphi_n(\vec x), \pi_n(\vec x)] - i \pi_n(\vec x) \frac{\varphi_n(\vec x) - \varphi_{n+1}(\vec x)}{\epsilon}
     \right)
     }.
-\end{align*}
+\end{align}
 %
 We denote $\varphi_n(\vec x) = \varphi(\tau_n, \vec x) $, $\tau_n = n \epsilon \in [0, \beta]$ and likewise with $\pi_n(\vec x)$. 
 In the limit $N \rightarrow \infty$, the expression for the partition function becomes
 %
-\begin{flalign}
+\begin{align}
     \label{Thermal partition function}
-    Z = \int_S \D \varphi(\tau, \vec x) \int \D \pi(\tau, \vec x) \,
+    \nonumber
+    & Z =
+    \\ & 
+    \int_S \D \varphi(\tau, \vec x) \int \D \pi(\tau, \vec x) \,
     \exp{
         - \int_0^\beta \dd \tau \int_V \dd \vec x \, 
         \left(
@@ -171,7 +177,7 @@ In the limit $N \rightarrow \infty$, the expression for the partition function b
             - i \pi(\tau, \vec x) \dot \varphi(\tau, \vec x)
         \right)
         },
-\end{flalign}
+\end{align}
 %
 where $S$ is the set of field configurations $\varphi$ such that $\varphi(\beta, \vec x) = \varphi(0, \vec x)$.
 With a Hamiltonian density of the form $\He = \frac{1}{2} \pi^2 + \frac{1}{2} (\nabla \varphi)^2 + \Ve(\varphi)$, we can evaluate the integral over the canonical momentum $\pi$ by discretizing $\pi(\tau_n, \vec x_m) = \pi_{n,m}$,
@@ -212,9 +218,9 @@ The partition function is then,
 Here, $C$ is the divergent constant that results from the $\pi$-integral.
 In the last line, we exploited the fact that the variable of integration $\pi_{n,m}$ may be shifted by a constant without changing the integral, and used the Gaussian integral
 %
-\begin{equation*}
+\begin{equation}
     \int_{-\infty}^{\infty} \dd x \, e^{-a x^2/2} = \sqrt{\frac{2 \pi}{a}}.
-\end{equation*}
+\end{equation}
 %
 The partition function resulting from this procedure may also be obtained by starting with the ground state path integral
 %
@@ -260,26 +266,26 @@ To get a more economical notation, we denote the Euclidean real-space coordinate
 The dot product is $X\cdot K = \omega_n \tau + \vec k \cdot \vec x$.
 In the limit $V\rightarrow \infty$, we follow the prescription
 %
-\begin{equation*}
+\begin{equation}
     \frac{1}{V} \sum_{\vec k \in \tilde V} \rightarrow \int_{\R^3} 
     \frac{\dd^3 k}{(2 \pi)^3}.
-\end{equation*}
+\end{equation}
 The sum over all degrees of freedom, and the corresponding integrals for the thermodynamic limit are
 %
-\begin{align*}
+\begin{align}
      \frac{\beta V}{NM}\sum_{n=1}^N \sum_{\vec x_m \in V} 
     & \xrightarrow{N,M\rightarrow \infty} \int_{0}^\beta \dd \tau \int_{\R^3} \dd^3 x
     = \int_\Omega \dd X, \\
      \frac{1}{V} \sum_{n=-\infty}^\infty \sum_{\vec k \in \tilde V}
     & \xrightarrow{V \rightarrow \infty} \sum_{n=-\infty}^\infty \int_{R^3} \frac{\dd^3 k}{(2 \pi)^3}
     = \int_{\tilde \Omega} \dd K.
-\end{align*}
+\end{align}
 %
 The convention used for the Fourier expansion of thermal fields is in accordance with ~\autocite{kapustaFiniteTemperatureFieldTheory2006}. 
 The prefactor is chosen to make the Fourier components of the field dimensionless, which makes it easier to evaluate the trace correctly.
 For bosons, the Fourier expansion is
 %
-\begin{align*}
+\begin{align}
     \varphi(X)
     = &
     \sqrt{V \beta} \int_{\tilde \Omega} \dd K \,  \tilde \varphi(K) e^{i X\cdot K}
@@ -289,7 +295,7 @@ For bosons, the Fourier expansion is
     \tilde \varphi(K)
     = &
     \sqrt{\frac{1}{V \beta^3}} \int_{\tilde \Omega} \dd X \,  \tilde \varphi(X) e^{ - i X\cdot K},
-\end{align*}
+\end{align}
 %
 while for Fermions, it is
 %
