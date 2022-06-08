@@ -15,7 +15,7 @@ where $\Sigma$ is a $SU(N)$-valued field parametrized by the mesons.
 # Pion stars
 
 At high isospin-density, QCD transitions from the vacuum phase to a pion-condensed phase.
-This condensate is conjectured to be able to form stars, which are modeled by the Tolman-Oppenheimer-Volkoff equation, $$ \frac{{\rm d}p }{{\rm d} r} = - \frac{G m(r) u(r)}{ r^2} \left( 1 + \frac{p(r)}{u(r)}\right) \left( 1 + \frac{4 \pi r^2 p(r)}{m(r)}\right)  \left( 1 - \frac{2 G m(r)}{r} \right)^{-1} $$
+This condensate is conjectured to be able to form stars, which are modeled by the Tolman-Oppenheimer-Volkoff equation, $$ \frac{{\rm d}p }{{\rm d} r} = - \frac{G m(r) u(r)}{ r^2} \left( 1 + \frac{p(r)}{u(r)}\right) \left( 1 + \frac{4 \pi r^2 p(r)}{m(r)}\right)  \left( 1 - \frac{2 G m(r)}{r^2} \right)^{-1} $$
 Preliminary, numerical studies by Brandt et al. supports this conjecture.
 In this thesis, we use chiral perturbation theory to investigate the properties of pion stars.
 
