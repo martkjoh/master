@@ -4,7 +4,7 @@ The thesis is titled "Pion Stars --- Thermodynamic Properties of the Pion conden
 
 
 
-# Chiral perturbation theory
+### Chiral perturbation theory
 
 Chiral perturbation theory is an effective field theory.
 It describes quarks and the strong force using mesons, such as pions and kaons, by exploiting the symmetries of QCD to construct an effective Lagrangian,
@@ -12,7 +12,7 @@ $$\mathcal L = \frac{1}{4} f^2 {\rm Tr} \\{ \nabla_\mu \Sigma \nabla^\mu \Sigma^
 where $\Sigma$ is a $SU(N)$-valued field parametrized by the mesons.
 
 
-# Pion stars
+### Pion stars
 
 At high isospin-density, QCD transitions from the vacuum phase to a pion-condensed phase.
 This condensate is conjectured to be able to form stars, which are modeled by the Tolman-Oppenheimer-Volkoff equation, $$ \frac{{\rm d}p }{{\rm d} r} = - \frac{G m(r) u(r)}{ r^2} \left( 1 + \frac{p(r)}{u(r)}\right) \left( 1 + \frac{4 \pi r^2 p(r)}{m(r)}\right)  \left( 1 - \frac{2 G m(r)}{r^2} \right)^{-1} $$
