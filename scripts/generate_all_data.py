@@ -10,6 +10,10 @@ def run(name, kwd = ""):
 
 
 def set_lattice(state="False"):
+    """
+    Rewrites the "constants.py" file to enable lattice constants.
+    I know it is hacky, it got added on much later...
+    """
     f = open("constants.py", "r")
     txt = f.read()
     txt = txt.split("\n")
@@ -22,40 +26,42 @@ def set_lattice(state="False"):
 
 set_lattice()
 
-run("incompressible_fluid/incompressible_fluid") 
+run("plot_polytrope")
+run("incompressible_fluid/incompressible_fluid")
+run("chpt_numerics/plot_surface")
+run("chpt_numerics/plot_masses")
+run("chpt_numerics/plot_phase_diagram")
 run("fermi_gas_star/fermi_gas_eos")
 run("fermi_gas_star/fermi_gas")
+run("fermi_gas_star/plot")
 
-# # Generate pion condensate eos
+# Generate pion condensate eos
 run("chpt_numerics/chpt_eos")
 run("chpt_numerics/chpt_lepton_eos")
 run("chpt_numerics/neutrino_eos")
 run("chpt_numerics/free_energy_nlo")
 run("chpt_numerics/neutrino_eos_nlo")
-run("chpt_numerics/free_energy_nlo")
-run("chpt_numerics/neutrino_eos_nlo")
+
 
 set_lattice("True")
 
-run("chpt_numerics/chpt_eos")
-run("chpt_numerics/chpt_lepton_eos")
 run("chpt_numerics/neutrino_eos")
 run("chpt_numerics/free_energy_nlo")
 run("chpt_numerics/neutrino_eos_nlo")
-run("chpt_numerics/free_energy_nlo")
-run("chpt_numerics/neutrino_eos_nlo")
-run("chpt_numerics/brandt_plot_eos2")
-run("chpt_numerics/brandt_plot_RM")
+
 
 set_lattice()
 
 
 # integrate pion stars
+# This is going to take some time...
+# Comment out parts of the script if 
+# you know what you want
 run("pion_star/pion_star")
 
 # plots
 run("pion_star/plot")
-run("chpt_numerics/plot_surface")
-run("chpt_numerics/plot_masses")
-run("chpt_numerics/plot_phase_diagram")
+run("chpt_numerics/brandt_plot_eos2")
+run("chpt_numerics/brandt_plot_RM")
+
 

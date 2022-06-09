@@ -124,6 +124,6 @@ def save_eos():
 
 
 
-# plot_eos()
+plot_eos()
 save_eos()
 

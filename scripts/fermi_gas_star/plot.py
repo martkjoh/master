@@ -266,9 +266,9 @@ def plot_mass_of_pc():
 
 
 plot_norm_pressure_mass()
-# plot_mass_radius()
-# plot_mass_radius_compare()
-# plot_eos()
-# plot_mass_of_pc()
+plot_mass_radius()
+plot_mass_radius_compare()
+plot_eos()
+plot_mass_of_pc()
 
-# plot_mass_surface()
+plot_mass_surface()
