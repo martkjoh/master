@@ -34,8 +34,6 @@ run("chpt_numerics/free_energy_nlo")
 run("chpt_numerics/neutrino_eos_nlo")
 run("chpt_numerics/free_energy_nlo")
 run("chpt_numerics/neutrino_eos_nlo")
-run("chpt_numerics/brandt_plot_eos2")
-run("chpt_numerics/brandt_plot_RM")
 
 set_lattice("True")
 

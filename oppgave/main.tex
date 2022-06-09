@@ -12,7 +12,6 @@
 
 
 \bibliography{master}
-\AtEveryBibitem{\clearfield{note}} % Supress note field in bibliography
 
 
 \begin{document}
@@ -135,6 +134,12 @@
     \cleardoublepage
     \phantomsection
     \addcontentsline{toc}{chapter}{Bibliography}
+
+    % Ensure linebreaks on DOI's in bibliography
+    \setcounter{biburlnumpenalty}{1000}
+    \setcounter{biburlucpenalty}{1000}
+    \setcounter{biburllcpenalty}{1000}
+
     \printbibliography
 
     \addtocontents{toc}{

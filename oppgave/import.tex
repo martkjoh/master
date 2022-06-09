@@ -73,14 +73,15 @@
 \usepackage{epigraph} 
 
 \usepackage[%
-    style=numeric-comp,
-    sorting=none,
-    sortcites=true,
+    style=numeric-comp, % Combine consecutive citations, i.e., [15]-[19]
+    sorting=none,       % Sorts citations after apperance in document
+    sortcites=true,     % Sorts within one "autocite", i.e., [15][17][44]
     doi=true,
-    url=false,
-    giveninits=true,
+    giveninits=true,    % use initials
     hyperref
     ]{biblatex}
+
+\AtEveryBibitem{\clearfield{note}} % Supress note field in bibliograph
 
 \setlength{\marginparwidth}{2.2cm}
 % \setlength\cftparskip{1pt}
