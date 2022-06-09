@@ -17,7 +17,7 @@ plt.rc("lines", lw=2)
 plt.rc("axes", grid=True)
 plt.rc("grid", linestyle="--", alpha=1)
 
-
+lo = lambda x: x.subs(m, 1.).subs(f, 1.).subs(mS, m_S/m_pi).subs(dm, Dm/m_pi)
 l = lambda E : lambdify((p, muS, muI, a), lo(E), "numpy")
 
 # Vacuum/pion-condensed masses
