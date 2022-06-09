@@ -47,7 +47,7 @@ A set of coordinate functions $\mathcal A = \{x_i\}$ whose domain cover $\Em$ is
 If the transition function between all pairings of coordinate functions in the atlas is smooth---that is, infinitely differentiable---we call the atlas smooth.
 We then define a smooth manifold as the topological manifold $\Em$ together with a \emph{maximal} smooth atlas $\mathcal A$.
 A smooth atlas is maximal if no coordinate function can be added while the atlas remains smooth.\footnote{
-    The maximal condition ensures that two equivalent atlases correspond to the same differentiable manifold. A single manifold can be combined with different maximal atlases of smooth coordinates or differentiable structures. A set of examples are \emph{exotic spheres}, smooth manifolds which are \emph{homeomorphic} to $\text S^n$, but not \emph{diffeomorphic}. 
+    The maximal condition ensures that two equivalent atlases correspond to the same differentiable manifold. A single manifold can be combined with different maximal atlases of smooth coordinates or differentiable structures. A set of examples are \emph{exotic spheres}, smooth manifolds \emph{homeomorphic} to $\text S^n$, but not \emph{diffeomorphic}. 
     }
 %
 \begin{figure}[H]
@@ -93,7 +93,7 @@ Any physical theory must be independent of our choice of coordinates, so our nex
 A curve $\gamma$ through $\Em$ is a function from $\R$ to $\Em$,
 %
 \begin{align}
-    \gamma : \R &\longmapsto \Em \\
+    \gamma : \R &\longmapsto \Em, \\
     \lambda & \longmapsto \gamma(\lambda).
 \end{align}
 %
@@ -315,15 +315,8 @@ The gradient of a scalar function $f$, $\dd f = \partial_\mu f \dd x^\mu$, is a 
 To generalize this, we define the covariant derivative, $\nabla$, as a map from $(n, m)$ tensor fields to $(n, m+1)$ tensor fields, as $f\rightarrow\dd f$ maps a $(0,0)$ tensor, a scaalar, to a $(0,1)$- tensor
 The components of a covariant derivative, $\nabla_\rho T^{\mu_1\dots}{}_{\nu_1, \dots}$, must follow the tensor transformation law. 
 However, this is not strong enough to uniquely define $\nabla$.
-We further assume
-%
-\begin{itemize}
-    \item Linearity: $\nabla (T + S) = \nabla T + \nabla S$.
-    \item The product rule: $\nabla (T \otimes S) = (\nabla T)\otimes S + T \otimes (\nabla S)$.
-    \item Reduces to partial derivative for scalars: $\nabla_\mu f = \partial_\mu f$.
-    \item Kronecker delta gives zero: $\nabla_\mu \delta^\rho_\nu = 0$.
-\end{itemize}
-%
+In addition to $\nabla f = \partial f$, we further assume the derivative is linear, $\nabla (T + S) = \nabla T + \nabla S$, and follow the product rule: $\nabla (T \otimes S) = (\nabla T)\otimes S + T \otimes (\nabla S)$.
+Lastly, we assume the derivative of the Kronecker delta gives zero, $\nabla_\mu \delta^\rho_\nu = 0$.
 With this, we can, in general, write the covariant derivative for vectors and covectors as~\autocite{carrollSpacetimeGeometryIntroduction2019}
 %
 \begin{align}
@@ -667,12 +660,12 @@ To that end, we define
 \begin{equation}
     \dd^n x := \dd x^0 \wedge \dots \wedge \dd x^{n-1}
     = \varepsilon_{\mu_1 \dots \mu_n}  
-    = \dd x^{\mu_1} \otimes \dots \otimes \dd x^{\mu_n},
+    \dd x^{\mu_1} \otimes \dots \otimes \dd x^{\mu_n},
 \end{equation}
 %
 where $\varepsilon_{\mu_1 \dots \mu_n}$ is the Levi-Civita symbol.
 Given a new set of coordinates, $x'^\mu$, we may similarly define a new $n$-form, $\dd^n x'$.
-These two $n$-forms are related by.
+These two $n$-forms are related by
 %
 \begin{equation}
     \dd^n x = \det\left( \pdv{x}{x'} \right) \, \dd^n x',

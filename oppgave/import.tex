@@ -10,11 +10,12 @@
 \usepackage[compat=1.1.0]{tikz-feynman}
 
 
-\tikzfeynmanset{ Fermion/.style = {
-   decoration={
-     markings,
-     mark=at position 0.5
-          with {\arrow[xshift=.7mm, scale=1.2]{latex}}
+\tikzfeynmanset{ 
+  Fermion/.style = {
+    decoration={
+      markings,
+      mark=at position 0.5
+        with {\arrow[xshift=.7mm, scale=1.2]{latex}}
      },
    postaction=decorate
    }
@@ -65,8 +66,6 @@
 \captionsetup{width=.9\textwidth}
 
 \usepackage{titlepic}
-\usepackage[prependcaption,textsize=footnotesize]{todonotes}
-
 \usepackage{setspace}
 
 % Quote in introduction
@@ -83,14 +82,10 @@
 
 \AtEveryBibitem{\clearfield{note}} % Supress note field in bibliograph
 
-\setlength{\marginparwidth}{2.2cm}
-% \setlength\cftparskip{1pt}
-% \setlength\cftbeforechapskip{0pt}
-
 % space instead of indentation for paragraphs
-
-\def\equationautorefname~#1\null{Eq.~(#1)\null}
-\renewcommand{\chapterautorefname}{Chapter}
-
+\setlength{\marginparwidth}{2.2cm}
 \setlength\epigraphwidth{.65\textwidth}
+
+\renewcommand{\chapterautorefname}{Chapter}
+\def\equationautorefname~#1\null{Eq.~(#1)\null}
 

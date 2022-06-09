@@ -1,7 +1,7 @@
 \section{*The 1PI effective action}
 
 \label{section: effective action}
-This section is based on \autocite{peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}
+This section is based on \autocite{peskinIntroductionQuantumField1995,schwartzQuantumFieldTheory2013,weinbergQuantumTheoryFields1995,weinbergQuantumTheoryFields1996}.
 
 
 The generating functional for connected diagrams, $W[J]$, is dependent on the external source current $J$.
@@ -38,10 +38,11 @@ we see that $\Gamma$ is an action that gives the equation of motion for the expe
 
 To interpret $\Gamma$ further, we observe what happens if we treat $\Gamma[\varphi]$ as a classical action with a coupling $g$.
 The generating functional in this new theory is
+%
 \begin{equation}
     \label{partition function with g}
     Z[J, g] = \int \D \varphi \,
-    \exp{ i g^{-1} \left( \Gamma[\varphi] + \int \dd^4x \, \varphi(x) J(x) \right) }
+    \exp{ i g^{-1} \left( \Gamma[\varphi] + \int \dd^4x \, \varphi(x) J(x) \right) }.
 \end{equation}
 %
 The free propagator in this theory will be proportional to $g$, as it is given by the inverse of the equation of motion for the free theory.
@@ -154,7 +155,7 @@ The functional version of a Taylor expansion, as described in \autoref{appendix:
     + \int \dd x \, \eta(x) \, \fdv{S[\varphi_0]}{\varphi(x)}
     + \frac{1}{2} \int \dd x \dd y\,  \eta(x) \eta(y) \,
     \frac{\delta^2 S[\varphi_0]}{\delta\varphi(x)\delta\varphi(y)}
-    + \dots
+    + \dots.
 \end{equation}
 %
 The notation
@@ -180,10 +181,12 @@ When we insert this expansion into the generating functional $Z[J]$ we get
 %
 \begin{align}
     \nonumber
-    Z[J] = \int \D \eta \,
+    & Z[J] = 
+    \\ &
+    \int \D \eta \,
     \text{exp}\Bigg\{
-        &i \int \dd^4 x \left(  \Ell[\varphi_0] + J \varphi_0  \right)\\
-        &+i \int \dd^4x \, \eta(x) \, 
+        i \int \dd^4 x \left(  \Ell[\varphi_0] + J \varphi_0  \right)
+        +i \int \dd^4x \, \eta(x) \, 
         \left(  \fdv{S[\varphi_0]}{\varphi(x)} + J(x) \right)+ i S_0[\eta] + i S_I[\eta]
     \Bigg\}.
 \end{align}
@@ -222,7 +225,7 @@ We can now use the definition of the 1PI effective action to obtain a formula fo
     = \Ve(\varphi_0) 
     -i \ln
     \left(
-        \int \D \eta\exp{i S_0[\eta] + i S_I[\eta]}
+        \int \D \eta\, \exp{i S_0[\eta] + i S_I[\eta]}
     \right).
 \end{equation}
 %
@@ -288,7 +291,7 @@ The first term is quadratic in $\eta$, and can therefore be evaluated as a gener
     + \const
 \end{align*}
 %
-We then use the identity $\ln\{\det(M)\}= \Tr{\ln(M)}$.
+We used the identity $\ln\{\det(M)\}= \Tr{\ln(M)}$.
 After we remove the constant, this term is proportional to $g^0$, i.e., it is made up of one-loop terms.
 
 The last term can be evaluated by first expanding the exponential containing the $S_I$ term, then using $\ln(1 + x) = \sum_n \frac{1}{n}x^n$.

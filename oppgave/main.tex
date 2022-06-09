@@ -15,7 +15,6 @@
 
 
 \begin{document}
-    \listoftodos
     \frontmatter
     
     \chapter*{Preface}
@@ -37,8 +36,6 @@
 
     \setcounter{tocdepth}{1}
     \tableofcontents
-    \todo[]{Check bibliography!!!}
-
    
     \setlength{\parindent}{0em}
     \setlength{\parskip}{0.8em}
@@ -135,16 +132,18 @@
     \phantomsection
     \addcontentsline{toc}{chapter}{Bibliography}
 
+    \addtocontents{toc}{
+        \vspace*{\fill}
+        Note: sections with (*) are adapted from the specialization project with only minor changes.
+    }
+
     % Ensure linebreaks on DOI's in bibliography
     \setcounter{biburlnumpenalty}{1000}
     \setcounter{biburlucpenalty}{1000}
     \setcounter{biburllcpenalty}{1000}
 
+
     \printbibliography
 
-    \addtocontents{toc}{
-        \vspace*{\fill}
-        \noindent Note: sections with (*) are adapted from the specialization project with only minor changes.
-    }
 
 \end{document}
