@@ -100,19 +100,22 @@ The total pressure and energy density will now be the sum of the contributions f
 The lepton contribution to these, which we found in \autoref{Fermi gas energy density} and \autoref{Fermi gas pressure}, is
 %
 \begin{align}
-    u_\ell 
-    &= u_{\ell,0} 
-    \left[(2x_f^3 + x_f) \sqrt{1 + x_f^2} - \arcsinh\left(x_f\right)\right], \\
     p_\ell
     &=\frac{1}{3} u_{\ell,0}
-    \left[(2x_f^3 - 3x_f) \sqrt{1 + x_f^2} + 3\arcsinh\left(x_f\right)\right].
+    \left[(2x_f^3 - 3x_f) \sqrt{1 + x_f^2} + 3\arcsinh\left(x_f\right)\right], \\
+    u_\ell 
+    &= u_{\ell,0} 
+    \left[(2x_f^3 + x_f) \sqrt{1 + x_f^2} - \arcsinh\left(x_f\right)\right]. \\
 \end{align}
 %
 The contribution from the pion condensate is, as we found in \autoref{pressure leading order chpt} and \autoref{energy density leading order chpt}, is
 %
 \begin{align}
-    p_\pi &= \frac{1}{2} u_0 \left( \frac{\mu_I}{m_{\pi, 0}} - \frac{m_{\pi, 0}}{\mu_I}\right)^2 \\
-    u_\pi &= \frac{1}{2} u_0 \left( 2 + \frac{\mu_I^2}{m_{\pi, 0}^2} - 3 \frac{m_{\pi, 0}^2}{\mu_I^2}  \right)
+    p_\pi &= u_0  \frac{1}{2} \frac{\mu_I^2}{m_{\pi,0}^2}
+    \left(1 - \frac{m_{\pi,0}^2}{\mu_I^2}\right)^2, \\
+    u_\pi &= u_0 \frac{1}{2} \frac{\mu_I^2}{m_{\pi,0}^2}
+    \left(1 - \frac{m_{\pi,0}^2}{\mu_I^2}\right)
+    \left(1 + 3 \frac{m_{\pi,0}^2}{\mu_I^2}\right).
 \end{align}
 %
 This leads to a total pressure and energy
@@ -309,13 +312,7 @@ The chemical potential of a massless particle equals its Fermi momentum, so the 
 \end{equation}
 %
 The total pressure and energy density are now, as before, the sum of the individual contribution from each species.
-% %
-% \begin{equation}
-%     \label{total energy and pressure neutrino}
-%     p = p_\pi + p_e + p_\mu + p_{\nu_e} + p_{\nu_\mu}, \quad
-%     u = u_\pi + u_e + u_\mu + u_{\nu_e} + u_{\nu_\mu}.
-% \end{equation}
-%
+
 
 \begin{figure}[!htb]
     \centering
