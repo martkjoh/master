@@ -193,7 +193,7 @@ ax2.text(1.15, 3.05, "$\\langle \\pi^+\\rangle$")
 
 ax3.text(-0.12, 3.52, "Normal\n phase")
 ax3.text(0.08, 3.7, "$\\langle K^+\\rangle$")
-ax3.text(-0.2, 3.7, "$\\langle \\bar K\\rangle$")
+ax3.text(-0.2, 3.7, "$\\langle K^0 \\rangle$")
 
 
 add_plot(ax)
