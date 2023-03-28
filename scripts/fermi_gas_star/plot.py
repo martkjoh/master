@@ -206,7 +206,8 @@ def plot_mass_radius_compare():
     plt.legend(
         prop={'size': 18}
     )
-    fig.savefig("figurer/mass_radius_comparison.pdf", bbox_inches="tight")
+    # fig.savefig("figurer/mass_radius_comparison.pdf", bbox_inches="tight")
+    plt.show()
     
 
 def plot_eos():
@@ -265,9 +266,9 @@ def plot_mass_of_pc():
 
 
 
-plot_norm_pressure_mass()
+# plot_norm_pressure_mass()
 # plot_mass_radius()
-# plot_mass_radius_compare()
+plot_mass_radius_compare()
 # plot_eos()
 # plot_mass_of_pc()
 

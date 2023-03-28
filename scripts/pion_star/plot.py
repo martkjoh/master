@@ -126,7 +126,7 @@ def plot_mass_radius_compare():
         n = len(x) // m
         assert m*n + 1 == len(x) # Are all points included?
         segments = [[[x[j], y[j]] for j in range(i*m, (i+1)*m+1)] for i in range(n)]
-        lc = collections.LineCollection(segments, cmap='viridis', norm=norm, ls=linestyles[i], label=labels[i], lw=2)
+        lc = collections.LineCollection(segments, cmap='tab20b', norm=norm, ls=linestyles[i], label=labels[i], lw=2)
         lc.set_array(z[::m])
         line = ax.add_collection(lc)
 
@@ -139,7 +139,8 @@ def plot_mass_radius_compare():
     ax.set_ylim(0, 18)
 
     plt.legend(loc="upper left", fontsize=18)
-    fig.savefig("figurer/pion_star/mass_radius_comparison.pdf", bbox_inches="tight")
+    # fig.savefig("figurer/pion_star/mass_radius_comparison.pdf", bbox_inches="tight")
+    plt.show()
 
 
 
@@ -886,7 +887,7 @@ if __name__=="__main__":
     # plot_mass_radius()
     plot_mass_radius_compare()
     # plot_mass_radius(name="_EM")
-    plot_mass_radius_compare_EM()
+    # plot_mass_radius_compare_EM()
 
     # plot_eos()
     # plot_mu()
