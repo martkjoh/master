@@ -122,11 +122,11 @@ def plot_mass_radius_compare():
         # hack to get multi-colored line
         # https://nbviewer.org/github/dpsanders/matplotlib-examples/blob/master/colorline.ipynb
         norm = colors.Normalize(z.min(), z.max())
-        m = 10
+        m = 5
         n = len(x) // m
         assert m*n + 1 == len(x) # Are all points included?
         segments = [[[x[j], y[j]] for j in range(i*m, (i+1)*m+1)] for i in range(n)]
-        lc = collections.LineCollection(segments, cmap='tab20b', norm=norm, ls=linestyles[i], label=labels[i], lw=2)
+        lc = collections.LineCollection(segments, cmap='viridis', norm=norm, ls=linestyles[i], label=labels[i], lw=2)
         lc.set_array(z[::m])
         line = ax.add_collection(lc)
 
@@ -139,8 +139,8 @@ def plot_mass_radius_compare():
     ax.set_ylim(0, 18)
 
     plt.legend(loc="upper left", fontsize=18)
-    # fig.savefig("figurer/pion_star/mass_radius_comparison.pdf", bbox_inches="tight")
-    plt.show()
+    fig.savefig("figurer/pion_star/mass_radius_comparison.pdf", bbox_inches="tight")
+    # plt.show()
 
 
 
