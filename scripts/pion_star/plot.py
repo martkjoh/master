@@ -10,6 +10,7 @@ from chpt_numerics.chpt_eos import u_nr, u_ur, p, u, nI
 from integrate_tov import get_u
 from constants import get_const_pion, m_pi, m_e, f_pi
 from chpt_numerics.chpt_eos import alpha_0
+from chpt_numerics.neutrino_eos import n_nu, pmin
 
 from scipy.stats import linregress
 
@@ -878,6 +879,53 @@ def plot_max():
     fig.savefig("figurer/pion_star/max_pressure_mass.pdf", bbox_inches="tight")
 
 
+
+def plot_neutrino_dens(name="_neutrino"):
+    all_sols = load_sols(name)
+    sols = all_sols[30:180:8]
+    N = len(sols)
+    u0, m0, r0 = get_const_pion()
+    
+    fig, ax = plt.subplots(figsize=(14, 10), sharex=True)
+    pcs = []
+    for i, s in enumerate(sols):
+        f = s["f"]
+        R, M, pc = s["R"], s["M"], s["pc"]
+        pcs.append(pc)
+
+        c = cm.viridis(i/(N+1))
+        r = np.linspace(0, R, 200)
+        p = f(r)[0]
+        print(p[-1])
+        ax.plot(r * r0, n_nu(p), color=c, alpha=0.6)
+
+    nstar = n_nu(pmin)
+    ax.plot([0, 150], [nstar, nstar], "k--", label='$n_\\nu(p_\mathrm{min})$')
+
+    i = np.argmax(np.array([s["M"] for s in all_sols]))
+    M, R, pc = [all_sols[i][s] for s in ["M", "R", "pc"]]
+    r = np.linspace(0, R)
+    f = all_sols[i]["f"]
+    p, m = f(r)
+
+    ax.set_ylabel("$n_{\\nu}/n_0$")
+    fig.legend(bbox_to_anchor=(0.73, 0.87))
+
+
+    norm = colors.Normalize(vmin=log(pcs[0]), vmax=log(pcs[-1]))
+    cmap = cm.ScalarMappable(norm=norm, cmap=cm.viridis)
+    cb = fig.colorbar(cmap, ax=ax, location="right")
+    cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
+
+    # ax.set_xscale("log")
+    # ax.set_yscale("log")
+
+    plt.show()
+
+
+plot_neutrino_dens()
+
+
 if __name__=="__main__":
     pass
 
@@ -885,7 +933,7 @@ if __name__=="__main__":
     # plot_pressure_mass(name="_EM")
 
     # plot_mass_radius()
-    plot_mass_radius_compare()
+    # plot_mass_radius_compare()
     # plot_mass_radius(name="_EM")
     # plot_mass_radius_compare_EM()
 

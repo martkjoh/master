@@ -103,8 +103,9 @@ def get_n_const(lattice=False):
 
 def sim_neut(max_step=1e-3, info=False, lattice=False):
     pcs, pmin, l = get_n_const(lattice)
+    print(pmin, lattice)
     u = get_u("pion_star/data/eos_neutrino"+l+".npy")
-    sols = integrate(u, pcs, max_step=max_step, r_max=1e8, info=info, pmin=pmin, dense_output=False)
+    sols = integrate(u, pcs, max_step=max_step, r_max=1e8, info=info, pmin=pmin, dense_output=True)
     np.save("pion_star/data/sols_neutrino"+l, sols)
 
 
@@ -145,6 +146,8 @@ def sim_max_pure():
 
 
 if __name__=="__main__":
+    pass
+
     # print("pure")
     # sim()
     # sim_non_rel()
@@ -166,9 +169,9 @@ if __name__=="__main__":
     # print("nu")
     # sim_neut()
     # sim_neut_nlo()
-    sim_neut(lattice=True)
-    sim_neut_nlo(lattice=True)
+    sim_neut()
+    # sim_neut_nlo(lattice=True)
 
-    sim_light()
+    # sim_light()
 
-    sim_max_pure()
+    # sim_max_pure()

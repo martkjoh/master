@@ -90,6 +90,7 @@ def ul(x):
 xnu = lambda x: x + m_e/m_pi * x_e(x)
 pnu = lambda x: xnu(x)**4 / (24 * pi**2)
 unu = lambda x: xnu(x)**4 / (8 * pi**2)
+nnu = lambda x: xnu(x)**3 / (6 * pi**2)
 
 # x = mu_I
 p_pi = lambda  x: 1/2 * (xi(x) - 1/xi(x))**2
@@ -224,13 +225,43 @@ def contributions():
     fig.savefig("figurer/neutrino_contributions.pdf", bbox_inches="tight")
 
 
-plot_mu()
+# plot_mu()
 
-plot_eos()
-plot_eos2()
+# plot_eos()
+# plot_eos2()
 
-contributions()
+# contributions()
 
 
-save_eos()
+# save_eos()
+
+
+from scipy.interpolate import interp1d as inter
+
+
+
+def xp(pp):
+    
+    x = np.empty_like(pp)
+    # pmin = p(np.array([1, 1]) )[0]
+
+    print(pmin)
+    s = pp>=pmin
+    xx = np.linspace(1, 2, 10000)
+    f1 = inter(p(xx), xnu(xx))
+    x[s] = f1(pp[s])
+
+    x[~s] = (12 * pi**2 * pp[~s] )**(1/4)
+
+    return x
+
+
+def n_nu(pp):
+    return (f_pi/m_pi)**(-1) / (6*pi**2) * (12 * pi**2 * pp)**(3 / 4)
+
+pmin = (m_pi/f_pi)**2 * 2*(1+m_e/m_pi) / (24*pi**2)
+
+# pp = np.linspace(0, 0.5, 10000)
+# plt.plot(pp, xp(pp))
+# plt.show()
 
