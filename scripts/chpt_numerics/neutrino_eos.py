@@ -90,11 +90,16 @@ def ul(x):
 xnu = lambda x: x + m_e/m_pi * x_e(x)
 pnu = lambda x: xnu(x)**4 / (24 * pi**2)
 unu = lambda x: xnu(x)**4 / (8 * pi**2)
+
 nnu = lambda x: xnu(x)**3 / (6 * pi**2)
+f = 8*pi**2
+ne = lambda x:  8/3 * np.sqrt(x_e(x)**2 - 1)**3 * m_e**3 / (m_pi * f_pi**2) / f
+nmu = lambda x: 8/3 * np.sqrt(x_e(x)**2*(m_e/m_mu)**2 - 1)**3 * m_mu**3 / (m_pi * f_pi**2) / f
 
 # x = mu_I
 p_pi = lambda  x: 1/2 * (xi(x) - 1/xi(x))**2
 u_pi = lambda x: 1/2 * (2 + xi(x)**2 - 3/xi(x)**2)
+npi = lambda  x: xi(x)* (1 - 1/xi(x)**4)
 
 
 pe = lambda x: ue0/u0*pl(x_e(x))
@@ -254,6 +259,20 @@ def xp(pp):
     x[~s] = (12 * pi**2 * pp[~s] )**(1/4)
 
     return x
+
+def xIp(pp):
+    
+    x = np.empty_like(pp)
+
+    s = pp>=pmin
+    xx = np.linspace(1, 2, 10000)
+    f1 = inter(p(xx), xx)
+    x[s] = f1(pp[s])
+
+    x[~s] = 0
+
+    return x
+
 
 
 def n_nu(pp):

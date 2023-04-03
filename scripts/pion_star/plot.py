@@ -10,7 +10,7 @@ from chpt_numerics.chpt_eos import u_nr, u_ur, p, u, nI
 from integrate_tov import get_u
 from constants import get_const_pion, m_pi, m_e, f_pi
 from chpt_numerics.chpt_eos import alpha_0
-from chpt_numerics.neutrino_eos import n_nu, pmin
+from chpt_numerics.neutrino_eos import n_nu, pmin, xIp, nnu, ne, nmu, npi, x_e
 
 from scipy.stats import linregress
 
@@ -886,7 +886,7 @@ def plot_neutrino_dens(name="_neutrino"):
     N = len(sols)
     u0, m0, r0 = get_const_pion()
     
-    fig, ax = plt.subplots(figsize=(14, 10), sharex=True)
+    fig, ax = plt.subplots(figsize=(14, 6), sharex=True)
     pcs = []
     for i, s in enumerate(sols):
         f = s["f"]
@@ -900,30 +900,76 @@ def plot_neutrino_dens(name="_neutrino"):
         ax.plot(r * r0, n_nu(p), color=c, alpha=0.6)
 
     nstar = n_nu(pmin)
-    ax.plot([0, 150], [nstar, nstar], "k--", label='$n_\\nu(p_\mathrm{min})$')
+    ax.plot([0, 130], [nstar, nstar], "k--", label='$n_\\nu(p_\mathrm{min})$')
 
     i = np.argmax(np.array([s["M"] for s in all_sols]))
     M, R, pc = [all_sols[i][s] for s in ["M", "R", "pc"]]
     r = np.linspace(0, R)
     f = all_sols[i]["f"]
     p, m = f(r)
+    ax.plot(r*r0, n_nu(p), 'r-', label="$M_\mathrm{max}$")
 
     ax.set_ylabel("$n_{\\nu}/n_0$")
-    fig.legend(bbox_to_anchor=(0.73, 0.87))
-
+    ax.set_xlabel("$r[\\mathrm{km}]$")
+    ax.legend()
 
     norm = colors.Normalize(vmin=log(pcs[0]), vmax=log(pcs[-1]))
     cmap = cm.ScalarMappable(norm=norm, cmap=cm.viridis)
     cb = fig.colorbar(cmap, ax=ax, location="right")
     cb.set_label( label="$\log_{10} [p_c / p_0] $", labelpad=25, rotation=270)
 
-    # ax.set_xscale("log")
-    # ax.set_yscale("log")
+    fig.savefig("figurer/ref/1.pdf", bbox_inches="tight")
 
-    plt.show()
+    ax.set_xscale("log")
+    ax.set_yscale("log")
+
+    fig.savefig("figurer/ref/2.pdf", bbox_inches="tight")
+
+
+
+def plot_all_dens(name="_neutrino"):
+    all_sols = load_sols(name)
+    u0, m0, r0 = get_const_pion()
+
+    i1 = np.argmax(np.array([s["M"] for s in all_sols]))
+    i2 = 70
+
+    for i in [i1, i2]:
+
+        fig, ax = plt.subplots(figsize=(14, 6), sharex=True)
+
+        M, R, pc = [all_sols[i][s] for s in ["M", "R", "pc"]]
+        r = np.linspace(0, R, 1000)
+        f = all_sols[i]["f"]
+        p, m = f(r)
+        x = xIp(p)
+
+        nel = ne(x)
+        nmul = nmu(x)
+        nmul[np.isnan(nmul)] = 0
+        nnul = nnu(x)
+        npil = npi(x)
+
+        n = nel + nmul + nnul + npil
+
+        ax.plot(r*r0, nel,  label="$e$")
+        ax.plot(r*r0, nmul, label="$\\mu$")
+        ax.plot(r*r0, nnul, label="$\\nu$")
+        ax.plot(r*r0, npil, label="$\\pi$")
+        ax.plot(r*r0, n, label="$n_\\mathrm{tot}$")
+
+        ax.set_ylabel("$n_{\\nu}/n_0$")
+        ax.set_xlabel("$r[\\mathrm{km}]$")
+        ax.legend()
+        ax.set_title("$(R, M) = ({:.2f},{:.2f})$".format(R*r0, M*m0))
+
+        fig.savefig("figurer/ref/" + str(i) + ".pdf", bbox_inches="tight")
+        ax.cla()
+    
 
 
 plot_neutrino_dens()
+plot_all_dens()
 
 
 if __name__=="__main__":
