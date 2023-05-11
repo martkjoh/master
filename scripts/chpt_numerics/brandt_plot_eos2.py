@@ -83,6 +83,6 @@ for i, name in enumerate(names):
     ax.set_ylabel("$u/u_0$")
     ax.legend()
 
-    # plt.show()
-    fig.savefig("figurer/brandt_eos"+names2[i]+".pdf", bbox_inches="tight")
+    plt.show()
+    # fig.savefig("figurer/brandt_eos"+names2[i]+".pdf", bbox_inches="tight")
 

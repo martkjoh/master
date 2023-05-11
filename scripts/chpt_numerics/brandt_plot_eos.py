@@ -83,5 +83,5 @@ ax.set_xlabel("$p/u_0$")
 ax.set_ylabel("$u/u_0$")
 ax.legend()
 
-fig.savefig("figurer/brandt_eos_all.pdf", bbox_inches="tight")
-# plt.show()
+# fig.savefig("figurer/brandt_eos_all.pdf", bbox_inches="tight")
+plt.show()

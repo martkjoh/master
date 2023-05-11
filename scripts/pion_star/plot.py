@@ -232,7 +232,7 @@ def plot_nlo_quantities():
 
     ax.set_ylim(-0.08, np.pi/2*1.02)
     ax.set_xlim(-0.1, 3)
-    
+
     plt.legend()
     fig.savefig("figurer/pion_nlo_alpha.pdf", bbox_inches="tight")
 
@@ -304,7 +304,7 @@ def plot_nlo_quantities():
     ax.plot(x, alpha_0(x), "k--", label="$\\alpha_\\mathrm{LO}$")
     ax.plot(x, alpha, "r-.", label="$\\alpha_\\mathrm{NLO}$")
 
-    ax.set_xlabel("$\\mu_I / m_\pi$")
+    ax.set_xlabel("$\\mu_I / m_{\pi^0}$")
     ax.set_ylabel("$\\alpha$")
 
     ax.set_ylim(-0.08, np.pi/2*1.02)
@@ -468,14 +468,14 @@ def plot_eos_EM():
 
     u = get_u("pion_star/data/eos.npy")
     us = [u(p0) for p0 in p]
-    ax.plot(p, us, label="$ \\tilde u(\\tilde p)$", lw=1, alpha=0.8)
+    ax.plot(p, us, label="$ \\epsilon(p)$", lw=1, alpha=0.8)
 
     u = get_u("pion_star/data/eos_EM.npy")
     us = [u(p0) for p0 in p]
-    ax.plot(p, us, "k--", label="$ \\tilde u_{\\mathrm{EM}}(\\tilde p)$")
+    ax.plot(p, us, "k--", label="$  \\epsilon_{\\mathrm{EM}}( p)$")
 
     ax.set_xlabel("$p / p_0$")
-    ax.set_ylabel("$u / u_0$")
+    ax.set_ylabel("$\\epsilon / \\epsilon_0$")
     ax.legend(loc="upper left")
 
     fig.savefig("figurer/pion_star/pion_eos_EM.pdf", bbox_inches="tight")
@@ -936,7 +936,7 @@ def plot_all_dens(name="_neutrino"):
 
     for i in [i1, i2]:
 
-        fig, ax = plt.subplots(figsize=(14, 6), sharex=True)
+        fig, ax = plt.subplots(figsize=(10, 4), sharex=True)
 
         M, R, pc = [all_sols[i][s] for s in ["M", "R", "pc"]]
         r = np.linspace(0, R, 1000)
@@ -952,24 +952,28 @@ def plot_all_dens(name="_neutrino"):
 
         n = nel + nmul + nnul + npil
 
-        ax.plot(r*r0, nel,  label="$e$")
-        ax.plot(r*r0, nmul, label="$\\mu$")
-        ax.plot(r*r0, nnul, label="$\\nu$")
-        ax.plot(r*r0, npil, label="$\\pi$")
-        ax.plot(r*r0, n, label="$n_\\mathrm{tot}$")
+        n0 = n[0]
 
-        ax.set_ylabel("$n_{\\nu}/n_0$")
+        cs = ['grey', 'slateblue', 'forestgreen', 'red']
+
+        ax.plot(r*r0, nel/n0,  label="$n_e$", color=cs[0])
+        ax.plot(r*r0, nmul/n0, label="$n_\\mu$", color=cs[1])
+        ax.plot(r*r0, nnul/n0, label="$n_\\nu$", color=cs[2])
+        ax.plot(r*r0, npil/n0, label="$n_\\pi$", color=cs[3])
+        ax.plot(r*r0, n/n0, "--k", label="$n_\\mathrm{tot}$")
+
+        ax.set_ylabel("$n(r)/n(0)$")
         ax.set_xlabel("$r[\\mathrm{km}]$")
         ax.legend()
-        ax.set_title("$(R, M) = ({:.2f},{:.2f})$".format(R*r0, M*m0))
+        ax.set_title("$(R, M) = (%.3f \\, \\mathrm{km},%.3f \\, M_\\odot)$" % (R*r0, M*m0))
 
         fig.savefig("figurer/ref/" + str(i) + ".pdf", bbox_inches="tight")
         ax.cla()
     
 
 
-plot_neutrino_dens()
-plot_all_dens()
+# plot_neutrino_dens()
+# plot_all_dens()
 
 
 if __name__=="__main__":
@@ -999,7 +1003,7 @@ if __name__=="__main__":
     # plot_max()
     # plot_all()
 
-    # plot_nlo_quantities()
+    plot_nlo_quantities()
     # plot_nlo_quantities2()
 
     # plot_eos_nlo()

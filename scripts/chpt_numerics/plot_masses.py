@@ -17,7 +17,7 @@ plt.rc("lines", lw=2)
 plt.rc("axes", grid=True)
 plt.rc("grid", linestyle="--", alpha=1)
 
-
+lo = lambda x: x.subs(m, 1.).subs(f, 1.).subs(mS, m_S/m_pi).subs(dm, Dm/m_pi)
 l = lambda E : lambdify((p, muS, muI, a), lo(E), "numpy")
 
 # Vacuum/pion-condensed masses
@@ -58,9 +58,9 @@ def plot_meson_masses():
     ax[0].plot(mu_list, mK0bar(muS_n, mu_list, alpha_list), "r-.",  label="$\\bar K^0$")
     ax[0].plot(mu_list, meta(muS_n, mu_list, alpha_list), "-", color="tab:blue", label="$\\eta$")
 
-    ax[1].set_xlabel("$\\mu_I/m_\\pi$")
-    ax[0].set_ylabel("$m/m_{\\pi}$")
-    ax[1].set_ylabel("$m/m_{\\pi}$")
+    ax[1].set_xlabel("$\\mu_I/m_{\\pi^0}$")
+    ax[0].set_ylabel("$m/m_{\\pi^0}$")
+    ax[1].set_ylabel("$m/m_{\\pi^0}$")
 
     ax[0].legend()
     ax[1].legend()
@@ -84,9 +84,9 @@ def plot_meson_em_masses():
     ax[0].plot(mu_list, mK0bar(muS_n, mu_list, alpha_list), "r-.",  label="$\\bar K^0$")
     ax[0].plot(mu_list, meta(muS_n, mu_list, alpha_list), "-", color="tab:blue", label="$\\eta$")
 
-    ax[1].set_xlabel("$\\mu_I/m_{\\pi}$")
-    ax[0].set_ylabel("$m/m_{\\pi}$")
-    ax[1].set_ylabel("$m/m_{\\pi}$")
+    ax[1].set_xlabel("$\\mu_I/m_{\\pi^0}$")
+    ax[0].set_ylabel("$m/m_{\\pi^0}$")
+    ax[1].set_ylabel("$m/m_{\\pi^0}$")
 
     ax[0].legend()
     ax[1].legend()
@@ -107,10 +107,10 @@ def plot_charged_kaon_masses2():
     ax.plot(muS, mKm(muS, muI_n, a), "k-.",  label="$K^-$")
     ax.plot(muS, mK0(muS, muI_n, a), "r--", label="$K^0$")
     ax.plot(muS, mK0bar(muS, muI_n, a), "r-.",  label="$\\bar K^0$")
-    ax.set_title("$\mu_I = %.2f" %muI_n + "\\, m_\\pi$")
+    ax.set_title("$\mu_I = %.2f" %muI_n + "\\, m_{\\pi^0}$")
 
-    ax.set_xlabel("$\\mu_S/m_\\pi$")
-    ax.set_ylabel("$m/m_\pi$")
+    ax.set_xlabel("$\\mu_S/m_{\\pi^0}$")
+    ax.set_ylabel("$m/m_{\\pi^0}$")
 
     plt.legend(loc="upper left")
     ax.set_ylim(-0.2, 8.2)

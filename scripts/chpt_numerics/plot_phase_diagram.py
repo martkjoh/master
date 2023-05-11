@@ -139,8 +139,8 @@ def add_text(ax):
 add_text(ax)
 ax.set_xlim(-3, 3)
 ax.set_ylim(-5, 5)
-ax.set_xlabel("$\\mu_I / m_\pi$")
-ax.set_ylabel("$\\mu_S / m_\pi$")
+ax.set_xlabel("$\\mu_I / m_{\pi^0}$")
+ax.set_ylabel("$\\mu_S / m_{\pi^0}$")
 
 fig.savefig("figurer/phase_diagram.pdf", bbox_inches="tight")
 
@@ -202,8 +202,8 @@ add_plot(ax3)
 
 ax.set_xlim(-3, 3)
 ax.set_ylim(-5, 5)
-ax.set_xlabel("$\\mu_I / m_\pi$")
-ax.set_ylabel("$\\mu_S / m_\pi$")
+ax.set_xlabel("$\\mu_I / m_{\pi^0}$")
+ax.set_ylabel("$\\mu_S / m_{\pi^0}$")
 
 ax2.set_xlim(0.7, 1.3)
 ax2.set_ylim(3., 3.3)

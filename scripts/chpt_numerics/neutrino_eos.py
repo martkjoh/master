@@ -120,7 +120,7 @@ def plot_mu():
     ax.plot(x, y, label="$\mu_e(\mu_I)$")
     ax.plot(x, mu_e(x), "k--", label="$\mu_e'(\mu_I)$")
 
-    ax.set_xlabel("$\\mu_I/m_\\pi$")
+    ax.set_xlabel("$\\mu_I/m_{\\pi^0}$")
     ax.set_ylabel("$\mu_e/m_e$")
 
 
@@ -143,10 +143,10 @@ pmin = 2*(1+m_e/m_pi) / (24*pi**2)
 def plot_eos():
     x = np.linspace(0, 3, 1000)
     fig, ax = plt.subplots(figsize=fs)
-    ax.plot(p(x), 3*p(x), "k--", label="$u = 3 p$")
-    ax.plot(p(x), u(x), label="$u(p)$")
-    ax.set_xlabel("$p/u_{0}$")
-    ax.set_ylabel("$u/u_{0}$")
+    ax.plot(p(x), 3*p(x), "k--", label="$\\epsilon = 3 p$")
+    ax.plot(p(x), u(x), label="$\\epsilon(p)$")
+    ax.set_xlabel("$p/\\epsilon_{0}$")
+    ax.set_ylabel("$u/\\epsilon_{0}$")
     plt.legend()
 
     fig.savefig("figurer/neutrino_eos.pdf", bbox_inches="tight")
@@ -232,7 +232,7 @@ def contributions():
 
 # plot_mu()
 
-# plot_eos()
+plot_eos()
 # plot_eos2()
 
 # contributions()

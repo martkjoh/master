@@ -114,7 +114,7 @@ def plot_compare_lattice(t=""):
         data = load_data(name)
         R0 = np.array(data[0])
         M0 = np.array(data[1])
-        ax.plot(R0, M0, ls=(0, (4, 1, 1, 1, 1, 1)), color="black", lw=3, label="$u=3p$", alpha=0.6, zorder=3)
+        ax.plot(R0, M0, ls=(0, (4, 1, 1, 1, 1, 1)), color="black", lw=3, label="$\\epsilon=3p$", alpha=0.6, zorder=3)
 
 
     fill_ellipses(ax, R, M, err_R, err_M, "lightblue", 1)
