@@ -13,13 +13,14 @@ plt.rc("grid", linestyle="--", alpha=1)
 
 import sys
 sys.path.append(sys.path[0] + "/..")
-from constants import Dm, Dm_EM, m_pi, m_K0
+from new_constants import Dm, Dm_EM, m_pi0, m_K00, m_pipm, m_Kpm0
 
-D = Dm/m_pi
-m = m_K0/m_pi
-mKpm = sqrt(m**2 - D**2)
-DEM = Dm_EM/m_pi
-mpiEM = sqrt(1 + DEM**2)
+D = Dm/m_pipm
+m_K00 = m_K00/m_pipm
+m_pi0 = m_pi0/m_pipm
+m_Kpm0 = m_Kpm0 / m_pipm
+DEM = Dm_EM/m_pipm
+m_pipm = m_pipm/m_pipm
 print(DEM**2)
 
 
@@ -35,35 +36,35 @@ w = lambda x : x
 
 # pi / Kpm
 x1 = np.linspace(1, 3, N)
-eq1 = lambda x, y : -u(x,y) + (w(x)**2 - 1 + sqrt((w(x)**2 - 1)**2 + 4*w(x)**2*mKpm**2 )) / (2*w(x))
+eq1 = lambda x, y : -u(x,y) + (w(x)**2 - m_pi0 + sqrt((w(x)**2 - 1)**2 + 4*w(x)**2*m_Kpm0**2 )) / (2*w(x))
 sol1 = fsolve(lambda y: eq1(x1, y), np.ones(N))
 
 # pi / K0
 x2 = np.linspace(-1, -3, N)
-eq2 = lambda x, y : v(x,y) + (w(x)**2 - 1 + sqrt( (w(x)**2 - 1)**2 + 4*w(x)**2*m**2 )) / (2*w(x))
+eq2 = lambda x, y : v(x,y) + (w(x)**2 - m_pi0 + sqrt( (w(x)**2 - 1)**2 + 4*w(x)**2*m_K00**2 )) / (2*w(x))
 sol2 = fsolve(lambda y: eq2(x2, y), np.ones(N))
 
 # Kpm/K0
-y3 = np.linspace(sqrt(m*mKpm), 5, N)
-eq3 = lambda x, y : -u(x,y) + (v(x,y)**2 - m**2 + sqrt( (v(x,y)**2 + m**2)**2 - 4*v(x,y)**2*D**2 )) / (2*v(x, y))
+y3 = np.linspace(sqrt(m_K00*m_Kpm0), 5, N)
+eq3 = lambda x, y : -u(x,y) + (v(x,y)**2 - m_K00**2 + sqrt( (v(x,y)**2 + m_K00**2)**2 - 4*v(x,y)**2*D**2 )) / (2*v(x, y))
 sol3 = fsolve(lambda x: eq3(x, y3), np.ones(N))
 
 # Kpm
-a = mKpm - m
+a = m_Kpm0 - m_K00
 x4 = np.linspace(a, 1, N)
-eq4 = lambda x, y : mKpm-u(x,y)
+eq4 = lambda x, y : m_Kpm0-u(x,y)
 sol4 = fsolve(lambda y: eq4(x4, y), np.ones(N))
 
 # K0
 x5 = np.linspace(-1, a, N)
-eq5 = lambda x, y : m-v(x,y)
+eq5 = lambda x, y : m_K00-v(x,y)
 sol5 = fsolve(lambda y: eq5(x5, y), np.ones(N))
 
 # pi+
-y6 = np.linspace(0, fsolve(lambda y: mKpm-u(1, y), 1), N)
+y6 = np.linspace(0, fsolve(lambda y: m_Kpm0-u(1, y), 1), N)
 
 # pi-
-y7 = np.linspace(0, fsolve(lambda y: m-u(1, y), 1), N)
+y7 = np.linspace(0, fsolve(lambda y: m_K00-u(1, y), 1), N)
 
 
 
@@ -71,40 +72,42 @@ y7 = np.linspace(0, fsolve(lambda y: m-u(1, y), 1), N)
 # EM resutls #
 ##############
 
+# mu_Kpm,eff
 uEM = lambda x, y : sqrt((y+x/2)**2 - DEM**2)
+# mu_I,eff
 wEM = lambda x : sqrt(x**2 - DEM**2)
 
 # pi / Kpm
-x1EM = np.linspace(mpiEM, 3, N)
-eq1EM = lambda x, y : -uEM(x,y) + (wEM(x)**2 - 1 + sqrt((wEM(x)**2 - 1)**2 + 4*wEM(x)**2*mKpm**2 )) / (2*wEM(x))
+x1EM = np.linspace(m_pipm, 3, N)/m_pipm
+eq1EM = lambda x, y : -uEM(x,y) + (wEM(x)**2 - m_pi0 + sqrt((wEM(x)**2 - m_pi0**2)**2 + 4*wEM(x)**2*m_Kpm0**2 )) / (2*wEM(x))
 sol1EM = fsolve(lambda y: eq1EM(x1EM, y), np.ones(N))
 
 # pi / K0
-x2EM = np.linspace(-mpiEM, -3, N)
-eq2EM = lambda x, y : -v(x,y) + (wEM(x)**2 - 1 + sqrt( (wEM(x)**2 - 1)**2 + 4*wEM(x)**2*m**2 )) / (2*wEM(x))
+x2EM = np.linspace(-m_pipm, -3, N)/m_pipm
+eq2EM = lambda x, y : -v(x,y) + (wEM(x)**2 - m_pi0 + sqrt( (wEM(x)**2 - 1)**2 + 4*wEM(x)**2*m_K00**2 )) / (2*wEM(x))
 sol2EM = fsolve(lambda y: eq2EM(x2EM, y), np.ones(N))
 
 # Kpm/K0
-y3EM = np.linspace(sqrt(m*sqrt(mKpm**2 + DEM**2)), 5, N)
-eq3EM = lambda x, y : -uEM(x,y) + (v(x,y)**2 - m**2 + sqrt( (v(x,y)**2 + m**2)**2 - 4*v(x,y)**2*D**2 )) / (2*v(x, y))
+y3EM = np.linspace(sqrt(m_K00*sqrt(m_Kpm0**2 + DEM**2)), 5, N)
+eq3EM = lambda x, y : -uEM(x,y) + (v(x,y)**2 - m_K00**2 + sqrt( (v(x,y)**2 + m_K00**2)**2 - 4*v(x,y)**2*D**2 )) / (2*v(x, y))
 sol3EM = fsolve(lambda x: eq3EM(x, y3EM), np.ones(N))
 
 # Kpm
-a = sqrt(mKpm**2 + DEM**2) - m
-x4EM = np.linspace(a, mpiEM, N)
-eq4EM = lambda x, y : mKpm-uEM(x,y)
+a = sqrt(m_Kpm0**2 + DEM**2) - m_K00
+x4EM = np.linspace(a, m_pipm, N)/m_pipm
+eq4EM = lambda x, y : m_Kpm0-uEM(x,y)
 sol4EM = fsolve(lambda y: eq4EM(x4EM, y), np.ones(N))
 
 # K0
-x5EM = np.linspace(-mpiEM, a, N)
-eq5EM = lambda x, y : m-v(x,y)
+x5EM = np.linspace(-m_pipm, a, N)/m_pipm
+eq5EM = lambda x, y : m_K00-v(x,y)
 sol5EM = fsolve(lambda y: eq5EM(x5EM, y), np.ones(N))
 
 # pi+
-y6EM = np.linspace(0, fsolve(lambda y: mKpm-uEM(mpiEM, y), 1), N)
+y6EM = np.linspace(0, fsolve(lambda y: m_Kpm0-uEM(m_pipm, y), 1), N)/m_pipm
 
 # pi-
-y7EM = np.linspace(0, fsolve(lambda y: m-v(-mpiEM, y), 1), N)
+y7EM = np.linspace(0, fsolve(lambda y: m_K00-v(-m_pipm, y), 1), N)/m_pipm
 
 
 
@@ -142,8 +145,8 @@ ax.set_ylim(-5, 5)
 ax.set_xlabel("$\\mu_I / m_{\pi^0}$")
 ax.set_ylabel("$\\mu_S / m_{\pi^0}$")
 
-fig.savefig("figurer/phase_diagram.pdf", bbox_inches="tight")
-
+# fig.savefig("figurer/phase_diagram.pdf", bbox_inches="tight")
+plt.show()
 
 
 def add_plot(ax):
@@ -172,10 +175,11 @@ def add_plot(ax):
     ax.plot(x4EM, -sol4EM, "r")
     ax.plot(x5EM, sol5EM, "r")
     ax.plot(x5EM, -sol5EM, "r")
-    ax.plot(mpiEM*np.ones(N), y6EM, "r")
-    ax.plot(mpiEM*np.ones(N), -y6EM, "r")
-    ax.plot(-mpiEM*np.ones(N), y7EM, "r")
-    ax.plot(-mpiEM*np.ones(N), -y7EM, "r")
+    ax.plot(m_pipm*np.ones(N), y6EM, "r")/m_pipm
+    ax.plot(m_pipm*np.ones(N), -y6EM, "r")/m_pipm
+    ax.plot(-m_pipm*np.ones(N), y7EM, "r")/m_pipm
+    ax.plot(-m_pipm*np.ones(N), -y7EM, "r")/m
+    _pipm
 
 
 fig = plt.figure(figsize=(10, 7))

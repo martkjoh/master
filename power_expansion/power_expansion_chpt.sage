@@ -51,7 +51,7 @@ def print_e(elem):
         c = coeff[i][0].coefficients(mu)
         for k in c:
             s = k[0].full_simplify()*mu**k[1]
-            pretty_print(s.factor())
+            pprint(s.factor())
 
 def print_e2(elem):
     coeff = elem.coefficients(e)

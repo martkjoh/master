@@ -21,11 +21,13 @@ MeV = 1.60218e-19*1e6
 
 alpha = 7.297e-3
 e = sqrt(4*pi*alpha)
+e = 0.3028
 
 M0 = 1.988 * 10**30
 
 # pion decay constant
 f_pi = 130.2/sqrt(2) # = 92.07
+f_pi = 92.07
 
 # Masses
 m_pi = 134.98
@@ -45,10 +47,14 @@ f_rho = 154
 C = f_pi**2/(2*e**2) * (m_pipm**2 - m_pi**2)
 Curech = 3 / (32*pi**2) * m_rho**2*f_rho**2 * ln(f_rho**2 /(f_rho**2 - f_pi**2))
 
+Dm_EM = 35.50
+print(C)
+print(f_pi**2 / (2 * e**2) * Dm_EM**2)
+
 Dm_EM = sqrt(2 * e**2/f_pi**2 * C)
 Dm = sqrt(m_K0**2 - (m_Kpm**2 - Dm_EM**2))
 m_S = sqrt(2*m_K0**2 - m_pi**2)
-
+print(m_S)
 
 D = Dm_EM**2 / m_pi**2
 

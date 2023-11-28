@@ -107,10 +107,10 @@ SIGMA_d = lambda n, A: mat_prep(A.C.T * U_d(n) * A.C.T, n)
 
 
 def sub(S, p, pvar):
-	for i, p0 in enumerate(pvar):
-		for j in range(3):
-			for k in range(3):
-				S[j, k]=S[j, k].subs(p[i]==p0)
+    for i, p0 in enumerate(pvar):
+        for j in range(3):
+            for k in range(3):
+                S[j, k]=S[j, k].subs(p[i]==p0)
 
 
 def get_S(n, li, indx="mu"):
