@@ -5,7 +5,10 @@ from matplotlib import cm
 import sys
 
 sys.path.append(sys.path[0] + "/..")
-from new_constants import f_pi, m_pi0, Dm, m_Kpm, m_K0, Dm_EM, e, m_pipm
+from constants_phys import f_pi, m_Kpm, m_K0, e, m_pipm
+from constants_LO import Dm, Dm_EM, m_pi0
+
+
 m_eta = np.sqrt((2*m_Kpm**2 + 2*m_K0**2 - m_pi0**2) / 3)
 
 f_pi, m_pi0, Dm, m_Kpm, m_K0, Dm_EM, m_eta = np.array([f_pi, m_pi0, Dm, m_Kpm, m_K0, Dm_EM, m_eta]) / m_pipm
@@ -94,7 +97,7 @@ ax[1].set_xlabel("$\\mu_I/m_{\\pi^\pm}$")
 ax[0].set_ylabel("$m/m_{\\pi^\pm}$")
 ax[1].set_ylabel("$m/m_{\\pi^\pm}$")
 
-fig.savefig("figurer/masses_higgs.pdf", bbox_inches="tight")
+fig.savefig("article/figurer/masses_higgs.pdf", bbox_inches="tight")
 
 fig, ax = plt.subplots(figsize=(10,5))
 ax.plot(mus, m1p, '-', color='tab:blue', lw=2, label='$\\eta$')
@@ -109,4 +112,4 @@ ax.set_xlabel("$\\mu_I/m_{\\pi^\pm}$")
 ax.set_ylabel("$m/m_{\\pi^\pm}$")
 ax.set_xlim(3.75, 4.25)
 ax.set_ylim(3.75, 4.25)
-fig.savefig("figurer/masses_higgs3.pdf", bbox_inches="tight")
+fig.savefig("article/figurer/masses_higgs3.pdf", bbox_inches="tight")
